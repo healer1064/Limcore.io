@@ -1,6 +1,6 @@
-# FrontendWebTemplate
+# Limcore.io
 
-Проект Шаблон Frontend by Valentin Vorobyev
+Проект Limcore.io
 
 yarn => yarn start
 
@@ -43,14 +43,14 @@ const handleClick = () => {
 ```
 
 Защищенные роуты:
-...../sp-f-dealer/src/components/Router/protected-route.tsx
+...../src/components/Router/protected-route.tsx
 
 Пример:
 ```
 <ProtectedRoute
-       allowedUsersTypes={[USER_ROlES.businessMb, USER_ROlES.businessStv]}
-       path='/arm-orders'
+       allowedUsersTypes={[USER_ROlES.user, USER_ROlES.admin]}
+       path='/orders'
        exact
-       component={ArmOrdersPage}
+       component={OrdersPage}
 />
 ```
