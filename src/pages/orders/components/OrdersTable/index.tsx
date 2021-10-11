@@ -1,5 +1,4 @@
 import React from 'react'
-// import { MtsCheckbox } from '@mts-ds/components-react'
 
 import { formatPrice } from '@helpers/formatPrice'
 
@@ -25,7 +24,6 @@ export const OrderTable = (props) => {
     <div role='presentation' className={style.row_container} onClick={() => handleOpenDetailInfo(row.id)}>
       <Cell className={`${style.first_column} ${style.orders_cell}`}>
         <Cell className={`${style.order_number}`} onClick={(e) => e.stopPropagation()}>
-          {/* <MtsCheckbox size={CheckboxSizes.s} id={row?.orderId} /> */}
           <div>
             <TableText value={row?.orderId} />
           </div>

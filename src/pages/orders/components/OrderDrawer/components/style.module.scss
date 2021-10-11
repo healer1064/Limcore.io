@@ -68,16 +68,16 @@
     width: 4px;
     height: 8px;
   }
-  
+
   &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 2px lightgray;
     border-radius: 10px;
   }
-  
+
   &::-webkit-scrollbar-thumb {
     background: lightgray;
     border-radius: 10px;
-  
+
     &:hover {
       background: '#bfbfbf';
     }
@@ -116,10 +116,10 @@
     .orderHead {
       display: grid;
       grid-template-columns: 1fr 5fr 2fr 2fr;
-      margin-bottom: 8px;   
+      margin-bottom: 8px;
       font-size: 14px;
       line-height: 16px;
-      color: #626C77;   
+      color: #626C77;
     }
     .orderRow {
       display: grid;
@@ -166,7 +166,7 @@
       align-items: center;
       justify-content: center;
       padding: 10px 0;
-      font-family: MTS Sans, sans-serif;
+      font-family: Raleway, sans-serif;
       font-weight: 500;
     }
 

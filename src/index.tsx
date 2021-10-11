@@ -9,8 +9,6 @@ import { store } from '@app/redux/store'
 import { SnackbarProvider } from 'notistack'
 import { SlideNotification } from '@components/Notification'
 
-document.documentElement.classList.add('mts-theme', 'mts-theme-light')
-
 ReactDOM.render(
   <Provider store={store}>
     <SnackbarProvider
