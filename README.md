@@ -1,5 +1,7 @@
 # Limcore.io
 
+Figma: https://www.figma.com/file/sJsMrKx29SjMnod0rq2YGo/limcore.io?node-id=1624%3A18815
+
 Проект Limcore.io
 
 yarn => yarn start
