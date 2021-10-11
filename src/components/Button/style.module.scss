@@ -1,0 +1,183 @@
+@import '../../scss/typography.scss';
+@import '../../scss/vars.scss';
+
+.button {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    height: 44px;
+    padding: 12px 32px;
+    font-weight: $fontWeightMedium;
+    font-size: 14px;
+    line-height: 20px;
+    font-family: 'Raleway', Arial, sans-serif;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    user-select: none;
+
+    .button-spinner {
+        width: 20px;
+        height: 20px;
+    }
+
+    .button-spinner-wrapper {
+        border-radius: 4px;
+    }
+
+    &-primary-red {
+        color: $whiteColor;
+        background: $primaryColor;
+        border: 2px solid $primaryColor;
+
+        &:hover {
+            background: $buttonHoverColor;
+            border-color: $buttonHoverColor;
+        }
+    }
+
+    &-primary-blue {
+        color: $whiteColor;
+        background: $normalBlackberryColor;
+        border: 2px solid $normalBlackberryColor;
+
+        &:hover {
+            background: $darkBlackberryColor;
+            border-color: $darkBlackberryColor;
+        }
+    }
+
+    &-secondary-red {
+        color: $primaryColor;
+        background: $whiteColor;
+        border: 2px solid $linkWaterColor;
+
+        &:hover {
+            color: $whiteColor;
+            background: $buttonHoverColor;
+            border-color: $buttonHoverColor;
+        }
+
+        .button-spinner {
+            border-color: $primaryColor;
+        }
+    }
+
+    &-secondary-blue {
+        color: $pitchBlackColor;
+        background: $whiteColor;
+        border: 2px solid $linkWaterColor;
+
+        &:hover {
+            color: $whiteColor;
+            background: $deepBlueColor;
+            border-color: $deepBlueColor;
+        }
+
+        .button-spinner {
+            border-color: $deepBlueColor;
+        }
+    }
+
+    &-naked {
+        color: $deepBlueColor;
+        background: $whiteColor;
+        border: 2px solid $whiteColor;
+
+        &:hover {
+            color: $pitchBlackColor;
+            background: $whiteColor;
+            border-color: $whiteColor;
+        }
+
+        .button-spinner {
+            border-color: red;
+        }
+    }
+
+    &-invisible {
+        color: $pitchBlackColor;
+        background: $whiteColor;
+        border: 2px solid $whiteColor;
+
+        &:hover {
+            color: $primaryColor;
+            background: $whiteColor;
+            border-color: $whiteColor;
+        }
+
+        .button-spinner {
+            border-color: red;
+        }
+    }
+
+    &-disabled {
+        color: $greyHeatherColor;
+        background: $linkWaterColor;
+        border-color: $linkWaterColor;
+        cursor: default;
+    }
+
+    &-gray {
+        color: $lightBlackColor;
+        background: $whiteSmokeColor;
+        border: 2px solid $whiteSmokeColor;
+        border-radius: 6px;
+        width: 154px;
+        height: 32px;
+
+        &:hover {
+            color: $whiteColor;
+            background: $primaryColor;
+            border-color: $whiteColor;
+        }
+
+        .button-spinner {
+            border-color: red;
+        }
+    }
+
+    &FullWidth {
+        width: 100%;
+    }
+
+    &-no-event {
+        cursor: default;
+        pointer-events: none;
+    }
+
+    &SpinnerWrapper {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+    }
+
+    &Spinner {
+        display: block;
+        border: 3px solid $whiteColor;
+        border-top-color: transparent !important;
+        border-radius: 100%;
+        animation: spin 1s infinite linear;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

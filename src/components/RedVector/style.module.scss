@@ -1,0 +1,9 @@
+@import '../../scss/vars';
+@import '../../scss/typography';
+
+.red_vector {
+  position: relative;
+  width: 110%;
+  background-color: $errorColor;
+  height: 1px;
+}

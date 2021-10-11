@@ -1,0 +1,58 @@
+.count {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 26px;
+  align-items: center;
+  border: 1px solid rgba(188, 195, 208, 0.5);
+  border-radius: 5px;
+  justify-content: space-between;
+
+  &__image {
+    width: 16px;
+    height: 16px;
+    margin: 4px;
+    cursor: pointer;
+  }
+
+  &__minus_container {
+    width: 16px;
+    height: 16px
+  }
+
+  &__plus_container {
+
+  }
+
+  &__input_container {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__number_input {
+    min-width: 52px;
+    width: 100%;
+    text-align: center;
+    border: none;
+  }
+
+  &__number_input:focus {
+    border: none;
+    outline: none;
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  &__number_input::-webkit-outer-spin-button,
+  &__number_input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &__number_input[type=number] {
+    -moz-appearance: textfield;
+  }
+}
+
+

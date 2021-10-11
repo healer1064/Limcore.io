@@ -1,0 +1,81 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 28px;
+  margin-bottom: 9px;
+}
+
+.buttons__container {
+  width: 50%;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+}
+
+.plus_button {
+  cursor: pointer;
+  outline: none;
+  border: transparent;
+  border-radius: 4px;
+  padding: 10px 12px;
+  line-height: 20px;
+  font-size: 14px;
+  background-color: #e30611;
+  color: white;
+  width: 120px;
+}
+
+.filter_button {
+  cursor: pointer;
+  outline: none;
+  border: transparent;
+  border-radius: 6px;
+  padding: 6px 16px;
+  line-height: 20;
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #1d2023;
+  // width: 94px;
+  min-width: 94px;
+  height: 32px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-left: 16px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.basket_btn {
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  outline: none;
+  background-color: #ffffff;
+  align-items: center;
+  border: transparent;
+}
+
+.basket_icon {
+  width: 16px;
+  height: 17px;
+}
+
+.filters_count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e30611;
+  font-size: 12px;
+  color: #fff;
+  border-radius: 50%;
+  width: 16px;
+  flex: 1 0 auto;
+  height: 16px;
+  margin-right: 4px;
+  font-family: 'Raleway', sans-serif;
+}

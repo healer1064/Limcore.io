@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "checkJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@app/*": ["./app/*"],
+      "@components/*": ["./components/*"],
+      "@config/*": ["./config/*"],
+      "@icons/*": ["./assets/icons/*"],
+      "@helpers/*": ["./helpers/*"],
+      "@lib/*": ["./lib/*"]
+    }
+  }
+}

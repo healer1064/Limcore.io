@@ -1,0 +1,167 @@
+$fontProject: 'Raleway', sans-serif;
+$fontWeightRegular: 400;
+$fontWeightMedium: 500;
+$fontWeightBold: 700;
+$fontWeightUltraWide: 900;
+
+@mixin main($color) {
+    font-family: $fontProject;
+    color: $color;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: -0.1px;
+}
+
+@mixin h1 {
+    font-size: 40px;
+    line-height: 48px;
+}
+
+@mixin h2 {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+@mixin h3 {
+    font-size: 20px;
+    line-height: 28px;
+}
+
+@mixin p1 {
+    font-size: 18px;
+    line-height: 28px;
+}
+
+@mixin p2 {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+@mixin p3 {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+@mixin p4 {
+    font-size: 12px;
+    line-height: 16px;
+}
+
+@mixin ultraWideH1($color) {
+    font-weight: $fontWeightUltraWide;
+
+    @include main($color);
+    @include h1();
+}
+
+@mixin ultraWideH2($color) {
+    font-weight: $fontWeightUltraWide;
+
+    @include main($color);
+    @include h2();
+}
+
+@mixin ultraWideH3($color) {
+    font-weight: $fontWeightUltraWide;
+
+    @include main($color);
+    @include h3();
+}
+
+@mixin boldH2($color) {
+    font-weight: $fontWeightBold;
+
+    @include main($color);
+    @include h2();
+}
+
+@mixin boldH3($color) {
+    font-weight: $fontWeightBold;
+
+    @include main($color);
+    @include h3();
+}
+
+@mixin mediumH1($color) {
+    font-weight: $fontWeightMedium;
+
+    @include main($color);
+    @include h1();
+}
+
+@mixin mediumH2($color) {
+    font-weight: $fontWeightMedium;
+
+    @include main($color);
+    @include h2();
+}
+
+@mixin mediumH3($color) {
+    font-weight: $fontWeightMedium;
+
+    @include main($color);
+    @include h3();
+}
+
+@mixin mediumP1($color) {
+    font-weight: $fontWeightMedium;
+
+    @include main($color);
+    @include p1();
+}
+
+@mixin mediumP2($color) {
+    font-weight: $fontWeightMedium;
+
+    @include main($color);
+    @include p2();
+}
+
+@mixin mediumP3($color) {
+    font-weight: $fontWeightMedium;
+
+    @include main($color);
+    @include p3();
+}
+
+@mixin mediumP4($color) {
+    font-weight: $fontWeightMedium;
+
+    @include main($color);
+    @include p4();
+}
+
+@mixin regularP1($color) {
+    font-weight: $fontWeightRegular;
+
+    @include main($color);
+    @include p1();
+}
+
+@mixin regularP2($color) {
+    font-weight: $fontWeightRegular;
+
+    @include main($color);
+    @include p2();
+}
+
+@mixin regularP3($color) {
+    font-weight: $fontWeightRegular;
+
+    @include main($color);
+    @include p3();
+}
+
+@mixin regularP4($color) {
+    font-weight: $fontWeightRegular;
+
+    @include main($color);
+    @include p4();
+}
+
+@mixin ellipsisText() {
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

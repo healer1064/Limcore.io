@@ -1,0 +1,39 @@
+.main__wrapper {
+  width: 100%;
+  background-color: #f2f3f7;
+  min-height: 562px;
+  height: 100%;
+}
+.components__wrapper {
+  max-width: 1312px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 25px 64px;
+  box-sizing: border-box;
+  display: flex;
+  overflow: auto;
+  flex-direction: column;
+
+  @media (max-width: 1279px) {
+    padding: 25px 48px;
+  }
+
+  @media (max-width: 1023px) {
+    padding: 16px 16px;
+  }
+}
+
+.no_padding {
+  padding: 0 0 25px 0;
+  margin: 0;
+  max-width: none;
+
+  @media (max-width: 1279px) {
+    padding: 0 0 25px 0;
+  }
+
+  @media (max-width: 1023px) {
+    padding: 0 0 16px 0;
+  }
+}

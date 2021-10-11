@@ -1,0 +1,47 @@
+.footer {
+  font-family: Raleway, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  height: 68px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 32px;
+  padding-right: 45px;
+  background: #f2f3f7;
+  border-top: 1px solid rgba(188, 195, 208, 0.5);
+  width: 100%;
+  position: relative;
+  top: 92%;
+}
+.signature {
+  color: #626c77;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.link {
+  position: relative;
+  text-decoration: none;
+  color: #0077db;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.link_arrow {
+  width: 9px;
+  height: 14px;
+  padding-top: 4px;
+  padding-left: 10.5px;
+}
+
+.link:nth-child(2) {
+  margin-left: 63px;
+}

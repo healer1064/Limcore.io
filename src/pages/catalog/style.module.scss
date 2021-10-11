@@ -1,0 +1,29 @@
+.catalog {
+  &__content {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__item_content {
+    width: 70%;
+  }
+
+  &__info_content {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__fixed {
+    position: fixed;
+    margin-bottom: 24px;
+    min-height: 247px;
+  }
+}
+
+.spinnerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
