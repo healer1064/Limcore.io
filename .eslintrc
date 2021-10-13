@@ -46,15 +46,19 @@
           ["@icons", "./src/assets/icons"],
           ["@images", "./src/assets/images"]
         ],
-        "extensions": [
-          ".ts", ".tsx", ".js", ".jsx", ".json"
-        ]
+        "extensions": [".ts", ".tsx", ".js", ".jsx", ".json"]
       }
     }
   },
   "plugins": ["react-hooks", "import", "react", "@typescript-eslint"],
   "parser": "@typescript-eslint/parser",
   "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "curly": ["error", "all"],
     "dot-notation": [
       "error",

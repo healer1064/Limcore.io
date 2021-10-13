@@ -4,8 +4,8 @@ import profileSlice from '../../pages/home/redux/profileSlicer'
 import orderSlice from '../../pages/orders/redux/orderSlicer'
 import detailOrderInfoSlice from '../../pages/orders/redux/detailOrderSlicer'
 import catalogSlice from '../../pages/catalog/redux/catalogSlicer'
-
 import userSlice from './userSlice'
+import cabinetSlice from '../../pages/cabinet/redux/cabinetSlice'
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +15,7 @@ export const store = configureStore({
     detailOrderInfo: detailOrderInfoSlice,
     catalogList: catalogSlice,
     user: userSlice,
+    cabinet: cabinetSlice,
   },
   devTools: process.env.NODE_ENV !== 'production',
 })
