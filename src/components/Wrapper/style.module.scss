@@ -1,9 +1,12 @@
 .main__wrapper {
   width: 100%;
-  background-color: #f2f3f7;
+  //background-color: #f2f3f7;
+  background-color: #fff;
+
   min-height: 562px;
   height: 100%;
 }
+
 .components__wrapper {
   max-width: 1312px;
   width: 100%;
@@ -20,7 +23,7 @@
   }
 
   @media (max-width: 1023px) {
-    padding: 16px 16px;
+    padding: 20px;
   }
 }
 

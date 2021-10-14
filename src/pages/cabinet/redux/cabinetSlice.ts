@@ -4,7 +4,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 export const cabinetSlice = createSlice({
   name: 'cabinetPage',
   initialState: {
-    viewCabinet: 'profile',
+    viewCabinet: 'broadcasts', // 'profile',
     viewContent: 'filling',
     status: null,
     error: null,
