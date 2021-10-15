@@ -4,7 +4,7 @@ import Styles from './styles.module.scss'
 import logoIcon from '@icons/logo.svg'
 
 export const HeaderMobile = () => {
-  const [view, setView] = useState('filling')
+  const [view, setView] = useState('main')
 
   return (
     <div className={Styles.header}>

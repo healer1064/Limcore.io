@@ -37,6 +37,7 @@
   }
 
   &__videoFrame {
+    position: relative;
     @include empty-block();
     flex: 1 1 50%;
   }
@@ -47,6 +48,26 @@
 
     border: none;
     border-radius: 14px;
+  }
+
+  &__button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: block;
+    width: 10px;
+    height: 10px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 50%;
+    background-color: #F24949;
+    transition: 0.5s ease-in-out;
+
+    &:hover {
+      opacity: 0.5;
+      cursor: pointer;
+    }
   }
 
   &__info {
