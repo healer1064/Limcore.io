@@ -4,14 +4,21 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 export const cabinetSlice = createSlice({
   name: 'cabinetPage',
   initialState: {
-    viewCabinet: 'broadcasts', // 'profile',
-    viewContent: 'filling',
+    viewHeader: 'main',
+    viewCabinet: 'profile',
+    viewContent: 'profile',
     status: null,
     error: null,
   } as unknown as any,
   reducers: {
-    changeView: (state, action) => {
-      state.view = action.payload
+    changeViewHeader: (state, action) => {
+      state.viewHeader = action.payload
+    },
+    changeViewCabinet: (state, action) => {
+      state.viewCabinet = action.payload
+    },
+    changeViewContent: (state, action) => {
+      state.viewContent = action.payload
     },
   },
   extraReducers: {
@@ -23,5 +30,5 @@ export const cabinetSlice = createSlice({
 
 const { actions, reducer } = cabinetSlice
 
-export const { changeView } = actions
+export const { changeViewHeader, changeViewCabinet, changeViewContent } = actions
 export default reducer

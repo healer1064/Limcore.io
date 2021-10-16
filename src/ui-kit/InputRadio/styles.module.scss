@@ -1,0 +1,23 @@
+.block {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  position: absolute;
+  appearance: none;
+
+  &:checked + .radio {
+    background-image: url('../../assets/icons/input-radio-check.svg');
+  }
+}
+
+.radio {
+  width: 24px;
+  height: 24px;
+  background-image: url('../../assets/icons/input-radio.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: 10px;
+}

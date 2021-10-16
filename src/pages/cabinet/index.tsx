@@ -1,6 +1,6 @@
 import React from 'react'
-import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-// import {} from './redux/cabinetSlice'
+import { useAppSelector } from '@app/redux/hooks'
+import Styles from './styles.module.scss'
 
 import { Broadcasts } from '@components/Broadcasts'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
@@ -8,7 +8,7 @@ import styles from './styles.module.scss'
 
 import { testArray } from './test-data'
 
-export const CabinetPage = () => {
+export const CabinetPage: React.FC = () => {
   const viewCabinet = useAppSelector((state) => state.cabinet.viewCabinet)
 
   return (

@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
+import { useAppSelector } from '@app/redux/hooks'
 import Styles from './styles.module.scss'
 
 import logoIcon from '@icons/logo.svg'
 
-export const HeaderMobile = () => {
-  const [view, setView] = useState('main')
+export const HeaderMobile: React.FC = () => {
+  const viewHeader = useAppSelector((state) => state.cabinet.viewHeader)
 
   return (
     <div className={Styles.header}>
-      {view === 'main' && (
+      {viewHeader === 'main' && (
         <>
           <img className={Styles.logo} src={logoIcon} alt='Лого' />
           <div className={Styles.burger}>
@@ -18,7 +19,7 @@ export const HeaderMobile = () => {
           </div>
         </>
       )}
-      {view === 'filling' && (
+      {viewHeader === 'filling' && (
         <>
           <button className={Styles.back}>{}</button>
           <span className={Styles.caption}>Заполните профиль</span>
