@@ -1,11 +1,10 @@
 import React from 'react'
-import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-// import {} from './redux/cabinetSlice'
+import { useAppSelector } from '@app/redux/hooks'
 import Styles from './styles.module.scss'
 
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 
-export const CabinetPage = () => {
+export const CabinetPage: React.FC = () => {
   const viewCabinet = useAppSelector((state) => state.cabinet.viewCabinet)
 
   return (

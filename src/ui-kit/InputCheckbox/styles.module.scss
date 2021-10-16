@@ -1,0 +1,23 @@
+.block {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  position: absolute;
+  appearance: none;
+
+  &:checked + .checkbox {
+    background-image: url('../../assets/icons/inout-checkbox-check.svg');
+  }
+}
+
+.checkbox {
+  width: 26px;
+  height: 26px;
+  // background-image: url('../../assets/icons/inout-checkbox.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: 10px;
+}
