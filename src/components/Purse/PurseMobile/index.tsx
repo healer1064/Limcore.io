@@ -4,14 +4,14 @@ import CardVirtual from '../images/card-virtual.svg'
 
 // Картинки сделать компонентами
 
-export const PurseMobile = (props) => {
+export const PurseMobile = () => {
   return (
     <div className={styles.purse}>
       <div className={styles.balance}>
         <div className={styles.balance__header}>
           <h3 className={styles.balance__title}>Общий баланс</h3>
           <button className={styles.balance__button}>
-            <svg width='8' height='15' viewBox='0 0 8 15' fill='none' xmlns='http://www.w3.org/2000/svg'>
+            {/* <svg width='8' height='15' viewBox='0 0 8 15' fill='none' xmlns='http://www.w3.org/2000/svg'>
               <path
                 d='M1.14258 1.85638L6.85686 7.57067L1.14258 13.285'
                 stroke='#BCCBFF'
@@ -19,7 +19,7 @@ export const PurseMobile = (props) => {
                 stroke-linecap='round'
                 stroke-linejoin='round'
               />
-            </svg>
+            </svg> */}
           </button>
         </div>
         <p className={styles.balance__sumMain}>$0</p>

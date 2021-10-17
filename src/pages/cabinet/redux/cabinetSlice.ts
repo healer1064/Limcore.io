@@ -5,7 +5,7 @@ export const cabinetSlice = createSlice({
   name: 'cabinetPage',
   initialState: {
     viewHeader: 'main',
-    viewCabinet: 'profile',
+    viewCabinet: 'broadcasts',
     viewContent: 'profile',
     status: null,
     error: null,
