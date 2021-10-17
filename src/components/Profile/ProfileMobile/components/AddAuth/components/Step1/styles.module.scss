@@ -1,0 +1,89 @@
+.component {
+  display: flex;
+  flex-direction: column;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+
+  &:nth-child(2) {
+    width: inherit;
+    margin: 0 14px;
+  }
+}
+
+.number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 36px;
+  border-radius: 50%;
+  background: #eff0f0;
+
+  span {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: #99a0ad;
+  }
+}
+
+.number_active {
+  background: #4a70f8;
+
+  span {
+    color: #f0f5fd;
+    opacity: 0.8;
+  }
+}
+
+.line {
+  height: 3px;
+  background: #e5e5e5;
+  flex: 1;
+  border-radius: 10px;
+}
+
+.line_active {
+  background: #4a70f8;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.caption {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 130%;
+  color: #3a3b3d;
+  margin-bottom: 30px;
+}
+
+.block {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.stors {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
