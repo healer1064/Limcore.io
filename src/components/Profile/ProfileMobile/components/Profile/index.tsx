@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch } from '@app/redux/hooks'
-import { changeViewHeader, changeViewContent } from '../../../../../pages/cabinet/redux/cabinetSlice'
+import { changeViewContent } from '../../../../../pages/cabinet/redux/cabinetSlice'
 import Styles from './styles.module.scss'
 
 import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
@@ -10,7 +10,6 @@ export const Profile: React.FC = () => {
   const dispatch = useAppDispatch()
 
   const startFilling = () => {
-    dispatch(changeViewHeader('filling'))
     dispatch(changeViewContent('filling'))
   }
 

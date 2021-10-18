@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
+import { changeStep } from '../../../../../pages/cabinet/redux/cabinetSlice'
 import InputMask from 'react-input-mask'
 import Styles from './styles.module.scss'
 
@@ -8,7 +10,12 @@ import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
 import { ButtonSmall } from '../../../../../ui-kit/ButtonSmall'
 
 export const EditPhone: React.FC = () => {
-  const [step, setStep] = useState(0)
+  const dispatch = useAppDispatch()
+  const step = useAppSelector((state) => state.cabinet.step)
+
+  const nextStep = (step) => {
+    dispatch(changeStep(step))
+  }
 
   return (
     <div className={Styles.phone}>
@@ -18,10 +25,10 @@ export const EditPhone: React.FC = () => {
             <span className={Styles.caption}>Изменить телефон</span>
             <span className={Styles.subcaption}>Вы меняете номер телефона, к которому привязан аккаунт</span>
             <Label className={Styles.label} titleText='Телефон'>
-              <InputText className={Styles.input} placeholder='Введите новый номер телефона' />
+              <InputText placeholder='Введите новый номер телефона' />
             </Label>
           </div>
-          <ButtonBig onClick={() => setStep(1)}>Получить код</ButtonBig>
+          <ButtonBig onClick={() => nextStep(1)}>Получить код</ButtonBig>
         </>
       )}
       {step === 1 && (

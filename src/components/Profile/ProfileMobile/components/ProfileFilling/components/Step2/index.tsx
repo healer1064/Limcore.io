@@ -55,7 +55,7 @@ export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
           <Label className={Styles.edit} titleText='Паспорт выдан*'>
             <InputText placeholder='Введите учреждения' />
           </Label>
-          <ButtonBig onClick={(event) => nextStep(event, 3)}>Продолжить</ButtonBig>
+          <ButtonBig onClick={(event) => nextStep(event, 2)}>Продолжить</ButtonBig>
         </form>
       </div>
     </>

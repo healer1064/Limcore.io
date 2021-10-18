@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
+import { changeStep } from '../../../../../pages/cabinet/redux/cabinetSlice'
 import Styles from './styles.module.scss'
 
 import { Label } from '../../../../../ui-kit/Label'
@@ -8,11 +10,16 @@ import { ButtonSmall } from '../../../../../ui-kit/ButtonSmall'
 import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
 
 export const EditLocation: React.FC = () => {
-  const [view, setView] = useState(true)
+  const dispatch = useAppDispatch()
+  const step = useAppSelector((state) => state.cabinet.step)
+
+  const nextStep = (step) => {
+    dispatch(changeStep(step))
+  }
 
   return (
     <div className={Styles.location}>
-      {view ? (
+      {step === 0 && (
         <>
           <div className={Styles.block}>
             <div className={Styles.wrapper}>
@@ -26,14 +33,15 @@ export const EditLocation: React.FC = () => {
           <div className={Styles.block}>
             <div className={Styles.wrapper}>
               <span className={Styles.title}>Домашний адрес</span>
-              <ButtonSmall onClick={() => setView(!view)}>Добавить</ButtonSmall>
+              <ButtonSmall onClick={() => nextStep(1)}>Добавить</ButtonSmall>
             </div>
             <Label className={Styles.label}>
               <InputRadio titleRadio='Письма по этому адресу' />
             </Label>
           </div>
         </>
-      ) : (
+      )}
+      {step === 1 && (
         <>
           <span className={Styles.caption}>Укажите адрес</span>
           <span className={Styles.subcaption}>Введите ваш домашний адрес</span>

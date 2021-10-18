@@ -1,6 +1,6 @@
 import React from 'react'
 import { useAppDispatch } from '@app/redux/hooks'
-import { changeViewHeader, changeViewContent } from '../../../../../../../pages/cabinet/redux/cabinetSlice'
+import { changeViewContent, completeProfile, changeStep } from '../../../../../../../pages/cabinet/redux/cabinetSlice'
 import Styles from './styles.module.scss'
 
 import { Label } from '../../../../../../../ui-kit/Label'
@@ -12,8 +12,9 @@ export const Step3: React.FC = () => {
 
   const completeFilling = (event) => {
     event.preventDefault()
-    dispatch(changeViewHeader('main'))
-    dispatch(changeViewContent('complete'))
+    dispatch(completeProfile())
+    dispatch(changeViewContent('none'))
+    dispatch(changeStep(0))
   }
 
   return (

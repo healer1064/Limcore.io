@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
+import { changeStep } from '../../../../../pages/cabinet/redux/cabinetSlice'
 import InputMask from 'react-input-mask'
 import Styles from './styles.module.scss'
 
@@ -8,7 +10,12 @@ import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
 import { ButtonSmall } from '../../../../../ui-kit/ButtonSmall'
 
 export const EditEmail: React.FC = () => {
-  const [step, setStep] = useState(0)
+  const dispatch = useAppDispatch()
+  const step = useAppSelector((state) => state.cabinet.step)
+
+  const nextStep = (step) => {
+    dispatch(changeStep(step))
+  }
 
   return (
     <div className={Styles.email}>
@@ -17,11 +24,11 @@ export const EditEmail: React.FC = () => {
           <div className={Styles.block}>
             <span className={Styles.caption}>Изменить e-mail</span>
             <span className={Styles.subcaption}>Вы меняете e-mail, к которому привязан аккаунт</span>
-            <Label titleText='E-mail'>
-              <InputText className={Styles.input} placeholder='Введите новый e-mail' />
+            <Label className={Styles.label} titleText='E-mail'>
+              <InputText placeholder='Введите новый e-mail' />
             </Label>
           </div>
-          <ButtonBig onClick={() => setStep(1)}>Получить код</ButtonBig>
+          <ButtonBig onClick={() => nextStep(1)}>Получить код</ButtonBig>
         </>
       )}
       {step === 1 && (
