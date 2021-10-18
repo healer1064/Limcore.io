@@ -1,0 +1,29 @@
+
+// ------------------------------------------------------
+// CABINET COLOURS
+
+$color-gray-light: #BCCBFF;
+$color-gray-mouse: #99A0AD;    
+$color-gray-medium: #4F535A;
+$color-gray-dark: #393C42;    
+
+$color-green-light: #ABF294;
+
+$color-cyan-pale: #F0FBFD;
+$color-blue-pale: #F0F5FD;
+
+
+// ------------------------------------------------------
+
+$border-radius: 14px;
+
+
+// ------------------------------------------------------
+@mixin button-style() {
+  display: block;
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  transition: 0.5s ease-in-out;
+}
