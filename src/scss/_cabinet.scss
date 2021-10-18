@@ -5,18 +5,20 @@
 $color-gray-light: #BCCBFF;
 $color-gray-mouse: #99A0AD;    
 $color-gray-medium: #4F535A;
+$color-gray-black: #3A3B3D;
 $color-gray-dark: #393C42;    
 
 $color-green-light: #ABF294;
 
 $color-cyan-pale: #F0FBFD;
 $color-blue-pale: #F0F5FD;
+$color-blue: #4A70F8;
 
 
 // ------------------------------------------------------
 
 $border-radius: 14px;
-
+$box-shadow2: 0 4px 25px rgba(112, 112, 112, 0.1);
 
 // ------------------------------------------------------
 @mixin button-style() {
@@ -26,4 +28,11 @@ $border-radius: 14px;
   outline: none;
   box-shadow: none;
   transition: 0.5s ease-in-out;
+}
+
+@mixin font-style($size, $weight, $line-height, $color) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+  color: $color;
 }

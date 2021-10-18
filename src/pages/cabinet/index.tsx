@@ -13,7 +13,7 @@ export const CabinetPage: React.FC = () => {
 
   return (
     <div className={styles.cabinet}>
-      {viewCabinet === 'purse' && <PurseMobile onStartClick={() => console.log('start')} />}
+      {viewCabinet === 'purse' && <PurseMobile />}
       {viewCabinet === 'chat' && <span>chat</span>}
       {viewCabinet === 'broadcasts' && <BroadcastsMobile data={testArray} />}
       {viewCabinet === 'profile' && <ProfileMobile />}
