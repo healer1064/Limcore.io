@@ -8,6 +8,7 @@ import { Label } from '../../ui-kit/Label'
 import { Header } from './components/Header'
 import { CloseButton } from './components/CloseButton'
 import { Title } from './components/Title'
+import { TermsOfUse } from './components/TermsOfUse'
 
 export const BuyPage = () => {
   return (
@@ -17,6 +18,7 @@ export const BuyPage = () => {
         <Title />
         <CloseButton />
       </div>
+      <TermsOfUse />
       {/* <ButtonBig /> */}
       {/* <InputRadio titleRadio='Test' /> */}
       {/* <InputText placeholder='TestTest' /> */}

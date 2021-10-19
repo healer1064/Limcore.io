@@ -1,0 +1,42 @@
+.terms_container {
+  display: flex;
+  flex-direction: row;
+  margin: 14px 20px 20px;
+  padding: 0;
+}
+
+.terms_button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: 22px;
+  height: 22px;
+  background-image: url('../../../../assets/icons/input-checkbox-check.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+.terms_button:hover {
+  cursor: pointer;
+}
+
+.terms_button_inactive {
+  background-image: url('../../../../assets/icons/input-checkbox.svg');
+}
+
+.terms_paragraph {
+  display: flex;
+  width: 90%;
+  margin: 0;
+  padding: 0 0 0 10px;
+  font-weight: 400;
+  font-style: normal;font-size: 13px;
+  line-height: 1.5;
+  color: #67686C;
+  text-decoration: underline;
+}
+
+.terms_paragraph_inactive {
+  text-decoration: none;
+}
