@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
+import { changeStep } from '../../../../../pages/cabinet/redux/cabinetSlice'
 import Styles from './styles.module.scss'
 
 import { Step1 } from './components/Step1'
@@ -12,11 +14,15 @@ import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
 import { ButtonSmall } from '../../../../../ui-kit/ButtonSmall'
 
 export const AddAuth: React.FC = () => {
-  const [step, setStep] = useState(0)
   const [change, setChange] = useState(false)
   const [off, setOff] = useState(true)
 
-  const nextStep = (step) => setStep(step)
+  const dispatch = useAppDispatch()
+  const step = useAppSelector((state) => state.cabinet.step)
+
+  const nextStep = (step) => {
+    dispatch(changeStep(step))
+  }
 
   return (
     <div className={Styles.auth}>
@@ -56,7 +62,7 @@ export const AddAuth: React.FC = () => {
                   </p>
                 </div>
               </div>
-              <ButtonBig onClick={() => setStep(1)}>Подключить</ButtonBig>
+              <ButtonBig onClick={() => nextStep(1)}>Подключить</ButtonBig>
             </>
           )}
           {step === 1 && <Step1 nextStep={nextStep} />}

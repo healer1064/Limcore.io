@@ -65,7 +65,7 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
               </Label>
             </div>
           </Label>
-          <ButtonBig onClick={(event) => nextStep(event, 2)}>Продолжить</ButtonBig>
+          <ButtonBig onClick={(event) => nextStep(event, 1)}>Продолжить</ButtonBig>
         </form>
       </div>
     </>
