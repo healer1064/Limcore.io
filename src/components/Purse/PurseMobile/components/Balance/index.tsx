@@ -1,6 +1,6 @@
 import React from 'react'
-import ButtonImage from '../../images/balance.svg'
 import styles from './styles.module.scss'
+import { balance as balanceSvg } from '../../images'
 
 export const Balance = () => {
   return (
@@ -8,7 +8,7 @@ export const Balance = () => {
       <div className={styles.balance__header}>
         <h3 className={styles.balance__title}>Общий баланс</h3>
         <button className={styles.balance__button}>
-          <img src={ButtonImage} />
+          <img src={balanceSvg} />
         </button>
       </div>
 

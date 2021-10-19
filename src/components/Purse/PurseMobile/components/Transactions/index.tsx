@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import blueArrow from '../../images/blue-arrow.svg'
+import { blueArrow } from '../../images'
 
 export const Transactions = (props) => {
   return (

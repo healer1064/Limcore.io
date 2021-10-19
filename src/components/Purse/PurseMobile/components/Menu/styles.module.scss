@@ -1,0 +1,67 @@
+@import '../../../../../scss/cabinet';
+
+.menu {
+  position: absolute;
+  top: 165px;
+  left: 0;
+  z-index: 100;
+
+  width: 100%;
+  padding: 0 20px;
+  margin: 0;
+
+  display: flex;
+  flex-flow: row nowrap;
+  overflow-y: hidden;
+  overflow-x: scroll;
+
+  & * {
+    padding: 0;
+    margin: 0;
+  }
+
+  &__buttonPlus {
+    width: 50px;
+    @include button-style();
+  }  
+
+  &__item {
+    flex: none;
+    height: 132px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+
+    background-color: #fff;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow2;
+  }
+
+  &__balance {
+    position: relative;
+    width: 147px;
+    padding: 20px;
+  }
+
+  &__button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    @include button-style();
+  }
+
+  &__title {
+    @include font-style(14px, 600, 20px, $color-gray-mouse);
+    margin-top: 10px;
+    margin-bottom: 2px;
+  }
+
+  &__sum {
+    @include font-style(14px, 600, 20px, $color-gray-black);
+  }
+
+}
+
+
+

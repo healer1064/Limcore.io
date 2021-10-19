@@ -1,9 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import blueArrow from '../../images/blue-arrow.svg'
-import ChiaPng from '../../images/details01.png'
-import Flax from '../../images/details02.png'
-import Nchain from '../../images/details03.png'
+import { blueArrow, details1, details2, details3 } from '../../images'
 
 const DetailsImage = (imageFile) => <img src={imageFile} className={styles.detailsImage} />
 
@@ -31,7 +28,7 @@ const BalanceString = (text, data) => (
 export const Details = (props) => {
   return (
     <div className={styles.details}>
-      <header>
+      <header className={styles.details__header}>
         <h3 className={styles.details__title}>Детализация майнинга</h3>
 
         <ul className={styles.details__balance}>
@@ -47,17 +44,17 @@ export const Details = (props) => {
 
       <ul className={styles.detailsList}>
         <li className={styles.detailsItem}>
-          {DetailsImage(ChiaPng)}
+          {DetailsImage(details1)}
           {ColumnText('Chia', 'XCH')}
           {ColumnData('0', '$0')}
         </li>
         <li className={styles.detailsItem}>
-          {DetailsImage(Flax)}
+          {DetailsImage(details2)}
           {ColumnText('Flax', 'XFX')}
           {ColumnData('0', '$0')}
         </li>
         <li className={styles.detailsItem}>
-          {DetailsImage(Nchain)}
+          {DetailsImage(details3)}
           {ColumnText('N-Chain', 'NCH')}
           {ColumnData('0', '$0')}
         </li>
