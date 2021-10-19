@@ -1,7 +1,6 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { changeStep } from '../../../../../pages/cabinet/redux/cabinetSlice'
-import Styles from './styles.module.scss'
 
 import { Step1 } from './components/Step1'
 import { Step2 } from './components/Step2'

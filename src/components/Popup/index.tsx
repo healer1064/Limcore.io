@@ -7,7 +7,7 @@ interface PopupProps {
   closePopup: any
 }
 
-export const Popup: React.FC<PopupProps> = ({ children, closePopup }) => {
+export const Popup: React.FC<PopupProps> = ({ closePopup, children }) => {
   return (
     <div className={Styles.popup}>
       <div className={Styles.content}>
