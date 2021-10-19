@@ -1,0 +1,19 @@
+// Colors
+$primary-color: #4a70f8 !default;
+$secondary-color: #edf4ff !default;
+$black: #393c42 !default;
+$white: #fff;
+$grey: #67686c !default;
+$red: #ff6a6a;
+
+// Typography
+$main-font: 'Montserrat', 'Arial', 'Helvetica', sans-serif !default;
+
+// Breakpoints
+$breakpoints: (
+  phone: 375px,
+  desktop: 1420px,
+);
+
+// Others
+$transition: all 0.3s ease-in-out;
