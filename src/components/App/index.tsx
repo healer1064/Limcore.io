@@ -22,6 +22,7 @@ import { OrderCatalog } from '../../pages/catalog'
 import { Header } from '@components/Header'
 import { HeaderMobile } from '@components/Header/HeaderMobile'
 import { CabinetPage } from '../../pages/cabinet'
+import { AuthPage } from '../../pages/auth'
 
 const App = () => {
   const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
@@ -37,6 +38,7 @@ const App = () => {
             <Wrapper>
               <Switch>
                 <Route path='/' exact component={CabinetPage} />
+                <Route path='/auth' exact component={AuthPage} />
                 {/* <Route path='/' exact component={USER_ROlES.user === userRole?.name ? HomePage : HomePage} />
                 <ProtectedRoute allowedUsersTypes={[USER_ROlES.user]} path='/orders' exact component={OrdersPage} />
                 <Route path='/reports' exact component={DevelopingPage} />
