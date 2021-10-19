@@ -10,6 +10,7 @@ import { OrdersPage } from '../../pages/orders'
 import { PageNotFount } from '../../pages/not-found'
 import { DevelopingPage } from '../../pages/developing'
 import { AccessDeniedPage } from '../../pages/access-denied'
+import { BuyPage } from '../../pages/buy'
 
 import { useAppSelector } from '@app/redux/hooks'
 
@@ -43,6 +44,7 @@ const App = () => {
                 <Route path='/agreements' exact component={DevelopingPage} />
                 <Route path='/access-denied' exact component={AccessDeniedPage} />
                 <Route path='/catalog' exact component={OrderCatalog} /> */}
+                <Route path='/buy' exact component={BuyPage} />
                 <Route path='/not-found' exact component={PageNotFount} />
                 <Route path='*'>
                   <Redirect to='/not-found' />

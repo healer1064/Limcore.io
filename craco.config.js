@@ -1,6 +1,6 @@
 const path = require(`path`)
 const alias = require('./src/config/aliases')
-const CracoAlias = require("craco-alias")
+const CracoAlias = require('craco-alias')
 
 const SRC = `./src`
 const aliases = alias(SRC)
@@ -17,10 +17,10 @@ module.exports = {
     {
       plugin: CracoAlias,
       options: {
-        source: "tsconfig",
-        baseUrl: "./src",
-        tsConfigPath: "./tsconfig.base.json"
-      }
-    }
-  ]
+        source: 'tsconfig',
+        baseUrl: './src',
+        tsConfigPath: './tsconfig.base.json',
+      },
+    },
+  ],
 }
