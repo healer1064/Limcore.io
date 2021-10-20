@@ -3,36 +3,15 @@
   flex-direction: row;
   margin: 14px 20px 20px;
   padding: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #67686C;
 
-  &__button {
-    margin: 0;
-    padding: 0;
-    border: none;
-    width: 22px;
-    height: 22px;
-    background-image: url('../../../../assets/icons/input-checkbox.svg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: transparent;
-
-    &:hover {
-      cursor: pointer;
-    }
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
   }
-  &__paragraph {
-    display: flex;
-    width: 90%;
-    margin: 0;
-    padding: 0 0 0 10px;
-    font-weight: 400;
-    font-style: normal;font-size: 13px;
-    line-height: 1.5;
-    color: #67686C;
-    text-decoration: none;
 
-    &:hover {
-      cursor: pointer;
-      text-decoration: underline;
-    }
-  }
 }

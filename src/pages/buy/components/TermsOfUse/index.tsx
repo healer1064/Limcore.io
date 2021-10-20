@@ -1,11 +1,12 @@
 import React from 'react'
 import Styles from './style.module.scss'
+import { Label } from '../../../../ui-kit/Label'
+import { InputCheckbox } from '../../../../ui-kit/InputCheckbox'
 
 export const TermsOfUse = () => {
   return (
-    <div className={Styles.terms}>
-      <button className={Styles.terms__button} />
-      <p className={Styles.terms__paragraph}>Продолжая, вы принимаете правила пользования сервисом</p>
-    </div>
+    <Label className={Styles.terms}>
+      <InputCheckbox titleCheckbox='Продолжая, вы принимаете правила пользования сервисом' />
+    </Label>
   )
 }
