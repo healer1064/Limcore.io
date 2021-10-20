@@ -9,7 +9,7 @@ import { ProfileIcon } from '@icons/ProfileIcon'
 
 export const FooterMobile: React.FC = () => {
   return (
-    <div className={Styles.footer}>
+    <footer className={Styles.footer}>
       <ul className={Styles.list}>
         <NavLink to='/' exact className={Styles.link} activeClassName={`${Styles.link_active}`}>
           <PurseIcon />
@@ -28,6 +28,6 @@ export const FooterMobile: React.FC = () => {
           <span>Профиль</span>
         </NavLink>
       </ul>
-    </div>
+    </footer>
   )
 }
