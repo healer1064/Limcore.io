@@ -1,9 +1,12 @@
 import React from 'react'
 import Styles from './style.module.scss'
 import { ButtonBig } from '../../../../ui-kit/ButtonBig'
-import { InputRadio } from '../../../../ui-kit/InputRadio'
 import { InputText } from '../../../../ui-kit/InputText'
 import { Label } from '../../../../ui-kit/Label'
+import { Card } from '../Card'
+import VisaIcon from '../../../../assets/icons/Visa-symbol.png'
+import VisaLogo from '../../../../assets/icons/Visa-logo.png'
+import USDTIcon from '../../../../assets/icons/USDT-icon.png'
 
 export const Form = ({ title, content }) => {
   return (
@@ -28,7 +31,13 @@ export const Form = ({ title, content }) => {
           <InputText placeholder='Введите e-mail' />
         </fieldset>
         <h3 className={Styles.form_subtitle}>Выберите способ оплаты</h3>
-        <ButtonBig className={Styles.form_buttonForCode}>Перейти к оплате — 400$</ButtonBig>
+        <div className={Styles.form_cardsContainer}>
+          <Card label='Банковской картой' src={VisaLogo}>
+            <img src={VisaIcon} />
+          </Card>
+          <Card label='С помощью USDT' src={USDTIcon} />
+        </div>
+        <ButtonBig>Перейти к оплате — 400$</ButtonBig>
       </form>
     </>
   )
