@@ -1,13 +1,10 @@
 import React from 'react'
 import Styles from './style.module.scss'
 
-import { ButtonBig } from '../../ui-kit/ButtonBig'
-import { InputRadio } from '../../ui-kit/InputRadio'
-import { InputText } from '../../ui-kit/InputText'
-import { Label } from '../../ui-kit/Label'
 import { Header } from './components/Header'
 import { CloseButton } from './components/CloseButton'
 import { Title } from './components/Title'
+import { Form } from './components/Form'
 import { TermsOfUse } from './components/TermsOfUse'
 
 export const BuyPage = () => {
@@ -18,11 +15,8 @@ export const BuyPage = () => {
         <Title />
         <CloseButton />
       </div>
+      <Form title='Покупка LIMC' content='Вы покупаете 1 Limcore Token по цене 200$ с Lock-up периодом 6 месяцев' />
       <TermsOfUse />
-      {/* <ButtonBig /> */}
-      {/* <InputRadio titleRadio='Test' /> */}
-      {/* <InputText placeholder='TestTest' /> */}
-      {/* <Label>Test</Label> */}
     </div>
   )
 }
