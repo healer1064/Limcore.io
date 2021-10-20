@@ -17,6 +17,18 @@ export const Form = ({ title, content }) => {
           <Label titleText='Количество токенов' className={Styles.form_label} />
           <InputText placeholder='Введите количество токенов' />
         </fieldset>
+        <h3 className={Styles.form_subtitle}>Введите телефон или email</h3>
+        <fieldset className={Styles.form_fieldset}>
+          <Label titleText='Телефон' />
+          <InputText placeholder='Введите телефон' />
+          <ButtonBig className={Styles.form_buttonForCode}>Получить код</ButtonBig>
+        </fieldset>
+        <fieldset className={Styles.form_fieldset}>
+          <Label titleText='Email' />
+          <InputText placeholder='Введите e-mail' />
+        </fieldset>
+        <h3 className={Styles.form_subtitle}>Выберите способ оплаты</h3>
+        <ButtonBig className={Styles.form_buttonForCode}>Перейти к оплате — 400$</ButtonBig>
       </form>
     </>
   )

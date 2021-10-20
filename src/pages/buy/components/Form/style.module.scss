@@ -38,3 +38,22 @@
 .form_label {
   margin-top: 15px;
 }
+
+.form_subtitle {
+  display: flex;
+  margin: 40px 0 0;
+  padding: 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #393c42;
+}
+
+.form_buttonForCode {
+  margin: 10px 0 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #EDF4FF;
+  color: #4a70f8;
+}
