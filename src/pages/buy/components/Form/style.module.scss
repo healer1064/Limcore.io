@@ -1,88 +1,88 @@
-.form_container {
+.form {
   display: flex;
   flex-direction: column;
   margin: 20px 20px 0;
   padding: 0;
-}
 
-.form_title {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  color: #393c42;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 1.5;
-}
-
-.form_paragraph {
-  display: flex;
-  margin: 0;
-  padding: 8px 0 0;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.57;
-  color: #67686C;
-}
-
-.form_fieldset {
-  display: flex;
-  flex-direction: column;
-  border: none;
-  margin: 18px 0 0;
-  padding: 0;
-}
-
-.form_subtitle {
-  display: flex;
-  margin: 40px 0 0;
-  padding: 0;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #393c42;
-}
-
-.form_buttonForCode {
-  margin: 10px 0 0;
-  box-sizing: border-box;
-  background: #EDF4FF;
-  color: #4a70f8;
-
-  &:hover {
-    cursor: pointer;
+  &__title {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    color: #393c42;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.5;
   }
-}
 
-.form_cardsContainer {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin: 20px 0 30px;
-  padding: 0;
-  box-sizing: border-box;
-}
+  &__paragraph {
+    display: flex;
+    margin: 0;
+    padding: 8px 0 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.57;
+    color: #67686C;
+  }
 
-.form_switchIcon {
-  display: flex;
-  position: relative;
-  top: 10px;
-  left: calc(100% - 20px);
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  width: 24px;
-  height: 24px;
-  background-image: url('../../../../assets/icons/icon-arrow.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  border: none;
+  &__fieldset {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    margin: 18px 0 0;
+    padding: 0;
+  }
 
-  &:hover {
-    cursor: pointer;
+  &__switchIcon {
+    display: flex;
+    position: relative;
+    top: 10px;
+    left: calc(100% - 20px);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+    background-image: url('../../../../assets/icons/icon-arrow.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__subtitle {
+    display: flex;
+    margin: 40px 0 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #393c42;
+  }
+
+  &__buttonForCode {
+    margin: 10px 0 0;
+    box-sizing: border-box;
+    background: #EDF4FF;
+    color: #4a70f8;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__cardsContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 20px 0 30px;
+    padding: 0;
+    box-sizing: border-box;
   }
 }

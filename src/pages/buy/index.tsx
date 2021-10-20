@@ -9,9 +9,9 @@ import { TermsOfUse } from './components/TermsOfUse'
 
 export const BuyPage = () => {
   return (
-    <div className={Styles.buy_container}>
+    <div className={Styles.buy}>
       <Header />
-      <div className={Styles.buy_title}>
+      <div className={Styles.buy__title}>
         <Title />
         <CloseButton />
       </div>

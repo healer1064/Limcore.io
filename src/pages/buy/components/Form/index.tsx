@@ -11,28 +11,28 @@ import USDTIcon from '../../../../assets/icons/USDT-icon.png'
 export const Form = ({ title, content }) => {
   return (
     <>
-      <form className={Styles.form_container}>
-        <h2 className={Styles.form_title}>{title}</h2>
-        <p className={Styles.form_paragraph}>{content}</p>
-        <fieldset className={Styles.form_fieldset}>
+      <form className={Styles.form}>
+        <h2 className={Styles.form__title}>{title}</h2>
+        <p className={Styles.form__paragraph}>{content}</p>
+        <fieldset className={Styles.form__fieldset}>
           <Label titleText='Сумма покупки' />
           <InputText placeholder='Введите сумму в $' />
-          <button className={Styles.form_switchIcon} type='button' />
+          <button className={Styles.form__switchIcon} type='button' />
           <Label titleText='Количество токенов' />
           <InputText placeholder='Введите количество токенов' />
         </fieldset>
-        <h3 className={Styles.form_subtitle}>Введите телефон или email</h3>
-        <fieldset className={Styles.form_fieldset}>
+        <h3 className={Styles.form__subtitle}>Введите телефон или email</h3>
+        <fieldset className={Styles.form__fieldset}>
           <Label titleText='Телефон' />
           <InputText placeholder='Введите телефон' />
-          <ButtonBig className={Styles.form_buttonForCode}>Получить код</ButtonBig>
+          <ButtonBig className={Styles.form__buttonForCode}>Получить код</ButtonBig>
         </fieldset>
-        <fieldset className={Styles.form_fieldset}>
+        <fieldset className={Styles.form__fieldset}>
           <Label titleText='Email' />
           <InputText placeholder='Введите e-mail' />
         </fieldset>
-        <h3 className={Styles.form_subtitle}>Выберите способ оплаты</h3>
-        <div className={Styles.form_cardsContainer}>
+        <h3 className={Styles.form__subtitle}>Выберите способ оплаты</h3>
+        <div className={Styles.form__cardsContainer}>
           <Card label='Банковской картой' src={VisaLogo}>
             <img src={VisaIcon} />
           </Card>

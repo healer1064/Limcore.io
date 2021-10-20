@@ -11,36 +11,36 @@
   &:last-child {
     margin: 0;
   }
-}
 
-.card_label {
-  display: flex;
-  margin: 0;
-  padding: 0 0 5px 0;
-  width: 100%;
-  box-sizing: border-box;
-  color: #4f535a;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.card_input {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  border: none;
-  background-image: url('../../../../assets/icons/input-radio.svg');
-  background-repeat: no-repeat;
-  background-position: right;
-  height: 24px;
-
-  &:checked {
-    background-image: url('../../../../assets/icons/input-radio-check.svg');
+  &__label {
+    display: flex;
+    margin: 0;
+    padding: 0 0 5px 0;
+    width: 100%;
+    box-sizing: border-box;
+    color: #4f535a;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.6;
   }
 
-  &:hover {
-    cursor: pointer;
+  &__input {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-image: url('../../../../assets/icons/input-radio.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+    height: 24px;
+
+    &:checked {
+      background-image: url('../../../../assets/icons/input-radio-check.svg');
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

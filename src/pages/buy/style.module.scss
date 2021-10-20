@@ -1,4 +1,4 @@
-.buy_container {
+.buy {
   display: flex;
   flex-direction: column;
   max-width: 375px;
@@ -8,14 +8,14 @@
   padding: 0 0 20px;
   box-sizing: border-box;
   background-color: #FFFFFF;
-}
 
-.buy_title {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 0;
-  padding: 22px 20px;
-  box-sizing: border-box;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  &__title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    padding: 22px 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
 }
