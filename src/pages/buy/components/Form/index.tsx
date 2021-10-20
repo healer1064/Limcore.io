@@ -7,7 +7,6 @@ import { Card } from '../Card'
 import VisaIcon from '../../../../assets/icons/Visa-symbol.png'
 import VisaLogo from '../../../../assets/icons/Visa-logo.png'
 import USDTIcon from '../../../../assets/icons/USDT-icon.png'
-import Arrows from '../../../../assets/icons/icon-arrow.png'
 
 export const Form = ({ title, content }) => {
   return (
@@ -18,7 +17,7 @@ export const Form = ({ title, content }) => {
         <fieldset className={Styles.form_fieldset}>
           <Label titleText='Сумма покупки' />
           <InputText placeholder='Введите сумму в $' />
-          <img className={Styles.form_switchIcon} src={Arrows} />
+          <button className={Styles.form_switchIcon} type='button' />
           <Label titleText='Количество токенов' />
           <InputText placeholder='Введите количество токенов' />
         </fieldset>
