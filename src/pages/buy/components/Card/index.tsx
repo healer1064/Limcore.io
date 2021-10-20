@@ -1,6 +1,6 @@
 import React from 'react'
 import Styles from './style.module.scss'
-import { InputCheckbox } from '../../../../ui-kit/InputCheckbox'
+import { InputRadio } from '../../../../ui-kit/InputRadio'
 
 export const Card = ({ label, src, ...props }) => {
   return (
@@ -10,7 +10,7 @@ export const Card = ({ label, src, ...props }) => {
         {props.children}
         <img src={src} />
       </div>
-      <input className={Styles.card__input} />
+      <InputRadio titleRadio='' />
     </fieldset>
   )
 }

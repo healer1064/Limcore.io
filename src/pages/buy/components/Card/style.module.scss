@@ -24,23 +24,4 @@
     font-size: 13px;
     line-height: 1.6;
   }
-
-  &__input {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    border: none;
-    background-image: url('../../../../assets/icons/input-radio.svg');
-    background-repeat: no-repeat;
-    background-position: right;
-    height: 24px;
-
-    &:checked {
-      background-image: url('../../../../assets/icons/input-radio-check.svg');
-    }
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
 }
