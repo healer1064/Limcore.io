@@ -35,4 +35,12 @@
   background-repeat: no-repeat;
   background-position: right;
   height: 24px;
+
+  &:checked {
+    background-image: url('../../../../assets/icons/input-radio-check.svg');
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
 }

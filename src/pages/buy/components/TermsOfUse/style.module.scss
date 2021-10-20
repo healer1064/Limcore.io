@@ -15,10 +15,10 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-color: transparent;
-}
 
-.terms_button:hover {
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .terms_button_inactive {
@@ -35,6 +35,10 @@
   line-height: 1.5;
   color: #67686C;
   text-decoration: underline;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .terms_paragraph_inactive {

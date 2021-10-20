@@ -35,10 +35,6 @@
   padding: 0;
 }
 
-.form_label {
-  margin-top: 15px;
-}
-
 .form_subtitle {
   display: flex;
   margin: 40px 0 0;
@@ -52,10 +48,13 @@
 
 .form_buttonForCode {
   margin: 10px 0 0;
-  padding: 0;
   box-sizing: border-box;
   background: #EDF4FF;
   color: #4a70f8;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .form_cardsContainer {
@@ -65,4 +64,20 @@
   margin: 20px 0 30px;
   padding: 0;
   box-sizing: border-box;
+}
+
+.form_switchIcon {
+  display: flex;
+  position: relative;
+  top: 10px;
+  left: calc(100% - 20px);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

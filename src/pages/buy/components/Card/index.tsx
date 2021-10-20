@@ -1,5 +1,6 @@
 import React from 'react'
 import Styles from './style.module.scss'
+import { InputCheckbox } from '../../../../ui-kit/InputCheckbox'
 
 export const Card = ({ label, src, ...props }) => {
   return (
