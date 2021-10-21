@@ -47,6 +47,77 @@
     padding: 0;
   }
 
+  &__input {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #393c42;
+
+    &_code {
+      font-weight: 600;
+      color: #4f535a;
+      text-align: center;
+    }
+  }
+
+  &__labelContainer {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__label {
+    flex-direction: row;
+  }
+
+  &__notification {
+    display: flex;
+    margin: 0;
+    padding: 8px 0 0;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4f535a;
+
+    &_invisible {
+      display: none;
+    }
+  }
+
+  &__changeButton {
+    display: flex;
+    margin: 0;
+    padding: 8px 0 0 5px;
+    border: none;
+    background-color: transparent;
+    color: #4A70F8;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.6;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    &_invisible {
+      display: none;
+    }
+
+    &_noTopPadding {
+      display: flex;
+      margin: 0;
+      padding: 0 0 0 5px;
+      border: none;
+      background-color: transparent;
+      color: #4A70F8;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  }
+
   &__switchIcon {
     display: flex;
     position: relative;
