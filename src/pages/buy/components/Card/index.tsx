@@ -10,7 +10,9 @@ export const Card = ({ label, src, ...props }) => {
         {props.children}
         <img src={src} />
       </div>
-      <InputRadio titleRadio='' />
+      <div className={Styles.card__inputContainer}>
+        <InputRadio titleRadio='' />
+      </div>
     </fieldset>
   )
 }
