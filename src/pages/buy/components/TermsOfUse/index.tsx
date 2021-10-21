@@ -6,7 +6,8 @@ import { InputCheckbox } from '../../../../ui-kit/InputCheckbox'
 export const TermsOfUse = () => {
   return (
     <Label className={Styles.terms}>
-      <InputCheckbox titleCheckbox='Продолжая, вы принимаете правила пользования сервисом' />
+      <InputCheckbox titleCheckbox='' />
+      Продолжая, вы принимаете правила пользования сервисом
     </Label>
   )
 }
