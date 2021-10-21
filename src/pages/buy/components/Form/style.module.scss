@@ -59,6 +59,10 @@
       color: #4f535a;
       text-align: center;
     }
+
+    &_error {
+      border: 1.4px solid #FF6A6A;
+    }
   }
 
   &__labelContainer {
@@ -82,6 +86,10 @@
 
     &_invisible {
       display: none;
+    }
+
+    &_error {
+      color: #FF6A6A;
     }
   }
 

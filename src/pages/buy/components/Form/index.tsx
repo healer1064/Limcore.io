@@ -8,7 +8,7 @@ import VisaIcon from '../../../../assets/icons/Visa-symbol.png'
 import VisaLogo from '../../../../assets/icons/Visa-logo.png'
 import USDTIcon from '../../../../assets/icons/USDT-icon.png'
 
-export const Form = ({ title, content, promo }) => {
+export const Form = ({ title, content, promo, message }) => {
   return (
     <>
       <form className={Styles.form}>
@@ -33,7 +33,7 @@ export const Form = ({ title, content, promo }) => {
             </div>
           </Label>
           <InputText placeholder='Введите телефон' className={Styles.form__input} />
-          <span className={Styles.form__notification_invisible}>Получить новый код можно через 00:41</span>
+          <span className={Styles.form__notification_invisible}>{message}</span>
           <button className={Styles.form__changeButton_invisible} type='button'>
             Отправить новый код
           </button>
