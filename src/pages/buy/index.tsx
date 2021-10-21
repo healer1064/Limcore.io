@@ -15,7 +15,11 @@ export const BuyPage = () => {
         <Title />
         <CloseButton />
       </div>
-      <Form title='Покупка LIMC' content='Вы покупаете 1 Limcore Token по цене 200$ с Lock-up периодом 6 месяцев' />
+      <Form
+        title='Покупка LIMC'
+        content='Вы покупаете 1 Limcore Token по цене 200$ с Lock-up периодом 6 месяцев'
+        promo='Промокод применен'
+      />
       <TermsOfUse />
     </div>
   )

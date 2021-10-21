@@ -8,11 +8,12 @@ import VisaIcon from '../../../../assets/icons/Visa-symbol.png'
 import VisaLogo from '../../../../assets/icons/Visa-logo.png'
 import USDTIcon from '../../../../assets/icons/USDT-icon.png'
 
-export const Form = ({ title, content }) => {
+export const Form = ({ title, content, promo }) => {
   return (
     <>
       <form className={Styles.form}>
         <h2 className={Styles.form__title}>{title}</h2>
+        <p className={Styles.form__paragraph_promo}>{promo}</p>
         <p className={Styles.form__paragraph}>{content}</p>
         <fieldset className={Styles.form__fieldset}>
           <Label titleText='Сумма покупки' />
