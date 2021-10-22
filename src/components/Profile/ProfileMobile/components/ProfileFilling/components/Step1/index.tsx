@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Styles from './styles.module.scss'
+
+import { Popup } from '@components/Popup'
+import { Calendar } from '../Calendar'
 
 import { Label } from '../../../../../../../ui-kit/Label'
 import { InputText } from '../../../../../../../ui-kit/InputText'
 import { InputCheckbox } from '../../../../../../../ui-kit/InputCheckbox'
 import { InputRadio } from '../../../../../../../ui-kit/InputRadio'
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
+
 import calendarIcon from '@icons/calendar-icon.svg'
 
 interface Step1Props {
@@ -13,6 +17,8 @@ interface Step1Props {
 }
 
 export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
+  const [popup, setPopup] = useState(false)
+
   return (
     <>
       <div className={Styles.progress}>
@@ -50,7 +56,7 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
             <InputCheckbox titleCheckbox='У меня нет отчества' />
           </Label>
           <Label className={Styles.label} titleText='Дата рождения*'>
-            <div className={Styles.block}>
+            <div className={Styles.block} onClick={() => setPopup(true)}>
               <input type='text' placeholder='01.01.21' />
               <img src={calendarIcon} alt='Иконка' />
             </div>
@@ -68,6 +74,11 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
           <ButtonBig onClick={(event) => nextStep(event, 1)}>Продолжить</ButtonBig>
         </form>
       </div>
+      {popup && (
+        <Popup closePopup={() => setPopup(false)}>
+          <Calendar />
+        </Popup>
+      )}
     </>
   )
 }

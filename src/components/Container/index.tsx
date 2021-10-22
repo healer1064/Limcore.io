@@ -11,6 +11,10 @@ export const Container: React.FC<ContainerProps> = ({ title, children }) => {
   const dispatch = useAppDispatch()
   const step = useAppSelector((state) => state.cabinet.step)
 
+  const previousStep = () => {
+    dispatch(changeStep(step - 1))
+  }
+
   const closeContainer = () => {
     dispatch(changeViewContent('none'))
     dispatch(changeStep(0))
@@ -19,7 +23,13 @@ export const Container: React.FC<ContainerProps> = ({ title, children }) => {
   return (
     <div className={Styles.container}>
       <div className={Styles.header}>
-        <button className={step === 0 ? `${Styles.back} ${Styles.back_hide}` : `${Styles.back}`}>{}</button>
+        {step === 0 ? (
+          <button className={`${Styles.back} ${Styles.back_hide}`}>{}</button>
+        ) : (
+          <button className={Styles.back} onClick={previousStep}>
+            {}
+          </button>
+        )}
         <span className={Styles.caption}>{title}</span>
         <button className={Styles.close} onClick={closeContainer}>
           {}

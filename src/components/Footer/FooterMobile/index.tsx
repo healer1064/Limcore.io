@@ -1,33 +1,33 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import Styles from './styles.module.scss'
 
-import purseIcon from '@icons/purse.svg'
-import chatIcon from '@icons/chat.svg'
-import broadcastsIcon from '@icons/broadcasts.svg'
-import profileIcon from '@icons/profile.svg'
+import { PurseIcon } from '@icons/PurseIcon'
+import { ChatIcon } from '@icons/ChatIcon'
+import { BroadcastsIcon } from '@icons/BroadcastsIcon'
+import { ProfileIcon } from '@icons/ProfileIcon'
 
-export const FooterMobile = () => {
+export const FooterMobile: React.FC = () => {
   return (
-    <div className={Styles.footer}>
+    <footer className={Styles.footer}>
       <ul className={Styles.list}>
-        <li className={Styles.item}>
-          <img src={purseIcon} alt='Иконка' />
+        <NavLink to='/' exact className={Styles.link} activeClassName={`${Styles.link_active}`}>
+          <PurseIcon />
           <span>Кошелек</span>
-        </li>
-        <li className={Styles.item}>
-          <img src={broadcastsIcon} alt='Иконка' />
+        </NavLink>
+        <NavLink to='/broadcasts' exact className={Styles.link} activeClassName={`${Styles.link_active}`}>
+          <ChatIcon />
           <span>Трансляции</span>
-        </li>
-        <li className={Styles.item}>
-          <img src={chatIcon} alt='Иконка' />
+        </NavLink>
+        <NavLink to='/chat' exact className={Styles.link} activeClassName={`${Styles.link_active}`}>
+          <BroadcastsIcon />
           <span>Чат</span>
-        </li>
-        <li className={Styles.item}>
-          <img src={profileIcon} alt='Иконка' />
+        </NavLink>
+        <NavLink to='/profile' exact className={Styles.link} activeClassName={`${Styles.link_active}`}>
+          <ProfileIcon />
           <span>Профиль</span>
-        </li>
+        </NavLink>
       </ul>
-    </div>
+    </footer>
   )
 }
