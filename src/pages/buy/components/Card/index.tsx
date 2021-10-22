@@ -1,6 +1,7 @@
 import React from 'react'
 import Styles from './style.module.scss'
 import { InputRadio } from '../../../../ui-kit/InputRadio'
+import { Label } from '../../../../ui-kit/Label'
 
 export const Card = ({ label, src, ...props }) => {
   return (
@@ -11,7 +12,9 @@ export const Card = ({ label, src, ...props }) => {
         <img src={src} />
       </div>
       <div className={Styles.card__inputContainer}>
-        <InputRadio titleRadio='' />
+        <Label>
+          <InputRadio titleRadio='' />
+        </Label>
       </div>
     </fieldset>
   )
