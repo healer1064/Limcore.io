@@ -158,17 +158,6 @@
     color: #393c42;
   }
 
-  &__buttonForCode {
-    margin: 10px 0 0;
-    box-sizing: border-box;
-    background: #EDF4FF;
-    color: #4a70f8;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
   &__cardsContainer {
     display: flex;
     flex-direction: row;

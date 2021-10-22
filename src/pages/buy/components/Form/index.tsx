@@ -1,6 +1,7 @@
 import React from 'react'
 import Styles from './style.module.scss'
 import { ButtonBig } from '../../../../ui-kit/ButtonBig'
+import { ButtonForCode } from '../ButtonForCode'
 import { InputText } from '../../../../ui-kit/InputText'
 import { Label } from '../../../../ui-kit/Label'
 import { Card } from '../Card'
@@ -37,7 +38,7 @@ export const Form = ({ title, content, promo, message }) => {
           <button className={Styles.form__changeButton_invisible} type='button'>
             Отправить новый код
           </button>
-          <ButtonBig className={Styles.form__buttonForCode}>Получить код</ButtonBig>
+          <ButtonForCode>Получить код</ButtonForCode>
         </fieldset>
         <fieldset className={Styles.form__fieldset}>
           <Label titleText='Email' />
