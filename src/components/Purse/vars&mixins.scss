@@ -1,0 +1,35 @@
+@import '../../scss/cabinet';
+
+$color-58-green: #58CD32;
+$color-4D-green: #4DBE28;
+$color-E5-green: #E5FBDE;
+$color-39-black: #393C42;
+$color-4F-black: #4F535A;
+$color-3A-black: #3A3B3D;
+$color-67-black: #67686C;
+$color-99-gray: #99A0AD;
+$color-4A-blue: #4A70F8;
+
+@mixin section-title() {
+  font-family: 'Montserrat';
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  color: $color-gray-dark;
+}
+
+@mixin subtitle-14px($color) {
+  font-family: 'Montserrat';
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color;
+}
+
+@mixin subtitle-13px($color) {
+  font-family: 'Montserrat';
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  color: $color;
+}
