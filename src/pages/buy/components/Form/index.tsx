@@ -58,10 +58,15 @@ export const Form = ({ title, content, promo }) => {
             </span>
             <InputText
               placeholder={
-                (codeIsSent ? '_ _ _ _' : 'Введите телефон') && (numberConfirmed ? phoneNumber : 'Введите телефон')
+                codeIsSent || codeApplied || wrongCodeError
+                  ? '_ _ _ _'
+                  : 'Введите телефон' && numberConfirmed
+                  ? phoneNumber
+                  : 'Введите телефон'
               }
               className={
-                emptyNumberError || wrongFormatError || wrongCodeError ? Styles.form__error : Styles.form__input
+                (emptyNumberError || wrongFormatError || wrongCodeError ? Styles.form__error : Styles.form__input) &&
+                (wrongCodeError || codeApplied || codeIsSent ? Styles.form__centred : Styles.form__input)
               }
             />
           </Label>

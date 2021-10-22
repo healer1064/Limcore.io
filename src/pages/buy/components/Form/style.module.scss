@@ -54,12 +54,6 @@
     line-height: 1.5;
     color: #393c42;
     outline-color: #67686C;
-
-    //&_code {
-    //  font-weight: 600;
-    //  color: #4f535a;
-    //  text-align: center;
-    //}
   }
 
   &__error {
@@ -69,6 +63,16 @@
     line-height: 1.5;
     color: #393c42;
     outline: 1.4px solid #FF6A6A;
+  }
+
+  &__centred {
+    outline-color: #67686C;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #4f535a;
+    text-align: center;
   }
 
   &__notification {
