@@ -16,7 +16,13 @@ export const getMonth = (date) => {
   const month = [{ name: nameMonth, days: [] }]
 
   while (!startDay.isAfter(endMonth)) {
-    month[0].days.push(startDay.clone().format('D'))
+    const data = { month: null, day: null }
+
+    data.month = Number(startDay.clone().format('M'))
+    data.day = startDay.clone().format('D')
+
+    month[0].days.push(data)
+
     startDay.add(1, 'day')
   }
 

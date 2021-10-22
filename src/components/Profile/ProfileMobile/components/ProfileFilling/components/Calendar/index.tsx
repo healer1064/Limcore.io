@@ -164,10 +164,18 @@ export const Calendar: React.FC = () => {
             </div>
             <div className={Styles.body}>
               {days &&
-                days.map((day, index) => (
-                  <span key={index} className={Styles.day} onClick={() => selectDay(day)}>
-                    {day}
-                  </span>
+                days.map((obj, index) => (
+                  <>
+                    {obj.month !== month ? (
+                      <span key={index} className={`${Styles.day} ${Styles.day_disable}`}>
+                        {obj.day}
+                      </span>
+                    ) : (
+                      <span key={index} className={Styles.day} onClick={() => selectDay(obj.day)}>
+                        {obj.day}
+                      </span>
+                    )}
+                  </>
                 ))}
             </div>
           </div>
