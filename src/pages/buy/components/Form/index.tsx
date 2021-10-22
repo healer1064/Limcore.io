@@ -13,9 +13,10 @@ export const Form = ({ title, content, promo }) => {
   const [promoApplied, setPromoApplied] = useState(false)
   const [emptyNumberError, setEmptyNumberError] = useState(false)
   const [wrongFormatError, setWrongFormatError] = useState(false)
-  const [wrongCodeError, setWrongCodeError] = useState(true)
+  const [wrongCodeError, setWrongCodeError] = useState(false)
   const [codeIsSent, setCodeIsSent] = useState(false)
   const [codeApplied, setCodeApplied] = useState(false)
+  const [numberConfirmed, setNumberConfirmed] = useState(false)
   const [phoneNumber, setPhoneNumber] = useState('+7 (999) 098 65−34')
 
   return (
@@ -38,23 +39,27 @@ export const Form = ({ title, content, promo }) => {
         <h3 className={Styles.form__subtitle}>Введите телефон или email</h3>
         <fieldset className={Styles.form__fieldset}>
           <Label
-            titleText={codeIsSent || codeApplied || wrongCodeError ? 'Мы отправили код на номер' : 'Телефон'}
-            className={Styles.form__label}
+            titleText={
+              (numberConfirmed ? '' : 'Телефон') &&
+              (codeIsSent || codeApplied || wrongCodeError ? 'Мы отправили код на номер' : 'Телефон')
+            }
           >
             <span
               className={
-                codeIsSent || codeApplied || wrongCodeError
+                codeIsSent || codeApplied || wrongCodeError || numberConfirmed
                   ? Styles.form__phoneNumber
                   : Styles.form__phoneNumber_invisible
               }
             >
-              {phoneNumber}
+              {numberConfirmed ? 'Телефон' : phoneNumber}
               <button className={Styles.form__changeButton} type='button'>
                 Изменить
               </button>
             </span>
             <InputText
-              placeholder={codeIsSent ? '_ _ _ _' : 'Введите телефон'}
+              placeholder={
+                (codeIsSent ? '_ _ _ _' : 'Введите телефон') && (numberConfirmed ? phoneNumber : 'Введите телефон')
+              }
               className={
                 emptyNumberError || wrongFormatError || wrongCodeError ? Styles.form__error : Styles.form__input
               }
