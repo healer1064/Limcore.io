@@ -12,6 +12,7 @@ import { Label } from '../../../../../ui-kit/Label'
 import { InputText } from '../../../../../ui-kit/InputText'
 import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
 import { ButtonSmall } from '../../../../../ui-kit/ButtonSmall'
+import { ToggleButton } from '../../../../../ui-kit/ToggleButton'
 
 export const AddAuth: React.FC = () => {
   const [change, setChange] = useState(false)
@@ -52,7 +53,7 @@ export const AddAuth: React.FC = () => {
                     <span className={Styles.title}>Приложение привязано к номеру</span>
                     <span className={Styles.subtitle}>+7 (913) 654-73-87</span>
                   </div>
-                  <input type='checkbox' />
+                  <ToggleButton />
                 </div>
                 <div className={`${Styles.block} ${Styles.block_edit}`}>
                   <ButtonSmall onClick={() => setChange(true)}>Изменить номер телефона</ButtonSmall>
