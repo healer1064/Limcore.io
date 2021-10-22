@@ -26,15 +26,15 @@
     color: #67686C;
 
     &_promo {
-      display: none;
+      display: flex;
       padding: 12px 0 0;
       margin: 0;
       box-sizing: border-box;
       font-weight: 500;
       color: #35AC48;
 
-      &_visible {
-        display: flex;
+      &_invisible {
+        display: none;
       }
     }
   }
@@ -54,27 +54,38 @@
     line-height: 1.5;
     color: #393c42;
 
-    &_code {
-      font-weight: 600;
-      color: #4f535a;
-      text-align: center;
-    }
-
-    &_error {
-      border: 1.4px solid #FF6A6A;
-    }
+    //&_code {
+    //  font-weight: 600;
+    //  color: #4f535a;
+    //  text-align: center;
+    //}
   }
 
-  &__labelContainer {
-    display: flex;
-    flex-direction: row;
-  }
-
-  &__label {
-    flex-direction: row;
+  &__error {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #393c42;
+    border: 1.4px solid #FF6A6A;
   }
 
   &__notification {
+    display: flex;
+    margin: 0;
+    padding: 8px 0 0;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #FF6A6A;
+
+    &_invisible {
+      display: none;
+    }
+  }
+
+  &__newCodeNotification {
     display: flex;
     margin: 0;
     padding: 8px 0 0;
@@ -87,22 +98,33 @@
     &_invisible {
       display: none;
     }
+  }
 
-    &_error {
-      color: #FF6A6A;
+  &__phoneNumber {
+    display: flex;
+    margin: 0;
+    padding: 8px 0 0 0;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4f535a;
+
+    &_invisible {
+      display: none;
     }
   }
 
   &__changeButton {
-    display: flex;
-    margin: 0;
-    padding: 8px 0 0 5px;
+    padding: 0 0 0 5px;
     border: none;
     background-color: transparent;
     color: #4A70F8;
+    font-family: 'Montserrat';
     font-weight: 500;
     font-size: 14px;
     line-height: 1.6;
+    text-align: left;
 
     &:hover {
       cursor: pointer;
@@ -112,58 +134,67 @@
     &_invisible {
       display: none;
     }
+  }
 
-    &_noTopPadding {
-      display: flex;
-      margin: 0;
-      padding: 0 0 0 5px;
+    &__newCodeButton {
+      padding: 8px 0 0 5px;
       border: none;
       background-color: transparent;
       color: #4A70F8;
+      font-family: 'Montserrat';
       font-weight: 500;
       font-size: 14px;
       line-height: 1.6;
+      text-align: left;
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+
+      &_invisible {
+        display: none;
+      }
+    }
+
+    &__switchIcon {
+      display: flex;
+      position: relative;
+      top: 10px;
+      left: calc(100% - 20px);
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      width: 24px;
+      height: 24px;
+      background-image: url('../../../../assets/icons/icon-arrow.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      border: none;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &__subtitle {
+      display: flex;
+      margin: 40px 0 0;
+      padding: 0;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #393c42;
+    }
+
+    &__cardsContainer {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      margin: 20px 0 30px;
+      padding: 0;
+      box-sizing: border-box;
     }
   }
-
-  &__switchIcon {
-    display: flex;
-    position: relative;
-    top: 10px;
-    left: calc(100% - 20px);
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 24px;
-    height: 24px;
-    background-image: url('../../../../assets/icons/icon-arrow.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    border: none;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  &__subtitle {
-    display: flex;
-    margin: 40px 0 0;
-    padding: 0;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #393c42;
-  }
-
-  &__cardsContainer {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    margin: 20px 0 30px;
-    padding: 0;
-    box-sizing: border-box;
-  }
-}

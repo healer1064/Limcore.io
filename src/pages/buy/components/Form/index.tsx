@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Styles from './style.module.scss'
 import { ButtonBig } from '../../../../ui-kit/ButtonBig'
 import { ButtonForCode } from '../ButtonForCode'
@@ -9,12 +9,22 @@ import VisaIcon from '../../../../assets/icons/Visa-symbol.png'
 import VisaLogo from '../../../../assets/icons/Visa-logo.png'
 import USDTIcon from '../../../../assets/icons/USDT-icon.png'
 
-export const Form = ({ title, content, promo, message }) => {
+export const Form = ({ title, content, promo }) => {
+  const [promoApplied, setPromoApplied] = useState(false)
+  const [emptyNumberError, setEmptyNumberError] = useState(false)
+  const [wrongFormatError, setWrongFormatError] = useState(false)
+  const [wrongCodeError, setWrongCodeError] = useState(true)
+  const [codeIsSent, setCodeIsSent] = useState(false)
+  const [codeApplied, setCodeApplied] = useState(false)
+  const [phoneNumber, setPhoneNumber] = useState('+7 (999) 098 65−34')
+
   return (
     <>
       <form className={Styles.form}>
         <h2 className={Styles.form__title}>{title}</h2>
-        <p className={Styles.form__paragraph_promo}>{promo}</p>
+        <p className={`${promoApplied ? Styles.form__paragraph_promo : Styles.form__paragraph_promo_invisible}`}>
+          {promo}
+        </p>
         <p className={Styles.form__paragraph}>{content}</p>
         <fieldset className={Styles.form__fieldset}>
           <Label titleText='Сумма покупки'>
@@ -27,17 +37,50 @@ export const Form = ({ title, content, promo, message }) => {
         </fieldset>
         <h3 className={Styles.form__subtitle}>Введите телефон или email</h3>
         <fieldset className={Styles.form__fieldset}>
-          <Label titleText={'Телефон' || 'Мы отправили код на номер'} className={Styles.form__label}>
-            {/* <div className={Styles.form__labelContainer}> */}
-            {/*  <span className={Styles.form__notification_invisible}>+7 (999) 098 65−34</span> */}
-            {/*  <button className={Styles.form__changeButton_invisible} type='button'> */}
-            {/*    Изменить */}
-            {/*  </button> */}
-            {/* </div> */}
-            <InputText placeholder='Введите телефон' className={Styles.form__input} />
+          <Label
+            titleText={codeIsSent || codeApplied || wrongCodeError ? 'Мы отправили код на номер' : 'Телефон'}
+            className={Styles.form__label}
+          >
+            <span
+              className={
+                codeIsSent || codeApplied || wrongCodeError
+                  ? Styles.form__phoneNumber
+                  : Styles.form__phoneNumber_invisible
+              }
+            >
+              {phoneNumber}
+              <button className={Styles.form__changeButton} type='button'>
+                Изменить
+              </button>
+            </span>
+            <InputText
+              placeholder={codeIsSent ? '_ _ _ _' : 'Введите телефон'}
+              className={
+                emptyNumberError || wrongFormatError || wrongCodeError ? Styles.form__error : Styles.form__input
+              }
+            />
           </Label>
-          <span className={Styles.form__notification_invisible}>{message}</span>
-          <button className={Styles.form__changeButton_invisible} type='button'>
+          <span
+            className={
+              emptyNumberError || wrongFormatError || wrongCodeError
+                ? Styles.form__notification
+                : Styles.form__notification_invisible
+            }
+          >
+            {emptyNumberError ? 'Вы забыли ввести номер телефона' : ''}
+            {wrongFormatError ? 'Неверный формат телефона' : ''}
+            {wrongCodeError ? 'Неверный код. Попробуйте еще раз' : ''}
+            {codeIsSent ? 'Получить новый код можно через 00:41' : ''}
+          </span>
+          <span className={codeIsSent ? Styles.form__newCodeNotification : Styles.form__notification_invisible}>
+            {codeIsSent ? 'Получить новый код можно через 00:41' : ''}
+          </span>
+          <button
+            className={
+              wrongCodeError || codeApplied ? Styles.form__newCodeButton : Styles.form__newCodeButton_invisible
+            }
+            type='button'
+          >
             Отправить новый код
           </button>
           <ButtonForCode>Получить код</ButtonForCode>
