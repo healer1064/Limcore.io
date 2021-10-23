@@ -1,0 +1,29 @@
+@import '../../../../scss/vars.scss';
+@import '../../../../scss/mixins.scss';
+
+.auth {
+  @include padding-x(20px);
+
+  display: flex;
+  flex-flow: row wrap;
+  height: 100%;
+
+  &Link {
+    @include padding-y(16px);
+
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    width: 100%;
+    text-decoration: none;
+    font-weight: 600;
+    line-height: 1;
+    color: $primary-color;
+    transition: $transition;
+
+    &:active,
+    &:focus {
+      color: darken($primary-color, 5%);
+    }
+  }
+}

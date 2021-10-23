@@ -1,0 +1,74 @@
+@import '../../../../../../scss/vars.scss';
+@import '../../../../../../scss/mixins.scss';
+
+.form {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  width: 100%;
+  height: calc(100% - 48px);
+
+  &Fieldset {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0;
+    margin-top: 25px;
+    border: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  &Legend {
+    display: table;
+    margin-bottom: 30px;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1;
+    color: $black;
+  }
+
+  &Label {
+    margin-left: 4px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: $grey;
+    cursor: pointer;
+  }
+
+  &Field {
+    @include padding-x(18px);
+    @include padding-y(14px);
+
+    display: flex;
+    width: 100%;
+    font-size: 16px;
+    line-height: 1;
+    color: $light-grey;
+    border: 1px solid $light-grey;
+    border-radius: 14px;
+    transition: $transition;
+
+    &::placeholder {
+      color: $light-grey;
+    }
+
+    &:active,
+    &:focus {
+      color: $grey;
+      border: 1px solid $primary-color;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &Submit {
+    height: auto !important;
+    align-self: flex-end;
+    font-size: 16px !important;
+  }
+}

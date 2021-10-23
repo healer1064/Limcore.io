@@ -20,6 +20,7 @@
     "date-fns": "^2.22.1",
     "dotenv": "^8.2.0",
     "formik": "^2.2.9",
+    "imask": "^6.2.2",
     "include-media": "^1.4.10",
     "moment": "^2.29.1",
     "node-sass": "^6.0.0",
