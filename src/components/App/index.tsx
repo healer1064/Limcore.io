@@ -39,32 +39,30 @@ const App = () => {
         <Header />
         {/* <HeaderMobile /> */}
         {user ? (
-          <section className={Styles.section}>
-            <Wrapper>
-              <Switch>
-                <Route path='/landing' exact component={LandingPage} />
-                <Route path='/' exact component={PurseMobile} />
-                <Route path='/chat' exact component={ProfileMobile} />
-                <Route path='/broadcasts' exact component={BroadcastsMobile} />
-                <Route path='/profile' exact component={ProfileMobile} />
-                <Route path='/buy' exact component={BuyPage} />
-                <Route path='/not-found' exact component={PageNotFount} />
-                <Route path='*'>
-                  <Redirect to='/not-found' />
-                </Route>
+          <main className={Styles.main}>
+            <Switch>
+              <Route path='/' exact component={LandingPage} />
+              <Route path='/purse' exact component={PurseMobile} />
+              <Route path='/chat' exact component={ProfileMobile} />
+              <Route path='/broadcasts' exact component={BroadcastsMobile} />
+              <Route path='/profile' exact component={ProfileMobile} />
+              <Route path='/buy' exact component={BuyPage} />
+              <Route path='/not-found' exact component={PageNotFount} />
+              <Route path='*'>
+                <Redirect to='/not-found' />
+              </Route>
 
-                {/* <Route path='/' exact component={USER_ROlES.user === userRole?.name ? HomePage : HomePage} />
+              {/* <Route path='/' exact component={USER_ROlES.user === userRole?.name ? HomePage : HomePage} />
                 <ProtectedRoute allowedUsersTypes={[USER_ROlES.user]} path='/orders' exact component={OrdersPage} /> */}
-              </Switch>
-            </Wrapper>
+            </Switch>
             {/* <Footer /> */}
-          </section>
+          </main>
         ) : (
           <div className={Styles.spinner_container}>
             <Spinner />
           </div>
         )}
-        <FooterMobile />
+        {/* <FooterMobile /> */}
       </div>
     </Router>
   )
