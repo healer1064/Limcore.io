@@ -5,7 +5,7 @@ import { Modal } from '../Modal'
 import { Overall } from './components/Overall/index'
 
 export const Balance = () => {
-  const [isBalanceVisible, setIsBalanceVisible] = useState(true)
+  const [isBalanceVisible, setIsBalanceVisible] = useState(false)
   const [money, setMoney] = useState('140,784')
 
   const handleOpenBalanceClick = () => {

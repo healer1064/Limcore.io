@@ -1,38 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './styles.module.scss'
-import { plusSvg, blueArrow, balanceLimc, balanceUsdt } from '../../images'
+import { plusSvg, balanceLimc, balanceUsdt } from '../../images'
+import { MenuItem } from './components/MenuItem/index'
 
-const ButtonPlus = ({ onMenuClick }) => {
+export const Menu = () => {
+  const [isLimcInfoVisible, setIsLimcInfoVisible] = useState(false)
+  const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
   const buttonPlusClass = `${styles.menu__item} ${styles.menu__buttonPlus}`
 
-  return (
-    <button type='button' className={buttonPlusClass} onClick={onMenuClick}>
-      <img src={plusSvg} width='24' height='24' />
-    </button>
-  )
-}
+  const handleBalanceLimcOpenClick = () => {
+    setIsLimcInfoVisible(true)
+  }
 
-const MenuItem = ({ image, title, balance, onMenuClick }) => {
-  const menuItemClass = `${styles.menu__item} ${styles.menu__balance}`
+  const handleBalanceLimcCloseClick = () => {
+    setIsLimcInfoVisible(false)
+  }
 
-  return (
-    <div className={menuItemClass}>
-      <button type='button' className={styles.menu__button} onClick={onMenuClick}>
-        <img src={blueArrow} />
-      </button>
-      <img src={image} width='40' height='40' />
-      <h5 className={styles.menu__title}>{title}</h5>
-      <p className={styles.menu__sum}>{balance}</p>
-    </div>
-  )
-}
+  const handleBalanceUsdtOpenClick = () => {
+    setIsUsdtInfoVisible(true)
+  }
 
-export const Menu = (props) => {
+  const handleBalanceUsdtCloseClick = () => {
+    setIsUsdtInfoVisible(false)
+  }
+
   return (
     <div className={styles.menu}>
-      <ButtonPlus onMenuClick={props.onMenuClick} />
-      <MenuItem image={balanceLimc} title='Баланс LIMC' balance='0 LIMC' onMenuClick={props.onMenuClick} />
-      <MenuItem image={balanceUsdt} title='Баланс USDT' balance='0 USDT' onMenuClick={props.onMenuClick} />
+      <button type='button' className={buttonPlusClass}>
+        <img src={plusSvg} width='24' height='24' />
+      </button>
+      <MenuItem
+        image={balanceLimc}
+        title='Баланс LIMC'
+        balance='316 LIMC'
+        setActive={handleBalanceLimcOpenClick}
+        setNotActive={handleBalanceLimcCloseClick}
+        active={isLimcInfoVisible}
+      />
+      <MenuItem
+        image={balanceUsdt}
+        title='Баланс USDT'
+        balance='445 USDT'
+        setActive={handleBalanceUsdtOpenClick}
+        setNotActive={handleBalanceUsdtCloseClick}
+        active={isUsdtInfoVisible}
+      />
     </div>
   )
 }

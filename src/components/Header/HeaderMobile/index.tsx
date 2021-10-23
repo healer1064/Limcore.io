@@ -6,13 +6,13 @@ import logoIcon from '@icons/logo.svg'
 
 export const HeaderMobile: React.FC = () => {
   return (
-    <div className={Styles.header}>
+    <header className={Styles.header}>
       <img className={Styles.logo} src={logoIcon} alt='Лого' />
       <div className={Styles.burger}>
         <span className={Styles.row}>{}</span>
         <span className={Styles.row}>{}</span>
         <span className={Styles.row}>{}</span>
       </div>
-    </div>
+    </header>
   )
 }

@@ -16,15 +16,15 @@
   width: 100%;
 }
 
-.item {
+.link {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-decoration: none;
 
   img {
     width: 30px;
     height: 30px;
-    margin-bottom: 3px;
   }
 
   span {
@@ -34,5 +34,22 @@
     line-height: 12px;
     text-align: center;
     color: #99a0ad;
+    margin-top: 3px;
+  }
+}
+
+.link_active {
+  span {
+    color: #4a70f8;
+  }
+
+  svg {
+    path {
+      stroke: #4a70f8;
+    }
+
+    circle {
+      stroke: #4a70f8;
+    }
   }
 }

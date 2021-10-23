@@ -1,54 +1,157 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Styles from './styles.module.scss'
 
 import leftIcon from '@icons/arrow-left.svg'
 import rightIcon from '@icons/arrow-right.svg'
 
+import { getMonth } from '../../../../../../../helpers/getMonth'
+
 export const Calendar: React.FC = () => {
+  const date = new Date()
+
+  const startYears = 1980
+  const endYears = date.getFullYear()
+
+  const months = [
+    { id: 1, name: 'Янв' },
+    { id: 2, name: 'Фев' },
+    { id: 3, name: 'Мар' },
+    { id: 4, name: 'Апр' },
+    { id: 5, name: 'Май' },
+    { id: 6, name: 'Июн' },
+    { id: 7, name: 'Июл' },
+    { id: 8, name: 'Авг' },
+    { id: 9, name: 'Сен' },
+    { id: 10, name: 'Окт' },
+    { id: 11, name: 'Ноя' },
+    { id: 12, name: 'Дек' },
+  ]
+
   const [view, setView] = useState('years')
-  const [title, setTitle] = useState('1984 – 1989')
+  const [count, setCount] = useState(0)
+
+  const [years, setYears] = useState([])
+  const [days, setDays] = useState([])
+
+  const [title, setTitle] = useState('')
+
+  const [year, setYear] = useState(null)
+  const [month, setMonth] = useState(null)
+  const [day, setDay] = useState(null)
+
+  const backwardYears = () => {
+    if (years[0] === startYears) {
+      return
+    }
+
+    setCount((prev) => prev - 12)
+  }
+
+  const forwardYears = () => {
+    if (years[years.length - 1] === endYears) {
+      return
+    }
+
+    setCount((prev) => prev + 12)
+  }
+
+  const backwardYear = (year) => {
+    if (year < startYears) {
+      return
+    }
+
+    setTitle(year)
+    setYear(year)
+  }
+
+  const forwardYear = (year) => {
+    if (year > endYears) {
+      return
+    }
+
+    setTitle(year)
+    setYear(year)
+  }
+
+  const selectYear = (year) => {
+    setTitle(year)
+    setYear(year)
+    setView('months')
+  }
+
+  const selectMonth = (monthObj) => {
+    const month = getMonth({ year, month: monthObj.id })
+
+    setTitle(`${month[0].name} ${year}`)
+    setDays(month[0].days)
+    setMonth(monthObj.id)
+    setView('days')
+  }
+
+  const selectDay = (dayString) => {
+    const day = Number(dayString)
+
+    setDay(day)
+
+    const date = { day, month, year }
+  }
+
+  useEffect(() => {
+    const array = []
+
+    for (let i = startYears; i <= endYears; i++) {
+      array.push(i)
+    }
+
+    const sliceArray = array.slice(count, count + 12)
+
+    setYears(sliceArray)
+    setTitle(`${sliceArray[0]} - ${sliceArray[sliceArray.length - 1]}`)
+  }, [count])
 
   return (
     <>
-      <div className={Styles.select}>
-        <img src={leftIcon} alt='Иконка' />
-        <span className={Styles.title}>{title}</span>
-        <img src={rightIcon} alt='Иконка' />
-      </div>
-      <>
-        {view === 'years' && (
-          <div className={Styles.grid}>
-            <span className={Styles.item}>1979</span>
-            <span className={Styles.item}>1980</span>
-            <span className={Styles.item}>1981</span>
-            <span className={Styles.item}>1982</span>
-            <span className={Styles.item}>1983</span>
-            <span className={Styles.item}>1984</span>
-            <span className={Styles.item}>1985</span>
-            <span className={`${Styles.item} ${Styles.item_active}`}>1986</span>
-            <span className={Styles.item}>1987</span>
-            <span className={Styles.item}>1988</span>
-            <span className={Styles.item}>1989</span>
-            <span className={Styles.item}>1990</span>
+      {view === 'years' && (
+        <>
+          <div className={Styles.select}>
+            <img src={leftIcon} alt='Иконка' onClick={backwardYears} />
+            <span className={Styles.title}>{title}</span>
+            <img src={rightIcon} alt='Иконка' onClick={forwardYears} />
           </div>
-        )}
-        {view === 'months' && (
           <div className={Styles.grid}>
-            <span className={Styles.item}>Янв</span>
-            <span className={Styles.item}>Фев</span>
-            <span className={Styles.item}>Мар</span>
-            <span className={Styles.item}>Апр</span>
-            <span className={Styles.item}>Май</span>
-            <span className={Styles.item}>Июн</span>
-            <span className={`${Styles.item} ${Styles.item_active}`}>Июл</span>
-            <span className={Styles.item}>Авг</span>
-            <span className={Styles.item}>Сен</span>
-            <span className={Styles.item}>Окт</span>
-            <span className={Styles.item}>Ноя</span>
-            <span className={Styles.item}>Дек</span>
+            {years &&
+              years.map((year) => (
+                <span key={year} className={Styles.item} onClick={() => selectYear(year)}>
+                  {year}
+                </span>
+              ))}
           </div>
-        )}
-        {view === 'days' && (
+        </>
+      )}
+      {view === 'months' && (
+        <>
+          <div className={Styles.select}>
+            <img src={leftIcon} alt='Иконка' onClick={() => backwardYear(year - 1)} />
+            <span className={Styles.title}>{title}</span>
+            <img src={rightIcon} alt='Иконка' onClick={() => forwardYear(year + 1)} />
+          </div>
+          <div className={Styles.grid}>
+            {months &&
+              months.map((month) => (
+                <span key={month.id} className={Styles.item} onClick={() => selectMonth(month)}>
+                  {month.name}
+                </span>
+              ))}
+          </div>
+        </>
+      )}
+      {view === 'days' && (
+        <>
+          <div className={Styles.select}>
+            <img src={leftIcon} alt='Иконка' />
+            <span className={Styles.title}>{title}</span>
+            <img src={rightIcon} alt='Иконка' />
+          </div>
           <div className={Styles.container}>
             <div className={Styles.head}>
               <span className={Styles.daytime}>Пн</span>
@@ -60,45 +163,24 @@ export const Calendar: React.FC = () => {
               <span className={Styles.daytime}>Вс</span>
             </div>
             <div className={Styles.body}>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={`${Styles.day} ${Styles.day_active}`}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
-              <span className={Styles.day}>07</span>
+              {days &&
+                days.map((obj, index) => (
+                  <>
+                    {obj.month !== month ? (
+                      <span key={index} className={`${Styles.day} ${Styles.day_disable}`}>
+                        {obj.day}
+                      </span>
+                    ) : (
+                      <span key={index} className={Styles.day} onClick={() => selectDay(obj.day)}>
+                        {obj.day}
+                      </span>
+                    )}
+                  </>
+                ))}
             </div>
           </div>
-        )}
-      </>
+        </>
+      )}
     </>
   )
 }

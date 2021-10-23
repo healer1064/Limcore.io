@@ -15,9 +15,14 @@ import s7 from './s7.png'
 import switchArrow from './switch-arrow.svg'
 import info from './info.svg'
 import downloadIcon from './download-icon.svg'
+import downloadIconWhite from './download-icon--white.svg'
 import dots from './dots.svg'
 import payIcon from './pay-icon.svg'
 import refresh from './refresh.svg'
+import tradeIcon from './trade-icon.svg'
+import sellIcon from './sell-icon.svg'
+import withdrawIcon from './withdraw-icon.svg'
+import addMoneyIcon from './addMoney-icon.svg'
 
 export {
   balanceLimc,
@@ -40,4 +45,9 @@ export {
   payIcon,
   buttonCloseBlue,
   refresh,
+  downloadIconWhite,
+  tradeIcon,
+  sellIcon,
+  withdrawIcon,
+  addMoneyIcon,
 }

@@ -28,6 +28,7 @@
   background: #eff0f0;
 
   span {
+    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -62,6 +63,7 @@
 }
 
 .caption {
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -71,6 +73,7 @@
 }
 
 .subcaption {
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -89,37 +92,12 @@
   align-items: center;
   gap: 16px;
   margin-bottom: 30px;
-
-  .label {
-    width: 100px;
-    margin-bottom: 0;
-  }
 }
 
 .label {
-  display: flex;
-  flex-direction: column;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 140%;
-  color: #4f535a;
   margin-bottom: 20px;
 }
 
 .input {
   width: 100px;
-}
-
-.button {
-  background: #4a70f8;
-  border-radius: 14px;
-  border: none;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 22px;
-  text-align: center;
-  color: #ffffff;
-  padding: 14px 0;
 }
