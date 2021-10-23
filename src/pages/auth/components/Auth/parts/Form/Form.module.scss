@@ -44,11 +44,12 @@
 
     display: flex;
     width: 100%;
+    color: $grey;
+    border: 1px solid $grey;
     font-size: 16px;
     line-height: 1;
-    color: $light-grey;
-    border: 1px solid $light-grey;
     border-radius: 14px;
+    outline: none;
     transition: $transition;
 
     &::placeholder {
@@ -63,6 +64,24 @@
 
     &:focus {
       outline: none;
+    }
+
+    &IsEmpty {
+      color: $light-grey;
+      border-color: $light-grey;
+    }
+
+    &HasErrors {
+      border-color: $red;
+    }
+
+    &ErrorMessage {
+      display: flex;
+      flex-basis: 100%;
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: $red;
     }
   }
 
