@@ -1,0 +1,66 @@
+.card {
+  display: grid;
+  margin: 0 auto;
+  padding: 20px 22px;
+  box-sizing: border-box;
+  background-color: #F9FAFE;
+  border-radius: 14px;
+  width: 100%;
+  grid-template-columns: repeat(2, minmax(min-content, max-content));
+  grid-template-rows: repeat(3, minmax(min-content, max-content));
+  grid-template-areas:
+  'foto team'
+  'foto team'
+  'paragraph paragraph';
+
+  &__foto {
+    grid-area: foto;
+    margin: 0 0 21px 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 95px;
+    width: 95px;
+  }
+
+  &__teamMember {
+    grid-area: team;
+  }
+
+  &__job {
+    margin: 0;
+    padding: 0 0 4px 0;
+    box-sizing: border-box;
+    color: #99A0AD;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  &__name {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #3A3B3D;
+    font-family: Montserrat;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  &__paragraph {
+    grid-area: paragraph;
+    margin: 0;
+    padding: 12px 0 0 0;
+    box-sizing: border-box;
+    border-top: 1px solid #DBDFEE;
+    color: #4F535A;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}

@@ -1,5 +1,5 @@
 import React from 'react'
-import Styles from './style.module.scss'
+import Styles from './styles.module.scss'
 
 import { Form } from './components/Form'
 import { TermsOfUse } from './components/TermsOfUse'
