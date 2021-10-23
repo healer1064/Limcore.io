@@ -1,17 +1,15 @@
 import React from 'react'
 import Styles from './styles.module.scss'
 
-import teamMember from '../../../../assets/images/team-member.png'
-
-export const Card = ({ job, name, content }) => {
+export const Card = ({ person }) => {
   return (
     <div className={Styles.card}>
-      <img src={teamMember} className={Styles.card__foto} />
+      <img src={person.foto} className={Styles.card__foto} />
       <div className={Styles.card__teamMember}>
-        <p className={Styles.card__job}>{job}</p>
-        <p className={Styles.card__name}>{name}</p>
+        <p className={Styles.card__job}>{person.job}</p>
+        <p className={Styles.card__name}>{person.name}</p>
       </div>
-      <p className={Styles.card__paragraph}>{content}</p>
+      <p className={Styles.card__paragraph}>{person.content}</p>
     </div>
   )
 }
