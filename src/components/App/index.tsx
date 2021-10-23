@@ -24,6 +24,7 @@ import { Header } from '@components/Header'
 import { HeaderMobile } from '@components/Header/HeaderMobile'
 import { CabinetPage } from '../../pages/cabinet'
 
+import { LandingPage } from '../../pages/landing'
 import { PurseMobile } from '@components/Purse/PurseMobile'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
@@ -35,12 +36,13 @@ const App = () => {
   return (
     <Router>
       <div className={Styles.app_container}>
-        {/* <Header /> */}
-        <HeaderMobile />
+        <Header />
+        {/* <HeaderMobile /> */}
         {user ? (
           <section className={Styles.section}>
             <Wrapper>
               <Switch>
+                <Route path='/landing' exact component={LandingPage} />
                 <Route path='/' exact component={PurseMobile} />
                 <Route path='/chat' exact component={ProfileMobile} />
                 <Route path='/broadcasts' exact component={BroadcastsMobile} />
