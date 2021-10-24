@@ -11,7 +11,7 @@ export const CabinetPage: React.FC = () => {
 
   return (
     <div className={styles.cabinet}>
-      {viewCabinet === 'purse' && <PurseMobile />}
+      {viewCabinet === 'profile' && <PurseMobile />}
       {viewCabinet === 'chat' && <span>chat</span>}
       {viewCabinet === 'broadcasts' && <BroadcastsMobile />}
       {viewCabinet === 'profile' && <ProfileMobile />}
