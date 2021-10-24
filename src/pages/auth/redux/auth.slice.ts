@@ -8,7 +8,6 @@ export const authSlice = createSlice({
     processType: Process.Authorization,
     authStep: Auth.Step1,
     authMethod: Method.Phone,
-
     '2FA': true,
   },
   reducers: {
@@ -18,17 +17,17 @@ export const authSlice = createSlice({
     setMethod: (state, { payload }) => {
       state.authMethod = payload
     },
-    getRegistrationNextStep: (state) => {
+    getAuthNextStep: (state) => {
       state.authStep = (Auth[Auth[state.authStep + 1]] || Auth.Step1) as Auth
     },
-    setRegistrationStep: (state, { payload }) => {
+    setAuthStep: (state, { payload }) => {
       state.authStep = payload
     },
   },
 })
 
 const { actions, reducer } = authSlice
-export const { setProcessType, setMethod, getRegistrationNextStep, setRegistrationStep } = actions
+export const { setProcessType, setMethod, getAuthNextStep, setAuthStep } = actions
 export const authSelector = (state: RootState) => state.auth
 
 export default reducer

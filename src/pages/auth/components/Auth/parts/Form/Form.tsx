@@ -8,13 +8,7 @@ import format from 'format-duration'
 import useLocalStorage from 'react-use-localstorage'
 import { phoneMask, emailMask, SMSMask, initialTime, interval, Process, Auth, Method } from '../../constants'
 import { useAppDispatch, useAppSelector } from '../../../../../../app/redux/hooks'
-import {
-  authSelector,
-  getRegistrationNextStep,
-  setRegistrationStep,
-  setMethod,
-  setProcessType,
-} from '../../../../redux/auth.slice'
+import { authSelector, getAuthNextStep, setAuthStep, setMethod, setProcessType } from '../../../../redux/auth.slice'
 import { Button } from '..'
 import { getValidationSchema } from '../../helpers/yup.helpers'
 import { isNumbersOnly } from '../../helpers/number.helpers'
@@ -32,16 +26,26 @@ const Form: FC = () => {
   useEffect(() => {
     switch (auth.processType) {
       case Process.Authorization:
-        setOpts({
-          mask: [
-            {
-              mask: phoneMask,
-            },
-            {
-              mask: emailMask,
-            },
-          ],
-        })
+        switch (auth.authStep) {
+          case Auth.Step1:
+            setOpts({
+              mask: [
+                {
+                  mask: phoneMask,
+                },
+                {
+                  mask: emailMask,
+                },
+              ],
+            })
+            break
+          case Auth.Step2:
+          case Auth.Step3:
+            setOpts({ mask: SMSMask })
+            break
+          default:
+            throw new Error(`Unknown authStep: ${auth.authStep}`)
+        }
         break
       case Process.Registration:
         switch (auth.authStep) {
@@ -56,7 +60,7 @@ const Form: FC = () => {
             setOpts({ mask: emailMask })
             break
           default:
-            throw new Error(`Unknown registrationStep: ${auth.authStep}`)
+            throw new Error(`Unknown authStep: ${auth.authStep}`)
         }
         break
       default:
@@ -78,63 +82,182 @@ const Form: FC = () => {
 
   switch (auth.processType) {
     case Process.Authorization:
-      return (
-        <Formik
-          initialValues={{
-            isEmail: '1',
-            emailOrPhone: '',
-          }}
-          validationSchema={validationSchema}
-          onSubmit={(values, { resetForm }) => {
-            resetForm({})
-          }}
-        >
-          {({ handleChange, values, touched, errors }) => {
-            return (
-              <FormikForm className={styles.form}>
-                <fieldset className={styles.formFieldset}>
-                  <legend className={styles.formLegend}>Авторизация</legend>
-                  <label className={styles.formLabel} htmlFor='emailOrPhone'>
-                    Телефон или e-mail
-                  </label>
-                  <Field
-                    className={classNames(styles.formField, {
-                      [styles.formFieldHasErrors]: touched.emailOrPhone && errors.emailOrPhone,
-                      [styles.formFieldIsEmpty]: !values.emailOrPhone,
-                    })}
-                    placeholder='Введите телефон или e-mail'
-                    name='emailOrPhone'
-                    type='text'
-                    id='emailOrPhone'
-                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                      handleChange('emailOrPhone')(event)
-                      if (isNumbersOnly(values.emailOrPhone)) {
-                        handleChange('isEmail')('0')
-                      } else {
-                        handleChange('isEmail')('1')
-                      }
-                    }}
-                    autoComplete='off'
-                    value={values.emailOrPhone}
-                    innerRef={ref}
-                    maxLength={isNumbersOnly(maskRef?.current?.value || '') ? phoneMask.length : null}
-                  />
-                  <p
-                    className={classNames(styles.formFieldErrorMessage, {
-                      [styles.formFieldErrorMessageHidden]: Object.keys(errors).length === 0,
-                    })}
-                  >
-                    <ErrorMessage name='emailOrPhone' />
-                  </p>
-                </fieldset>
-                <Button type='submit' className={styles.formSubmit}>
-                  Получить код
-                </Button>
-              </FormikForm>
-            )
-          }}
-        </Formik>
-      )
+      switch (auth.authStep) {
+        case Auth.Step1:
+          return (
+            <Formik
+              initialValues={{
+                isEmail: '1',
+                emailOrPhone: '',
+              }}
+              validationSchema={validationSchema}
+              onSubmit={(values, { resetForm, setSubmitting }) => {
+                if (isNumbersOnly(values.emailOrPhone)) {
+                  dispatch(setMethod(Method.Phone))
+                  setPhone(values.emailOrPhone)
+                } else {
+                  dispatch(setMethod(Method.Email))
+                  setEmail(values.emailOrPhone)
+                }
+
+                dispatch(getAuthNextStep())
+                setTimeout(() => {
+                  setSubmitting(false)
+                  resetForm()
+                }, 0)
+              }}
+            >
+              {({ handleChange, values, touched, errors }) => {
+                return (
+                  <FormikForm className={styles.form}>
+                    <fieldset className={styles.formFieldset}>
+                      <legend className={styles.formLegend}>Авторизация</legend>
+                      <label className={styles.formLabel} htmlFor='emailOrPhone'>
+                        Телефон или e-mail
+                      </label>
+                      <Field
+                        className={classNames(styles.formField, {
+                          [styles.formFieldHasErrors]: touched.emailOrPhone && errors.emailOrPhone,
+                          [styles.formFieldIsEmpty]: !values.emailOrPhone,
+                        })}
+                        placeholder='Введите телефон или e-mail'
+                        name='emailOrPhone'
+                        type='text'
+                        id='emailOrPhone'
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                          handleChange('emailOrPhone')(event)
+                          if (isNumbersOnly(values.emailOrPhone)) {
+                            handleChange('isEmail')('0')
+                          } else {
+                            handleChange('isEmail')('1')
+                          }
+                        }}
+                        autoComplete='off'
+                        value={values.emailOrPhone}
+                        innerRef={ref}
+                        maxLength={isNumbersOnly(maskRef?.current?.value || '') ? phoneMask.length : null}
+                      />
+                      <p
+                        className={classNames(styles.formFieldErrorMessage, {
+                          [styles.formFieldErrorMessageHidden]: Object.keys(errors).length === 0,
+                        })}
+                      >
+                        <ErrorMessage name='emailOrPhone' />
+                      </p>
+                    </fieldset>
+                    <Button type='submit' className={styles.formSubmit}>
+                      Получить код
+                    </Button>
+                  </FormikForm>
+                )
+              }}
+            </Formik>
+          )
+        case Auth.Step2:
+        case Auth.Step3:
+          return (
+            <Formik
+              initialValues={{ SMS: '' }}
+              validationSchema={validationSchema}
+              onSubmit={(values, { resetForm, setSubmitting }) => {
+                if (auth['2FA']) {
+                  if (auth.authStep === Auth.Step2) {
+                    dispatch(getAuthNextStep())
+                  } else {
+                    dispatch(setAuthStep(Auth.Step1))
+                  }
+                } else {
+                  dispatch(setAuthStep(Auth.Step1))
+                }
+
+                setTimeout(() => {
+                  setSubmitting(false)
+                  resetForm()
+                }, 0)
+              }}
+            >
+              {({ handleChange, submitForm, values, touched, errors, isValid }) => {
+                return (
+                  <FormikForm className={styles.form}>
+                    <fieldset className={styles.formFieldset}>
+                      <legend className={styles.formLegend}>
+                        {auth.authStep === Auth.Step3
+                          ? 'Введите 2-FA код'
+                          : `Введите код ${auth.authMethod === Method.Phone ? 'из СМС' : null}`}
+                      </legend>
+                      <label className={styles.formLabel} htmlFor='SMS'>
+                        {auth.authStep === Auth.Step3 ? (
+                          'Введите код, сгенерированный приложением Google Authenticator'
+                        ) : (
+                          <>
+                            <span>
+                              Мы отправили код{' '}
+                              {auth.authMethod === Method.Phone
+                                ? 'на номер'
+                                : auth.authMethod === Method.Email
+                                ? 'на адрес'
+                                : null}
+                            </span>
+                            {auth.authMethod === Method.Phone ? phone : auth.authMethod === Method.Email ? email : null}{' '}
+                            <Link to='#!' className={styles.formLink} onClick={() => dispatch(setAuthStep(Auth.Step1))}>
+                              Изменить
+                            </Link>
+                          </>
+                        )}
+                      </label>
+                      <Field
+                        className={classNames(styles.formField, styles.formFieldTextCenter, {
+                          [styles.formFieldHasErrors]: touched.SMS && errors.SMS,
+                          [styles.formFieldIsEmpty]: !values.SMS,
+                        })}
+                        placeholder='_ _ _ _'
+                        name='SMS'
+                        type='text'
+                        id='SMS'
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                          handleChange(event)
+                          setTimeout(submitForm, 0)
+                        }}
+                        autoComplete='off'
+                        value={values.SMS}
+                        innerRef={ref}
+                        maxLength={SMSMask.length}
+                      />
+                      <p
+                        className={classNames(styles.formFieldErrorMessage, {
+                          [styles.formFieldErrorMessageHidden]: Object.keys(errors).length === 0,
+                        })}
+                      >
+                        <ErrorMessage name='SMS' />
+                      </p>
+                      {!!timeLeft && auth.authStep !== Auth.Step3 && (
+                        <p className={styles.formFieldMessage}>
+                          Получить новый код можно через {format(timeLeft, { leading: true })}
+                        </p>
+                      )}
+                      {!timeLeft && auth.authStep !== Auth.Step3 && (
+                        <Link
+                          to='#!'
+                          className={classNames(styles.formLink, styles.formFieldMessage)}
+                          onClick={restart}
+                        >
+                          Отправить новый код
+                        </Link>
+                      )}
+                    </fieldset>
+                    {(!auth['2FA'] || auth.authStep === Auth.Step3) && isValid && (
+                      <Button type='submit' className={styles.formSubmit}>
+                        Войти
+                      </Button>
+                    )}
+                  </FormikForm>
+                )
+              }}
+            </Formik>
+          )
+      }
+      break
+
     case Process.Registration:
       switch (auth.authStep) {
         case Auth.Step1:
@@ -142,46 +265,52 @@ const Form: FC = () => {
             <Formik
               initialValues={{ phone: '' }}
               validationSchema={validationSchema}
-              onSubmit={(values, { resetForm }) => {
-                resetForm()
-                dispatch(getRegistrationNextStep())
+              onSubmit={(values, { resetForm, setSubmitting }) => {
+                dispatch(getAuthNextStep())
                 dispatch(setMethod(Method.Phone))
                 setPhone(maskRef.current.value)
+
+                setTimeout(() => {
+                  setSubmitting(false)
+                  resetForm()
+                }, 0)
               }}
             >
-              {({ handleChange, values, touched, errors }) => (
-                <FormikForm className={styles.form}>
-                  <fieldset className={styles.formFieldset}>
-                    <legend className={styles.formLegend}>Регистрация</legend>
-                    <label className={styles.formLabel} htmlFor='phone'>
-                      Телефон
-                    </label>
-                    <Field
-                      className={classNames(styles.formField, {
-                        [styles.formFieldHasErrors]: touched.phone && errors.phone,
-                        [styles.formFieldIsEmpty]: !values.phone,
-                      })}
-                      placeholder='Введите номер телефона'
-                      name='phone'
-                      type='text'
-                      id='phone'
-                      onChange={handleChange}
-                      autoComplete='off'
-                      value={values.phone}
-                      innerRef={ref}
-                      maxLength={phoneMask.length}
-                    />
-                    <p
-                      className={classNames(styles.formFieldErrorMessage, {
-                        [styles.formFieldErrorMessageHidden]: Object.keys(errors).length === 0,
-                      })}
-                    >
-                      <ErrorMessage name='phone' />
-                    </p>
-                  </fieldset>
-                  <Button className={styles.formSubmit}>Получить код</Button>
-                </FormikForm>
-              )}
+              {({ handleChange, values, touched, errors }) => {
+                return (
+                  <FormikForm className={styles.form}>
+                    <fieldset className={styles.formFieldset}>
+                      <legend className={styles.formLegend}>Регистрация</legend>
+                      <label className={styles.formLabel} htmlFor='phone'>
+                        Телефон
+                      </label>
+                      <Field
+                        className={classNames(styles.formField, {
+                          [styles.formFieldHasErrors]: touched.phone && errors.phone,
+                          [styles.formFieldIsEmpty]: !values.phone,
+                        })}
+                        placeholder='Введите номер телефона'
+                        name='phone'
+                        type='text'
+                        id='phone'
+                        onChange={handleChange}
+                        autoComplete='off'
+                        value={values.phone}
+                        innerRef={ref}
+                        maxLength={phoneMask.length}
+                      />
+                      <p
+                        className={classNames(styles.formFieldErrorMessage, {
+                          [styles.formFieldErrorMessageHidden]: Object.keys(errors).length === 0,
+                        })}
+                      >
+                        <ErrorMessage name='phone' />
+                      </p>
+                    </fieldset>
+                    <Button className={styles.formSubmit}>Получить код</Button>
+                  </FormikForm>
+                )
+              }}
             </Formik>
           )
 
@@ -191,13 +320,21 @@ const Form: FC = () => {
             <Formik
               initialValues={{ SMS: '' }}
               validationSchema={validationSchema}
-              onSubmit={(values, { resetForm }) => {
-                resetForm({})
-                auth.authStep === Auth.Step4 && dispatch(setProcessType(Process.Authorization))
-                dispatch(getRegistrationNextStep())
+              onSubmit={(values, { resetForm, setSubmitting }) => {
+                if (auth.authStep === Auth.Step4) {
+                  dispatch(getAuthNextStep())
+                  dispatch(setProcessType(Process.Authorization))
+                } else {
+                  dispatch(getAuthNextStep())
+                }
+
+                setTimeout(() => {
+                  setSubmitting(false)
+                  resetForm()
+                }, 0)
               }}
             >
-              {({ handleChange, values, touched, errors }) => (
+              {({ handleChange, submitForm, values, touched, errors, isValid }) => (
                 <FormikForm className={styles.form}>
                   <fieldset className={styles.formFieldset}>
                     <legend className={styles.formLegend}>
@@ -213,11 +350,7 @@ const Form: FC = () => {
                           : null}
                       </span>
                       {auth.authMethod === Method.Phone ? phone : auth.authMethod === Method.Email ? email : null}{' '}
-                      <Link
-                        to='#!'
-                        className={styles.formLink}
-                        onClick={() => dispatch(setRegistrationStep(Auth.Step1))}
-                      >
+                      <Link to='#!' className={styles.formLink} onClick={() => dispatch(setAuthStep(Auth.Step1))}>
                         Изменить
                       </Link>
                     </label>
@@ -230,7 +363,12 @@ const Form: FC = () => {
                       name='SMS'
                       type='text'
                       id='SMS'
-                      onChange={handleChange}
+                      onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                        handleChange(event)
+                        if (auth.authStep === Auth.Step2) {
+                          setTimeout(submitForm, 0)
+                        }
+                      }}
                       autoComplete='off'
                       value={values.SMS}
                       innerRef={ref}
@@ -254,6 +392,11 @@ const Form: FC = () => {
                       </Link>
                     )}
                   </fieldset>
+                  {auth.authStep === Auth.Step4 && isValid && (
+                    <Button type='submit' className={styles.formSubmit}>
+                      Зарегистрироваться
+                    </Button>
+                  )}
                 </FormikForm>
               )}
             </Formik>
@@ -264,11 +407,15 @@ const Form: FC = () => {
             <Formik
               initialValues={{ email: '' }}
               validationSchema={validationSchema}
-              onSubmit={(values, { resetForm }) => {
-                resetForm({})
-                dispatch(getRegistrationNextStep())
-                dispatch(setMethod(Method.Email))
+              onSubmit={(values, { resetForm, setSubmitting }) => {
                 setEmail(maskRef.current.value)
+                dispatch(getAuthNextStep())
+                dispatch(setMethod(Method.Email))
+
+                setTimeout(() => {
+                  setSubmitting(false)
+                  resetForm()
+                }, 0)
               }}
             >
               {({ handleChange, values, touched, errors }) => (
