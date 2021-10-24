@@ -32,9 +32,9 @@ export const Details = (props) => {
         <h3 className={styles.details__title}>Детализация майнинга</h3>
 
         <ul className={styles.details__balance}>
-          {BalanceString('Общий доход', '$0')}
-          {BalanceString('XCH 24h', '$0')}
-          {BalanceString('Все форки 24h', '$0')}
+          {BalanceString('Общий доход', '+$12,784')}
+          {BalanceString('XCH 24h', '+$10,092')}
+          {BalanceString('Все форки 24h', '+$884')}
         </ul>
 
         <button type='button' className={styles.details__button} onClick={props.onDetailsClick}>
@@ -46,17 +46,17 @@ export const Details = (props) => {
         <li className={styles.detailsItem}>
           {DetailsImage(details1)}
           {ColumnText('Chia', 'XCH')}
-          {ColumnData('0', '$0')}
+          {ColumnData('3.78456983', '$384')}
         </li>
         <li className={styles.detailsItem}>
           {DetailsImage(details2)}
           {ColumnText('Flax', 'XFX')}
-          {ColumnData('0', '$0')}
+          {ColumnData('0.76459083', '$29')}
         </li>
         <li className={styles.detailsItem}>
           {DetailsImage(details3)}
           {ColumnText('N-Chain', 'NCH')}
-          {ColumnData('0', '$0')}
+          {ColumnData('1.04856979', '$84')}
         </li>
       </ul>
     </div>

@@ -8,10 +8,13 @@ import { StartMining } from './components/StartMining'
 import { Details } from './components/Details'
 import { Wallet } from './components/Wallet'
 import { Transactions } from './components/Transactions'
+import { Statistics } from './components/Statistics'
 
 export const PurseMobile: FC = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
   const [isWalletVisible, setIsWalletVisible] = useState(true)
+  const [isLimcBought, setIsLimcBought] = useState(false)
+  const [isUserHasTransactions, setIsUserHasTransactions] = useState(true)
 
   const handleMenuClick = () => {
     console.log('Menu click')
@@ -41,16 +44,24 @@ export const PurseMobile: FC = () => {
     console.log('Детализазия майнинга')
   }
 
+  const handleShowMoreClick = () => {
+    console.log('Показать больше')
+  }
+
   return (
     <div className={styles.purse}>
       <Balance />
       <Menu onMenuClick={handleMenuClick} />
       <div className={styles.purse__content}>
         {isCardVisible && <VirtualCard onCloseClick={handleCardCloseClick} />}
-        <StartMining onButtonClick={handleStartClick} />
+        {isLimcBought ? <StartMining onButtonClick={handleStartClick} /> : <Statistics onClick={handleShowMoreClick} />}
         <Details onDetailsClick={handleDetailsClick} />
         {isWalletVisible && <Wallet onCloseClick={handleWalletCloseClick} />}
-        <Transactions onProfileClick={handleProfileClick} onTransactionsClick={handleTransactionsClick} />
+        <Transactions
+          onProfileClick={handleProfileClick}
+          onTransactionsClick={handleTransactionsClick}
+          isUserHasTransactions={isUserHasTransactions}
+        />
       </div>
     </div>
   )

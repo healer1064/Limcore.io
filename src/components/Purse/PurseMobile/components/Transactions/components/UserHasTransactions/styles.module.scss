@@ -1,0 +1,90 @@
+@import '../../../../../../../scss/cabinet';
+@import '../../../../../vars&mixins.scss';
+
+.list {
+  list-style-type: none;
+}
+  
+.item, .item__minus, .item__switch {
+  display: flex;
+  align-items: center;
+  padding: 14px 0;
+
+  & + & {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &:first-of-type {
+    padding-top: 22px;
+  }
+
+  &:last-of-type {
+    padding-bottom: 0;
+  }
+
+  &__minus > span > p:first-child {
+    @include subtitle-14px(#F24949);
+  }
+}
+
+.switch {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    right: -25px;
+
+    width: 20px;
+    height: 100%;
+
+    background-image: url(../../../../images/switch-arrow.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__inner {
+    display: flex;
+
+    &:first-child {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.image {
+  margin-right: 13px;
+  display: block;
+  width: 26px;
+  height: 26px;
+}
+
+
+.title {
+  margin-right: auto;
+  margin-bottom: 2px;
+
+  @include subtitle-14px($color-gray-black);
+  text-align: left;  
+}
+
+.data {
+  display: block;
+  flex: none;
+
+  &__title {
+    @include subtitle-14px(#4DBE28);
+    text-align: right;
+  }
+
+  &__text {
+    @include subtitle-13px($color-gray-mouse);
+    text-align: right;
+  }
+}
