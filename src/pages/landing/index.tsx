@@ -4,6 +4,7 @@ import Styles from './styles.module.scss'
 import { Main } from './components/Main'
 import { Calculator } from './components/Calculator'
 import { Team } from './components/Team'
+import { Questions } from './components/Questions'
 
 export const LandingPage: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ export const LandingPage: React.FC = () => {
       <Main />
       <Calculator />
       <Team />
+      <Questions />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import Styles from './styles.module.scss'
 
-import { Card } from './components/Card'
+import { TeamCard } from './components/TeamCard'
 
 import teamMember from '../../../../assets/images/team-member.png'
 import teamMember2 from '../../../../assets/images/team-member-2.png'
@@ -88,7 +88,7 @@ export const Team: React.FC = () => {
         <h2 className={Styles.title}>Команда проекта</h2>
         <div className={Styles.container}>
           {team.map((person) => (
-            <Card key={person.id} {...person} person={person} />
+            <TeamCard key={person.id} {...person} person={person} />
           ))}
         </div>
       </div>
