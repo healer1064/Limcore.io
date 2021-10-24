@@ -1,7 +1,7 @@
 import React from 'react'
 import Styles from './styles.module.scss'
 
-export const Card = ({ person }) => {
+export const TeamCard = ({ person }) => {
   return (
     <div className={Styles.card}>
       <img src={person.foto} className={Styles.card__foto} />

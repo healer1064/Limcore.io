@@ -5,6 +5,9 @@ import { Label } from '../../../../../../ui-kit/Label'
 import { InputText } from '../../../../../../ui-kit/InputText'
 import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
 
+import arrowIcon from '@icons/icon-arrow.svg'
+import limcoreIcon from '@icons/limcore.svg'
+
 export const CalculatorCaption: React.FC = () => {
   return (
     <div className={Styles.caption}>
@@ -24,12 +27,26 @@ export const CalculatorCaption: React.FC = () => {
       <span className={Styles.designation}>Все данные актуальны на текущий момент</span>
       <form className={Styles.form}>
         <div className={Styles.block}>
-          <Label className={Styles.label} titleText='Выберите количество LIMC'>
-            <InputText value='40,000 LIMC' placeholder='' />
-          </Label>
-          <Label className={Styles.label} titleText='Сумма инвестиций в USDT'>
-            <InputText value='3,800,000 USDT' placeholder='' />
-          </Label>
+          <div className={Styles.labels}>
+            <Label className={Styles.label} titleText='Выберите количество LIMC'>
+              <InputText value='40,000 LIMC' placeholder='' />
+            </Label>
+            <img src={arrowIcon} alt='Иконка' />
+            <Label className={Styles.label} titleText='Сумма инвестиций в USDT'>
+              <InputText value='3,800,000 USDT' placeholder='' />
+            </Label>
+          </div>
+          <div className={Styles.range}>
+            <div className={Styles.scale}>
+              <span>
+                <img src={limcoreIcon} alt='Иконка' /> 1 LIMC
+              </span>
+              <span>
+                <img src={limcoreIcon} alt='Иконка' /> 100,000 LIMC
+              </span>
+            </div>
+            <input type='range' min='1' max='100000' />
+          </div>
         </div>
         <div className={Styles.block}>
           <div className={Styles.info}>
