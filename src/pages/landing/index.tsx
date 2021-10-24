@@ -5,6 +5,7 @@ import { Main } from './components/Main'
 import { Calculator } from './components/Calculator'
 import { Team } from './components/Team'
 import { Questions } from './components/Questions'
+import { Media } from './components/Media'
 
 export const LandingPage: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ export const LandingPage: React.FC = () => {
       <Calculator />
       <Team />
       <Questions />
+      <Media />
     </div>
   )
 }
