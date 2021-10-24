@@ -22,4 +22,8 @@
   &:active {
     background-color: darken($color: $primary-color, $amount: 5%);
   }
+
+  &:disabled {
+    background-color: $grey;
+  }
 }

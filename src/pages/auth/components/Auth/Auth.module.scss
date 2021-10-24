@@ -5,15 +5,20 @@
   @include padding-x(20px);
 
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
+  min-height: 100%;
   height: 100%;
 
+  &Inner {
+    display: flex;
+    flex-grow: 1;
+  }
   &Link {
     @include padding-y(16px);
 
     display: flex;
     justify-content: center;
-    margin-top: auto;
+    align-items: center;
     width: 100%;
     text-decoration: none;
     font-weight: 600;
