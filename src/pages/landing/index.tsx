@@ -2,6 +2,7 @@ import React from 'react'
 import Styles from './styles.module.scss'
 
 import { Card } from './components/Card'
+import { Footer } from './components/Footer'
 
 import teamMember from '../../assets/images/team-member.png'
 import teamMember2 from '../../assets/images/team-member-2.png'
@@ -92,6 +93,7 @@ export const LandingPage: React.FC = () => {
           ))}
         </div>
       </section>
+      <Footer />
     </div>
   )
 }

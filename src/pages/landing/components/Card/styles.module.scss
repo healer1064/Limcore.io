@@ -6,7 +6,7 @@
   background-color: #F9FAFE;
   border-radius: 14px;
   width: 100%;
-  grid-template-columns: repeat(2, minmax(min-content, max-content));
+  grid-template-columns: 110px minmax(min-content, max-content);
   grid-template-rows: repeat(3, minmax(min-content, max-content));
   grid-template-areas:
   'foto team'
