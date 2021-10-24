@@ -1,0 +1,23 @@
+@import '~normalize.scss/normalize.scss';
+@import 'assets/fonts';
+@import './scss/vars';
+
+html {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+
+  * {
+    &,
+    &::before,
+    &::after {
+      box-sizing: inherit;
+    }
+  }
+}
+
+body {
+  width: inherit;
+  height: inherit;
+  font-family: $main-font;
+}

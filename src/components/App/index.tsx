@@ -23,6 +23,7 @@ import { OrderCatalog } from '../../pages/catalog'
 import { Header } from '@components/Header'
 import { HeaderMobile } from '@components/Header/HeaderMobile'
 import { CabinetPage } from '../../pages/cabinet'
+import { AuthPage } from '../../pages/auth'
 
 import { LandingPage } from '../../pages/landing'
 import { PurseMobile } from '@components/Purse/PurseMobile'
@@ -47,6 +48,7 @@ const App = () => {
               <Route path='/broadcasts' exact component={BroadcastsMobile} />
               <Route path='/profile' exact component={ProfileMobile} />
               <Route path='/buy' exact component={BuyPage} />
+              <Route path='/auth' exact component={AuthPage} />
               <Route path='/not-found' exact component={PageNotFount} />
               <Route path='*'>
                 <Redirect to='/not-found' />
