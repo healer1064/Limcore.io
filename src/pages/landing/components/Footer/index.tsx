@@ -13,23 +13,39 @@ export const Footer = () => {
         <div className={Styles.footer__languageGroup}>
           <img className={Styles.footer__languageIcon} src={RU} alt='RU' />
           <p className={Styles.footer__language}>RU</p>
-          <img className={Styles.footer__languageIcon} src={arrow} alt='Arrow-button' />
+          <img className={Styles.footer__languageArrow} src={arrow} alt='Arrow-button' />
         </div>
         <ul className={`${Styles.footer__etc} ${Styles.footer__list}`}>
-          <li className={Styles.footer__listItem}>Whitepaper</li>
-          <li className={Styles.footer__listItem}>Рекламный буклет</li>
+          <li className={Styles.footer__listItem}>
+            <a>Whitepaper</a>
+          </li>
+          <li className={Styles.footer__listItem}>
+            <a>Рекламный буклет</a>
+          </li>
         </ul>
         <ul className={`${Styles.footer__information} ${Styles.footer__list}`}>
           <h3 className={Styles.footer_listTitle}>Раскрытие информации</h3>
-          <li className={Styles.footer__listItem}>Учредительные документы РФ</li>
-          <li className={Styles.footer__listItem}>Учредительные документы Swiss</li>
-          <li className={Styles.footer__listItem}>Страхование оборудования</li>
-          <li className={Styles.footer__listItem}>Страхование здания и прочего имущества</li>
+          <li className={Styles.footer__listItem}>
+            <a>Учредительные документы РФ</a>
+          </li>
+          <li className={Styles.footer__listItem}>
+            <a>Учредительные документы Swiss</a>
+          </li>
+          <li className={Styles.footer__listItem}>
+            <a>Страхование оборудования</a>
+          </li>
+          <li className={Styles.footer__listItem}>
+            <a>Страхование здания и прочего имущества</a>
+          </li>
         </ul>
         <ul className={`${Styles.footer__users} ${Styles.footer__list}`}>
           <h3 className={Styles.footer_listTitle}>Взаимодействие с пользователями</h3>
-          <li className={Styles.footer__listItem}>Пользовательское соглашение об обработке персональных данных</li>
-          <li className={Styles.footer__listItem}>Договор оферта о покупке токена LIMC</li>
+          <li className={Styles.footer__listItem}>
+            <a>Пользовательское соглашение об обработке персональных данных</a>
+          </li>
+          <li className={Styles.footer__listItem}>
+            <a>Договор оферта о покупке токена LIMC</a>
+          </li>
         </ul>
         <div className={Styles.footer__line} />
         <ul className={`${Styles.footer__address} ${Styles.footer__list}`}>
@@ -40,7 +56,7 @@ export const Footer = () => {
         </ul>
         <ul className={`${Styles.footer__issuer} ${Styles.footer__list}`}>
           <div className={Styles.footer__listItemContainer}>
-            <h3 className={Styles.footer_listTitle}>UAE эмитент LIMC Round 1</h3>
+            <h3 className={Styles.footer_listTitle_noWrap}>UAE эмитент LIMC Round 1</h3>
             <li className={Styles.footer__listItem_gray}>В процессе регистрации</li>
           </div>
           <div className={Styles.footer__listItemContainer}>
