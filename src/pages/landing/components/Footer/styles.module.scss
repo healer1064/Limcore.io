@@ -26,10 +26,20 @@
 
   &__languageGroup {
     grid-area: language;
+    display: flex;
     flex-direction: row;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+
+  &__language {
+    color: #B4BFD5;
+  }
+
+  &__languageIcon {
+    width: 24px;
+    height: 24px;
   }
 
   &__list {
@@ -76,6 +86,11 @@
         padding: 0;
       }
     }
+  }
+
+  &__listItemContainer {
+    display: flex;
+    flex-direction: column;
   }
 
   &__etc {
@@ -133,6 +148,7 @@
     display: flex;
     list-style: none;
     flex-direction: row;
+    justify-self: end;
   }
 
   &__line {
@@ -141,6 +157,60 @@
     height: 1px;
     background-color: #13151B;
     margin: 47px 0 30px;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  &__socialIcon_twitter {
+    background-image: url('../../../../assets/icons/twitter-icon.png');
+    width: 32px;
+    height: 32px;
+    margin: 0 10px 0 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  &__socialIcon_linkedIn {
+    background-image: url('../../../../assets/icons/linkedIn-icon.png');
+    width: 32px;
+    height: 32px;
+    margin: 0 10px 0 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  &__socialIcon_vk {
+    background-image: url('../../../../assets/icons/vk-icon.png');
+    width: 32px;
+    height: 32px;
+    margin: 0 10px 0 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  &__socialIcon_insta {
+    background-image: url('../../../../assets/icons/insta-icon.png');
+    width: 32px;
+    height: 32px;
+    margin: 0 10px 0 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  &__socialIcon_telegram {
+    background-image: url('../../../../assets/icons/telegram-icon.png');
+    width: 32px;
+    height: 32px;
+    margin: 0 10px 0 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  &__socialIcon_facebook {
+    background-image: url('../../../../assets/icons/facebook-icon.png');
+    width: 32px;
+    height: 32px;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
   }

@@ -11,8 +11,9 @@ export const Footer = () => {
       <div className={Styles.footer__container}>
         <img src={logo} alt='Logo' className={Styles.logo} />
         <div className={Styles.footer__languageGroup}>
-          <img src={RU} alt='RU' />
-          <img src={arrow} alt='Arrow-button' />
+          <img className={Styles.footer__languageIcon} src={RU} alt='RU' />
+          <p className={Styles.footer__language}>RU</p>
+          <img className={Styles.footer__languageIcon} src={arrow} alt='Arrow-button' />
         </div>
         <ul className={`${Styles.footer__etc} ${Styles.footer__list}`}>
           <li className={Styles.footer__listItem}>Whitepaper</li>
@@ -38,30 +39,34 @@ export const Footer = () => {
           <li className={Styles.footer__listItem_gray}>Юридический адрес компании: г. Можайск, улица Мира, дом 98</li>
         </ul>
         <ul className={`${Styles.footer__issuer} ${Styles.footer__list}`}>
-          <h3 className={Styles.footer_listTitle}>UAE эмитент LIMC Round 1</h3>
-          <li className={Styles.footer__listItem_gray}>В процессе регистрации</li>
-          <h3 className={Styles.footer_listTitle}>Швейцария</h3>
-          <li className={Styles.footer__listItem_gray}>В процессе регистрации</li>
+          <div className={Styles.footer__listItemContainer}>
+            <h3 className={Styles.footer_listTitle}>UAE эмитент LIMC Round 1</h3>
+            <li className={Styles.footer__listItem_gray}>В процессе регистрации</li>
+          </div>
+          <div className={Styles.footer__listItemContainer}>
+            <h3 className={Styles.footer_listTitle}>Швейцария</h3>
+            <li className={Styles.footer__listItem_gray}>В процессе регистрации</li>
+          </div>
         </ul>
         <p className={Styles.footer__email}>info@limcore.io</p>
         <ul className={Styles.footer__social}>
-          <li>
-            <a>1</a>
+          <li className={Styles.footer__socialIcon_twitter}>
+            <a href='#' target='blank' rel='noopener noreferrer' />
           </li>
-          <li>
-            <a>1</a>
+          <li className={Styles.footer__socialIcon_linkedIn}>
+            <a href='#' target='blank' rel='noopener noreferrer' />
           </li>
-          <li>
-            <a>1</a>
+          <li className={Styles.footer__socialIcon_vk}>
+            <a href='#' target='blank' rel='noopener noreferrer' />
           </li>
-          <li>
-            <a>1</a>
+          <li className={Styles.footer__socialIcon_insta}>
+            <a href='#' target='blank' rel='noopener noreferrer' />
           </li>
-          <li>
-            <a>1</a>
+          <li className={Styles.footer__socialIcon_telegram}>
+            <a href='#' target='blank' rel='noopener noreferrer' />
           </li>
-          <li>
-            <a>1</a>
+          <li className={Styles.footer__socialIcon_facebook}>
+            <a href='#' target='blank' rel='noopener noreferrer' />
           </li>
         </ul>
         <p className={Styles.footer__copyright}>
