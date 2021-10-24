@@ -5,8 +5,15 @@
   padding: 16px 10px;
   margin-top: 10px;
   height: 45px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #393c42;
 
   &::placeholder {
+    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;

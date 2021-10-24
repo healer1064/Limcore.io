@@ -1,7 +1,8 @@
 .button {
   background: #4a70f8;
   border-radius: 14px;
-  border: none;
+  border: 1px solid #4a70f8;
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -9,4 +10,8 @@
   text-align: center;
   color: #ffffff;
   padding: 14px 0;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Styles from './styles.module.scss'
+
+import { Popup } from '@components/Popup'
+import { Calendar } from '../Calendar'
 
 import { Label } from '../../../../../../../ui-kit/Label'
 import { InputText } from '../../../../../../../ui-kit/InputText'
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
+
 import calendarIcon from '@icons/calendar-icon.svg'
 
 interface Step2Props {
@@ -11,6 +15,8 @@ interface Step2Props {
 }
 
 export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
+  const [popup, setPopup] = useState(false)
+
   return (
     <>
       <div className={Styles.progress}>
@@ -47,7 +53,7 @@ export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
             <InputText placeholder='Введите код' />
           </Label>
           <Label className={Styles.label} titleText='Дата выдачи*'>
-            <div className={Styles.block}>
+            <div className={Styles.block} onClick={() => setPopup(true)}>
               <input type='text' placeholder='01.01.21' />
               <img src={calendarIcon} alt='Иконка' />
             </div>
@@ -58,6 +64,11 @@ export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
           <ButtonBig onClick={(event) => nextStep(event, 2)}>Продолжить</ButtonBig>
         </form>
       </div>
+      {popup && (
+        <Popup closePopup={() => setPopup(false)}>
+          <Calendar />
+        </Popup>
+      )}
     </>
   )
 }

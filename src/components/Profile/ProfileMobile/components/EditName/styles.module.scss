@@ -17,6 +17,7 @@
 }
 
 .caption {
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -25,6 +26,7 @@
 }
 
 .subcaption {
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -35,34 +37,4 @@
 
 .label {
   margin-top: 20px;
-}
-
-.input {
-  background: #ffffff;
-  border: 1.4px solid #b4bfd5;
-  border-radius: 14px;
-  margin-top: 10px;
-  padding: 10px 16px;
-  height: 45px;
-
-  &::placeholder {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 150%;
-    color: #b4bfd5;
-  }
-}
-
-.button {
-  border: none;
-  padding: 14px 0;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 22px;
-  text-align: center;
-  color: #ffffff;
-  background: #4a70f8;
-  border-radius: 14px;
 }
