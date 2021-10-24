@@ -6,11 +6,11 @@ import { CalculatorSlider } from './components/CalculatorSlider'
 
 export const Calculator: React.FC = () => {
   return (
-    <div className={Styles.calculator}>
+    <section className={Styles.calculator}>
       <div className={Styles.wrapper}>
         <CalculatorCaption />
         <CalculatorSlider />
       </div>
-    </div>
+    </section>
   )
 }

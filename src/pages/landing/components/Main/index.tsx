@@ -8,13 +8,13 @@ import { MainHow } from './components/MainHow'
 
 export const Main: React.FC = () => {
   return (
-    <div className={Styles.main}>
+    <section className={Styles.main}>
       <div className={Styles.wrapper}>
         <MainCaption />
         <MainRounds />
         <MainParthers />
         <MainHow />
       </div>
-    </div>
+    </section>
   )
 }
