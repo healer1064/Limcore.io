@@ -5,8 +5,12 @@
   height: 100vh;
 }
 
-.section {
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
   height: 100%;
+  width: 100%;
 }
 
 .prp-header-logo {

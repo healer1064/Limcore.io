@@ -1,0 +1,29 @@
+@import '../../../../../../../vars&mixins.scss';
+
+.th {
+  padding-bottom: 9px;
+  @include subtitle-14px($color-99-gray);
+  background: white;
+  
+  &:not(:first-child) {
+    text-align: end;
+  }
+}
+
+.td {
+  padding: 16px 0;
+  
+  &:not(:first-child) {
+    text-align: end;
+  }
+
+  &:first-child {
+    width: 20%;
+  }
+}
+
+.tr {
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);;
+  }
+}

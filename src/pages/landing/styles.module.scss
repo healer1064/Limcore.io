@@ -1,4 +1,6 @@
 .landing {
+display: flex;
+flex-direction: column;
 
   &__teamSection {
     display: flex;

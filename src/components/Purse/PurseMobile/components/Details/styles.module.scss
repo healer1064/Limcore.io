@@ -1,24 +1,11 @@
 @import '../../../../../scss/cabinet';
-
-@mixin text-style() {
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 18px;
-  color: $color-gray-mouse; 
-}
-
-@mixin title-style() {
-  margin-bottom: 2px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-}
+@import '../../../vars&mixins.scss';
 
 .details {
   position: relative;
   padding: 24px 0;
   margin: 0;
-  margin-top: 40px;
+  margin-top: 25px;
   margin-bottom: 30px;
 
   background-color: #FFF;
@@ -38,10 +25,7 @@
 
   &__title {
     padding-bottom: 16px;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 22px;
-    color: $color-gray-dark;
+    @include section-title();
   }
 
   &__balance {
@@ -125,13 +109,13 @@
   flex: 1 1 0;
 
   &__title {
-    @include title-style();
-    color: $color-gray-black;
+    @include subtitle-14px($color-gray-black);
+    margin-bottom: 2px;
     text-align: left;  
   }
 
   &__text {
-    @include text-style();
+    @include subtitle-13px($color-gray-mouse);
     text-align: left;
   }
 }
@@ -141,13 +125,12 @@
   flex: none;
 
   &__title {
-    @include title-style();
-    color: $color-gray-medium;
+    @include subtitle-14px($color-gray-medium);
     text-align: right;
   }
 
   &__text {
-    @include text-style();
+    @include subtitle-13px($color-gray-mouse);
     text-align: right;
   }
 }

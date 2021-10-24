@@ -1,6 +1,8 @@
 import React from 'react'
 import Styles from './styles.module.scss'
 
+import { Main } from './components/Main'
+import { Calculator } from './components/Calculator'
 import { Card } from './components/Card'
 import { Footer } from './components/Footer'
 
@@ -84,7 +86,9 @@ export const LandingPage: React.FC = () => {
   ]
 
   return (
-    <div>
+    <div className={Styles.landing}>
+      <Main />
+      <Calculator />
       <section className={Styles.landing__teamSection}>
         <h2 className={Styles.landing__title}>Команда проекта</h2>
         <div className={Styles.landing__cardsContainer}>
