@@ -44,6 +44,26 @@ export const Footer = () => {
           <li className={Styles.footer__listItem_gray}>В процессе регистрации</li>
         </ul>
         <p className={Styles.footer__email}>info@limcore.io</p>
+        <ul className={Styles.footer__social}>
+          <li>
+            <a>1</a>
+          </li>
+          <li>
+            <a>1</a>
+          </li>
+          <li>
+            <a>1</a>
+          </li>
+          <li>
+            <a>1</a>
+          </li>
+          <li>
+            <a>1</a>
+          </li>
+          <li>
+            <a>1</a>
+          </li>
+        </ul>
         <p className={Styles.footer__copyright}>
           &copy;
           {` ${new Date().getFullYear()} LimCore`}

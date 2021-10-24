@@ -96,6 +96,8 @@
 
   &__issuer {
     grid-area: issuer;
+    display: flex;
+    flex-direction: row;
   }
 
   &__email {
@@ -124,6 +126,13 @@
     line-height: 1.25;
     color: #717A8D;
     text-align: end;
+  }
+
+  &__social {
+    grid-area: social;
+    display: flex;
+    list-style: none;
+    flex-direction: row;
   }
 
   &__line {
