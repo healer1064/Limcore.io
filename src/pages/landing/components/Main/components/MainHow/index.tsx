@@ -22,7 +22,7 @@ export const MainHow: React.FC = () => {
             </span>
           </li>
           <li className={Styles.item}>
-            <span> Вы можете в любое время вывести активы полученные от майнинга или продать свои токены LIМС</span>
+            <span>Вы можете в любое время вывести активы полученные от майнинга или продать свои токены LIМС</span>
           </li>
           <li className={Styles.item}>
             <span>
