@@ -55,13 +55,13 @@ const App = () => {
               {/* <Route path='/' exact component={USER_ROlES.user === userRole?.name ? HomePage : HomePage} />
                 <ProtectedRoute allowedUsersTypes={[USER_ROlES.user]} path='/orders' exact component={OrdersPage} /> */}
             </Switch>
-            {/* <Footer /> */}
           </main>
         ) : (
           <div className={Styles.spinner_container}>
             <Spinner />
           </div>
         )}
+        <Footer />
         {/* <FooterMobile /> */}
       </div>
     </Router>
