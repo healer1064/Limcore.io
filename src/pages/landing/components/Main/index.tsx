@@ -5,6 +5,7 @@ import { MainCaption } from './components/MainCaption'
 import { MainRounds } from './components/MainRounds'
 import { MainParthers } from './components/MainParthers'
 import { MainHow } from './components/MainHow'
+import { RoadMap } from './components/RoadMap'
 
 export const Main: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ export const Main: React.FC = () => {
         <MainRounds />
         <MainParthers />
         <MainHow />
+        <RoadMap />
       </div>
     </section>
   )
