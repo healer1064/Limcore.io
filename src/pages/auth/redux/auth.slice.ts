@@ -24,6 +24,7 @@ export const authSlice = createSlice({
     authMethod: Method.Email,
     '2FA': true,
     confirmationEmail: { code: '', unique_identifier: '' },
+    isAuth: false,
   },
   reducers: {
     setProcessType: (state, { payload }) => {
@@ -50,8 +51,7 @@ export const authSlice = createSlice({
       state.confirmationEmail = data
     },
     [registerUserEmailConfirmation.fulfilled]: (state, action) => {
-      // state.user.userId = action.payload.data.userId
-      // state.user.isNewUser = action.payload.data.isNewUser
+      state.isAuth = !state.isAuth
     },
   },
 })
