@@ -5,9 +5,9 @@ import { Process, Auth, Method } from '../components/Auth/constants'
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    processType: Process.Authorization,
-    authStep: Auth.Step1,
-    authMethod: Method.Phone,
+    processType: Process.Registration,
+    authStep: Auth.Step3,
+    authMethod: Method.Email,
     '2FA': true,
   },
   reducers: {
