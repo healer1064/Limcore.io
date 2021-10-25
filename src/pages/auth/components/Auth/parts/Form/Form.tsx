@@ -8,6 +8,7 @@ import format from 'format-duration'
 import useLocalStorage from 'react-use-localstorage'
 import { phoneMask, emailMask, SMSMask, initialTime, interval, Process, Auth, Method } from '../../constants'
 import { useAppDispatch, useAppSelector } from '../../../../../../app/redux/hooks'
+import { registerUserEmail, registerUserEmailConfirmation } from '../../../../redux/auth.slice'
 import { authSelector, getAuthNextStep, setAuthStep, setMethod, setProcessType } from '../../../../redux/auth.slice'
 import { Button } from '..'
 import { getValidationSchema } from '../../helpers/yup.helpers'
@@ -17,11 +18,19 @@ import styles from './Form.module.scss'
 const Form: FC = () => {
   const dispatch = useAppDispatch()
   const auth = useAppSelector(authSelector)
+  const confirmationEmail = useAppSelector((state) => state.auth.confirmationEmail)
   const [timeLeft, { start }] = useCountDown(initialTime, interval)
   const [opts, setOpts] = useState<any>({})
   const { ref, maskRef } = useIMask(opts)
   const [phone, setPhone] = useLocalStorage('phone', '')
   const [email, setEmail] = useLocalStorage('email', '')
+
+  const onRegistration = (email) => {
+    // console.log('E-mail with the code has been sent: 0540, dc2684e0-cc8b-4515-8fa7-9f831c7ef5bf.'.slice(42, 78))
+    dispatch(registerUserEmail({ email }))
+  }
+
+  const onRegistrationConfirm = () => dispatch(registerUserEmailConfirmation(confirmationEmail))
 
   useEffect(() => {
     switch (auth.processType) {
@@ -393,7 +402,7 @@ const Form: FC = () => {
                     )}
                   </fieldset>
                   {auth.authStep === Auth.Step4 && isValid && (
-                    <Button type='submit' className={styles.formSubmit}>
+                    <Button className={styles.formSubmit} onClick={() => onRegistrationConfirm()}>
                       Зарегистрироваться
                     </Button>
                   )}
@@ -447,7 +456,9 @@ const Form: FC = () => {
                       <ErrorMessage name='email' />
                     </p>
                   </fieldset>
-                  <Button className={styles.formSubmit}>Получить код</Button>
+                  <Button className={styles.formSubmit} onClick={() => onRegistration(values.email)}>
+                    Получить код
+                  </Button>
                 </FormikForm>
               )}
             </Formik>
