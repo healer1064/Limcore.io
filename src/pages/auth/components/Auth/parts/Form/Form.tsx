@@ -8,7 +8,13 @@ import format from 'format-duration'
 import useLocalStorage from 'react-use-localstorage'
 import { phoneMask, emailMask, SMSMask, initialTime, interval, Process, Auth, Method } from '../../constants'
 import { useAppDispatch, useAppSelector } from '../../../../../../app/redux/hooks'
-import { registerUserEmail, registerUserEmailConfirmation } from '../../../../redux/auth.slice'
+import {
+  authorizationUserEmail,
+  authorizationUserEmailConfirmation,
+  registerUserEmail,
+  registerUserEmailConfirmation,
+  getJwtToken,
+} from '../../../../redux/auth.slice'
 import { authSelector, getAuthNextStep, setAuthStep, setMethod, setProcessType } from '../../../../redux/auth.slice'
 import { Button } from '..'
 import { getValidationSchema } from '../../helpers/yup.helpers'
@@ -26,13 +32,25 @@ const Form: FC = () => {
   const [phone, setPhone] = useLocalStorage('phone', '')
   const [email, setEmail] = useLocalStorage('email', '')
 
+  const onAuthorization = (email) => {
+    // console.log('E-mail with the code has been sent: 0540, dc2684e0-cc8b-4515-8fa7-9f831c7ef5bf.'.slice(42, 78))
+    dispatch(authorizationUserEmail({ email }))
+  }
+
   const onRegistration = (email) => {
     // console.log('E-mail with the code has been sent: 0540, dc2684e0-cc8b-4515-8fa7-9f831c7ef5bf.'.slice(42, 78))
     dispatch(registerUserEmail({ email }))
   }
 
   const onRegistrationConfirm = () => {
-    dispatch(registerUserEmailConfirmation(confirmationEmail))
+    dispatch(registerUserEmailConfirmation())
+    dispatch(getJwtToken())
+    history.push('/')
+  }
+
+  const onAuthorizationConfirm = () => {
+    dispatch(authorizationUserEmailConfirmation())
+    dispatch(getJwtToken())
     history.push('/')
   }
 
@@ -148,7 +166,7 @@ const Form: FC = () => {
                         autoComplete='off'
                         value={values.emailOrPhone}
                         innerRef={ref}
-                        maxLength={isNumbersOnly(maskRef?.current?.value || '') ? phoneMask.length : null}
+                        // maxLength={isNumbersOnly(maskRef?.current?.value || '') ? phoneMask.length : null}
                       />
                       <p
                         className={classNames(styles.formFieldErrorMessage, {
@@ -158,7 +176,7 @@ const Form: FC = () => {
                         <ErrorMessage name='emailOrPhone' />
                       </p>
                     </fieldset>
-                    <Button type='submit' className={styles.formSubmit}>
+                    <Button className={styles.formSubmit} onClick={() => onAuthorization(values.emailOrPhone)}>
                       Получить код
                     </Button>
                   </FormikForm>
@@ -259,7 +277,7 @@ const Form: FC = () => {
                       )}
                     </fieldset>
                     {(!auth['2FA'] || auth.authStep === Auth.Step3) && isValid && (
-                      <Button type='submit' className={styles.formSubmit}>
+                      <Button className={styles.formSubmit} onClick={() => onAuthorizationConfirm()}>
                         Войти
                       </Button>
                     )}
