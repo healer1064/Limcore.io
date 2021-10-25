@@ -5,7 +5,14 @@
   height: 100vh;
 }
 
-.section {
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 100%;
+}
+
+.main_mobile {
   height: 100%;
 }
 

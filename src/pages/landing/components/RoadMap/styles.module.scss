@@ -1,0 +1,72 @@
+.roadMap {
+  display: flex;
+  background-color: #f9fafe;
+  padding: 20px 60px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 1024px;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-family: 'Montserrat';
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.text {
+  color: #99a0ad;
+  font-family: 'Montserrat';
+  font-size: 14px;
+  font-weight: 500;
+  margin: 15px 0 40px;
+  max-width: 310px;
+}
+
+.link {
+  margin-top: 10px;
+  text-decoration: none;
+  color: #4a70f8;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 5px;
+}
+
+.list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+}
+
+@media (min-width: 720px) {
+  .header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin: 15px 0 40px;
+  }
+
+  .text {
+    max-width: none;
+    display: flex;
+    align-items: flex-end;
+    margin: 0;
+  }
+
+  .link {
+    margin-left: 15px;
+    align-items: flex-end;
+  }
+}

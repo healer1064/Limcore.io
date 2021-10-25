@@ -2,9 +2,9 @@ import axios, { AxiosRequestConfig, Method } from 'axios'
 
 const DEV = process.env.NODE_ENV !== 'production'
 
-const { REACT_APP_API_DEV } = process.env
+const { REACT_APP_API_DEV, REACT_APP_API_PROD } = process.env
 
-export const API_BASE_URL = DEV ? REACT_APP_API_DEV : 'https://production-url'
+export const API_BASE_URL = DEV ? REACT_APP_API_DEV : REACT_APP_API_PROD
 
 const getURL = (path: string) => `${API_BASE_URL}/v1/${path}`
 

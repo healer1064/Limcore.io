@@ -1,0 +1,137 @@
+.slider {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+}
+
+.caption {
+  display: flex;
+  align-items: center;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 160%;
+  color: #4f535a;
+  margin: 0;
+  margin-bottom: 6px;
+
+  img {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+}
+
+.description {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 160%;
+  color: #000000;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  margin-top: 48px;
+}
+
+.button {
+  position: absolute;
+  top: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  box-shadow: 20px 20px 52px rgba(0, 0, 0, 0.05);
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.button_prev {
+  left: -50px;
+}
+
+.button_next {
+  right: -50px;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+}
+
+.token {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:not(:last-child) {
+    margin-bottom: 15px;
+  }
+}
+
+.block {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-left: 10px;
+  margin-right: 15px;
+}
+
+.name {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 160%;
+  color: #4f535a;
+}
+
+.price {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 160%;
+  color: #4f535a;
+}
+
+@media all and (max-width: 768px) {
+  .slider {
+    margin-top: 40px;
+  }
+
+  .caption {
+    align-items: flex-start;
+    font-size: 20px;
+    img {
+      margin-top: 5px;
+    }
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  .container {
+    margin-top: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pagination {
+    padding-top: 30px;
+    &>:not(:last-child) {
+      margin-right: 6px;
+    }
+  }
+}

@@ -1,3 +1,4 @@
+docs.md
 /node_modules
 /build
 /node
@@ -14,6 +15,7 @@ yarn.lock
 *.sln
 .vscode/
 .scannerwork/
+.history
 
 npm-debug.log*
 yarn-debug.log*
