@@ -1,19 +1,17 @@
 import React from 'react'
-import Styles from './styles.module.scss'
+import Swiper from 'react-id-swiper'
 
-import { TeamCard } from './components/TeamCard'
-import { Slider } from './components/Slider'
+import { TeamCard } from './../TeamCard'
+import teamMember from '../../../../../../assets/images/team-member.png'
+import teamMember2 from '../../../../../../assets/images/team-member-2.png'
+import teamMember3 from '../../../../../../assets/images/team-member-3.png'
+import teamMember4 from '../../../../../../assets/images/team-member-4.png'
+import teamMember5 from '../../../../../../assets/images/team-member-5.png'
+import teamMember6 from '../../../../../../assets/images/team-member-6.png'
+import teamMember7 from '../../../../../../assets/images/team-member-7.png'
+import teamMember8 from '../../../../../../assets/images/team-member-8.png'
 
-import teamMember from '../../../../assets/images/team-member.png'
-import teamMember2 from '../../../../assets/images/team-member-2.png'
-import teamMember3 from '../../../../assets/images/team-member-3.png'
-import teamMember4 from '../../../../assets/images/team-member-4.png'
-import teamMember5 from '../../../../assets/images/team-member-5.png'
-import teamMember6 from '../../../../assets/images/team-member-6.png'
-import teamMember7 from '../../../../assets/images/team-member-7.png'
-import teamMember8 from '../../../../assets/images/team-member-8.png'
-
-export const Team: React.FC = () => {
+export const Slider = () => {
   const team = [
     {
       id: 1,
@@ -83,32 +81,17 @@ export const Team: React.FC = () => {
     },
   ]
 
+  const params = {
+    slidesPerView: 1,
+  }
+
   return (
-    <section className={Styles.team}>
-      <div className={Styles.wrapper}>
-        <h2 className={Styles.title}>Команда проекта</h2>
-        <div className={Styles.container}>
-          {team.map((person) => (
-            <TeamCard key={person.id} {...person} person={person} />
-          ))}
-        </div>
-        {/* <div className={Styles.slider}> */}
-        {/*  {team.map((person) => ( */}
-        {/*    <TeamCard key={person.id} {...person} person={person} /> */}
-        {/*  ))} */}
-        {/* </div> */}
-        <Slider />
-        <div className={`${Styles.sliderButtons}`}>
-          <button className={`${Styles.button} ${Styles.button_active}`} type='button' />
-          <button className={Styles.button} type='button' />
-          <button className={Styles.button} type='button' />
-          <button className={Styles.button} type='button' />
-          <button className={Styles.button} type='button' />
-          <button className={Styles.button} type='button' />
-          <button className={Styles.button} type='button' />
-          <button className={Styles.button} type='button' />
-        </div>
-      </div>
-    </section>
+    <>
+      <Swiper {...params}>
+        {team.map((person) => (
+          <TeamCard key={person.id} {...person} person={person} />
+        ))}
+      </Swiper>
+    </>
   )
 }

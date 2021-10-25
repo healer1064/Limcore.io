@@ -1,0 +1,10 @@
+.slider {
+  display: grid;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  column-gap: 10px;
+  overflow: auto;
+}
