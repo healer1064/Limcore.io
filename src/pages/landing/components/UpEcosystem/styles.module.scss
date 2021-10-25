@@ -18,7 +18,6 @@
 	align-items: center;
 	justify-content: space-between;
 }
-
 .title {
 	font-family: Montserrat;
 	font-style: normal;
@@ -27,11 +26,9 @@
 	line-height: 100%;
 	color: #3A3B3D;
 }
-
 .title_detection {
 	color: #4A70F8;
 }
-
 .mark {
 	font-family: Montserrat;
 	font-style: normal;
@@ -46,37 +43,36 @@
 	grid-template-columns: repeat(4, 1fr);
 	column-gap: 20px;
 	margin-bottom: 30px;
+	overflow-x: auto;
+	width: 100%;
+	scrollbar-width: none;
 }
-
-@media all and (max-width: 768px) {
-
-	.wrapper {
-		padding: 0 20px;
+.card__container::-webkit-scrollbar {
+	display: none; 
+  }
+.swiper__buttons {
+	width: 100%;
+}
+@media all and (max-width: 1024px) {
+	.title  {
+		padding-left: 20px;
 	}
+	.card__container {
+		padding-left: 20px;
+}
+}
+@media all and (max-width: 768px) {
 
 	.wrapper,
 	.title__container {
 		width: 100%;
 		flex-wrap: wrap;
+		
 	}
-
 	.title {
 		font-size: 22px;
 	}
-
-	.swiper {
-		width: 100%;
-
-		&Slide {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-	}
-
 	.card__container {
-		display: flex;
-		flex-wrap: wrap;
+		column-gap: 10px;	
 	}
-
 }

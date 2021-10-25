@@ -40,12 +40,11 @@
 @media all and (max-width: 768px) {
 	.slide__wrap {
 		height: 100%;
+		padding: 0 20px;
 	}
-
 	.container {
 		width: 100%;
 	}
-
 	.pagination {
 		width: 100%;
 		display: flex;
@@ -54,10 +53,10 @@
 			margin-right: 6px;
 		}
 	}
-
 	.slide__wrap img {
 		object-fit: fill;
 		width: 335px;
 		height: 326px;
 	}
+	
 }

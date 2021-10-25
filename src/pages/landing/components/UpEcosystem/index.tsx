@@ -68,30 +68,17 @@ export const UpEcosystem = () => {
             ''
           )}
         </div>
-        {width >= 768 ? (
-          <div className={Styles.card__container}>
-            {cardData.map((item) => (
-              <Card
-                key={item.id}
-                item={item}
-                isActive={isActive === item.id}
-                onClick={(e) => setIsActive(Number(e.currentTarget.id))}
-              />
-            ))}
-          </div>
-        ) : (
-          <Swiper navigation className={Styles.swiper} slidesPerView={1}>
-            {cardData.map((item) => (
-              <SwiperSlide className={Styles.swiperSlide} key={item.id}>
-                <Card
-                  item={item}
-                  isActive={isActive === item.id}
-                  onClick={(e) => setIsActive(Number(e.currentTarget.id))}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        )}
+        <div className={Styles.card__container}>
+          {cardData.map((item) => (
+            <Card
+              key={item.id}
+              item={item}
+              isActive={isActive === item.id}
+              onClick={(e) => setIsActive(Number(e.currentTarget.id))}
+            />
+          ))}
+        </div>
+
         <SliderContainer />
       </div>
     </div>
