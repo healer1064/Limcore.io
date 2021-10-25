@@ -5,6 +5,8 @@
   padding: 80px 0;
   box-sizing: border-box;
   background-color: #ffffff;
+  width: 100%;
+  align-items: center;
 }
 
 .wrapper {
@@ -31,9 +33,10 @@
   margin: 0 auto;
   padding: 0;
   width: 100%;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  // grid-template-rows: repeat(3, 1fr);
   gap: 20px;
+  justify-content: center;
   overflow: auto;
 }
 
@@ -86,5 +89,15 @@
     font-size: 22px;
     line-height: 1.6;
     padding: 0 0 20px 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .container {
+    display: none;
+  }
+}
+@media screen and (max-width: 1064px) {
+  .wrapper {
+    padding: 0 20px;
   }
 }

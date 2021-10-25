@@ -92,22 +92,7 @@ export const Team: React.FC = () => {
             <TeamCard key={person.id} {...person} person={person} />
           ))}
         </div>
-        {/* <div className={Styles.slider}> */}
-        {/*  {team.map((person) => ( */}
-        {/*    <TeamCard key={person.id} {...person} person={person} /> */}
-        {/*  ))} */}
-        {/* </div> */}
         <Slider />
-        <div className={`${Styles.sliderButtons}`}>
-          <button className={`${Styles.button} ${Styles.button_active}`} type='button' />
-          <button className={Styles.button} type='button' />
-          <button className={Styles.button} type='button' />
-          <button className={Styles.button} type='button' />
-          <button className={Styles.button} type='button' />
-          <button className={Styles.button} type='button' />
-          <button className={Styles.button} type='button' />
-          <button className={Styles.button} type='button' />
-        </div>
       </div>
     </section>
   )

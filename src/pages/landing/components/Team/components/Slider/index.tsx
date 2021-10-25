@@ -1,5 +1,5 @@
 import React from 'react'
-import Swiper from 'react-id-swiper'
+import Styles from './styles.module.scss'
 
 import { TeamCard } from './../TeamCard'
 import teamMember from '../../../../../../assets/images/team-member.png'
@@ -10,6 +10,14 @@ import teamMember5 from '../../../../../../assets/images/team-member-5.png'
 import teamMember6 from '../../../../../../assets/images/team-member-6.png'
 import teamMember7 from '../../../../../../assets/images/team-member-7.png'
 import teamMember8 from '../../../../../../assets/images/team-member-8.png'
+
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/swiper.scss'
+import 'swiper/components/navigation/navigation.scss'
+import 'swiper/components/pagination/pagination.scss'
+import 'swiper/components/scrollbar/scrollbar.scss'
+import SwiperCore, { Pagination } from 'swiper'
+SwiperCore.use([Pagination])
 
 export const Slider = () => {
   const team = [
@@ -86,12 +94,14 @@ export const Slider = () => {
   }
 
   return (
-    <>
-      <Swiper {...params}>
+    <div className={Styles.container}>
+      <Swiper className={Styles.swiper} pagination {...params}>
         {team.map((person) => (
-          <TeamCard key={person.id} {...person} person={person} />
+          <SwiperSlide className={Styles.swiperSlide} key={person.id}>
+            <TeamCard key={person.id} {...person} person={person} />
+          </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   )
 }
