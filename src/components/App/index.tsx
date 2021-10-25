@@ -35,9 +35,9 @@ const App = () => {
   const { width, height } = useWindowSize()
   const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
   const user = useAppSelector((state) => state.user.userData)
+  const isAuth = useAppSelector((state) => state.auth.isAuth)
 
   const desktop = width >= 768
-  const auth = false
 
   return (
     <Router>
@@ -46,22 +46,33 @@ const App = () => {
         {user ? (
           <>
             <main className={desktop ? `${Styles.main}` : `${Styles.main} ${Styles.main_mobile}`}>
-              <Switch>
-                <Route path='/' exact component={LandingPage} />
-                <Route path='/purse' exact component={PurseMobile} />
-                <Route path='/chat' exact component={BroadcastsMobile} />
-                <Route path='/broadcasts' exact component={BroadcastsMobile} />
-                <Route path='/profile' exact component={ProfileMobile} />
-                <Route path='/buy' exact component={BuyPage} />
-                <Route path='/auth' exact component={AuthPage} />
-                <Route path='/not-found' exact component={PageNotFount} />
-                <Route path='*'>
-                  <Redirect to='/not-found' />
-                </Route>
+              {!isAuth && (
+                <Switch>
+                  <Route path='/' exact component={LandingPage} />
+                  {/* <Route path='/purse' exact component={PurseMobile} />
+                  <Route path='/chat' exact component={BroadcastsMobile} />
+                  <Route path='/broadcasts' exact component={BroadcastsMobile} />
+                  <Route path='/profile' exact component={ProfileMobile} />
+                  <Route path='/buy' exact component={BuyPage} /> */}
+                  <Route path='/auth' exact component={AuthPage} />
+                  <Route path='/not-found' exact component={PageNotFount} />
+                  <Route path='*'>
+                    <Redirect to='/not-found' />
+                  </Route>
 
-                {/* <Route path='/' exact component={USER_ROlES.user === userRole?.name ? HomePage : HomePage} />
+                  {/* <Route path='/' exact component={USER_ROlES.user === userRole?.name ? HomePage : HomePage} />
                 <ProtectedRoute allowedUsersTypes={[USER_ROlES.user]} path='/orders' exact component={OrdersPage} /> */}
-              </Switch>
+                </Switch>
+              )}
+              {isAuth && (
+                <Switch>
+                  <Route path='/' exact component={PurseMobile} />
+                  <Route path='/chat' exact component={BroadcastsMobile} />
+                  <Route path='/broadcasts' exact component={BroadcastsMobile} />
+                  <Route path='/profile' exact component={ProfileMobile} />
+                  <Route path='/buy' exact component={BuyPage} />
+                </Switch>
+              )}
             </main>
           </>
         ) : (
@@ -69,7 +80,7 @@ const App = () => {
             <Spinner />
           </div>
         )}
-        {auth && <FooterMobile />}
+        {isAuth && <FooterMobile />}
       </div>
     </Router>
   )

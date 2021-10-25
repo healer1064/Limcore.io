@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect, useCallback } from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik'
 import classNames from 'classnames'
 import { useIMask } from 'react-imask'
@@ -16,6 +16,7 @@ import { isNumbersOnly } from '../../helpers/number.helpers'
 import styles from './Form.module.scss'
 
 const Form: FC = () => {
+  const history = useHistory()
   const dispatch = useAppDispatch()
   const auth = useAppSelector(authSelector)
   const confirmationEmail = useAppSelector((state) => state.auth.confirmationEmail)
@@ -30,7 +31,10 @@ const Form: FC = () => {
     dispatch(registerUserEmail({ email }))
   }
 
-  const onRegistrationConfirm = () => dispatch(registerUserEmailConfirmation(confirmationEmail))
+  const onRegistrationConfirm = () => {
+    dispatch(registerUserEmailConfirmation(confirmationEmail))
+    history.push('/')
+  }
 
   useEffect(() => {
     switch (auth.processType) {
