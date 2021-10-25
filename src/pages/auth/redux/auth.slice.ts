@@ -1,6 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { api } from '../../../app/api'
 import { RootState } from '../../../app/redux/store'
 import { Process, Auth, Method } from '../components/Auth/constants'
+
+export const registerUserEmail: any = createAsyncThunk('auth/registerUserEmail', async function (data) {
+  const response = await api.post('users/registration/', data)
+  return response
+})
+
+export const registerUserEmailConfirmation: any = createAsyncThunk(
+  'auth/registerUserEmailConfirmation',
+  async function (data) {
+    const response = await api.post('users/registration/confirmation/', data)
+    return response
+  },
+)
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -9,6 +23,7 @@ export const authSlice = createSlice({
     authStep: Auth.Step3,
     authMethod: Method.Email,
     '2FA': true,
+    confirmationEmail: { code: '', unique_identifier: '' },
   },
   reducers: {
     setProcessType: (state, { payload }) => {
@@ -22,6 +37,21 @@ export const authSlice = createSlice({
     },
     setAuthStep: (state, { payload }) => {
       state.authStep = payload
+    },
+  },
+  extraReducers: {
+    [registerUserEmail.fulfilled]: (state, action) => {
+      console.log('action', action)
+      const data = { code: '', unique_identifier: '' }
+
+      data.code = action.payload.data.result.slice(35, 40)
+      data.unique_identifier = action.payload.data.result.slice(42, 78)
+
+      state.confirmationEmail = data
+    },
+    [registerUserEmailConfirmation.fulfilled]: (state, action) => {
+      // state.user.userId = action.payload.data.userId
+      // state.user.isNewUser = action.payload.data.isNewUser
     },
   },
 })

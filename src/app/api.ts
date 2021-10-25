@@ -6,7 +6,7 @@ const { REACT_APP_API_DEV, REACT_APP_API_PROD } = process.env
 
 export const API_BASE_URL = DEV ? REACT_APP_API_DEV : REACT_APP_API_PROD
 
-const getURL = (path: string) => `${API_BASE_URL}/v1/${path}`
+const getURL = (path: string) => `${API_BASE_URL}${path}`
 
 /**
  * возвращает header для запроса
