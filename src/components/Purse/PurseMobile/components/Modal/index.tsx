@@ -7,7 +7,7 @@ interface IModalProps {
   setActive: React.Dispatch<React.SetStateAction<boolean>>
   children?: React.ReactNode
   style?: {
-    zIndex: number
+    zIndex?: number
     overflow?: string
   }
 }

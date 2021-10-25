@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
-import { plusSvg, balanceLimc, balanceUsdt } from '../../images'
+import { plusSvg, balanceLimc, balanceUsdt, creditCard } from '../../images'
 import { MenuItem } from './components/MenuItem/index'
 
 export const Menu = () => {
   const [isLimcInfoVisible, setIsLimcInfoVisible] = useState(false)
   const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
+  const [isCardInfoVisible, setIsCardInfoVisible] = useState(false)
   const buttonPlusClass = `${styles.menu__item} ${styles.menu__buttonPlus}`
 
   const handleBalanceLimcOpenClick = () => {
@@ -22,6 +23,14 @@ export const Menu = () => {
 
   const handleBalanceUsdtCloseClick = () => {
     setIsUsdtInfoVisible(false)
+  }
+
+  const handleBalanceCardOpenClick = () => {
+    setIsCardInfoVisible(true)
+  }
+
+  const handleBalanceCardCloseClick = () => {
+    setIsCardInfoVisible(false)
   }
 
   return (
@@ -44,6 +53,14 @@ export const Menu = () => {
         setActive={handleBalanceUsdtOpenClick}
         setNotActive={handleBalanceUsdtCloseClick}
         active={isUsdtInfoVisible}
+      />
+      <MenuItem
+        image={creditCard}
+        title='Баланс карты'
+        balance='$1,988'
+        setActive={handleBalanceCardOpenClick}
+        setNotActive={handleBalanceCardCloseClick}
+        active={isCardInfoVisible}
       />
     </div>
   )

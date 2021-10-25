@@ -35,11 +35,6 @@ export const PurseMobile: FC = () => {
   const handleTransactionsClick = () => {
     console.log('Transactions click')
   }
-
-  const handleDetailsClick = () => {
-    console.log('Детализазия майнинга')
-  }
-
   const handleShowMoreClick = () => {
     console.log('Показать больше')
   }
@@ -51,7 +46,7 @@ export const PurseMobile: FC = () => {
       <div className={styles.purse__content}>
         {isCardVisible && <VirtualCard onCloseClick={handleCardCloseClick} />}
         {isLimcBought ? <StartMining onButtonClick={handleStartClick} /> : <Statistics onClick={handleShowMoreClick} />}
-        <Details onDetailsClick={handleDetailsClick} />
+        <Details />
         {isWalletVisible && <Wallet onCloseClick={handleWalletCloseClick} />}
         <Transactions
           onProfileClick={handleProfileClick}

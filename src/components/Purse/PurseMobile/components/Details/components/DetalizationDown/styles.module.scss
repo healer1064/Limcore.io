@@ -1,5 +1,5 @@
-@import '../../../../../scss/cabinet';
-@import '../../../vars&mixins.scss';
+@import '../../../../../../../scss/cabinet';
+@import '../../../../../vars&mixins.scss';
 
 .details {
   position: relative;
@@ -41,33 +41,6 @@
 
     &:active {
       opacity: 0.7;
-    }
-  }
-
-  &Modal {
-    padding: 0 20px;
-    width: 100vw;
-    height: 100vh;
-
-    // DetalizationDown
-    & > ul {
-      padding: 0;
-
-      & > li {
-        padding: 18px 0;
-      }
-    }
-
-    // DetalizationUp
-    & > header {
-      margin-top: 20px;
-      border: none;
-
-      & > ul {
-        padding: 20px;
-        box-shadow: 0px 4px 25px 0px #7070701A;
-        border-radius: 14px;
-      }
     }
   }
 }
@@ -137,11 +110,14 @@
 
   &__title {
     @include subtitle-14px($color-gray-black);
-    margin-bottom: 2px;
+    margin: 0 0 2px 0;
+    padding: 0;
     text-align: left;  
   }
 
   &__text {
+    padding: 0;
+    margin: 0;
     @include subtitle-13px($color-gray-mouse);
     text-align: left;
   }
@@ -152,16 +128,16 @@
   flex: none;
 
   &__title {
+    padding: 0;
+    margin: 0;
     @include subtitle-14px($color-gray-medium);
     text-align: right;
   }
 
   &__text {
+    padding: 0;
+    margin: 0;
     @include subtitle-13px($color-gray-mouse);
     text-align: right;
   }
 }
-
-
-
-

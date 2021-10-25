@@ -23,6 +23,9 @@ import tradeIcon from './trade-icon.svg'
 import sellIcon from './sell-icon.svg'
 import withdrawIcon from './withdraw-icon.svg'
 import addMoneyIcon from './addMoney-icon.svg'
+import creditCard from './credit-card.svg'
+import transferIcon from './transfer-icon.svg'
+import pyaterochka from './5shop.png'
 
 export {
   balanceLimc,
@@ -50,4 +53,7 @@ export {
   sellIcon,
   withdrawIcon,
   addMoneyIcon,
+  creditCard,
+  transferIcon,
+  pyaterochka,
 }
