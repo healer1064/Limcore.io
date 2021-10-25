@@ -1,10 +1,14 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Navigation } from 'swiper'
+import SwiperCore, { Navigation, Pagination } from 'swiper'
+
+import useWindowSize from '@helpers/useWindowSizeHook'
+
 import Styles from './styles.module.scss'
 import 'swiper/swiper-bundle.min.css'
 import 'swiper/swiper.min.css'
 import 'swiper/components/navigation/navigation.scss'
+import 'swiper/components/pagination/pagination.scss'
 
 import left from '@icons/arrow-left-blue.svg'
 import right from '@icons/arrow-right-blue.svg'
@@ -31,29 +35,30 @@ import tcryptodogeIcon from '@icons/tcryptodoge.png'
 import ttacoIcon from '@icons/ttaco.png'
 import tluckyIcon from '@icons/tlucky.png'
 
-SwiperCore.use([Navigation])
+SwiperCore.use([Pagination])
 
 export const CalculatorSlider: React.FC = () => {
+  const { width } = useWindowSize()
   return (
     <div className={Styles.slider}>
       <h3 className={Styles.caption}>
         <img src={limcoreIcon} alt='Иконка' /> 1 LIMC одновременно майнит все токены
-      </h3>
-      <span className={Styles.description}>Отмеченные токены уже майнятся компанией Limcore</span>
-      <span className={Styles.description}>Остальные в процессе интеграции</span>
+      </h3>{' '}
+      {width >= 768 ? (
+        <>
+          <span className={Styles.description}>Отмеченные токены уже майнятся компанией Limcore</span>
+          <span className={Styles.description}>Остальные в процессе интеграции</span>
+        </>
+      ) : (
+        <span className={Styles.description}>
+          Отмеченные токены уже майнятся компанией Limcore. Остальные в процессе интеграции
+        </span>
+      )}
       <div className={Styles.container}>
-        <button className={`${Styles.button} ${Styles.button_prev}`}>
-          <img src={left} />
-        </button>
-        <button className={`${Styles.button} ${Styles.button_next}`}>
-          <img src={right} />
-        </button>
         <Swiper
-          spaceBetween={120}
-          slidesPerView={3}
-          navigation={{
-            prevEl: '.button_prev',
-            nextEl: '.button_next',
+          loop
+          pagination={{
+            el: `.${Styles.pagination}`,
           }}
         >
           <SwiperSlide>
@@ -233,6 +238,7 @@ export const CalculatorSlider: React.FC = () => {
             </div>
           </SwiperSlide>
         </Swiper>
+        <div className={Styles.pagination} />
       </div>
     </div>
   )
