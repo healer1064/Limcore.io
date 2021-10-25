@@ -17,43 +17,68 @@ export const Footer: React.FC = () => {
             <img className={Styles.footer__languageArrow} src={arrow} alt='Arrow-button' />
           </div>
           <ul className={`${Styles.footer__etc} ${Styles.footer__list}`}>
-            <li className={Styles.footer__listItem}>
-              <a>Whitepaper</a>
-            </li>
-            <li className={Styles.footer__listItem}>
-              <a>Рекламный буклет</a>
-            </li>
+            <h3 className={`${Styles.footer_listTitle} ${Styles.footer__listTitle_etcTitle}`}>Прочее</h3>
+            <div className={Styles.footer__listItemContainer_etc}>
+              <li className={Styles.footer__listItem}>
+                <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
+                  Whitepaper
+                </a>
+              </li>
+              <li className={Styles.footer__listItem}>
+                <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
+                  Рекламный буклет
+                </a>
+              </li>
+            </div>
           </ul>
           <ul className={`${Styles.footer__information} ${Styles.footer__list}`}>
             <h3 className={Styles.footer_listTitle}>Раскрытие информации</h3>
             <li className={Styles.footer__listItem}>
-              <a>Учредительные документы РФ</a>
+              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
+                Учредительные документы РФ
+              </a>
             </li>
             <li className={Styles.footer__listItem}>
-              <a>Учредительные документы Swiss</a>
+              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
+                Учредительные документы Swiss
+              </a>
             </li>
             <li className={Styles.footer__listItem}>
-              <a>Страхование оборудования</a>
+              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
+                Страхование оборудования
+              </a>
             </li>
             <li className={Styles.footer__listItem}>
-              <a>Страхование здания и прочего имущества</a>
+              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
+                Страхование здания и прочего имущества
+              </a>
             </li>
           </ul>
           <ul className={`${Styles.footer__users} ${Styles.footer__list}`}>
             <h3 className={Styles.footer_listTitle}>Взаимодействие с пользователями</h3>
             <li className={Styles.footer__listItem}>
-              <a>Пользовательское соглашение об обработке персональных данных</a>
+              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
+                Пользовательское соглашение об обработке персональных данных
+              </a>
             </li>
             <li className={Styles.footer__listItem}>
-              <a>Договор оферта о покупке токена LIMC</a>
+              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
+                Договор оферта о покупке токена LIMC
+              </a>
             </li>
           </ul>
           <div className={Styles.footer__line} />
           <ul className={`${Styles.footer__address} ${Styles.footer__list}`}>
             <h3 className={Styles.footer_listTitle}>Россия</h3>
-            <li className={Styles.footer__listItem_gray}>ООО «Лимкор Дата Центр»</li>
-            <li className={Styles.footer__listItem_gray}>КПП: 772901001 / ИНН: 9729264079</li>
-            <li className={Styles.footer__listItem_gray}>Юридический адрес компании: г. Можайск, улица Мира, дом 98</li>
+            <li className={`${Styles.footer__listItem_gray} ${Styles.footer__listItem_address}`}>
+              ООО «Лимкор Дата Центр»
+            </li>
+            <li className={`${Styles.footer__listItem_gray} ${Styles.footer__listItem_address}`}>
+              КПП: 772901001 / ИНН: 9729264079
+            </li>
+            <li className={`${Styles.footer__listItem_gray} ${Styles.footer__listItem_address}`}>
+              Юридический адрес компании: г. Можайск, улица Мира, дом 98
+            </li>
           </ul>
           <ul className={`${Styles.footer__issuer} ${Styles.footer__list}`}>
             <div className={Styles.footer__listItemContainer}>
@@ -67,23 +92,23 @@ export const Footer: React.FC = () => {
           </ul>
           <p className={Styles.footer__email}>info@limcore.io</p>
           <ul className={Styles.footer__social}>
-            <li className={Styles.footer__socialIcon_twitter}>
-              <a href='#' target='blank' rel='noopener noreferrer' />
+            <li className={`${Styles.footer__socialIcon_twitter} ${Styles.footer__socialIcon}`}>
+              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link} />
             </li>
-            <li className={Styles.footer__socialIcon_linkedIn}>
-              <a href='#' target='blank' rel='noopener noreferrer' />
+            <li className={`${Styles.footer__socialIcon_linkedIn} ${Styles.footer__socialIcon}`}>
+              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link} />
             </li>
-            <li className={Styles.footer__socialIcon_vk}>
-              <a href='#' target='blank' rel='noopener noreferrer' />
+            <li className={`${Styles.footer__socialIcon_vk} ${Styles.footer__socialIcon}`}>
+              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link} />
             </li>
-            <li className={Styles.footer__socialIcon_insta}>
-              <a href='#' target='blank' rel='noopener noreferrer' />
+            <li className={`${Styles.footer__socialIcon_insta} ${Styles.footer__socialIcon}`}>
+              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link} />
             </li>
-            <li className={Styles.footer__socialIcon_telegram}>
-              <a href='#' target='blank' rel='noopener noreferrer' />
+            <li className={`${Styles.footer__socialIcon_telegram} ${Styles.footer__socialIcon}`}>
+              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link} />
             </li>
-            <li className={Styles.footer__socialIcon_facebook}>
-              <a href='#' target='blank' rel='noopener noreferrer' />
+            <li className={`${Styles.footer__socialIcon_facebook} ${Styles.footer__socialIcon}`}>
+              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link} />
             </li>
           </ul>
           <p className={Styles.footer__copyright}>

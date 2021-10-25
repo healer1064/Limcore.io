@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+  display: none;
+}
+
+.swiperSlide {
+  margin-bottom: 36px;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    display: block;
+  }
+}

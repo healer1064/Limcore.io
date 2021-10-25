@@ -1,19 +1,25 @@
 import React from 'react'
 import Styles from './styles.module.scss'
 
-import { TeamCard } from './components/TeamCard'
-import { Slider } from './components/Slider'
+import { TeamCard } from './../TeamCard'
+import teamMember from '../../../../../../assets/images/team-member.png'
+import teamMember2 from '../../../../../../assets/images/team-member-2.png'
+import teamMember3 from '../../../../../../assets/images/team-member-3.png'
+import teamMember4 from '../../../../../../assets/images/team-member-4.png'
+import teamMember5 from '../../../../../../assets/images/team-member-5.png'
+import teamMember6 from '../../../../../../assets/images/team-member-6.png'
+import teamMember7 from '../../../../../../assets/images/team-member-7.png'
+import teamMember8 from '../../../../../../assets/images/team-member-8.png'
 
-import teamMember from '../../../../assets/images/team-member.png'
-import teamMember2 from '../../../../assets/images/team-member-2.png'
-import teamMember3 from '../../../../assets/images/team-member-3.png'
-import teamMember4 from '../../../../assets/images/team-member-4.png'
-import teamMember5 from '../../../../assets/images/team-member-5.png'
-import teamMember6 from '../../../../assets/images/team-member-6.png'
-import teamMember7 from '../../../../assets/images/team-member-7.png'
-import teamMember8 from '../../../../assets/images/team-member-8.png'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/swiper.scss'
+import 'swiper/components/navigation/navigation.scss'
+import 'swiper/components/pagination/pagination.scss'
+import 'swiper/components/scrollbar/scrollbar.scss'
+import SwiperCore, { Pagination } from 'swiper'
+SwiperCore.use([Pagination])
 
-export const Team: React.FC = () => {
+export const Slider = () => {
   const team = [
     {
       id: 1,
@@ -83,17 +89,19 @@ export const Team: React.FC = () => {
     },
   ]
 
+  const params = {
+    slidesPerView: 1,
+  }
+
   return (
-    <section className={Styles.team}>
-      <div className={Styles.wrapper}>
-        <h2 className={Styles.title}>Команда проекта</h2>
-        <div className={Styles.container}>
-          {team.map((person) => (
+    <div className={Styles.container}>
+      <Swiper className={Styles.swiper} pagination {...params}>
+        {team.map((person) => (
+          <SwiperSlide className={Styles.swiperSlide} key={person.id}>
             <TeamCard key={person.id} {...person} person={person} />
-          ))}
-        </div>
-        <Slider />
-      </div>
-    </section>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   )
 }
