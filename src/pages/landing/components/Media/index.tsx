@@ -1,6 +1,8 @@
 import React from 'react'
 import Styles from './styles.module.scss'
 
+import { MediaMobile } from './MediaMobile'
+
 import mediaImage from '../../../../assets/images/media.png'
 
 export const Media: React.FC = () => {
@@ -30,7 +32,9 @@ export const Media: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className={`${Styles.media} ${Styles.media_mobile}`}>ds</div>
+      <div className={`${Styles.media} ${Styles.media_mobile}`}>
+        <MediaMobile />
+      </div>
     </>
   )
 }
