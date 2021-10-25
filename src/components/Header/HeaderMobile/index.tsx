@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useAppSelector } from '@app/redux/hooks'
 import Styles from './styles.module.scss'
 
@@ -10,7 +11,9 @@ export const HeaderMobile: React.FC = () => {
     <header className={Styles.header}>
       <img className={Styles.logo} src={logoIcon} alt='Лого' />
       <div className={Styles.wrap}>
-        <img src={userIcon} alt='Иконка' />
+        <Link to='auth'>
+          <img src={userIcon} alt='Иконка' />
+        </Link>
         <div className={Styles.burger}>
           <span className={Styles.row}>{}</span>
           <span className={Styles.row}>{}</span>

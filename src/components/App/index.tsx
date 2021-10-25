@@ -36,16 +36,19 @@ const App = () => {
   const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
   const user = useAppSelector((state) => state.user.userData)
 
+  const desktop = width >= 768
+  const auth = false
+
   return (
     <Router>
       <div className={Styles.app_container}>
-        {width >= 768 ? <Header /> : <HeaderMobile />}
+        {desktop ? <Header /> : <HeaderMobile />}
         {user ? (
-          <main className={Styles.main}>
+          <main className={desktop ? `${Styles.main}` : `${Styles.main} ${Styles.main_mobile}`}>
             <Switch>
               <Route path='/' exact component={LandingPage} />
               <Route path='/purse' exact component={PurseMobile} />
-              <Route path='/chat' exact component={ProfileMobile} />
+              <Route path='/chat' exact component={BroadcastsMobile} />
               <Route path='/broadcasts' exact component={BroadcastsMobile} />
               <Route path='/profile' exact component={ProfileMobile} />
               <Route path='/buy' exact component={BuyPage} />
@@ -64,8 +67,7 @@ const App = () => {
             <Spinner />
           </div>
         )}
-        <Footer />
-        {/* <FooterMobile /> */}
+        {desktop ? <Footer /> : <>{auth ? <FooterMobile /> : null}</>}
       </div>
     </Router>
   )
