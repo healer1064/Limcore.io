@@ -1,8 +1,16 @@
 .media {
   display: flex;
-  justify-content: center;
   padding: 80px 0;
   background: #f7f9ff;
+}
+
+.media_desktop {
+  justify-content: center;
+}
+
+.media_mobile {
+  display: none;
+  padding: 60px 0;
 }
 
 .wrapper {
@@ -103,4 +111,14 @@
   line-height: 150%;
   text-align: center;
   color: #3a3b3d;
+}
+
+@media screen and (max-width: 768px) {
+  .media_desktop {
+    display: none;
+  }
+
+  .media_mobile {
+    display: flex;
+  }
 }

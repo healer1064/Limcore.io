@@ -64,7 +64,7 @@ const App = () => {
             <Spinner />
           </div>
         )}
-        <Footer />
+        {/* <Footer /> */}
         {/* <FooterMobile /> */}
       </div>
     </Router>
