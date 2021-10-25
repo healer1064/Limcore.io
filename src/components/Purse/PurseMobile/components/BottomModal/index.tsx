@@ -6,11 +6,14 @@ interface IBottomModalProps {
   active: boolean
   setActive: (boolean) => void
   children?: React.ReactNode
-  title: string
-  subtitle: string
+  title?: string
+  subtitle?: string
+  style?: {
+    zIndex?: number
+  }
 }
 
-export const BottomModal = ({ active, setActive, title, subtitle, children }: IBottomModalProps) => {
+export const BottomModal = ({ active, setActive, title, subtitle, children, style }: IBottomModalProps) => {
   const node = document.getElementById('root')
   const modalClass = active ? styles.modalActive : styles.modal
 
@@ -23,7 +26,7 @@ export const BottomModal = ({ active, setActive, title, subtitle, children }: IB
   }
 
   return ReactDOM.createPortal(
-    <div className={modalClass} onClick={handleModalOutClick}>
+    <div className={modalClass} onClick={handleModalOutClick} style={style}>
       <div className={styles.modalContent} onClick={handleModalContentClick}>
         <button type='button' className={styles.close} onClick={setActive} />
         <h4 className={styles.title}>{title}</h4>

@@ -4,11 +4,12 @@ import styles from './styles.module.scss'
 
 interface IModalProps {
   active: boolean
-  setActive: React.Dispatch<React.SetStateAction<boolean>>
+  setActive?: React.Dispatch<React.SetStateAction<boolean>>
   children?: React.ReactNode
   style?: {
-    zIndex: number
+    zIndex?: number
     overflow?: string
+    backgroundColor?: string
   }
 }
 

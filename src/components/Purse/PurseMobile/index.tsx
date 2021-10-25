@@ -16,10 +16,6 @@ export const PurseMobile: FC = () => {
   const [isLimcBought, setIsLimcBought] = useState(false)
   const [isUserHasTransactions, setIsUserHasTransactions] = useState(true)
 
-  const handleMenuClick = () => {
-    console.log('Menu click')
-  }
-
   const handleCardCloseClick = () => {
     setIsCardVisible(false)
   }
@@ -39,11 +35,6 @@ export const PurseMobile: FC = () => {
   const handleTransactionsClick = () => {
     console.log('Transactions click')
   }
-
-  const handleDetailsClick = () => {
-    console.log('Детализазия майнинга')
-  }
-
   const handleShowMoreClick = () => {
     console.log('Показать больше')
   }
@@ -51,11 +42,11 @@ export const PurseMobile: FC = () => {
   return (
     <div className={styles.purse}>
       <Balance />
-      <Menu onMenuClick={handleMenuClick} />
+      <Menu />
       <div className={styles.purse__content}>
         {isCardVisible && <VirtualCard onCloseClick={handleCardCloseClick} />}
         {isLimcBought ? <StartMining onButtonClick={handleStartClick} /> : <Statistics onClick={handleShowMoreClick} />}
-        <Details onDetailsClick={handleDetailsClick} />
+        <Details />
         {isWalletVisible && <Wallet onCloseClick={handleWalletCloseClick} />}
         <Transactions
           onProfileClick={handleProfileClick}

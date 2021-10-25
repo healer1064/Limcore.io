@@ -2,13 +2,15 @@
 @import '../../../../../vars&mixins.scss';
 
 .list {
+  margin: 0;
+  padding: 0 0 25px 0;
   list-style-type: none;
 }
   
-.item, .item__minus, .item__switch {
+.item, .item__minus {
   display: flex;
   align-items: center;
-  padding: 14px 0;
+  padding: 14px 0 !important;
 
   & + & {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -32,7 +34,7 @@
 
   display: flex;
   flex-direction: column;
-  margin-right: auto;
+  margin-right: auto !important;
 
   &::after {
     content: '';
@@ -59,7 +61,7 @@
 }
 
 .image {
-  margin-right: 13px;
+  margin-right: 13px !important;
   display: block;
   width: 26px;
   height: 26px;
@@ -67,8 +69,7 @@
 
 
 .title {
-  margin-right: auto;
-  margin-bottom: 2px;
+  margin: 0 auto 2px 0 !important;
 
   @include subtitle-14px($color-gray-black);
   text-align: left;  
@@ -79,11 +80,15 @@
   flex: none;
 
   &__title {
+    margin: 0;
+    padding: 0;
     @include subtitle-14px(#4DBE28);
     text-align: right;
   }
 
   &__text {
+    margin: 0;
+    padding: 0;
     @include subtitle-13px($color-gray-mouse);
     text-align: right;
   }

@@ -43,6 +43,38 @@
       opacity: 0.7;
     }
   }
+
+  &Modal {
+    padding: 0 20px;
+    width: 100vw;
+    height: 100vh;
+
+    // DetalizationDown
+    & > ul {
+      padding: 0;
+
+      & > li {
+        padding: 18px 0;
+      }
+    }
+
+    // DetalizationUp
+    & > header {
+      margin-top: 20px;
+      border: none;
+
+      & > ul {
+        padding: 20px;
+        box-shadow: 0px 4px 25px 0px #7070701A;
+        border-radius: 14px;
+      }
+    }
+  }
+
+  &List {
+    list-style-type: none;
+    padding: 0 20px;
+  }
 }
 
 .balanceString {

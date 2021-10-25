@@ -15,7 +15,7 @@ export const Overall = ({ onClick, money }) => {
   const [disabledColor, setDisabledColor] = useState('#99A0AD')
   const [dotsColor, setDotsColor] = useState('#99A0AD')
   const [isModalVisible, setIsModalVisible] = useState(false)
-  const [isCalcOpen, setIsCalcOpen] = useState(true)
+  const [isCalcOpen, setIsCalcOpen] = useState(false)
   // const [payInputRadioChecked, setPayInputRadioChecked] = useState(true)
 
   const Item = (title, sum) => (

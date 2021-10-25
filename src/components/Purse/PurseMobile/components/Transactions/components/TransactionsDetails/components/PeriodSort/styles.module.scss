@@ -1,0 +1,64 @@
+@import '../../../../../../../vars&mixins.scss';
+
+.modalList {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.modalItem {
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+  }
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-top: 20px;
+  }
+}
+
+.modalBtn {
+  padding: 0;
+  margin: 0;
+  border: none;
+  
+  @include subtitle-14px(#4F535A);
+  font-weight: 600;
+
+  background-color: transparent;
+  outline: none;
+}
+
+.block {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  position: absolute;
+  appearance: none;
+
+  &:checked + .checkbox {
+    background-image: url('../../../../../../../../../assets/icons/input-checkbox-check.svg');
+  }
+}
+
+.checkbox {
+  width: 26px;
+  height: 26px;
+  background-image: url('../../../../../../../../../assets/icons/input-checkbox.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: 12px;
+}
+
+.icon {
+  margin-right: 8px;
+  max-width: 28px;
+  max-height: 28px;
+}
