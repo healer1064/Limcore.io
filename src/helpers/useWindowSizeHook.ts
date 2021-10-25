@@ -7,7 +7,8 @@ const useWindowSize = () => {
   })
 
   React.useEffect(() => {
-    const handleResize = () => setWindowSize({ width: window.innerWidth, height: window.innerHeight })
+    const handleResize = () =>
+      setWindowSize({ width: document.documentElement.clientWidth, height: document.documentElement.clientHeight })
 
     window.addEventListener('resize', handleResize)
 
