@@ -1,0 +1,39 @@
+.caption {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 80px;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 42px;
+  line-height: 140%;
+  color: #3a3b3d;
+  margin: 0;
+  margin-bottom: 21px;
+}
+
+.subtitle {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 160%;
+  color: #4f535a;
+  margin: 0;
+}
+
+// Modile
+@media all and (max-width: 768px) {
+  .caption {
+    flex-wrap: wrap;
+  }
+}

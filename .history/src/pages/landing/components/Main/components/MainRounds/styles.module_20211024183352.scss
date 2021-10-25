@@ -1,0 +1,279 @@
+.rounds {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 60px;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid #dbdfee;
+  padding-bottom: 14px;
+  width: 100%;
+  max-width: 611px;
+  margin-bottom: 10px;
+}
+
+.name {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 150%;
+  color: #3a3b3d;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.designation {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 160%;
+  color: #99a0ad;
+}
+
+.value {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 160%;
+  color: #3a3b3d;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  img {
+    margin-top: 10px;
+  }
+}
+
+.progress {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  background: #dbe0ee;
+  border-radius: 6px;
+  padding: 5px 10px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #4a70f8;
+  border-radius: 6px 0 0 6px;
+  width: 76px;
+  height: 100%;
+}
+
+.count {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 150%;
+  color: #868da7;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 23px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 160%;
+    color: #67686c;
+    margin-top: 6px;
+  }
+}
+
+.second {
+  background: none;
+  border-radius: 14px;
+  border: 1px solid #4a70f8;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: #4a70f8;
+  padding: 14px 0;
+  width: 285px;
+  cursor: pointer;
+}
+
+.button {
+  width: 285px;
+}
+
+.road {
+  display: flex;
+  flex-direction: column;
+  margin-top: 45px;
+}
+
+.cover {
+  display: flex;
+  gap: 8px;
+}
+
+.round {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    color: #4f535a;
+  }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background: #dcdfee;
+  border-radius: 6px;
+  padding: 4px 10px;
+  margin-top: 10px;
+
+  span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 150%;
+    color: #868da7;
+  }
+}
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.lines {
+  display: flex;
+  margin-bottom: 2px;
+}
+
+.line {
+  display: flex;
+  flex: 1;
+  height: 30px;
+  border-top: 4px solid #4a70f8;
+  border-left: 2px solid #4a70f8;
+  border-right: 2px solid #4a70f8;
+
+  &:last-child {
+    flex: 3;
+    border-left: none;
+  }
+}
+
+.dates {
+  display: flex;
+}
+
+.date {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+
+  &:last-child {
+    flex: 3;
+  }
+
+  span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+    color: #4f535a;
+  }
+}
+
+.info {
+  display: flex;
+  gap: 42px;
+  border: 1px solid #dcdfee;
+  border-radius: 6px;
+  padding: 20px 30px;
+  margin-top: 30px;
+}
+
+.description {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 150%;
+  color: #4c4c4c;
+  width: 100%;
+  max-width: 450px;
+}
+
+@media all and (max-width: 768px) {
+
+  .rounds {
+    flex-wrap: wrap;
+    padding: 0 20px;
+  }
+
+  .wrap {
+    align-items: flex-start;
+  }
+
+  .name {
+    font-size: 28px;
+  }
+
+  .list {
+    flex-wrap: wrap;
+  }
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 
 import { Footer } from '../Footer'
@@ -31,14 +32,14 @@ import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 
 const App = () => {
+  const { width, height } = useWindowSize()
   const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
   const user = useAppSelector((state) => state.user.userData)
 
   return (
     <Router>
       <div className={Styles.app_container}>
-        <Header />
-        {/* <HeaderMobile /> */}
+        {width >= 768 ? <Header /> : <HeaderMobile />}
         {user ? (
           <main className={Styles.main}>
             <Switch>
