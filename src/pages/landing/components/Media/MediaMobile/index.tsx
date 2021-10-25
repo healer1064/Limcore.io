@@ -4,6 +4,9 @@ import SwiperCore, { Pagination } from 'swiper'
 import Styles from './styles.module.scss'
 import 'swiper/swiper-bundle.min.css'
 import 'swiper/swiper.min.css'
+import 'swiper/components/navigation/navigation.scss'
+import 'swiper/components/pagination/pagination.scss'
+import 'swiper/components/scrollbar/scrollbar.scss'
 
 import mediaImage from '../../../../../assets/images/media.png'
 
