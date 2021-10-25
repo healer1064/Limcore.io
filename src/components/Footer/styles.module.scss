@@ -11,7 +11,7 @@
     box-sizing: border-box;
     width: 100%;
     justify-content: space-between;
-    grid-template-columns: 245px 360px 320px;
+    grid-template-columns: 255px 360px 320px;
     grid-template-rows: repeat(7, minmax(min-content, max-content));
     grid-template-areas:
       'logo information users'
@@ -88,6 +88,10 @@
     box-sizing: border-box;
     display: flex;
     white-space: nowrap;
+  }
+
+  &__listTitle_etcTitle {
+    display: none;
   }
 
   &__listItem {
@@ -223,58 +227,46 @@
     box-sizing: border-box;
   }
 
-  &__socialIcon_twitter {
-    background-image: url('../../assets/icons/twitter-icon.png');
+  &__socialIcon {
     width: 32px;
     height: 32px;
     margin: 0 10px 0 0;
     padding: 0;
     box-sizing: border-box;
+  }
+
+  &__socialIcon_twitter {
+    background-image: url('../../assets/icons/twitter-icon.png');
   }
 
   &__socialIcon_linkedIn {
     background-image: url('../../assets/icons/linkedIn-icon.png');
-    width: 32px;
-    height: 32px;
-    margin: 0 10px 0 0;
-    padding: 0;
-    box-sizing: border-box;
   }
 
   &__socialIcon_vk {
     background-image: url('../../assets/icons/vk-icon.png');
-    width: 32px;
-    height: 32px;
-    margin: 0 10px 0 0;
-    padding: 0;
-    box-sizing: border-box;
   }
 
   &__socialIcon_insta {
     background-image: url('../../assets/icons/insta-icon.png');
-    width: 32px;
-    height: 32px;
-    margin: 0 10px 0 0;
-    padding: 0;
-    box-sizing: border-box;
   }
 
   &__socialIcon_telegram {
     background-image: url('../../assets/icons/telegram-icon.png');
-    width: 32px;
-    height: 32px;
-    margin: 0 10px 0 0;
-    padding: 0;
-    box-sizing: border-box;
   }
 
   &__socialIcon_facebook {
     background-image: url('../../assets/icons/facebook-icon.png');
-    width: 32px;
-    height: 32px;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #B4BFD4;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
   }
 }
 
@@ -293,4 +285,137 @@
   padding: 0;
   box-sizing: border-box;
   max-width: 201px;
+}
+
+@media screen and (max-width: 1080px) {
+  .footer {
+    padding: 40px 10px 30px;
+  }
+
+  .footer__container {
+    grid-template-columns: 205px 310px 270px;
+  }
+
+  .footer__issuer {
+    flex-direction: column;
+  }
+
+  .footer__listItemContainer {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .footer {
+    padding: 30px 20px 20px;
+  }
+
+  .footer__container {
+    grid-template-columns: repeat(2, minmax(min-content, max-content));;
+    grid-template-rows: repeat(10, minmax(min-content, max-content));
+    grid-template-areas:
+    'logo logo'
+    'social social'
+    'email language'
+    'address address'
+    'issuer issuer'
+    'information information'
+    'users users'
+    'etc etc'
+    'line line'
+    'copyright .';
+  }
+
+  .logo {
+    margin: 0 auto 26px;
+    max-width: 238px;
+  }
+
+  .footer__social {
+    justify-self: center;
+    margin: 0 auto 18px;
+  }
+
+  .footer__socialIcon {
+    width: 40px;
+    height: 40px;
+    margin: 0 16px 0 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .footer__email {
+    margin: 0 0 30px 0;
+    text-align: start;
+  }
+
+  .footer__languageGroup {
+    margin: 0;
+  }
+
+  .footer__language {
+    padding: 4px 0 0 0;
+  }
+
+  .footer_listTitle {
+    color: #647BA8;
+    padding: 0 0 16px 0;
+  }
+
+  .footer__listTitle_etcTitle {
+    display: flex;
+  }
+
+  .footer_listTitle_noWrap {
+    color: #647BA8;
+    padding: 0 0 16px 0;
+    white-space: normal;
+  }
+
+  .footer__listItem_address {
+    padding: 0 0 10px 0;
+  }
+
+  .footer__listItem {
+    padding: 0 22px 16px 0;
+    font-size: 13px;
+    line-height: 1.2;
+  }
+
+  .footer__listItem:last-child {
+    padding: 0 0 30px 0;
+  }
+
+  .footer__listItem_gray {
+    padding: 0 0 16px 0;
+  }
+
+  .footer__listItem_gray:last-child {
+    padding: 0 0 30px 0;
+  }
+
+  .footer__listItemContainer_etc {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .footer__listItemContainer {
+    margin: 0;
+  }
+
+  .footer__listItemContainer:last-child {
+    margin: 0;
+  }
+
+  .footer__line {
+    margin: 0 0 14px 0;
+  }
+
+  .footer__copyright {
+    font-size: 13px;
+    line-height: 1.23;
+    text-align: start;
+    align-content: start;
+  }
 }
