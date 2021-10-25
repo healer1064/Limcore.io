@@ -9,9 +9,11 @@
     height: 170px;
     cursor: pointer;
 }
+
 .container_active {
     border: 2px solid #4A70F8;
 }
+
 .title {
     font-family: Montserrat;
     font-style: normal;
@@ -22,6 +24,7 @@
     margin: 0;
     text-align: start;
 }
+
 .mark__text {
     font-family: Montserrat;
     font-style: normal;
@@ -32,10 +35,12 @@
     margin: 0;
     padding-left: 6px;
 }
+
 .mark__container {
     display: flex;
     align-items: center;
 }
+
 .value {
     font-family: Montserrat;
     font-style: normal;
@@ -44,24 +49,35 @@
     line-height: 120%;
     color: #3A3B3D;
 }
+
 .dinamic__container {
     display: flex;
 }
-.dinamic__container img{
+
+.dinamic__container img {
     margin-right: 5px;
 }
+
 .dinamic {
     font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
-    line-height: 17px;  
+    line-height: 17px;
     color: #99A0AD;
     margin-right: 6px;
 }
+
 .dinamic__up {
     color: #4DBE28;
 }
+
 .dinamic__down {
     color: #F24949;
+}
+
+@media all and (max-width: 768px) {
+    .container {
+        max-width: 200px;
+    }
 }
