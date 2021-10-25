@@ -1,9 +1,13 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import SwiperCore, { Navigation } from 'swiper'
 import Styles from './styles.module.scss'
 import 'swiper/swiper-bundle.min.css'
 import 'swiper/swiper.min.css'
+import 'swiper/components/navigation/navigation.scss'
 
+import left from '@icons/arrow-left-blue.svg'
+import right from '@icons/arrow-right-blue.svg'
 import limcoreIcon from '@icons/limcore.svg'
 import checkIcon from '@icons/check.svg'
 import tchiaIcon from '@icons/tchia.png'
@@ -27,6 +31,8 @@ import tcryptodogeIcon from '@icons/tcryptodoge.png'
 import ttacoIcon from '@icons/ttaco.png'
 import tluckyIcon from '@icons/tlucky.png'
 
+SwiperCore.use([Navigation])
+
 export const CalculatorSlider: React.FC = () => {
   return (
     <div className={Styles.slider}>
@@ -36,7 +42,20 @@ export const CalculatorSlider: React.FC = () => {
       <span className={Styles.description}>Отмеченные токены уже майнятся компанией Limcore</span>
       <span className={Styles.description}>Остальные в процессе интеграции</span>
       <div className={Styles.container}>
-        <Swiper spaceBetween={120} slidesPerView={3}>
+        <button className={`${Styles.button} ${Styles.button_prev}`}>
+          <img src={left} />
+        </button>
+        <button className={`${Styles.button} ${Styles.button_next}`}>
+          <img src={right} />
+        </button>
+        <Swiper
+          spaceBetween={120}
+          slidesPerView={3}
+          navigation={{
+            prevEl: '.button_prev',
+            nextEl: '.button_next',
+          }}
+        >
           <SwiperSlide>
             <div className={Styles.slide}>
               <div className={Styles.token}>

@@ -34,8 +34,32 @@
 }
 
 .container {
+  position: relative;
   display: flex;
   margin-top: 48px;
+}
+
+.button {
+  position: absolute;
+  top: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  box-shadow: 20px 20px 52px rgba(0, 0, 0, 0.05);
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.button_prev {
+  left: -80px;
+}
+
+.button_next {
+  right: -80px;
 }
 
 .slide {
