@@ -9,6 +9,7 @@ import { UpEcosystem } from './components/UpEcosystem'
 import { OnLine } from './components/OnLine'
 import { Questions } from './components/Questions'
 import { Media } from './components/Media'
+import { Footer } from '@components/Footer'
 
 export const LandingPage: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ export const LandingPage: React.FC = () => {
       <OnLine />
       <Questions />
       <Media />
+      <Footer />
     </div>
   )
 }

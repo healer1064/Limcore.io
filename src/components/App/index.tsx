@@ -44,30 +44,32 @@ const App = () => {
       <div className={Styles.app_container}>
         {desktop ? <Header /> : <HeaderMobile />}
         {user ? (
-          <main className={desktop ? `${Styles.main}` : `${Styles.main} ${Styles.main_mobile}`}>
-            <Switch>
-              <Route path='/' exact component={LandingPage} />
-              <Route path='/purse' exact component={PurseMobile} />
-              <Route path='/chat' exact component={BroadcastsMobile} />
-              <Route path='/broadcasts' exact component={BroadcastsMobile} />
-              <Route path='/profile' exact component={ProfileMobile} />
-              <Route path='/buy' exact component={BuyPage} />
-              <Route path='/auth' exact component={AuthPage} />
-              <Route path='/not-found' exact component={PageNotFount} />
-              <Route path='*'>
-                <Redirect to='/not-found' />
-              </Route>
+          <>
+            <main className={desktop ? `${Styles.main}` : `${Styles.main} ${Styles.main_mobile}`}>
+              <Switch>
+                <Route path='/' exact component={LandingPage} />
+                <Route path='/purse' exact component={PurseMobile} />
+                <Route path='/chat' exact component={BroadcastsMobile} />
+                <Route path='/broadcasts' exact component={BroadcastsMobile} />
+                <Route path='/profile' exact component={ProfileMobile} />
+                <Route path='/buy' exact component={BuyPage} />
+                <Route path='/auth' exact component={AuthPage} />
+                <Route path='/not-found' exact component={PageNotFount} />
+                <Route path='*'>
+                  <Redirect to='/not-found' />
+                </Route>
 
-              {/* <Route path='/' exact component={USER_ROlES.user === userRole?.name ? HomePage : HomePage} />
+                {/* <Route path='/' exact component={USER_ROlES.user === userRole?.name ? HomePage : HomePage} />
                 <ProtectedRoute allowedUsersTypes={[USER_ROlES.user]} path='/orders' exact component={OrdersPage} /> */}
-            </Switch>
-          </main>
+              </Switch>
+            </main>
+          </>
         ) : (
           <div className={Styles.spinner_container}>
             <Spinner />
           </div>
         )}
-        {desktop ? <Footer /> : <>{auth ? <FooterMobile /> : null}</>}
+        {auth && <FooterMobile />}
       </div>
     </Router>
   )
