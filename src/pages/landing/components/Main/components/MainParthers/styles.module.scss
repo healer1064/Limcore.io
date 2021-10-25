@@ -7,7 +7,14 @@
 
 @media all and (max-width: 768px) {
   .parthers {
-    flex-wrap: wrap;
     padding: 0 20px;
+  }
+
+  .swiper {
+    &Slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }

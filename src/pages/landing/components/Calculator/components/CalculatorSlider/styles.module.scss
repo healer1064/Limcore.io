@@ -104,3 +104,34 @@
   line-height: 160%;
   color: #4f535a;
 }
+
+@media all and (max-width: 768px) {
+  .slider {
+    margin-top: 40px;
+  }
+
+  .caption {
+    align-items: flex-start;
+    font-size: 20px;
+    img {
+      margin-top: 5px;
+    }
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  .container {
+    margin-top: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .pagination {
+    padding-top: 30px;
+    &>:not(:last-child) {
+      margin-right: 6px;
+    }
+  }
+}
