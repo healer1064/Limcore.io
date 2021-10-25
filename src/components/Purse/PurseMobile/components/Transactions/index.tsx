@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import { UserHasTransactions } from './components/UserHasTransactions/index'
 import { blueArrow, balanceLimc, balanceUsdt, s7 } from '../../images/index'
+import { Modal } from '../Modal'
+import { TransactionsDetails } from './components/TransactionsDetails/index'
 
 interface ITransactionsProps {
   onProfileClick: () => void
@@ -10,7 +12,8 @@ interface ITransactionsProps {
 }
 
 export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTransactions }: ITransactionsProps) => {
-  // Временные данные для прокидки в транзакции, когда будет ясен объект с бэка можно будет последний объект в порядок привести
+  const [isTransactionsVisible, setIsTransactionsVisible] = useState(false)
+  // Временные данные для прокидки в транзакции, когда будет ясен объект с бэка можно будет все в порядок привести
   const tempDataForTransactions = [
     { img: balanceLimc, title: 'LIMC', sum: '+120 LIMC', isSwitch: false },
     { img: s7, title: 'S7 Airlines', sum: '−$3240', cardInfo: 'c карты *2774', isSwitch: false },
@@ -25,12 +28,24 @@ export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTra
     },
   ]
 
+  const handleTransactionsOpen = () => {
+    setIsTransactionsVisible(true)
+  }
+
+  const handleTransactionsClose = () => {
+    setIsTransactionsVisible(false)
+  }
+
   return (
     <div className={styles.transactions}>
       <h3 className={styles.transactions__title}>Транзакции</h3>
       <button type='button' className={styles.transactions__button} onClick={onTransactionsClick}>
-        <img src={blueArrow} />
+        <img src={blueArrow} onClick={handleTransactionsOpen} />
       </button>
+
+      <Modal active={isTransactionsVisible} setActive={handleTransactionsClose}>
+        <TransactionsDetails onClick={handleTransactionsClose} />
+      </Modal>
 
       {isUserHasTransactions ? (
         <UserHasTransactions data={tempDataForTransactions} />

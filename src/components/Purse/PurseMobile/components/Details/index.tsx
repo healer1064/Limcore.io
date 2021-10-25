@@ -3,11 +3,12 @@ import styles from './styles.module.scss'
 import { blueArrow, details1, details2, details3 } from '../../images'
 import { Modal } from '../Modal/index'
 import { DetalizationUp } from './components/DetalizationUp/index'
-import { DetalizationDown } from './components/DetalizationDown/index'
+import { DetalizationDownItem } from './components/DetalizationDownItem/index'
 import { ModalHeader } from '../ModalHeader'
 
 export const Details = () => {
   const [isModalVisible, setIsModalVisible] = useState(false)
+  let flagForDetalisation = 3
 
   const handleDetailsOpenClick = () => {
     setIsModalVisible(true)
@@ -21,6 +22,7 @@ export const Details = () => {
     { img: details1, title: 'Chia', subtitle: 'XCH', number: 3.78456983, money: '$384' },
     { img: details2, title: 'Flax', subtitle: 'XFX', number: 0.76459083, money: '$29' },
     { img: details3, title: 'N-Chain', subtitle: 'NCH', number: 1.04856979, money: '$84' },
+    { img: details2, title: 'Flax', subtitle: 'XFX', number: 0.76459083, money: '$29' },
   ]
 
   return (
@@ -34,24 +36,44 @@ export const Details = () => {
         </button>
 
         <Modal active={isModalVisible} setActive={handleDetailsCloseClick}>
-          <div className={styles.detailsModal}>
+          <ul className={styles.detailsModal}>
             <ModalHeader title='Детализация майнинга' onClick={handleDetailsCloseClick} />
             <DetalizationUp summary='+$12,784' xch='+$10,092' forks='+$884' />
             {tempData.map((item) => (
-              <DetalizationDown
+              <DetalizationDownItem
                 img={item.img}
                 title={item.title}
                 subtitle={item.subtitle}
                 number={item.number}
                 money={item.money}
                 key={Math.random()}
+                flagForButton
               />
             ))}
-          </div>
+          </ul>
         </Modal>
       </header>
-      {/* <DetalizationDown /> */}
-      {/* 2 цикла - нехорошо, в main-lending надо вывести первые 3 элемента, в подробные - остальные, возможно надо разделить компоненты все-таки или написать новый DetalizationDown */}
+      <ul className={styles.detailsList}>
+        {tempData.map((item) => {
+          // Такая чехарда, потому что в основном лендинге должно быть только 3 карточки, а уже в детализации все
+          flagForDetalisation--
+          if (flagForDetalisation === -1) {
+            return
+          }
+          return (
+            <DetalizationDownItem
+              img={item.img}
+              title={item.title}
+              subtitle={item.subtitle}
+              number={item.number}
+              money={item.money}
+              key={Math.random()}
+              flagForButton={false}
+            />
+          )
+        })}
+      </ul>
+      {/* TODO: 2 цикла - не хорошо, надо поправить */}
     </div>
   )
 }
