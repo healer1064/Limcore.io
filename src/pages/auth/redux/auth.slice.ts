@@ -3,6 +3,11 @@ import { api } from '../../../app/api'
 import { RootState } from '../../../app/redux/store'
 import { Process, Auth, Method } from '../components/Auth/constants'
 
+export const authorizationUserEmail: any = createAsyncThunk('auth/authorizationUserEmail', async function (data) {
+  const response = await api.post('users/registration/', data)
+  return response
+})
+
 export const registerUserEmail: any = createAsyncThunk('auth/registerUserEmail', async function (data) {
   const response = await api.post('users/registration/', data)
   return response
@@ -16,11 +21,24 @@ export const registerUserEmailConfirmation: any = createAsyncThunk(
   },
 )
 
+export const authorizationUserEmailConfirmation: any = createAsyncThunk(
+  'auth/authorizationUserEmailConfirmation',
+  async function (data) {
+    const response = await api.post('users/registration/confirmation/', data)
+    return response
+  },
+)
+
+export const getJwtToken: any = createAsyncThunk('auth/getJwtToken', async function (data) {
+  const response = await api.post('users/login/', data)
+  return response
+})
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    processType: Process.Registration,
-    authStep: Auth.Step3,
+    processType: Process.Authorization,
+    authStep: Auth.Step1,
     authMethod: Method.Email,
     '2FA': true,
     confirmationEmail: { code: '', unique_identifier: '' },
@@ -41,6 +59,15 @@ export const authSlice = createSlice({
     },
   },
   extraReducers: {
+    [authorizationUserEmail.fulfilled]: (state, action) => {
+      console.log('action', action)
+      const data = { code: '', unique_identifier: '' }
+
+      data.code = action.payload.data.result.slice(35, 40)
+      data.unique_identifier = action.payload.data.result.slice(42, 78)
+
+      state.confirmationEmail = data
+    },
     [registerUserEmail.fulfilled]: (state, action) => {
       console.log('action', action)
       const data = { code: '', unique_identifier: '' }
@@ -52,6 +79,12 @@ export const authSlice = createSlice({
     },
     [registerUserEmailConfirmation.fulfilled]: (state, action) => {
       state.isAuth = !state.isAuth
+    },
+    [authorizationUserEmailConfirmation.fulfilled]: (state, action) => {
+      state.isAuth = !state.isAuth
+    },
+    [getJwtToken.fulfilled]: (state, action) => {
+      console.log(action)
     },
   },
 })
