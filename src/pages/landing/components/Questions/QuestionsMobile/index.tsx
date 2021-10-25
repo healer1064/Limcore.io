@@ -1,49 +1,38 @@
 import React from 'react'
 import Styles from './styles.module.scss'
 
-import { QuestionsMobile } from './QuestionsMobile'
-
 import { VectorIcon } from '@icons/VectorIcon'
 
-export const Questions: React.FC = () => {
+export const QuestionsMobile: React.FC = () => {
   return (
     <>
-      <div className={`${Styles.questions} ${Styles.questions_desktop}`}>
-        <div className={Styles.wrapper}>
-          <h4 className={Styles.caption}>Вопросы и ответы</h4>
-          <div className={Styles.container}>
-            <ul className={Styles.question}>
-              <li className={`${Styles.item} ${Styles.item_active}`}>
-                <span>С чего начать?</span>
-                <VectorIcon />
-              </li>
-              <li className={Styles.item}>
-                <span>Как купить LIMC?</span>
-                <VectorIcon />
-              </li>
-              <li className={Styles.item}>
-                <span>Как зарегистрироваться на limcore.io?</span>
-                <VectorIcon />
-              </li>
-              <li className={Styles.item}>
-                <span>С чего начать?</span>
-                <VectorIcon />
-              </li>
-              <li className={Styles.item}>
-                <span>Как купить LIMC?</span>
-                <VectorIcon />
-              </li>
-              <li className={Styles.item}>
-                <span>Как зарегистрироваться на limcore.io?</span>
-                <VectorIcon />
-              </li>
-              <li className={Styles.item}>
-                <span>С чего начать?</span>
-                <VectorIcon />
-              </li>
-            </ul>
-            <div className={Styles.info}>
-              <h5 className={Styles.title}>С чего начать?</h5>
+      <div className={Styles.wrapper}>
+        <h4 className={Styles.caption}>Вопросы и ответы</h4>
+        <ul className={Styles.question}>
+          <li className={Styles.item}>
+            <div className={Styles.row}>
+              <span>С чего начать?</span>
+              <VectorIcon />
+            </div>
+          </li>
+          <li className={Styles.item}>
+            <div className={Styles.row}>
+              <span>Как купить LIMC?</span>
+              <VectorIcon />
+            </div>
+          </li>
+          <li className={Styles.item}>
+            <div className={Styles.row}>
+              <span>Как зарегистрироваться на limcore.io?</span>
+              <VectorIcon />
+            </div>
+          </li>
+          <li className={`${Styles.item} ${Styles.item_active}`}>
+            <div className={Styles.row}>
+              <span>С чего начать?</span>
+              <VectorIcon />
+            </div>
+            <div className={Styles.block}>
               <p className={Styles.text}>
                 Иногда после верификации компания принимает решение о дополнительной проверке биографии клиента. Ее цель
                 – оценка риска.
@@ -79,11 +68,26 @@ export const Questions: React.FC = () => {
                 и постоянный мониторинг пользователей.
               </p>
             </div>
-          </div>
-        </div>
-      </div>
-      <div className={`${Styles.questions} ${Styles.questions_mobile}`}>
-        <QuestionsMobile />
+          </li>
+          <li className={Styles.item}>
+            <div className={Styles.row}>
+              <span>Как купить LIMC?</span>
+              <VectorIcon />
+            </div>
+          </li>
+          <li className={Styles.item}>
+            <div className={Styles.row}>
+              <span>Как зарегистрироваться на limcore.io?</span>
+              <VectorIcon />
+            </div>
+          </li>
+          <li className={Styles.item}>
+            <div className={Styles.row}>
+              <span>С чего начать?</span>
+              <VectorIcon />
+            </div>
+          </li>
+        </ul>
       </div>
     </>
   )

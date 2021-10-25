@@ -1,7 +1,14 @@
 .questions {
   display: flex;
+  padding: 80px 20px;
+}
+
+.questions_desktop {
   justify-content: center;
-  padding: 80px 0;
+}
+
+.questions_mobile {
+  padding: 60px 20px;
 }
 
 .wrapper {
@@ -126,5 +133,15 @@
     &:not(:last-child) {
       margin-bottom: 12px;
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .questions_desktop {
+    display: none;
+  }
+
+  .question_mobile {
+    display: flex;
   }
 }
