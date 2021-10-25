@@ -1,0 +1,13 @@
+.parthers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
+
+@media all and (max-width: 768px) {
+  .parthers {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}

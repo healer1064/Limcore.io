@@ -1,0 +1,30 @@
+.item {
+    position: relative;
+    padding: 0 0 20px 18px;
+    border-left: solid 6px #4A70F8;
+    max-width: 340px;
+}
+
+.itemTitle {
+    font-family: 'Montserrat';
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+    color: #393C42;
+    margin: 5px 0 0;
+}
+
+.itemDate {
+    font-family: 'Montserrat';
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    color: #393C42;
+    margin: 0;
+}
+
+.icon {
+    position: absolute;
+    top: -4px;
+    left: -15px;
+}

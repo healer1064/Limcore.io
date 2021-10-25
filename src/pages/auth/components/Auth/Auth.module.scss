@@ -1,0 +1,42 @@
+@import '../../../../scss/vars.scss';
+@import '../../../../scss/mixins.scss';
+
+.auth {
+  @include padding-x(20px);
+
+  display: flex;
+  flex-flow: column wrap;
+  min-height: 100%;
+  height: 100%;
+
+  &OffsetBottom {
+    padding-bottom: 20px;
+  }
+
+  &Inner {
+    display: flex;
+    flex-grow: 1;
+  }
+  &Link {
+    @include padding-y(16px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-decoration: none;
+    font-weight: 600;
+    line-height: 1;
+    color: $primary-color;
+    transition: $transition;
+
+    &:active,
+    &:focus {
+      color: darken($primary-color, 5%);
+    }
+
+    &Hidden {
+      display: none;
+    }
+  }
+}

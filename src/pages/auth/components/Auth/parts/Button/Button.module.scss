@@ -1,0 +1,29 @@
+@import '../../../../../../scss/vars.scss';
+@import '../../../../../../scss/mixins.scss';
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  font: inherit;
+  font-weight: 600;
+  line-height: 1;
+  color: #fff;
+  cursor: pointer;
+  background-color: $primary-color;
+  border: none;
+  border-radius: 14px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover,
+  &:active {
+    background-color: darken($color: $primary-color, $amount: 5%);
+  }
+
+  &:disabled {
+    background-color: $grey;
+  }
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 
 import { Footer } from '../Footer'
@@ -23,6 +24,7 @@ import { OrderCatalog } from '../../pages/catalog'
 import { Header } from '@components/Header'
 import { HeaderMobile } from '@components/Header/HeaderMobile'
 import { CabinetPage } from '../../pages/cabinet'
+import { AuthPage } from '../../pages/auth'
 
 import { LandingPage } from '../../pages/landing'
 import { PurseMobile } from '@components/Purse/PurseMobile'
@@ -30,14 +32,14 @@ import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 
 const App = () => {
+  const { width, height } = useWindowSize()
   const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
   const user = useAppSelector((state) => state.user.userData)
 
   return (
     <Router>
       <div className={Styles.app_container}>
-        <Header />
-        {/* <HeaderMobile /> */}
+        {width >= 768 ? <Header /> : <HeaderMobile />}
         {user ? (
           <main className={Styles.main}>
             <Switch>
@@ -47,6 +49,7 @@ const App = () => {
               <Route path='/broadcasts' exact component={BroadcastsMobile} />
               <Route path='/profile' exact component={ProfileMobile} />
               <Route path='/buy' exact component={BuyPage} />
+              <Route path='/auth' exact component={AuthPage} />
               <Route path='/not-found' exact component={PageNotFount} />
               <Route path='*'>
                 <Redirect to='/not-found' />
@@ -55,13 +58,13 @@ const App = () => {
               {/* <Route path='/' exact component={USER_ROlES.user === userRole?.name ? HomePage : HomePage} />
                 <ProtectedRoute allowedUsersTypes={[USER_ROlES.user]} path='/orders' exact component={OrdersPage} /> */}
             </Switch>
-            {/* <Footer /> */}
           </main>
         ) : (
           <div className={Styles.spinner_container}>
             <Spinner />
           </div>
         )}
+        <Footer />
         {/* <FooterMobile /> */}
       </div>
     </Router>
