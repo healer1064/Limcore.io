@@ -8,6 +8,7 @@
     padding: 20px 30px;
     height: 170px;
     cursor: pointer;
+    min-width: 182px;
 }
 
 .container_active {
@@ -78,6 +79,9 @@
 
 @media all and (max-width: 768px) {
     .container {
-        max-width: 200px;
+        padding: 16px 20px;
+    }
+    .value {
+        font-size: 28px;
     }
 }
