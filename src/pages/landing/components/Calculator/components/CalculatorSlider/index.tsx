@@ -35,15 +35,26 @@ import tcryptodogeIcon from '@icons/tcryptodoge.png'
 import ttacoIcon from '@icons/ttaco.png'
 import tluckyIcon from '@icons/tlucky.png'
 
-SwiperCore.use([Pagination])
+SwiperCore.use([Pagination, Navigation])
 
 export const CalculatorSlider: React.FC = () => {
   const { width } = useWindowSize()
+  const buttonPrevious = (
+    <button className={`${Styles.button} ${Styles.button_prev}`}>
+      <img src={left} alt='' />
+    </button>
+  )
+
+  const buttonNext = (
+    <button className={`${Styles.button} ${Styles.button_next}`}>
+      <img src={right} alt='' />
+    </button>
+  )
   return (
     <div className={Styles.slider}>
       <h3 className={Styles.caption}>
         <img src={limcoreIcon} alt='Иконка' /> 1 LIMC одновременно майнит все токены
-      </h3>{' '}
+      </h3>
       {width >= 768 ? (
         <>
           <span className={Styles.description}>Отмеченные токены уже майнятся компанией Limcore</span>
@@ -55,11 +66,27 @@ export const CalculatorSlider: React.FC = () => {
         </span>
       )}
       <div className={Styles.container}>
+        {width >= 768 ? buttonPrevious : ''}
+        {width >= 768 ? buttonNext : ''}
         <Swiper
-          loop
-          pagination={{
-            el: `.${Styles.pagination}`,
-          }}
+          loop={width < 768}
+          spaceBetween={width >= 768 ? 120 : 0}
+          slidesPerView={width >= 768 ? 3 : 1}
+          pagination={
+            width < 768
+              ? {
+                  el: `.${Styles.pagination}`,
+                }
+              : false
+          }
+          navigation={
+            width >= 768
+              ? {
+                  nextEl: `.${Styles.button_next}`,
+                  prevEl: `.${Styles.button_prev}`,
+                }
+              : false
+          }
         >
           <SwiperSlide>
             <div className={Styles.slide}>
@@ -238,7 +265,12 @@ export const CalculatorSlider: React.FC = () => {
             </div>
           </SwiperSlide>
         </Swiper>
-        <div className={Styles.pagination} />
+        <div
+          style={{
+            display: width >= 768 ? 'none' : 'flex',
+          }}
+          className={Styles.pagination}
+        />
       </div>
     </div>
   )
