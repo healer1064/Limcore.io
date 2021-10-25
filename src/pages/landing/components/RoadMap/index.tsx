@@ -151,20 +151,22 @@ export const RoadMap: React.FC = () => {
 
   return (
     <section className={Styles.roadMap}>
-      <div className={Styles.header}>
-        <h3 className={Styles.title}>Roadmap</h3>
-        <p className={Styles.text}>
-          Фото и видео в нашей группе в Telegram{' '}
-          <a className={Styles.link} target='blank' href='https://t.me/limc_russ'>
-            <img className={Styles.icon} src={telegram} alt='Иконка' /> @limc_russ
-          </a>
-        </p>
+      <div className={Styles.wrapper}>
+        <div className={Styles.header}>
+          <h3 className={Styles.title}>Roadmap</h3>
+          <p className={Styles.text}>
+            Фото и видео в нашей группе в Telegram{' '}
+            <a className={Styles.link} target='blank' href='https://t.me/limc_russ'>
+              <img className={Styles.icon} src={telegram} alt='Иконка' /> @limc_russ
+            </a>
+          </p>
+        </div>
+        <ul className={Styles.list}>
+          {roadMapArray.map((item) => (
+            <RoadMapItem key={item.id} title={item.title} date={item.deadline} status={item.status} />
+          ))}
+        </ul>
       </div>
-      <ul className={Styles.list}>
-        {roadMapArray.map((item) => (
-          <RoadMapItem key={item.id} title={item.title} date={item.deadline} status={item.status} />
-        ))}
-      </ul>
     </section>
   )
 }

@@ -19,8 +19,8 @@ export const MediaMobile = () => {
         <h4 className={Styles.caption}>СМИ о нас</h4>
         <div className={Styles.container}>
           <Swiper spaceBetween={10} slidesPerView={1} pagination={{ clickable: true }}>
-            <SwiperSlide>
-              <div className={Styles.slide}>
+            <SwiperSlide className={Styles.slide}>
+              <div className={Styles.block}>
                 <div className={Styles.image}>
                   <img src={mediaImage} alt='Изображение' />
                 </div>
@@ -37,8 +37,8 @@ export const MediaMobile = () => {
                 </div>
               </div>
             </SwiperSlide>
-            <SwiperSlide>
-              <div className={Styles.slide}>
+            <SwiperSlide className={Styles.slide}>
+              <div className={Styles.block}>
                 <div className={Styles.empty}>Совсем скоро здесь появятся еще новости о Limcore</div>
               </div>
             </SwiperSlide>
