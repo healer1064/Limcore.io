@@ -54,7 +54,8 @@
 		}
 	}
 	.slide__wrap img {
-		object-fit: fill;
+		object-fit: cover;
+		object-position: left;
 		width: 335px;
 		height: 326px;
 	}
