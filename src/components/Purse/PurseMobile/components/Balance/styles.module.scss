@@ -85,4 +85,24 @@
 
     background-image: url(../../images/chevron-up.svg);
   }
+  .addressContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    white-space: normal;
+    overflow: hidden;
+  }
+
+  .addressName {
+    margin-bottom: 10px;
+  }
+  .addressValue {
+    white-space: normal;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $color-4F-black;
+  }
+
 }

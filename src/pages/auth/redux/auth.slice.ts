@@ -110,10 +110,13 @@ export const authSlice = createSlice({
       console.log(action)
     },
     [checkToken.fulfilled]: (state, action) => {
-      console.log(action)
-
+      const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
+      const token = tokenObj.access
       if (action.payload.status === 200) {
         state.isAuth = true
+        api.setUserToken(token)
+      } else {
+        api.setUserToken('')
       }
     },
   },

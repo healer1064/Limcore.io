@@ -3,10 +3,12 @@ import styles from './styles.module.scss'
 import { balance as balanceSvg } from '../../images'
 import { Modal } from '../Modal'
 import { Overall } from './components/Overall/index'
+import { useAppSelector } from '@app/redux/hooks'
 
 export const Balance = () => {
   const [isBalanceVisible, setIsBalanceVisible] = useState(false)
   const [money, setMoney] = useState('140,784')
+  const walletAddress = useAppSelector((state) => state.wallet.address)
 
   const handleOpenBalanceClick = () => {
     setIsBalanceVisible(true)
@@ -31,7 +33,10 @@ export const Balance = () => {
         <p className={styles.balance__sum}>$1462</p>
         <p className={styles.balance__percent}>0%</p>
       </div>
-
+      <div className={styles.addressContainer}>
+        <p className={styles.addressName}>Адрес кошелька</p>
+        <span className={styles.addressValue}>{walletAddress}</span>
+      </div>
       <Modal active={isBalanceVisible} setActive={() => {}}>
         <Overall onClick={handleCloseBalanceModal} money={money} />
       </Modal>
