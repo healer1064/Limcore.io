@@ -10,8 +10,9 @@ export const getWalletBalance: any = createAsyncThunk('wallet/getWalletBalance',
   return response
 })
 
-export const buyLimc: any = createAsyncThunk('wallet/buyLimc', async function () {
-  const response = await api.get('api/v1/wallets/buy_token/')
+export const buyLimc: any = createAsyncThunk('wallet/buyLimc', async function (data) {
+  const response = await api.post('api/v1/wallets/buy_token/', data)
+  console.log(response)
   return response
 })
 

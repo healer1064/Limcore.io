@@ -62,7 +62,12 @@ export const PurseMobile: FC = () => {
   }
 
   const handleBuyLIMK = () => {
-    dispatch(buyLimc(value))
+    const data = {
+      limc_amount: value,
+      pricing_slug: 'usdt_amount_95_lock_time_180',
+    }
+
+    dispatch(buyLimc(data))
   }
 
   return (
