@@ -18,7 +18,7 @@ export const MainRounds: React.FC = () => {
           <li className={Styles.item}>
             <span className={Styles.designation}>Лимит</span>
             <span className={Styles.value}>80,000 LIMC</span>
-            <img src={limcoreIcon} alt='Иконка' />
+            <img className={Styles.icon} src={limcoreIcon} alt='Иконка' />
           </li>
           <li className={Styles.item}>
             <span className={Styles.designation}>Цена за 1 LIMC</span>
@@ -27,7 +27,7 @@ export const MainRounds: React.FC = () => {
           <li className={Styles.item}>
             <span className={Styles.designation}>Сроки</span>
             <span className={Styles.value}>27.10.2021 — 30.12.21</span>
-            <img src={infoIcon} alt='Иконка' />
+            <img className={Styles.icon} src={infoIcon} alt='Иконка' />
           </li>
         </ul>
       </div>
