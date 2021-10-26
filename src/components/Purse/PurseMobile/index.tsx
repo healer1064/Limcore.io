@@ -9,7 +9,8 @@ import { Details } from './components/Details'
 import { Wallet } from './components/Wallet'
 import { Transactions } from './components/Transactions'
 import { Statistics } from './components/Statistics'
-import { useAppSelector } from '@app/redux/hooks'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
+import { buyLimc } from '../../Wallet/redux/walletSlice'
 
 import { Container } from '../../Container'
 import { ButtonBig } from '../../../ui-kit/ButtonBig'
@@ -29,7 +30,10 @@ export const PurseMobile: FC = () => {
   const [viewContent, setViewContent] = useState('')
 
   const [value, setValue] = useState('')
-  const handlerClick = (event) => setValue(event.target.value)
+
+  const dispatch = useAppDispatch()
+
+  const handleSetValue = (event) => setValue(event.target.value)
 
   // const [displayPopup, setDisplayPopup] = useState(false)
   const closePopup = () => setViewContent('')
@@ -55,6 +59,10 @@ export const PurseMobile: FC = () => {
   }
   const handleShowMoreClick = () => {
     console.log('Показать больше')
+  }
+
+  const handleBuyLIMK = () => {
+    dispatch(buyLimc(value))
   }
 
   return (
@@ -95,8 +103,8 @@ export const PurseMobile: FC = () => {
         <Container title='Покупка LIMC' onClick={closePopup}>
           <span className={styles.text}>Цена за LIMC</span>
           <span className={styles.text}>Lock time</span>
-          <InputText onChange={(event) => handlerClick(event)} type='number' value={value} />
-          <ButtonBig className={styles.button} disabled={!value}>
+          <InputText onChange={(event) => handleSetValue(event)} type='number' value={value} />
+          <ButtonBig onClick={handleBuyLIMK} className={styles.button} disabled={!value}>
             Купить
           </ButtonBig>
         </Container>

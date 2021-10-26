@@ -10,6 +10,11 @@ export const getWalletBalance: any = createAsyncThunk('wallet/getWalletBalance',
   return response
 })
 
+export const buyLimc: any = createAsyncThunk('wallet/buyLimc', async function () {
+  const response = await api.get('api/v1/wallets/buy_token/')
+  return response
+})
+
 export const walletSlice = createSlice({
   name: 'wallet',
   initialState: {
