@@ -16,6 +16,7 @@ import {
   registerUserEmailConfirmation,
   getJwtToken,
   getNewCode,
+  setIsAuth,
 } from '../../../../redux/auth.slice'
 import { authSelector, getAuthNextStep, setAuthStep, setMethod, setProcessType } from '../../../../redux/auth.slice'
 import { Button } from '..'
@@ -69,8 +70,11 @@ const Form: FC = () => {
     // dispatch(getJwtToken(data))
     const response = await dispatch(getJwtToken(data))
     // const token = response.payload.data.access
-    // console.log(response)
-    history.push('/')
+
+    if (response.payload.status === 200) {
+      dispatch(setIsAuth(true))
+      history.push('/')
+    }
   }
 
   useEffect(() => {
@@ -131,6 +135,8 @@ const Form: FC = () => {
 
   const validationSchema = getValidationSchema(auth.processType, auth.authStep)
 
+  const TRUE = true
+
   switch (auth.processType) {
     case Process.Authorization:
       switch (auth.authStep) {
@@ -143,10 +149,15 @@ const Form: FC = () => {
               }}
               validationSchema={validationSchema}
               onSubmit={(values, { resetForm, setSubmitting }) => {
-                if (isNumbersOnly(values.emailOrPhone)) {
-                  dispatch(setMethod(Method.Phone))
-                  setPhone(values.emailOrPhone)
-                } else {
+                // if (isNumbersOnly(values.emailOrPhone)) {
+                //   dispatch(setMethod(Method.Phone))
+                //   setPhone(values.emailOrPhone)
+                // } else {
+                //   dispatch(setMethod(Method.Email))
+                //   setEmail(values.emailOrPhone)
+                // }
+
+                if (TRUE) {
                   dispatch(setMethod(Method.Email))
                   setEmail(values.emailOrPhone)
                 }

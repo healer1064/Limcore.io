@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 import { setIsAuth } from '../../pages/auth/redux/auth.slice'
+import { checkToken } from '../../pages/auth/redux/auth.slice'
 
 import { Footer } from '../Footer'
 import { FooterMobile } from '../Footer/FooterMobile'
@@ -42,12 +43,12 @@ const App = () => {
   const desktop = width >= 768
 
   useEffect(() => {
-    const token = localStorage.getItem('jwtToken')
+    const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
 
-    if (token) {
-      dispatch(setIsAuth(true))
+    if (tokenObj.access) {
+      dispatch(checkToken({ token: tokenObj.access }))
     }
-  }, [])
+  }, [isAuth])
 
   return (
     <Router>

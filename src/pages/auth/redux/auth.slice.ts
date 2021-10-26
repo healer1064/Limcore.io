@@ -34,13 +34,18 @@ export const getJwtToken: any = createAsyncThunk('auth/getJwtToken', async funct
   return response
 })
 
-export const getJwtTokenTest: any = createAsyncThunk('auth/getJwtToken', async function (data) {
+export const getJwtTokenTest: any = createAsyncThunk('auth/getJwtTokenTest', async function (data) {
   const response = await api.post('users/login-code/', data)
   return response
 })
 
 export const getNewCode: any = createAsyncThunk('auth/getNewCode', async function (data) {
   const response = await api.post('users/registration/resend/', data)
+  return response
+})
+
+export const checkToken: any = createAsyncThunk('auth/checkToken', async function (data) {
+  const response = await api.post('api/v1/token/verify/', data)
   return response
 })
 
@@ -103,6 +108,13 @@ export const authSlice = createSlice({
     },
     [getNewCode.fulfilled]: (state, action) => {
       console.log(action)
+    },
+    [checkToken.fulfilled]: (state, action) => {
+      console.log(action)
+
+      if (action.payload.status === 200) {
+        state.isAuth = true
+      }
     },
   },
 })
