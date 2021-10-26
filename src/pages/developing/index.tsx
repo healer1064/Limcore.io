@@ -21,7 +21,7 @@ export const DevelopingPage = () => {
       <div className={Styles.dev_content}>
         <DevelopLogo />
         <div className={Styles.develop_text_container}>
-          <span>Мы непрерывно работаем над улучшением каждого из сервисов.</span>
+          <span>Открываемся 27 октября 2021г</span>
           <span>{`Скоро вы сможете работать с ${textObject?.withText} прямо на этой странице не покидая портал.`}</span>
         </div>
       </div>
