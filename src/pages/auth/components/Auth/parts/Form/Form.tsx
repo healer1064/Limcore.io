@@ -68,8 +68,8 @@ const Form: FC = () => {
     dispatch(authorizationUserEmailConfirmation())
     // dispatch(getJwtToken(data))
     const response = await dispatch(getJwtToken(data))
-    const token = response.payload.data.access
-    console.log(token)
+    // const token = response.payload.data.access
+    // console.log(response)
     history.push('/')
   }
 
