@@ -67,6 +67,9 @@ export const authSlice = createSlice({
     setAuthStep: (state, { payload }) => {
       state.authStep = payload
     },
+    setIsAuth: (state, { payload }) => {
+      state.isAuth = payload
+    },
   },
   extraReducers: {
     [authorizationUserEmail.fulfilled]: (state, action) => {
@@ -95,6 +98,8 @@ export const authSlice = createSlice({
     },
     [getJwtToken.fulfilled]: (state, action) => {
       console.log(action)
+      const data = { ...action.payload.data }
+      localStorage.setItem('jwtToken', JSON.stringify(data))
     },
     [getNewCode.fulfilled]: (state, action) => {
       console.log(action)
@@ -103,7 +108,7 @@ export const authSlice = createSlice({
 })
 
 const { actions, reducer } = authSlice
-export const { setProcessType, setMethod, getAuthNextStep, setAuthStep } = actions
+export const { setProcessType, setMethod, getAuthNextStep, setAuthStep, setIsAuth } = actions
 export const authSelector = (state: RootState) => state.auth
 
 export default reducer
