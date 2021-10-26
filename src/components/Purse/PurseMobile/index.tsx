@@ -68,7 +68,7 @@ export const PurseMobile: FC = () => {
             </div>
             <span className={styles.usd}>$0</span>
             <div className={styles.items}>
-              <div className={`${styles.item} ${styles.item_active}`}>
+              <div className={`${styles.item} ${styles.item_active}`} onClick={() => setViewContent('buy')}>
                 <img src={buyIcon} alt='' />
                 <span>Купить</span>
               </div>
@@ -87,9 +87,7 @@ export const PurseMobile: FC = () => {
                 У вас еще нет транзакций. Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
               </span>
             </div>
-            <ButtonBig className={styles.next} onClick={() => setViewContent('buy')}>
-              Перейти к заполнению
-            </ButtonBig>
+            <ButtonBig className={styles.next}>Перейти к заполнению</ButtonBig>
           </div>
         </Container>
       )}
@@ -104,7 +102,7 @@ export const PurseMobile: FC = () => {
         </Container>
       )}
       <Balance />
-      <Menu /* openPopup={openPopup} */ />
+      <Menu openPopup={() => setViewContent('balance')} />
       <div className={styles.purse__content}>
         {isCardVisible && <VirtualCard onCloseClick={handleCardCloseClick} />}
         <ButtonBig className={styles.buy} onClick={() => setViewContent('balance')}>
