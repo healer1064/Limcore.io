@@ -14,6 +14,7 @@ import {
   registerUserEmail,
   registerUserEmailConfirmation,
   getJwtToken,
+  getNewCode,
 } from '../../../../redux/auth.slice'
 import { authSelector, getAuthNextStep, setAuthStep, setMethod, setProcessType } from '../../../../redux/auth.slice'
 import { Button } from '..'
@@ -44,13 +45,13 @@ const Form: FC = () => {
 
   const onRegistrationConfirm = () => {
     dispatch(registerUserEmailConfirmation())
-    dispatch(getJwtToken())
+    dispatch(getJwtToken(auth.confirmationEmail))
     history.push('/')
   }
 
   const onAuthorizationConfirm = () => {
     dispatch(authorizationUserEmailConfirmation())
-    dispatch(getJwtToken())
+    dispatch(getJwtToken(auth.confirmationEmail))
     history.push('/')
   }
 
@@ -107,6 +108,7 @@ const Form: FC = () => {
 
   const restart = useCallback(() => {
     start(initialTime)
+    dispatch(getNewCode({ email }))
   }, [])
 
   const validationSchema = getValidationSchema(auth.processType, auth.authStep)
