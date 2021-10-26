@@ -9,8 +9,7 @@ import useLocalStorage from 'react-use-localstorage'
 import { phoneMask, emailMask, SMSMask, initialTime, interval, Process, Auth, Method } from '../../constants'
 import { useAppDispatch, useAppSelector } from '../../../../../../app/redux/hooks'
 import {
-  authorizationUserEmail,
-  getJwtTokenTest,
+  getJwtTokenCode,
   authorizationUserEmailConfirmation,
   registerUserEmail,
   registerUserEmailConfirmation,
@@ -35,32 +34,28 @@ const Form: FC = () => {
   const [phone, setPhone] = useLocalStorage('phone', '')
   const [email, setEmail] = useLocalStorage('email', '')
   const [numberCode, setNumberCode] = useLocalStorage('code', '')
+  const [uniqueId, setUniqueId] = useLocalStorage('uniqueId', '')
 
   const onAuthorization = (email) => {
     // console.log('E-mail with the code has been sent: 0540, dc2684e0-cc8b-4515-8fa7-9f831c7ef5bf.'.slice(42, 78))
     // dispatch(getJwtToken({ email }))
 
     // users/login-code/ - в теле отправить email (будет отправлен код)
-    dispatch(getJwtTokenTest({ email }))
+    dispatch(getJwtTokenCode({ email }))
   }
 
   const onRegistration = async (email) => {
     // console.log('E-mail with the code has been sent: 0540, dc2684e0-cc8b-4515-8fa7-9f831c7ef5bf.'.slice(42, 78))
     const response = await dispatch(registerUserEmail({ email })) // придет unique_identifier
-    console.log(response)
-    const id = response.payload?.data.unique_identifier || null // вылетит ошибка если такой майл уже существует
-    localStorage.setItem('uniqueId', id)
+    const id = response.payload?.data.unique_identifier
+    setUniqueId(id)
   }
 
   const onRegistrationConfirm = () => {
     // нужно отдать code + unique_identifier
-    const data = {
-      code: localStorage.getItem('code'), // берет старый код почему-то
-      unique_identifier: localStorage.getItem('uniqueId'),
-    }
-    dispatch(registerUserEmailConfirmation(data))
+    dispatch(registerUserEmailConfirmation({ code: numberCode, unique_identifier: uniqueId }))
     // dispatch(getJwtToken(auth.confirmationEmail))
-    dispatch(getJwtToken({ email: localStorage.getItem('email'), code: data.code }))
+    dispatch(getJwtToken({ email, code: numberCode }))
     history.push('/')
   }
 
@@ -69,15 +64,8 @@ const Form: FC = () => {
     // dispatch(getJwtToken(auth.confirmationEmail))
 
     // в теле отправить email и code. В ответ придет токен
-    const data = {
-      email: localStorage.getItem('email'),
-      code: localStorage.getItem('code'),
-    }
     dispatch(authorizationUserEmailConfirmation())
-    // dispatch(getJwtToken(data))
-    const response = await dispatch(getJwtToken(data))
-    const token = response.payload.data.access
-    console.log(token)
+    dispatch(getJwtToken({ email, code: numberCode }))
     history.push('/')
   }
 
@@ -148,6 +136,7 @@ const Form: FC = () => {
               initialValues={{
                 isEmail: '1',
                 emailOrPhone: '',
+                SMS: '',
               }}
               validationSchema={validationSchema}
               onSubmit={(values, { resetForm, setSubmitting }) => {
@@ -519,7 +508,7 @@ const Form: FC = () => {
                     </label>
                     <Field
                       className={classNames(styles.formField, {
-                        // [styles.formFieldHasErrors]: touched.email && errors.email,
+                        [styles.formFieldHasErrors]: touched.email && errors.email,
                         [styles.formFieldIsEmpty]: values.email,
                       })}
                       placeholder='Введите e-mail'

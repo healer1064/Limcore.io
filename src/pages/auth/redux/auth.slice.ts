@@ -34,7 +34,7 @@ export const getJwtToken: any = createAsyncThunk('auth/getJwtToken', async funct
   return response
 })
 
-export const getJwtTokenTest: any = createAsyncThunk('auth/getJwtToken', async function (data) {
+export const getJwtTokenCode: any = createAsyncThunk('auth/getJwtToken', async function (data) {
   const response = await api.post('users/login-code/', data)
   return response
 })
