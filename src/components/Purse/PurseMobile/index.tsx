@@ -9,6 +9,7 @@ import { Details } from './components/Details'
 import { Wallet } from './components/Wallet'
 import { Transactions } from './components/Transactions'
 import { Statistics } from './components/Statistics'
+import { useAppSelector } from '@app/redux/hooks'
 
 import { Container } from '../../Container'
 import { ButtonBig } from '../../../ui-kit/ButtonBig'

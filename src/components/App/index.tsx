@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
-import { setIsAuth } from '../../pages/auth/redux/auth.slice'
-import { checkToken } from '../../pages/auth/redux/auth.slice'
+import { setIsAuth, checkToken } from '../../pages/auth/redux/auth.slice'
 
 import { Footer } from '../Footer'
 import { FooterMobile } from '../Footer/FooterMobile'
@@ -32,6 +31,8 @@ import { LandingPage } from '../../pages/landing'
 import { PurseMobile } from '@components/Purse/PurseMobile'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
+import { getWalletAdress, getWalletBalance } from '../Wallet/redux/walletSlice'
+import { api } from '@app/api'
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -47,6 +48,11 @@ const App = () => {
 
     if (tokenObj.access) {
       dispatch(checkToken({ token: tokenObj.access }))
+        .then(() => {
+          dispatch(getWalletAdress())
+          dispatch(getWalletBalance())
+        })
+        .catch((err) => console.log(err))
     }
   }, [isAuth])
 
