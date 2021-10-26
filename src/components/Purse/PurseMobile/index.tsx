@@ -14,18 +14,24 @@ import { Container } from '../../Container'
 import { ButtonBig } from '../../../ui-kit/ButtonBig'
 import { InputText } from '../../../ui-kit/InputText'
 
+import limcoreIcon from '@icons/limcore.svg'
+import buyIcon from '@icons/buy.svg'
+import sellIcon from '@icons/sell.svg'
+import tradeIcon from '@icons/trade.svg'
+
 export const PurseMobile: FC = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
   const [isWalletVisible, setIsWalletVisible] = useState(true)
   const [isLimcBought, setIsLimcBought] = useState(false)
   const [isUserHasTransactions, setIsUserHasTransactions] = useState(true)
 
+  const [viewContent, setViewContent] = useState('')
+
   const [value, setValue] = useState('')
   const handlerClick = (event) => setValue(event.target.value)
 
-  const [displayPopup, setDisplayPopup] = useState(false)
-  const openPopup = (bool) => setDisplayPopup(bool)
-  const closePopup = (bool) => setDisplayPopup(bool)
+  // const [displayPopup, setDisplayPopup] = useState(false)
+  const closePopup = () => setViewContent('')
 
   const handleCardCloseClick = () => {
     setIsCardVisible(false)
@@ -52,8 +58,42 @@ export const PurseMobile: FC = () => {
 
   return (
     <div className={styles.purse}>
-      {displayPopup && (
-        <Container title='Покупка LIMC' onClick={() => closePopup(false)}>
+      {viewContent === 'balance' && (
+        <Container title='Баланс LIMC' onClick={closePopup}>
+          <div className={styles.block}>
+            <div className={styles.line}>
+              <img src={limcoreIcon} alt='' />
+              <span className={styles.title}>0 LIMC</span>
+            </div>
+            <span className={styles.usd}>$0</span>
+            <div className={styles.items}>
+              <div className={`${styles.item} ${styles.item_active}`}>
+                <img src={buyIcon} alt='' />
+                <span>Купить</span>
+              </div>
+              <div className={styles.item}>
+                <img src={sellIcon} alt='' />
+                <span>Продать</span>
+              </div>
+              <div className={styles.item}>
+                <img src={tradeIcon} alt='' />
+                <span>Обменять</span>
+              </div>
+            </div>
+            <div className={styles.container}>
+              <span className={styles.trans}>Транзакции</span>
+              <span className={styles.desc}>
+                У вас еще нет транзакций. Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
+              </span>
+            </div>
+            <ButtonBig className={styles.next} onClick={() => setViewContent('buy')}>
+              Перейти к заполнению
+            </ButtonBig>
+          </div>
+        </Container>
+      )}
+      {viewContent === 'buy' && (
+        <Container title='Покупка LIMC' onClick={closePopup}>
           <span className={styles.text}>Цена за LIMC</span>
           <span className={styles.text}>Lock time</span>
           <InputText onChange={(event) => handlerClick(event)} type='number' value={value} />
@@ -62,11 +102,13 @@ export const PurseMobile: FC = () => {
           </ButtonBig>
         </Container>
       )}
-
       <Balance />
-      <Menu openPopup={openPopup} />
+      <Menu /* openPopup={openPopup} */ />
       <div className={styles.purse__content}>
         {isCardVisible && <VirtualCard onCloseClick={handleCardCloseClick} />}
+        <ButtonBig className={styles.buy} onClick={() => setViewContent('balance')}>
+          Купить LIMC
+        </ButtonBig>
         {isLimcBought ? <StartMining onButtonClick={handleStartClick} /> : <Statistics onClick={handleShowMoreClick} />}
         <Details />
         {isWalletVisible && <Wallet onCloseClick={handleWalletCloseClick} />}

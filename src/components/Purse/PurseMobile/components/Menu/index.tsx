@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import { plusSvg, balanceLimc, balanceUsdt, creditCard } from '../../images'
 import { MenuItem } from './components/MenuItem/index'
 
-export const Menu = ({ openPopup }) => {
+export const Menu = () => {
   const [isLimcInfoVisible, setIsLimcInfoVisible] = useState(false)
   const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
   const [isCardInfoVisible, setIsCardInfoVisible] = useState(false)
@@ -39,7 +39,7 @@ export const Menu = ({ openPopup }) => {
         <img src={plusSvg} width='24' height='24' />
       </button>
       <MenuItem
-        onClick={() => openPopup(true)}
+        // onClick={() => openPopup(true)}
         image={balanceLimc}
         title='Баланс LIMC'
         balance='316 LIMC'
