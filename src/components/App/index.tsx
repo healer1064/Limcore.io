@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
+import { setIsAuth } from '../../pages/auth/redux/auth.slice'
+import { checkToken } from '../../pages/auth/redux/auth.slice'
 
 import { Footer } from '../Footer'
 import { FooterMobile } from '../Footer/FooterMobile'
@@ -13,7 +15,7 @@ import { DevelopingPage } from '../../pages/developing'
 import { AccessDeniedPage } from '../../pages/access-denied'
 import { BuyPage } from '../../pages/buy'
 
-import { useAppSelector } from '@app/redux/hooks'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 
 import Styles from './style.module.scss'
 import { ProtectedRoute } from '@components/Router/protected-route'
@@ -32,12 +34,21 @@ import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 
 const App = () => {
+  const dispatch = useAppDispatch()
   const { width, height } = useWindowSize()
   const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
   const user = useAppSelector((state) => state.user.userData)
   const isAuth = useAppSelector((state) => state.auth.isAuth)
 
   const desktop = width >= 768
+
+  useEffect(() => {
+    const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
+
+    if (tokenObj.access) {
+      dispatch(checkToken({ token: tokenObj.access }))
+    }
+  }, [isAuth])
 
   return (
     <Router>

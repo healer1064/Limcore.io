@@ -34,13 +34,18 @@ export const getJwtToken: any = createAsyncThunk('auth/getJwtToken', async funct
   return response
 })
 
-export const getJwtTokenCode: any = createAsyncThunk('auth/getJwtToken', async function (data) {
+export const getJwtTokenTest: any = createAsyncThunk('auth/getJwtTokenTest', async function (data) {
   const response = await api.post('users/login-code/', data)
   return response
 })
 
 export const getNewCode: any = createAsyncThunk('auth/getNewCode', async function (data) {
   const response = await api.post('users/registration/resend/', data)
+  return response
+})
+
+export const checkToken: any = createAsyncThunk('auth/checkToken', async function (data) {
+  const response = await api.post('api/v1/token/verify/', data)
   return response
 })
 
@@ -66,6 +71,9 @@ export const authSlice = createSlice({
     },
     setAuthStep: (state, { payload }) => {
       state.authStep = payload
+    },
+    setIsAuth: (state, { payload }) => {
+      state.isAuth = payload
     },
   },
   extraReducers: {
@@ -95,15 +103,24 @@ export const authSlice = createSlice({
     },
     [getJwtToken.fulfilled]: (state, action) => {
       console.log(action)
+      const data = { ...action.payload.data }
+      localStorage.setItem('jwtToken', JSON.stringify(data))
     },
     [getNewCode.fulfilled]: (state, action) => {
       console.log(action)
+    },
+    [checkToken.fulfilled]: (state, action) => {
+      console.log(action)
+
+      if (action.payload.status === 200) {
+        state.isAuth = true
+      }
     },
   },
 })
 
 const { actions, reducer } = authSlice
-export const { setProcessType, setMethod, getAuthNextStep, setAuthStep } = actions
+export const { setProcessType, setMethod, getAuthNextStep, setAuthStep, setIsAuth } = actions
 export const authSelector = (state: RootState) => state.auth
 
 export default reducer
