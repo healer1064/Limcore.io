@@ -282,7 +282,7 @@
   .list {
     flex-wrap: wrap;
     width: 100%;
-    padding: 0;
+    padding: 0 0 30px 0;
   }
 
   .buttons {
@@ -292,6 +292,7 @@
 
   .container {
     padding-bottom: 20px;
+    border-top: 1px solid #DBDFEE;
   }
 
   .wrap {
@@ -343,5 +344,61 @@
     width: 100%;
     max-width: 100%;
     margin: 0;
+  }
+
+  .roadContainer {
+    display: grid;
+    grid-template-columns: minmax(min-content, max-content) 1fr;
+    grid-template-rows: minmax(min-content, max-content);
+    grid-template-areas:
+    'shell road';
+    margin: 20px 0 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .road {
+    grid-area: road;
+    margin-top: 0;
+  }
+
+  .cover {
+    flex-direction: column;
+  }
+
+  .shell {
+    grid-area: shell;
+    margin-top: 0;
+    box-sizing: border-box;
+    border-left: 4px solid #4A70F8;
+  }
+
+  .lines {
+    flex-direction: column;
+  }
+
+  .line {
+    border: none;
+    //display: flex;
+    //flex: 1;
+    //height: 30px;
+    //border-top: 4px solid #4a70f8;
+    //border-left: 2px solid #4a70f8;
+    //border-right: 2px solid #4a70f8;
+
+    &:last-child {
+      flex: 3;
+      border: none;
+    }
+  }
+
+  .dates {
+    flex-direction: column;
+    height: 100%;
+    padding: 0 10px;
+  }
+
+  .date {
+    flex-direction: column;
   }
 }
