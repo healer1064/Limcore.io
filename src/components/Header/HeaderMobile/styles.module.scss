@@ -17,6 +17,10 @@
 .burger {
   display: flex;
   flex-direction: column;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .row {

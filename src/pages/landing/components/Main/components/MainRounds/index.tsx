@@ -49,47 +49,49 @@ export const MainRounds: React.FC = () => {
           <ButtonBig className={Styles.button}>Калькулятор доходности</ButtonBig>
         </div>
       </div>
-      <div className={Styles.road}>
-        <div className={Styles.cover}>
-          <div className={Styles.round}>
-            <span>Раунд №2</span>
-            <div className={Styles.row}>
-              <span>LIMC (min $110)</span>
-              <span>120,000</span>
+      <div className={Styles.roadContainer}>
+        <div className={Styles.road}>
+          <div className={Styles.cover}>
+            <div className={Styles.round}>
+              <span>Раунд №2</span>
+              <div className={Styles.row}>
+                <span>LIMC (min $110)</span>
+                <span>120,000</span>
+              </div>
             </div>
-          </div>
-          <div className={Styles.round}>
-            <span>Раунд №3</span>
-            <div className={Styles.row}>
-              <span>LIMC (price and limit later)</span>
+            <div className={Styles.round}>
+              <span>Раунд №3</span>
+              <div className={Styles.row}>
+                <span>LIMC (price and limit later)</span>
+              </div>
             </div>
-          </div>
-          <div className={Styles.round}>
-            <span>Раунд №4</span>
-            <div className={Styles.row}>
-              <span>LIMC (price and limit later)</span>
+            <div className={Styles.round}>
+              <span>Раунд №4</span>
+              <div className={Styles.row}>
+                <span>LIMC (price and limit later)</span>
+              </div>
             </div>
-          </div>
-          <div className={Styles.round}>
-            <span>Раунд №5 (Final)</span>
-            <div className={Styles.row}>
-              <span>LIMC (price and limit later)</span>
+            <div className={Styles.round}>
+              <span>Раунд №5 (Final)</span>
+              <div className={Styles.row}>
+                <span>LIMC (price and limit later)</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className={Styles.shell}>
-        <div className={Styles.lines}>
-          <div className={Styles.line}>{}</div>
-          <div className={Styles.line}>{}</div>
-        </div>
-        <div className={Styles.dates}>
-          <div className={Styles.date}>
-            <span>10.01.2022</span>
+        <div className={Styles.shell}>
+          <div className={Styles.lines}>
+            <div className={Styles.line}>{}</div>
+            <div className={Styles.line}>{}</div>
           </div>
-          <div className={Styles.date}>
-            <span>25.02.2022</span>
-            <span>конец 2022</span>
+          <div className={Styles.dates}>
+            <div className={Styles.date}>
+              <span>10.01.2022</span>
+            </div>
+            <div className={Styles.date}>
+              <span>25.02.2022</span>
+              <span>конец 2022</span>
+            </div>
           </div>
         </div>
       </div>
