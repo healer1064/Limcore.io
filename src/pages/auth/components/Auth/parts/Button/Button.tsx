@@ -6,7 +6,12 @@ type ButtonProps = { [key: string]: string | boolean | any } & ComponentPropsWit
 
 const Button: FC<ButtonProps> = (props) => {
   return (
-    <button className={classNames(styles.button, props.className)} type='submit' onClick={props.onClick}>
+    <button
+      className={classNames(styles.button, props.className)}
+      type='submit'
+      disabled={props.disabled}
+      onClick={props.onClick}
+    >
       {props.children}
     </button>
   )
