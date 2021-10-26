@@ -10,11 +10,22 @@ import { Wallet } from './components/Wallet'
 import { Transactions } from './components/Transactions'
 import { Statistics } from './components/Statistics'
 
+import { Container } from '../../Container'
+import { ButtonBig } from '../../../ui-kit/ButtonBig'
+import { InputText } from '../../../ui-kit/InputText'
+
 export const PurseMobile: FC = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
   const [isWalletVisible, setIsWalletVisible] = useState(true)
   const [isLimcBought, setIsLimcBought] = useState(false)
   const [isUserHasTransactions, setIsUserHasTransactions] = useState(true)
+
+  const [value, setValue] = useState('')
+  const handlerClick = (event) => setValue(event.target.value)
+
+  const [displayPopup, setDisplayPopup] = useState(false)
+  const openPopup = (bool) => setDisplayPopup(bool)
+  const closePopup = (bool) => setDisplayPopup(bool)
 
   const handleCardCloseClick = () => {
     setIsCardVisible(false)
@@ -41,8 +52,19 @@ export const PurseMobile: FC = () => {
 
   return (
     <div className={styles.purse}>
+      {displayPopup && (
+        <Container title='Покупка LIMC' onClick={() => closePopup(false)}>
+          <span className={styles.text}>Цена за LIMC</span>
+          <span className={styles.text}>Lock time</span>
+          <InputText onChange={(event) => handlerClick(event)} type='number' value={value} />
+          <ButtonBig className={styles.button} disabled={!value}>
+            Купить
+          </ButtonBig>
+        </Container>
+      )}
+
       <Balance />
-      <Menu />
+      <Menu openPopup={openPopup} />
       <div className={styles.purse__content}>
         {isCardVisible && <VirtualCard onCloseClick={handleCardCloseClick} />}
         {isLimcBought ? <StartMining onButtonClick={handleStartClick} /> : <Statistics onClick={handleShowMoreClick} />}

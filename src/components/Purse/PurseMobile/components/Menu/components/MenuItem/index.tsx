@@ -3,11 +3,29 @@ import styles from './styles.module.scss'
 import { blueArrow } from '../../../../images'
 import { Info } from '../Info/index'
 
-export const MenuItem = ({ setActive, setNotActive, active, image, title, balance }) => {
+interface MenuItemProps {
+  onClick?: any
+  setActive: any
+  setNotActive: any
+  active: any
+  image: any
+  title: any
+  balance: any
+}
+
+export const MenuItem: React.FC<MenuItemProps> = ({
+  onClick,
+  setActive,
+  setNotActive,
+  active,
+  image,
+  title,
+  balance,
+}) => {
   const menuItemClass = `${styles.menu__item} ${styles.menu__balance}`
 
   return (
-    <div className={menuItemClass}>
+    <div className={menuItemClass} onClick={onClick}>
       <button type='button' className={styles.menu__button} onClick={setActive}>
         <img src={blueArrow} />
       </button>

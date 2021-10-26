@@ -3,13 +3,15 @@ import Styles from './styles.module.scss'
 
 interface InputProps {
   className?: string
+  onChange?: any
+  type?: string
   name?: string
   value?: string
   placeholder?: string
   maxLength?: number
 }
 
-export const InputText: React.FC<InputProps> = ({ className, name, value, placeholder, maxLength }) => {
+export const InputText: React.FC<InputProps> = ({ className, onChange, type, name, value, placeholder, maxLength }) => {
   const cls = [`${Styles.input}`]
 
   if (className) {
@@ -19,7 +21,8 @@ export const InputText: React.FC<InputProps> = ({ className, name, value, placeh
   return (
     <input
       className={cls.join(' ')}
-      type='text'
+      onChange={onChange}
+      type={!type ? 'text' : type}
       name={name}
       value={value}
       placeholder={placeholder}
