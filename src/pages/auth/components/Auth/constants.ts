@@ -1,4 +1,4 @@
-export const phoneMask = '+7 (000) 000 00-00'
+export const phoneMask = /^(\+|\d)[0-9]{7,16}$/
 export const emailMask = /^\S*@?\S*$/
 export const SMSMask = '0000'
 

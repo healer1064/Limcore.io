@@ -248,16 +248,19 @@
 }
 
 .description {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 150%;
+  
   color: #4c4c4c;
   width: 100%;
   max-width: 450px;
 }
-
+.temporarily {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 150%;
+  color:  #F24949;
+}
 @media all and (max-width: 768px) {
 
   .rounds {
