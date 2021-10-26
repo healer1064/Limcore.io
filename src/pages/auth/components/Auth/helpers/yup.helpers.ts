@@ -11,8 +11,8 @@ export const getValidationSchema = (processType: Process, authStep: Auth) => {
               is: '1',
               then: Yup.string().email('Неверный формат e-mail').required('Вы забыли ввести телефон или e-mail'),
               otherwise: Yup.string()
-                .min(phoneMask.length, 'Неверный формат телефона')
-                .max(phoneMask.length, 'Неверный формат телефона')
+                // .min(phoneMask.length, 'Неверный формат телефона')
+                // .max(phoneMask.length, 'Неверный формат телефона')
                 .required('Вы забыли ввести телефон или e-mail'),
             }),
           })
@@ -33,8 +33,8 @@ export const getValidationSchema = (processType: Process, authStep: Auth) => {
         case Auth.Step1:
           return Yup.object({
             phone: Yup.string()
-              .min(phoneMask.length, 'Неверный формат телефона')
-              .max(phoneMask.length, 'Неверный формат телефона')
+              // .min(phoneMask.length, 'Неверный формат телефона')
+              // .max(phoneMask.length, 'Неверный формат телефона')
               .required('Вы забыли ввести номер телефона'),
           })
         case Auth.Step3:

@@ -330,7 +330,7 @@ const Form: FC = () => {
                         autoComplete='off'
                         value={values.phone}
                         innerRef={ref}
-                        maxLength={phoneMask.length}
+                        // maxLength={phoneMask.length}
                       />
                       <p
                         className={classNames(styles.formFieldErrorMessage, {

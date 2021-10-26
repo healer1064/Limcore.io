@@ -14,6 +14,8 @@ export const MainRounds: React.FC = () => {
         <div className={Styles.wrap}>
           <span className={Styles.name}>Раунд №1</span>
         </div>
+        <p className={Styles.temporarily}>Открываемся 27 октября 2021г.</p>
+        <p className={Styles.temporarily}>Сайт в процессе разработки</p>
         <ul className={Styles.list}>
           <li className={Styles.item}>
             <span className={Styles.designation}>Лимит</span>
