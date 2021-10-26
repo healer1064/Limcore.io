@@ -10,6 +10,7 @@ import { phoneMask, emailMask, SMSMask, initialTime, interval, Process, Auth, Me
 import { useAppDispatch, useAppSelector } from '../../../../../../app/redux/hooks'
 import {
   authorizationUserEmail,
+  getJwtTokenTest,
   authorizationUserEmailConfirmation,
   registerUserEmail,
   registerUserEmailConfirmation,
@@ -21,6 +22,7 @@ import { Button } from '..'
 import { getValidationSchema } from '../../helpers/yup.helpers'
 import { isNumbersOnly } from '../../helpers/number.helpers'
 import styles from './Form.module.scss'
+import { number } from 'yup'
 
 const Form: FC = () => {
   const history = useHistory()
@@ -32,10 +34,14 @@ const Form: FC = () => {
   const { ref, maskRef } = useIMask(opts)
   const [phone, setPhone] = useLocalStorage('phone', '')
   const [email, setEmail] = useLocalStorage('email', '')
+  const [numberCode, setNumberCode] = useState(null)
 
   const onAuthorization = (email) => {
     // console.log('E-mail with the code has been sent: 0540, dc2684e0-cc8b-4515-8fa7-9f831c7ef5bf.'.slice(42, 78))
-    dispatch(authorizationUserEmail({ email }))
+    // dispatch(getJwtToken({ email }))
+
+    // users/login-code/ - в теле отправить email (будет отправлен код)
+    dispatch(getJwtTokenTest({ email }))
   }
 
   const onRegistration = (email) => {
@@ -49,9 +55,21 @@ const Form: FC = () => {
     history.push('/')
   }
 
-  const onAuthorizationConfirm = () => {
+  const onAuthorizationConfirm = async () => {
+    // dispatch(authorizationUserEmailConfirmation())
+    // dispatch(getJwtToken(auth.confirmationEmail))
+
+    // users/login/ - в теле отправить email и code. В ответ придет токен
+    // 51a68363-cd4c-4e74-81de-013f2bd8860d
+    const data = {
+      code: numberCode,
+      email: localStorage.getItem('email'),
+    }
     dispatch(authorizationUserEmailConfirmation())
-    dispatch(getJwtToken(auth.confirmationEmail))
+    // dispatch(getJwtToken(data))
+    const response = await dispatch(getJwtToken(data))
+    const token = response.payload.data.access
+    console.log(token)
     history.push('/')
   }
 
@@ -178,7 +196,11 @@ const Form: FC = () => {
                         <ErrorMessage name='emailOrPhone' />
                       </p>
                     </fieldset>
-                    <Button className={styles.formSubmit} onClick={() => onAuthorization(values.emailOrPhone)}>
+                    <Button
+                      className={styles.formSubmit}
+                      disabled={Object.keys(errors).length !== 0 || values.emailOrPhone === ''}
+                      onClick={() => onAuthorization(values.emailOrPhone)}
+                    >
                       Получить код
                     </Button>
                   </FormikForm>
@@ -214,9 +236,26 @@ const Form: FC = () => {
                   <FormikForm className={styles.form}>
                     <fieldset className={styles.formFieldset}>
                       <legend className={styles.formLegend}>
+                        Введите код {auth.authMethod === Method.Phone ? 'из СМС' : 'из письма'}
+                      </legend>
+                      <label className={styles.formLabel} htmlFor='SMS'>
+                        <span>
+                          Мы отправили код{' '}
+                          {auth.authMethod === Method.Phone
+                            ? 'на номер'
+                            : auth.authMethod === Method.Email
+                            ? 'на адрес'
+                            : null}
+                        </span>
+                        {auth.authMethod === Method.Phone ? phone : auth.authMethod === Method.Email ? email : null}{' '}
+                        <Link to='#!' className={styles.formLink} onClick={() => dispatch(setAuthStep(Auth.Step1))}>
+                          Изменить
+                        </Link>
+                      </label>
+                      {/* <legend className={styles.formLegend}>
                         {auth.authStep === Auth.Step3
                           ? 'Введите 2-FA код'
-                          : `Введите код ${auth.authMethod === Method.Phone ? 'из СМС' : null}`}
+                          : `Введите код ${auth.authMethod === Method.Phone ? 'из СМС' : 'из письма'}`}
                       </legend>
                       <label className={styles.formLabel} htmlFor='SMS'>
                         {auth.authStep === Auth.Step3 ? (
@@ -237,7 +276,7 @@ const Form: FC = () => {
                             </Link>
                           </>
                         )}
-                      </label>
+                      </label> */}
                       <Field
                         className={classNames(styles.formField, styles.formFieldTextCenter, {
                           [styles.formFieldHasErrors]: touched.SMS && errors.SMS,
@@ -249,6 +288,7 @@ const Form: FC = () => {
                         id='SMS'
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                           handleChange(event)
+                          setNumberCode(event.target.value)
                           setTimeout(submitForm, 0)
                         }}
                         autoComplete='off'
@@ -278,11 +318,11 @@ const Form: FC = () => {
                         </Link>
                       )}
                     </fieldset>
-                    {(!auth['2FA'] || auth.authStep === Auth.Step3) && isValid && (
-                      <Button className={styles.formSubmit} onClick={() => onAuthorizationConfirm()}>
-                        Войти
-                      </Button>
-                    )}
+                    {/* {(!auth['2FA'] || auth.authStep === Auth.Step3) && isValid && ( */}
+                    <Button className={styles.formSubmit} onClick={() => onAuthorizationConfirm()}>
+                      Войти
+                    </Button>
+                    {/* )} */}
                   </FormikForm>
                 )
               }}
@@ -340,7 +380,13 @@ const Form: FC = () => {
                         <ErrorMessage name='phone' />
                       </p>
                     </fieldset>
-                    <Button className={styles.formSubmit}>Получить код</Button>
+                    <Button
+                      className={styles.formSubmit}
+                      disabled={Object.keys(errors).length !== 0 || values.phone === ''}
+                    >
+                      {' '}
+                      Получить код
+                    </Button>
                   </FormikForm>
                 )
               }}
@@ -426,7 +472,11 @@ const Form: FC = () => {
                     )}
                   </fieldset>
                   {auth.authStep === Auth.Step4 && isValid && (
-                    <Button className={styles.formSubmit} onClick={() => onRegistrationConfirm()}>
+                    <Button
+                      className={styles.formSubmit}
+                      disabled={Object.keys(errors).length !== 0 || values.SMS === ''}
+                      onClick={() => onRegistrationConfirm()}
+                    >
                       Зарегистрироваться
                     </Button>
                   )}
@@ -460,8 +510,8 @@ const Form: FC = () => {
                     </label>
                     <Field
                       className={classNames(styles.formField, {
-                        [styles.formFieldHasErrors]: touched.email && errors.email,
-                        [styles.formFieldIsEmpty]: !values.email,
+                        // [styles.formFieldHasErrors]: touched.email && errors.email,
+                        [styles.formFieldIsEmpty]: values.email,
                       })}
                       placeholder='Введите e-mail'
                       name='email'
@@ -480,7 +530,11 @@ const Form: FC = () => {
                       <ErrorMessage name='email' />
                     </p>
                   </fieldset>
-                  <Button className={styles.formSubmit} onClick={() => onRegistration(values.email)}>
+                  <Button
+                    className={styles.formSubmit}
+                    disabled={Object.keys(errors).length !== 0 || values.email === undefined}
+                    onClick={() => onRegistration(values.email)}
+                  >
                     Получить код
                   </Button>
                 </FormikForm>
