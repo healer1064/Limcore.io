@@ -50,6 +50,10 @@ export const MainRounds: React.FC = () => {
         </div>
       </div>
       <div className={Styles.roadContainer}>
+        <div className={Styles.emptyContainers}>
+          <div className={Styles.emptyContainer_first} />
+          <div className={Styles.emptyContainer} />
+        </div>
         <div className={Styles.road}>
           <div className={Styles.cover}>
             <div className={Styles.round}>
