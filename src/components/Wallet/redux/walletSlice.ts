@@ -9,6 +9,10 @@ export const getWalletBalance: any = createAsyncThunk('wallet/getWalletBalance',
   const response = await api.get('api/v1/wallets/balance/')
   return response
 })
+export const getLimcPrice: any = createAsyncThunk('wallet/getLimcPrice', async function () {
+  const response = await api.get('api/v1/wallets/pricing/')
+  return response
+})
 
 export const walletSlice = createSlice({
   name: 'wallet',
@@ -16,12 +20,14 @@ export const walletSlice = createSlice({
     address: '',
     sum_limc_balance: '',
     usdt_balance: '',
+    limc_price: {
+      lock_time: 0,
+      slug: '',
+      title: '',
+      usdt_amount: '',
+    },
   },
-  reducers: {
-    // setProcessType: (state, { payload }) => {
-    //   state.processType = payload
-    // },
-  },
+  reducers: {},
   extraReducers: {
     [getWalletAdress.fulfilled]: (state, { payload }) => {
       state.address = payload.data.eth_address
@@ -29,8 +35,9 @@ export const walletSlice = createSlice({
     [getWalletBalance.fulfilled]: (state, { payload }) => {
       state.sum_limc_balance = payload.data.limc.sum_limc_balance
       state.usdt_balance = payload.data.usdt.usdt_balance
-      console.log(payload.data.limc.sum_limc_balance)
-      console.log(payload.data.usdt.usdt_balance)
+    },
+    [getLimcPrice.fulfilled]: (state, { payload }) => {
+      state.limc_price = payload.data[0]
     },
   },
 })
