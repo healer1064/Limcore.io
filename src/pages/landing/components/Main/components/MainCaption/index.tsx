@@ -13,8 +13,17 @@ export const MainCaption: React.FC = () => {
         </h1>
         <h3 className={Styles.subtitle}>Самый быстрый и выгодный способ инвестирования в криптовалюту</h3>
       </div>
-      {/* <video src=''>{}</video> */}
-      <img className={Styles.photo} src={centerImage} alt='Иконка' />
+      <iframe
+        className={Styles.photo}
+        width='502'
+        height='287'
+        src='https://www.youtube.com/embed/aK9obYQi-FI'
+        title='YouTube video player'
+        frameBorder='0'
+        allow='accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+        allowFullScreen
+      />
+      {/* <img className={Styles.photo} src={centerImage} alt='Иконка' /> */}
     </div>
   )
 }
