@@ -1,0 +1,20 @@
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.caption {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  color: #393c42;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+}

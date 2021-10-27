@@ -26,6 +26,7 @@ import { Header } from '@components/Header'
 import { HeaderMobile } from '@components/Header/HeaderMobile'
 import { CabinetPage } from '../../pages/cabinet'
 import { AuthPage } from '../../pages/auth'
+import { AuthMobile } from '../../pages/auth/AuthMobile'
 
 import { LandingPage } from '../../pages/landing'
 import { PurseMobile } from '@components/Purse/PurseMobile'
@@ -73,6 +74,7 @@ const App = () => {
                   <Route path='/profile' exact component={ProfileMobile} />
                   <Route path='/buy' exact component={BuyPage} /> */}
                   <Route path='/auth' exact component={AuthPage} />
+                  {/* <Route path='/auth' exact component={AuthMobile} /> */}
                   <Route path='/not-found' exact component={PageNotFount} />
                   <Route path='*'>
                     <Redirect to='/not-found' />

@@ -9,9 +9,19 @@ interface InputProps {
   value?: string
   placeholder?: string
   maxLength?: number
+  error?: string
 }
 
-export const InputText: React.FC<InputProps> = ({ className, onChange, type, name, value, placeholder, maxLength }) => {
+export const InputText: React.FC<InputProps> = ({
+  className,
+  onChange,
+  type,
+  name,
+  value,
+  placeholder,
+  maxLength,
+  error,
+}) => {
   const cls = [`${Styles.input}`]
 
   if (className) {
@@ -19,14 +29,17 @@ export const InputText: React.FC<InputProps> = ({ className, onChange, type, nam
   }
 
   return (
-    <input
-      className={cls.join(' ')}
-      onChange={onChange}
-      type={!type ? 'text' : type}
-      name={name}
-      value={value}
-      placeholder={placeholder}
-      maxLength={maxLength}
-    />
+    <>
+      <input
+        className={cls.join(' ')}
+        onChange={onChange}
+        type={!type ? 'text' : type}
+        name={name}
+        value={value}
+        placeholder={placeholder}
+        maxLength={maxLength}
+      />
+      {error && <span className={Styles.error}>{error}</span>}
+    </>
   )
 }
