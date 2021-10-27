@@ -35,6 +35,8 @@ export const PurseMobile: FC = () => {
 
   const dispatch = useAppDispatch()
   const prices = useAppSelector((state) => state.wallet.limc_price)
+  const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
+  // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
 
   const handleSetValue = (event) => setValue(event.target.value)
 
@@ -87,7 +89,7 @@ export const PurseMobile: FC = () => {
           <div className={styles.block}>
             <div className={styles.line}>
               <img src={limcoreIcon} alt='' />
-              <span className={styles.title}>0 LIMC</span>
+              <span className={styles.title}>{limcBalance} LIMC</span>
             </div>
             <span className={styles.usd}>$0</span>
             <div className={styles.items}>
