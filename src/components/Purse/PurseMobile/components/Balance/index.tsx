@@ -7,7 +7,7 @@ import { useAppSelector } from '@app/redux/hooks'
 
 export const Balance = () => {
   const [isBalanceVisible, setIsBalanceVisible] = useState(false)
-  const [money, setMoney] = useState('140,784')
+  const [money, setMoney] = useState('0')
   const walletAddress = useAppSelector((state) => state.wallet.address)
 
   const handleOpenBalanceClick = () => {
@@ -30,12 +30,13 @@ export const Balance = () => {
       <p className={styles.balance__sumMain}>{`$${money}`}</p>
       <div className={styles.balance__data}>
         <p className={styles.balance__time}>24h</p>
-        <p className={styles.balance__sum}>$1462</p>
+        <p className={styles.balance__sum}>$0</p>
         <p className={styles.balance__percent}>0%</p>
       </div>
+      <p className={styles.addressName}>Адрес кошелька:</p>
       <div className={styles.addressContainer}>
-        <p className={styles.addressName}>Адрес кошелька</p>
         <span className={styles.addressValue}>{walletAddress}</span>
+        {/* {walletAddress} */}
       </div>
       <Modal active={isBalanceVisible} setActive={() => {}}>
         <Overall onClick={handleCloseBalanceModal} money={money} />

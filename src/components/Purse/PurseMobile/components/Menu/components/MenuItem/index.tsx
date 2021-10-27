@@ -5,9 +5,9 @@ import { Info } from '../Info/index'
 
 interface MenuItemProps {
   onClick?: any
-  setActive: any
-  setNotActive: any
-  active: any
+  setActive?: any
+  setNotActive?: any
+  active?: any
   image: any
   title: any
   balance: any
