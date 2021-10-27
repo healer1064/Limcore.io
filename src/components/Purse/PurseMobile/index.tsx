@@ -10,7 +10,7 @@ import { Wallet } from './components/Wallet'
 import { Transactions } from './components/Transactions'
 import { Statistics } from './components/Statistics'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { buyLimc } from '../../Wallet/redux/walletSlice'
+import { buyLimc, getWalletBalance } from '../../Wallet/redux/walletSlice'
 
 import { Container } from '../../Container'
 import { ButtonBig } from '../../../ui-kit/ButtonBig'
@@ -27,7 +27,9 @@ export const PurseMobile: FC = () => {
   const [isWalletVisible, setIsWalletVisible] = useState(true)
   const [isLimcBought, setIsLimcBought] = useState(false)
   const [isUserHasTransactions, setIsUserHasTransactions] = useState(true)
+
   const [isErrorVisible, setIsErrorVisible] = useState(false)
+  const [isSuccessVisible, setIsSuccessVisible] = useState(false)
 
   const [viewContent, setViewContent] = useState('')
 
@@ -37,6 +39,8 @@ export const PurseMobile: FC = () => {
   const prices = useAppSelector((state) => state.wallet.limc_price)
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
   // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
+  const temp = useAppSelector((state) => state)
+  console.log(temp)
 
   const handleSetValue = (event) => setValue(event.target.value)
 
@@ -69,17 +73,25 @@ export const PurseMobile: FC = () => {
   const handleBuyLIMK = async () => {
     const data = {
       limc_amount: value,
-      pricing_slug: prices.lock_time,
+      pricing_slug: prices.slug,
     }
 
     const request = await dispatch(buyLimc(data))
-    if (request.error.message.includes(400)) {
+    console.log(request)
+    if (request.error?.message?.includes(400)) {
       setIsErrorVisible(true)
 
       setTimeout(() => {
         setIsErrorVisible(false)
       }, 2000)
+    } else {
+      setIsSuccessVisible(true)
+
+      setTimeout(() => {
+        setIsSuccessVisible(false)
+      }, 2000)
     }
+    dispatch(getWalletBalance())
   }
 
   return (
@@ -118,8 +130,8 @@ export const PurseMobile: FC = () => {
       )}
       {viewContent === 'buy' && (
         <Container title='Покупка LIMC' onClick={closePopup}>
-          <span className={styles.text}>Цена за LIMC: {prices.usdt_amount}</span>
-          <span className={styles.text}>Locktime: {prices.lock_time}</span>
+          <span className={styles.text}>Цена за LIMC в USDT: {prices.usdt_amount}</span>
+          <span className={styles.text}>Locktime: {prices.lock_time} дней</span>
           <InputText onChange={(event) => handleSetValue(event)} type='number' value={value} />
           <ButtonBig onClick={handleBuyLIMK} className={styles.button} disabled={!value}>
             Купить
@@ -129,6 +141,11 @@ export const PurseMobile: FC = () => {
 
       <Modal active={isErrorVisible} style={{ zIndex: 1001, backgroundColor: 'transparent' }}>
         <div className={styles.errorModal}>У вас недостаточно средств.</div>
+      </Modal>
+      <Modal active={isSuccessVisible} style={{ zIndex: 1001, backgroundColor: 'transparent' }}>
+        <div className={styles.errorModal} style={{ backgroundColor: 'green' }}>
+          Успешно!
+        </div>
       </Modal>
 
       <Balance />
