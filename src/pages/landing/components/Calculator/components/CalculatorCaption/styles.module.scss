@@ -121,6 +121,7 @@
 
 .info {
   display: flex;
+  position: relative;
   flex-direction: column;
   padding: 30px 34px;
   background: #f9fafe;
@@ -213,6 +214,20 @@
       color: #4f535a;
     }
   }
+}
+
+.informationIcon {
+  display: flex;
+  flex-direction: row;
+}
+
+.icon {
+  display: flex;
+  margin: 0 0 0 6px;
+  padding: 0;
+  box-sizing: border-box;
+  width: 26px;
+  height: 26px;
 }
 
 @media all and (max-width: 768px) {
