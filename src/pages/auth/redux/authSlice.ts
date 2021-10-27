@@ -55,7 +55,7 @@ export const authSlice = createSlice({
     processType: 'authorization',
     stepRegistration: 1,
     stepAuthorization: 1,
-    typeAuthorization: 'email',
+    typeAuthorization: '',
     phone: '',
     codePhone: '',
     email: '',

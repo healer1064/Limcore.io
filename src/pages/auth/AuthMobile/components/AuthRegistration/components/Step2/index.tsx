@@ -13,7 +13,10 @@ export const Step2: React.FC = () => {
   const codePhone = useAppSelector((state) => state.authNew.codePhone)
   const [validValue, setValidValue] = useState(true)
 
-  const onChange = (event) => dispatch(setCodePhone(event.target.value))
+  const onChange = (event) => {
+    setValidValue(true)
+    dispatch(setCodePhone(event.target.value))
+  }
 
   const prevStep = () => dispatch(setStepRegistration(1))
 

@@ -68,13 +68,8 @@ const App = () => {
               {!isAuth && (
                 <Switch>
                   <Route path='/' exact component={LandingPage} />
-                  {/* <Route path='/purse' exact component={PurseMobile} />
-                  <Route path='/chat' exact component={BroadcastsMobile} />
-                  <Route path='/broadcasts' exact component={BroadcastsMobile} />
-                  <Route path='/profile' exact component={ProfileMobile} />
-                  <Route path='/buy' exact component={BuyPage} /> */}
-                  <Route path='/auth' exact component={AuthPage} />
-                  {/* <Route path='/auth' exact component={AuthMobile} /> */}
+                  {/* <Route path='/auth' exact component={AuthPage} /> */}
+                  <Route path='/auth' exact component={AuthMobile} />
                   <Route path='/not-found' exact component={PageNotFount} />
                   <Route path='*'>
                     <Redirect to='/not-found' />

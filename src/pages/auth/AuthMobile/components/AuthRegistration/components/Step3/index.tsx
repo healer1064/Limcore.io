@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setStepRegistration, setEmail } from '../../../../../redux/authSlice'
+import { validateEmail } from '../../../../../../../helpers/validateValue'
 import Styles from './styles.module.scss'
 
 import { Label } from '../../../../../../../ui-kit/Label'
@@ -12,14 +13,17 @@ export const Step3: React.FC = () => {
   const email = useAppSelector((state) => state.authNew.email)
   const [validValue, setValidValue] = useState(true)
 
-  const onChange = (event) => dispatch(setEmail(event.target.value))
+  const onChange = (event) => {
+    setValidValue(true)
+    dispatch(setEmail(event.target.value))
+  }
 
   const nextStep = () => {
-    if (!email.includes('@') || !email.includes('.')) {
-      setValidValue(false)
-    } else {
+    if (validateEmail(email)) {
       setValidValue(true)
       dispatch(setStepRegistration(4))
+    } else {
+      setValidValue(false)
     }
   }
 

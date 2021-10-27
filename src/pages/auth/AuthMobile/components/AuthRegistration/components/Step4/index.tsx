@@ -13,7 +13,10 @@ export const Step4: React.FC = () => {
   const codeEmail = useAppSelector((state) => state.authNew.codeEmail)
   const [validValue, setValidValue] = useState(true)
 
-  const onChange = (event) => dispatch(setCodeEmail(event.target.value))
+  const onChange = (event) => {
+    setValidValue(true)
+    dispatch(setCodeEmail(event.target.value))
+  }
 
   const prevStep = () => dispatch(setStepRegistration(3))
 

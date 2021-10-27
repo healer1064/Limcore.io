@@ -1,7 +1,7 @@
 import React from 'react'
 import Styles from './styles.module.scss'
 
-interface InputProps {
+interface InputTextProps {
   className?: string
   onChange?: any
   type?: string
@@ -12,7 +12,7 @@ interface InputProps {
   error?: string
 }
 
-export const InputText: React.FC<InputProps> = ({
+export const InputText: React.FC<InputTextProps> = ({
   className,
   onChange,
   type,
@@ -26,6 +26,10 @@ export const InputText: React.FC<InputProps> = ({
 
   if (className) {
     cls.push(className)
+  }
+
+  if (error) {
+    cls.push(`${Styles.input_error}`)
   }
 
   return (

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setProcessType, setStepRegistration, setPhone } from '../../../../../redux/authSlice'
+import { validatePhone } from '../../../../../../../helpers/validateValue'
 import Styles from './styles.module.scss'
 
 import { Label } from '../../../../../../../ui-kit/Label'
@@ -13,14 +14,17 @@ export const Step1: React.FC = () => {
   const phone = useAppSelector((state) => state.authNew.phone)
   const [validValue, setValidValue] = useState(true)
 
-  const onChange = (event) => dispatch(setPhone(event.target.value))
+  const onChange = (event) => {
+    setValidValue(true)
+    dispatch(setPhone(event.target.value))
+  }
 
   const nextStep = () => {
-    if (phone.includes('_') || phone.length !== 18) {
-      setValidValue(false)
-    } else {
+    if (validatePhone(phone)) {
       setValidValue(true)
       dispatch(setStepRegistration(2))
+    } else {
+      setValidValue(false)
     }
   }
 
