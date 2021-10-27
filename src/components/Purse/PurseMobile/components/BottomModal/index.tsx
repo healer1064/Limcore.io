@@ -4,7 +4,7 @@ import styles from './styles.module.scss'
 
 interface IBottomModalProps {
   active: boolean
-  setActive: (boolean) => void
+  setActive?: (boolean) => void
   children?: React.ReactNode
   title?: string
   subtitle?: string

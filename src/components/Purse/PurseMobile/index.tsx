@@ -20,18 +20,21 @@ import limcoreIcon from '@icons/limcore.svg'
 import buyIcon from '@icons/buy.svg'
 import sellIcon from '@icons/sell.svg'
 import tradeIcon from '@icons/trade.svg'
+import { Modal } from './components/Modal'
 
 export const PurseMobile: FC = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
   const [isWalletVisible, setIsWalletVisible] = useState(true)
   const [isLimcBought, setIsLimcBought] = useState(false)
   const [isUserHasTransactions, setIsUserHasTransactions] = useState(true)
+  const [isErrorVisible, setIsErrorVisible] = useState(false)
 
   const [viewContent, setViewContent] = useState('')
 
   const [value, setValue] = useState('')
 
   const dispatch = useAppDispatch()
+  const prices = useAppSelector((state) => state.wallet.limc_price)
 
   const handleSetValue = (event) => setValue(event.target.value)
 
@@ -61,13 +64,20 @@ export const PurseMobile: FC = () => {
     console.log('Показать больше')
   }
 
-  const handleBuyLIMK = () => {
+  const handleBuyLIMK = async () => {
     const data = {
       limc_amount: value,
-      pricing_slug: 'usdt_amount_95_lock_time_180',
+      pricing_slug: prices.lock_time,
     }
 
-    dispatch(buyLimc(data))
+    const request = await dispatch(buyLimc(data))
+    if (request.error.message.includes(400)) {
+      setIsErrorVisible(true)
+
+      setTimeout(() => {
+        setIsErrorVisible(false)
+      }, 2000)
+    }
   }
 
   return (
@@ -106,14 +116,19 @@ export const PurseMobile: FC = () => {
       )}
       {viewContent === 'buy' && (
         <Container title='Покупка LIMC' onClick={closePopup}>
-          <span className={styles.text}>Цена за LIMC</span>
-          <span className={styles.text}>Lock time</span>
+          <span className={styles.text}>Цена за LIMC: {prices.usdt_amount}</span>
+          <span className={styles.text}>Locktime: {prices.lock_time}</span>
           <InputText onChange={(event) => handleSetValue(event)} type='number' value={value} />
           <ButtonBig onClick={handleBuyLIMK} className={styles.button} disabled={!value}>
             Купить
           </ButtonBig>
         </Container>
       )}
+
+      <Modal active={isErrorVisible} style={{ zIndex: 1001, backgroundColor: 'transparent' }}>
+        <div className={styles.errorModal}>У вас недостаточно средств.</div>
+      </Modal>
+
       <Balance />
       <Menu openPopup={() => setViewContent('balance')} />
       <div className={styles.purse__content}>
