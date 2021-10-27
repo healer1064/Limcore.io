@@ -261,6 +261,11 @@
   line-height: 150%;
   color:  #F24949;
 }
+
+.emptyContainers {
+  display: none;
+}
+
 @media all and (max-width: 768px) {
 
   .rounds {
@@ -348,10 +353,10 @@
 
   .roadContainer {
     display: grid;
-    grid-template-columns: minmax(min-content, max-content) 1fr;
+    grid-template-columns: 30px 0px 1fr;
     grid-template-rows: minmax(min-content, max-content);
     grid-template-areas:
-    'shell road';
+    'empty shell road';
     margin: 20px 0 0;
     padding: 0;
     box-sizing: border-box;
@@ -359,18 +364,31 @@
 
   .road {
     grid-area: road;
-    margin-top: 0;
+    margin-top: 19px;
+  }
+
+  .round {
+    margin-bottom: 14px;
+    margin-top: 10px;
+
+    &:last-child {
+      margin-bottom: 30px;
+    }
+
+    &:first-child {
+      margin-bottom: 40px;
+    }
   }
 
   .cover {
     flex-direction: column;
+    gap: 0px;
   }
 
   .shell {
     grid-area: shell;
     margin-top: 0;
     box-sizing: border-box;
-    border-left: 4px solid #4A70F8;
   }
 
   .lines {
@@ -379,12 +397,6 @@
 
   .line {
     border: none;
-    //display: flex;
-    //flex: 1;
-    //height: 30px;
-    //border-top: 4px solid #4a70f8;
-    //border-left: 2px solid #4a70f8;
-    //border-right: 2px solid #4a70f8;
 
     &:last-child {
       flex: 3;
@@ -395,11 +407,13 @@
   .dates {
     flex-direction: column;
     height: 100%;
-    padding: 0 10px;
+    padding: 0;
   }
 
   .date {
     flex-direction: column;
+    margin-left: 10px;
+    white-space: nowrap;
   }
 
   .button {
@@ -408,5 +422,39 @@
 
   .second {
     width: 100%;
+  }
+
+  .emptyContainers {
+    grid-area: empty;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+  }
+
+  .emptyContainer {
+    display: flex;
+    margin: 0 0 10px 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-left: 4px solid #4a70f8;
+    border-bottom: 2px solid #4a70f8;
+
+    &_first {
+      display: flex;
+      margin: 10px 0 0;
+      padding: 0;
+      box-sizing: border-box;
+      width: 100%;
+      height: 150px;
+      border-top: 2px solid #4a70f8;
+      border-left: 4px solid #4a70f8;
+      border-bottom: 2px solid #4a70f8;
+    }
   }
 }
