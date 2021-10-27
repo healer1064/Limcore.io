@@ -1,0 +1,95 @@
+.popup {
+  display: flex;
+  margin: 12px 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: -22px;
+  right: -80px;
+  background-color: transparent;
+  z-index: 3;
+  justify-content: flex-end;
+
+  &_invisible {
+    display: none;
+  }
+}
+
+.popup_round {
+  display: flex;
+  margin: 12px 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 38px;
+  right: 106px;
+  background-color: transparent;
+  z-index: 3;
+  justify-content: flex-end;
+}
+
+.content {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  background: #ffffff;
+  box-shadow: 0px 4px 25px rgba(74, 112, 248, 0.08);
+  border-radius: 14px;
+  margin: 0;
+  padding: 30px;
+  box-sizing: border-box;
+  max-width: 324px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4f535a;
+}
+
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 14px;
+  height: 14px;
+}
+
+@media screen and (max-width: 1024px) {
+  .popup {
+    right: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+    .popup_round {
+      bottom: -90px;
+    }
+}
+
+
+@media screen and (max-width: 650px) {
+  .popup_round {
+    bottom: -100px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .popup_round {
+    bottom: -150px;
+    right: 10px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .popup_round {
+    bottom: -170px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .popup_round {
+    bottom: -270px;
+    right: 0px;
+  }
+}
