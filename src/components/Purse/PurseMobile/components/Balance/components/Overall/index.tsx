@@ -72,11 +72,11 @@ export const Overall = ({ onClick, money }) => {
       </div>
 
       <ul className={styles.list}>
-        {Item('Получено с майнинга', '$12,784')}
-        {Item('Получено в сети XCH', '$10,092')}
-        {Item('Инвестировано', '$22,392')}
-        {Item('Баланс LIMC', '$18,884')}
-        {Item('Баланс USDT', '$1,209')}
+        {Item('Получено с майнинга', '$0')}
+        {Item('Получено в сети XCH', '$0')}
+        {Item('Инвестировано', '$0')}
+        {Item('Баланс LIMC', '$0')}
+        {Item('Баланс USDT', '$0')}
       </ul>
 
       <ul className={styles.btns}>

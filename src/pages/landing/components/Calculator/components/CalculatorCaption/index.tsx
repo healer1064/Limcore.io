@@ -1,14 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Styles from './styles.module.scss'
 
 import { Label } from '../../../../../../ui-kit/Label'
 import { InputText } from '../../../../../../ui-kit/InputText'
 import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
 
+import { PopupMainPage } from '../../../../components/Main/components/PopupMainPage'
+import PopupStyles from '../../../../components/Main/components/PopupMainPage/styles.module.scss'
+
 import arrowIcon from '@icons/icon-arrow.svg'
 import limcoreIcon from '@icons/limcore.svg'
+import infoIcon from '@icons/info-icon.svg'
 
 export const CalculatorCaption: React.FC = () => {
+  const [popupOpen, setPopupOpen] = useState(false)
+  const closePopup = () => {
+    setPopupOpen(false)
+  }
+  const openPopup = () => {
+    setPopupOpen(true)
+  }
   return (
     <div className={Styles.caption}>
       <h2 className={Styles.title}>Калькулятор доходности</h2>
@@ -59,7 +70,9 @@ export const CalculatorCaption: React.FC = () => {
                 </div>
                 <div className={Styles.column}>
                   <strong>Limcore</strong>
-                  <strong>15%</strong>
+                  <strong className={Styles.informationIcon}>
+                    15% <img className={Styles.icon} src={infoIcon} alt='Иконка' onClick={openPopup} />
+                  </strong>
                 </div>
               </div>
               <div className={Styles.wrap}>
@@ -83,6 +96,9 @@ export const CalculatorCaption: React.FC = () => {
                 </div>
               </div>
             </div>
+            <PopupMainPage closePopup={closePopup} popupOpen={popupOpen} className={PopupStyles.popup}>
+              Покрытие расходов на поддержание инфраструктуры
+            </PopupMainPage>
           </div>
           <ButtonBig>Купить LIMC</ButtonBig>
         </div>

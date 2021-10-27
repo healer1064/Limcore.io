@@ -46,9 +46,9 @@ export const Menu = ({ openPopup }) => {
         image={balanceLimc}
         title='Баланс LIMC'
         balance={`${limcBalance} LIMC`}
-        setActive={handleBalanceLimcOpenClick}
-        setNotActive={handleBalanceLimcCloseClick}
-        active={isLimcInfoVisible}
+        // setActive={handleBalanceLimcOpenClick}
+        // setNotActive={handleBalanceLimcCloseClick}
+        // active={isLimcInfoVisible}
       />
       <MenuItem
         image={balanceUsdt}

@@ -114,7 +114,7 @@ export const Info = ({ active, setActive, title, setNotActive, image, balance })
             </span>
             <h2 className={styles.headerTitle}>{balance}</h2>
           </div>
-          {type !== 'CARD' && <p className={styles.headerSubtitle}>$18,884</p>}
+          {type !== 'CARD' && <p className={styles.headerSubtitle}>$0</p>}
         </div>
         {type === 'LIMC' && <LimcButtons />}
         {type === 'USDT' && <UsdtButtons />}

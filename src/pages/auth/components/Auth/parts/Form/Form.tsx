@@ -74,7 +74,7 @@ const Form: FC = () => {
       email: localStorage.getItem('email'),
       code: localStorage.getItem('code'),
     }
-    dispatch(authorizationUserEmailConfirmation())
+    // dispatch(authorizationUserEmailConfirmation())
     // dispatch(getJwtToken(data))
     const response = await dispatch(getJwtToken(data))
     // const token = response.payload.data.access
