@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Navigation, Pagination } from 'swiper'
+import SwiperCore, { Pagination } from 'swiper'
 
 import useWindowSize from '@helpers/useWindowSizeHook'
 

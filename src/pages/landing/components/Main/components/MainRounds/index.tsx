@@ -8,8 +8,10 @@ import PopupStyles from '../PopupMainPage/styles.module.scss'
 import limcoreIcon from '@icons/limcore.svg'
 import infoIcon from '@icons/info-icon.svg'
 import etherscanIcon from '@icons/etherscan.png'
+import { useHistory } from 'react-router-dom'
 
 export const MainRounds: React.FC = () => {
+  const history = useHistory()
   const [popupOpen, setPopupOpen] = useState(false)
   const closePopup = () => {
     setPopupOpen(false)
@@ -56,7 +58,9 @@ export const MainRounds: React.FC = () => {
       </div>
       <div className={Styles.buttons}>
         <div className={Styles.column}>
-          <button className={Styles.second}>Купить LIMC</button>
+          <button className={Styles.second} onClick={() => history.push('/auth')}>
+            Купить LIMC
+          </button>
           <span>Lock-up период 6 месяцев</span>
         </div>
         <div className={Styles.column}>

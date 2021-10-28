@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useAppSelector } from '@app/redux/hooks'
 import Styles from './styles.module.scss'
 
 import logoIcon from '@icons/logo.svg'

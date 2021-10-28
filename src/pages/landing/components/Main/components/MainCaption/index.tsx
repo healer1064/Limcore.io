@@ -2,7 +2,6 @@ import React from 'react'
 import Styles from './styles.module.scss'
 
 import chiaIcon from '@icons/chia.svg'
-import centerImage from '../../../../../../assets/images/center.png'
 
 export const MainCaption: React.FC = () => {
   return (

@@ -37,6 +37,7 @@ export const Calendar: React.FC = () => {
 
   const [year, setYear] = useState(null)
   const [month, setMonth] = useState(null)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [day, setDay] = useState(null)
 
   const backwardYears = () => {
@@ -93,7 +94,7 @@ export const Calendar: React.FC = () => {
 
     setDay(day)
 
-    const date = { day, month, year }
+    // const date = { day, month, year }
   }
 
   useEffect(() => {

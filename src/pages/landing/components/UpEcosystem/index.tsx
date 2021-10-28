@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 import useWindowSize from '@helpers/useWindowSizeHook'
 
-import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Navigation } from 'swiper'
 
 import Styles from './styles.module.scss'

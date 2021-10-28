@@ -7,6 +7,7 @@ import { useAppSelector } from '@app/redux/hooks'
 
 export const Balance = () => {
   const [isBalanceVisible, setIsBalanceVisible] = useState(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [money, setMoney] = useState('0')
   const walletAddress = useAppSelector((state) => state.wallet.address)
 

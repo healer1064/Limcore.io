@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react'
 import Styles from './style.module.scss'
 import { ButtonBig } from '../../../../ui-kit/ButtonBig'

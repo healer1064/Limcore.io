@@ -1,5 +1,5 @@
 import * as Yup from 'yup'
-import { Process, Auth, phoneMask, SMSMask } from '../constants'
+import { Process, Auth, SMSMask } from '../constants'
 
 export const getValidationSchema = (processType: Process, authStep: Auth) => {
   switch (processType) {

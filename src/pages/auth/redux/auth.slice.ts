@@ -95,14 +95,14 @@ export const authSlice = createSlice({
 
       state.confirmationEmail = data
     },
-    [registerUserEmailConfirmation.fulfilled]: (state, action) => {
+    [registerUserEmailConfirmation.fulfilled]: (state) => {
       state.isAuth = !state.isAuth
     },
-    [authorizationUserEmailConfirmation.fulfilled]: (state, action) => {
+    [authorizationUserEmailConfirmation.fulfilled]: (state) => {
       state.isAuth = !state.isAuth
     },
     [getJwtToken.fulfilled]: (state, action) => {
-      console.log(action)
+      // console.log(action)
       const data = { ...action.payload.data }
       localStorage.setItem('jwtToken', JSON.stringify(data))
     },

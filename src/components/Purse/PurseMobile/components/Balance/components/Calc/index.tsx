@@ -12,6 +12,7 @@ import { CalcTable } from '../CalcTable/index'
 export const Calc = ({ onClick, money }) => {
   const [sumValue, setSumValue] = useState(money)
   const [resultValue, setResultValue] = useState('2')
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [radioChecked, setRadioChecked] = useState(true)
   const [activeItem, setActiveItem] = useState(0)
   const [isTableVisible, setIsTableVisible] = useState(false)
