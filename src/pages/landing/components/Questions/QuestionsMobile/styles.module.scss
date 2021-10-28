@@ -52,6 +52,10 @@
     margin-bottom: 16px;
   }
 
+  .block {
+    display: flex;
+  }
+
   span {
     font-weight: 600;
   }
@@ -69,7 +73,7 @@
 }
 
 .block {
-  display: flex;
+  display: none;
   flex-direction: column;
 }
 
