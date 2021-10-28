@@ -60,6 +60,8 @@ prod build:
     - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
     - echo "NODE_ENV = \"development\"" >> ./.env
     - /kaniko/executor --context ./ --dockerfile ./Dockerfile --destination $CI_REGISTRY_IMAGE/prod:$CI_COMMIT_TAG
+  tags:
+    - limcore-front-prod
   only:
     - master
 
@@ -74,7 +76,7 @@ prod deploy:
     - docker info
     - if docker ps |grep -q limcore-frontend; then docker stop limcore-frontend; fi
     - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
-    - docker pull registry.gitlab.com/auditor2/production/frontend/limcore.io/dev
+    - docker pull registry.gitlab.com/auditor2/production/frontend/limcore.io/prod
     - docker run -d -p 8080:8080 --name limcore-frontend --rm registry.gitlab.com/auditor2/production/frontend/limcore.io/prod:latest
     - echo 'y' | docker system prune
   when: manual
