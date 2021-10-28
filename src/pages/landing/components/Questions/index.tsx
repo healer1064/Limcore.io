@@ -24,7 +24,7 @@ export const Questions: React.FC = () => {
 
   return (
     <>
-      <div className={`${Styles.questions} ${Styles.questions_desktop}`}>
+      <div id='questions' className={`${Styles.questions} ${Styles.questions_desktop}`}>
         <div className={Styles.wrapper}>
           <h4 className={Styles.caption}>Вопросы и ответы</h4>
           <div className={Styles.container}>

@@ -8,6 +8,8 @@
 .block {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  max-width: 500px;
 }
 
 .title {
@@ -30,15 +32,16 @@
   margin: 0;
 }
 
+.wrap {
+  width: 502px;
+  height: 287px;
+}
+
 // Modile
 @media all and (max-width: 768px) {
   .caption {
     flex-wrap: wrap;
     margin-bottom: 60px;
-  }
-
-  .block {
-    padding: 0 20px;
   }
 
   .title {
