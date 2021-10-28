@@ -25,6 +25,7 @@ import { Button } from '..'
 import { getValidationSchema } from '../../helpers/yup.helpers'
 import { isNumbersOnly } from '../../helpers/number.helpers'
 import styles from './Form.module.scss'
+import useWindowSize from '@helpers/useWindowSizeHook'
 
 const Form: FC = () => {
   const history = useHistory()
@@ -36,6 +37,19 @@ const Form: FC = () => {
   const [phone, setPhone] = useLocalStorage('phone', '')
   const [email, setEmail] = useLocalStorage('email', '')
   const [numberCode, setNumberCode] = useLocalStorage('code', '')
+  const [uniqueId, setUniqueId] = useLocalStorage('uniqueId', '')
+
+  const { width } = useWindowSize()
+  const desktop = width >= 768
+
+  const mainStyles = {
+    legend: desktop ? classNames(styles.formLegend, styles.formLegendDesktop) : styles.formLegend,
+    submit: desktop ? classNames(styles.formSubmit, styles.formSubmitDesktop) : styles.formSubmit,
+    form: desktop ? classNames(styles.form, styles.formDesktop) : styles.form,
+    errorMessage: desktop
+      ? classNames(styles.formFieldErrorMessageDesktop, styles.formFieldErrorMessage)
+      : styles.formFieldErrorMessage,
+  }
 
   const onAuthorization = (email) => {
     // console.log('E-mail with the code has been sent: 0540, dc2684e0-cc8b-4515-8fa7-9f831c7ef5bf.'.slice(42, 78))
@@ -46,17 +60,16 @@ const Form: FC = () => {
   }
 
   const onRegistration = async (email) => {
-    // console.log('E-mail with the code has been sent: 0540, dc2684e0-cc8b-4515-8fa7-9f831c7ef5bf.'.slice(42, 78))
     const response = await dispatch(registerUserEmail({ email })) // придет unique_identifier
     const id = response.payload?.data.unique_identifier || null // вылетит ошибка если такой майл уже существует
-    localStorage.setItem('uniqueId', id)
+    setUniqueId(id)
   }
 
   const onRegistrationConfirm = () => {
     // нужно отдать code + unique_identifier
     const data = {
       code: numberCode,
-      unique_identifier: localStorage.getItem('uniqueId'),
+      unique_identifier: uniqueId,
     }
     dispatch(registerUserEmailConfirmation(data))
     dispatch(getJwtToken({ email, code: data.code }))
@@ -72,6 +85,7 @@ const Form: FC = () => {
       email,
       code: numberCode,
     }
+
     const response = await dispatch(getJwtToken(data))
     if (response.payload.status === 200) {
       dispatch(setIsAuth(true))
@@ -136,7 +150,6 @@ const Form: FC = () => {
   }, [])
 
   const validationSchema = getValidationSchema(auth.processType, auth.authStep)
-
   const TRUE = true
 
   switch (auth.processType) {
@@ -173,9 +186,9 @@ const Form: FC = () => {
             >
               {({ handleChange, values, touched, errors }) => {
                 return (
-                  <FormikForm className={styles.form}>
+                  <FormikForm className={mainStyles.form}>
                     <fieldset className={styles.formFieldset}>
-                      <legend className={styles.formLegend}>Авторизация</legend>
+                      <legend className={mainStyles.legend}>Авторизация</legend>
                       <label className={styles.formLabel} htmlFor='emailOrPhone'>
                         Телефон или e-mail
                       </label>
@@ -202,7 +215,7 @@ const Form: FC = () => {
                         // maxLength={isNumbersOnly(maskRef?.current?.value || '') ? phoneMask.length : null}
                       />
                       <p
-                        className={classNames(styles.formFieldErrorMessage, {
+                        className={classNames(mainStyles.errorMessage, {
                           [styles.formFieldErrorMessageHidden]: Object.keys(errors).length === 0,
                         })}
                       >
@@ -210,7 +223,7 @@ const Form: FC = () => {
                       </p>
                     </fieldset>
                     <Button
-                      className={styles.formSubmit}
+                      className={mainStyles.submit}
                       disabled={Object.keys(errors).length !== 0 || values.emailOrPhone === ''}
                       onClick={() => onAuthorization(values.emailOrPhone)}
                     >
@@ -246,9 +259,9 @@ const Form: FC = () => {
             >
               {({ handleChange, submitForm, values, touched, errors }) => {
                 return (
-                  <FormikForm className={styles.form}>
+                  <FormikForm className={mainStyles.form}>
                     <fieldset className={styles.formFieldset}>
-                      <legend className={styles.formLegend}>
+                      <legend className={mainStyles.legend}>
                         Введите код {auth.authMethod === Method.Phone ? 'из СМС' : 'из письма'}
                       </legend>
                       <label className={styles.formLabel} htmlFor='SMS'>
@@ -265,7 +278,7 @@ const Form: FC = () => {
                           Изменить
                         </Link>
                       </label>
-                      {/* <legend className={styles.formLegend}>
+                      {/* <legend className={mainStyles.legend}>
                         {auth.authStep === Auth.Step3
                           ? 'Введите 2-FA код'
                           : `Введите код ${auth.authMethod === Method.Phone ? 'из СМС' : 'из письма'}`}
@@ -310,7 +323,7 @@ const Form: FC = () => {
                         maxLength={SMSMask.length}
                       />
                       <p
-                        className={classNames(styles.formFieldErrorMessage, {
+                        className={classNames(mainStyles.errorMessage, {
                           [styles.formFieldErrorMessageHidden]: Object.keys(errors).length === 0,
                         })}
                       >
@@ -332,7 +345,7 @@ const Form: FC = () => {
                       )}
                     </fieldset>
                     {/* {(!auth['2FA'] || auth.authStep === Auth.Step3) && isValid && ( */}
-                    <Button className={styles.formSubmit} onClick={() => onAuthorizationConfirm()}>
+                    <Button className={mainStyles.submit} onClick={() => onAuthorizationConfirm()}>
                       Войти
                     </Button>
                     {/* )} */}
@@ -364,9 +377,9 @@ const Form: FC = () => {
             >
               {({ handleChange, values, touched, errors }) => {
                 return (
-                  <FormikForm className={styles.form}>
+                  <FormikForm className={mainStyles.form}>
                     <fieldset className={styles.formFieldset}>
-                      <legend className={styles.formLegend}>Регистрация</legend>
+                      <legend className={mainStyles.legend}>Регистрация</legend>
                       <label className={styles.formLabel} htmlFor='phone'>
                         Телефон
                       </label>
@@ -386,7 +399,7 @@ const Form: FC = () => {
                         // maxLength={phoneMask.length}
                       />
                       <p
-                        className={classNames(styles.formFieldErrorMessage, {
+                        className={classNames(mainStyles.errorMessage, {
                           [styles.formFieldErrorMessageHidden]: Object.keys(errors).length === 0,
                         })}
                       >
@@ -394,7 +407,7 @@ const Form: FC = () => {
                       </p>
                     </fieldset>
                     <Button
-                      className={styles.formSubmit}
+                      className={mainStyles.submit}
                       disabled={Object.keys(errors).length !== 0 || values.phone === ''}
                     >
                       {' '}
@@ -427,9 +440,9 @@ const Form: FC = () => {
               }}
             >
               {({ handleChange, submitForm, values, touched, errors, isValid }) => (
-                <FormikForm className={styles.form}>
+                <FormikForm className={mainStyles.form}>
                   <fieldset className={styles.formFieldset}>
-                    <legend className={styles.formLegend}>
+                    <legend className={mainStyles.legend}>
                       Введите код {auth.authMethod === Method.Phone ? 'из СМС' : null}
                     </legend>
                     <label className={styles.formLabel} htmlFor='SMS'>
@@ -468,7 +481,7 @@ const Form: FC = () => {
                       maxLength={SMSMask.length}
                     />
                     <p
-                      className={classNames(styles.formFieldErrorMessage, {
+                      className={classNames(mainStyles.errorMessage, {
                         [styles.formFieldErrorMessageHidden]: Object.keys(errors).length === 0,
                       })}
                     >
@@ -487,7 +500,7 @@ const Form: FC = () => {
                   </fieldset>
                   {auth.authStep === Auth.Step4 && isValid && (
                     <Button
-                      className={styles.formSubmit}
+                      className={mainStyles.submit}
                       disabled={Object.keys(errors).length !== 0 || values.SMS === ''}
                       onClick={() => onRegistrationConfirm()}
                     >
@@ -516,9 +529,9 @@ const Form: FC = () => {
               }}
             >
               {({ handleChange, values, errors }) => (
-                <FormikForm className={styles.form}>
+                <FormikForm className={mainStyles.form}>
                   <fieldset className={styles.formFieldset}>
-                    <legend className={styles.formLegend}>Регистрация</legend>
+                    <legend className={mainStyles.legend}>Регистрация</legend>
                     <label className={styles.formLabel} htmlFor='email'>
                       E-mail
                     </label>
@@ -537,7 +550,7 @@ const Form: FC = () => {
                       innerRef={ref}
                     />
                     <p
-                      className={classNames(styles.formFieldErrorMessage, {
+                      className={classNames(mainStyles.errorMessage, {
                         [styles.formFieldErrorMessageHidden]: Object.keys(errors).length === 0,
                       })}
                     >
@@ -545,7 +558,7 @@ const Form: FC = () => {
                     </p>
                   </fieldset>
                   <Button
-                    className={styles.formSubmit}
+                    className={mainStyles.submit}
                     disabled={Object.keys(errors).length !== 0 || values.email === undefined}
                     onClick={() => onRegistration(values.email)}
                   >

@@ -43,24 +43,16 @@
   right: 10px;
   z-index: 1;
 
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
+  border: none;
 
   cursor: pointer;
-
-  // & > svg {
-  //   width: 16px;
-  //   height: 16px;
-  // }
-
-  // & > svg > path {
-  //   transition: stroke .3s ease;
-  // }
-
-  // &:hover > svg > path {
-  //   stroke: black;
-  //   transition: stroke .3s ease;
-  // }
+  background-image: url(../../../../../assets/icons/close.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  outline: none;
 }
 
 @media only screen and (min-width: 1250px) {

@@ -91,3 +91,22 @@
     color: #4a70f8;
   }
 }
+
+.modalAuth {
+  & > div {
+    width: 454px;
+    height: 454px;
+  }
+
+  &Inner {
+    margin: 0 auto;
+    padding: 40px 20px;
+    border-radius: 14px;
+    
+    background-color: #fff;
+  }
+}
+
+.displayNone {
+  display: none;
+}

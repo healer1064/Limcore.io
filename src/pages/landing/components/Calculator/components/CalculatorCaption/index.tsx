@@ -11,16 +11,25 @@ import PopupStyles from '../../../../components/Main/components/PopupMainPage/st
 import arrowIcon from '@icons/icon-arrow.svg'
 import limcoreIcon from '@icons/limcore.svg'
 import infoIcon from '@icons/info-icon.svg'
-import { useHistory } from 'react-router-dom'
+import { Modal } from '@components/Purse/PurseMobile/components/Modal'
+import AuthComponent from '../../../../../../pages/auth/components/Auth/Auth'
 
 export const CalculatorCaption: React.FC = () => {
-  const history = useHistory()
+  const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
   const [popupOpen, setPopupOpen] = useState(false)
   const closePopup = () => {
     setPopupOpen(false)
   }
   const openPopup = () => {
     setPopupOpen(true)
+  }
+
+  const handleLoginModalOpen = (event) => {
+    event.preventDefault()
+    setIsLoginModalVisible(true)
+  }
+  const handleLoginModalClose = () => {
+    setIsLoginModalVisible(false)
   }
   return (
     <div className={Styles.caption}>
@@ -102,7 +111,19 @@ export const CalculatorCaption: React.FC = () => {
               Покрытие расходов на поддержание инфраструктуры
             </PopupMainPage>
           </div>
-          <ButtonBig onClick={() => history.push('/auth')}>Купить LIMC</ButtonBig>
+          <ButtonBig onClick={handleLoginModalOpen}>Купить LIMC</ButtonBig>
+
+          <Modal
+            active={isLoginModalVisible}
+            setActive={handleLoginModalClose}
+            style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}
+            classname={Styles.modalAuth}
+            crossFlag
+          >
+            <div className={Styles.modalAuthInner}>
+              <AuthComponent />
+            </div>
+          </Modal>
         </div>
       </form>
     </div>
