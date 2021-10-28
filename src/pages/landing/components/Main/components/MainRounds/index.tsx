@@ -61,7 +61,7 @@ export const MainRounds: React.FC = () => {
       <div className={Styles.container}>
         <div className={Styles.progress}>
           <span className={Styles.bar}>{}</span>
-          <span className={Styles.count}>0 / 0</span>
+          <span className={Styles.count}>0 / 80000</span>
         </div>
         <img src={etherscanIcon} alt='Иконка' />
       </div>
