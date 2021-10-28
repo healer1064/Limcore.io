@@ -8,16 +8,25 @@ import PopupStyles from '../PopupMainPage/styles.module.scss'
 import limcoreIcon from '@icons/limcore.svg'
 import infoIcon from '@icons/info-icon.svg'
 import etherscanIcon from '@icons/etherscan.png'
-import { useHistory } from 'react-router-dom'
+import { Modal } from '@components/Purse/PurseMobile/components/Modal'
+import AuthComponent from '../../../../../../pages/auth/components/Auth/Auth'
 
 export const MainRounds: React.FC = () => {
-  const history = useHistory()
   const [popupOpen, setPopupOpen] = useState(false)
+  const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
+
   const closePopup = () => {
     setPopupOpen(false)
   }
   const openPopup = () => {
     setPopupOpen(true)
+  }
+
+  const handleLoginModalOpen = () => {
+    setIsLoginModalVisible(true)
+  }
+  const handleLoginModalClose = () => {
+    setIsLoginModalVisible(false)
   }
   return (
     <div className={Styles.rounds}>
@@ -58,10 +67,22 @@ export const MainRounds: React.FC = () => {
       </div>
       <div className={Styles.buttons}>
         <div className={Styles.column}>
-          <button className={Styles.second} onClick={() => history.push('/auth')}>
+          <button className={Styles.second} onClick={handleLoginModalOpen}>
             Купить LIMC
           </button>
           <span>Lock-up период 6 месяцев</span>
+
+          <Modal
+            active={isLoginModalVisible}
+            setActive={handleLoginModalClose}
+            style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}
+            classname={Styles.modalAuth}
+            crossFlag
+          >
+            <div className={Styles.modalAuthInner}>
+              <AuthComponent />
+            </div>
+          </Modal>
         </div>
         <div className={Styles.column}>
           <ButtonBig className={Styles.button}>Калькулятор доходности</ButtonBig>

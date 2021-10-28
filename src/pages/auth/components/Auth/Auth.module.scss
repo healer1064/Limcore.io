@@ -17,6 +17,10 @@
   &Inner {
     display: flex;
     flex-grow: 1;
+
+    &Desktop {
+      justify-content: center;
+    }
   }
   &Link {
     @include padding-y(16px);
