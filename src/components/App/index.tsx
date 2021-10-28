@@ -27,7 +27,7 @@ import { Header } from '@components/Header'
 import { HeaderMobile } from '@components/Header/HeaderMobile'
 // import { CabinetPage } from '../../pages/cabinet'
 import { AuthPage } from '../../pages/auth'
-import { AuthMobile } from '../../pages/auth/AuthMobile'
+// import { AuthMobile } from '../../pages/auth/AuthMobile'
 
 import { LandingPage } from '../../pages/landing'
 import { PurseMobile } from '@components/Purse/PurseMobile'

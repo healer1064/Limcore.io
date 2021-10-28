@@ -36,9 +36,9 @@ export const api = {
    */
   setUserToken: (token: string | null) => {
     api.userToken = token
-    if (DEV) {
-      console.info('[API] change token', getHeaders(token))
-    }
+    // if (DEV) {
+    //   console.info('[API] change token', getHeaders(token))
+    // }
     return api
   },
 

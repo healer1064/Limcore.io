@@ -40,9 +40,6 @@ export const PurseMobile: FC = () => {
   const dispatch = useAppDispatch()
   const prices = useAppSelector((state) => state.wallet.limc_price)
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
-  // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
-  const temp = useAppSelector((state) => state)
-  console.log(temp)
 
   const handleSetValue = (event) => setValue(event.target.value)
 
@@ -79,7 +76,6 @@ export const PurseMobile: FC = () => {
     }
 
     const request = await dispatch(buyLimc(data))
-    console.log(request)
     if (request.error?.message?.includes(400)) {
       setIsErrorVisible(true)
 
