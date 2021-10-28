@@ -50,7 +50,7 @@ export const MainHow: React.FC = () => {
               el: `.${Styles.pagination}`,
             }}
             slidesPerView={1}
-            spaceBetween={0}
+            spaceBetween={10}
           >
             <SwiperSlide>
               <div className={Styles.item}>

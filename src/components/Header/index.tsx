@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-scroll'
 import Styles from './style.module.scss'
 
 import logoIcon from '@icons/logo.svg'
@@ -11,11 +11,11 @@ import { useAppSelector } from '@app/redux/hooks'
 import AuthComponent from '../../pages/auth/components/Auth/Auth'
 
 const tempLink = [
-  { id: 1, value: 'Что такое Limcore?', link: '/' },
-  { id: 2, value: 'Roadmap', link: '/' },
-  { id: 3, value: 'Команда', link: '/' },
-  { id: 4, value: 'Экосистема', link: '/' },
-  { id: 5, value: 'Вопрос-ответ', link: '/' },
+  { id: 1, value: 'Что такое Limcore?', link: 'main', spy: true, smooth: true },
+  { id: 2, value: 'Roadmap', link: 'roadmap', spy: true, smooth: true },
+  { id: 3, value: 'Команда', link: 'team', spy: true, smooth: true },
+  // { id: 4, value: 'Экосистема', link: 'ecosystem', spy: true, smooth: true },
+  { id: 5, value: 'Вопрос-ответ', link: 'questions', spy: true, smooth: true },
 ]
 
 export const Header: React.FC = () => {
@@ -44,7 +44,7 @@ export const Header: React.FC = () => {
         <ul className={Styles.list}>
           {tempLink?.map((item) => {
             return (
-              <Link className={Styles.link} key={item.id} to={item.link}>
+              <Link className={Styles.link} key={item.id} to={item.link} spy={item.spy} smooth={item.smooth}>
                 {item.value}
               </Link>
             )

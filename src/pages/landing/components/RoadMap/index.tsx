@@ -151,7 +151,7 @@ export const RoadMap: React.FC = () => {
   ]
 
   return (
-    <section className={Styles.roadMap}>
+    <section id='roadmap' className={Styles.roadMap}>
       <div className={Styles.wrapper}>
         <div className={Styles.header}>
           <h3 className={Styles.title}>Roadmap</h3>
