@@ -95,7 +95,7 @@ export const Slider = () => {
 
   return (
     <div className={Styles.container}>
-      <Swiper className={Styles.swiper} pagination {...params}>
+      <Swiper className={Styles.swiper} pagination {...params} spaceBetween={10}>
         {team.map((person) => (
           <SwiperSlide className={Styles.swiperSlide} key={person.id}>
             <TeamCard key={person.id} {...person} person={person} />

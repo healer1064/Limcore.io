@@ -84,7 +84,7 @@ export const Team: React.FC = () => {
   ]
 
   return (
-    <section className={Styles.team}>
+    <section id='team' className={Styles.team}>
       <div className={Styles.wrapper}>
         <h2 className={Styles.title}>Команда проекта</h2>
         <div className={Styles.container}>

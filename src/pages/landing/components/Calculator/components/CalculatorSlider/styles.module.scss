@@ -55,11 +55,11 @@
 }
 
 .button_prev {
-  left: -50px;
+  left: -106px;
 }
 
 .button_next {
-  right: -50px;
+  right: -106px;
 }
 
 .slide {
@@ -125,8 +125,8 @@
   border-radius: 50%;
   width: 24px;
   height: 24px;
-  border: 2px solid #19CB2B;
-  opacity: .1;
+  border: 2px solid #19cb2b;
+  opacity: 0.1;
   background-color: transparent;
 
   &:hover {
@@ -160,7 +160,7 @@
 
   .pagination {
     padding-top: 30px;
-    &>:not(:last-child) {
+    & > :not(:last-child) {
       margin-right: 6px;
     }
   }

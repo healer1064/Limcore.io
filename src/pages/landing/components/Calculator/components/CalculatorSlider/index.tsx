@@ -45,15 +45,16 @@ SwiperCore.use([Pagination, Navigation])
 
 export const CalculatorSlider: React.FC = () => {
   const { width } = useWindowSize()
+
   const buttonPrevious = (
     <button className={`${Styles.button} ${Styles.button_prev}`}>
-      <img src={left} alt='' />
+      <img src={left} alt='Кнопка' />
     </button>
   )
 
   const buttonNext = (
     <button className={`${Styles.button} ${Styles.button_next}`}>
-      <img src={right} alt='' />
+      <img src={right} alt='Кнопка' />
     </button>
   )
   return (
@@ -75,7 +76,7 @@ export const CalculatorSlider: React.FC = () => {
         {width >= 768 ? buttonPrevious : ''}
         {width >= 768 ? buttonNext : ''}
         <Swiper
-          loop={width < 768}
+          // loop={width < 768}
           spaceBetween={width >= 768 ? 120 : 0}
           slidesPerView={width >= 768 ? 3 : 1}
           pagination={
