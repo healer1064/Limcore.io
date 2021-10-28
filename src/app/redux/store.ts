@@ -7,6 +7,7 @@ import catalogSlice from '../../pages/catalog/redux/catalogSlicer'
 import userSlice from './userSlice'
 import cabinetSlice from '../../pages/cabinet/redux/cabinetSlice'
 import authSlice from '../../pages/auth/redux/auth.slice'
+import authNewSlice from '../../pages/auth/redux/authSlice'
 import walletSlice from '../../components/Wallet/redux/walletSlice'
 
 export const store = configureStore({
@@ -19,6 +20,7 @@ export const store = configureStore({
     user: userSlice,
     cabinet: cabinetSlice,
     auth: authSlice,
+    authNew: authNewSlice,
     wallet: walletSlice,
   },
   devTools: process.env.NODE_ENV !== 'production',

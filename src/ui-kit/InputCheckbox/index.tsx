@@ -1,12 +1,12 @@
 import React from 'react'
 import Styles from './styles.module.scss'
 
-interface InputProps {
-  titleCheckbox: string
+interface InputCheckboxProps {
   icon?: any
+  titleCheckbox: string
 }
 
-export const InputCheckbox: React.FC<InputProps> = ({ titleCheckbox, icon }) => {
+export const InputCheckbox: React.FC<InputCheckboxProps> = ({ icon, titleCheckbox }) => {
   return (
     <div className={Styles.block}>
       <input className={Styles.input} type='checkbox' />
