@@ -1,30 +1,31 @@
 import React, { useEffect } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
-import { setIsAuth, checkToken } from '../../pages/auth/redux/auth.slice'
+// import { setIsAuth, checkToken } from '../../pages/auth/redux/auth.slice'
+import { checkToken } from '../../pages/auth/redux/auth.slice'
 
-import { Footer } from '../Footer'
+// import { Footer } from '../Footer'
 import { FooterMobile } from '../Footer/FooterMobile'
-import { HomePage } from '../../pages/home'
-import { Wrapper } from '../Wrapper'
+// import { HomePage } from '../../pages/home'
+// import { Wrapper } from '../Wrapper'
 
-import { OrdersPage } from '../../pages/orders'
+// import { OrdersPage } from '../../pages/orders'
 import { PageNotFount } from '../../pages/not-found'
-import { DevelopingPage } from '../../pages/developing'
-import { AccessDeniedPage } from '../../pages/access-denied'
+// import { DevelopingPage } from '../../pages/developing'
+// import { AccessDeniedPage } from '../../pages/access-denied'
 import { BuyPage } from '../../pages/buy'
 
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 
 import Styles from './style.module.scss'
-import { ProtectedRoute } from '@components/Router/protected-route'
+// import { ProtectedRoute } from '@components/Router/protected-route'
 // eslint-disable-next-line camelcase
-import { USER_ROlES } from '../../global-constants'
+// import { USER_ROlES } from '../../global-constants'
 import { Spinner } from '@components/Spinner'
-import { OrderCatalog } from '../../pages/catalog'
+// import { OrderCatalog } from '../../pages/catalog'
 import { Header } from '@components/Header'
 import { HeaderMobile } from '@components/Header/HeaderMobile'
-import { CabinetPage } from '../../pages/cabinet'
+// import { CabinetPage } from '../../pages/cabinet'
 import { AuthPage } from '../../pages/auth'
 
 import { LandingPage } from '../../pages/landing'
@@ -32,12 +33,13 @@ import { PurseMobile } from '@components/Purse/PurseMobile'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getWalletAdress, getWalletBalance, getLimcPrice } from '../Wallet/redux/walletSlice'
-import { api } from '@app/api'
+// import { api } from '@app/api'
 
 const App = () => {
   const dispatch = useAppDispatch()
-  const { width, height } = useWindowSize()
-  const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
+  // const { width, height } = useWindowSize()
+  const { width } = useWindowSize()
+  // const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
   const user = useAppSelector((state) => state.user.userData)
   const isAuth = useAppSelector((state) => state.auth.isAuth)
 

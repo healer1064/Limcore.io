@@ -48,6 +48,7 @@ export const walletSlice = createSlice({
   },
 })
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { actions, reducer } = walletSlice
 // export const {} = actions
 

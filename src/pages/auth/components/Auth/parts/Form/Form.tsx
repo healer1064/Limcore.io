@@ -9,27 +9,27 @@ import useLocalStorage from 'react-use-localstorage'
 import { phoneMask, emailMask, SMSMask, initialTime, interval, Process, Auth, Method } from '../../constants'
 import { useAppDispatch, useAppSelector } from '../../../../../../app/redux/hooks'
 import {
-  authorizationUserEmail,
   getJwtTokenTest,
-  authorizationUserEmailConfirmation,
   registerUserEmail,
   registerUserEmailConfirmation,
   getJwtToken,
   getNewCode,
   setIsAuth,
+  authSelector,
+  getAuthNextStep,
+  setAuthStep,
+  setMethod,
+  setProcessType,
 } from '../../../../redux/auth.slice'
-import { authSelector, getAuthNextStep, setAuthStep, setMethod, setProcessType } from '../../../../redux/auth.slice'
 import { Button } from '..'
 import { getValidationSchema } from '../../helpers/yup.helpers'
 import { isNumbersOnly } from '../../helpers/number.helpers'
 import styles from './Form.module.scss'
-import { number } from 'yup'
 
 const Form: FC = () => {
   const history = useHistory()
   const dispatch = useAppDispatch()
   const auth = useAppSelector(authSelector)
-  const confirmationEmail = useAppSelector((state) => state.auth.confirmationEmail)
   const [timeLeft, { start }] = useCountDown(initialTime, interval)
   const [opts, setOpts] = useState<any>({})
   const { ref, maskRef } = useIMask(opts)
@@ -48,7 +48,6 @@ const Form: FC = () => {
   const onRegistration = async (email) => {
     // console.log('E-mail with the code has been sent: 0540, dc2684e0-cc8b-4515-8fa7-9f831c7ef5bf.'.slice(42, 78))
     const response = await dispatch(registerUserEmail({ email })) // придет unique_identifier
-    console.log(response)
     const id = response.payload?.data.unique_identifier || null // вылетит ошибка если такой майл уже существует
     localStorage.setItem('uniqueId', id)
   }
@@ -56,12 +55,11 @@ const Form: FC = () => {
   const onRegistrationConfirm = () => {
     // нужно отдать code + unique_identifier
     const data = {
-      code: localStorage.getItem('code'), // берет старый код почему-то
+      code: numberCode,
       unique_identifier: localStorage.getItem('uniqueId'),
     }
     dispatch(registerUserEmailConfirmation(data))
-    // dispatch(getJwtToken(auth.confirmationEmail))
-    dispatch(getJwtToken({ email: localStorage.getItem('email'), code: data.code }))
+    dispatch(getJwtToken({ email, code: data.code }))
     history.push('/')
   }
 
@@ -71,14 +69,10 @@ const Form: FC = () => {
 
     // в теле отправить email и code. В ответ придет токен
     const data = {
-      email: localStorage.getItem('email'),
-      code: localStorage.getItem('code'),
+      email,
+      code: numberCode,
     }
-    // dispatch(authorizationUserEmailConfirmation())
-    // dispatch(getJwtToken(data))
     const response = await dispatch(getJwtToken(data))
-    // const token = response.payload.data.access
-
     if (response.payload.status === 200) {
       dispatch(setIsAuth(true))
       history.push('/')
@@ -250,7 +244,7 @@ const Form: FC = () => {
                 }, 0)
               }}
             >
-              {({ handleChange, submitForm, values, touched, errors, isValid }) => {
+              {({ handleChange, submitForm, values, touched, errors }) => {
                 return (
                   <FormikForm className={styles.form}>
                     <fieldset className={styles.formFieldset}>
@@ -521,7 +515,7 @@ const Form: FC = () => {
                 }, 0)
               }}
             >
-              {({ handleChange, values, touched, errors }) => (
+              {({ handleChange, values, errors }) => (
                 <FormikForm className={styles.form}>
                   <fieldset className={styles.formFieldset}>
                     <legend className={styles.formLegend}>Регистрация</legend>

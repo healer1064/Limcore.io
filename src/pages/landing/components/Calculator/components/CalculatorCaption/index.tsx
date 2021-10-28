@@ -11,8 +11,10 @@ import PopupStyles from '../../../../components/Main/components/PopupMainPage/st
 import arrowIcon from '@icons/icon-arrow.svg'
 import limcoreIcon from '@icons/limcore.svg'
 import infoIcon from '@icons/info-icon.svg'
+import { useHistory } from 'react-router-dom'
 
 export const CalculatorCaption: React.FC = () => {
+  const history = useHistory()
   const [popupOpen, setPopupOpen] = useState(false)
   const closePopup = () => {
     setPopupOpen(false)
@@ -40,11 +42,11 @@ export const CalculatorCaption: React.FC = () => {
         <div className={Styles.block}>
           <div className={Styles.labels}>
             <Label className={Styles.label} titleText='Выберите количество LIMC'>
-              <InputText value='40,000 LIMC' placeholder='' />
+              <InputText value='40,000 LIMC' onChange={() => {}} placeholder='' />
             </Label>
             <img src={arrowIcon} alt='Иконка' />
             <Label className={Styles.label} titleText='Сумма инвестиций в USDT'>
-              <InputText value='3,800,000 USDT' placeholder='' />
+              <InputText value='3,800,000 USDT' onChange={() => {}} placeholder='' />
             </Label>
           </div>
           <div className={Styles.range}>
@@ -100,7 +102,7 @@ export const CalculatorCaption: React.FC = () => {
               Покрытие расходов на поддержание инфраструктуры
             </PopupMainPage>
           </div>
-          <ButtonBig>Купить LIMC</ButtonBig>
+          <ButtonBig onClick={() => history.push('/auth')}>Купить LIMC</ButtonBig>
         </div>
       </form>
     </div>

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 // import { apiTypes } from '@app/apiTypes'
 
 export const cabinetSlice = createSlice({

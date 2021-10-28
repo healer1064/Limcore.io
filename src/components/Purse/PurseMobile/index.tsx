@@ -25,7 +25,9 @@ import { Modal } from './components/Modal'
 export const PurseMobile: FC = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
   const [isWalletVisible, setIsWalletVisible] = useState(true)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isLimcBought, setIsLimcBought] = useState(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isUserHasTransactions, setIsUserHasTransactions] = useState(true)
 
   const [isErrorVisible, setIsErrorVisible] = useState(false)
