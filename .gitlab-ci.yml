@@ -2,7 +2,7 @@ image: docker:18
 
 services:
   - docker:dind
-  
+
 stages:
   - build
   - test
@@ -59,6 +59,7 @@ prod build:
     entrypoint: [""]
   when: manual
   script:
+    - mkdir -p /kaniko/.docker
     - echo $CI_REGISTRY
     - echo $CI_REGISTRY_USER
     - echo $CI_REGISTRY_PASSWORD
