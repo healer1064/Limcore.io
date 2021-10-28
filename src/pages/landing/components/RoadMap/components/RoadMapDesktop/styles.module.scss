@@ -1,0 +1,335 @@
+.roadMap {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  // overflow: auto;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  grid-template-columns: repeat(10, minmax(min-content, max-content));
+  grid-template-rows: repeat(3, minmax(min-content, max-content));
+  grid-template-areas:
+  'test avans reg zapusk cabinet2 blockchain start remont round4 mvp'
+  'line line line line line line line line line line'
+  'cabinet1 elec token swiss round1 chia list round3 round5 seriya';
+}
+
+.roadMap::-webkit-scrollbar {
+  width: 0;
+}
+
+.scrollButton {
+}
+
+.scrollButtonLeft {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  width: 60px;
+  height: 60px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  position: absolute;
+  top: 52%;
+  right: 10%;
+  z-index: 5;
+  box-shadow: 20px 20px 52px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    cursor: pointer;
+    border: 2px solid #4A70F8;
+  }
+}
+
+.scrollButtonRight {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  width: 60px;
+  height: 60px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  position: absolute;
+  top: 52%;
+  left: 10%;
+  z-index: 5;
+  box-shadow: 20px 20px 52px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    cursor: pointer;
+    border: 2px solid #4A70F8;
+  }
+}
+
+.scrollIcon {
+  display: flex;
+  box-sizing: border-box;
+  width: 7px;
+  height: 14px;
+  margin: 24px auto;
+  padding: 0;
+}
+
+.test {
+  grid-area: test;
+  width: 209px;
+}
+
+.cabinet1 {
+  grid-area: cabinet1;
+  width: 135px;
+  position: relative;
+  left: 50%;
+}
+
+.avans {
+  grid-area: avans;
+  width: 265px;
+}
+
+.elec {
+  grid-area: elec;
+  width: 187px;
+  position: relative;
+  left: 50%;
+}
+
+.reg {
+  grid-area: reg;
+  width: 228px;
+}
+
+.token {
+  grid-area: token;
+  width: 122px;
+  position: relative;
+  left: 50%;
+}
+
+.zapusk {
+  grid-area: zapusk;
+  width: 174px;
+}
+
+.swiss {
+  grid-area: swiss;
+  width: 187px;
+  position: relative;
+  left: 35%;
+}
+
+.cabinet2 {
+  grid-area: cabinet2;
+  width: 135px;
+}
+
+.round1 {
+  grid-area: round1;
+  width: 138px;
+  position: relative;
+  left: 50%;
+}
+
+.blockchain {
+  grid-area: blockchain;
+  width: 151px;
+}
+
+.chia {
+  grid-area: chia;
+  width: 187px;
+  position: relative;
+  left: 50%;
+}
+
+.start {
+  grid-area: start;
+  width: 228px;
+}
+
+.list {
+  grid-area: list;
+  width: 213px;
+  position: relative;
+  left: 50%;
+}
+
+.remont {
+  grid-area: remont;
+  width: 187px;
+}
+
+.round3 {
+  grid-area: round3;
+  width: 187px;
+  position: relative;
+  left: 50%;
+}
+
+.round4 {
+  grid-area: round4;
+  width: 143px;
+}
+
+.round5 {
+  grid-area: round5;
+  width: 133px;
+  position: relative;
+  left: 50%;
+}
+
+.mvp {
+  grid-area: mvp;
+  width: 249px;
+}
+
+.seriya {
+  grid-area: seriya;
+  width: 224px;
+  position: relative;
+  left: 30%;
+}
+
+.line {
+  grid-area: line;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 6px;
+  width: 100%;
+  background: #4A70F8;
+  border-radius: 6px;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.item {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: flex-end;
+
+  &_down {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: flex-start;
+  }
+}
+
+.vertikal {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+  width: 4px;
+  background: #7995FA;
+  border-radius: 6px;
+}
+
+.vertikalTest {
+  height: 67px;
+}
+
+.vertikalCabinet1,
+.vertikalRound5,
+.vertikalRound1 {
+  height: 112px;
+}
+
+.vertikalAvans,
+.vertikalBlockchain {
+  height: 184px;
+}
+
+.vertikalToken,
+.vertikalList {
+  height: 132px;
+}
+
+.vertikalZapusk,
+.vertikalRemont,
+.vertikalMvp {
+  height: 157px;
+}
+
+.vertikalElec,
+.vertikalSwiss,
+.vertikalChia,
+.vertikalRound3 {
+  height: 52px;
+}
+
+.vertikalReg,
+.vertikalCabinet2,
+.vertikalStart,
+.vertikalRound4 {
+  height: 56px;
+}
+
+.vertikalSeriya {
+  height: 162px;
+}
+
+.itemDate {
+  display: flex;
+  margin: 0;
+  padding: 20px 0 6px 0;
+  box-sizing: border-box;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: center;
+  color: #393C42;
+  justify-content: center;
+}
+
+.itemTitle {
+  display: flex;
+  margin: 0;
+  padding: 0 0 20px 0;
+  box-sizing: border-box;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  color: #393C42;
+  justify-content: center;
+}
+
+.icon {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  bottom: -15px;
+  left: calc(50% - 12px);
+}
+
+.icon_down {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: -15px;
+  left: calc(50% - 12px);
+}
+
+@media screen and (max-width: 720px) {
+  .roadMap {
+    display: none;
+  }
+
+  .scrollButton, .scrollButtonRight, .scrollButtonLeft {
+    display: none;
+  }
+
+}
