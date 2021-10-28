@@ -68,8 +68,8 @@ const App = () => {
               {!isAuth && (
                 <Switch>
                   <Route path='/' exact component={LandingPage} />
-                  {/* <Route path='/auth' exact component={AuthPage} /> */}
-                  <Route path='/auth' exact component={AuthMobile} />
+                  <Route path='/auth' exact component={AuthPage} />
+                  {/* <Route path='/auth' exact component={AuthMobile} /> */}
                   <Route path='/not-found' exact component={PageNotFount} />
                   <Route path='*'>
                     <Redirect to='/not-found' />
