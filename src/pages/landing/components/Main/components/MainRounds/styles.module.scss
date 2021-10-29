@@ -46,7 +46,7 @@
 }
 
 .designation {
-  font-family: 'Montserrat';
+  font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -55,7 +55,7 @@
 }
 
 .value {
-  font-family: 'Montserrat';
+  font-family: Montserrat;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -95,7 +95,7 @@
 }
 
 .count {
-  font-family: 'Montserrat';
+  font-family: Montserrat;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -115,7 +115,7 @@
   align-items: center;
 
   span {
-    font-family: 'Montserrat';
+    font-family: Montserrat;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -129,7 +129,7 @@
   background: none;
   border-radius: 14px;
   border: 1px solid #4a70f8;
-  font-family: 'Montserrat';
+  font-family: Montserrat;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -161,14 +161,23 @@
   flex-direction: column;
   width: 100%;
 
-  span {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 150%;
-    color: #4f535a;
-  }
+  //span {
+  //  font-family: Montserrat;
+  //  font-style: normal;
+  //  font-weight: 600;
+  //  font-size: 16px;
+  //  line-height: 150%;
+  //  color: #4f535a;
+  //}
+}
+
+.subtitle {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  color: #4f535a;
 }
 
 .row {
@@ -181,7 +190,7 @@
   margin-top: 10px;
 
   span {
-    font-family: 'Montserrat';
+    font-family: Montserrat;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -229,7 +238,7 @@
   }
 
   span {
-    font-family: 'Montserrat';
+    font-family: Montserrat;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -253,7 +262,7 @@
   max-width: 450px;
 }
 .temporarily {
-  font-family: 'Montserrat';
+  font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;

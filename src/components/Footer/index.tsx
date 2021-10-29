@@ -1,7 +1,8 @@
 import React from 'react'
 import Styles from './styles.module.scss'
 
-import logo from '../../assets/icons/Limcore-logo.png'
+import logo from '../../assets/icons/LimLogo.png'
+// import logo from '../../assets/icons/FooterLogo.svg'
 import RU from '../../assets/images/flag-ru.png'
 import arrow from '../../assets/icons/grey-arrow-down.png'
 

@@ -95,26 +95,26 @@ export const MainRounds: React.FC = () => {
         <div className={Styles.road}>
           <div className={Styles.cover}>
             <div className={Styles.round}>
-              <span>Раунд №2</span>
+              <span className={Styles.subtitle}>Раунд №2</span>
               <div className={Styles.row}>
                 <span>LIMC (min $110)</span>
                 <span>120,000</span>
               </div>
             </div>
             <div className={Styles.round}>
-              <span>Раунд №3</span>
+              <span className={Styles.subtitle}>Раунд №3</span>
               <div className={Styles.row}>
                 <span>LIMC (price and limit later)</span>
               </div>
             </div>
             <div className={Styles.round}>
-              <span>Раунд №4</span>
+              <span className={Styles.subtitle}>Раунд №4</span>
               <div className={Styles.row}>
                 <span>LIMC (price and limit later)</span>
               </div>
             </div>
             <div className={Styles.round}>
-              <span>Раунд №5 (Final)</span>
+              <span className={Styles.subtitle}>Раунд №5 (Final)</span>
               <div className={Styles.row}>
                 <span>LIMC (price and limit later)</span>
               </div>
