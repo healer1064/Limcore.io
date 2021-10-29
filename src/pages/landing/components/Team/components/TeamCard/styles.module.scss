@@ -16,9 +16,21 @@
 
   &__foto {
     grid-area: foto;
-    margin: 0 0 21px 0;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .fotoContainer {
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    box-sizing: border-box;
+    margin: 0 14px 21px 0;
+    padding: 0;
     height: 95px;
     width: 95px;
   }
