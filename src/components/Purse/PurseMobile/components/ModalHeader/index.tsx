@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import { blueArrow, buttonCloseBlue } from '../../images/index'
 
 interface IModalHeader {
-  title: string
+  title: any
   onClick: () => void
   crossFlag?: boolean
 }

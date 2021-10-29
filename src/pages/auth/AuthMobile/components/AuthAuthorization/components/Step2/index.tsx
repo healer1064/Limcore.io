@@ -12,6 +12,7 @@ export const Step2: React.FC = () => {
   const typeAuthorization = useAppSelector((state) => state.authNew.typeAuthorization)
   const phoneOrEmail = useAppSelector((state) => state.authNew.phoneOrEmail)
   const codePhoneOrEmail = useAppSelector((state) => state.authNew.codePhoneOrEmail)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [validValue, setValidValue] = useState(true)
 
   const onChange = (event) => dispatch(setCodePhoneOrEmail(event.target.value))

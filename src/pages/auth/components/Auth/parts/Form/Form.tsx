@@ -26,14 +26,21 @@ import { getValidationSchema } from '../../helpers/yup.helpers'
 import { isNumbersOnly } from '../../helpers/number.helpers'
 import styles from './Form.module.scss'
 import useWindowSize from '@helpers/useWindowSizeHook'
+import { Modal } from '@components/Purse/PurseMobile/components/Modal'
+import logoIcon from '@icons/logo.svg'
+import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
+import { copyIcon } from '@components/Purse/PurseMobile/images'
 
 const Form: FC = () => {
   const history = useHistory()
   const dispatch = useAppDispatch()
   const auth = useAppSelector(authSelector)
+  const isLimcClick = useAppSelector(authSelector).isBuyLimcClick
   const [timeLeft, { start }] = useCountDown(initialTime, interval)
   const [opts, setOpts] = useState<any>({})
+  const [isFirstRegModalVisible, setIsFirstRegModalVisible] = useState(false)
   const { ref, maskRef } = useIMask(opts)
+
   const [phone, setPhone] = useLocalStorage('phone', '')
   const [email, setEmail] = useLocalStorage('email', '')
   const [numberCode, setNumberCode] = useLocalStorage('code', '')
@@ -71,8 +78,17 @@ const Form: FC = () => {
       code: numberCode,
       unique_identifier: uniqueId,
     }
-    dispatch(registerUserEmailConfirmation(data))
-    dispatch(getJwtToken({ email, code: data.code }))
+    dispatch(registerUserEmailConfirmation(data)).then(() => setIsFirstRegModalVisible(true))
+    // setIsFirstRegModalVisible(true)
+    // dispatch(getJwtToken({ email, code: data.code }))
+    // history.push('/')
+  }
+
+  // const handleFirstRegModalOpen = () => {
+  //   setIsFirstRegModalVisible(true)
+  // }
+  const handleFirstRegModalClose = () => {
+    setIsFirstRegModalVisible(false)
     history.push('/')
   }
 
@@ -188,7 +204,9 @@ const Form: FC = () => {
                 return (
                   <FormikForm className={mainStyles.form}>
                     <fieldset className={styles.formFieldset}>
-                      <legend className={mainStyles.legend}>Авторизация</legend>
+                      <legend className={mainStyles.legend}>
+                        {isLimcClick ? 'Чтобы купить LIMC, нужно авторизоваться' : 'Авторизация'}
+                      </legend>
                       <label className={styles.formLabel} htmlFor='emailOrPhone'>
                         Телефон или e-mail
                       </label>
@@ -502,11 +520,41 @@ const Form: FC = () => {
                     <Button
                       className={mainStyles.submit}
                       disabled={Object.keys(errors).length !== 0 || values.SMS === ''}
-                      onClick={() => onRegistrationConfirm()}
+                      onClick={onRegistrationConfirm}
                     >
                       Зарегистрироваться
                     </Button>
                   )}
+
+                  <Modal
+                    classname={styles.reg}
+                    active={isFirstRegModalVisible}
+                    setActive={handleFirstRegModalClose}
+                    crossFlag
+                  >
+                    <div className={styles.regModal}>
+                      {console.log(`isFirstRegModalVisible: ${isFirstRegModalVisible}`)}
+                      <div className={styles.regModalUp}>
+                        <header className={styles.regModalHeader}>
+                          <img src={logoIcon} onClick={() => history.push('/')} />
+                        </header>
+                        <h4 className={styles.regModalTitle}>Мы создали ваш USDT кошелек</h4>
+                        <p className={styles.regModalSubtitle}>Адрес кошелька</p>
+                        <p className={styles.regModalPurse}>
+                          qp8r78kv2rrctgsdmknvvmt0rjs8szjcmvcsge5pz8
+                          <img className={styles.regModalPurseCopy} src={copyIcon} />
+                        </p>
+                      </div>
+                      <div className={styles.regModalDown}>
+                        <ButtonBig className={styles.regModalButton} onClick={() => history.push('/')}>
+                          Пополнить кошелек
+                        </ButtonBig>
+                        <p className={styles.regModalSubtitle}>
+                          На данный момент LIMC можно купить только с помощью USDT ERC-20
+                        </p>
+                      </div>
+                    </div>
+                  </Modal>
                 </FormikForm>
               )}
             </Formik>
