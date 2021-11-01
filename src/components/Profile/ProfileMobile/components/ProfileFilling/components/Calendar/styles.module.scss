@@ -35,6 +35,11 @@
   &:nth-child(-n + 8) {
     margin-bottom: 10px;
   }
+
+  &:hover {
+    background-color: #4A70F8;
+    cursor: pointer;
+  }
 }
 
 .item_active {
@@ -89,6 +94,11 @@
   width: 40px;
   height: 40px;
   border-radius: 100%;
+
+  &:hover {
+    background-color: #4A70F8;
+    cursor: pointer;
+  }
 }
 
 .day_active {
@@ -98,4 +108,16 @@
 
 .day_disable {
   color: #96afc7;
+}
+
+.leftIcon {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.rightIcon {
+  &:hover {
+    cursor: pointer;
+  }
 }
