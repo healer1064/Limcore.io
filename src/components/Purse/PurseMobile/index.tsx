@@ -104,15 +104,15 @@ export const PurseMobile: FC = () => {
             <span className={styles.usd}>$0</span>
             <div className={styles.items}>
               <div className={`${styles.item} ${styles.item_active}`} onClick={() => setViewContent('buy')}>
-                <img src={buyIcon} alt='' />
+                <img className={styles.icon} src={buyIcon} alt='' />
                 <span>Купить</span>
               </div>
               <div className={styles.item}>
-                <img src={sellIcon} alt='' />
+                <img className={styles.icon} src={sellIcon} alt='' />
                 <span>Продать</span>
               </div>
               <div className={styles.item}>
-                <img src={tradeIcon} alt='' />
+                <img className={styles.icon} src={tradeIcon} alt='' />
                 <span>Обменять</span>
               </div>
             </div>

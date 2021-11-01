@@ -29,6 +29,7 @@ import { HeaderMobile } from '@components/Header/HeaderMobile'
 import { AuthPage } from '../../pages/auth'
 // import { AuthMobile } from '../../pages/auth/AuthMobile'
 
+import { Dummy } from '../../components/Dummy'
 import { LandingPage } from '../../pages/landing'
 import { PurseMobile } from '@components/Purse/PurseMobile'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
@@ -84,7 +85,7 @@ const App = () => {
               {isAuth && (
                 <Switch>
                   <Route path='/' exact component={PurseMobile} />
-                  <Route path='/chat' exact component={BroadcastsMobile} />
+                  <Route path='/chat' exact component={Dummy} />
                   <Route path='/broadcasts' exact component={BroadcastsMobile} />
                   <Route path='/profile' exact component={ProfileMobile} />
                   <Route path='/buy' exact component={BuyPage} />
