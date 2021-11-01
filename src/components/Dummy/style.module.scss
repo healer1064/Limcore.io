@@ -1,0 +1,17 @@
+.dummy {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  height: calc(100vh - 210px);
+
+}
+
+@media (max-width: 1024px) {
+  .found_container {
+    height: calc(100vh - 190px);
+  }
+}
