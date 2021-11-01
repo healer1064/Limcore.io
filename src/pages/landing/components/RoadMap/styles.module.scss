@@ -3,6 +3,8 @@
   position: relative;
   background-color: #f9fafe;
   padding: 20px 60px;
+  min-height: 9%;
+  height: auto;
 }
 
 .wrapper {
@@ -11,6 +13,8 @@
   max-width: 1024px;
   width: 100%;
   margin: 0 auto;
+  min-height: 100%;
+  height: auto;
 }
 
 .header {
