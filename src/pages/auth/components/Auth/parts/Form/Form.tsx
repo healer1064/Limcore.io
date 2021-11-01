@@ -87,7 +87,7 @@ const Form: FC = () => {
     }
 
     const response = await dispatch(getJwtToken(data))
-    if (response.payload.status === 200) {
+    if (response.payload?.status === 200) {
       dispatch(setIsAuth(true))
       history.push('/')
     }

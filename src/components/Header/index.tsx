@@ -4,7 +4,6 @@ import Styles from './style.module.scss'
 
 import logoIcon from '@icons/logo.svg'
 import loginIcon from '@icons/login.svg'
-import caretIcon from '@icons/caret.svg'
 import flagIcon from '../../assets/images/flag-ru.png'
 import { Modal } from '@components/Purse/PurseMobile/components/Modal'
 import { useAppSelector } from '@app/redux/hooks'
@@ -55,7 +54,24 @@ export const Header: React.FC = () => {
             <img src={flagIcon} alt='Флаг' />
             <div className={Styles.block}>
               <span>ru</span>
-              <img src={caretIcon} alt='Иконка' />
+
+              <svg
+                width='11'
+                height='6'
+                viewBox='0 0 11 6'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+                className={Styles.svg}
+              >
+                <path
+                  d='M1 1L5.5 5L10 1'
+                  stroke='#67686C'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  className={Styles.path}
+                />
+              </svg>
             </div>
           </div>
           <button className={btnClass} onClick={handleLoginModalOpen}>

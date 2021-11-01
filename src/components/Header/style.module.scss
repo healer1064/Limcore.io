@@ -36,6 +36,13 @@
   line-height: 140%;
   color: #67686c;
   text-decoration: none;
+  cursor: pointer;
+  transition: color .3s ease;
+  
+  &:hover {
+    color: #4a70f8;
+    transition: color .3s ease;
+  }
 }
 
 .container {
@@ -62,6 +69,18 @@
   height: 100%;
   cursor: pointer;
 
+  &:hover {      
+    .path {
+      stroke: #4a70f8;
+      transition: stroke .3s ease;
+    }
+
+    span {
+      color: #4a70f8;
+      transition: color .3s ease;
+    }
+  }
+
   span {
     font-family: 'Montserrat';
     font-style: normal;
@@ -70,6 +89,11 @@
     line-height: 140%;
     color: #67686c;
     text-transform: uppercase;
+    transition: color .3s ease;
+  }
+  
+  .svg {
+    transition: stroke .3s ease;
   }
 }
 

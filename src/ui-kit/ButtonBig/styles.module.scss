@@ -1,17 +1,22 @@
 .button {
-  background: #4a70f8;
-  border-radius: 14px;
+  padding: 14px 0;
   border: 1px solid #4a70f8;
+  border-radius: 14px;
+
   font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
   font-size: 16px;
   line-height: 22px;
+  font-weight: 600;
+  font-style: normal;
   text-align: center;
   color: #ffffff;
-  padding: 14px 0;
+  
+  background: #4a70f8;
+  transition: background .2s ease;
 
   &:hover {
+    background: #5679f8;
+    transition: background .2s ease;
     cursor: pointer;
   }
 

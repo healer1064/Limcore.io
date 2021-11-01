@@ -20,7 +20,7 @@
     border: none;
     background-color: transparent;
     outline: none;
-    transform: translateY(-50%);
+    transform: translateY(-50%) rotate(180deg);
     
     &Arrow {
       transform: rotate(180deg);

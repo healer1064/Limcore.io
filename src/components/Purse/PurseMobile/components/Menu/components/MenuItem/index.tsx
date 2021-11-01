@@ -1,7 +1,8 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { blueArrow } from '../../../../images'
+// import { blueArrow } from '../../../../images'
 import { Info } from '../Info/index'
+import BlueArrow from '../../../../images/BlueArrow/BlueArrow'
 
 interface MenuItemProps {
   onClick?: any
@@ -27,7 +28,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   return (
     <div className={menuItemClass} onClick={onClick}>
       <button type='button' className={styles.menu__button} onClick={setActive}>
-        <img src={blueArrow} />
+        <BlueArrow />
       </button>
       <img src={image} width='40' height='40' />
       <h5 className={styles.menu__title}>{title}</h5>

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import { Table } from './Table'
 import { BottomModal } from '../BottomModal'
-import { info } from '../../images/index'
+import InfoIcon from '../../images/Info/Info'
 import Accordion from '@material-ui/core/Accordion'
 import AccordionSummary from '@material-ui/core/AccordionSummary'
 import AccordionDetails from '@material-ui/core/AccordionDetails'
@@ -48,8 +48,8 @@ export const Statistics = ({ onClick }: IStatisticsProps) => {
     <div className={styles.statistics}>
       <div className={styles.header}>
         <h3 className={styles.title}>До старта майнинга</h3>
-        <button type='button' className={styles.tooltip} onClick={handleTooltipClick}>
-          <img src={info} />
+        <button type='button' className={styles.tooltip}>
+          <InfoIcon onClick={handleTooltipClick} />
         </button>
       </div>
 
