@@ -69,6 +69,8 @@
   padding: 12px 28px;
   background: #f7f7f7;
   border-radius: 14px;
+  transition: background .3s ease;
+  cursor: pointer;
 
   span {
     font-family: 'Montserrat';
@@ -77,14 +79,31 @@
     font-size: 13px;
     line-height: 150%;
     color: #99a0ad;
+    transition: color .3s ease;
+  }
+  
+  &:hover {
+    transition: background .3s ease;
+    background: #8ca4f2;
+    
+    & > span {
+      color: #f7f7f7;
+      transition: color .3s ease;
+    }
   }
 }
 
 .item_active {
   background: #4a70f8;
+  transition: background .3s ease;
 
   span {
     color: #ffffff;
+  }
+
+  &:hover {
+    background: #8ca4f2;
+    transition: background .3s ease;
   }
 }
 

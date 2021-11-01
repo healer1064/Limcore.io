@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
-import { plusSvg, balanceLimc, balanceUsdt, creditCard } from '../../images'
+import { balanceLimc, balanceUsdt, creditCard, plusSvg } from '../../images'
 import { MenuItem } from './components/MenuItem/index'
 import { useAppSelector } from '@app/redux/hooks'
 

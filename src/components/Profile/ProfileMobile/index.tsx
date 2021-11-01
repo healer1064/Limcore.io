@@ -11,17 +11,24 @@ import { EditEmail } from './components/EditEmail'
 import { EditName } from './components/EditName'
 import { EditLocation } from './components/EditLocation'
 import { AddAuth } from './components/AddAuth'
+import { changeViewContent } from '../../../pages/cabinet/redux/cabinetSlice'
+import { useDispatch } from 'react-redux'
 
 export const ProfileMobile: React.FC = () => {
+  const dispatch = useDispatch()
   const profileComplete = useAppSelector((state) => state.cabinet.profileComplete)
   const viewContent = useAppSelector((state) => state.cabinet.viewContent)
+
+  const handleFillingClick = () => {
+    dispatch(changeViewContent('none'))
+  }
 
   return (
     <div className={Styles.profile}>
       {profileComplete ? <ProfileComplete /> : <Profile />}
       <>
         {viewContent === 'filling' && (
-          <Container title='Заполните профиль'>
+          <Container title='Заполните профиль' onClick={handleFillingClick}>
             <ProfileFilling />
           </Container>
         )}

@@ -6,7 +6,7 @@ import Styles from './styles.module.scss'
 
 interface ContainerProps {
   title: string
-  onClick?: any
+  onClick?: () => void
 }
 
 export const Container: React.FC<ContainerProps> = ({ title, onClick, children }) => {
@@ -33,7 +33,7 @@ export const Container: React.FC<ContainerProps> = ({ title, onClick, children }
           </button>
         )}
         <span className={Styles.caption}>{title}</span>
-        <button className={Styles.close} /* onClick={closeContainer} */ onClick={onClick}>
+        <button className={Styles.close} onClick={onClick}>
           {}
         </button>
       </div>

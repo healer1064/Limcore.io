@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
-import { blueArrow, details1, details2, details3 } from '../../images'
+import { details1, details2, details3 } from '../../images'
 import { Modal } from '../Modal/index'
 import { DetalizationUp } from './components/DetalizationUp/index'
 import { DetalizationDownItem } from './components/DetalizationDownItem/index'
 import { ModalHeader } from '../ModalHeader'
+import BlueArrow from '../../images/BlueArrow/BlueArrow'
 
 export const Details = () => {
   const [isModalVisible, setIsModalVisible] = useState(false)
@@ -32,7 +33,7 @@ export const Details = () => {
         <DetalizationUp summary='+$12,784' xch='+$10,092' forks='+$884' />
 
         <button type='button' className={styles.details__button} onClick={handleDetailsOpenClick}>
-          <img src={blueArrow} />
+          <BlueArrow />
         </button>
 
         <Modal active={isModalVisible} setActive={handleDetailsCloseClick}>

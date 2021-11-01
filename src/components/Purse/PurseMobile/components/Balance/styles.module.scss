@@ -25,6 +25,18 @@
 
     @include section-title();
     color: $color-3A-black;
+
+    transition: opacity .3s ease;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.5;
+
+      & + button {
+        transition: opacity .3s ease;
+        opacity: 0.5;
+      }
+    }
   }
 
   &__button {
@@ -34,9 +46,10 @@
     background-color: transparent;
     outline: none;
     box-shadow: none;
-    transition: 0.5s ease-in-out;
-
+    transition: opacity .3s ease;
+    
     &:hover {
+      transition: opacity .3s ease;
       opacity: 0.5;
       cursor: pointer;
     }
