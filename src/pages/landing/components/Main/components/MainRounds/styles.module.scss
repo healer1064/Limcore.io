@@ -1,3 +1,5 @@
+$barProportion: calc(0 / 80000 * 100%);
+
 .rounds {
   display: flex;
   flex-direction: column;
@@ -90,7 +92,7 @@
   left: 0;
   background: #4a70f8;
   border-radius: 6px 0 0 6px;
-  width: 76px;
+  width: $barProportion;
   height: 100%;
 }
 
@@ -101,6 +103,7 @@
   font-size: 14px;
   line-height: 150%;
   color: #868da7;
+  z-index: 3;
 }
 
 .buttons {

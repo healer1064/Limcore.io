@@ -1,0 +1,144 @@
+.item {
+  display: grid;
+  box-sizing: border-box;
+  grid-template-columns: 155px;
+  grid-template-rows: repeat(4, minmax(min-content, max-content));
+  grid-template-areas:
+  'date'
+  'title'
+  'vertikal'
+  'icon';
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 6px solid #4A70F8;
+  align-content: flex-end;
+  position: relative;
+  bottom: 50%;
+  justify-items: center;
+}
+
+.itemDown {
+  display: grid;
+  box-sizing: border-box;
+  grid-template-columns: 155px;
+  grid-template-rows: repeat(4, minmax(min-content, max-content));
+  grid-template-areas:
+  'icon'
+  'vertikal'
+  'date'
+  'title';
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 6px solid #4A70F8;
+  align-content: flex-start;
+  position: relative;
+  top: calc(50% - 6px);
+  justify-items: center;
+}
+
+.itemTitle {
+  grid-area: title;
+  font-family: Montserrat;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 600;
+  color: #393C42;
+  box-sizing: border-box;
+  margin: 6px 0 0;
+  padding: 0;
+  text-align: center;
+}
+
+.itemLongTitle {
+  grid-area: title;
+  font-family: Montserrat;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 600;
+  color: #393C42;
+  box-sizing: border-box;
+  margin: 6px 0 0;
+  padding: 0;
+  text-align: center;
+  min-width: 250px;
+}
+
+.itemDate {
+  grid-area: date;
+  font-family: Montserrat;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 400;
+  color: #393C42;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.icon {
+  grid-area: icon;
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  position: relative;
+  top: 15.5px;
+  z-index: 2;
+}
+
+.iconDown {
+  grid-area: icon;
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  position: relative;
+  bottom: 15.5px;
+  z-index: 2;
+}
+
+.itemShortVertikal {
+  grid-area: vertikal;
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+  width: 4px;
+  height: 40px;
+  background: #7995FA;
+  border-radius: 6px;
+}
+
+.itemLongVertikal {
+  grid-area: vertikal;
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+  width: 4px;
+  height: 70px;
+  background: #7995FA;
+  border-radius: 6px;
+}
+
+.itemVertikalDown {
+  position: relative;
+  top: 18px;
+}
+
+.itemVertikalUp {
+  position: relative;
+  bottom: 18px;
+}
