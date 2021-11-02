@@ -226,8 +226,14 @@
   margin: 0 0 0 6px;
   padding: 0;
   box-sizing: border-box;
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
+
+  &:hover {
+    & > path {
+      fill: #3257dd;
+    }
+  }
 }
 
 @media all and (max-width: 768px) {
