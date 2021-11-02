@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Styles from './styles.module.scss'
 import classNames from 'classnames'
 
@@ -48,9 +48,20 @@ export const CalculatorCaption: React.FC = () => {
   const [investNumber, setInvestNumber] = useState('95')
   // const [limcNumber, setLimcNumber] = useState('1 LIMC')
   // const [investNumber, setInvestNumber] = useState('95 USDT')
+  const [classForCurrency, setClassForCurrency] = useState(Styles.currency2)
   const [classForTranslate, setClassForTranslate] = useState(false)
   const topLabelClass = classForTranslate ? Styles.labelToBottom : null
   const bottomLabelClass = classForTranslate ? Styles.labelToTop : null
+
+  useEffect(() => {
+    handleCurrencyClass()
+  }, [limcNumber, investNumber])
+  const handleCurrencyClass = () => {
+    if (limcNumber.length >= 5 || investNumber.length >= 5) {
+      return setClassForCurrency(Styles.currency2)
+    }
+    return setClassForCurrency(Styles.currency)
+  }
 
   const handleArrowClick = () => {
     setClassForTranslate((prev) => !prev)
@@ -75,6 +86,7 @@ export const CalculatorCaption: React.FC = () => {
     setLimcNumber(limc.toLocaleString('en'))
     setInvestNumber(validated.toLocaleString('en'))
   }
+  console.log(limcNumber.length, investNumber.length, classForCurrency)
 
   return (
     <div className={Styles.caption}>
@@ -103,6 +115,7 @@ export const CalculatorCaption: React.FC = () => {
                 onChange={handleLimcNumberChange}
                 placeholder=''
               />
+              <span className={classForCurrency}>LIMC</span>
             </Label>
             {/* <img src={arrowIcon} alt='Иконка' className={Styles.arrowSwitch} onClick={handleArrowClick} /> */}
             <IconArrow className={Styles.arrowSwitch} onClick={handleArrowClick} />
@@ -114,6 +127,7 @@ export const CalculatorCaption: React.FC = () => {
                 onChange={handleInvestNumberChange}
                 placeholder=''
               />
+              <span className={classForCurrency}>USDT</span>
             </Label>
           </div>
           <div className={Styles.range}>

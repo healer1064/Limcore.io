@@ -276,7 +276,37 @@
 }
 
 .inputCount {
-  text-align: end;
+  //text-align: end;
+}
+
+.currency {
+  display: flex;
+  box-sizing: border-box;
+  padding-right: 10px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.13;
+  color: #4F535A;
+  position: relative;
+  border: 1px solid blue;
+  //top: -35%;
+  left: 10%;
+}
+
+.currency2 {
+  display: flex;
+  box-sizing: border-box;
+  padding-right: 10px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.13;
+  color: #4F535A;
+  position: relative;
+  border: 1px solid green;
+  //top: -35%;
+  left: 50%;
 }
 
 @media all and (max-width: 768px) {
