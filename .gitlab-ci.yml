@@ -38,7 +38,7 @@ dev deploy:
     - docker stop limcore-frontend
     - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
     - docker pull registry.gitlab.com/auditor2/production/frontend/limcore.io/dev
-    - docker run -d -p 8084:8080  --network backend_default --name limcore-frontend --rm registry.gitlab.com/auditor2/production/frontend/limcore.io/dev:latest
+    - docker run -d -p 8084:8080  --network backend_default --hostname limcore-frontend --name limcore-frontend --rm registry.gitlab.com/auditor2/production/frontend/limcore.io/dev:latest
     - echo 'y' | docker system prune
   when: manual
   tags:
@@ -78,7 +78,7 @@ prod deploy:
     - if docker ps |grep -q limcore-frontend; then docker stop limcore-frontend; fi
     - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
     - docker pull registry.gitlab.com/auditor2/production/frontend/limcore.io/prod
-    - docker run -d -p 8080:8080 --name limcore-frontend --rm registry.gitlab.com/auditor2/production/frontend/limcore.io/prod:latest
+    - docker run -d -p 8080:8080 --hostname limcore-frontend --name limcore-frontend --rm registry.gitlab.com/auditor2/production/frontend/limcore.io/prod:latest
     - echo 'y' | docker system prune
   when: manual
   tags:
