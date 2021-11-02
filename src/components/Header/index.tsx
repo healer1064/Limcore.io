@@ -3,7 +3,8 @@ import { Link } from 'react-scroll'
 import Styles from './style.module.scss'
 
 import logoIcon from '@icons/logo.svg'
-import loginIcon from '@icons/login.svg'
+// import loginIcon from '@icons/login.svg'
+import { LoginIcon } from '@icons/LoginIcon'
 import flagIcon from '../../assets/images/flag-ru.png'
 import { useAppSelector } from '@app/redux/hooks'
 import ModalAuth from '../../pages/landing/components/ModalAuth'
@@ -74,7 +75,8 @@ export const Header: React.FC = () => {
             </div>
           </div>
           <button className={btnClass} onClick={handleLoginModalOpen}>
-            <img src={loginIcon} alt='Иконка' />
+            {/* <img src={loginIcon} alt='Иконка' /> */}
+            <LoginIcon />
             <span>Войти</span>
           </button>
 

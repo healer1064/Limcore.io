@@ -10,12 +10,12 @@ import PopupStyles from '../../../../components/Main/components/PopupMainPage/st
 
 import arrowIcon from '@icons/icon-arrow.svg'
 import limcoreIcon from '@icons/limcore.svg'
-import infoIcon from '@icons/info-icon.svg'
 import useWindowSize from '@helpers/useWindowSizeHook'
 import { useHistory } from 'react-router'
 import ModalAuth from '../../../../../landing/components/ModalAuth/index'
 import { useAppDispatch } from '@app/redux/hooks'
 import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice'
+import { InfoIcon } from '@icons/InfoIcon'
 
 export const CalculatorCaption: React.FC = () => {
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
@@ -92,7 +92,7 @@ export const CalculatorCaption: React.FC = () => {
                 <div className={Styles.column}>
                   <strong>Limcore</strong>
                   <strong className={Styles.informationIcon}>
-                    15% <img className={Styles.icon} src={infoIcon} alt='Иконка' onClick={openPopup} />
+                    15% <InfoIcon className={Styles.icon} onClick={openPopup} />
                   </strong>
                 </div>
               </div>

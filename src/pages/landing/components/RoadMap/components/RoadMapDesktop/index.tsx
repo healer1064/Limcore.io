@@ -1,9 +1,8 @@
 import React, { useRef } from 'react'
 import Styles from './styles.module.scss'
-import scrollButtonLeft from '@icons/arrow-right-blue.svg'
-import scrollButtonRight from '@icons/arrow-left-blue.svg'
-
 import { RoadMapItemDesktop } from '../../partsDesktop'
+import { ArrowLeft } from '@icons/ArrowLeft'
+import { ArrowRight } from '@icons/ArrowRight'
 
 export const RoadMapDesktop = () => {
   const roadMapArray = [
@@ -219,10 +218,10 @@ export const RoadMapDesktop = () => {
   return (
     <>
       <button className={`${Styles.scrollButton} ${Styles.scrollButtonLeft}`} type='button' onClick={scrollLeft}>
-        <img className={Styles.scrollIcon} src={scrollButtonLeft} />
+        <ArrowRight className={Styles.scrollIcon} />
       </button>
       <button className={`${Styles.scrollButton} ${Styles.scrollButtonRight}`} type='button' onClick={scrollRight}>
-        <img className={Styles.scrollIcon} src={scrollButtonRight} />
+        <ArrowLeft className={Styles.scrollIcon} />
       </button>
       <div className={Styles.roadMap} ref={roadmapRef}>
         {roadMapArray.map((item) => (

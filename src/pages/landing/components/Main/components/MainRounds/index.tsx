@@ -6,7 +6,7 @@ import { PopupMainPage } from '../PopupMainPage'
 import PopupStyles from '../PopupMainPage/styles.module.scss'
 
 import limcoreIcon from '@icons/limcore.svg'
-import infoIcon from '@icons/info-icon.svg'
+import { InfoIcon } from '@icons/InfoIcon'
 import etherscanIcon from '@icons/etherscan.png'
 import useWindowSize from '@helpers/useWindowSizeHook'
 import { useHistory } from 'react-router'
@@ -58,7 +58,7 @@ export const MainRounds: React.FC = () => {
           <li className={Styles.item}>
             <span className={Styles.designation}>Сроки</span>
             <span className={Styles.value}>27.10.2021 — 30.12.21</span>
-            <img className={Styles.icon} src={infoIcon} alt='Иконка' onClick={openPopup} />
+            <InfoIcon className={Styles.icon} onClick={openPopup} />
           </li>
         </ul>
       </div>

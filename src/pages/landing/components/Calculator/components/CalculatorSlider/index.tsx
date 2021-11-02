@@ -10,8 +10,8 @@ import 'swiper/swiper.min.css'
 import 'swiper/components/navigation/navigation.scss'
 import 'swiper/components/pagination/pagination.scss'
 
-import left from '@icons/arrow-left-blue.svg'
-import right from '@icons/arrow-right-blue.svg'
+import { ArrowLeft } from '@icons/ArrowLeft'
+import { ArrowRight } from '@icons/ArrowRight'
 import limcoreIcon from '@icons/limcore.svg'
 import checkIcon from '@icons/check.svg'
 import tchiaIcon from '@icons/tchia.png'
@@ -48,13 +48,13 @@ export const CalculatorSlider: React.FC = () => {
 
   const buttonPrevious = (
     <button className={`${Styles.button} ${Styles.button_prev}`}>
-      <img src={left} alt='Кнопка' />
+      <ArrowLeft />
     </button>
   )
 
   const buttonNext = (
     <button className={`${Styles.button} ${Styles.button_next}`}>
-      <img src={right} alt='Кнопка' />
+      <ArrowRight />
     </button>
   )
   return (
