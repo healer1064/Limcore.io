@@ -76,7 +76,9 @@ export const AddAuth: React.FC = () => {
           <span className={Styles.designation}>Выключить двухфакторную аутентификацию?</span>
           <div className={Styles.buttons}>
             <ButtonBig>Выключить</ButtonBig>
-            <ButtonBig className={Styles.button}>Отмена</ButtonBig>
+            <ButtonBig className={Styles.button} onClick={() => setOff(false)}>
+              Отмена
+            </ButtonBig>
           </div>
         </Popup>
       )}

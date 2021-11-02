@@ -117,4 +117,8 @@
 .button {
   background: transparent;
   color: #4a70f8;
+
+  &:hover {
+    color: #FFFFFF;
+  }
 }

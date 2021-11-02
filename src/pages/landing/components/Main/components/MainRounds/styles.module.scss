@@ -283,6 +283,12 @@ $barProportion: calc(0 / 80000 * 100%);
   display: none;
 }
 
+.infoIcon {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 @media all and (max-width: 768px) {
   .rounds {
     flex-wrap: wrap;
