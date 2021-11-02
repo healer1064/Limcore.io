@@ -31,9 +31,11 @@ const Form: FC = () => {
   const history = useHistory()
   const dispatch = useAppDispatch()
   const auth = useAppSelector(authSelector)
+  const isLimcClick = useAppSelector(authSelector).isBuyLimcClick
   const [timeLeft, { start }] = useCountDown(initialTime, interval)
   const [opts, setOpts] = useState<any>({})
   const { ref, maskRef } = useIMask(opts)
+
   const [phone, setPhone] = useLocalStorage('phone', '')
   const [email, setEmail] = useLocalStorage('email', '')
   const [numberCode, setNumberCode] = useLocalStorage('code', '')
@@ -188,7 +190,9 @@ const Form: FC = () => {
                 return (
                   <FormikForm className={mainStyles.form}>
                     <fieldset className={styles.formFieldset}>
-                      <legend className={mainStyles.legend}>Авторизация</legend>
+                      <legend className={mainStyles.legend}>
+                        {isLimcClick ? 'Чтобы купить LIMC, нужно авторизоваться' : 'Авторизация'}
+                      </legend>
                       <label className={styles.formLabel} htmlFor='emailOrPhone'>
                         Телефон или e-mail
                       </label>
@@ -502,7 +506,7 @@ const Form: FC = () => {
                     <Button
                       className={mainStyles.submit}
                       disabled={Object.keys(errors).length !== 0 || values.SMS === ''}
-                      onClick={() => onRegistrationConfirm()}
+                      onClick={onRegistrationConfirm}
                     >
                       Зарегистрироваться
                     </Button>

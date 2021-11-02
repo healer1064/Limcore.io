@@ -11,12 +11,21 @@ import PopupStyles from '../../../../components/Main/components/PopupMainPage/st
 import arrowIcon from '@icons/icon-arrow.svg'
 import limcoreIcon from '@icons/limcore.svg'
 import infoIcon from '@icons/info-icon.svg'
-import { Modal } from '@components/Purse/PurseMobile/components/Modal'
-import AuthComponent from '../../../../../../pages/auth/components/Auth/Auth'
+import useWindowSize from '@helpers/useWindowSizeHook'
+import { useHistory } from 'react-router'
+import ModalAuth from '../../../../../landing/components/ModalAuth/index'
+import { useAppDispatch } from '@app/redux/hooks'
+import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice'
 
 export const CalculatorCaption: React.FC = () => {
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
   const [popupOpen, setPopupOpen] = useState(false)
+
+  const dispatch = useAppDispatch()
+  const history = useHistory()
+  const { width } = useWindowSize()
+  const desktop = width >= 768
+
   const closePopup = () => {
     setPopupOpen(false)
   }
@@ -26,7 +35,8 @@ export const CalculatorCaption: React.FC = () => {
 
   const handleLoginModalOpen = (event) => {
     event.preventDefault()
-    setIsLoginModalVisible(true)
+    dispatch(setIsBuyLimcClick(true))
+    desktop ? setIsLoginModalVisible(true) : history.push('/auth')
   }
   const handleLoginModalClose = () => {
     setIsLoginModalVisible(false)
@@ -113,17 +123,7 @@ export const CalculatorCaption: React.FC = () => {
           </div>
           <ButtonBig onClick={handleLoginModalOpen}>Купить LIMC</ButtonBig>
 
-          <Modal
-            active={isLoginModalVisible}
-            setActive={handleLoginModalClose}
-            style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}
-            classname={Styles.modalAuth}
-            crossFlag
-          >
-            <div className={Styles.modalAuthInner}>
-              <AuthComponent />
-            </div>
-          </Modal>
+          {desktop && <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />}
         </div>
       </form>
     </div>

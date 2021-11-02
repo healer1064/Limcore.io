@@ -8,12 +8,20 @@ import PopupStyles from '../PopupMainPage/styles.module.scss'
 import limcoreIcon from '@icons/limcore.svg'
 import infoIcon from '@icons/info-icon.svg'
 import etherscanIcon from '@icons/etherscan.png'
-import { Modal } from '@components/Purse/PurseMobile/components/Modal'
-import AuthComponent from '../../../../../../pages/auth/components/Auth/Auth'
+import useWindowSize from '@helpers/useWindowSizeHook'
+import { useHistory } from 'react-router'
+import ModalAuth from '../../../../../../pages/landing/components/ModalAuth'
+import { useAppDispatch } from '@app/redux/hooks'
+import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice'
 
 export const MainRounds: React.FC = () => {
   const [popupOpen, setPopupOpen] = useState(false)
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
+
+  const dispatch = useAppDispatch()
+  const history = useHistory()
+  const { width } = useWindowSize()
+  const desktop = width >= 768
 
   const closePopup = () => {
     setPopupOpen(false)
@@ -23,7 +31,8 @@ export const MainRounds: React.FC = () => {
   }
 
   const handleLoginModalOpen = () => {
-    setIsLoginModalVisible(true)
+    dispatch(setIsBuyLimcClick(true))
+    desktop ? setIsLoginModalVisible(true) : history.push('/auth')
   }
   const handleLoginModalClose = () => {
     setIsLoginModalVisible(false)
@@ -72,17 +81,7 @@ export const MainRounds: React.FC = () => {
           </button>
           <span>Lock-up период 6 месяцев</span>
 
-          <Modal
-            active={isLoginModalVisible}
-            setActive={handleLoginModalClose}
-            style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}
-            classname={Styles.modalAuth}
-            crossFlag
-          >
-            <div className={Styles.modalAuthInner}>
-              <AuthComponent />
-            </div>
-          </Modal>
+          {desktop && <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />}
         </div>
         <div className={Styles.column}>
           <ButtonBig className={Styles.button}>Калькулятор доходности</ButtonBig>

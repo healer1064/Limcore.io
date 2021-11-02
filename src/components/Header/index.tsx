@@ -5,9 +5,8 @@ import Styles from './style.module.scss'
 import logoIcon from '@icons/logo.svg'
 import loginIcon from '@icons/login.svg'
 import flagIcon from '../../assets/images/flag-ru.png'
-import { Modal } from '@components/Purse/PurseMobile/components/Modal'
 import { useAppSelector } from '@app/redux/hooks'
-import AuthComponent from '../../pages/auth/components/Auth/Auth'
+import ModalAuth from '../../pages/landing/components/ModalAuth'
 
 const tempLink = [
   { id: 1, value: 'Что такое Limcore?', link: 'main', spy: true, smooth: true },
@@ -79,17 +78,7 @@ export const Header: React.FC = () => {
             <span>Войти</span>
           </button>
 
-          <Modal
-            active={isLoginModalVisible}
-            setActive={handleLoginModalClose}
-            style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}
-            classname={Styles.modalAuth}
-            crossFlag
-          >
-            <div className={Styles.modalAuthInner}>
-              <AuthComponent />
-            </div>
-          </Modal>
+          <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />
         </div>
       </div>
     </header>

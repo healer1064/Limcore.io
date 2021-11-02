@@ -4,7 +4,7 @@ import { buttonCloseBlue } from '../../images/index'
 import BlueArrow from '../../images/BlueArrow/BlueArrow'
 
 interface IModalHeader {
-  title: string
+  title: any
   onClick: () => void
   crossFlag?: boolean
 }
