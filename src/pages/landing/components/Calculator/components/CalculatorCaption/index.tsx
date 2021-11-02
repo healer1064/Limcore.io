@@ -88,7 +88,6 @@ export const CalculatorCaption: React.FC = () => {
     setLimcNumber(limc.toLocaleString('en'))
     setInvestNumber(validated.toLocaleString('en'))
   }
-  console.log(limcNumber.length, investNumber.length, classForCurrency)
 
   return (
     <div className={Styles.caption}>
