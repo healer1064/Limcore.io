@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Styles from './styles.module.scss'
+import classNames from 'classnames'
 
 import { Label } from '../../../../../../ui-kit/Label'
 import { InputText } from '../../../../../../ui-kit/InputText'
@@ -8,7 +9,7 @@ import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
 import { PopupMainPage } from '../../../../components/Main/components/PopupMainPage'
 import PopupStyles from '../../../../components/Main/components/PopupMainPage/styles.module.scss'
 
-import arrowIcon from '@icons/icon-arrow.svg'
+import { IconArrow } from '@icons/IconArrow'
 import limcoreIcon from '@icons/limcore.svg'
 import infoIcon from '@icons/info-icon.svg'
 import useWindowSize from '@helpers/useWindowSizeHook'
@@ -41,6 +42,40 @@ export const CalculatorCaption: React.FC = () => {
   const handleLoginModalClose = () => {
     setIsLoginModalVisible(false)
   }
+
+  // Calculator
+  const [limcNumber, setLimcNumber] = useState('1')
+  const [investNumber, setInvestNumber] = useState('95')
+  // const [limcNumber, setLimcNumber] = useState('1 LIMC')
+  // const [investNumber, setInvestNumber] = useState('95 USDT')
+  const [classForTranslate, setClassForTranslate] = useState(false)
+  const topLabelClass = classForTranslate ? Styles.labelToBottom : null
+  const bottomLabelClass = classForTranslate ? Styles.labelToTop : null
+
+  const handleArrowClick = () => {
+    setClassForTranslate((prev) => !prev)
+  }
+
+  const handleLimcNumberChange = (event) => {
+    const validated = Number(event.target.value.replace(/,/g, '')) // убираю запятые, затем проверяю цифра это или нет
+    if (!validated) {
+      return
+    }
+
+    setLimcNumber(validated.toLocaleString('en'))
+    setInvestNumber((validated * 95).toLocaleString('en'))
+  }
+  const handleInvestNumberChange = (event) => {
+    const validated = Number(event.target.value.replace(/,/g, '')) // убираю запятые, затем проверяю цифра это или нет
+    if (!validated) {
+      return
+    }
+
+    const limc = Math.round(validated / 95)
+    setLimcNumber(limc.toLocaleString('en'))
+    setInvestNumber(validated.toLocaleString('en'))
+  }
+
   return (
     <div className={Styles.caption}>
       <h2 className={Styles.title}>Калькулятор доходности</h2>
@@ -60,12 +95,25 @@ export const CalculatorCaption: React.FC = () => {
       <form className={Styles.form}>
         <div className={Styles.block}>
           <div className={Styles.labels}>
-            <Label className={Styles.label} titleText='Выберите количество LIMC'>
-              <InputText value='40,000 LIMC' onChange={() => {}} placeholder='' />
+            <Label className={classNames(Styles.label, topLabelClass)} titleText='Количество LIMC'>
+              {/* <InputText value={`${limcNumber} LIMC`} onChange={handleLimcNumberChange} placeholder='' /> */}
+              <InputText
+                className={Styles.inputCount}
+                value={limcNumber}
+                onChange={handleLimcNumberChange}
+                placeholder=''
+              />
             </Label>
-            <img src={arrowIcon} alt='Иконка' />
-            <Label className={Styles.label} titleText='Сумма инвестиций в USDT'>
-              <InputText value='3,800,000 USDT' onChange={() => {}} placeholder='' />
+            {/* <img src={arrowIcon} alt='Иконка' className={Styles.arrowSwitch} onClick={handleArrowClick} /> */}
+            <IconArrow className={Styles.arrowSwitch} onClick={handleArrowClick} />
+            <Label className={classNames(Styles.label, bottomLabelClass)} titleText='Сумма инвестиций в USDT'>
+              {/* <InputText value={`${investNumber} USDT`} onChange={handleInvestNumberChange} placeholder='' /> */}
+              <InputText
+                className={Styles.inputCount}
+                value={investNumber}
+                onChange={handleInvestNumberChange}
+                placeholder=''
+              />
             </Label>
           </div>
           <div className={Styles.range}>
@@ -77,7 +125,7 @@ export const CalculatorCaption: React.FC = () => {
                 <img src={limcoreIcon} alt='Иконка' /> 100,000 LIMC
               </span>
             </div>
-            <input type='range' min='1' max='100000' />
+            <input type='range' min='1' max='100000' onChange={handleLimcNumberChange} className={Styles.rangeInput} />
           </div>
         </div>
         <div className={Styles.block}>
