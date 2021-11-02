@@ -48,7 +48,7 @@ export const CalculatorCaption: React.FC = () => {
   const [investNumber, setInvestNumber] = useState('95')
   // const [limcNumber, setLimcNumber] = useState('1 LIMC')
   // const [investNumber, setInvestNumber] = useState('95 USDT')
-  const [classForCurrency, setClassForCurrency] = useState(Styles.currency2)
+  const [classForCurrency, setClassForCurrency] = useState(Styles.currency)
   const [classForTranslate, setClassForTranslate] = useState(false)
   const topLabelClass = classForTranslate ? Styles.labelToBottom : null
   const bottomLabelClass = classForTranslate ? Styles.labelToTop : null
@@ -57,8 +57,10 @@ export const CalculatorCaption: React.FC = () => {
     handleCurrencyClass()
   }, [limcNumber, investNumber])
   const handleCurrencyClass = () => {
-    if (limcNumber.length >= 5 || investNumber.length >= 5) {
-      return setClassForCurrency(Styles.currency2)
+    if ((limcNumber.length >= 3 && limcNumber.length < 6) || (investNumber.length >= 3 && investNumber.length < 6)) {
+      return setClassForCurrency(Styles.currencyMiddlePadding)
+    } else if (limcNumber.length >= 6 || investNumber.length >= 6) {
+      return setClassForCurrency(Styles.currencyLongPadding)
     }
     return setClassForCurrency(Styles.currency)
   }

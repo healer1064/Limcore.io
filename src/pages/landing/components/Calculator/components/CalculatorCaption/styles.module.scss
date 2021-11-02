@@ -289,12 +289,11 @@
   line-height: 1.13;
   color: #4F535A;
   position: relative;
-  border: 1px solid blue;
-  //top: -35%;
+  top: -35%;
   left: 10%;
 }
 
-.currency2 {
+.currencyMiddlePadding {
   display: flex;
   box-sizing: border-box;
   padding-right: 10px;
@@ -304,9 +303,22 @@
   line-height: 1.13;
   color: #4F535A;
   position: relative;
-  border: 1px solid green;
-  //top: -35%;
-  left: 50%;
+  top: -35%;
+  left: 22%;
+}
+
+.currencyLongPadding {
+  display: flex;
+  box-sizing: border-box;
+  padding-right: 10px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.13;
+  color: #4F535A;
+  position: relative;
+  top: -35%;
+  left: 28%;
 }
 
 @media all and (max-width: 768px) {
