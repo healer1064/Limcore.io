@@ -4,7 +4,7 @@ import Styles from './styles.module.scss'
 import { RoadMapItem } from './parts/index'
 import { RoadMapDesktop } from './components/RoadMapDesktop'
 
-import telegram from '@icons/telegram.svg'
+import { TelegramIcon } from '@icons/TelegramIcon'
 
 export const RoadMap: React.FC = () => {
   const roadMapArray = [
@@ -158,7 +158,7 @@ export const RoadMap: React.FC = () => {
           <p className={Styles.text}>
             Фото и видео в нашей группе в Telegram{' '}
             <a className={Styles.link} target='blank' href='https://t.me/limc_russ'>
-              <img className={Styles.icon} src={telegram} alt='Иконка' /> @limc_russ
+              <TelegramIcon className={Styles.icon} /> @limc_russ
             </a>
           </p>
         </div>

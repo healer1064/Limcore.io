@@ -57,6 +57,10 @@
     width: 24px;
     height: 24px;
     object-fit: contain;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__list {
@@ -228,36 +232,13 @@
   }
 
   &__socialIcon {
+    display: flex;
+    box-sizing: border-box;
     width: 32px;
     height: 32px;
     margin: 0 10px 0 0;
     padding: 0;
-    box-sizing: border-box;
   }
-
-  // &__socialIcon_twitter {
-  //   background-image: url('../../assets/icons/twitter-icon.png');
-  // }
-
-  // &__socialIcon_linkedIn {
-  //   background-image: url('../../assets/icons/linkedIn-icon.png');
-  // }
-
-  // &__socialIcon_vk {
-  //   background-image: url('../../assets/icons/vk-icon.png');
-  // }
-
-  // &__socialIcon_insta {
-  //   background-image: url('../../assets/icons/insta-icon.png');
-  // }
-
-  // &__socialIcon_telegram {
-  //   background-image: url('../../assets/icons/telegram-icon.png');
-  // }
-
-  // &__socialIcon_facebook {
-  //   background-image: url('../../assets/icons/facebook-icon.png');
-  // }
 
   &__link {
     text-decoration: none;

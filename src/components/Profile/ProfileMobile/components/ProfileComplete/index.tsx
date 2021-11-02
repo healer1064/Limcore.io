@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useAppDispatch } from '@app/redux/hooks'
 import { changeViewContent } from '../../.././../../pages/cabinet/redux/cabinetSlice'
 import Styles from './styles.module.scss'
@@ -19,7 +19,10 @@ import smartphoneImage from '../../../../../assets/images/smartphone.png'
 
 export const ProfileComplete: React.FC = () => {
   const dispatch = useAppDispatch()
-
+  const [notificationOpen, setNotificationOpen] = useState(true)
+  const closeNotification = () => {
+    setNotificationOpen(false)
+  }
   const changeView = (view) => dispatch(changeViewContent(view))
 
   return (
@@ -96,10 +99,10 @@ export const ProfileComplete: React.FC = () => {
             </div>
           </li>
         </ul>
-        <div className={Styles.notification}>
+        <div className={`${notificationOpen ? Styles.notification : Styles.notification_invisible}`}>
           <span className={Styles.text}>Подключите двухфакторную аутентификацию</span>
           <img className={Styles.smartphone} src={smartphoneImage} alt='Иконка' />
-          <img className={Styles.close} src={closeIcon} alt='Иконка' />
+          <img className={Styles.close} src={closeIcon} alt='Иконка' onClick={closeNotification} />
         </div>
       </div>
     </>
