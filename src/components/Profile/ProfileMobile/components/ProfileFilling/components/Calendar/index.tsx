@@ -37,6 +37,7 @@ export const Calendar: React.FC = () => {
 
   const [year, setYear] = useState(null)
   const [month, setMonth] = useState(null)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [day, setDay] = useState(null)
 
   const backwardYears = () => {
@@ -93,7 +94,7 @@ export const Calendar: React.FC = () => {
 
     setDay(day)
 
-    const date = { day, month, year }
+    // const date = { day, month, year }
   }
 
   useEffect(() => {
@@ -114,9 +115,9 @@ export const Calendar: React.FC = () => {
       {view === 'years' && (
         <>
           <div className={Styles.select}>
-            <img src={leftIcon} alt='Иконка' onClick={backwardYears} />
+            <img className={Styles.leftIcon} src={leftIcon} alt='Иконка' onClick={backwardYears} />
             <span className={Styles.title}>{title}</span>
-            <img src={rightIcon} alt='Иконка' onClick={forwardYears} />
+            <img className={Styles.rightIcon} src={rightIcon} alt='Иконка' onClick={forwardYears} />
           </div>
           <div className={Styles.grid}>
             {years &&
@@ -131,9 +132,9 @@ export const Calendar: React.FC = () => {
       {view === 'months' && (
         <>
           <div className={Styles.select}>
-            <img src={leftIcon} alt='Иконка' onClick={() => backwardYear(year - 1)} />
+            <img className={Styles.leftIcon} src={leftIcon} alt='Иконка' onClick={() => backwardYear(year - 1)} />
             <span className={Styles.title}>{title}</span>
-            <img src={rightIcon} alt='Иконка' onClick={() => forwardYear(year + 1)} />
+            <img className={Styles.rightIcon} src={rightIcon} alt='Иконка' onClick={() => forwardYear(year + 1)} />
           </div>
           <div className={Styles.grid}>
             {months &&
@@ -148,9 +149,9 @@ export const Calendar: React.FC = () => {
       {view === 'days' && (
         <>
           <div className={Styles.select}>
-            <img src={leftIcon} alt='Иконка' />
+            <img className={Styles.leftIcon} src={leftIcon} alt='Иконка' />
             <span className={Styles.title}>{title}</span>
-            <img src={rightIcon} alt='Иконка' />
+            <img className={Styles.rightIcon} src={rightIcon} alt='Иконка' />
           </div>
           <div className={Styles.container}>
             <div className={Styles.head}>

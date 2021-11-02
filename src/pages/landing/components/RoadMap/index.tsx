@@ -2,6 +2,7 @@ import React from 'react'
 import Styles from './styles.module.scss'
 
 import { RoadMapItem } from './parts/index'
+import { RoadMapDesktop } from './components/RoadMapDesktop'
 
 import telegram from '@icons/telegram.svg'
 
@@ -150,7 +151,7 @@ export const RoadMap: React.FC = () => {
   ]
 
   return (
-    <section className={Styles.roadMap}>
+    <section id='roadmap' className={Styles.roadMap}>
       <div className={Styles.wrapper}>
         <div className={Styles.header}>
           <h3 className={Styles.title}>Roadmap</h3>
@@ -166,6 +167,7 @@ export const RoadMap: React.FC = () => {
             <RoadMapItem key={item.id} title={item.title} date={item.deadline} status={item.status} />
           ))}
         </ul>
+        <RoadMapDesktop />
       </div>
     </section>
   )

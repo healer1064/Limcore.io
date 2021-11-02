@@ -4,10 +4,17 @@
 .form {
   display: flex;
   flex-flow: column wrap;
+  justify-content: space-between;
   width: 100%;
   height: 100%;
 
+  &Desktop {
+    max-width: 314px;
+  }
+
   &Fieldset {
+    position: relative;
+
     display: flex;
     flex-flow: row wrap;
     width: 100%;
@@ -16,6 +23,8 @@
     border: 0;
     padding: 0;
     min-width: 0;
+    min-height: 150px;
+    height: auto;
   }
 
   &Legend {
@@ -26,6 +35,14 @@
     font-weight: 600;
     line-height: 1;
     color: $black;
+
+    &Desktop {
+      margin-bottom: 20px;
+
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 27px;
+    }
   }
 
   &Label {
@@ -89,9 +106,9 @@
     &ErrorMessage {
       display: flex;
       flex-basis: 100%;
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      margin-top: 8px;
       font-size: 14px;
       font-weight: 500;
     }
@@ -105,6 +122,17 @@
 
     &ErrorMessage {
       color: $red;
+      display: flex;
+      box-sizing: border-box;
+      padding: 0;
+      margin: 8px 0 0 4px;
+
+
+      &Desktop {
+        position: absolute;
+        bottom: -16px;
+        margin: -8px 0;
+      }
 
       &Hidden {
         display: none;
@@ -130,5 +158,10 @@
     align-self: flex-end;
     height: auto !important;
     margin-top: auto;
+
+    &Desktop {
+      align-self: initial;
+      margin-top: 20px;
+    }
   }
 }

@@ -5,7 +5,7 @@ import { Main } from './components/Main'
 import { Calculator } from './components/Calculator'
 import { RoadMap } from './components/RoadMap'
 import { Team } from './components/Team'
-import { UpEcosystem } from './components/UpEcosystem'
+// import { UpEcosystem } from './components/UpEcosystem'
 // import { OnLine } from './components/OnLine'
 import { Questions } from './components/Questions'
 import { Media } from './components/Media'
@@ -18,7 +18,7 @@ export const LandingPage: React.FC = () => {
       <Calculator />
       <RoadMap />
       <Team />
-      <UpEcosystem />
+      {/* <UpEcosystem /> */}
       {/* <OnLine /> */}
       <Questions />
       <Media />

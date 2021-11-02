@@ -1,0 +1,80 @@
+.roadMap {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  min-height: 100%;
+  height: auto;
+}
+
+.roadMap::-webkit-scrollbar {
+  width: 0;
+}
+
+.scrollButton {
+}
+
+.scrollButtonLeft {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  width: 60px;
+  height: 60px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  position: absolute;
+  top: 58%;
+  right: 10%;
+  z-index: 5;
+  box-shadow: 20px 20px 52px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    cursor: pointer;
+    border: 2px solid #4A70F8;
+  }
+}
+
+.scrollButtonRight {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  width: 60px;
+  height: 60px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  position: absolute;
+  top: 58%;
+  left: 10%;
+  z-index: 5;
+  box-shadow: 20px 20px 52px rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    cursor: pointer;
+    border: 2px solid #4A70F8;
+  }
+}
+
+.scrollIcon {
+  display: flex;
+  box-sizing: border-box;
+  width: 7px;
+  height: 14px;
+  margin: 24px auto;
+  padding: 0;
+}
+
+@media screen and (max-width: 720px) {
+  .roadMap {
+    display: none;
+  }
+
+  .scrollButton, .scrollButtonRight, .scrollButtonLeft {
+    display: none;
+  }
+}

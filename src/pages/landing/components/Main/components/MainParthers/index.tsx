@@ -15,8 +15,9 @@ import softlineIcon from '@icons/softline.svg'
 SwiperCore.use([Autoplay])
 
 const swiperProps = {
-  slidesPerView: 1,
-  loop: true,
+  spaceBetween: 60,
+  slidesPerView: 2,
+  // loop: true,
 }
 
 export const MainParthers: React.FC = () => {
@@ -31,17 +32,17 @@ export const MainParthers: React.FC = () => {
           <img src={supermicrIcon} alt='Иконка' />
         </>
       ) : (
-        <Swiper autoplay={{ delay: 3000 }} {...swiperProps}>
-          <SwiperSlide className={Styles.swiperSlide}>
+        <Swiper className={Styles.swiper} /* autoplay={{ delay: 3000 }} */ {...swiperProps}>
+          <SwiperSlide className={Styles.slide}>
             <img src={blockchainIcon} alt='Иконка' />
           </SwiperSlide>
-          <SwiperSlide className={Styles.swiperSlide}>
+          <SwiperSlide className={Styles.slide}>
             <img src={amdIcon} alt='Иконка' />
           </SwiperSlide>
-          <SwiperSlide className={Styles.swiperSlide}>
+          <SwiperSlide className={Styles.slide}>
             <img src={softlineIcon} alt='Иконка' />
           </SwiperSlide>
-          <SwiperSlide className={Styles.swiperSlide}>
+          <SwiperSlide className={Styles.slide}>
             <img src={supermicrIcon} alt='Иконка' />
           </SwiperSlide>
         </Swiper>

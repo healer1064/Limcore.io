@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import { UserHasTransactions } from './components/UserHasTransactions/index'
-import { blueArrow, balanceLimc, balanceUsdt, s7 } from '../../images/index'
+import { balanceLimc, balanceUsdt, s7 } from '../../images/index'
 import { Modal } from '../Modal'
 import { TransactionsDetails } from './components/TransactionsDetails/index'
+import BlueArrow from '../../images/BlueArrow/BlueArrow'
 
 interface ITransactionsProps {
   onProfileClick: () => void
@@ -40,7 +41,7 @@ export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTra
     <div className={styles.transactions}>
       <h3 className={styles.transactions__title}>Транзакции</h3>
       <button type='button' className={styles.transactions__button} onClick={onTransactionsClick}>
-        <img src={blueArrow} onClick={handleTransactionsOpen} />
+        <BlueArrow onClick={handleTransactionsOpen} />
       </button>
 
       <Modal active={isTransactionsVisible} setActive={handleTransactionsClose}>

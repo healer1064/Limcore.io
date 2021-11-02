@@ -11,14 +11,35 @@ import PopupStyles from '../../../../components/Main/components/PopupMainPage/st
 import arrowIcon from '@icons/icon-arrow.svg'
 import limcoreIcon from '@icons/limcore.svg'
 import infoIcon from '@icons/info-icon.svg'
+import useWindowSize from '@helpers/useWindowSizeHook'
+import { useHistory } from 'react-router'
+import ModalAuth from '../../../../../landing/components/ModalAuth/index'
+import { useAppDispatch } from '@app/redux/hooks'
+import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice'
 
 export const CalculatorCaption: React.FC = () => {
+  const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
   const [popupOpen, setPopupOpen] = useState(false)
+
+  const dispatch = useAppDispatch()
+  const history = useHistory()
+  const { width } = useWindowSize()
+  const desktop = width >= 768
+
   const closePopup = () => {
     setPopupOpen(false)
   }
   const openPopup = () => {
     setPopupOpen(true)
+  }
+
+  const handleLoginModalOpen = (event) => {
+    event.preventDefault()
+    dispatch(setIsBuyLimcClick(true))
+    desktop ? setIsLoginModalVisible(true) : history.push('/auth')
+  }
+  const handleLoginModalClose = () => {
+    setIsLoginModalVisible(false)
   }
   return (
     <div className={Styles.caption}>
@@ -40,11 +61,11 @@ export const CalculatorCaption: React.FC = () => {
         <div className={Styles.block}>
           <div className={Styles.labels}>
             <Label className={Styles.label} titleText='Выберите количество LIMC'>
-              <InputText value='40,000 LIMC' placeholder='' />
+              <InputText value='40,000 LIMC' onChange={() => {}} placeholder='' />
             </Label>
             <img src={arrowIcon} alt='Иконка' />
             <Label className={Styles.label} titleText='Сумма инвестиций в USDT'>
-              <InputText value='3,800,000 USDT' placeholder='' />
+              <InputText value='3,800,000 USDT' onChange={() => {}} placeholder='' />
             </Label>
           </div>
           <div className={Styles.range}>
@@ -100,7 +121,9 @@ export const CalculatorCaption: React.FC = () => {
               Покрытие расходов на поддержание инфраструктуры
             </PopupMainPage>
           </div>
-          <ButtonBig>Купить LIMC</ButtonBig>
+          <ButtonBig onClick={handleLoginModalOpen}>Купить LIMC</ButtonBig>
+
+          {desktop && <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />}
         </div>
       </form>
     </div>

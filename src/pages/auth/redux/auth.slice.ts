@@ -58,6 +58,7 @@ export const authSlice = createSlice({
     '2FA': true,
     confirmationEmail: { code: '', unique_identifier: '' },
     isAuth: false,
+    isBuyLimcClick: false,
   },
   reducers: {
     setProcessType: (state, { payload }) => {
@@ -74,6 +75,9 @@ export const authSlice = createSlice({
     },
     setIsAuth: (state, { payload }) => {
       state.isAuth = payload
+    },
+    setIsBuyLimcClick: (state, { payload }) => {
+      state.isBuyLimcClick = payload
     },
   },
   extraReducers: {
@@ -95,14 +99,14 @@ export const authSlice = createSlice({
 
       state.confirmationEmail = data
     },
-    [registerUserEmailConfirmation.fulfilled]: (state, action) => {
+    [registerUserEmailConfirmation.fulfilled]: (state) => {
       state.isAuth = !state.isAuth
     },
-    [authorizationUserEmailConfirmation.fulfilled]: (state, action) => {
+    [authorizationUserEmailConfirmation.fulfilled]: (state) => {
       state.isAuth = !state.isAuth
     },
     [getJwtToken.fulfilled]: (state, action) => {
-      console.log(action)
+      // console.log(action)
       const data = { ...action.payload.data }
       localStorage.setItem('jwtToken', JSON.stringify(data))
     },
@@ -123,7 +127,7 @@ export const authSlice = createSlice({
 })
 
 const { actions, reducer } = authSlice
-export const { setProcessType, setMethod, getAuthNextStep, setAuthStep, setIsAuth } = actions
+export const { setProcessType, setMethod, getAuthNextStep, setAuthStep, setIsAuth, setIsBuyLimcClick } = actions
 export const authSelector = (state: RootState) => state.auth
 
 export default reducer

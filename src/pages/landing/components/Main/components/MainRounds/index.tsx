@@ -8,14 +8,34 @@ import PopupStyles from '../PopupMainPage/styles.module.scss'
 import limcoreIcon from '@icons/limcore.svg'
 import infoIcon from '@icons/info-icon.svg'
 import etherscanIcon from '@icons/etherscan.png'
+import useWindowSize from '@helpers/useWindowSizeHook'
+import { useHistory } from 'react-router'
+import ModalAuth from '../../../../../../pages/landing/components/ModalAuth'
+import { useAppDispatch } from '@app/redux/hooks'
+import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice'
 
 export const MainRounds: React.FC = () => {
   const [popupOpen, setPopupOpen] = useState(false)
+  const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
+
+  const dispatch = useAppDispatch()
+  const history = useHistory()
+  const { width } = useWindowSize()
+  const desktop = width >= 768
+
   const closePopup = () => {
     setPopupOpen(false)
   }
   const openPopup = () => {
     setPopupOpen(true)
+  }
+
+  const handleLoginModalOpen = () => {
+    dispatch(setIsBuyLimcClick(true))
+    desktop ? setIsLoginModalVisible(true) : history.push('/auth')
+  }
+  const handleLoginModalClose = () => {
+    setIsLoginModalVisible(false)
   }
   return (
     <div className={Styles.rounds}>
@@ -23,7 +43,7 @@ export const MainRounds: React.FC = () => {
         <div className={Styles.wrap}>
           <span className={Styles.name}>Раунд №1</span>
         </div>
-        <p className={Styles.temporarily}>Открываемся 27 октября 2021г.</p>
+        <p className={Styles.temporarily}>Открываемся 5 ноября 2021г.</p>
         <p className={Styles.temporarily}>Сайт в процессе разработки</p>
         <ul className={Styles.list}>
           <li className={Styles.item}>
@@ -50,14 +70,18 @@ export const MainRounds: React.FC = () => {
       <div className={Styles.container}>
         <div className={Styles.progress}>
           <span className={Styles.bar}>{}</span>
-          <span className={Styles.count}>78,000 / 80,000</span>
+          <span className={Styles.count}>0 / 80000</span>
         </div>
         <img src={etherscanIcon} alt='Иконка' />
       </div>
       <div className={Styles.buttons}>
         <div className={Styles.column}>
-          <button className={Styles.second}>Купить LIMC</button>
+          <button className={Styles.second} onClick={handleLoginModalOpen}>
+            Купить LIMC
+          </button>
           <span>Lock-up период 6 месяцев</span>
+
+          {desktop && <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />}
         </div>
         <div className={Styles.column}>
           <ButtonBig className={Styles.button}>Калькулятор доходности</ButtonBig>
@@ -71,26 +95,26 @@ export const MainRounds: React.FC = () => {
         <div className={Styles.road}>
           <div className={Styles.cover}>
             <div className={Styles.round}>
-              <span>Раунд №2</span>
+              <span className={Styles.subtitle}>Раунд №2</span>
               <div className={Styles.row}>
                 <span>LIMC (min $110)</span>
                 <span>120,000</span>
               </div>
             </div>
             <div className={Styles.round}>
-              <span>Раунд №3</span>
+              <span className={Styles.subtitle}>Раунд №3</span>
               <div className={Styles.row}>
                 <span>LIMC (price and limit later)</span>
               </div>
             </div>
             <div className={Styles.round}>
-              <span>Раунд №4</span>
+              <span className={Styles.subtitle}>Раунд №4</span>
               <div className={Styles.row}>
                 <span>LIMC (price and limit later)</span>
               </div>
             </div>
             <div className={Styles.round}>
-              <span>Раунд №5 (Final)</span>
+              <span className={Styles.subtitle}>Раунд №5 (Final)</span>
               <div className={Styles.row}>
                 <span>LIMC (price and limit later)</span>
               </div>

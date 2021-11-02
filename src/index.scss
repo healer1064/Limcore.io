@@ -1,5 +1,5 @@
 @import '~normalize.scss/normalize.scss';
-@import 'assets/fonts';
+@import './assets/fonts';
 @import './scss/vars';
 
 html {
@@ -21,7 +21,8 @@ body {
   height: inherit;
   font-family: $main-font;
 }
+
 .swiper-pagination-bullet-active {
-  border-radius: 6px!important;
-  width: 20px!important;
+  border-radius: 6px !important;
+  width: 20px !important;
 }

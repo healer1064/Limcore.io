@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 import useWindowSize from '@helpers/useWindowSizeHook'
 
-import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Navigation } from 'swiper'
 
 import Styles from './styles.module.scss'
@@ -53,8 +52,9 @@ const cardData = [
 export const UpEcosystem = () => {
   const { width } = useWindowSize()
   const [isActive, setIsActive] = useState(null)
+
   return (
-    <div className={Styles.container}>
+    <div id='ecosystem' className={Styles.container}>
       <div className={Styles.wrapper}>
         <div className={Styles.title__container}>
           <h2 className={Styles.title}>
@@ -78,7 +78,6 @@ export const UpEcosystem = () => {
             />
           ))}
         </div>
-
         <SliderContainer />
       </div>
     </div>

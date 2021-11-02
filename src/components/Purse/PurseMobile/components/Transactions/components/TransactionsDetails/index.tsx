@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import classNames from 'classnames'
 import { ModalHeader } from '../../../ModalHeader'
 import { UserHasTransactions } from '../UserHasTransactions'
 import {

@@ -2,7 +2,6 @@ import React from 'react'
 import Styles from './styles.module.scss'
 
 import chiaIcon from '@icons/chia.svg'
-import centerImage from '../../../../../../assets/images/center.png'
 
 export const MainCaption: React.FC = () => {
   return (
@@ -13,16 +12,18 @@ export const MainCaption: React.FC = () => {
         </h1>
         <h3 className={Styles.subtitle}>Самый быстрый и выгодный способ инвестирования в криптовалюту</h3>
       </div>
-      <iframe
-        className={Styles.photo}
-        width='502'
-        height='287'
-        src='https://www.youtube.com/embed/aK9obYQi-FI'
-        title='YouTube video player'
-        frameBorder='0'
-        allow='accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-        allowFullScreen
-      />
+      <div className={Styles.wrap}>
+        <iframe
+          className={Styles.photo}
+          width='100%'
+          height='100%'
+          src='https://www.youtube.com/embed/aK9obYQi-FI'
+          title='YouTube video player'
+          frameBorder='0'
+          allow='accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+          allowFullScreen
+        />
+      </div>
       {/* <img className={Styles.photo} src={centerImage} alt='Иконка' /> */}
     </div>
   )

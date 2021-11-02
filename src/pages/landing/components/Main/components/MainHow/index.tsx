@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Navigation, Pagination } from 'swiper'
+import SwiperCore, { Pagination } from 'swiper'
 
 import useWindowSize from '@helpers/useWindowSizeHook'
 
@@ -50,7 +50,7 @@ export const MainHow: React.FC = () => {
               el: `.${Styles.pagination}`,
             }}
             slidesPerView={1}
-            spaceBetween={0}
+            spaceBetween={10}
           >
             <SwiperSlide>
               <div className={Styles.item}>

@@ -1,11 +1,12 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { changeViewContent, changeStep } from '../../pages/cabinet/redux/cabinetSlice'
+// import { changeViewContent, changeStep } from '../../pages/cabinet/redux/cabinetSlice'
+import { changeStep } from '../../pages/cabinet/redux/cabinetSlice'
 import Styles from './styles.module.scss'
 
 interface ContainerProps {
   title: string
-  onClick?: any
+  onClick?: () => void
 }
 
 export const Container: React.FC<ContainerProps> = ({ title, onClick, children }) => {
@@ -16,10 +17,10 @@ export const Container: React.FC<ContainerProps> = ({ title, onClick, children }
     dispatch(changeStep(step - 1))
   }
 
-  const closeContainer = () => {
-    dispatch(changeViewContent('none'))
-    dispatch(changeStep(0))
-  }
+  // const closeContainer = () => {
+  //   dispatch(changeViewContent('none'))
+  //   dispatch(changeStep(0))
+  // }
 
   return (
     <div className={Styles.container}>
@@ -32,7 +33,7 @@ export const Container: React.FC<ContainerProps> = ({ title, onClick, children }
           </button>
         )}
         <span className={Styles.caption}>{title}</span>
-        <button className={Styles.close} /* onClick={closeContainer} */ onClick={onClick}>
+        <button className={Styles.close} onClick={onClick}>
           {}
         </button>
       </div>

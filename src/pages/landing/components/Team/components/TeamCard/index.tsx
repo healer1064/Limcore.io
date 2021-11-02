@@ -4,7 +4,9 @@ import Styles from './styles.module.scss'
 export const TeamCard = ({ person }) => {
   return (
     <div className={Styles.card}>
-      <img src={person.foto} className={Styles.card__foto} />
+      <div className={Styles.fotoContainer}>
+        <img src={person.foto} className={Styles.card__foto} />
+      </div>
       <div className={Styles.card__teamMember}>
         <p className={Styles.card__job}>{person.job}</p>
         <p className={Styles.card__name}>{person.name}</p>

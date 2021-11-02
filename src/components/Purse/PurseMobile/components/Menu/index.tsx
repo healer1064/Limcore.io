@@ -1,24 +1,24 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
-import { plusSvg, balanceLimc, balanceUsdt, creditCard } from '../../images'
+import { balanceLimc, balanceUsdt, creditCard, plusSvg } from '../../images'
 import { MenuItem } from './components/MenuItem/index'
 import { useAppSelector } from '@app/redux/hooks'
 
 export const Menu = ({ openPopup }) => {
-  const [isLimcInfoVisible, setIsLimcInfoVisible] = useState(false)
+  // const [isLimcInfoVisible, setIsLimcInfoVisible] = useState(false)
   const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
   const [isCardInfoVisible, setIsCardInfoVisible] = useState(false)
   const buttonPlusClass = `${styles.menu__item} ${styles.menu__buttonPlus}`
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
   const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
 
-  const handleBalanceLimcOpenClick = () => {
-    setIsLimcInfoVisible(true)
-  }
+  // const handleBalanceLimcOpenClick = () => {
+  //   setIsLimcInfoVisible(true)
+  // }
 
-  const handleBalanceLimcCloseClick = () => {
-    setIsLimcInfoVisible(false)
-  }
+  // const handleBalanceLimcCloseClick = () => {
+  //   setIsLimcInfoVisible(false)
+  // }
 
   const handleBalanceUsdtOpenClick = () => {
     setIsUsdtInfoVisible(true)

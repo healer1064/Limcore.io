@@ -25,7 +25,9 @@ import { Modal } from './components/Modal'
 export const PurseMobile: FC = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
   const [isWalletVisible, setIsWalletVisible] = useState(true)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isLimcBought, setIsLimcBought] = useState(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isUserHasTransactions, setIsUserHasTransactions] = useState(true)
 
   const [isErrorVisible, setIsErrorVisible] = useState(false)
@@ -38,9 +40,6 @@ export const PurseMobile: FC = () => {
   const dispatch = useAppDispatch()
   const prices = useAppSelector((state) => state.wallet.limc_price)
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
-  // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
-  const temp = useAppSelector((state) => state)
-  console.log(temp)
 
   const handleSetValue = (event) => setValue(event.target.value)
 
@@ -77,7 +76,6 @@ export const PurseMobile: FC = () => {
     }
 
     const request = await dispatch(buyLimc(data))
-    console.log(request)
     if (request.error?.message?.includes(400)) {
       setIsErrorVisible(true)
 
@@ -106,15 +104,15 @@ export const PurseMobile: FC = () => {
             <span className={styles.usd}>$0</span>
             <div className={styles.items}>
               <div className={`${styles.item} ${styles.item_active}`} onClick={() => setViewContent('buy')}>
-                <img src={buyIcon} alt='' />
+                <img className={styles.icon} src={buyIcon} alt='' />
                 <span>Купить</span>
               </div>
               <div className={styles.item}>
-                <img src={sellIcon} alt='' />
+                <img className={styles.icon} src={sellIcon} alt='' />
                 <span>Продать</span>
               </div>
               <div className={styles.item}>
-                <img src={tradeIcon} alt='' />
+                <img className={styles.icon} src={tradeIcon} alt='' />
                 <span>Обменять</span>
               </div>
             </div>

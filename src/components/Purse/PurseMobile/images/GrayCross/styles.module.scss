@@ -1,0 +1,10 @@
+.svg {
+  transition: stroke .3s ease;
+  
+  &:hover {
+    .path {
+      stroke: #4a70f8;
+      transition: stroke .3s ease;
+    }
+  }
+}
