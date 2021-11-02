@@ -72,6 +72,7 @@ const App = () => {
                 <Switch>
                   <Route path='/' exact component={LandingPage} />
                   <Route path='/auth' exact component={AuthPage} />
+                  <Route path='/profile' exact component={ProfileMobile} />
                   {/* <Route path='/auth' exact component={AuthMobile} /> */}
                   <Route path='/not-found' exact component={PageNotFount} />
                   <Route path='*'>

@@ -5,6 +5,12 @@ import logo from '../../assets/icons/LimLogo.png'
 // import logo from '../../assets/icons/FooterLogo.svg'
 import RU from '../../assets/images/flag-ru.png'
 import arrow from '../../assets/icons/grey-arrow-down.png'
+import twitter from '../../assets/icons/twitter-icon.png'
+import linkedIn from '../../assets/icons/linkedIn-icon.png'
+import vk from '../../assets/icons/vk-icon.png'
+import insta from '../../assets/icons/insta-icon.png'
+import tg from '../../assets/icons/telegram-icon.png'
+import facebook from '../../assets/icons/facebook-icon.png'
 
 export const Footer: React.FC = () => {
   return (
@@ -93,23 +99,55 @@ export const Footer: React.FC = () => {
           </ul>
           <p className={Styles.footer__email}>info@limcore.io</p>
           <ul className={Styles.footer__social}>
-            <li className={`${Styles.footer__socialIcon_twitter} ${Styles.footer__socialIcon}`}>
-              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link} />
+            <li>
+              <a href='https://twitter.com' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
+                <img src={twitter} className={Styles.footer__socialIcon} />
+              </a>
             </li>
-            <li className={`${Styles.footer__socialIcon_linkedIn} ${Styles.footer__socialIcon}`}>
-              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link} />
+            <li>
+              <a
+                href='https://www.linkedin.com'
+                target='blank'
+                rel='noopener noreferrer'
+                className={Styles.footer__link}
+              >
+                <img src={linkedIn} className={Styles.footer__socialIcon} />
+              </a>
             </li>
-            <li className={`${Styles.footer__socialIcon_vk} ${Styles.footer__socialIcon}`}>
-              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link} />
+            <li>
+              <a href='https://vk.com/' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
+                <img src={vk} className={Styles.footer__socialIcon} />
+              </a>
             </li>
-            <li className={`${Styles.footer__socialIcon_insta} ${Styles.footer__socialIcon}`}>
-              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link} />
+            <li>
+              <a
+                href='https://www.instagram.com/'
+                target='blank'
+                rel='noopener noreferrer'
+                className={Styles.footer__link}
+              >
+                <img src={insta} className={Styles.footer__socialIcon} />
+              </a>
             </li>
-            <li className={`${Styles.footer__socialIcon_telegram} ${Styles.footer__socialIcon}`}>
-              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link} />
+            <li>
+              <a
+                href='https://webz.telegram.org/'
+                target='blank'
+                rel='noopener noreferrer'
+                className={Styles.footer__link}
+              >
+                <img src={tg} className={Styles.footer__socialIcon} />
+              </a>
             </li>
-            <li className={`${Styles.footer__socialIcon_facebook} ${Styles.footer__socialIcon}`}>
-              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link} />
+            <li>
+              <a
+                href='https://ru-ru.facebook.com/'
+                target='blank'
+                rel='noopener noreferrer'
+                className={Styles.footer__link}
+              >
+                <img src={facebook} className={Styles.footer__socialIcon} />
+              </a>
             </li>
           </ul>
           <p className={Styles.footer__copyright}>

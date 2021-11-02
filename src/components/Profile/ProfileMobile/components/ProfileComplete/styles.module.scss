@@ -192,6 +192,10 @@
   border-radius: 14px;
   height: 76px;
   margin-top: 15px;
+
+  &_invisible {
+    display: none;
+  }
 }
 
 .text {

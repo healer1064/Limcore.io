@@ -236,6 +236,12 @@
   }
 }
 
+.arrowIcon, .rangeBar, .infoIcon {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 @media all and (max-width: 768px) {
   .title {
     font-size: 22px;
