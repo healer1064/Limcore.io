@@ -14,7 +14,9 @@ export const registerUserEmail: any = createAsyncThunk('auth/registerUserEmail',
 })
 
 export const registerUserPhone: any = createAsyncThunk('auth/registerUserPhone', async function (data) {
+  console.log('registerUserPhone')
   const response = await api.post('users/registration/phone/', data)
+  console.log(response)
   return response
 })
 
@@ -44,11 +46,13 @@ export const authorizationUserEmailConfirmation: any = createAsyncThunk(
 
 export const getJwtToken: any = createAsyncThunk('auth/getJwtToken', async function (data) {
   const response = await api.post('users/login/', data)
+  console.log(response)
   return response
 })
 
 export const getJwtTokenTest: any = createAsyncThunk('auth/getJwtTokenTest', async function (data) {
   const response = await api.post('users/login-code/', data)
+  console.log(response)
   return response
 })
 
@@ -72,6 +76,7 @@ export const authSlice = createSlice({
     confirmationEmail: { code: '', unique_identifier: '' },
     isAuth: false,
     isBuyLimcClick: false,
+    uniqueId: '',
   },
   reducers: {
     setProcessType: (state, { payload }) => {
@@ -114,18 +119,14 @@ export const authSlice = createSlice({
     },
     [registerUserPhone.fulfilled]: (state, action) => {
       console.log('action', action)
-      const data = { code: '', unique_identifier: '' }
-
-      data.code = action.payload.data.result.slice(35, 40)
-      data.unique_identifier = action.payload.data.result.slice(42, 78)
-
-      state.confirmationEmail = data
+      state.uniqueId = action.payload.data.unique_identifier
     },
     [registerUserEmailConfirmation.fulfilled]: (state) => {
       state.isAuth = !state.isAuth
     },
-    [registerUserPhoneConfirmation.fulfilled]: (state) => {
-      state.isAuth = !state.isAuth
+    [registerUserPhoneConfirmation.fulfilled]: (state, action) => {
+      // state.isAuth = !state.isAuth
+      console.log(action)
     },
     [authorizationUserEmailConfirmation.fulfilled]: (state) => {
       state.isAuth = !state.isAuth

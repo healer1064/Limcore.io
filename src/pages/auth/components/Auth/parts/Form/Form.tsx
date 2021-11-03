@@ -55,18 +55,12 @@ const Form: FC = () => {
       : styles.formFieldErrorMessage,
   }
 
-  const onAuthorization = (email) => {
-    // console.log('E-mail with the code has been sent: 0540, dc2684e0-cc8b-4515-8fa7-9f831c7ef5bf.'.slice(42, 78))
-    // dispatch(getJwtToken({ email }))
-
-    // users/login-code/ - в теле отправить email (будет отправлен код)
-    dispatch(getJwtTokenTest({ email }))
+  const onAuthorization = (contact) => {
+    // users/login-code/ - в теле отправить email/phone (будет отправлен код)
+    dispatch(getJwtTokenTest({ contact }))
   }
 
   const onAuthorizationConfirm = async () => {
-    // dispatch(authorizationUserEmailConfirmation())
-    // dispatch(getJwtToken(auth.confirmationEmail))
-
     // в теле отправить email и code. В ответ придет токен
     const data = {
       email,
@@ -74,6 +68,7 @@ const Form: FC = () => {
     }
 
     const response = await dispatch(getJwtToken(data))
+    console.log(response)
     if (response.payload?.status === 200) {
       dispatch(setIsAuth(true))
       history.push('/')
@@ -82,8 +77,10 @@ const Form: FC = () => {
 
   // РЕГИСТРАЦИЯ
   const onRegistrationPhone = async () => {
-    const response = await dispatch(registerUserPhone({ email })) // придет unique_identifier
+    console.log(phone)
+    const response = await dispatch(registerUserPhone({ phone })) // придет unique_identifier
     const id = response.payload?.data.unique_identifier || null
+    console.log(id)
     setUniqueId(id)
   }
 
@@ -391,7 +388,8 @@ const Form: FC = () => {
               onSubmit={(values, { resetForm, setSubmitting }) => {
                 dispatch(getAuthNextStep())
                 dispatch(setMethod(Method.Phone))
-                setPhone(maskRef.current.value)
+                // setPhone(maskRef.current.value)
+                setPhone(`+7${values.phone.substr(1)}`)
 
                 setTimeout(() => {
                   setSubmitting(false)
@@ -432,6 +430,7 @@ const Form: FC = () => {
                         type='text'
                         autoComplete='off'
                         id='phone'
+                        maxLength={11}
                         onChange={handleChange}
                         value={values.phone}
                       />
@@ -446,7 +445,7 @@ const Form: FC = () => {
                     <Button
                       className={mainStyles.submit}
                       disabled={Object.keys(errors).length !== 0 || values.phone === ''}
-                      onSubmit={onRegistrationPhone}
+                      onClick={() => onRegistrationPhone()}
                     >
                       {' '}
                       Получить код
