@@ -55,15 +55,21 @@ const Form: FC = () => {
       : styles.formFieldErrorMessage,
   }
 
-  const onAuthorization = (contact) => {
+  // АВТОРИЗАЦИЯ
+  const onAuthorization = async (contact) => {
     // users/login-code/ - в теле отправить email/phone (будет отправлен код)
-    dispatch(getJwtTokenTest({ contact }))
+    let data = {}
+    contact.includes('@') ? (data = { email: contact }) : (data = { phone: `+7${contact.substr(1)}` })
+
+    const response = await dispatch(getJwtTokenTest(data))
+    const id = response.payload?.data.unique_identifier || null
+    setUniqueId(id)
   }
 
   const onAuthorizationConfirm = async () => {
-    // в теле отправить email и code. В ответ придет токен
+    // в теле отправить unique_identifier и code. В ответ придет токен
     const data = {
-      email,
+      unique_identifier: uniqueId,
       code: numberCode,
     }
 
@@ -77,11 +83,12 @@ const Form: FC = () => {
 
   // РЕГИСТРАЦИЯ
   const onRegistrationPhone = async () => {
-    console.log(phone)
-    const response = await dispatch(registerUserPhone({ phone })) // придет unique_identifier
+    const newPhone = `+7${phone.substr(1)}`
+    console.log(newPhone)
+    const response = await dispatch(registerUserPhone({ phone: newPhone })) // придет unique_identifier
     const id = response.payload?.data.unique_identifier || null
-    console.log(id)
     setUniqueId(id)
+    dispatch(setAuthStep(Auth.Step2))
   }
 
   const onRegistrationPhoneConfirm = () => {
@@ -91,13 +98,11 @@ const Form: FC = () => {
       unique_identifier: uniqueId,
     }
     dispatch(registerUserPhoneConfirmation(data))
-    dispatch(getJwtToken({ email, code: data.code }))
-    history.push('/')
   }
 
   const onRegistrationEmail = async (email) => {
     const response = await dispatch(registerUserEmail({ email })) // придет unique_identifier
-    const id = response.payload?.data.unique_identifier || null // вылетит ошибка если такой майл уже существует
+    const id = response.payload?.data.unique_identifier || null
     setUniqueId(id)
   }
 
@@ -108,7 +113,7 @@ const Form: FC = () => {
       unique_identifier: uniqueId,
     }
     dispatch(registerUserEmailConfirmation(data))
-    dispatch(getJwtToken({ email, code: data.code }))
+    // dispatch(getJwtToken(data))
     history.push('/')
   }
 
@@ -389,7 +394,8 @@ const Form: FC = () => {
                 dispatch(getAuthNextStep())
                 dispatch(setMethod(Method.Phone))
                 // setPhone(maskRef.current.value)
-                setPhone(`+7${values.phone.substr(1)}`)
+                // console.log(values.phone)
+                // setPhone(`+7${values.phone.substr(1)}`)
 
                 setTimeout(() => {
                   setSubmitting(false)
@@ -431,7 +437,10 @@ const Form: FC = () => {
                         autoComplete='off'
                         id='phone'
                         maxLength={11}
-                        onChange={handleChange}
+                        onChange={(event) => {
+                          handleChange(event.target.value)
+                          setPhone(event.target.value)
+                        }}
                         value={values.phone}
                       />
                       <p
@@ -444,7 +453,7 @@ const Form: FC = () => {
                     </fieldset>
                     <Button
                       className={mainStyles.submit}
-                      disabled={Object.keys(errors).length !== 0 || values.phone === ''}
+                      // disabled={Object.keys(errors).length !== 0 || values.phone === ''}
                       onClick={() => onRegistrationPhone()}
                     >
                       {' '}
@@ -463,12 +472,13 @@ const Form: FC = () => {
               initialValues={{ SMS: '' }}
               validationSchema={validationSchema}
               onSubmit={(values, { resetForm, setSubmitting }) => {
-                if (auth.authStep === Auth.Step4) {
-                  dispatch(getAuthNextStep())
-                  dispatch(setProcessType(Process.Authorization))
-                } else {
-                  dispatch(getAuthNextStep())
-                }
+                dispatch(getAuthNextStep())
+                // if (auth.authStep === Auth.Step4) {
+                //   dispatch(getAuthNextStep())
+                //   dispatch(setProcessType(Process.Authorization))
+                // } else {
+                //   dispatch(getAuthNextStep())
+                // }
 
                 setTimeout(() => {
                   setSubmitting(false)
@@ -492,7 +502,15 @@ const Form: FC = () => {
                           : null}
                       </span>
                       {auth.authMethod === Method.Phone ? phone : auth.authMethod === Method.Email ? email : null}{' '}
-                      <Link to='#!' className={styles.formLink} onClick={() => dispatch(setAuthStep(Auth.Step1))}>
+                      <Link
+                        to='#!'
+                        className={styles.formLink}
+                        onClick={() => {
+                          auth.authStep === Auth.Step2
+                            ? dispatch(setAuthStep(Auth.Step1))
+                            : dispatch(setAuthStep(Auth.Step3))
+                        }}
+                      >
                         Изменить
                       </Link>
                     </label>
