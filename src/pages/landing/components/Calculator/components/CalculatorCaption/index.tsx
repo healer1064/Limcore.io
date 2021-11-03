@@ -171,15 +171,15 @@ export const CalculatorCaption: React.FC = () => {
                 <div className={Styles.row}>
                   <div className={Styles.inner}>
                     <span>В час</span>
-                    <span>{`$ ${hour}`}</span>
+                    <span>$ 0</span>
                   </div>
                   <div className={Styles.inner}>
                     <span>В день</span>
-                    <span>{`$ ${day}`}</span>
+                    <span>$ 0</span>
                   </div>
                   <div className={Styles.inner}>
                     <span>В месяц</span>
-                    <span>{`$ ${month}`}</span>
+                    <span>$ 0</span>
                   </div>
                 </div>
               </div>
