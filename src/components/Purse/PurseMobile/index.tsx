@@ -128,6 +128,7 @@ export const PurseMobile: FC = () => {
       )}
       {viewContent === 'buy' && (
         <Container title='Покупка LIMC' onClick={closePopup}>
+          <span className={styles.text}>Функционал покупки будет доступен 5 ноября 2021 года</span>
           <span className={styles.text}>Цена за LIMC в USDT: {prices.usdt_amount}</span>
           <span className={styles.text}>Locktime: {prices.lock_time} дней</span>
           <InputText onChange={(event) => handleSetValue(event)} type='number' value={value} />
