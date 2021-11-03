@@ -11,6 +11,8 @@ import vk from '../../assets/icons/vk-icon.png'
 import insta from '../../assets/icons/insta-icon.png'
 import tg from '../../assets/icons/telegram-icon.png'
 import facebook from '../../assets/icons/facebook-icon.png'
+import youTube from '../../assets/icons/SF Symbol/play.fill.svg'
+import grayCircle from '../../assets/icons/grayCircle.svg'
 
 export const Footer: React.FC = () => {
   return (
@@ -32,7 +34,13 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li className={Styles.footer__listItem}>
-                <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
+                <a
+                  href='../../assets/docs/Лимкор%20диджитал%20буклет.pdf'
+                  download
+                  target='blank'
+                  rel='noopener noreferrer'
+                  className={Styles.footer__link}
+                >
                   Рекламный буклет
                 </a>
               </li>
@@ -41,13 +49,25 @@ export const Footer: React.FC = () => {
           <ul className={`${Styles.footer__information} ${Styles.footer__list}`}>
             <h3 className={Styles.footer_listTitle}>Раскрытие информации</h3>
             <li className={Styles.footer__listItem}>
-              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
+              <a
+                href='../../assets/docs/rf.zip'
+                download
+                target='blank'
+                rel='noopener noreferrer'
+                className={Styles.footer__link}
+              >
                 Учредительные документы РФ
               </a>
             </li>
             <li className={Styles.footer__listItem}>
-              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
-                Учредительные документы Swiss
+              <a
+                target='blank'
+                rel='noopener noreferrer'
+                href='../../assets/docs/round1.zip'
+                download
+                className={Styles.footer__link}
+              >
+                Учредительные документы Round 1
               </a>
             </li>
             <li className={Styles.footer__listItem}>
@@ -81,7 +101,7 @@ export const Footer: React.FC = () => {
               ООО «Лимкор Дата Центр»
             </li>
             <li className={`${Styles.footer__listItem_gray} ${Styles.footer__listItem_address}`}>
-              КПП: 772901001 / ИНН: 9729264079
+              КПП: 502801001 / ИНН: 9729264079
             </li>
             <li className={`${Styles.footer__listItem_gray} ${Styles.footer__listItem_address}`}>
               Юридический адрес компании: г. Можайск, улица Мира, дом 98
@@ -89,8 +109,11 @@ export const Footer: React.FC = () => {
           </ul>
           <ul className={`${Styles.footer__issuer} ${Styles.footer__list}`}>
             <div className={Styles.footer__listItemContainer}>
-              <h3 className={Styles.footer_listTitle_noWrap}>UAE эмитент LIMC Round 1</h3>
-              <li className={Styles.footer__listItem_gray}>В процессе регистрации</li>
+              <h3 className={Styles.footer_listTitle_noWrap}>Эмитент LIMC Round 1</h3>
+              <li className={Styles.footer__listItem_gray}>QQ Global Markets LLC</li>
+              <li className={Styles.footer__listItem_gray}>P.O. Box 1574</li>
+              <li className={Styles.footer__listItem_gray}>Kingstown, VC 0100</li>
+              <li className={Styles.footer__listItem_gray}>St. Vincent and the Grenadines</li>
             </div>
             <div className={Styles.footer__listItemContainer}>
               <h3 className={Styles.footer_listTitle}>Швейцария</h3>
@@ -105,13 +128,21 @@ export const Footer: React.FC = () => {
               </a>
             </li>
             <li>
+              {/* <a */}
+              {/*  href='https://www.linkedin.com' */}
+              {/*  target='blank' */}
+              {/*  rel='noopener noreferrer' */}
+              {/*  className={Styles.footer__link} */}
+              {/* > */}
+              {/*  <img src={linkedIn} className={Styles.footer__socialIcon} /> */}
+              {/* </a> */}
               <a
-                href='https://www.linkedin.com'
+                href='https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg'
                 target='blank'
                 rel='noopener noreferrer'
-                className={Styles.footer__link}
+                className={Styles.footer__YouTubeLink}
               >
-                <img src={linkedIn} className={Styles.footer__socialIcon} />
+                <img src={youTube} className={Styles.footer__YouTubeIcon} />
               </a>
             </li>
             <li>
@@ -121,7 +152,7 @@ export const Footer: React.FC = () => {
             </li>
             <li>
               <a
-                href='https://www.instagram.com/'
+                href='https://instagram.com/limcore.io?utm_medium=copy_link'
                 target='blank'
                 rel='noopener noreferrer'
                 className={Styles.footer__link}
@@ -130,12 +161,7 @@ export const Footer: React.FC = () => {
               </a>
             </li>
             <li>
-              <a
-                href='https://webz.telegram.org/'
-                target='blank'
-                rel='noopener noreferrer'
-                className={Styles.footer__link}
-              >
+              <a href='https://t.me/limc_russ' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
                 <img src={tg} className={Styles.footer__socialIcon} />
               </a>
             </li>

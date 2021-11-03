@@ -72,7 +72,14 @@ export const MainRounds: React.FC = () => {
           <span className={Styles.bar}>{}</span>
           <span className={Styles.count}>0 / 80000</span>
         </div>
-        <img src={etherscanIcon} alt='Иконка' />
+        <a
+          target='blank'
+          rel='noopener noreferrer'
+          className={Styles.etherscanLink}
+          href='https://etherscan.io/address/0x3cba6aa21ef433347c27864035f711a9fd4a3eed'
+        >
+          <img src={etherscanIcon} alt='Иконка' />
+        </a>
       </div>
       <div className={Styles.buttons}>
         <div className={Styles.column}>
