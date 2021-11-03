@@ -87,9 +87,9 @@
   width: 100%;
   transition: transform .3s ease;
 
-  &:first-child {
-    margin-bottom: 25px;
-  }
+  // &:first-child {
+  //   margin-bottom: 25px;
+  // }
 }
 
 .range {
@@ -267,12 +267,12 @@
 }
 
 .labelToBottom {
-  transform: translateY(123px);
+  transform: translateY(114px);
   transition: transform .3s ease;
 }
 .labelToTop {
   transition: transform .3s ease;
-  transform: translateY(-123px);
+  transform: translateY(-114px);
 }
 
 .inputCount {
@@ -289,7 +289,7 @@
   line-height: 1.13;
   color: #4F535A;
   position: relative;
-  top: -35%;
+  top: -31px;
   left: 10%;
 }
 
@@ -303,8 +303,8 @@
   line-height: 1.13;
   color: #4F535A;
   position: relative;
-  top: -35%;
-  left: 22%;
+  top: -31px;
+  left: 24%;
 }
 
 .currencyLongPadding {
@@ -317,8 +317,8 @@
   line-height: 1.13;
   color: #4F535A;
   position: relative;
-  top: -35%;
-  left: 28%;
+  top: -31px;
+  left: 29%;
 }
 
 @media all and (max-width: 768px) {
