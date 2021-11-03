@@ -14,21 +14,20 @@ import facebook from '@icons/facebook-icon.png'
 import RU from '../../../assets/images/flag-ru.png'
 
 export const HeaderMobile: React.FC = () => {
-  // const { burgerOpen, setBurgerOpen } = useState(false)
+  const [burgerOpen, setBurgerOpen] = useState(false)
   const closeBurger = () => {
-    console.log('close')
-    // setBurgerOpen(false)
+    setBurgerOpen(false)
   }
   const openBurger = () => {
-    console.log('open')
-    // setBurgerOpen(true)
+    setBurgerOpen(true)
   }
+  const burgerStyles = `${burgerOpen ? Styles.burgerMenuOpened : Styles.burgerMenuClosed}`
   const tempLink = [
     { id: 1, value: 'Что такое Limcore?', link: 'main', spy: true, smooth: true },
     { id: 2, value: 'Roadmap', link: 'roadmap', spy: true, smooth: true },
     { id: 3, value: 'Команда', link: 'team', spy: true, smooth: true },
     // { id: 4, value: 'Экосистема', link: 'ecosystem', spy: true, smooth: true },
-    { id: 5, value: 'Вопрос-ответ', link: 'questions', spy: true, smooth: true },
+    { id: 5, value: 'Вопрос-ответ', link: 'questionsMobile', spy: true, smooth: true },
   ]
   return (
     <header className={Styles.header}>
@@ -42,9 +41,8 @@ export const HeaderMobile: React.FC = () => {
           <span className={Styles.row}>{}</span>
           <span className={Styles.row}>{}</span>
         </div>
-        <div className={Styles.burgerMenuClosed}>
-          {/* <div className={`${burgerOpen ? Styles.burgerMenuOpened : Styles.burgerMenuClosed}`}> */}
-          <Container title='' onClick={closeBurger}>
+        <div className={burgerStyles}>
+          <Container title=''>
             <img className={Styles.logoInOpenBurger} src={logoIcon} alt='Лого' />
             <ul className={Styles.list}>
               {tempLink?.map((item) => {

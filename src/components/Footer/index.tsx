@@ -36,7 +36,7 @@ export const Footer: React.FC = () => {
               </li>
               <li className={Styles.footer__listItem}>
                 <a
-                  href='../../assets/docs/Лимкор%20диджитал%20буклет.pdf'
+                  href='../../assets/docs/buklet.pdf'
                   download
                   target='blank'
                   rel='noopener noreferrer'

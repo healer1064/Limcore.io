@@ -88,6 +88,10 @@ export const CalculatorCaption: React.FC = () => {
     setLimcNumber(limc.toLocaleString('en'))
     setInvestNumber(validated.toLocaleString('en'))
   }
+  const investNumberToNumber = Number(investNumber)
+  const hour = (investNumberToNumber * 0.85 * 0.216) / 12 / 30 / 24
+  const day = (investNumberToNumber * 0.85 * 0.216) / 12 / 30
+  const month = (investNumberToNumber * 0.85 * 0.216) / 12
 
   return (
     <div className={Styles.caption}>
@@ -167,15 +171,15 @@ export const CalculatorCaption: React.FC = () => {
                 <div className={Styles.row}>
                   <div className={Styles.inner}>
                     <span>В час</span>
-                    <span>$93,6</span>
+                    <span>{`$ ${hour}`}</span>
                   </div>
                   <div className={Styles.inner}>
                     <span>В день</span>
-                    <span>$2,248.7</span>
+                    <span>{`$ ${day}`}</span>
                   </div>
                   <div className={Styles.inner}>
                     <span>В месяц</span>
-                    <span>$68,400</span>
+                    <span>{`$ ${month}`}</span>
                   </div>
                 </div>
               </div>

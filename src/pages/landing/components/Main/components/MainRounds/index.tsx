@@ -17,7 +17,6 @@ import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice
 export const MainRounds: React.FC = () => {
   const [popupOpen, setPopupOpen] = useState(false)
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
-
   const dispatch = useAppDispatch()
   const history = useHistory()
   const { width } = useWindowSize()
@@ -57,7 +56,7 @@ export const MainRounds: React.FC = () => {
           </li>
           <li className={Styles.item}>
             <span className={Styles.designation}>Сроки</span>
-            <span className={Styles.value}>27.10.2021 — 30.12.21</span>
+            <span className={Styles.value}>05.11.2021 — 30.12.21</span>
             <InfoIcon className={Styles.icon} onClick={openPopup} />
           </li>
         </ul>
