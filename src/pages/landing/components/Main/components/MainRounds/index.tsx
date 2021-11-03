@@ -17,7 +17,6 @@ import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice
 export const MainRounds: React.FC = () => {
   const [popupOpen, setPopupOpen] = useState(false)
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
-
   const dispatch = useAppDispatch()
   const history = useHistory()
   const { width } = useWindowSize()
@@ -57,13 +56,13 @@ export const MainRounds: React.FC = () => {
           </li>
           <li className={Styles.item}>
             <span className={Styles.designation}>Сроки</span>
-            <span className={Styles.value}>27.10.2021 — 30.12.21</span>
+            <span className={Styles.value}>05.11.2021 — 30.12.21</span>
             <InfoIcon className={Styles.icon} onClick={openPopup} />
           </li>
         </ul>
       </div>
       <PopupMainPage closePopup={closePopup} popupOpen={popupOpen} className={PopupStyles.popup_round}>
-        <p>
+        <p className={PopupStyles.text}>
           Майнинг начинается спустя 80 дней с момента завершения раунда. Раунд может закончиться раньше указанного срока
         </p>
       </PopupMainPage>
@@ -72,7 +71,14 @@ export const MainRounds: React.FC = () => {
           <span className={Styles.bar}>{}</span>
           <span className={Styles.count}>0 / 80000</span>
         </div>
-        <img src={etherscanIcon} alt='Иконка' />
+        <a
+          target='blank'
+          rel='noopener noreferrer'
+          className={Styles.etherscanLink}
+          href='https://etherscan.io/address/0x3cba6aa21ef433347c27864035f711a9fd4a3eed'
+        >
+          <img src={etherscanIcon} alt='Иконка' />
+        </a>
       </div>
       <div className={Styles.buttons}>
         <div className={Styles.column}>

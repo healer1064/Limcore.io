@@ -53,6 +53,7 @@
   border-radius: 50%;
   cursor: pointer;
   transition: border .3s ease;
+  z-index: 3;
 
   &:hover:not(:disabled) {
     border: 2px solid #4a70f8;
@@ -62,10 +63,20 @@
 
 .button_prev {
   left: -106px;
+  &:hover {
+    cursor: pointer;
+    border: 2px solid #4a70f8;
+    transition: border .3s ease;
+  }
 }
 
 .button_next {
   right: -106px;
+  &:hover {
+    cursor: pointer;
+    border: 2px solid #4a70f8;
+    transition: border .3s ease;
+  }
 }
 
 .slide {
@@ -138,6 +149,18 @@
   &:hover {
     cursor: pointer;
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .button_prev {
+    left: 0px;
+    border: 2px solid #4a70f8;
+  }
+
+  .button_next {
+    right: 0px;
+    border: 2px solid #4a70f8;
   }
 }
 

@@ -60,7 +60,6 @@ const App = () => {
         .catch((err) => console.log(err))
     }
   }, [isAuth])
-
   return (
     <Router>
       <div className={Styles.app_container}>

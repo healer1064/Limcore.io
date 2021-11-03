@@ -289,6 +289,18 @@ $barProportion: calc(0 / 80000 * 100%);
   }
 }
 
+.etherscanLink {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 @media all and (max-width: 768px) {
   .rounds {
     flex-wrap: wrap;
