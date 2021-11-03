@@ -131,9 +131,12 @@ export const PurseMobile: FC = () => {
           <span className={styles.text}>Цена за LIMC в USDT: {prices.usdt_amount}</span>
           <span className={styles.text}>Locktime: {prices.lock_time} дней</span>
           <InputText onChange={(event) => handleSetValue(event)} type='number' value={value} />
-          <ButtonBig onClick={handleBuyLIMK} className={styles.button} disabled={!value}>
+          <ButtonBig onClick={() => {}} className={styles.button} disabled>
             Купить
           </ButtonBig>
+          {/* <ButtonBig onClick={handleBuyLIMK} className={styles.button} disabled={!value}>
+            Купить
+          </ButtonBig> */}
         </Container>
       )}
 
