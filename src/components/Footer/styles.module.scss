@@ -123,6 +123,21 @@
         padding: 0;
       }
     }
+
+    &_city {
+      font-weight: 500;
+      font-style: normal;
+      font-size: 14px;
+      line-height: 1.2;
+      margin: 0;
+      padding: 0 0 12px 0;
+      color: #717a8d;
+      max-width: 245px;
+
+      &:last-child {
+        padding: 0;
+      }
+    }
   }
 
   &__listItemContainer {

@@ -104,7 +104,7 @@ export const Footer: React.FC = () => {
             <li className={`${Styles.footer__listItem_gray} ${Styles.footer__listItem_address}`}>
               КПП: 502801001 / ИНН: 9729264079
             </li>
-            <li className={`${Styles.footer__listItem_gray} ${Styles.footer__listItem_address}`}>
+            <li className={`${Styles.footer__listItem_gray} ${Styles.footer__listItem_city}`}>
               Юридический адрес компании: г. Можайск, улица Мира, дом 98
             </li>
           </ul>
