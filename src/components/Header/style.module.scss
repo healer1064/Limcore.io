@@ -107,7 +107,33 @@
   border-radius: 14px;
   width: 131px;
   background: none;
+  transition: background .3s ease;
 
+  & > svg {
+    & > path,
+    & > ellipse {
+      transition: stroke .3s ease;
+    }
+  }
+
+  &:hover {
+    background: #4a70f8;
+    transition: background .3s ease;
+    
+    & > span {
+      color: #fff;
+      transition: color .3s ease;
+    }
+    
+    & > svg {
+      & > path,
+      & > ellipse {
+        stroke: #fff;
+        transition: stroke .3s ease;
+      }
+    }
+  }
+  
   span {
     font-family: 'Montserrat';
     font-style: normal;
@@ -115,6 +141,7 @@
     font-size: 16px;
     line-height: 22px;
     color: #4a70f8;
+    transition: color .3s ease;
   }
 }
 

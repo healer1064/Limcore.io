@@ -52,6 +52,19 @@
     max-width: 150px;
   }
 
+  &__jobLong {
+    margin: 0;
+    padding: 0 0 4px 0;
+    box-sizing: border-box;
+    color: #99a0ad;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 13px;
+    line-height: 1.4;
+    max-width: 110px;
+  }
+
   &__name {
     margin: 0;
     padding: 0;

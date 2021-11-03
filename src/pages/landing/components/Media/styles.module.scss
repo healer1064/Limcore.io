@@ -114,6 +114,29 @@
   color: #3a3b3d;
 }
 
+.limcInterviewPic {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  max-width: 518px;
+  max-height: 288px;
+  object-fit: contain;
+  object-position: center;
+}
+
+@media screen and (max-width: 1280px) {
+  .container {
+    gap: 60px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .media_desktop {
     display: none;

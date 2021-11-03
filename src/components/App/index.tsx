@@ -34,7 +34,7 @@ import { LandingPage } from '../../pages/landing'
 import { PurseMobile } from '@components/Purse/PurseMobile'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
-import { getWalletAdress, getWalletBalance, getLimcPrice } from '../Wallet/redux/walletSlice'
+import { getWalletAdress, getWalletBalance, getLimcPrice, getForksPrice } from '../Wallet/redux/walletSlice'
 // import { api } from '@app/api'
 
 const App = () => {
@@ -56,11 +56,11 @@ const App = () => {
           dispatch(getWalletAdress())
           dispatch(getWalletBalance())
           dispatch(getLimcPrice())
+          dispatch(getForksPrice())
         })
         .catch((err) => console.log(err))
     }
   }, [isAuth])
-
   return (
     <Router>
       <div className={Styles.app_container}>
@@ -72,6 +72,7 @@ const App = () => {
                 <Switch>
                   <Route path='/' exact component={LandingPage} />
                   <Route path='/auth' exact component={AuthPage} />
+                  <Route path='/profile' exact component={ProfileMobile} />
                   {/* <Route path='/auth' exact component={AuthMobile} /> */}
                   <Route path='/not-found' exact component={PageNotFount} />
                   <Route path='*'>

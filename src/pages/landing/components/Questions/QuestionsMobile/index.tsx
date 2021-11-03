@@ -26,7 +26,7 @@ export const QuestionsMobile: React.FC = () => {
 
   return (
     <>
-      <div className={Styles.wrapper}>
+      <div className={Styles.wrapper} id='questionsMobile'>
         <h4 className={Styles.caption}>Вопросы и ответы</h4>
         <ul className={Styles.question}>
           {array &&

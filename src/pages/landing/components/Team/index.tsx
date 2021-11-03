@@ -30,6 +30,7 @@ export const Team: React.FC = () => {
       name: 'Павел Лосев',
       content: 'Ранее работал в Центральном Банке Российской Федерации',
       foto: Losev,
+      jobTitle: 'long',
     },
     {
       id: 3,

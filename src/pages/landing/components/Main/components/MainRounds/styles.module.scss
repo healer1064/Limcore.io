@@ -142,6 +142,12 @@ $barProportion: calc(0 / 80000 * 100%);
   padding: 14px 0;
   width: 285px;
   cursor: pointer;
+  transition: background .3s ease;
+
+  &:hover {
+    background: #E8F1FF;
+    transition: background .3s ease;
+  }
 }
 
 .button {
@@ -277,6 +283,24 @@ $barProportion: calc(0 / 80000 * 100%);
   display: none;
 }
 
+.infoIcon {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.etherscanLink {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 @media all and (max-width: 768px) {
   .rounds {
     flex-wrap: wrap;
@@ -337,6 +361,7 @@ $barProportion: calc(0 / 80000 * 100%);
 
   .icon {
     grid-area: icon;
+    cursor: pointer;
   }
 
   .value {

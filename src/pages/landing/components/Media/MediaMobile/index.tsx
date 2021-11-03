@@ -9,6 +9,7 @@ import 'swiper/components/pagination/pagination.scss'
 import 'swiper/components/scrollbar/scrollbar.scss'
 
 import mediaImage from '../../../../../assets/images/media.png'
+import limcInterview from '../../../../../assets/images/limcInterview.png'
 
 SwiperCore.use([Pagination])
 
@@ -39,7 +40,27 @@ export const MediaMobile = () => {
             </SwiperSlide>
             <SwiperSlide className={Styles.slide}>
               <div className={Styles.block}>
-                <div className={Styles.empty}>Совсем скоро здесь появятся еще новости о Limcore</div>
+                <div className={Styles.image}>
+                  <img src={limcInterview} alt='Изображение' />
+                </div>
+                <span className={Styles.title}>
+                  CEO Limcore: инвестиции в майнинг от Limcore — альтернатива банковским депозитам
+                </span>
+                <p className={Styles.description}>
+                  Limcore: чем примечателен проект и какие преимущества могут получить ранние инвесторы
+                </p>
+                <div className={Styles.row}>
+                  <a
+                    className={Styles.link}
+                    href='https://coinpost.ru/p/interview-limcore'
+                    target='blank'
+                    rel='noopener noreferrer'
+                  >
+                    coinpost.ru
+                  </a>
+                  <span className={Styles.date}>01.11.2021</span>
+                </div>
+                {/*  <div className={Styles.empty}>Совсем скоро здесь появятся еще новости о Limcore</div> */}
               </div>
             </SwiperSlide>
           </Swiper>

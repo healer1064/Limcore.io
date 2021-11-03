@@ -44,6 +44,27 @@
   color: #4a70f8;
   display: flex;
   align-items: center;
+  transition: color .3s ease;
+
+  & > svg {
+    & > circle,
+    & > path {
+      transition: stroke .3s ease;
+    }
+  }
+
+  &:hover {
+    color: #3257dd;
+    transition: color .3s ease;
+
+    & > svg {
+      & > circle,
+      & > path {
+        stroke: #3257dd;
+        transition: stroke .3s ease;
+      }
+    }
+  }
 }
 
 .icon {
@@ -82,7 +103,7 @@
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1200px) {
   .list {
     list-style: none;
     display: flex;

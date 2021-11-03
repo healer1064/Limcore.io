@@ -13,15 +13,12 @@
   width: 0;
 }
 
-.scrollButton {
-}
-
 .scrollButtonLeft {
   display: flex;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: none;
+  border: 2px solid #fff;
   width: 60px;
   height: 60px;
   background-color: #FFFFFF;
@@ -31,10 +28,12 @@
   right: 10%;
   z-index: 5;
   box-shadow: 20px 20px 52px rgba(0, 0, 0, 0.05);
+  transition: border .3s ease;
 
   &:hover {
     cursor: pointer;
     border: 2px solid #4A70F8;
+    transition: border .3s ease;
   }
 }
 
@@ -43,7 +42,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border: none;
+  border: 2px solid #fff;
   width: 60px;
   height: 60px;
   background-color: #FFFFFF;
@@ -53,10 +52,12 @@
   left: 10%;
   z-index: 5;
   box-shadow: 20px 20px 52px rgba(0, 0, 0, 0.05);
+  transition: border .3s ease;
 
   &:hover {
     cursor: pointer;
     border: 2px solid #4A70F8;
+    transition: border .3s ease;
   }
 }
 
@@ -67,6 +68,13 @@
   height: 14px;
   margin: 24px auto;
   padding: 0;
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width: 1180px) {
+  .scrollButton, .scrollButtonRight, .scrollButtonLeft {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 720px) {

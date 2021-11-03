@@ -1,9 +1,8 @@
 import React, { useRef } from 'react'
 import Styles from './styles.module.scss'
-import scrollButtonLeft from '@icons/arrow-right-blue.svg'
-import scrollButtonRight from '@icons/arrow-left-blue.svg'
-
 import { RoadMapItemDesktop } from '../../partsDesktop'
+import { ArrowLeft } from '@icons/ArrowLeft'
+import { ArrowRight } from '@icons/ArrowRight'
 
 export const RoadMapDesktop = () => {
   const roadMapArray = [
@@ -70,7 +69,7 @@ export const RoadMapDesktop = () => {
     {
       id: 7,
       title: 'Запуск Российского юридического лица',
-      status: 'in progress',
+      status: 'done',
       deadline: '01.11.2021',
       priority: 10,
       vertikal: 'long',
@@ -91,7 +90,7 @@ export const RoadMapDesktop = () => {
       id: 9,
       title: 'Запуск личного кабинета v0.2',
       status: 'in progress',
-      deadline: '27.10.2021',
+      deadline: '05.11.2021',
       priority: 10,
       vertikal: 'short',
       position: 'top',
@@ -101,7 +100,7 @@ export const RoadMapDesktop = () => {
       id: 10,
       title: 'Старт Round №1 1 LIMC = $95 / 80,000 LIMC',
       status: 'in progress',
-      deadline: '27.10 – 30.12.2021',
+      deadline: '05.11 – 30.12.2021',
       priority: 10,
       vertikal: 'short',
       position: 'down',
@@ -110,7 +109,7 @@ export const RoadMapDesktop = () => {
     {
       id: 11,
       title: 'Blockchain Life. Diamond Sponsor',
-      status: 'in progress',
+      status: 'done',
       deadline: '26.10 – 27.10.2021',
       priority: 10,
       vertikal: 'long',
@@ -219,10 +218,10 @@ export const RoadMapDesktop = () => {
   return (
     <>
       <button className={`${Styles.scrollButton} ${Styles.scrollButtonLeft}`} type='button' onClick={scrollLeft}>
-        <img className={Styles.scrollIcon} src={scrollButtonLeft} />
+        <ArrowRight className={Styles.scrollIcon} />
       </button>
       <button className={`${Styles.scrollButton} ${Styles.scrollButtonRight}`} type='button' onClick={scrollRight}>
-        <img className={Styles.scrollIcon} src={scrollButtonRight} />
+        <ArrowLeft className={Styles.scrollIcon} />
       </button>
       <div className={Styles.roadMap} ref={roadmapRef}>
         {roadMapArray.map((item) => (
