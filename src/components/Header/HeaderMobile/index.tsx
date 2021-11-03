@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link } from 'react-scroll'
 import Styles from './styles.module.scss'
 
 import logoIcon from '@icons/logo.svg'
@@ -14,12 +14,21 @@ import facebook from '@icons/facebook-icon.png'
 import RU from '../../../assets/images/flag-ru.png'
 
 export const HeaderMobile: React.FC = () => {
+  // const { burgerOpen, setBurgerOpen } = useState(false)
+  const closeBurger = () => {
+    console.log('close')
+    // setBurgerOpen(false)
+  }
+  const openBurger = () => {
+    console.log('open')
+    // setBurgerOpen(true)
+  }
   const tempLink = [
-    { id: 1, value: 'Что такое Limcore?', link: 'main', smooth: true },
-    { id: 2, value: 'Roadmap', link: 'roadmap', smooth: true },
-    { id: 3, value: 'Команда', link: 'team', smooth: true },
+    { id: 1, value: 'Что такое Limcore?', link: 'main', spy: true, smooth: true },
+    { id: 2, value: 'Roadmap', link: 'roadmap', spy: true, smooth: true },
+    { id: 3, value: 'Команда', link: 'team', spy: true, smooth: true },
     // { id: 4, value: 'Экосистема', link: 'ecosystem', spy: true, smooth: true },
-    { id: 5, value: 'Вопрос-ответ', link: 'questions', smooth: true },
+    { id: 5, value: 'Вопрос-ответ', link: 'questions', spy: true, smooth: true },
   ]
   return (
     <header className={Styles.header}>
@@ -28,18 +37,26 @@ export const HeaderMobile: React.FC = () => {
         <Link to='auth'>
           <img src={userIcon} alt='Иконка' />
         </Link>
-        <div className={Styles.burger}>
+        <div className={Styles.burger} onClick={openBurger}>
           <span className={Styles.row}>{}</span>
           <span className={Styles.row}>{}</span>
           <span className={Styles.row}>{}</span>
         </div>
-        <div className={Styles.burgerMenuOpen}>
-          <Container title=''>
+        <div className={Styles.burgerMenuClosed}>
+          {/* <div className={`${burgerOpen ? Styles.burgerMenuOpened : Styles.burgerMenuClosed}`}> */}
+          <Container title='' onClick={closeBurger}>
             <img className={Styles.logoInOpenBurger} src={logoIcon} alt='Лого' />
             <ul className={Styles.list}>
               {tempLink?.map((item) => {
                 return (
-                  <Link className={Styles.link} key={item.id} to={item.link}>
+                  <Link
+                    className={Styles.link}
+                    key={item.id}
+                    to={item.link}
+                    spy={item.spy}
+                    smooth={item.smooth}
+                    onClick={closeBurger}
+                  >
                     {item.value}
                   </Link>
                 )

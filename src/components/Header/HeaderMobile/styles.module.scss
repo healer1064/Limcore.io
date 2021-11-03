@@ -63,6 +63,12 @@
   box-sizing: border-box;
   margin: 0;
   padding: 50px 0 0;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #1D2023;
 }
 
 .social {
@@ -150,6 +156,10 @@
   opacity: .3;
 }
 
-.burgerMenuOpen {
+.burgerMenuOpened {
+  display: flex;
+}
+
+.burgerMenuClosed {
   display: none;
 }
