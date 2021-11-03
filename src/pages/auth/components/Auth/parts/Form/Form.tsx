@@ -20,6 +20,8 @@ import {
   setAuthStep,
   setMethod,
   setProcessType,
+  registerUserPhoneConfirmation,
+  registerUserPhone,
 } from '../../../../redux/auth.slice'
 import { Button } from '..'
 import { getValidationSchema } from '../../helpers/yup.helpers'
@@ -53,46 +55,66 @@ const Form: FC = () => {
       : styles.formFieldErrorMessage,
   }
 
-  const onAuthorization = (email) => {
-    // console.log('E-mail with the code has been sent: 0540, dc2684e0-cc8b-4515-8fa7-9f831c7ef5bf.'.slice(42, 78))
-    // dispatch(getJwtToken({ email }))
+  // АВТОРИЗАЦИЯ
+  const onAuthorization = async (contact) => {
+    // users/login-code/ - в теле отправить email/phone (будет отправлен код)
+    let data = {}
+    contact.includes('@') ? (data = { email: contact }) : (data = { phone: `+7${contact.substr(1)}` })
 
-    // users/login-code/ - в теле отправить email (будет отправлен код)
-    dispatch(getJwtTokenTest({ email }))
-  }
-
-  const onRegistration = async (email) => {
-    const response = await dispatch(registerUserEmail({ email })) // придет unique_identifier
-    const id = response.payload?.data.unique_identifier || null // вылетит ошибка если такой майл уже существует
+    const response = await dispatch(getJwtTokenTest(data))
+    const id = response.payload?.data.unique_identifier || null
     setUniqueId(id)
   }
 
-  const onRegistrationConfirm = () => {
+  const onAuthorizationConfirm = async () => {
+    // в теле отправить unique_identifier и code. В ответ придет токен
+    const data = {
+      unique_identifier: uniqueId,
+      code: numberCode,
+    }
+
+    const response = await dispatch(getJwtToken(data))
+    console.log(response)
+    if (response.payload?.status === 200) {
+      dispatch(setIsAuth(true))
+      history.push('/')
+    }
+  }
+
+  // РЕГИСТРАЦИЯ
+  const onRegistrationPhone = async () => {
+    const newPhone = `+7${phone.substr(1)}`
+    console.log(newPhone)
+    const response = await dispatch(registerUserPhone({ phone: newPhone })) // придет unique_identifier
+    const id = response.payload?.data.unique_identifier || null
+    setUniqueId(id)
+    dispatch(setAuthStep(Auth.Step2))
+  }
+
+  const onRegistrationPhoneConfirm = () => {
+    // нужно отдать code + unique_identifier
+    const data = {
+      code: numberCode,
+      unique_identifier: uniqueId,
+    }
+    dispatch(registerUserPhoneConfirmation(data))
+  }
+
+  const onRegistrationEmail = async (email) => {
+    const response = await dispatch(registerUserEmail({ email })) // придет unique_identifier
+    const id = response.payload?.data.unique_identifier || null
+    setUniqueId(id)
+  }
+
+  const onRegistrationEmailConfirm = () => {
     // нужно отдать code + unique_identifier
     const data = {
       code: numberCode,
       unique_identifier: uniqueId,
     }
     dispatch(registerUserEmailConfirmation(data))
-    dispatch(getJwtToken({ email, code: data.code }))
+    // dispatch(getJwtToken(data))
     history.push('/')
-  }
-
-  const onAuthorizationConfirm = async () => {
-    // dispatch(authorizationUserEmailConfirmation())
-    // dispatch(getJwtToken(auth.confirmationEmail))
-
-    // в теле отправить email и code. В ответ придет токен
-    const data = {
-      email,
-      code: numberCode,
-    }
-
-    const response = await dispatch(getJwtToken(data))
-    if (response.payload?.status === 200) {
-      dispatch(setIsAuth(true))
-      history.push('/')
-    }
   }
 
   useEffect(() => {
@@ -371,7 +393,9 @@ const Form: FC = () => {
               onSubmit={(values, { resetForm, setSubmitting }) => {
                 dispatch(getAuthNextStep())
                 dispatch(setMethod(Method.Phone))
-                setPhone(maskRef.current.value)
+                // setPhone(maskRef.current.value)
+                // console.log(values.phone)
+                // setPhone(`+7${values.phone.substr(1)}`)
 
                 setTimeout(() => {
                   setSubmitting(false)
@@ -387,7 +411,7 @@ const Form: FC = () => {
                       <label className={styles.formLabel} htmlFor='phone'>
                         Телефон
                       </label>
-                      <Field
+                      {/* <Field
                         className={classNames(styles.formField, {
                           [styles.formFieldHasErrors]: touched.phone && errors.phone,
                           [styles.formFieldIsEmpty]: !values.phone,
@@ -401,6 +425,23 @@ const Form: FC = () => {
                         value={values.phone}
                         innerRef={ref}
                         // maxLength={phoneMask.length}
+                      /> */}
+                      <input
+                        className={classNames(styles.formField, {
+                          [styles.formFieldHasErrors]: touched.phone && errors.phone,
+                          [styles.formFieldIsEmpty]: !values.phone,
+                        })}
+                        placeholder='Введите номер телефона'
+                        name='phone'
+                        type='text'
+                        autoComplete='off'
+                        id='phone'
+                        maxLength={11}
+                        onChange={(event) => {
+                          handleChange(event.target.value)
+                          setPhone(event.target.value)
+                        }}
+                        value={values.phone}
                       />
                       <p
                         className={classNames(mainStyles.errorMessage, {
@@ -412,7 +453,8 @@ const Form: FC = () => {
                     </fieldset>
                     <Button
                       className={mainStyles.submit}
-                      disabled={Object.keys(errors).length !== 0 || values.phone === ''}
+                      // disabled={Object.keys(errors).length !== 0 || values.phone === ''}
+                      onClick={() => onRegistrationPhone()}
                     >
                       {' '}
                       Получить код
@@ -430,12 +472,13 @@ const Form: FC = () => {
               initialValues={{ SMS: '' }}
               validationSchema={validationSchema}
               onSubmit={(values, { resetForm, setSubmitting }) => {
-                if (auth.authStep === Auth.Step4) {
-                  dispatch(getAuthNextStep())
-                  dispatch(setProcessType(Process.Authorization))
-                } else {
-                  dispatch(getAuthNextStep())
-                }
+                dispatch(getAuthNextStep())
+                // if (auth.authStep === Auth.Step4) {
+                //   dispatch(getAuthNextStep())
+                //   dispatch(setProcessType(Process.Authorization))
+                // } else {
+                //   dispatch(getAuthNextStep())
+                // }
 
                 setTimeout(() => {
                   setSubmitting(false)
@@ -459,7 +502,15 @@ const Form: FC = () => {
                           : null}
                       </span>
                       {auth.authMethod === Method.Phone ? phone : auth.authMethod === Method.Email ? email : null}{' '}
-                      <Link to='#!' className={styles.formLink} onClick={() => dispatch(setAuthStep(Auth.Step1))}>
+                      <Link
+                        to='#!'
+                        className={styles.formLink}
+                        onClick={() => {
+                          auth.authStep === Auth.Step2
+                            ? dispatch(setAuthStep(Auth.Step1))
+                            : dispatch(setAuthStep(Auth.Step3))
+                        }}
+                      >
                         Изменить
                       </Link>
                     </label>
@@ -475,9 +526,10 @@ const Form: FC = () => {
                       onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                         handleChange(event)
                         setNumberCode(event.target.value)
-                        if (auth.authStep === Auth.Step2) {
-                          setTimeout(submitForm, 0)
-                        }
+                        // console.log(auth.authStep === Auth.Step2)
+                        // if (auth.authStep === Auth.Step2) {
+                        //   setTimeout(submitForm, 0)
+                        // }
                       }}
                       autoComplete='off'
                       value={values.SMS}
@@ -502,11 +554,23 @@ const Form: FC = () => {
                       </Link>
                     )}
                   </fieldset>
+                  {auth.authStep === Auth.Step2 && (
+                    <Button
+                      className={mainStyles.submit}
+                      disabled={Object.keys(errors).length !== 0 || values.SMS === undefined}
+                      onClick={() => {
+                        submitForm()
+                        onRegistrationPhoneConfirm()
+                      }}
+                    >
+                      Подтвердить
+                    </Button>
+                  )}
                   {auth.authStep === Auth.Step4 && isValid && (
                     <Button
                       className={mainStyles.submit}
                       disabled={Object.keys(errors).length !== 0 || values.SMS === ''}
-                      onClick={onRegistrationConfirm}
+                      onClick={onRegistrationEmailConfirm}
                     >
                       Зарегистрироваться
                     </Button>
@@ -564,7 +628,7 @@ const Form: FC = () => {
                   <Button
                     className={mainStyles.submit}
                     disabled={Object.keys(errors).length !== 0 || values.email === undefined}
-                    onClick={() => onRegistration(values.email)}
+                    onClick={() => onRegistrationEmail(values.email)}
                   >
                     Получить код
                   </Button>
