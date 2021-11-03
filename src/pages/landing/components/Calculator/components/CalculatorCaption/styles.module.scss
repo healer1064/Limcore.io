@@ -87,9 +87,9 @@
   width: 100%;
   transition: transform .3s ease;
 
-  // &:first-child {
-  //   margin-bottom: 25px;
-  // }
+  &:first-child {
+    margin-bottom: 25px;
+  }
 }
 
 .range {
@@ -267,16 +267,12 @@
 }
 
 .labelToBottom {
-  transform: translateY(114px);
+  transform: translateY(123px);
   transition: transform .3s ease;
 }
 .labelToTop {
   transition: transform .3s ease;
-  transform: translateY(-114px);
-}
-
-.inputCount {
-  //text-align: end;
+  transform: translateY(-123px);
 }
 
 .currency {

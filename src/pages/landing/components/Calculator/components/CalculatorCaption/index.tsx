@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Styles from './styles.module.scss'
 import classNames from 'classnames'
 
@@ -46,24 +46,23 @@ export const CalculatorCaption: React.FC = () => {
   // Calculator
   const [limcNumber, setLimcNumber] = useState('1')
   const [investNumber, setInvestNumber] = useState('95')
-  // const [limcNumber, setLimcNumber] = useState('1 LIMC')
-  // const [investNumber, setInvestNumber] = useState('95 USDT')
-  const [classForCurrency, setClassForCurrency] = useState(Styles.currency)
+  const [rangeLimcNumber, setRangeLimcNumber] = useState(1)
+  // const [classForCurrency, setClassForCurrency] = useState(Styles.currency)
   const [classForTranslate, setClassForTranslate] = useState(false)
   const topLabelClass = classForTranslate ? Styles.labelToBottom : null
   const bottomLabelClass = classForTranslate ? Styles.labelToTop : null
 
-  useEffect(() => {
-    handleCurrencyClass()
-  }, [limcNumber, investNumber])
-  const handleCurrencyClass = () => {
-    if ((limcNumber.length >= 3 && limcNumber.length < 6) || (investNumber.length >= 3 && investNumber.length < 6)) {
-      return setClassForCurrency(Styles.currencyMiddlePadding)
-    } else if (limcNumber.length >= 6 || investNumber.length >= 6) {
-      return setClassForCurrency(Styles.currencyLongPadding)
-    }
-    return setClassForCurrency(Styles.currency)
-  }
+  // useEffect(() => {
+  //   handleCurrencyClass()
+  // }, [limcNumber, investNumber])
+  // const handleCurrencyClass = () => {
+  //   if ((limcNumber.length >= 3 && limcNumber.length < 6) || (investNumber.length >= 3 && investNumber.length < 6)) {
+  //     return setClassForCurrency(Styles.currencyMiddlePadding)
+  //   } else if (limcNumber.length >= 6 || investNumber.length >= 6) {
+  //     return setClassForCurrency(Styles.currencyLongPadding)
+  //   }
+  //   return setClassForCurrency(Styles.currency)
+  // }
 
   const handleArrowClick = () => {
     setClassForTranslate((prev) => !prev)
@@ -75,6 +74,7 @@ export const CalculatorCaption: React.FC = () => {
       return
     }
 
+    setRangeLimcNumber(validated)
     setLimcNumber(validated.toLocaleString('en'))
     setInvestNumber((validated * 95).toLocaleString('en'))
   }
@@ -85,6 +85,7 @@ export const CalculatorCaption: React.FC = () => {
     }
 
     const limc = Math.round(validated / 95)
+    setRangeLimcNumber(limc)
     setLimcNumber(limc.toLocaleString('en'))
     setInvestNumber(validated.toLocaleString('en'))
   }
@@ -116,7 +117,7 @@ export const CalculatorCaption: React.FC = () => {
                 onChange={handleLimcNumberChange}
                 placeholder=''
               />
-              <span className={classForCurrency}>LIMC</span>
+              {/* <span className={classForCurrency}>LIMC</span> */}
             </Label>
             {/* <img src={arrowIcon} alt='Иконка' className={Styles.arrowSwitch} onClick={handleArrowClick} /> */}
             <IconArrow className={Styles.arrowSwitch} onClick={handleArrowClick} />
@@ -128,7 +129,7 @@ export const CalculatorCaption: React.FC = () => {
                 onChange={handleInvestNumberChange}
                 placeholder=''
               />
-              <span className={classForCurrency}>USDT</span>
+              {/* <span className={classForCurrency}>USDT</span> */}
             </Label>
           </div>
           <div className={Styles.range}>
@@ -137,10 +138,17 @@ export const CalculatorCaption: React.FC = () => {
                 <img src={limcoreIcon} alt='Иконка' /> 1 LIMC
               </span>
               <span>
-                <img src={limcoreIcon} alt='Иконка' /> 100,000 LIMC
+                <img src={limcoreIcon} alt='Иконка' /> 90,000 LIMC
               </span>
             </div>
-            <input type='range' min='1' max='100000' onChange={handleLimcNumberChange} className={Styles.rangeInput} />
+            <input
+              type='range'
+              min='1'
+              max='90000'
+              onChange={handleLimcNumberChange}
+              value={rangeLimcNumber}
+              className={Styles.rangeInput}
+            />
           </div>
         </div>
         <div className={Styles.block}>
