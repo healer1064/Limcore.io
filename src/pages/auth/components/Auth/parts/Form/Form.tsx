@@ -20,6 +20,8 @@ import {
   setAuthStep,
   setMethod,
   setProcessType,
+  registerUserPhoneConfirmation,
+  registerUserPhone,
 } from '../../../../redux/auth.slice'
 import { Button } from '..'
 import { getValidationSchema } from '../../helpers/yup.helpers'
@@ -61,23 +63,6 @@ const Form: FC = () => {
     dispatch(getJwtTokenTest({ email }))
   }
 
-  const onRegistration = async (email) => {
-    const response = await dispatch(registerUserEmail({ email })) // придет unique_identifier
-    const id = response.payload?.data.unique_identifier || null // вылетит ошибка если такой майл уже существует
-    setUniqueId(id)
-  }
-
-  const onRegistrationConfirm = () => {
-    // нужно отдать code + unique_identifier
-    const data = {
-      code: numberCode,
-      unique_identifier: uniqueId,
-    }
-    dispatch(registerUserEmailConfirmation(data))
-    dispatch(getJwtToken({ email, code: data.code }))
-    history.push('/')
-  }
-
   const onAuthorizationConfirm = async () => {
     // dispatch(authorizationUserEmailConfirmation())
     // dispatch(getJwtToken(auth.confirmationEmail))
@@ -93,6 +78,41 @@ const Form: FC = () => {
       dispatch(setIsAuth(true))
       history.push('/')
     }
+  }
+
+  // РЕГИСТРАЦИЯ
+  const onRegistrationPhone = async () => {
+    const response = await dispatch(registerUserPhone({ email })) // придет unique_identifier
+    const id = response.payload?.data.unique_identifier || null
+    setUniqueId(id)
+  }
+
+  const onRegistrationPhoneConfirm = () => {
+    // нужно отдать code + unique_identifier
+    const data = {
+      code: numberCode,
+      unique_identifier: uniqueId,
+    }
+    dispatch(registerUserPhoneConfirmation(data))
+    dispatch(getJwtToken({ email, code: data.code }))
+    history.push('/')
+  }
+
+  const onRegistrationEmail = async (email) => {
+    const response = await dispatch(registerUserEmail({ email })) // придет unique_identifier
+    const id = response.payload?.data.unique_identifier || null // вылетит ошибка если такой майл уже существует
+    setUniqueId(id)
+  }
+
+  const onRegistrationEmailConfirm = () => {
+    // нужно отдать code + unique_identifier
+    const data = {
+      code: numberCode,
+      unique_identifier: uniqueId,
+    }
+    dispatch(registerUserEmailConfirmation(data))
+    dispatch(getJwtToken({ email, code: data.code }))
+    history.push('/')
   }
 
   useEffect(() => {
@@ -387,7 +407,7 @@ const Form: FC = () => {
                       <label className={styles.formLabel} htmlFor='phone'>
                         Телефон
                       </label>
-                      <Field
+                      {/* <Field
                         className={classNames(styles.formField, {
                           [styles.formFieldHasErrors]: touched.phone && errors.phone,
                           [styles.formFieldIsEmpty]: !values.phone,
@@ -401,6 +421,19 @@ const Form: FC = () => {
                         value={values.phone}
                         innerRef={ref}
                         // maxLength={phoneMask.length}
+                      /> */}
+                      <input
+                        className={classNames(styles.formField, {
+                          [styles.formFieldHasErrors]: touched.phone && errors.phone,
+                          [styles.formFieldIsEmpty]: !values.phone,
+                        })}
+                        placeholder='Введите номер телефона'
+                        name='phone'
+                        type='text'
+                        autoComplete='off'
+                        id='phone'
+                        onChange={handleChange}
+                        value={values.phone}
                       />
                       <p
                         className={classNames(mainStyles.errorMessage, {
@@ -413,6 +446,7 @@ const Form: FC = () => {
                     <Button
                       className={mainStyles.submit}
                       disabled={Object.keys(errors).length !== 0 || values.phone === ''}
+                      onSubmit={onRegistrationPhone}
                     >
                       {' '}
                       Получить код
@@ -475,9 +509,10 @@ const Form: FC = () => {
                       onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                         handleChange(event)
                         setNumberCode(event.target.value)
-                        if (auth.authStep === Auth.Step2) {
-                          setTimeout(submitForm, 0)
-                        }
+                        // console.log(auth.authStep === Auth.Step2)
+                        // if (auth.authStep === Auth.Step2) {
+                        //   setTimeout(submitForm, 0)
+                        // }
                       }}
                       autoComplete='off'
                       value={values.SMS}
@@ -502,11 +537,23 @@ const Form: FC = () => {
                       </Link>
                     )}
                   </fieldset>
+                  {auth.authStep === Auth.Step2 && (
+                    <Button
+                      className={mainStyles.submit}
+                      disabled={Object.keys(errors).length !== 0 || values.SMS === undefined}
+                      onClick={() => {
+                        submitForm()
+                        onRegistrationPhoneConfirm()
+                      }}
+                    >
+                      Подтвердить
+                    </Button>
+                  )}
                   {auth.authStep === Auth.Step4 && isValid && (
                     <Button
                       className={mainStyles.submit}
                       disabled={Object.keys(errors).length !== 0 || values.SMS === ''}
-                      onClick={onRegistrationConfirm}
+                      onClick={onRegistrationEmailConfirm}
                     >
                       Зарегистрироваться
                     </Button>
@@ -564,7 +611,7 @@ const Form: FC = () => {
                   <Button
                     className={mainStyles.submit}
                     disabled={Object.keys(errors).length !== 0 || values.email === undefined}
-                    onClick={() => onRegistration(values.email)}
+                    onClick={() => onRegistrationEmail(values.email)}
                   >
                     Получить код
                   </Button>

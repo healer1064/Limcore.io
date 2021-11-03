@@ -9,14 +9,27 @@ export const authorizationUserEmail: any = createAsyncThunk('auth/authorizationU
 })
 
 export const registerUserEmail: any = createAsyncThunk('auth/registerUserEmail', async function (data) {
-  const response = await api.post('users/registration/', data)
+  const response = await api.post('users/registration/email/', data)
+  return response
+})
+
+export const registerUserPhone: any = createAsyncThunk('auth/registerUserPhone', async function (data) {
+  const response = await api.post('users/registration/phone/', data)
   return response
 })
 
 export const registerUserEmailConfirmation: any = createAsyncThunk(
   'auth/registerUserEmailConfirmation',
   async function (data) {
-    const response = await api.post('users/registration/confirmation/', data)
+    const response = await api.post('users/registration/confirmation/email/', data)
+    return response
+  },
+)
+
+export const registerUserPhoneConfirmation: any = createAsyncThunk(
+  'auth/registerUserPhoneConfirmation',
+  async function (data) {
+    const response = await api.post('users/registration/confirmation/phone/', data)
     return response
   },
 )
@@ -99,7 +112,19 @@ export const authSlice = createSlice({
 
       state.confirmationEmail = data
     },
+    [registerUserPhone.fulfilled]: (state, action) => {
+      console.log('action', action)
+      const data = { code: '', unique_identifier: '' }
+
+      data.code = action.payload.data.result.slice(35, 40)
+      data.unique_identifier = action.payload.data.result.slice(42, 78)
+
+      state.confirmationEmail = data
+    },
     [registerUserEmailConfirmation.fulfilled]: (state) => {
+      state.isAuth = !state.isAuth
+    },
+    [registerUserPhoneConfirmation.fulfilled]: (state) => {
       state.isAuth = !state.isAuth
     },
     [authorizationUserEmailConfirmation.fulfilled]: (state) => {
