@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Styles from './styles.module.scss'
 
 import { Label } from '../../../../../../../ui-kit/Label'

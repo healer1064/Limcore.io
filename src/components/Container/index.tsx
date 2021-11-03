@@ -8,6 +8,7 @@ interface ContainerProps {
   onClick?: () => void
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const Container: React.FC<ContainerProps> = ({ title, onClick, children }) => {
   const dispatch = useAppDispatch()
   const step = useAppSelector((state) => state.cabinet.step)

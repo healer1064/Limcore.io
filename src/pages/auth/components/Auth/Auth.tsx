@@ -27,7 +27,7 @@ const AuthComponent: FC = () => {
           className={styles.authLink}
           onClick={() => {
             dispatch(setProcessType(Process.Registration))
-            dispatch(setAuthStep(Auth.Step3))
+            dispatch(setAuthStep(Auth.Step1))
           }}
         >
           {auth.authStep === Auth.Step1

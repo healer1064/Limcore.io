@@ -20,6 +20,12 @@ export const buyLimc: any = createAsyncThunk('wallet/buyLimc', async function (d
   return response
 })
 
+export const getForksPrice: any = createAsyncThunk('wallet/getForksPrice', async function (data) {
+  const response = await api.post('api/v1/wallets/xchforks/', data)
+  console.log(response)
+  return response
+})
+
 export const walletSlice = createSlice({
   name: 'wallet',
   initialState: {
