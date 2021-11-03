@@ -1,0 +1,16 @@
+.logo {
+  grid-area: logo;
+  display: flex;
+  margin: 0 0 44px 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 201px;
+}
+
+@media screen and (max-width: 800px) {
+  .logo {
+    margin: 0 auto 26px;
+    max-width: 238px;
+    object-fit: contain;
+  }
+}

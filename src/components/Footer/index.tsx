@@ -1,7 +1,7 @@
 import React from 'react'
 import Styles from './styles.module.scss'
 
-import logo from '../../assets/icons/LimLogo.png'
+// import logo from '../../assets/icons/LimLogo.png'
 // import logo from '../../assets/icons/FooterLogo.svg'
 import RU from '../../assets/images/flag-ru.png'
 import arrow from '../../assets/icons/grey-arrow-down.png'
@@ -12,18 +12,19 @@ import insta from '../../assets/icons/insta-icon.png'
 import tg from '../../assets/icons/telegram-icon.png'
 import facebook from '../../assets/icons/facebook-icon.png'
 import youTube from '../../assets/icons/SF Symbol/play.fill.svg'
-import grayCircle from '../../assets/icons/grayCircle.svg'
+import { FooterLogo } from '@components/Footer/components/FooterLogo'
 
 export const Footer: React.FC = () => {
   return (
     <footer className={Styles.footer}>
       <div className={Styles.wrapper}>
         <div className={Styles.footer__container}>
-          <img src={logo} alt='Logo' className={Styles.logo} />
+          {/* <img src={logo} alt='Logo' className={Styles.logo} /> */}
+          <FooterLogo />
           <div className={Styles.footer__languageGroup}>
             <img className={Styles.footer__languageIcon} src={RU} alt='RU' />
             <p className={Styles.footer__language}>RU</p>
-            <img className={Styles.footer__languageArrow} src={arrow} alt='Arrow-button' />
+            {/* <img className={Styles.footer__languageArrow} src={arrow} alt='Arrow-button' /> */}
           </div>
           <ul className={`${Styles.footer__etc} ${Styles.footer__list}`}>
             <h3 className={`${Styles.footer_listTitle} ${Styles.footer__listTitle_etcTitle}`}>Прочее</h3>
