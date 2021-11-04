@@ -5,12 +5,12 @@ import Styles from './styles.module.scss'
 import logoIcon from '@icons/logo.svg'
 import userIcon from '@icons/user.svg'
 import { Container } from '../../../components/Container'
-import twitter from '@icons/twitter-icon.png'
-import youTube from '@icons/SF Symbol/play.fill.svg'
-import vk from '@icons/vk-icon.png'
-import insta from '@icons/insta-icon.png'
-import tg from '@icons/telegram-icon.png'
-import facebook from '@icons/facebook-icon.png'
+import twitter from '@icons/twitterBurger.svg'
+import youTube from '@icons/SF Symbol/play.fill.black.svg'
+import vk from '@icons/vkBurger.svg'
+import insta from '@icons/instaBurger.svg'
+import tg from '@icons/tgBrger.svg'
+import facebook from '@icons/fbBurger.svg'
 import RU from '../../../assets/images/flag-ru.png'
 
 export const HeaderMobile: React.FC = () => {
@@ -21,6 +21,7 @@ export const HeaderMobile: React.FC = () => {
   const openBurger = () => {
     setBurgerOpen(true)
   }
+
   const burgerStyles = `${burgerOpen ? Styles.burgerMenuOpened : Styles.burgerMenuClosed}`
   const tempLink = [
     { id: 1, value: 'Что такое Limcore?', link: 'main', spy: true, smooth: true },
@@ -42,7 +43,7 @@ export const HeaderMobile: React.FC = () => {
           <span className={Styles.row}>{}</span>
         </div>
         <div className={burgerStyles}>
-          <Container title=''>
+          <Container title='' onClose={closeBurger}>
             <img className={Styles.logoInOpenBurger} src={logoIcon} alt='Лого' />
             <ul className={Styles.list}>
               {tempLink?.map((item) => {
@@ -61,11 +62,11 @@ export const HeaderMobile: React.FC = () => {
               })}
             </ul>
             <ul className={Styles.social}>
-              <li>
-                <a href='https://twitter.com' target='blank' rel='noopener noreferrer'>
-                  <img src={twitter} className={Styles.socialIcon} />
-                </a>
-              </li>
+              {/* <li> */}
+              {/*  <a href='https://twitter.com' target='blank' rel='noopener noreferrer'> */}
+              {/*    <img src={twitter} className={Styles.socialIcon} /> */}
+              {/*  </a> */}
+              {/* </li> */}
               <li>
                 <a
                   href='https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg'
@@ -76,11 +77,11 @@ export const HeaderMobile: React.FC = () => {
                   <img src={youTube} className={Styles.YouTubeIcon} />
                 </a>
               </li>
-              <li>
-                <a href='https://vk.com/' target='blank' rel='noopener noreferrer'>
-                  <img src={vk} className={Styles.socialIcon} />
-                </a>
-              </li>
+              {/* <li> */}
+              {/*  <a href='https://vk.com/' target='blank' rel='noopener noreferrer'> */}
+              {/*    <img src={vk} className={Styles.socialIcon} /> */}
+              {/*  </a> */}
+              {/* </li> */}
               <li>
                 <a
                   href='https://instagram.com/limcore.io?utm_medium=copy_link'
@@ -95,14 +96,14 @@ export const HeaderMobile: React.FC = () => {
                   <img src={tg} className={Styles.socialIcon} />
                 </a>
               </li>
-              <li>
-                <a href='https://ru-ru.facebook.com/' target='blank' rel='noopener noreferrer'>
-                  <img src={facebook} className={Styles.socialIcon} />
-                </a>
-              </li>
+              {/* <li> */}
+              {/*  <a href='https://ru-ru.facebook.com/' target='blank' rel='noopener noreferrer'> */}
+              {/*    <img src={facebook} className={Styles.socialIcon} /> */}
+              {/*  </a> */}
+              {/* </li> */}
             </ul>
             <div className={Styles.group}>
-              <p className={Styles.email}>info@limcore.io</p>
+              <p className={Styles.email}>info@limcore.com</p>
               <div className={Styles.languageGroup}>
                 <img className={Styles.languageIcon} src={RU} alt='RU' />
                 <p className={Styles.language}>RU</p>
