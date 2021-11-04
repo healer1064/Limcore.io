@@ -13,6 +13,7 @@ import { useHistory } from 'react-router'
 import ModalAuth from '../../../../../../pages/landing/components/ModalAuth'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice'
+import Countdown from 'react-countdown'
 
 export const MainRounds: React.FC = () => {
   const limcCount = useAppSelector((state) => state.wallet.limcCount)
@@ -44,8 +45,10 @@ export const MainRounds: React.FC = () => {
         <div className={Styles.wrap}>
           <span className={Styles.name}>Раунд №1</span>
         </div>
-        <p className={Styles.temporarily}>Открываемся 5 ноября 2021г.</p>
-        <p className={Styles.temporarily}>Сайт в процессе разработки</p>
+        <p className={Styles.temporarily}>Запуск сайта и начало Round 1 продаж токена LIMC</p>
+        <p className={Styles.temporarily}>
+          <Countdown date='2021-11-05T18:00:00' />
+        </p>
         <ul className={Styles.list}>
           <li className={Styles.item}>
             <span className={Styles.designation}>Лимит</span>

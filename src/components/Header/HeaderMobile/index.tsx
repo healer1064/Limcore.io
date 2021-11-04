@@ -36,7 +36,7 @@ export const HeaderMobile: React.FC = () => {
     <header className={Styles.header}>
       <img className={Styles.logo} src={logoIcon} alt='Лого' />
       <div className={Styles.wrap}>
-        <a onClick={() => history.push('/auth')}>
+        <a onClick={() => {}}>
           <img src={userIcon} alt='Иконка' />
         </a>
         <div className={Styles.burger} onClick={openBurger}>

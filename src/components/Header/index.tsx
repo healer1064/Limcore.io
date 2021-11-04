@@ -76,7 +76,7 @@ export const Header: React.FC = () => {
               {/* </svg> */}
             </div>
           </div>
-          <button className={btnClass} onClick={handleLoginModalOpen}>
+          <button className={btnClass} onClick={() => {}} disabled>
             {/* <img src={loginIcon} alt='Иконка' /> */}
             <LoginIcon />
             <span>Войти</span>
