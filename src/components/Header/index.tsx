@@ -5,7 +5,7 @@ import Styles from './style.module.scss'
 import logoIcon from '@icons/logo.svg'
 // import loginIcon from '@icons/login.svg'
 import { LoginIcon } from '@icons/LoginIcon'
-import flagIcon from '../../assets/images/flag-ru.png'
+import flagIcon from '../../assets/images/flag-ru.svg'
 import { useAppSelector } from '@app/redux/hooks'
 import ModalAuth from '../../pages/landing/components/ModalAuth'
 

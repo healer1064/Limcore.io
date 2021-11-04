@@ -30,6 +30,9 @@
     margin: 0 0 20px 0;
     padding: 0;
     box-sizing: border-box;
+
+    justify-content: flex-start;
+    width: 60px;
   }
 
   &__language {
@@ -37,7 +40,10 @@
     display: flex;
     box-sizing: border-box;
     margin: 0;
-    padding: 5px 0 0 0;
+    padding: 2px 0 0 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
   }
 
   &__languageIcon {
