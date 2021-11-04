@@ -18,9 +18,12 @@
   border-radius: 14px;
   transition: all 0.3s ease-in-out;
 
-  &:hover,
-  &:active {
+  &:hover {
     background-color: darken($color: $primary-color, $amount: 5%);
+  }
+
+  &:active {
+    background-color: #2D4EC5;
   }
 
   &:disabled {
