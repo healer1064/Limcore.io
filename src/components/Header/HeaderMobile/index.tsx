@@ -13,9 +13,11 @@ import tg from '@icons/telegram-icon.png'
 import facebook from '@icons/facebook-icon.png'
 import RU from '../../../assets/images/flag-ru.svg'
 import { useHistory } from 'react-router'
+import { useAppSelector } from '@app/redux/hooks'
 
 export const HeaderMobile: React.FC = () => {
   const [burgerOpen, setBurgerOpen] = useState(false)
+  const isAuth = useAppSelector((state) => state.auth.isAuth)
   const history = useHistory()
   const closeBurger = () => {
     setBurgerOpen(false)
@@ -36,9 +38,11 @@ export const HeaderMobile: React.FC = () => {
     <header className={Styles.header}>
       <img className={Styles.logo} src={logoIcon} alt='Лого' />
       <div className={Styles.wrap}>
-        <a onClick={() => {}}>
-          <img src={userIcon} alt='Иконка' />
-        </a>
+        {!isAuth && (
+          <a onClick={() => {}}>
+            <img src={userIcon} alt='Иконка' />
+          </a>
+        )}
         <div className={Styles.burger} onClick={openBurger}>
           <span className={Styles.row}>{}</span>
           <span className={Styles.row}>{}</span>
