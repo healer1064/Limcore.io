@@ -8,6 +8,7 @@ interface InputTextProps {
   name?: string
   value?: string
   placeholder?: string
+  disabled?: boolean
   maxLength?: number
   error?: string
 }
@@ -19,6 +20,7 @@ export const InputText: React.FC<InputTextProps> = ({
   name,
   value,
   placeholder,
+  disabled,
   maxLength,
   error,
 }) => {
@@ -41,6 +43,7 @@ export const InputText: React.FC<InputTextProps> = ({
         name={name}
         value={value}
         placeholder={placeholder}
+        disabled={disabled}
         maxLength={maxLength}
       />
       {error && <span className={Styles.error}>{error}</span>}
