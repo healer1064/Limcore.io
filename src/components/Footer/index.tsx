@@ -14,6 +14,8 @@ import tg from '../../assets/icons/telegram-icon.png'
 import facebook from '../../assets/icons/facebook-icon.png'
 import youTube from '../../assets/icons/SF Symbol/play.fill.svg'
 import { FooterLogo } from '@components/Footer/components/FooterLogo'
+// import booklet from '../../assets/files/booklet.pdf'
+import { Link } from 'react-router-dom'
 
 export const Footer: React.FC = () => {
   const [lang, setLang] = useState('RU')
@@ -47,35 +49,23 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li className={Styles.footer__listItem}>
-                <a
-                  href='/docs/buklet.pdf'
-                  // download
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className={Styles.footer__link}
-                >
+                <Link className={Styles.footer__link} to='/files/booklet.pdf' download target='_blank'>
                   Рекламный буклет
-                </a>
+                </Link>
               </li>
             </div>
           </ul>
           <ul className={`${Styles.footer__information} ${Styles.footer__list}`}>
             <h3 className={Styles.footer_listTitle}>Раскрытие информации</h3>
             <li className={Styles.footer__listItem}>
-              <a href='/docs/rf.zip' download target='_blank' rel='noopener noreferrer' className={Styles.footer__link}>
+              <Link className={Styles.footer__link} to='/files/docs.zip' download target='_blank'>
                 Учредительные документы РФ
-              </a>
+              </Link>
             </li>
             <li className={Styles.footer__listItem}>
-              <a
-                target='_blank'
-                rel='noopener noreferrer'
-                href='/docs/round1.zip'
-                download
-                className={Styles.footer__link}
-              >
+              <Link className={Styles.footer__link} to='/files/round1.zip' download target='_blank'>
                 Учредительные документы Round 1
-              </a>
+              </Link>
             </li>
             <li className={Styles.footer__listItem}>
               <a href='#' target='_blank' rel='noopener noreferrer' className={Styles.footer__link}>
