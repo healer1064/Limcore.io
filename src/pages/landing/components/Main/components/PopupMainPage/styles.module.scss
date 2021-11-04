@@ -66,32 +66,24 @@
 }
 
 @media screen and (max-width: 1024px) {
-  .popup {
-    right: 10px;
+  .popup, .popup_round {
+    display: flex;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(43, 40, 41, 0.5);
   }
-}
 
-@media screen and (max-width: 768px) {
-    .popup_round {
-      bottom: -90px;
-    }
-}
-
-
-@media screen and (max-width: 650px) {
-  .popup_round {
-    bottom: 0px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .popup_round {
-    right: 10px;
-  }
-}
-
-@media screen and (max-width: 360px) {
-  .popup_round {
-    right: 0px;
+  .content {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: fit-content;
+    max-width: 100%;
+    border-radius: 14px 14px 0px 0px;
   }
 }
