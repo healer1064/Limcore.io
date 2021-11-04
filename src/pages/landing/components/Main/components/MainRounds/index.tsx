@@ -7,7 +7,7 @@ import PopupStyles from '../PopupMainPage/styles.module.scss'
 
 import limcoreIcon from '@icons/limcore.svg'
 import { InfoIcon } from '@icons/InfoIcon'
-import etherscanIcon from '@icons/etherscan.png'
+import etherscanIcon from '@icons/etherscan1.png'
 import useWindowSize from '@helpers/useWindowSizeHook'
 import { useHistory } from 'react-router'
 import ModalAuth from '../../../../../../pages/landing/components/ModalAuth'
@@ -81,7 +81,8 @@ export const MainRounds: React.FC = () => {
           className={Styles.etherscanLink}
           href='https://etherscan.io/address/0x3cba6aa21ef433347c27864035f711a9fd4a3eed'
         >
-          <img src={etherscanIcon} alt='Иконка' />
+          <img className={Styles.etherscanIcon} src={etherscanIcon} alt='Иконка' />
+          <span className={Styles.etherscan}>Etherscan</span>
         </a>
       </div>
       <div className={Styles.buttons}>
