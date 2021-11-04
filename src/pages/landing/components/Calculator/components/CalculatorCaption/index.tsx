@@ -157,13 +157,13 @@ export const CalculatorCaption: React.FC = () => {
                 <img src={limcoreIcon} alt='Иконка' /> 1 LIMC
               </span>
               <span>
-                <img src={limcoreIcon} alt='Иконка' /> 90,000 LIMC
+                <img src={limcoreIcon} alt='Иконка' /> 80,000 LIMC
               </span>
             </div>
             <input
               type='range'
               min='1'
-              max='90000'
+              max='80000'
               onChange={handleLimcNumberChange}
               value={rangeLimcNumber}
               className={Styles.rangeInput}
