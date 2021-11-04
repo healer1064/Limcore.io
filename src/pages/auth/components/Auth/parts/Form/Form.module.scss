@@ -37,7 +37,7 @@
     color: $black;
 
     &Desktop {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
 
       font-size: 24px;
       font-weight: 600;
@@ -45,8 +45,42 @@
     }
   }
 
+  // &Choice {
+  //   display: flex;
+  //   flex-direction: column;
+
+  //   &Btn {
+  //     padding: 5px 10px;
+  //     border: 1px solid $primary-color;
+  //     border-radius: 14px;
+
+  //     font-size: 13px;
+  //     font-weight: 500;
+  //     line-height: 1;
+
+  //     background-color: transparent;
+  //     outline: none;
+  //     transition: all .3s ease;
+
+  //     &:not(:last-child) {
+  //       margin-right: 20px;
+  //     }
+
+  //     &:hover {
+  //       background-color: $primary-color;
+  //       color: #fff;
+  //       transition: all .3s ease;
+  //     }
+  //   }
+
+  //   &BtnContainer {
+  //     display: flex;
+  //     justify-content: space-between;
+  //   }
+  // }
+
   &Label {
-    margin-left: 4px;
+    // margin-left: 4px;
     margin-bottom: 8px;
     font-size: 14px;
     font-weight: 400;
@@ -58,24 +92,33 @@
       display: flex;
       width: 100%;
     }
+
+    & + div > div:first-child {
+      display: none !important;
+    }
   }
 
   &Field {
     @include padding-x(18px);
     @include padding-y(14px);
 
-    display: flex;
-    width: 100%;
-    color: $grey;
-    border: 1px solid $grey;
-    font-size: 16px;
-    line-height: 1;
-    border-radius: 14px;
-    outline: none;
-    transition: $transition;
+    display: flex !important;
+    width: 100% !important;
+    color: $grey !important;
+    border: 1px solid $grey !important;
+    font-size: 16px !important;
+    line-height: 1 !important;
+    border-radius: 14px !important;
+    outline: none !important;
+    transition: $transition !important;
+    height: 45px !important;
+
+    .special-label {
+      display: none !important;
+    }
 
     &::placeholder {
-      color: $light-grey;
+      color: $light-grey !important;
     }
 
     &:active,
@@ -161,7 +204,7 @@
 
     &Desktop {
       align-self: initial;
-      margin-top: 30px;
+      // margin-top: 30px;
     }
   }
 }

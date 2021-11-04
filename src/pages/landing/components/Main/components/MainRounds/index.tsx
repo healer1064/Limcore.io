@@ -15,19 +15,14 @@ import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice'
 
 export const MainRounds: React.FC = () => {
+  const limcCount = useAppSelector((state) => state.wallet.limcCount)
+  const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
   const [popupOpen, setPopupOpen] = useState(false)
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
   const dispatch = useAppDispatch()
   const history = useHistory()
   const { width } = useWindowSize()
   const desktop = width >= 768
-
-  const limcAmount = useAppSelector((state) => state.wallet.limc_amount)
-  const [limcNumber, setLimcNumber] = useState(limcAmount)
-
-  useEffect(() => {
-    setLimcNumber(limcAmount)
-  }, [limcAmount])
 
   const closePopup = () => {
     setPopupOpen(false)
@@ -54,7 +49,7 @@ export const MainRounds: React.FC = () => {
         <ul className={Styles.list}>
           <li className={Styles.item}>
             <span className={Styles.designation}>Лимит</span>
-            <span className={Styles.value}>80,000 LIMC</span>
+            <span className={Styles.value}>{limcLimit} LIMC</span>
             <img className={Styles.icon} src={limcoreIcon} alt='Иконка' />
           </li>
           <li className={Styles.item}>
@@ -75,10 +70,10 @@ export const MainRounds: React.FC = () => {
       </PopupMainPage>
       <div className={Styles.container}>
         <div className={Styles.progress}>
-          <span className={Styles.bar} style={{ width: `calc(${limcNumber} / 90000 * 100%)` }}>
-            {}
+          <span className={Styles.bar}>{}</span>
+          <span className={Styles.count}>
+            {limcCount} / {limcLimit}
           </span>
-          <span className={Styles.count}>{limcNumber} / 90000</span>
         </div>
         <a
           target='blank'

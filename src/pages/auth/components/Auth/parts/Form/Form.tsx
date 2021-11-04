@@ -19,15 +19,15 @@ import {
   getAuthNextStep,
   setAuthStep,
   setMethod,
-  setProcessType,
   registerUserPhoneConfirmation,
   registerUserPhone,
 } from '../../../../redux/auth.slice'
 import { Button } from '..'
 import { getValidationSchema } from '../../helpers/yup.helpers'
-import { isNumbersOnly } from '../../helpers/number.helpers'
 import styles from './Form.module.scss'
 import useWindowSize from '@helpers/useWindowSizeHook'
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/material.css'
 
 const Form: FC = () => {
   const history = useHistory()
@@ -38,7 +38,8 @@ const Form: FC = () => {
   const [opts, setOpts] = useState<any>({})
   const { ref, maskRef } = useIMask(opts)
 
-  const [phone, setPhone] = useLocalStorage('phone', '')
+  // const [phone, setPhone] = useLocalStorage('phone', '')
+  const [phone, setPhone] = useState('')
   const [email, setEmail] = useLocalStorage('email', '')
   const [numberCode, setNumberCode] = useLocalStorage('code', '')
   const [uniqueId, setUniqueId] = useLocalStorage('uniqueId', '')
@@ -56,12 +57,13 @@ const Form: FC = () => {
   }
 
   // АВТОРИЗАЦИЯ
-  const onAuthorization = async (contact) => {
+  const onAuthorization = async () => {
     // users/login-code/ - в теле отправить email/phone (будет отправлен код)
-    let data = {}
-    contact.includes('@') ? (data = { email: contact }) : (data = { phone: `+7${contact.substr(1)}` })
+    // let data = {}
+    // contact.includes('@') ? (data = { email: contact }) : (data = { phone: `+7${contact.substr(1)}` })
+    // const response = await dispatch(getJwtTokenTest(data))
 
-    const response = await dispatch(getJwtTokenTest(data))
+    const response = await dispatch(getJwtTokenTest({ phone: `+${phone}` }))
     const id = response.payload?.data.unique_identifier || null
     setUniqueId(id)
   }
@@ -83,7 +85,7 @@ const Form: FC = () => {
 
   // РЕГИСТРАЦИЯ
   const onRegistrationPhone = async () => {
-    const newPhone = `+7${phone.substr(1)}`
+    const newPhone = `+${phone}`
     console.log(newPhone)
     const response = await dispatch(registerUserPhone({ phone: newPhone })) // придет unique_identifier
     const id = response.payload?.data.unique_identifier || null
@@ -216,9 +218,27 @@ const Form: FC = () => {
                         {isLimcClick ? 'Чтобы купить LIMC, нужно авторизоваться' : 'Авторизация'}
                       </legend>
                       <label className={styles.formLabel} htmlFor='emailOrPhone'>
-                        Телефон или e-mail
+                        Введите телефон
                       </label>
-                      <Field
+                      {/* <div className={styles.formChoice}>
+                        <label className={styles.formLabel}>Что будете вводить?</label>
+                        <div className={styles.formChoiceBtnContainer}>
+                          <button className={styles.formChoiceBtn}>Телефон</button>
+                          <button className={styles.formChoiceBtn}>Почту</button>
+                        </div>
+                      </div> */}
+                      <PhoneInput
+                        buttonClass={styles.formFieldDropDown}
+                        inputClass={classNames(styles.formField, {
+                          [styles.formFieldHasErrors]: touched.emailOrPhone && errors.emailOrPhone,
+                          [styles.formFieldIsEmpty]: !values.emailOrPhone,
+                        })}
+                        country='ru'
+                        preferredCountries={['ua', 'ru', 'by', 'kz', 'uz', 'tj']}
+                        value={phone}
+                        onChange={(phone) => setPhone(phone)}
+                      />
+                      {/* <Field
                         className={classNames(styles.formField, {
                           [styles.formFieldHasErrors]: touched.emailOrPhone && errors.emailOrPhone,
                           [styles.formFieldIsEmpty]: !values.emailOrPhone,
@@ -238,8 +258,7 @@ const Form: FC = () => {
                         autoComplete='off'
                         value={values.emailOrPhone}
                         innerRef={ref}
-                        // maxLength={isNumbersOnly(maskRef?.current?.value || '') ? phoneMask.length : null}
-                      />
+                      /> */}
                       <p
                         className={classNames(mainStyles.errorMessage, {
                           [styles.formFieldErrorMessageHidden]: Object.keys(errors).length === 0,
@@ -248,11 +267,7 @@ const Form: FC = () => {
                         <ErrorMessage name='emailOrPhone' />
                       </p>
                     </fieldset>
-                    <Button
-                      className={mainStyles.submit}
-                      disabled={Object.keys(errors).length !== 0 || values.emailOrPhone === ''}
-                      onClick={() => onAuthorization(values.emailOrPhone)}
-                    >
+                    <Button className={mainStyles.submit} onClick={onAuthorization}>
                       Получить код
                     </Button>
                   </FormikForm>
@@ -293,11 +308,7 @@ const Form: FC = () => {
                       <label className={styles.formLabel} htmlFor='SMS'>
                         <span>
                           Мы отправили код{' '}
-                          {auth.authMethod === Method.Phone
-                            ? 'на номер'
-                            : auth.authMethod === Method.Email
-                            ? 'на адрес'
-                            : null}
+                          {auth.authMethod === Method.Phone ? 'на' : auth.authMethod === Method.Email ? 'на' : null}
                         </span>
                         {auth.authMethod === Method.Phone ? phone : auth.authMethod === Method.Email ? email : null}{' '}
                         <Link to='#!' className={styles.formLink} onClick={() => dispatch(setAuthStep(Auth.Step1))}>
@@ -411,37 +422,16 @@ const Form: FC = () => {
                       <label className={styles.formLabel} htmlFor='phone'>
                         Телефон
                       </label>
-                      {/* <Field
-                        className={classNames(styles.formField, {
+                      <PhoneInput
+                        buttonClass={styles.formFieldDropDown}
+                        inputClass={classNames(styles.formField, {
                           [styles.formFieldHasErrors]: touched.phone && errors.phone,
                           [styles.formFieldIsEmpty]: !values.phone,
                         })}
-                        placeholder='Введите номер телефона'
-                        name='phone'
-                        type='text'
-                        id='phone'
-                        onChange={handleChange}
-                        autoComplete='off'
-                        value={values.phone}
-                        innerRef={ref}
-                        // maxLength={phoneMask.length}
-                      /> */}
-                      <input
-                        className={classNames(styles.formField, {
-                          [styles.formFieldHasErrors]: touched.phone && errors.phone,
-                          [styles.formFieldIsEmpty]: !values.phone,
-                        })}
-                        placeholder='Введите номер телефона'
-                        name='phone'
-                        type='text'
-                        autoComplete='off'
-                        id='phone'
-                        maxLength={11}
-                        onChange={(event) => {
-                          handleChange(event.target.value)
-                          setPhone(event.target.value)
-                        }}
-                        value={values.phone}
+                        country='ru'
+                        preferredCountries={['ua', 'ru', 'by', 'kz', 'uz', 'tj']}
+                        value={phone}
+                        onChange={(phone) => setPhone(phone)}
                       />
                       <p
                         className={classNames(mainStyles.errorMessage, {
@@ -494,12 +484,8 @@ const Form: FC = () => {
                     </legend>
                     <label className={styles.formLabel} htmlFor='SMS'>
                       <span>
-                        Мы отправили код{' '}
-                        {auth.authMethod === Method.Phone
-                          ? 'на номер'
-                          : auth.authMethod === Method.Email
-                          ? 'на адрес'
-                          : null}
+                        Мы отправили код {auth.authStep === Auth.Step2 ? `на +${phone}` : `на ${email}`}
+                        {/* {auth.authMethod === Method.Phone ? 'на' : auth.authMethod === Method.Email ? 'на' : null} */}
                       </span>
                       {auth.authMethod === Method.Phone ? phone : auth.authMethod === Method.Email ? email : null}{' '}
                       <Link
