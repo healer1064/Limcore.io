@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Styles from './styles.module.scss'
 
 import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
@@ -11,7 +11,7 @@ import etherscanIcon from '@icons/etherscan.png'
 import useWindowSize from '@helpers/useWindowSizeHook'
 import { useHistory } from 'react-router'
 import ModalAuth from '../../../../../../pages/landing/components/ModalAuth'
-import { useAppDispatch } from '@app/redux/hooks'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice'
 
 export const MainRounds: React.FC = () => {
@@ -21,6 +21,13 @@ export const MainRounds: React.FC = () => {
   const history = useHistory()
   const { width } = useWindowSize()
   const desktop = width >= 768
+
+  const limcAmount = useAppSelector((state) => state.wallet.limc_amount)
+  const [limcNumber, setLimcNumber] = useState(limcAmount)
+
+  useEffect(() => {
+    setLimcNumber(limcAmount)
+  }, [limcAmount])
 
   const closePopup = () => {
     setPopupOpen(false)
@@ -68,8 +75,10 @@ export const MainRounds: React.FC = () => {
       </PopupMainPage>
       <div className={Styles.container}>
         <div className={Styles.progress}>
-          <span className={Styles.bar}>{}</span>
-          <span className={Styles.count}>0 / 80000</span>
+          <span className={Styles.bar} style={{ width: `calc(${limcNumber} / 90000 * 100%)` }}>
+            {}
+          </span>
+          <span className={Styles.count}>{limcNumber} / 90000</span>
         </div>
         <a
           target='blank'

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Styles from './styles.module.scss'
 import classNames from 'classnames'
 
@@ -17,6 +17,7 @@ import ModalAuth from '../../../../../landing/components/ModalAuth/index'
 import { useAppDispatch } from '@app/redux/hooks'
 import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice'
 import { InfoIcon } from '@icons/InfoIcon'
+import { InputRange } from './InputRange'
 
 export const CalculatorCaption: React.FC = () => {
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
@@ -46,8 +47,7 @@ export const CalculatorCaption: React.FC = () => {
   // Calculator
   const [limcNumber, setLimcNumber] = useState('1')
   const [investNumber, setInvestNumber] = useState('95')
-  // const [limcNumber, setLimcNumber] = useState('1 LIMC')
-  // const [investNumber, setInvestNumber] = useState('95 USDT')
+  const [rangeLimcNumber, setRangeLimcNumber] = useState(1)
   const [classForCurrency, setClassForCurrency] = useState(Styles.currency)
   const [classForTranslate, setClassForTranslate] = useState(false)
   const topLabelClass = classForTranslate ? Styles.labelToBottom : null
@@ -58,7 +58,7 @@ export const CalculatorCaption: React.FC = () => {
 
   useEffect(() => {
     handleCurrencyClass()
-    // handleInvestNumberChange(e)
+    handleInvestNumberChange(investNumber)
   }, [limcNumber, investNumber])
   const handleCurrencyClass = () => {
     if ((limcNumber.length >= 3 && limcNumber.length < 6) || (investNumber.length >= 3 && investNumber.length < 6)) {
@@ -79,21 +79,29 @@ export const CalculatorCaption: React.FC = () => {
       return
     }
 
+    setRangeLimcNumber(validated)
     setLimcNumber(validated.toLocaleString('en'))
     setInvestNumber((validated * 95).toLocaleString('en'))
   }
-  const handleInvestNumberChange = (event) => {
-    const validated = Number(event.target.value.replace(/,/g, '')) // убираю запятые, затем проверяю цифра это или нет
+
+  const handleInvestNumberChange = (data) => {
+    let validated = null
+    typeof data !== 'string'
+      ? (validated = Number(data.target.value.replace(/,/g, '')))
+      : (validated = Number(data.replace(/,/g, '')))
+
     if (!validated) {
       return
     }
 
     const limc = Math.round(validated / 95)
+    setRangeLimcNumber(limc)
     setLimcNumber(limc.toLocaleString('en'))
     setInvestNumber(validated.toLocaleString('en'))
+
     const hour = (validated * 0.85 * 0.216) / 12 / 30 / 24
     const day = (validated * 0.85 * 0.216) / 12 / 30
-    const month = (validated * 0.85 * 0.216) / 12
+    const month = Math.round((validated * 0.85 * 0.216) / 12)
     setHour(hour)
     setDay(day)
     setMonth(month)
@@ -125,6 +133,7 @@ export const CalculatorCaption: React.FC = () => {
                 value={limcNumber}
                 onChange={handleLimcNumberChange}
                 placeholder=''
+                maxLength={6}
               />
               <span className={classForCurrency}>LIMC</span>
             </Label>
@@ -137,6 +146,7 @@ export const CalculatorCaption: React.FC = () => {
                 value={investNumber}
                 onChange={handleInvestNumberChange}
                 placeholder=''
+                maxLength={8}
               />
               <span className={classForCurrency}>USDT</span>
             </Label>
@@ -147,10 +157,18 @@ export const CalculatorCaption: React.FC = () => {
                 <img src={limcoreIcon} alt='Иконка' /> 1 LIMC
               </span>
               <span>
-                <img src={limcoreIcon} alt='Иконка' /> 100,000 LIMC
+                <img src={limcoreIcon} alt='Иконка' /> 90,000 LIMC
               </span>
             </div>
-            <input type='range' min='1' max='100000' onChange={handleLimcNumberChange} className={Styles.rangeInput} />
+            <input
+              type='range'
+              min='1'
+              max='90000'
+              onChange={handleLimcNumberChange}
+              value={rangeLimcNumber}
+              className={Styles.rangeInput}
+            />
+            {/* <InputRange value={rangeLimcNumber} onChange={handleLimcNumberChange} /> */}
           </div>
         </div>
         <div className={Styles.block}>

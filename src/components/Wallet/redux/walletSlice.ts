@@ -13,6 +13,10 @@ export const getLimcPrice: any = createAsyncThunk('wallet/getLimcPrice', async f
   const response = await api.get('api/v1/wallets/pricing/')
   return response
 })
+export const getLimcAmount: any = createAsyncThunk('wallet/getLimcAmount', async function () {
+  const response = await api.get('api/v1/limc_amount/')
+  return response
+})
 
 export const buyLimc: any = createAsyncThunk('wallet/buyLimc', async function (data) {
   const response = await api.post('api/v1/wallets/buy_token/', data)
@@ -38,6 +42,7 @@ export const walletSlice = createSlice({
       title: '',
       usdt_amount: '',
     },
+    limc_amount: 0,
   },
   reducers: {},
   extraReducers: {
@@ -50,6 +55,9 @@ export const walletSlice = createSlice({
     },
     [getLimcPrice.fulfilled]: (state, { payload }) => {
       state.limc_price = payload.data[0]
+    },
+    [getLimcAmount.fulfilled]: (state, { payload }) => {
+      state.limc_amount = payload.data[0]
     },
   },
 })
