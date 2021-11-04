@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Styles from './styles.module.scss'
-import { useAppSelector } from '@app/redux/hooks'
 
 import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
 import { PopupMainPage } from '../PopupMainPage'
@@ -12,7 +11,7 @@ import etherscanIcon from '@icons/etherscan.png'
 import useWindowSize from '@helpers/useWindowSizeHook'
 import { useHistory } from 'react-router'
 import ModalAuth from '../../../../../../pages/landing/components/ModalAuth'
-import { useAppDispatch } from '@app/redux/hooks'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice'
 
 export const MainRounds: React.FC = () => {

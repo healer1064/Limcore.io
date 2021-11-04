@@ -65,7 +65,7 @@
 
   &:last-child {
     gap: 29px;
-    max-width: 444px;
+    max-width: 472px;
   }
 
   img {
@@ -262,21 +262,21 @@
   }
 }
 
-.rangeInput {
-  cursor: pointer;
-}
-
 .labelToBottom {
-  transform: translateY(114px);
+  transform: translateY(118px);
   transition: transform .3s ease;
 }
 .labelToTop {
   transition: transform .3s ease;
-  transform: translateY(-114px);
+  transform: translateY(-118px);
+}
+
+.rangeInput {
+  cursor: pointer;
 }
 
 .inputCount {
-  //text-align: end;
+  padding: 14px 18px;
 }
 
 .currency {
@@ -290,7 +290,7 @@
   color: #4F535A;
   position: relative;
   top: -31px;
-  left: 10%;
+  left: 13%;
 }
 
 .currencyMiddlePadding {
@@ -304,7 +304,7 @@
   color: #4F535A;
   position: relative;
   top: -31px;
-  left: 24%;
+  left: 26%;
 }
 
 .currencyLongPadding {
@@ -318,7 +318,7 @@
   color: #4F535A;
   position: relative;
   top: -31px;
-  left: 29%;
+  left: 31%;
 }
 
 @media all and (max-width: 768px) {

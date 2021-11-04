@@ -34,7 +34,7 @@ import { LandingPage } from '../../pages/landing'
 import { PurseMobile } from '@components/Purse/PurseMobile'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
-import { getWalletAdress, getWalletBalance, getLimcPrice, getForksPrice } from '../Wallet/redux/walletSlice'
+import { getWalletAdress, getWalletBalance, getLimcPrice, getLimcAmount } from '../Wallet/redux/walletSlice'
 // import { api } from '@app/api'
 
 const App = () => {
@@ -56,7 +56,7 @@ const App = () => {
           dispatch(getWalletAdress())
           dispatch(getWalletBalance())
           dispatch(getLimcPrice())
-          dispatch(getForksPrice())
+          dispatch(getLimcAmount())
         })
         .catch((err) => console.log(err))
     }
