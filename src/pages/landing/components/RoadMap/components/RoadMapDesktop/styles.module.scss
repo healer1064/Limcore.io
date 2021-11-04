@@ -71,18 +71,8 @@
   transform: translateY(-2px);
 }
 
-@media screen and (max-width: 1180px) {
-  .scrollButton, .scrollButtonRight, .scrollButtonLeft {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 720px) {
-  .roadMap {
-    display: none;
-  }
-
-  .scrollButton, .scrollButtonRight, .scrollButtonLeft {
+@media screen and (max-width: 1200px) {
+  .scrollButton, .scrollButtonRight, .scrollButtonLeft, .roadMap {
     display: none;
   }
 }

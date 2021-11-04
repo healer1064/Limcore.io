@@ -99,6 +99,15 @@ export const CalculatorSlider: React.FC = () => {
             <div className={Styles.slide}>
               <div className={Styles.token}>
                 <div className={Styles.block}>
+                  <img src={checkIcon} alt='Иконка' />
+                  {/* <button className={Styles.inactiveIcon} type='button' /> */}
+                  <img className={Styles.icon} src={tchiaIcon} alt='Иконка' />
+                  <span className={Styles.name}>Chia</span>
+                </div>
+                <span className={Styles.price}>$162.5400</span>
+              </div>
+              <div className={Styles.token}>
+                <div className={Styles.block}>
                   <img className={Styles.checkIcon} src={checkIcon} alt='Иконка' />
                   <img className={Styles.icon} src={tflaxIcon} alt='Иконка' />
                   <span className={Styles.name}>Flax</span>
@@ -128,14 +137,6 @@ export const CalculatorSlider: React.FC = () => {
                   <span className={Styles.name}>Flora</span>
                 </div>
                 <span className={Styles.price}>$0.0196</span>
-              </div>
-              <div className={Styles.token}>
-                <div className={Styles.block}>
-                  <img className={Styles.checkIcon} src={checkIcon} alt='Иконка' />
-                  <img className={Styles.icon} src={tgreendogeIcon} alt='Иконка' />
-                  <span className={Styles.name}>GreenDoge</span>
-                </div>
-                <span className={Styles.price}>$0.2823</span>
               </div>
             </div>
           </SwiperSlide>
@@ -231,12 +232,11 @@ export const CalculatorSlider: React.FC = () => {
             <div className={Styles.slide}>
               <div className={Styles.token}>
                 <div className={Styles.block}>
-                  {/* <img src={checkIcon} alt='Иконка' /> */}
-                  <button className={Styles.inactiveIcon} type='button' />
-                  <img className={Styles.icon} src={ttacoIcon} alt='Иконка' />
-                  <span className={Styles.name}>Taco</span>
+                  <img className={Styles.checkIcon} src={checkIcon} alt='Иконка' />
+                  <img className={Styles.icon} src={tgreendogeIcon} alt='Иконка' />
+                  <span className={Styles.name}>GreenDoge</span>
                 </div>
-                <span className={Styles.price}>$0.1326</span>
+                <span className={Styles.price}>$0.2823</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -282,15 +282,6 @@ export const CalculatorSlider: React.FC = () => {
                 <div className={Styles.block}>
                   {/* <img src={checkIcon} alt='Иконка' /> */}
                   <button className={Styles.inactiveIcon} type='button' />
-                  <img className={Styles.icon} src={tchiaIcon} alt='Иконка' />
-                  <span className={Styles.name}>Chia</span>
-                </div>
-                <span className={Styles.price}>$162.5400</span>
-              </div>
-              <div className={Styles.token}>
-                <div className={Styles.block}>
-                  {/* <img src={checkIcon} alt='Иконка' /> */}
-                  <button className={Styles.inactiveIcon} type='button' />
                   <img className={Styles.icon} src={tnchainIcon} alt='Иконка' />
                   <span className={Styles.name}>N-Chain</span>
                 </div>
@@ -322,6 +313,15 @@ export const CalculatorSlider: React.FC = () => {
                   <span className={Styles.name}>DogeChia</span>
                 </div>
                 <span className={Styles.price}>$0.0717</span>
+              </div>
+              <div className={Styles.token}>
+                <div className={Styles.block}>
+                  {/* <img src={checkIcon} alt='Иконка' /> */}
+                  <button className={Styles.inactiveIcon} type='button' />
+                  <img className={Styles.icon} src={ttacoIcon} alt='Иконка' />
+                  <span className={Styles.name}>Taco</span>
+                </div>
+                <span className={Styles.price}>$0.1326</span>
               </div>
             </div>
           </SwiperSlide>
