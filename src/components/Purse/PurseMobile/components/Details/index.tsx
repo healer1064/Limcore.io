@@ -9,7 +9,7 @@ import BlueArrow from '../../images/BlueArrow/BlueArrow'
 
 export const Details = () => {
   const [isModalVisible, setIsModalVisible] = useState(false)
-  let flagForDetalisation = 3
+  // let flagForDetalisation = 3
 
   const handleDetailsOpenClick = () => {
     setIsModalVisible(true)
@@ -30,7 +30,7 @@ export const Details = () => {
     <div className={styles.details}>
       <header className={styles.details__header}>
         <h3 className={styles.details__title}>Детализация майнинга</h3>
-        <DetalizationUp summary='+$12,784' xch='+$10,092' forks='+$884' />
+        <DetalizationUp summary='$0' xch='$0' forks='$0' />
 
         <button type='button' className={styles.details__button} onClick={handleDetailsOpenClick}>
           <BlueArrow />
@@ -39,8 +39,15 @@ export const Details = () => {
         <Modal active={isModalVisible} setActive={handleDetailsCloseClick}>
           <ul className={styles.detailsModal}>
             <ModalHeader title='Детализация майнинга' onClick={handleDetailsCloseClick} />
-            <DetalizationUp summary='+$12,784' xch='+$10,092' forks='+$884' />
-            {tempData.map((item) => (
+            <DetalizationUp summary='$0' xch='$0' forks='$0' />
+            <p className={styles.transactions__subtitle}>
+              У вас еще нет транзакций. <br />
+              Мы предоставим вам доступ позже
+            </p>
+            <button type='button' className={styles.transactions__profileButton} onClick={handleDetailsCloseClick}>
+              Вернуться назад
+            </button>
+            {/* {tempData.map((item) => (
               <DetalizationDownItem
                 img={item.img}
                 title={item.title}
@@ -50,11 +57,11 @@ export const Details = () => {
                 key={Math.random()}
                 flagForButton
               />
-            ))}
+            ))} */}
           </ul>
         </Modal>
       </header>
-      <ul className={styles.detailsList}>
+      {/* <ul className={styles.detailsList}>
         {tempData.map((item) => {
           // Такая чехарда, потому что в основном лендинге должно быть только 3 карточки, а уже в детализации все
           flagForDetalisation--
@@ -73,7 +80,7 @@ export const Details = () => {
             />
           )
         })}
-      </ul>
+      </ul> */}
       {/* TODO: 2 цикла - не хорошо, надо поправить */}
     </div>
   )
