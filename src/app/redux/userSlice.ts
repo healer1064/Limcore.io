@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { apiTypes } from '@app/apiTypes'
 import { api } from '@app/api'
 
-export const getUserRole = createAsyncThunk('user/getUserData', async (userId: string) => {
-  const response = await api.get<apiTypes.UserData>(`user/${userId}`)
+export const getUser = createAsyncThunk('user/getUser', async () => {
+  const response = await api.get('users/me/')
   return response.data
 })
 
@@ -17,11 +17,7 @@ export const userSlice = createSlice({
   initialState: {
     userId: null,
     dealerId: null,
-    userData: {
-      id: 228,
-      name: 'Valentin Vorobyev',
-      roles: [{ id: 0, name: 'firstUser' }], // TODO Пример - userData должно быть null, когда будет API
-    },
+    userData: null,
     email: null,
   },
   reducers: {
@@ -36,7 +32,7 @@ export const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getUserRole.fulfilled, (state, { payload }) => {
+    builder.addCase(getUser.fulfilled, (state, { payload }) => {
       state.userData = payload as any // TODO - убрать any
     })
   },

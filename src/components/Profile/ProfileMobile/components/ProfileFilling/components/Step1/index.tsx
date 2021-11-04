@@ -11,6 +11,7 @@ import { InputRadio } from '../../../../../../../ui-kit/InputRadio'
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
 
 import calendarIcon from '@icons/calendar-icon.svg'
+import { api } from '@app/api'
 
 interface Step1Props {
   nextStep: any
@@ -18,7 +19,14 @@ interface Step1Props {
 
 export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
   const [popup, setPopup] = useState(false)
-
+  const [value, setValue] = useState({
+    name: '',
+  })
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setValue({ ...value, [name]: value })
+    console.log(value)
+  }
   return (
     <>
       <div className={Styles.progress}>
@@ -44,7 +52,7 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
         <span className={Styles.caption}>Укажите ФИО, дату рождения и пол</span>
         <form className={Styles.form}>
           <Label className={Styles.label} titleText='Имя*'>
-            <InputText placeholder='Введите ваше имя' />
+            <InputText placeholder='Введите ваше имя' value={value.name} onChange={handleChange} name='name' />
           </Label>
           <Label className={Styles.label} titleText='Фамилия*'>
             <InputText placeholder='Введите вашу фамилию' />
