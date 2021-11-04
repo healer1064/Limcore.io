@@ -40,15 +40,22 @@ export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTra
   return (
     <div className={styles.transactions}>
       <h3 className={styles.transactions__title}>Транзакции</h3>
-      <button type='button' className={styles.transactions__button} onClick={onTransactionsClick}>
+      {/* <button type='button' className={styles.transactions__button} onClick={onTransactionsClick}>
         <BlueArrow onClick={handleTransactionsOpen} />
-      </button>
+      </button> */}
 
       <Modal active={isTransactionsVisible} setActive={handleTransactionsClose}>
         <TransactionsDetails onClick={handleTransactionsClose} />
       </Modal>
 
-      {isUserHasTransactions ? (
+      <p className={styles.transactions__subtitle}>
+        У вас еще нет транзакций. <br />
+        Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
+      </p>
+      <button type='button' className={styles.transactions__profileButton} onClick={onProfileClick}>
+        Перейти к заполнению
+      </button>
+      {/* {isUserHasTransactions ? (
         <UserHasTransactions data={tempDataForTransactions} />
       ) : (
         <>
@@ -60,7 +67,7 @@ export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTra
             Перейти к заполнению
           </button>
         </>
-      )}
+      )} */}
     </div>
   )
 }

@@ -20,6 +20,9 @@ export const Container: React.FC<ContainerProps> = ({ title, onClick, onClose, c
   const closeContainer = () => {
     dispatch(changeViewContent('none'))
     dispatch(changeStep(0))
+    if (onClick) {
+      onClick()
+    }
   }
 
   return (

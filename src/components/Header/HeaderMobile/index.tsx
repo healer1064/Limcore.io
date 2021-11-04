@@ -45,7 +45,7 @@ export const HeaderMobile: React.FC = () => {
           <span className={Styles.row}>{}</span>
         </div>
         <div className={burgerStyles}>
-          <Container title='' onClose={closeBurger}>
+          <Container title='' onClick={closeBurger}>
             <img className={Styles.logoInOpenBurger} src={logoIcon} alt='Лого' />
             <ul className={Styles.list}>
               {tempLink?.map((item) => {

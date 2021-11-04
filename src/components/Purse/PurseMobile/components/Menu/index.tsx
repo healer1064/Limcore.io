@@ -61,7 +61,7 @@ export const Menu = ({ openPopup }) => {
       <MenuItem
         image={creditCard}
         title='Баланс карты'
-        balance='$1,988'
+        balance='$0'
         setActive={handleBalanceCardOpenClick}
         setNotActive={handleBalanceCardCloseClick}
         active={isCardInfoVisible}
