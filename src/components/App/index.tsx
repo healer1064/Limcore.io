@@ -35,6 +35,7 @@ import { PurseMobile } from '@components/Purse/PurseMobile'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getWalletAdress, getWalletBalance, getLimcPrice, getLimcAmount } from '../Wallet/redux/walletSlice'
+import { getUser } from '@app/redux/userSlice'
 // import { api } from '@app/api'
 
 const App = () => {
@@ -44,7 +45,7 @@ const App = () => {
   // const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
   const user = useAppSelector((state) => state.user.userData)
   const isAuth = useAppSelector((state) => state.auth.isAuth)
-
+  console.log(user)
   const desktop = width >= 768
 
   useEffect(() => {
@@ -57,6 +58,7 @@ const App = () => {
           dispatch(getWalletBalance())
           dispatch(getLimcPrice())
           dispatch(getLimcAmount())
+          dispatch(getUser())
         })
         .catch((err) => console.log(err))
     }
