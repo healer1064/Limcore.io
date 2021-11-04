@@ -52,9 +52,13 @@ export const CalculatorCaption: React.FC = () => {
   const [classForTranslate, setClassForTranslate] = useState(false)
   const topLabelClass = classForTranslate ? Styles.labelToBottom : null
   const bottomLabelClass = classForTranslate ? Styles.labelToTop : null
+  const [hour, setHour] = useState(0)
+  const [day, setDay] = useState(0)
+  const [month, setMonth] = useState(0)
 
   useEffect(() => {
     handleCurrencyClass()
+    // handleInvestNumberChange(e)
   }, [limcNumber, investNumber])
   const handleCurrencyClass = () => {
     if ((limcNumber.length >= 3 && limcNumber.length < 6) || (investNumber.length >= 3 && investNumber.length < 6)) {
@@ -87,11 +91,13 @@ export const CalculatorCaption: React.FC = () => {
     const limc = Math.round(validated / 95)
     setLimcNumber(limc.toLocaleString('en'))
     setInvestNumber(validated.toLocaleString('en'))
+    const hour = (validated * 0.85 * 0.216) / 12 / 30 / 24
+    const day = (validated * 0.85 * 0.216) / 12 / 30
+    const month = (validated * 0.85 * 0.216) / 12
+    setHour(hour)
+    setDay(day)
+    setMonth(month)
   }
-  const investNumberToNumber = Number(investNumber)
-  const hour = (investNumberToNumber * 0.85 * 0.216) / 12 / 30 / 24
-  const day = (investNumberToNumber * 0.85 * 0.216) / 12 / 30
-  const month = (investNumberToNumber * 0.85 * 0.216) / 12
 
   return (
     <div className={Styles.caption}>
@@ -171,15 +177,15 @@ export const CalculatorCaption: React.FC = () => {
                 <div className={Styles.row}>
                   <div className={Styles.inner}>
                     <span>В час</span>
-                    <span>$ 0</span>
+                    <span>{`$ ${hour}`.slice(0, 8)}</span>
                   </div>
                   <div className={Styles.inner}>
                     <span>В день</span>
-                    <span>$ 0</span>
+                    <span>{`$ ${day}`.slice(0, 8)}</span>
                   </div>
                   <div className={Styles.inner}>
                     <span>В месяц</span>
-                    <span>$ 0</span>
+                    <span>{`$ ${month}`.slice(0, 8)}</span>
                   </div>
                 </div>
               </div>
