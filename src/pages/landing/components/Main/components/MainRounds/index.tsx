@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Styles from './styles.module.scss'
 
 import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
@@ -90,7 +90,8 @@ export const MainRounds: React.FC = () => {
       </div>
       <div className={Styles.buttons}>
         <div className={Styles.column}>
-          <button className={Styles.second} onClick={handleLoginModalOpen}>
+          {/* TODO DELETE DISABLED */}
+          <button className={Styles.second} disabled onClick={handleLoginModalOpen}>
             Купить LIMC
           </button>
           <span>Lock-up период 6 месяцев</span>
