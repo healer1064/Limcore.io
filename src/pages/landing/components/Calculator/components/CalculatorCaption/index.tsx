@@ -45,8 +45,8 @@ export const CalculatorCaption: React.FC = () => {
   }
 
   // Calculator
-  const [limcNumber, setLimcNumber] = useState('1')
-  const [investNumber, setInvestNumber] = useState('95')
+  const [limcNumber, setLimcNumber] = useState('40000')
+  const [investNumber, setInvestNumber] = useState('3800000')
   const [rangeLimcNumber, setRangeLimcNumber] = useState(1)
   const [classForCurrency, setClassForCurrency] = useState(Styles.currency)
   const [classForTranslate, setClassForTranslate] = useState(false)
@@ -157,16 +157,16 @@ export const CalculatorCaption: React.FC = () => {
                 <img src={limcoreIcon} alt='Иконка' /> 1 LIMC
               </span>
               <span>
-                <img src={limcoreIcon} alt='Иконка' /> 90,000 LIMC
+                <img src={limcoreIcon} alt='Иконка' /> 100,000 LIMC
               </span>
             </div>
             <input
               type='range'
               min='1'
-              max='90000'
+              max='100000'
               onChange={handleLimcNumberChange}
               value={rangeLimcNumber}
-              className={Styles.rangeInput}
+              className={Styles.e_range}
             />
             {/* <InputRange value={rangeLimcNumber} onChange={handleLimcNumberChange} /> */}
           </div>

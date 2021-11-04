@@ -11,10 +11,12 @@ interface PopupMainPageProps {
 
 export const PopupMainPage: React.FC<PopupMainPageProps> = ({ closePopup, children, popupOpen, className }) => {
   return (
-    <div className={`${!popupOpen ? Styles.popup_invisible : className}`}>
-      <div className={Styles.content}>
-        {children}
-        <img className={Styles.close} src={closeIcon} alt='Иконка' onClick={closePopup} />
+    <div className={Styles.container}>
+      <div className={`${!popupOpen ? Styles.popup_invisible : className}`}>
+        <div className={Styles.content}>
+          {children}
+          <img className={Styles.close} src={closeIcon} alt='Иконка' onClick={closePopup} />
+        </div>
       </div>
     </div>
   )
