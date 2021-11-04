@@ -12,9 +12,11 @@ import insta from '@icons/instaBurger.svg'
 import tg from '@icons/tgBrger.svg'
 import facebook from '@icons/fbBurger.svg'
 import RU from '../../../assets/images/flag-ru.png'
+import { useHistory } from 'react-router'
 
 export const HeaderMobile: React.FC = () => {
   const [burgerOpen, setBurgerOpen] = useState(false)
+  const history = useHistory()
   const closeBurger = () => {
     setBurgerOpen(false)
   }
@@ -34,9 +36,9 @@ export const HeaderMobile: React.FC = () => {
     <header className={Styles.header}>
       <img className={Styles.logo} src={logoIcon} alt='Лого' />
       <div className={Styles.wrap}>
-        <Link to='auth'>
+        <a onClick={() => history.push('/auth')}>
           <img src={userIcon} alt='Иконка' />
-        </Link>
+        </a>
         <div className={Styles.burger} onClick={openBurger}>
           <span className={Styles.row}>{}</span>
           <span className={Styles.row}>{}</span>

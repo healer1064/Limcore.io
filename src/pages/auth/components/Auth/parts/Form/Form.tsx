@@ -44,6 +44,8 @@ const Form: FC = () => {
   const [numberCode, setNumberCode] = useLocalStorage('code', '')
   const [uniqueId, setUniqueId] = useLocalStorage('uniqueId', '')
 
+  const [numberIsEmpty, setNumberIsEmpty] = useState(false)
+
   const { width } = useWindowSize()
   const desktop = width >= 768
 
@@ -62,6 +64,15 @@ const Form: FC = () => {
     // let data = {}
     // contact.includes('@') ? (data = { email: contact }) : (data = { phone: `+7${contact.substr(1)}` })
     // const response = await dispatch(getJwtTokenTest(data))
+
+    if (phone === '' || phone.length < 10) {
+      setNumberIsEmpty(true)
+
+      setTimeout(() => {
+        setNumberIsEmpty(false)
+      }, 3000)
+      return
+    }
 
     const response = await dispatch(getJwtTokenTest({ phone: `+${phone}` }))
     const id = response.payload?.data.unique_identifier || null
@@ -236,7 +247,10 @@ const Form: FC = () => {
                         country='ru'
                         preferredCountries={['ua', 'ru', 'by', 'kz', 'uz', 'tj']}
                         value={phone}
-                        onChange={(phone) => setPhone(phone)}
+                        onChange={(phone) => {
+                          setNumberIsEmpty(false)
+                          setPhone(phone)
+                        }}
                       />
                       {/* <Field
                         className={classNames(styles.formField, {
@@ -259,13 +273,14 @@ const Form: FC = () => {
                         value={values.emailOrPhone}
                         innerRef={ref}
                       /> */}
-                      <p
+                      {/* <p
                         className={classNames(mainStyles.errorMessage, {
                           [styles.formFieldErrorMessageHidden]: Object.keys(errors).length === 0,
                         })}
                       >
                         <ErrorMessage name='emailOrPhone' />
-                      </p>
+                      </p> */}
+                      {numberIsEmpty && <p className={mainStyles.errorMessage}>Введите номер правильно</p>}
                     </fieldset>
                     <Button className={mainStyles.submit} onClick={onAuthorization}>
                       Получить код
