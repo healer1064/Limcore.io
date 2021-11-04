@@ -153,14 +153,16 @@
 }
 
 @media screen and (max-width: 1250px) {
+  .container {
+    width: 80%;
+    margin: 52px auto 0;
+  }
   .button_prev {
-    left: 0px;
-    border: 2px solid #4a70f8;
+    left: -10%;
   }
 
   .button_next {
-    right: 0px;
-    border: 2px solid #4a70f8;
+    right: -10%;
   }
 }
 
@@ -185,6 +187,7 @@
     margin-top: 30px;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
   }
 
   .pagination {
