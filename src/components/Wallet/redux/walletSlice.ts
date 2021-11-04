@@ -48,7 +48,7 @@ export const walletSlice = createSlice({
       usdt_amount: '',
     },
     limcCount: 0,
-    limcLimit: 90000,
+    limcLimit: 80000,
   },
   reducers: {},
   extraReducers: {
