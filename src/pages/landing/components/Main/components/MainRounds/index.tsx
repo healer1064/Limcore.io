@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Styles from './styles.module.scss'
+import { useAppSelector } from '@app/redux/hooks'
 
 import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
 import { PopupMainPage } from '../PopupMainPage'
@@ -15,6 +16,8 @@ import { useAppDispatch } from '@app/redux/hooks'
 import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice'
 
 export const MainRounds: React.FC = () => {
+  const limcCount = useAppSelector((state) => state.wallet.limcCount)
+  const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
   const [popupOpen, setPopupOpen] = useState(false)
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
   const dispatch = useAppDispatch()
@@ -47,7 +50,7 @@ export const MainRounds: React.FC = () => {
         <ul className={Styles.list}>
           <li className={Styles.item}>
             <span className={Styles.designation}>Лимит</span>
-            <span className={Styles.value}>80,000 LIMC</span>
+            <span className={Styles.value}>{limcLimit} LIMC</span>
             <img className={Styles.icon} src={limcoreIcon} alt='Иконка' />
           </li>
           <li className={Styles.item}>
@@ -69,7 +72,9 @@ export const MainRounds: React.FC = () => {
       <div className={Styles.container}>
         <div className={Styles.progress}>
           <span className={Styles.bar}>{}</span>
-          <span className={Styles.count}>0 / 80000</span>
+          <span className={Styles.count}>
+            {limcCount} / {limcLimit}
+          </span>
         </div>
         <a
           target='blank'
