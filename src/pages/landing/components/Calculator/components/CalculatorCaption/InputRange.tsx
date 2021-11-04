@@ -133,7 +133,7 @@ const Range = styled.input`
 export function InputRange({ value, onChange }) {
   return (
     <Wrapper>
-      <Range value={value} onChange={onChange} min='1' max='90000' type='range' />
+      <Range value={value} onChange={onChange} min='1' max='80000' type='range' />
     </Wrapper>
   )
 }

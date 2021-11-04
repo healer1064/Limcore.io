@@ -1,7 +1,7 @@
 .item {
   display: grid;
   box-sizing: border-box;
-  grid-template-columns: 155px;
+  grid-template-columns: 157px;
   grid-template-rows: repeat(4, minmax(min-content, max-content));
   grid-template-areas:
   'date'
@@ -21,7 +21,7 @@
 .itemDown {
   display: grid;
   box-sizing: border-box;
-  grid-template-columns: 155px;
+  grid-template-columns: 157px;
   grid-template-rows: repeat(4, minmax(min-content, max-content));
   grid-template-areas:
   'icon'
@@ -116,8 +116,8 @@
   margin: 0 auto;
   padding: 0;
   width: 4px;
-  height: 40px;
-  background: #7995FA;
+  height: 67px;
+  background: #4A70F8;
   border-radius: 6px;
 }
 
@@ -128,8 +128,8 @@
   margin: 0 auto;
   padding: 0;
   width: 4px;
-  height: 70px;
-  background: #7995FA;
+  height: 157px;
+  background: #4A70F8;
   border-radius: 6px;
 }
 

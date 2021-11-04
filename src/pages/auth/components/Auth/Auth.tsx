@@ -11,6 +11,7 @@ import useWindowSize from '@helpers/useWindowSizeHook'
 const AuthComponent: FC = () => {
   const dispatch = useAppDispatch()
   const auth = useAppSelector(authSelector)
+  const process = useAppSelector((state) => state.auth.processType)
 
   const { width } = useWindowSize()
   const desktop = width >= 768
@@ -26,17 +27,20 @@ const AuthComponent: FC = () => {
           to='#!'
           className={styles.authLink}
           onClick={() => {
-            dispatch(setProcessType(Process.Registration))
+            process === Process.Registration
+              ? dispatch(setProcessType(Process.Authorization))
+              : dispatch(setProcessType(Process.Registration))
             dispatch(setAuthStep(Auth.Step1))
           }}
         >
-          {auth.authStep === Auth.Step1
+          {/* {auth.authStep === Auth.Step1
             ? Process.Authorization
               ? 'Зарегистрироваться'
               : Process.Registration
               ? 'Войти'
               : null
-            : null}
+            : null} */}
+          {auth.authStep === Auth.Step1 ? (process === Process.Registration ? 'Авторизация' : 'Регистрация') : null}
         </Link>
       )}
     </div>
