@@ -37,11 +37,12 @@
   height: 287px;
 }
 
-// Modile
+// Mobile
 @media all and (max-width: 768px) {
   .caption {
     flex-wrap: wrap;
     margin-bottom: 60px;
+    gap: 30px;
   }
 
   .title {

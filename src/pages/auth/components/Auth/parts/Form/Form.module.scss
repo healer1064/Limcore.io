@@ -16,6 +16,7 @@
     position: relative;
 
     display: flex;
+    flex-direction: column !important;
     flex-flow: row wrap;
     width: 100%;
     margin: 0;
@@ -80,7 +81,7 @@
   // }
 
   &Label {
-    // margin-left: 4px;
+    margin-left: 5px;
     margin-bottom: 8px;
     font-size: 14px;
     font-weight: 400;
@@ -91,6 +92,11 @@
     span {
       display: flex;
       width: 100%;
+    }
+
+    & + div {
+      margin-bottom: 10px;
+      height: 45px;
     }
 
     & + div > div:first-child {
@@ -105,13 +111,14 @@
     display: flex !important;
     width: 100% !important;
     color: $grey !important;
-    border: 1px solid $grey !important;
+    border: 1.4px solid $grey !important;
     font-size: 16px !important;
     line-height: 1 !important;
     border-radius: 14px !important;
     outline: none !important;
     transition: $transition !important;
     height: 45px !important;
+    margin-bottom: 10px;
 
     .special-label {
       display: none !important;
@@ -163,6 +170,10 @@
       color: $grey;
     }
 
+    .errorMsgCont {
+      position: relative;
+    }
+
     &ErrorMessage {
       color: $red;
       display: flex;
@@ -173,7 +184,10 @@
 
       &Desktop {
         position: absolute;
-        bottom: -16px;
+        // position: relative;
+        height: 20px;
+        left: 5px;
+        // bottom: -16px;
         margin: -8px 0;
       }
 
@@ -204,7 +218,7 @@
 
     &Desktop {
       align-self: initial;
-      // margin-top: 30px;
+      margin-top: 10px;
     }
   }
 }

@@ -39,7 +39,9 @@ export const Header: React.FC = () => {
   return (
     <header className={Styles.header}>
       <div className={Styles.wrapper}>
-        <img src={logoIcon} alt='Лого' />
+        <a href='/'>
+          <img src={logoIcon} alt='Лого' />
+        </a>
         <ul className={Styles.list}>
           {tempLink?.map((item) => {
             return (

@@ -12,15 +12,18 @@ import insta from '@icons/insta-icon.png'
 import tg from '@icons/telegram-icon.png'
 import facebook from '@icons/facebook-icon.png'
 import RU from '../../../assets/images/flag-ru.svg'
+import { useHistory } from 'react-router'
 
 export const HeaderMobile: React.FC = () => {
   const [burgerOpen, setBurgerOpen] = useState(false)
+  const history = useHistory()
   const closeBurger = () => {
     setBurgerOpen(false)
   }
   const openBurger = () => {
     setBurgerOpen(true)
   }
+
   const burgerStyles = `${burgerOpen ? Styles.burgerMenuOpened : Styles.burgerMenuClosed}`
   const tempLink = [
     { id: 1, value: 'Что такое Limcore?', link: 'main', spy: true, smooth: true },
@@ -33,16 +36,16 @@ export const HeaderMobile: React.FC = () => {
     <header className={Styles.header}>
       <img className={Styles.logo} src={logoIcon} alt='Лого' />
       <div className={Styles.wrap}>
-        <Link to='auth'>
+        <a onClick={() => history.push('/auth')}>
           <img src={userIcon} alt='Иконка' />
-        </Link>
+        </a>
         <div className={Styles.burger} onClick={openBurger}>
           <span className={Styles.row}>{}</span>
           <span className={Styles.row}>{}</span>
           <span className={Styles.row}>{}</span>
         </div>
         <div className={burgerStyles}>
-          <Container title=''>
+          <Container title='' onClick={closeBurger}>
             <img className={Styles.logoInOpenBurger} src={logoIcon} alt='Лого' />
             <ul className={Styles.list}>
               {tempLink?.map((item) => {
@@ -102,7 +105,7 @@ export const HeaderMobile: React.FC = () => {
               </li>
             </ul>
             <div className={Styles.group}>
-              <p className={Styles.email}>info@limcore.io</p>
+              <p className={Styles.email}>info@limcore.com</p>
               <div className={Styles.languageGroup}>
                 <img className={Styles.languageIcon} src={RU} alt='RU' />
                 <p className={Styles.language}>RU</p>

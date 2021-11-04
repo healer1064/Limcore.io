@@ -21,6 +21,7 @@ import buyIcon from '@icons/buy.svg'
 import sellIcon from '@icons/sell.svg'
 import tradeIcon from '@icons/trade.svg'
 import { Modal } from './components/Modal'
+import { ModalHeader } from './components/ModalHeader'
 
 export const PurseMobile: FC = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
@@ -95,36 +96,69 @@ export const PurseMobile: FC = () => {
   return (
     <div className={styles.purse}>
       {viewContent === 'balance' && (
-        <Container title='Баланс LIMC' onClick={closePopup}>
-          <div className={styles.block}>
-            <div className={styles.line}>
-              <img src={limcoreIcon} alt='' />
-              <span className={styles.title}>{limcBalance} LIMC</span>
-            </div>
-            <span className={styles.usd}>$0</span>
-            <div className={styles.items}>
-              <div className={`${styles.item} ${styles.item_active}`} onClick={() => setViewContent('buy')}>
-                <img className={styles.icon} src={buyIcon} alt='' />
-                <span>Купить</span>
+        <Modal active={viewContent === 'balance'} classname={styles.balanceModal} setActive={closePopup}>
+          <ModalHeader title='LIMC' onClick={closePopup} />
+          <div className={styles.balanceBlock}>
+            <div className={styles.block}>
+              <div className={styles.line}>
+                <img src={limcoreIcon} alt='' />
+                <span className={styles.title}>{limcBalance} LIMC</span>
               </div>
-              <div className={styles.item}>
-                <img className={styles.icon} src={sellIcon} alt='' />
-                <span>Продать</span>
+              <span className={styles.usd}>$0</span>
+              <div className={styles.items}>
+                <div className={`${styles.item} ${styles.item_active}`} onClick={() => setViewContent('buy')}>
+                  <img className={styles.icon} src={buyIcon} alt='' />
+                  <span>Купить</span>
+                </div>
+                <div className={styles.item}>
+                  <img className={styles.icon} src={sellIcon} alt='' />
+                  <span>Продать</span>
+                </div>
+                <div className={styles.item}>
+                  <img className={styles.icon} src={tradeIcon} alt='' />
+                  <span>Обменять</span>
+                </div>
               </div>
-              <div className={styles.item}>
-                <img className={styles.icon} src={tradeIcon} alt='' />
-                <span>Обменять</span>
+              <div className={styles.container}>
+                <span className={styles.trans}>Транзакции</span>
+                <span className={styles.desc}>
+                  У вас еще нет транзакций. Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
+                </span>
               </div>
+              <ButtonBig className={styles.next}>Перейти к заполнению</ButtonBig>
             </div>
-            <div className={styles.container}>
-              <span className={styles.trans}>Транзакции</span>
-              <span className={styles.desc}>
-                У вас еще нет транзакций. Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
-              </span>
-            </div>
-            <ButtonBig className={styles.next}>Перейти к заполнению</ButtonBig>
           </div>
-        </Container>
+        </Modal>
+        // <Container title='Баланс LIMC' onClick={closePopup}>
+        //   <div className={styles.block}>
+        //     <div className={styles.line}>
+        //       <img src={limcoreIcon} alt='' />
+        //       <span className={styles.title}>{limcBalance} LIMC</span>
+        //     </div>
+        //     <span className={styles.usd}>$0</span>
+        //     <div className={styles.items}>
+        //       <div className={`${styles.item} ${styles.item_active}`} onClick={() => setViewContent('buy')}>
+        //         <img className={styles.icon} src={buyIcon} alt='' />
+        //         <span>Купить</span>
+        //       </div>
+        //       <div className={styles.item}>
+        //         <img className={styles.icon} src={sellIcon} alt='' />
+        //         <span>Продать</span>
+        //       </div>
+        //       <div className={styles.item}>
+        //         <img className={styles.icon} src={tradeIcon} alt='' />
+        //         <span>Обменять</span>
+        //       </div>
+        //     </div>
+        //     <div className={styles.container}>
+        //       <span className={styles.trans}>Транзакции</span>
+        //       <span className={styles.desc}>
+        //         У вас еще нет транзакций. Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
+        //       </span>
+        //     </div>
+        //     <ButtonBig className={styles.next}>Перейти к заполнению</ButtonBig>
+        //   </div>
+        // </Container>
       )}
       {viewContent === 'buy' && (
         <Container title='Покупка LIMC' onClick={closePopup}>

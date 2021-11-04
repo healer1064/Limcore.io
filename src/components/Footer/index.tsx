@@ -129,11 +129,11 @@ export const Footer: React.FC = () => {
           </ul>
           <p className={Styles.footer__email}>info@limcore.io</p>
           <ul className={Styles.footer__social}>
-            <li>
+            {/* <li>
               <a href='https://twitter.com' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
                 <img src={twitter} className={Styles.footer__socialIcon} />
               </a>
-            </li>
+            </li> */}
             <li>
               {/* <a */}
               {/*  href='https://www.linkedin.com' */}
@@ -152,11 +152,11 @@ export const Footer: React.FC = () => {
                 <img src={youTube} className={Styles.footer__YouTubeIcon} />
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href='https://vk.com/' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
                 <img src={vk} className={Styles.footer__socialIcon} />
               </a>
-            </li>
+            </li> */}
             <li>
               <a
                 href='https://instagram.com/limcore.io?utm_medium=copy_link'
@@ -172,7 +172,7 @@ export const Footer: React.FC = () => {
                 <img src={tg} className={Styles.footer__socialIcon} />
               </a>
             </li>
-            <li>
+            {/* <li>
               <a
                 href='https://ru-ru.facebook.com/'
                 target='blank'
@@ -181,7 +181,7 @@ export const Footer: React.FC = () => {
               >
                 <img src={facebook} className={Styles.footer__socialIcon} />
               </a>
-            </li>
+            </li> */}
           </ul>
           <p className={Styles.footer__copyright}>
             &copy;
