@@ -11,7 +11,7 @@ import vk from '@icons/vk-icon.png'
 import insta from '@icons/insta-icon.png'
 import tg from '@icons/telegram-icon.png'
 import facebook from '@icons/facebook-icon.png'
-import RU from '../../../assets/images/flag-ru.png'
+import RU from '../../../assets/images/flag-ru.svg'
 
 export const HeaderMobile: React.FC = () => {
   const [burgerOpen, setBurgerOpen] = useState(false)

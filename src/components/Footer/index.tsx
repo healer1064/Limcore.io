@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Styles from './styles.module.scss'
 
 // import logo from '../../assets/icons/LimLogo.png'
 // import logo from '../../assets/icons/FooterLogo.svg'
-import RU from '../../assets/images/flag-ru.png'
+import RU from '../../assets/images/flag-ru.svg'
+import EN from '../../assets/images/flag-en.svg'
 import arrow from '../../assets/icons/grey-arrow-down.png'
 import twitter from '../../assets/icons/twitter-icon.png'
 import linkedIn from '../../assets/icons/linkedIn-icon.png'
@@ -15,6 +16,11 @@ import youTube from '../../assets/icons/SF Symbol/play.fill.svg'
 import { FooterLogo } from '@components/Footer/components/FooterLogo'
 
 export const Footer: React.FC = () => {
+  const [lang, setLang] = useState('RU')
+  const langHandler = (e) => {
+    setLang(e.target.value)
+  }
+
   return (
     <footer className={Styles.footer}>
       <div className={Styles.wrapper}>
@@ -22,9 +28,15 @@ export const Footer: React.FC = () => {
           {/* <img src={logo} alt='Logo' className={Styles.logo} /> */}
           <FooterLogo />
           <div className={Styles.footer__languageGroup}>
-            <img className={Styles.footer__languageIcon} src={RU} alt='RU' />
-            <p className={Styles.footer__language}>RU</p>
-            {/* <img className={Styles.footer__languageArrow} src={arrow} alt='Arrow-button' /> */}
+            {lang === 'RU' ? (
+              <img className={Styles.footer__languageIcon} src={RU} alt='RU' />
+            ) : (
+              <img className={Styles.footer__languageIcon} src={EN} alt='EN' />
+            )}
+            <select className={Styles.footer__language} value={lang} onChange={langHandler}>
+              <option value='RU'>RU</option>
+              <option value='EN'>EN</option>
+            </select>
           </div>
           <ul className={`${Styles.footer__etc} ${Styles.footer__list}`}>
             <h3 className={`${Styles.footer_listTitle} ${Styles.footer__listTitle_etcTitle}`}>Прочее</h3>
@@ -36,9 +48,9 @@ export const Footer: React.FC = () => {
               </li>
               <li className={Styles.footer__listItem}>
                 <a
-                  href='../../assets/docs/buklet.pdf'
-                  download
-                  target='blank'
+                  href='/docs/buklet.pdf'
+                  // download
+                  target='_blank'
                   rel='noopener noreferrer'
                   className={Styles.footer__link}
                 >
@@ -50,21 +62,15 @@ export const Footer: React.FC = () => {
           <ul className={`${Styles.footer__information} ${Styles.footer__list}`}>
             <h3 className={Styles.footer_listTitle}>Раскрытие информации</h3>
             <li className={Styles.footer__listItem}>
-              <a
-                href='../../assets/docs/rf.zip'
-                download
-                target='blank'
-                rel='noopener noreferrer'
-                className={Styles.footer__link}
-              >
+              <a href='/docs/rf.zip' download target='_blank' rel='noopener noreferrer' className={Styles.footer__link}>
                 Учредительные документы РФ
               </a>
             </li>
             <li className={Styles.footer__listItem}>
               <a
-                target='blank'
+                target='_blank'
                 rel='noopener noreferrer'
-                href='../../assets/docs/round1.zip'
+                href='/docs/round1.zip'
                 download
                 className={Styles.footer__link}
               >
@@ -72,7 +78,7 @@ export const Footer: React.FC = () => {
               </a>
             </li>
             <li className={Styles.footer__listItem}>
-              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
+              <a href='#' target='_blank' rel='noopener noreferrer' className={Styles.footer__link}>
                 Страхование оборудования
               </a>
             </li>
