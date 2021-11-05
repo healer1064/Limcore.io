@@ -186,16 +186,13 @@ const Form: FC = () => {
   }
 
   const onRegistrationEmail = async (email) => {
-    const response = await dispatch(registerUserEmail({ email })) // придет unique_identifier
+    const response = await dispatch(registerUserEmail({ email, unique_identifier: uniqueId }))
     console.log(response)
     if (response.error) {
       setRegEmailError(true)
       setTimeout(() => {
         setRegEmailError(false)
       }, 2000)
-    } else {
-      const id = response.payload?.data.unique_identifier || null
-      setUniqueId(id)
     }
   }
 
@@ -205,6 +202,7 @@ const Form: FC = () => {
       code: numberCode,
       unique_identifier: uniqueId,
     }
+    console.log(data)
     dispatch(registerUserEmailConfirmation(data))
     // dispatch(getJwtToken(data))
     history.push('/auth')

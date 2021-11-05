@@ -163,6 +163,28 @@ $barProportion: calc(0 / 80000 * 100%);
   }
 }
 
+.secondLink {
+  background: #4A70F8;
+  border-radius: 14px;
+  border: 1px solid #4a70f8;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: white;
+  padding: 14px 0;
+  width: 285px;
+  cursor: pointer;
+  transition: background .3s ease;
+
+  &:hover {
+    background: #3159E9;
+    transition: background .3s ease;
+  }
+}
+
 .button {
   width: 285px;
 }

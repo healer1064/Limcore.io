@@ -4,6 +4,7 @@ import Styles from './styles.module.scss'
 import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
 import { PopupMainPage } from '../PopupMainPage'
 import PopupStyles from '../PopupMainPage/styles.module.scss'
+import { Link } from 'react-scroll'
 
 import limcoreIcon from '@icons/limcore.svg'
 import { InfoIcon } from '@icons/InfoIcon'
@@ -24,6 +25,36 @@ export const MainRounds: React.FC = () => {
   const history = useHistory()
   const { width } = useWindowSize()
   const desktop = width >= 768
+
+  // x =18 по мск
+  // y = разница с мск
+  // z = x + y - во сколько по местному времени должен сработать таймер
+  // T = z - date.now()  - остаток времени до истечения таймера ( z нужно перевести в милисекунды)
+  // кидаем T в счетчик в милисекундах    1580518923000 // Timestamp in milliseconds
+
+  const date = new Date()
+
+  const x = 18
+  const y = Math.abs(date.getTimezoneOffset() / 60) - 3 // разница с мск, можно взять пояс чела и с +3 ковырнуть
+  const z = new Date(2021, 10, 5, x + y, 0, 0, 0) // время в которое срабатывает таймер
+
+  // console.log(`y = ${y}`)
+  // console.log(`z = ${z}`)
+  // console.log(`T = ${T}`)
+
+  // const date = new Date()
+  // let day = '05'
+  // let local = Math.abs(date.getTimezoneOffset() / 60)
+  // console.log(`local - ${local}`)
+  // let resultHour = 15 + local
+  // нужна разница между его временем и временем по мск
+
+  // if (resultHour > 23) {
+  //   local = 3
+  //   resultHour = 15 + local
+  //   day = '06'
+  // }
+  // console.log(`resultHour - ${resultHour}`)
 
   const closePopup = () => {
     setPopupOpen(false)
@@ -47,7 +78,9 @@ export const MainRounds: React.FC = () => {
         </div>
         <p className={Styles.temporarily}>Запуск сайта и начало Round 1 продаж токена LIMC</p>
         <p className={Styles.temporarily}>
-          <Countdown date='2021-11-05T18:00:00' />
+          {/* <Countdown date={`2021-11-05T${resultHour}:00:00`} /> */}
+          {/* <Countdown date={`2021-11-${day}T${resultHour}:00:00`} /> */}
+          <Countdown date={z} />
         </p>
         <ul className={Styles.list}>
           <li className={Styles.item}>
@@ -78,12 +111,7 @@ export const MainRounds: React.FC = () => {
             {limcCount} / {limcLimit}
           </span>
         </div>
-        <a
-          target='blank'
-          rel='noopener noreferrer'
-          className={Styles.etherscanLink}
-          href='https://etherscan.io/address/0x3cba6aa21ef433347c27864035f711a9fd4a3eed'
-        >
+        <a target='blank' rel='noopener noreferrer' className={Styles.etherscanLink} href='https://etherscan.io'>
           <img className={Styles.etherscanIcon} src={etherscanIcon} alt='Иконка' />
           <span className={Styles.etherscan}>Etherscan</span>
         </a>
@@ -99,7 +127,9 @@ export const MainRounds: React.FC = () => {
           {desktop && <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />}
         </div>
         <div className={Styles.column}>
-          <ButtonBig className={Styles.button}>Калькулятор доходности</ButtonBig>
+          <Link to='calc' spy smooth className={Styles.secondLink}>
+            Калькулятор доходности
+          </Link>
         </div>
       </div>
       <div className={Styles.roadContainer}>
