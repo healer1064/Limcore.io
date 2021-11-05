@@ -5,6 +5,7 @@ import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
 import { PopupMainPage } from '../PopupMainPage'
 import PopupStyles from '../PopupMainPage/styles.module.scss'
 import { Link } from 'react-scroll'
+import TGIcon from '@icons/TGIcon.svg'
 
 import limcoreIcon from '@icons/limcore.svg'
 import { InfoIcon } from '@icons/InfoIcon'
@@ -14,7 +15,7 @@ import { useHistory } from 'react-router'
 import ModalAuth from '../../../../../../pages/landing/components/ModalAuth'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice'
-import Countdown from 'react-countdown'
+// import Countdown from 'react-countdown'
 
 export const MainRounds: React.FC = () => {
   const limcCount = useAppSelector((state) => state.wallet.limcCount)
@@ -76,12 +77,8 @@ export const MainRounds: React.FC = () => {
         <div className={Styles.wrap}>
           <span className={Styles.name}>Раунд №1</span>
         </div>
-        <p className={Styles.temporarily}>Запуск сайта и начало Round 1 продаж токена LIMC</p>
-        <p className={Styles.temporarily}>
-          {/* <Countdown date={`2021-11-05T${resultHour}:00:00`} /> */}
-          {/* <Countdown date={`2021-11-${day}T${resultHour}:00:00`} /> */}
-          <Countdown date={z} />
-        </p>
+        {/* <p className={Styles.temporarily}>Открываемся 5 ноября 2021г.</p>
+        <p className={Styles.temporarily}>Сайт в процессе разработки</p> */}
         <ul className={Styles.list}>
           <li className={Styles.item}>
             <span className={Styles.designation}>Лимит</span>
@@ -105,31 +102,27 @@ export const MainRounds: React.FC = () => {
         </p>
       </PopupMainPage>
       <div className={Styles.container}>
-        <div className={Styles.progress}>
+        {/* <div className={Styles.progress}>
           <span className={Styles.bar}>{}</span>
           <span className={Styles.count}>
             {limcCount} / {limcLimit}
           </span>
-        </div>
-        <a target='blank' rel='noopener noreferrer' className={Styles.etherscanLink} href='https://etherscan.io'>
+        </div> */}
+        {/* <a target='blank' rel='noopener noreferrer' className={Styles.etherscanLink} href='https://etherscan.io'>
           <img className={Styles.etherscanIcon} src={etherscanIcon} alt='Иконка' />
           <span className={Styles.etherscan}>Etherscan</span>
-        </a>
+        </a> */}
       </div>
-      <div className={Styles.buttons}>
-        <div className={Styles.column}>
-          {/* TODO DELETE DISABLED */}
-          <button className={Styles.second} disabled onClick={handleLoginModalOpen}>
-            Купить LIMC
-          </button>
-          <span>Lock-up период 6 месяцев</span>
-
-          {desktop && <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />}
-        </div>
-        <div className={Styles.column}>
-          <Link to='calc' spy smooth className={Styles.secondLink}>
-            Калькулятор доходности
-          </Link>
+      <div className={Styles.tempDeclaration}>
+        <h4 className={Styles.tempDeclaration__title}>Старт продаж состоится 15 ноября в 00:01 по МСК</h4>
+        <div>
+          <p className={Styles.tempDeclaration__paragraph}>Следите за новостями в нашей группе в Telegram</p>
+          <div>
+            <img className={Styles.tempDeclaration__icon} src={TGIcon} alt='telegram_icon' />
+            <a className={Styles.tempDeclaration__link} href='https://t.me/limc_russ' target='_blank' rel='noreferrer'>
+              @limc_russ
+            </a>
+          </div>
         </div>
       </div>
       <div className={Styles.roadContainer}>

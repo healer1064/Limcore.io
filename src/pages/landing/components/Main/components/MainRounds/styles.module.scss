@@ -11,7 +11,7 @@ $barProportion: calc(0 / 80000 * 100%);
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
-  color: #4A70F8;
+  color: #4a70f8;
 }
 
 .etherscanIcon {
@@ -155,16 +155,16 @@ $barProportion: calc(0 / 80000 * 100%);
   padding: 14px 0;
   width: 285px;
   cursor: pointer;
-  transition: background .3s ease;
+  transition: background 0.3s ease;
 
   &:hover {
-    background: #E8F1FF;
-    transition: background .3s ease;
+    background: #e8f1ff;
+    transition: background 0.3s ease;
   }
 }
 
 .secondLink {
-  background: #4A70F8;
+  background: #4a70f8;
   border-radius: 14px;
   border: 1px solid #4a70f8;
   font-family: Montserrat;
@@ -177,11 +177,11 @@ $barProportion: calc(0 / 80000 * 100%);
   padding: 14px 0;
   width: 285px;
   cursor: pointer;
-  transition: background .3s ease;
+  transition: background 0.3s ease;
 
   &:hover {
-    background: #3159E9;
-    transition: background .3s ease;
+    background: #3159e9;
+    transition: background 0.3s ease;
   }
 }
 
@@ -526,6 +526,63 @@ $barProportion: calc(0 / 80000 * 100%);
       border-top: 2px solid #4a70f8;
       border-left: 4px solid #4a70f8;
       border-bottom: 2px solid #4a70f8;
+    }
+  }
+}
+
+.tempDeclaration {
+  background: #ffffff;
+  box-shadow: 0px 4px 25px rgba(74, 112, 248, 0.08);
+  border-radius: 14px;
+  padding: 29px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 42px 0 32px;
+  & div {
+    display: flex;
+    flex-wrap: wrap;
+    & div {
+      display: flex;
+      align-items: center;
+    }
+  }
+  &__title {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 150%;
+    color: #3a3b3d;
+    margin: 0;
+    margin-bottom: 5px;
+  }
+  &__paragraph {
+    margin: 0;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: #4c4c4c;
+    margin-right: 11px;
+  }
+  &__icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+  }
+  &__link {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    color: #4a70f8;
+    text-decoration: none;
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
     }
   }
 }

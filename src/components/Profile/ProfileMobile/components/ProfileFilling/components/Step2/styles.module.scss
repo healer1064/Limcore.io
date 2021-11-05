@@ -75,6 +75,7 @@
 .form {
   display: flex;
   flex-direction: column;
+  gap: 15px;
 }
 
 .wrapper {
@@ -89,12 +90,8 @@
   }
 }
 
-.label {
-  margin-bottom: 20px;
-}
-
 .edit {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .block {

@@ -62,20 +62,21 @@
     font-size: 16px;
     line-height: 160%;
     color: #4f535a;
-    margin-right: 12px;
+
+    svg {
+      margin-left: 6px;
+    }
   }
 }
 
 .item_active {
-  padding-left: 20px;
-
   span {
     font-weight: 600;
-  }
 
-  svg {
-    path {
-      stroke: #4a70f8;
+    svg {
+      path {
+        stroke: #4a70f8;
+      }
     }
   }
 }

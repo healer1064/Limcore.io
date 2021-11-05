@@ -24,7 +24,12 @@ export const Media: React.FC = () => {
                   LIMC и любовь к стране
                 </p>
                 <div className={Styles.row}>
-                  <a className={Styles.link} href='/'>
+                  <a
+                    className={Styles.link}
+                    target='_blank'
+                    href='https://blockchain-life.com/europe/ru/news/kak-dobyvaetsya-kriptovalyuta-v-rossii/'
+                    rel='noreferrer'
+                  >
                     Blockchain Life
                   </a>
                   <span className={Styles.date}>24.09.2021</span>

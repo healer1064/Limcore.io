@@ -9,13 +9,33 @@ export const authorizationUserEmail: any = createAsyncThunk('auth/authorizationU
 })
 
 export const registerUserEmail: any = createAsyncThunk('auth/registerUserEmail', async function (data) {
-  const response = await api.post('users/registration/email/', data)
-  return response
+  try {
+    const response = await api.post('users/registration/email/', data)
+    return response
+  } catch (error) {
+    const customError = {
+      name: 'Custom axios error',
+      message: error.response.data.code_error,
+      data: error.response.data,
+    }
+
+    throw customError
+  }
 })
 
 export const registerUserPhone: any = createAsyncThunk('auth/registerUserPhone', async function (data) {
-  const response = await api.post('users/registration/phone/', data)
-  return response
+  try {
+    const response = await api.post('users/registration/phone/', data)
+    return response
+  } catch (error) {
+    const customError = {
+      name: 'Custom axios error',
+      message: error.response.data.code_error,
+      data: error.response.data,
+    }
+
+    throw customError
+  }
 })
 
 export const registerUserEmailConfirmation: any = createAsyncThunk(
@@ -117,15 +137,26 @@ export const authSlice = createSlice({
     //   state.uniqueId = action.payload.data.unique_identifier
     // },
     [registerUserPhone.fulfilled]: (state, action) => {
-      console.log('action', action)
+      console.log('fulfilled!!!', action)
       state.uniqueId = action.payload.data.unique_identifier
+    },
+    [registerUserPhone.rejected]: (state, action) => {
+      console.log('rejected!!!', action)
     },
     [registerUserEmailConfirmation.fulfilled]: (state) => {
       state.isAuth = !state.isAuth
     },
     [registerUserPhoneConfirmation.fulfilled]: (state, action) => {
-      // state.isAuth = !state.isAuth
-      console.log(action)
+      const data = { ...action.payload.data }
+      localStorage.setItem('jwtToken', JSON.stringify(data))
+      const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
+      const token = tokenObj.access
+      if (action.payload.status === 200) {
+        state.isAuth = true
+        api.setUserToken(token)
+      } else {
+        api.setUserToken('')
+      }
     },
     [authorizationUserEmailConfirmation.fulfilled]: (state) => {
       state.isAuth = !state.isAuth

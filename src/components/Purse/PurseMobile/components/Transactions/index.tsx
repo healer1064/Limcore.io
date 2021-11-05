@@ -52,9 +52,11 @@ export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTra
         У вас еще нет транзакций. <br />
         Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
       </p>
-      <button type='button' className={styles.transactions__profileButton} onClick={onProfileClick}>
-        Перейти к заполнению
-      </button>
+      <div className={styles.transactions__cont}>
+        <button type='button' className={styles.transactions__profileButton} onClick={onProfileClick}>
+          Перейти к заполнению
+        </button>
+      </div>
       {/* {isUserHasTransactions ? (
         <UserHasTransactions data={tempDataForTransactions} />
       ) : (
