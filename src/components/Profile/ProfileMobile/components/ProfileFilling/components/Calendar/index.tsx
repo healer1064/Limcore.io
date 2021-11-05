@@ -105,8 +105,8 @@ export const Calendar: React.FC<CalendarProps> = ({ closePopup, dataType }) => {
 
     setDay(day)
 
-    const stringDay = day > 10 ? day : `0${day}`
-    const stringMonth = month > 10 ? month : `0${month}`
+    const stringDay = day >= 10 ? day : `0${day}`
+    const stringMonth = month >= 10 ? month : `0${month}`
 
     const dateString = `${year}-${stringMonth}-${stringDay}`
 
