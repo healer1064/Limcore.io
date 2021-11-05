@@ -64,17 +64,23 @@ export const checkToken: any = createAsyncThunk('auth/checkToken', async functio
   return response
 })
 
+export const getTransactions: any = createAsyncThunk('auth/getTransactions', async function () {
+  const response = await api.get('api/v1/transactions/')
+  return response
+})
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
     processType: Process.Authorization,
     authStep: Auth.Step1,
-    authMethod: Method.Email,
+    authMethod: Method.Phone,
     '2FA': true,
     confirmationEmail: { code: '', unique_identifier: '' },
     isAuth: false,
     isBuyLimcClick: false,
     uniqueId: '',
+    transactions: [],
   },
   reducers: {
     setProcessType: (state, { payload }) => {
@@ -141,6 +147,9 @@ export const authSlice = createSlice({
       } else {
         api.setUserToken('')
       }
+    },
+    [getTransactions.fulfilled]: (state, { payload }) => {
+      state.transactions = payload
     },
   },
 })

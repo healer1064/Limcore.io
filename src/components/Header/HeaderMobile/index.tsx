@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-scroll'
+import { Link as LinkDom } from 'react-router-dom'
 import Styles from './styles.module.scss'
 
 import logoIcon from '@icons/logo.svg'
@@ -12,13 +13,15 @@ import insta from '@icons/insta-icon.png'
 import tg from '@icons/telegram-icon.png'
 import facebook from '@icons/facebook-icon.png'
 import RU from '../../../assets/images/flag-ru.svg'
-import { useHistory } from 'react-router'
+import { useHistory, useLocation } from 'react-router'
 import { useAppSelector } from '@app/redux/hooks'
+import close from '@icons/close.svg'
 
 export const HeaderMobile: React.FC = () => {
   const [burgerOpen, setBurgerOpen] = useState(false)
   const isAuth = useAppSelector((state) => state.auth.isAuth)
   const history = useHistory()
+  const location = useLocation()
   const closeBurger = () => {
     setBurgerOpen(false)
   }
@@ -38,16 +41,22 @@ export const HeaderMobile: React.FC = () => {
     <header className={Styles.header}>
       <img className={Styles.logo} src={logoIcon} alt='Лого' />
       <div className={Styles.wrap}>
-        {!isAuth && (
+        {!isAuth && location.pathname !== '/auth' && (
           <a onClick={() => {}}>
             <img src={userIcon} alt='Иконка' />
           </a>
         )}
-        <div className={Styles.burger} onClick={openBurger}>
-          <span className={Styles.row}>{}</span>
-          <span className={Styles.row}>{}</span>
-          <span className={Styles.row}>{}</span>
-        </div>
+        {location.pathname === '/auth' ? (
+          <LinkDom to='/'>
+            <img src={close} alt='close' />
+          </LinkDom>
+        ) : (
+          <div className={Styles.burger} onClick={openBurger}>
+            <span className={Styles.row}>{}</span>
+            <span className={Styles.row}>{}</span>
+            <span className={Styles.row}>{}</span>
+          </div>
+        )}
         <div className={burgerStyles}>
           <Container title='' onClose={closeBurger}>
             <img className={Styles.logoInOpenBurger} src={logoIcon} alt='Лого' />
