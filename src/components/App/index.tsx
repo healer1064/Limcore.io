@@ -73,8 +73,8 @@ const App = () => {
             {!isAuth && (
               <Switch>
                 <Route path='/' exact component={LandingPage} />
-                <Route path='/auth' exact component={AuthPage} />
-                <Route path='/profile' exact component={ProfileMobile} />
+                {/* <Route path='/auth' exact component={AuthPage} /> */}
+                {/* <Route path='/profile' exact component={ProfileMobile} /> */}
                 {/* <Route path='/auth' exact component={AuthMobile} /> */}
                 <Route path='/not-found' exact component={PageNotFount} />
                 <Route path='*'>
@@ -85,15 +85,16 @@ const App = () => {
                 <ProtectedRoute allowedUsersTypes={[USER_ROlES.user]} path='/orders' exact component={OrdersPage} /> */}
               </Switch>
             )}
-            {isAuth && (
-              <Switch>
-                <Route path='/' exact component={PurseMobile} />
-                <Route path='/chat' exact component={Dummy} />
-                <Route path='/broadcasts' exact component={BroadcastsMobile} />
-                <Route path='/profile' exact component={ProfileMobile} />
-                <Route path='/buy' exact component={BuyPage} />
-              </Switch>
-            )}
+            {
+              isAuth && null
+              // <Switch>
+              //   <Route path='/' exact component={PurseMobile} />
+              //   <Route path='/chat' exact component={Dummy} />
+              //   <Route path='/broadcasts' exact component={BroadcastsMobile} />
+              //   <Route path='/profile' exact component={ProfileMobile} />
+              //   <Route path='/buy' exact component={BuyPage} />
+              // </Switch>
+            }
           </main>
         </>
         {isAuth && <FooterMobile />}

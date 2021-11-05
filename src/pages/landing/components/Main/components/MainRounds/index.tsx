@@ -5,6 +5,7 @@ import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
 import { PopupMainPage } from '../PopupMainPage'
 import PopupStyles from '../PopupMainPage/styles.module.scss'
 import { Link } from 'react-scroll'
+import TGIcon from '@icons/TGIcon.svg'
 
 import limcoreIcon from '@icons/limcore.svg'
 import { InfoIcon } from '@icons/InfoIcon'
@@ -45,8 +46,8 @@ export const MainRounds: React.FC = () => {
         <div className={Styles.wrap}>
           <span className={Styles.name}>Раунд №1</span>
         </div>
-        <p className={Styles.temporarily}>Открываемся 5 ноября 2021г.</p>
-        <p className={Styles.temporarily}>Сайт в процессе разработки</p>
+        {/* <p className={Styles.temporarily}>Открываемся 5 ноября 2021г.</p>
+        <p className={Styles.temporarily}>Сайт в процессе разработки</p> */}
         <ul className={Styles.list}>
           <li className={Styles.item}>
             <span className={Styles.designation}>Лимит</span>
@@ -70,18 +71,30 @@ export const MainRounds: React.FC = () => {
         </p>
       </PopupMainPage>
       <div className={Styles.container}>
-        <div className={Styles.progress}>
+        {/* <div className={Styles.progress}>
           <span className={Styles.bar}>{}</span>
           <span className={Styles.count}>
             {limcCount} / {limcLimit}
           </span>
-        </div>
-        <a target='blank' rel='noopener noreferrer' className={Styles.etherscanLink} href='https://etherscan.io'>
+        </div> */}
+        {/* <a target='blank' rel='noopener noreferrer' className={Styles.etherscanLink} href='https://etherscan.io'>
           <img className={Styles.etherscanIcon} src={etherscanIcon} alt='Иконка' />
           <span className={Styles.etherscan}>Etherscan</span>
-        </a>
+        </a> */}
       </div>
-      <div className={Styles.buttons}>
+      <div className={Styles.tempDeclaration}>
+        <h4 className={Styles.tempDeclaration__title}>Старт продаж состоится 15 ноября в 00:01 по МСК</h4>
+        <div>
+          <p className={Styles.tempDeclaration__paragraph}>Следите за новостями в нашей группе в Telegram</p>
+          <div>
+            <img className={Styles.tempDeclaration__icon} src={TGIcon} alt='telegram_icon' />
+            <a className={Styles.tempDeclaration__link} href='https://t.me/limc_russ' target='_blank' rel='noreferrer'>
+              @limc_russ
+            </a>
+          </div>
+        </div>
+      </div>
+      {/* <div className={Styles.buttons}>
         <div className={Styles.column}>
           <button className={Styles.second} onClick={handleLoginModalOpen}>
             Купить LIMC
@@ -95,7 +108,7 @@ export const MainRounds: React.FC = () => {
             Калькулятор доходности
           </Link>
         </div>
-      </div>
+      </div> */}
       <div className={Styles.roadContainer}>
         <div className={Styles.emptyContainers}>
           <div className={Styles.emptyContainer_first} />

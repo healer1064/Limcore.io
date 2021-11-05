@@ -259,6 +259,10 @@
     height: 32px;
     margin: 0 10px 0 0;
     padding: 0;
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+    }
   }
 
   &__link {
@@ -319,6 +323,7 @@
 
   &:hover {
     cursor: pointer;
+    opacity: .8;
   }
 }
 
