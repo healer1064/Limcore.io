@@ -5,6 +5,7 @@ import Styles from './styles.module.scss'
 
 import logoIcon from '@icons/logo.svg'
 import userIcon from '@icons/user.svg'
+import logout from '@icons/logout.svg'
 import { Container } from '../../../components/Container'
 import twitter from '@icons/twitter-icon.png'
 import youTube from '@icons/SF Symbol/play.fill.svg'
@@ -14,7 +15,8 @@ import tg from '@icons/telegram-icon.png'
 import facebook from '@icons/facebook-icon.png'
 import RU from '../../../assets/images/flag-ru.svg'
 import { useHistory, useLocation } from 'react-router'
-import { useAppSelector } from '@app/redux/hooks'
+import { setIsAuth } from '../../../pages/auth/redux/auth.slice'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import close from '@icons/close.svg'
 
 export const HeaderMobile: React.FC = () => {
@@ -22,11 +24,18 @@ export const HeaderMobile: React.FC = () => {
   const isAuth = useAppSelector((state) => state.auth.isAuth)
   const history = useHistory()
   const location = useLocation()
+  const dispatch = useAppDispatch()
   const closeBurger = () => {
     setBurgerOpen(false)
   }
   const openBurger = () => {
     setBurgerOpen(true)
+  }
+  const onLogout = () => {
+    localStorage.clear()
+    dispatch(setIsAuth(false))
+    history.push('/')
+    window.location.reload()
   }
 
   const burgerStyles = `${burgerOpen ? Styles.burgerMenuOpened : Styles.burgerMenuClosed}`
@@ -46,6 +55,7 @@ export const HeaderMobile: React.FC = () => {
             <img src={userIcon} alt='Иконка' />
           </a>
         )}
+        {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null}
         {location.pathname === '/auth' ? (
           <LinkDom to='/'>
             <img src={close} alt='close' />
@@ -60,22 +70,24 @@ export const HeaderMobile: React.FC = () => {
         <div className={burgerStyles}>
           <Container title='' onClose={closeBurger}>
             <img className={Styles.logoInOpenBurger} src={logoIcon} alt='Лого' />
-            <ul className={Styles.list}>
-              {tempLink?.map((item) => {
-                return (
-                  <Link
-                    className={Styles.link}
-                    key={item.id}
-                    to={item.link}
-                    spy={item.spy}
-                    smooth={item.smooth}
-                    onClick={closeBurger}
-                  >
-                    {item.value}
-                  </Link>
-                )
-              })}
-            </ul>
+            {!isAuth ? (
+              <ul className={Styles.list}>
+                {tempLink?.map((item) => {
+                  return (
+                    <Link
+                      className={Styles.link}
+                      key={item.id}
+                      to={item.link}
+                      spy={item.spy}
+                      smooth={item.smooth}
+                      onClick={closeBurger}
+                    >
+                      {item.value}
+                    </Link>
+                  )
+                })}
+              </ul>
+            ) : null}
             <ul className={Styles.social}>
               <li>
                 <a href='https://twitter.com' target='blank' rel='noopener noreferrer'>
