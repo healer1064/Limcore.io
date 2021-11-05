@@ -56,17 +56,18 @@ export const HeaderMobile: React.FC = () => {
           </a>
         )}
         {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null}
-        {location.pathname === '/auth' ? (
-          <LinkDom to='/'>
-            <img src={close} alt='close' />
-          </LinkDom>
-        ) : (
-          <div className={Styles.burger} onClick={openBurger}>
-            <span className={Styles.row}>{}</span>
-            <span className={Styles.row}>{}</span>
-            <span className={Styles.row}>{}</span>
-          </div>
-        )}
+        {
+          location.pathname === '/auth' ? (
+            <LinkDom to='/'>
+              <img src={close} alt='close' />
+            </LinkDom>
+          ) : null
+          // <div className={Styles.burger} onClick={openBurger}>
+          //   <span className={Styles.row}>{}</span>
+          //   <span className={Styles.row}>{}</span>
+          //   <span className={Styles.row}>{}</span>
+          // </div>
+        }
         <div className={burgerStyles}>
           <Container title='' onClose={closeBurger}>
             <img className={Styles.logoInOpenBurger} src={logoIcon} alt='Лого' />
@@ -88,7 +89,7 @@ export const HeaderMobile: React.FC = () => {
                 })}
               </ul>
             ) : null}
-            <ul className={Styles.social}>
+            {/* <ul className={Styles.social}>
               <li>
                 <a href='https://twitter.com' target='blank' rel='noopener noreferrer'>
                   <img src={twitter} className={Styles.socialIcon} />
@@ -128,7 +129,7 @@ export const HeaderMobile: React.FC = () => {
                   <img src={facebook} className={Styles.socialIcon} />
                 </a>
               </li>
-            </ul>
+            </ul> */}
             <div className={Styles.group}>
               <p className={Styles.email}>info@limcore.com</p>
               <div className={Styles.languageGroup}>
