@@ -16,7 +16,7 @@ import { ToggleButton } from '../../../../../ui-kit/ToggleButton'
 
 export const AddAuth: React.FC = () => {
   const [change, setChange] = useState(false)
-  const [off, setOff] = useState(true)
+  const [off, setOff] = useState(false)
 
   const dispatch = useAppDispatch()
   const step = useAppSelector((state) => state.cabinet.step)
@@ -43,8 +43,8 @@ export const AddAuth: React.FC = () => {
           {step === 0 && (
             <>
               <div className={Styles.block}>
-                <span className={Styles.caption}>Подключить двухфакторную аутентификацию </span>
-                <span className={Styles.subcaption}>
+                <span className={Styles.caption}>Появится в ближайшее время </span>
+                {/* <span className={Styles.subcaption}>
                   При входе с незнакомого устройства, помимо пароля, мы будем запрашивать код для входа с помощью
                   приложения Google Authenticator
                 </span>
@@ -61,9 +61,11 @@ export const AddAuth: React.FC = () => {
                     Если вы измените номер телефона для двухфакторной аутентификации,он будет также автоматически
                     измененв разделе личной информации
                   </p>
-                </div>
+                </div> */}
               </div>
-              <ButtonBig onClick={() => nextStep(1)}>Подключить</ButtonBig>
+              <ButtonBig disabled onClick={() => nextStep(1)}>
+                Подключить
+              </ButtonBig>
             </>
           )}
           {step === 1 && <Step1 nextStep={nextStep} />}
