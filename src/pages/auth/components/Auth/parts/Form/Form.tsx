@@ -38,6 +38,7 @@ const Form: FC = () => {
   const [timeLeft, { start }] = useCountDown(initialTime, interval)
   const [opts, setOpts] = useState<any>({})
   const { ref, maskRef } = useIMask(opts)
+  const [error, setError] = useState('')
 
   // const [phone, setPhone] = useLocalStorage('phone', '')
   const [phone, setPhone] = useState('')
@@ -137,7 +138,13 @@ const Form: FC = () => {
     const newPhone = `+${phone}`
     console.log(newPhone)
     const response = await dispatch(registerUserPhone({ phone: newPhone })) // придет unique_identifier
+    console.log('response!!!', response)
+
     if (response.error) {
+      if (response.error.message === 'user_already_registered') {
+        setError('Пользователь уже зарегистрирован')
+      }
+
       setAuthNumberError(true)
       setTimeout(() => {
         setAuthNumberError(false)
@@ -187,12 +194,20 @@ const Form: FC = () => {
 
   const onRegistrationEmail = async (email) => {
     const response = await dispatch(registerUserEmail({ email, unique_identifier: uniqueId }))
-    console.log(response)
+    console.log('response!!!', response)
+
     if (response.error) {
+      if (response.error.message === 'user_already_registered') {
+        setError('Пользователь уже зарегистрирован')
+      }
+
+      setError('Что-то пошло не так, попробуйте еще раз.')
       setRegEmailError(true)
       setTimeout(() => {
         setRegEmailError(false)
       }, 2000)
+    } else {
+      dispatch(getAuthNextStep())
     }
   }
 
@@ -544,9 +559,7 @@ const Form: FC = () => {
                       </p> */}
                       <div className={styles.errorMsgCont} style={{ position: 'relative' }}>
                         {authNumberIsEmpty && <p className={mainStyles.errorMessage}>Введите номер правильно!</p>}
-                        {authNumberError && (
-                          <p className={mainStyles.errorMessage}>Что-то пошло не так, попробуйте еще раз.</p>
-                        )}
+                        {authNumberError && <p className={mainStyles.errorMessage}>{error}</p>}
                       </div>
                     </fieldset>
                     <Button
@@ -686,7 +699,6 @@ const Form: FC = () => {
               validationSchema={validationSchema}
               onSubmit={(values, { resetForm, setSubmitting }) => {
                 setEmail(maskRef.current.value)
-                dispatch(getAuthNextStep())
                 dispatch(setMethod(Method.Email))
 
                 setTimeout(() => {
@@ -723,7 +735,7 @@ const Form: FC = () => {
                     >
                       <ErrorMessage name='email' />
                     </p> */}
-                    {regEmailError && <p className={mainStyles.errorMessage}>Что-то пошло не так..</p>}
+                    {regEmailError && <p className={mainStyles.errorMessage}>{error}</p>}
                   </fieldset>
                   <Button
                     className={mainStyles.submit}
