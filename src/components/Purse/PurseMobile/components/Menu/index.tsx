@@ -4,9 +4,9 @@ import { balanceLimc, balanceUsdt, creditCard, plusSvg } from '../../images'
 import { MenuItem } from './components/MenuItem/index'
 import { useAppSelector } from '@app/redux/hooks'
 
-export const Menu = ({ openPopup }) => {
+export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtCloseClick, isUsdtInfoVisible }) => {
   // const [isLimcInfoVisible, setIsLimcInfoVisible] = useState(false)
-  const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
+  // const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
   const [isCardInfoVisible, setIsCardInfoVisible] = useState(false)
   const buttonPlusClass = `${styles.menu__item} ${styles.menu__buttonPlus}`
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
@@ -20,13 +20,13 @@ export const Menu = ({ openPopup }) => {
   //   setIsLimcInfoVisible(false)
   // }
 
-  const handleBalanceUsdtOpenClick = () => {
-    setIsUsdtInfoVisible(true)
-  }
+  // const handleBalanceUsdtOpenClick = () => {
+  //   setIsUsdtInfoVisible(true)
+  // }
 
-  const handleBalanceUsdtCloseClick = () => {
-    setIsUsdtInfoVisible(false)
-  }
+  // const handleBalanceUsdtCloseClick = () => {
+  //   setIsUsdtInfoVisible(false)
+  // }
 
   const handleBalanceCardOpenClick = () => {
     setIsCardInfoVisible(true)

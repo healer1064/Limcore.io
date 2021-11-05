@@ -32,19 +32,55 @@
 .text {
   font-family: 'Montserrat';
   font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
+  font-weight: 500;
+  font-size: 15px;
   line-height: 22px;
   color: #4f535a;
+
+  & > .price {
+    color: #4a70f8;
+    font-weight: 700;
+  }
+}
+
+.cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cont2 {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  width: 100%;
 }
 
 .button {
   margin-top: 10px;
 }
 
+.buyCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
 .buy {
+  margin: 0 auto 10px;
+  max-width: 500px;
   width: 100%;
   margin-top: 10px;
+}
+
+.buySubtitle {
+  width: fit-content;
+  margin: 0 auto;
+  font-size: 14px;
+  font-weight: 600;
+  color: #3a3b3d;
 }
 
 .block {
@@ -163,27 +199,67 @@
   color: #99a0ad;
 }
 
-.next {
-  background: none;
+.nextCont {
+  display: flex;
+  justify-content: center;
   width: 100%;
+}
+
+.next {
+  max-width: 500px;
+  width: 100%;
+  padding: 14px 0;
+  border: 1px solid #4a70f8;
+  border-radius: 14px;
+
+  font-family: 'Montserrat';
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  font-style: normal;
+  text-align: center;
+  
+  background: none;
   color: #4a70f8;
+
+  transition: color .3s ease, border .3s ease;
+    
+  &:hover {
+    color: #3159E9 !important;
+    border: 1px solid #3159E9 !important;    
+    background-color: none;
+    transition: color .3s ease, border .3s ease !important;
+  }
 }
 
 .errorModal {
-  margin: 0 auto;
+  // margin: 0 auto;
+  margin-top: 30px;
   padding: 17px 20px;
+  max-width: 500px;
   width: calc(100vw - 20px);
   height: 100%;
   border-radius: 14px;
 
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1;
   text-align: center;
   color: #fff;
 
-  transform: translateY(calc(-45vh + 12px));
+  // transform: translateY(calc(-45vh + 12px));
   background-color: #99A0AD;  
+
+  .errorSubtitle {
+    margin: 5px auto 0;
+    width: fit-content;
+    border-bottom: 2px solid #fff;
+
+    font-weight: 700;
+    color: #fff;
+
+    cursor: pointer;
+  }
 }
 
 .icon {

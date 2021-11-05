@@ -6,6 +6,7 @@ import InfoIcon from '../../images/Info/Info'
 import Accordion from '@material-ui/core/Accordion'
 import AccordionSummary from '@material-ui/core/AccordionSummary'
 import AccordionDetails from '@material-ui/core/AccordionDetails'
+import { useAppSelector } from '@app/redux/hooks'
 
 interface IStatisticsProps {
   onClick?: () => void
@@ -33,6 +34,7 @@ const AccordeonIcon = () => {
 }
 
 export const Statistics = ({ onClick }: IStatisticsProps) => {
+  const balanceLimc = useAppSelector((state) => state.wallet.sum_limc_balance)
   const [isTooltipVisible, setIsTooltipVisible] = useState(false)
 
   const handleTooltipClick = () => {
@@ -64,8 +66,8 @@ export const Statistics = ({ onClick }: IStatisticsProps) => {
         <span className={styles.progressbar__track} />
       </div>
       <div className={styles.details}>
-        <span className={styles.details__days}>осталось 4 дня из 60</span>
-        <span className={styles.details__memory}>120 TB / 2,000 TB</span>
+        <span className={styles.details__days}>осталось 80 дней из 80</span>
+        <span className={styles.details__memory}>0 TB / {balanceLimc} TB</span>
       </div>
 
       <Accordion>
@@ -74,9 +76,7 @@ export const Statistics = ({ onClick }: IStatisticsProps) => {
             Показать больше
           </button>
         </AccordionSummary>
-        <AccordionDetails>
-          <Table />
-        </AccordionDetails>
+        <AccordionDetails>{/* <Table /> */}</AccordionDetails>
       </Accordion>
     </div>
   )
