@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 // import { setIsAuth, checkToken } from '../../pages/auth/redux/auth.slice'
-import { checkToken } from '../../pages/auth/redux/auth.slice'
+import { checkToken, getTransactions } from '../../pages/auth/redux/auth.slice'
 
 // import { Footer } from '../Footer'
 import { FooterMobile } from '../Footer/FooterMobile'
@@ -59,6 +59,7 @@ const App = () => {
           dispatch(getLimcPrice())
           dispatch(getLimcAmount())
           dispatch(getUser())
+          dispatch(getTransactions())
         })
         .catch((err) => console.log('ERROR ===========+>>>>>>', err))
     }

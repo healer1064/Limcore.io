@@ -27,7 +27,8 @@ export const PurseMobile: FC = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
   const [isWalletVisible, setIsWalletVisible] = useState(true)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isLimcBought, setIsLimcBought] = useState(false)
+  // const [isLimcBought, setIsLimcBought] = useState(false)
+  const isLimcBought = useAppSelector((state) => state.auth.transactions)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isUserHasTransactions, setIsUserHasTransactions] = useState(true)
 
@@ -187,7 +188,11 @@ export const PurseMobile: FC = () => {
         <ButtonBig className={styles.buy} onClick={() => setViewContent('balance')}>
           Купить LIMC
         </ButtonBig>
-        {isLimcBought ? <StartMining onButtonClick={handleStartClick} /> : <Statistics onClick={handleShowMoreClick} />}
+        {isLimcBought?.length ? (
+          <StartMining onButtonClick={handleStartClick} />
+        ) : (
+          <Statistics onClick={handleShowMoreClick} />
+        )}
         <Details />
         {isWalletVisible && <Wallet onCloseClick={handleWalletCloseClick} />}
         <Transactions
