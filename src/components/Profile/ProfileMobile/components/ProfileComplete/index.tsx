@@ -33,7 +33,7 @@ export const ProfileComplete: React.FC = () => {
           <i className={Styles.edit}>{}</i>
         </div>
         <span className={Styles.name}>
-          {userData.profile.first_name} {userData.profile.last_name}
+          {userData?.profile?.first_name} {userData?.profile?.last_name}
         </span>
       </div>
       <div className={Styles.container}>
@@ -43,7 +43,7 @@ export const ProfileComplete: React.FC = () => {
             <img className={Styles.icon} src={passportIcon} alt='Иконка' />
             <span className={Styles.title}>Паспорт РФ</span>
             <span className={Styles.subtitle}>
-              {userData.profile.passport_series} {userData.profile.passport_number}
+              {userData?.profile?.passport_series} {userData?.profile?.passport_number}
             </span>
             <img className={Styles.link} src={linkIcon} alt='Иконка' />
           </div>
@@ -60,7 +60,7 @@ export const ProfileComplete: React.FC = () => {
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
                 <span className={Styles.label}>Телефон</span>
-                <span className={Styles.content}>{userData.phone}</span>
+                <span className={Styles.content}>{userData?.phone}</span>
               </div>
               <ButtonSmall onClick={() => changeView('editPhone')}>Изменить</ButtonSmall>
             </div>
@@ -70,7 +70,7 @@ export const ProfileComplete: React.FC = () => {
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
                 <span className={Styles.label}>E-mail</span>
-                <span className={Styles.content}>{userData.email}</span>
+                <span className={Styles.content}>{userData?.email}</span>
               </div>
               <ButtonSmall onClick={() => changeView('editEmail')}>Изменить</ButtonSmall>
             </div>
