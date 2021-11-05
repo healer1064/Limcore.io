@@ -75,14 +75,13 @@
 .form {
   display: flex;
   flex-direction: column;
-}
-
-.label {
-  margin-bottom: 20px;
+  justify-content: space-between;
+  gap: 15px;
+  height: 100%;
 }
 
 .edit {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .block {

@@ -1,30 +1,52 @@
 import React from 'react'
 import styles from './styles.module.scss'
+import icon from '@icons/VideoCamera.svg'
 
-import { testArray } from '../../../pages/cabinet/test-data'
-
-export const BroadcastsMobile = (props) => {
-  const { handleClick } = props
-
+export const BroadcastsMobile = () => {
   return (
     <div className={styles.broadcast}>
-      <ul className={styles.broadcast__items}>
-        {testArray &&
-          testArray.map((item, index) => {
-            return (
-              <li key={index} className={styles.broadcast__item}>
-                <div className={styles.broadcast__videoFrame}>
-                  <img src={item.preview} className={styles.broadcast__video} />
-                  <button type='button' className={styles.broadcast__button} onClick={handleClick} />
-                </div>
-                <div className={styles.broadcast__info}>
-                  <p className={styles.broadcast__title}>{item.title}</p>
-                  <p className={styles.broadcast__source}>{item.source}</p>
-                </div>
-              </li>
-            )
-          })}
-      </ul>
+      <div className={styles.broadcast__header}>
+        <h2>On-line</h2>
+        <img src={icon} alt='Camera' />
+      </div>
+      <div className={styles.broadcast__items}>
+        <div className={styles.broadcast__wrapper}>
+          <div className={styles.broadcast__item}>
+            <iframe
+              className={styles.broadcast__videoFrame}
+              src='https://rtsp.me/embed/iRTG98h5/'
+              frameBorder='0'
+              allowFullScreen
+            />
+          </div>
+          <div className={styles.broadcast__item}>
+            <iframe
+              className={styles.broadcast__videoFrame}
+              src='https://rtsp.me/embed/TrD56fbb/'
+              frameBorder='0'
+              allowFullScreen
+            />
+          </div>
+        </div>
+        <div className={styles.broadcast__wrapper}>
+          <div className={styles.broadcast__item}>
+            <iframe
+              className={styles.broadcast__videoFrame}
+              src='https://rtsp.me/embed/bK2f3neH/'
+              frameBorder='0'
+              allowFullScreen
+            />
+          </div>
+          <div className={styles.broadcast__item}>
+            <iframe
+              className={styles.broadcast__videoFrame}
+              src='https://rtsp.me/embed/7rDYNfA5/'
+              frameBorder='0'
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

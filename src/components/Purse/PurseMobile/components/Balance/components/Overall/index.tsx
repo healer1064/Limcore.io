@@ -10,7 +10,7 @@ import { Modal } from '../../../Modal/index'
 import { ModalHeader } from '../../../ModalHeader'
 import { Calc } from '../Calc/index'
 
-export const Overall = ({ onClick, money }) => {
+export const Overall = ({ onClick, money, limcBalance }) => {
   const [isSwitchToggled, setIsSwitchToggled] = useState(true)
   const [disabledColor, setDisabledColor] = useState('#99A0AD')
   const [dotsColor, setDotsColor] = useState('#99A0AD')
@@ -75,8 +75,8 @@ export const Overall = ({ onClick, money }) => {
         {Item('Получено с майнинга', '$0')}
         {Item('Получено в сети XCH', '$0')}
         {Item('Инвестировано', '$0')}
-        {Item('Баланс LIMC', '$0')}
-        {Item('Баланс USDT', '$0')}
+        {Item('Баланс LIMC', `${limcBalance}`)}
+        {Item('Баланс USDT', `${money}`)}
       </ul>
 
       <ul className={styles.btns}>

@@ -26,6 +26,7 @@ import { ModalHeader } from './components/ModalHeader'
 export const PurseMobile: FC = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
   const [isWalletVisible, setIsWalletVisible] = useState(true)
+  const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const [isLimcBought, setIsLimcBought] = useState(false)
   const isLimcBought = useAppSelector((state) => state.auth.transactions)
@@ -81,9 +82,9 @@ export const PurseMobile: FC = () => {
     if (request.error?.message?.includes(400)) {
       setIsErrorVisible(true)
 
-      setTimeout(() => {
-        setIsErrorVisible(false)
-      }, 2000)
+      // setTimeout(() => {
+      //   setIsErrorVisible(false)
+      // }, 2000)
     } else {
       setIsSuccessVisible(true)
 
@@ -92,6 +93,12 @@ export const PurseMobile: FC = () => {
       }, 2000)
     }
     dispatch(getWalletBalance())
+  }
+
+  const handleNeedToPayClick = () => {
+    setIsUsdtInfoVisible(true)
+    setIsErrorVisible(false)
+    setViewContent('')
   }
 
   return (
@@ -126,7 +133,9 @@ export const PurseMobile: FC = () => {
                   У вас еще нет транзакций. Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
                 </span>
               </div>
-              <ButtonBig className={styles.next}>Перейти к заполнению</ButtonBig>
+              <div className={styles.nextCont}>
+                <button className={styles.next}>Перейти к заполнению</button>
+              </div>
             </div>
           </div>
         </Modal>
@@ -163,18 +172,36 @@ export const PurseMobile: FC = () => {
       )}
       {viewContent === 'buy' && (
         <Container title='Покупка LIMC' onClose={closePopup}>
-          <span className={styles.text}>Цена за LIMC в USDT: {prices.usdt_amount}</span>
-          <span className={styles.text}>Locktime: {prices.lock_time} дней</span>
-          <InputText onChange={(event) => handleSetValue(event)} type='number' value={value} />
-          <ButtonBig onClick={handleBuyLIMK} className={styles.button} disabled={!value}>
-            Купить
-          </ButtonBig>
+          <div className={styles.cont}>
+            <div className={styles.cont2}>
+              <span className={styles.text}>
+                Цена за LIMC в USDT: <span className={styles.price}>{prices.usdt_amount}</span>
+              </span>
+              {/* <span className={styles.text}>Locktime: {prices.lock_time} дней</span> */}
+              <span className={styles.text}>
+                Locktime: <span className={styles.price}>{prices.lock_time} дней</span>
+              </span>
+              <InputText onChange={(event) => handleSetValue(event)} type='number' value={value} />
+              <ButtonBig onClick={handleBuyLIMK} className={styles.button} disabled={!value}>
+                Купить
+              </ButtonBig>
+            </div>
+            {isErrorVisible && (
+              <div className={styles.errorModal}>
+                У вас недостаточно средств.
+                <br />
+                <p className={styles.errorSubtitle} onClick={handleNeedToPayClick}>
+                  Необходимо пополнить USDT кошелек
+                </p>
+              </div>
+            )}
+          </div>
         </Container>
       )}
 
-      <Modal active={isErrorVisible} style={{ zIndex: 1001, backgroundColor: 'transparent' }}>
+      {/* <Modal active={isErrorVisible} style={{ zIndex: 1001, backgroundColor: 'transparent' }} setActive={() => {}}>
         <div className={styles.errorModal}>У вас недостаточно средств.</div>
-      </Modal>
+      </Modal> */}
       <Modal active={isSuccessVisible} style={{ zIndex: 1001, backgroundColor: 'transparent' }}>
         <div className={styles.errorModal} style={{ backgroundColor: 'green' }}>
           Успешно!
@@ -182,12 +209,19 @@ export const PurseMobile: FC = () => {
       </Modal>
 
       <Balance />
-      <Menu openPopup={() => setViewContent('balance')} />
+      <Menu
+        isUsdtInfoVisible={isUsdtInfoVisible}
+        handleBalanceUsdtOpenClick={() => setIsUsdtInfoVisible(true)}
+        handleBalanceUsdtCloseClick={() => setIsUsdtInfoVisible(false)}
+        openPopup={() => setViewContent('balance')}
+      />
       <div className={styles.purse__content}>
         {isCardVisible && <VirtualCard onCloseClick={handleCardCloseClick} />}
-        <ButtonBig className={styles.buy} onClick={() => setViewContent('balance')}>
-          Купить LIMC
-        </ButtonBig>
+        <div className={styles.buyCont}>
+          <ButtonBig className={styles.buy} onClick={() => setViewContent('balance')}>
+            Купить LIMC
+          </ButtonBig>
+        </div>
         {isLimcBought?.length ? (
           <StartMining onButtonClick={handleStartClick} />
         ) : (

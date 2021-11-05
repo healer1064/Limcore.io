@@ -147,8 +147,16 @@ export const authSlice = createSlice({
       state.isAuth = !state.isAuth
     },
     [registerUserPhoneConfirmation.fulfilled]: (state, action) => {
-      // state.isAuth = !state.isAuth
-      console.log(action)
+      const data = { ...action.payload.data }
+      localStorage.setItem('jwtToken', JSON.stringify(data))
+      const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
+      const token = tokenObj.access
+      if (action.payload.status === 200) {
+        state.isAuth = true
+        api.setUserToken(token)
+      } else {
+        api.setUserToken('')
+      }
     },
     [authorizationUserEmailConfirmation.fulfilled]: (state) => {
       state.isAuth = !state.isAuth
