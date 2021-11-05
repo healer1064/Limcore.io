@@ -1,0 +1,33 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  margin-bottom: 12px;
+  padding: 0;
+
+  li {
+    color: #4a70f8;
+
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  }
+}
+
+.list_mod {
+  padding-left: 20px;
+}
+
+.text {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 170%;
+  color: #67686c;
+  margin: 0;
+
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+}
