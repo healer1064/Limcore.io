@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import moment from 'moment'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
+import { setData } from '../../../../../../../app/redux/userSlice'
 import Styles from './styles.module.scss'
 
 import leftIcon from '@icons/arrow-left.svg'
@@ -6,7 +9,15 @@ import rightIcon from '@icons/arrow-right.svg'
 
 import { getMonth } from '../../../../../../../helpers/getMonth'
 
-export const Calendar: React.FC = () => {
+interface CalendarProps {
+  closePopup?: any
+  dataType: string
+}
+
+export const Calendar: React.FC<CalendarProps> = ({ closePopup, dataType }) => {
+  const dispatch = useAppDispatch()
+  const data = useAppSelector((state) => state.user.data)
+
   const date = new Date()
 
   const startYears = 1980
@@ -94,7 +105,20 @@ export const Calendar: React.FC = () => {
 
     setDay(day)
 
-    // const date = { day, month, year }
+    const stringDay = day > 10 ? day : `0${day}`
+    const stringMonth = month > 10 ? month : `0${month}`
+
+    const dateString = `${year}-${stringMonth}-${stringDay}`
+
+    const newDate = String(dateString)
+
+    if (dataType === 'birth') {
+      dispatch(setData({ ...data, birth_date: newDate }))
+    } else {
+      dispatch(setData({ ...data, passport_was_issued: newDate }))
+    }
+
+    closePopup()
   }
 
   useEffect(() => {

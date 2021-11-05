@@ -20,9 +20,10 @@ export const Container: React.FC<ContainerProps> = ({ title, onClick, onClose, c
   const closeContainer = () => {
     dispatch(changeViewContent('none'))
     dispatch(changeStep(0))
-    if (onClick) {
+
+    /*    if (onClick) {
       onClick()
-    }
+    } */
   }
 
   return (
@@ -36,7 +37,7 @@ export const Container: React.FC<ContainerProps> = ({ title, onClick, onClose, c
           </button>
         )}
         <span className={Styles.caption}>{title}</span>
-        <button className={Styles.close} onClick={onClose}>
+        <button className={Styles.close} onClick={!onClose ? closeContainer : onClose}>
           {}
         </button>
       </div>

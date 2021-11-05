@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
+import { setData } from '../../../../../../../app/redux/userSlice'
 import Styles from './styles.module.scss'
 
 import { Popup } from '@components/Popup'
@@ -15,7 +17,17 @@ interface Step2Props {
 }
 
 export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
+  const dispatch = useAppDispatch()
+  const data = useAppSelector((state) => state.user.data)
   const [popup, setPopup] = useState(false)
+
+  const openPopup = () => setPopup(true)
+  const closePopup = () => setPopup(false)
+
+  const onChangeValue = (event) => {
+    const { name, value } = event.target
+    dispatch(setData({ ...data, [name]: value }))
+  }
 
   return (
     <>
@@ -43,30 +55,56 @@ export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
         <form className={Styles.form}>
           <div className={Styles.wrapper}>
             <Label titleText='Серия*'>
-              <InputText className={Styles.input} />
+              <InputText
+                className={Styles.input}
+                onChange={onChangeValue}
+                name='passport_series'
+                value={data.passport_series}
+              />
             </Label>
             <Label titleText='Номер*'>
-              <InputText className={Styles.input} />
+              <InputText
+                className={Styles.input}
+                onChange={onChangeValue}
+                name='passport_number'
+                value={data.passport_number}
+              />
             </Label>
           </div>
           <Label className={Styles.label} titleText='Код подразделения*'>
-            <InputText placeholder='Введите код' />
+            <InputText
+              onChange={onChangeValue}
+              name='passport_division_code'
+              value={data.passport_division_code}
+              placeholder='Введите код'
+            />
           </Label>
           <Label className={Styles.label} titleText='Дата выдачи*'>
-            <div className={Styles.block} onClick={() => setPopup(true)}>
-              <input type='text' placeholder='01.01.21' />
+            <div className={Styles.block} onClick={openPopup}>
+              <input
+                className={Styles.date}
+                onChange={() => {}}
+                type='text'
+                value={data.passport_was_issued}
+                placeholder='01.01.21'
+              />
               <img src={calendarIcon} alt='Иконка' />
             </div>
           </Label>
           <Label className={Styles.edit} titleText='Паспорт выдан*'>
-            <InputText placeholder='Введите учреждения' />
+            <InputText
+              onChange={onChangeValue}
+              name='passport_division_name'
+              value={data.passport_division_name}
+              placeholder='Введите учреждения'
+            />
           </Label>
           <ButtonBig onClick={(event) => nextStep(event, 2)}>Продолжить</ButtonBig>
         </form>
       </div>
       {popup && (
-        <Popup closePopup={() => setPopup(false)}>
-          <Calendar />
+        <Popup closePopup={closePopup}>
+          <Calendar closePopup={closePopup} dataType='issue' />
         </Popup>
       )}
     </>

@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
+import { setData, setMiddleName } from '../../../../../../../app/redux/userSlice'
+import { api } from '@app/api'
 import Styles from './styles.module.scss'
 
 import { Popup } from '@components/Popup'
@@ -11,22 +14,35 @@ import { InputRadio } from '../../../../../../../ui-kit/InputRadio'
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
 
 import calendarIcon from '@icons/calendar-icon.svg'
-import { api } from '@app/api'
 
 interface Step1Props {
   nextStep: any
 }
 
 export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
+  const dispatch = useAppDispatch()
+  const data = useAppSelector((state) => state.user.data)
+  const middleName = useAppSelector((state) => state.user.middleName)
   const [popup, setPopup] = useState(false)
-  const [value, setValue] = useState({
-    name: '',
-  })
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setValue({ ...value, [name]: value })
-    console.log(value)
+
+  const openPopup = () => setPopup(true)
+  const closePopup = () => setPopup(false)
+
+  const onChangeValue = (event) => {
+    const { name, value } = event.target
+    dispatch(setData({ ...data, [name]: value }))
   }
+
+  const onChangeMiddleName = (event) => {
+    dispatch(setData({ ...data, middle_name: '' }))
+    dispatch(setMiddleName(event.target.checked))
+  }
+
+  const onChangeGender = (event) => {
+    const { value } = event.target
+    dispatch(setData({ ...data, gender: value }))
+  }
+
   return (
     <>
       <div className={Styles.progress}>
@@ -52,30 +68,67 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
         <span className={Styles.caption}>Укажите ФИО, дату рождения и пол</span>
         <form className={Styles.form}>
           <Label className={Styles.label} titleText='Имя*'>
-            <InputText placeholder='Введите ваше имя' value={value.name} onChange={handleChange} name='name' />
+            <InputText
+              onChange={onChangeValue}
+              name='first_name'
+              value={data.first_name}
+              placeholder='Введите ваше имя'
+            />
           </Label>
           <Label className={Styles.label} titleText='Фамилия*'>
-            <InputText placeholder='Введите вашу фамилию' />
+            <InputText
+              onChange={onChangeValue}
+              name='last_name'
+              value={data.last_name}
+              placeholder='Введите вашу фамилию'
+            />
           </Label>
           <Label className={Styles.label} titleText='Отчество*'>
-            <InputText placeholder='Введите ваше отчество' />
+            <InputText
+              onChange={onChangeValue}
+              name='middle_name'
+              value={data.middle_name}
+              placeholder='Введите ваше отчество'
+              disabled={middleName}
+            />
           </Label>
           <Label className={Styles.label}>
-            <InputCheckbox titleCheckbox='У меня нет отчества' />
+            <InputCheckbox
+              onChange={onChangeMiddleName}
+              value=''
+              checked={middleName}
+              titleCheckbox='У меня нет отчества'
+            />
           </Label>
           <Label className={Styles.label} titleText='Дата рождения*'>
-            <div className={Styles.block} onClick={() => setPopup(true)}>
-              <input type='text' placeholder='01.01.21' />
+            <div className={Styles.block} onClick={openPopup}>
+              <input
+                className={Styles.date}
+                onChange={() => {}}
+                type='text'
+                value={data.birth_date}
+                placeholder='01.01.2021'
+              />
               <img src={calendarIcon} alt='Иконка' />
             </div>
           </Label>
           <Label className={Styles.edit} titleText='Пол*'>
             <div className={Styles.radios}>
               <Label>
-                <InputRadio titleRadio='Мужской' />
+                <InputRadio
+                  onChange={onChangeGender}
+                  value='male'
+                  checked={data.gender === 'male'}
+                  titleRadio='Мужской'
+                />
               </Label>
               <Label>
-                <InputRadio titleRadio='Женский' />
+                <InputRadio
+                  onChange={onChangeGender}
+                  value='female'
+                  checked={data.gender === 'female'}
+                  titleRadio='Женский'
+                />
               </Label>
             </div>
           </Label>
@@ -83,8 +136,8 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
         </form>
       </div>
       {popup && (
-        <Popup closePopup={() => setPopup(false)}>
-          <Calendar />
+        <Popup closePopup={closePopup}>
+          <Calendar closePopup={closePopup} dataType='birth' />
         </Popup>
       )}
     </>

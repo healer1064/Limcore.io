@@ -12,6 +12,10 @@
   line-height: 150%;
   color: #393c42;
 
+  &:disabled {
+    opacity: 0.5;
+  }
+
   &::placeholder {
     font-family: 'Montserrat';
     font-style: normal;
