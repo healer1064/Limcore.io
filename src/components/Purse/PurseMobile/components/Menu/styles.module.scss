@@ -3,11 +3,13 @@
 .menu {
   position: absolute;
   // top: 165px;
-  top: 235px;
+  top: 240px;
+  // top: 235px;
   left: 0;
   z-index: 100;
 
   width: 100%;
+  // width: fit-content;
   padding: 0 20px;
   margin: 0;
 
