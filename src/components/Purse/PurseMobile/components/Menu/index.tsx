@@ -5,7 +5,7 @@ import { MenuItem } from './components/MenuItem/index'
 import { useAppSelector } from '@app/redux/hooks'
 
 export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtCloseClick, isUsdtInfoVisible }) => {
-  // const [isLimcInfoVisible, setIsLimcInfoVisible] = useState(false)
+  const [isLimcInfoVisible, setIsLimcInfoVisible] = useState(false)
   // const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
   const [isCardInfoVisible, setIsCardInfoVisible] = useState(false)
   const buttonPlusClass = `${styles.menu__item} ${styles.menu__buttonPlus}`
@@ -48,7 +48,7 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
         balance={`${limcBalance} LIMC`}
         // setActive={handleBalanceLimcOpenClick}
         // setNotActive={handleBalanceLimcCloseClick}
-        // active={isLimcInfoVisible}
+        active={isLimcInfoVisible}
       />
       <MenuItem
         image={balanceUsdt}

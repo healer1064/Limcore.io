@@ -16,7 +16,7 @@ export const Balance = () => {
   )
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const [money, setMoney] = useState('0')
-  // const walletAddress = useAppSelector((state) => state.wallet.address)
+  const walletAddress = useAppSelector((state) => state.wallet.address)
   const money = useAppSelector((state) => state.wallet.usdt_balance)
   const limcCount = useAppSelector((state) => state.wallet.limcCount)
   const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
@@ -73,7 +73,7 @@ export const Balance = () => {
             <h4 className={styles.regModalTitle}>Мы создали ваш USDT кошелек</h4>
             <p className={styles.regModalSubtitle}>Адрес кошелька</p>
             <p className={styles.regModalPurse}>
-              ...
+              {walletAddress}
               <img className={styles.regModalPurseCopy} src={copyIcon} />
             </p>
           </div>
