@@ -3,11 +3,14 @@ import { Link } from 'react-scroll'
 import Styles from './style.module.scss'
 
 import logoIcon from '@icons/logo.svg'
+import logout from '@icons/logout.svg'
 // import loginIcon from '@icons/login.svg'
 import { LoginIcon } from '@icons/LoginIcon'
 import flagIcon from '../../assets/images/flag-ru.svg'
-import { useAppSelector } from '@app/redux/hooks'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import ModalAuth from '../../pages/landing/components/ModalAuth'
+import { setIsAuth } from '../../pages/auth/redux/auth.slice'
+import { useHistory } from 'react-router'
 
 const tempLink = [
   { id: 1, value: 'Что такое Limcore?', link: 'main', spy: true, smooth: true },
@@ -21,12 +24,19 @@ export const Header: React.FC = () => {
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
   const [btnClass, setBtnClass] = useState(Styles.login)
   const isAuth = useAppSelector((state) => state.auth.isAuth)
-
+  const dispatch = useAppDispatch()
+  const history = useHistory()
   const handleLoginModalOpen = () => {
     setIsLoginModalVisible(true)
   }
   const handleLoginModalClose = () => {
     setIsLoginModalVisible(false)
+  }
+  const onLogout = () => {
+    localStorage.clear()
+    dispatch(setIsAuth(false))
+    history.push('/')
+    window.location.reload()
   }
 
   useEffect(() => {
@@ -42,16 +52,21 @@ export const Header: React.FC = () => {
         <a href='/'>
           <img src={logoIcon} alt='Лого' />
         </a>
-        <ul className={Styles.list}>
-          {tempLink?.map((item) => {
-            return (
-              <Link className={Styles.link} key={item.id} to={item.link} spy={item.spy} smooth={item.smooth}>
-                {item.value}
-              </Link>
-            )
-          })}
-        </ul>
+
+        {!isAuth ? (
+          <ul className={Styles.list}>
+            {tempLink?.map((item) => {
+              return (
+                <Link className={Styles.link} key={item.id} to={item.link} spy={item.spy} smooth={item.smooth}>
+                  {item.value}
+                </Link>
+              )
+            })}
+          </ul>
+        ) : null}
+
         <div className={Styles.container}>
+          {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null}
           <div className={Styles.lang}>
             <img src={flagIcon} alt='Флаг' />
             <div className={Styles.block}>

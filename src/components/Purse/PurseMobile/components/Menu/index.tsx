@@ -12,13 +12,13 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
   const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
 
-  // const handleBalanceLimcOpenClick = () => {
-  //   setIsLimcInfoVisible(true)
-  // }
+  const handleBalanceLimcOpenClick = () => {
+    setIsLimcInfoVisible(true)
+  }
 
-  // const handleBalanceLimcCloseClick = () => {
-  //   setIsLimcInfoVisible(false)
-  // }
+  const handleBalanceLimcCloseClick = () => {
+    setIsLimcInfoVisible(false)
+  }
 
   // const handleBalanceUsdtOpenClick = () => {
   //   setIsUsdtInfoVisible(true)
@@ -46,9 +46,9 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
         image={balanceLimc}
         title='Баланс LIMC'
         balance={`${limcBalance} LIMC`}
-        // setActive={handleBalanceLimcOpenClick}
-        // setNotActive={handleBalanceLimcCloseClick}
-        // active={isLimcInfoVisible}
+        setActive={handleBalanceLimcOpenClick}
+        setNotActive={handleBalanceLimcCloseClick}
+        active={isLimcInfoVisible}
       />
       <MenuItem
         image={balanceUsdt}
