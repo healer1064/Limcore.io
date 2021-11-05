@@ -13,7 +13,9 @@ import vk from '@icons/vk-icon.png'
 import insta from '@icons/insta-icon.png'
 import tg from '@icons/telegram-icon.png'
 import facebook from '@icons/facebook-icon.png'
-import RU from '../../../assets/images/flag-ru.svg'
+// import RU from '../../../assets/images/flag-ru.svg'
+import RUS from '../../../assets/images/russia-flag.png'
+import ENG from '../../../assets/images/en-flag.png'
 import { useHistory, useLocation } from 'react-router'
 import { setIsAuth } from '../../../pages/auth/redux/auth.slice'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
@@ -133,7 +135,7 @@ export const HeaderMobile: React.FC = () => {
             <div className={Styles.group}>
               <p className={Styles.email}>info@limcore.com</p>
               <div className={Styles.languageGroup}>
-                <img className={Styles.languageIcon} src={RU} alt='RU' />
+                <img className={Styles.languageIcon} src={RUS} alt='RU' />
                 <p className={Styles.language}>RU</p>
                 {/* <img className={Styles.footer__languageArrow} src={arrow} alt='Arrow-button' /> */}
               </div>
