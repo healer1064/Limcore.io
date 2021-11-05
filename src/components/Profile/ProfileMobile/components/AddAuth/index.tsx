@@ -63,9 +63,9 @@ export const AddAuth: React.FC = () => {
                   </p>
                 </div> */}
               </div>
-              <ButtonBig disabled onClick={() => nextStep(1)}>
+              {/* <ButtonBig disabled onClick={() => nextStep(1)}>
                 Подключить
-              </ButtonBig>
+              </ButtonBig> */}
             </>
           )}
           {step === 1 && <Step1 nextStep={nextStep} />}
