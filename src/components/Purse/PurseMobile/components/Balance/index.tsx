@@ -6,6 +6,7 @@ import { Modal } from '../Modal'
 import { Overall } from './components/Overall/index'
 import { useAppSelector } from '@app/redux/hooks'
 import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
+import etherscanIcon from '@icons/etherscan1.png'
 
 export const Balance = () => {
   const [isBalanceVisible, setIsBalanceVisible] = useState(false)
@@ -14,8 +15,12 @@ export const Balance = () => {
     useAppSelector((state) => state.auth.processType) === 'REGISTRATION',
   )
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [money, setMoney] = useState('0')
+  // const [money, setMoney] = useState('0')
   const walletAddress = useAppSelector((state) => state.wallet.address)
+  const money = useAppSelector((state) => state.wallet.usdt_balance)
+  const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
+  const limcCount = useAppSelector((state) => state.wallet.limcCount)
+  const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
 
   const handleFirstRegModalClose = () => {
     setIsRegModalVisible(false)
@@ -44,13 +49,21 @@ export const Balance = () => {
         <p className={styles.balance__sum}>$0</p>
         <p className={styles.balance__percent}>0%</p>
       </div>
-      <p className={styles.addressName}>Адрес кошелька:</p>
-      <div className={styles.addressContainer}>
-        <span className={styles.addressValue}>{walletAddress}</span>
-        {/* {walletAddress} */}
+      <div className={styles.progressContainer}>
+        <div className={styles.progress}>
+          <span className={styles.bar}>{}</span>
+          <span className={styles.count}>
+            {limcCount} / {limcLimit}
+          </span>
+        </div>
+        <a target='blank' rel='noopener noreferrer' className={styles.etherscanLink} href='https://etherscan.io'>
+          <img className={styles.etherscanIcon} src={etherscanIcon} alt='Иконка' />
+          <span className={styles.etherscan}>Etherscan</span>
+        </a>
       </div>
+
       <Modal active={isBalanceVisible} setActive={() => {}}>
-        <Overall onClick={handleCloseBalanceModal} money={money} />
+        <Overall limcBalance={limcBalance} onClick={handleCloseBalanceModal} money={money} />
       </Modal>
       <Modal classname={styles.reg} active={isRegModalVisible} setActive={handleFirstRegModalClose} crossFlag>
         <div className={styles.regModal}>
@@ -61,7 +74,7 @@ export const Balance = () => {
             <h4 className={styles.regModalTitle}>Мы создали ваш USDT кошелек</h4>
             <p className={styles.regModalSubtitle}>Адрес кошелька</p>
             <p className={styles.regModalPurse}>
-              ...
+              {walletAddress}
               <img className={styles.regModalPurseCopy} src={copyIcon} />
             </p>
           </div>

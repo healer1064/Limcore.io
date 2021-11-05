@@ -5,6 +5,7 @@ import Styles from './styles.module.scss'
 
 import logoIcon from '@icons/logo.svg'
 import userIcon from '@icons/user.svg'
+import logout from '@icons/logout.svg'
 import { Container } from '../../../components/Container'
 import twitter from '@icons/twitter-icon.png'
 import youTube from '@icons/SF Symbol/play.fill.svg'
@@ -16,7 +17,8 @@ import facebook from '@icons/facebook-icon.png'
 import RUS from '../../../assets/images/russia-flag.png'
 import ENG from '../../../assets/images/en-flag.png'
 import { useHistory, useLocation } from 'react-router'
-import { useAppSelector } from '@app/redux/hooks'
+import { setIsAuth } from '../../../pages/auth/redux/auth.slice'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import close from '@icons/close.svg'
 
 export const HeaderMobile: React.FC = () => {
@@ -24,11 +26,18 @@ export const HeaderMobile: React.FC = () => {
   const isAuth = useAppSelector((state) => state.auth.isAuth)
   const history = useHistory()
   const location = useLocation()
+  const dispatch = useAppDispatch()
   const closeBurger = () => {
     setBurgerOpen(false)
   }
   const openBurger = () => {
     setBurgerOpen(true)
+  }
+  const onLogout = () => {
+    localStorage.clear()
+    dispatch(setIsAuth(false))
+    history.push('/')
+    window.location.reload()
   }
 
   const burgerStyles = `${burgerOpen ? Styles.burgerMenuOpened : Styles.burgerMenuClosed}`
@@ -48,37 +57,41 @@ export const HeaderMobile: React.FC = () => {
             <img src={userIcon} alt='Иконка' />
           </a>
         )}
-        {location.pathname === '/auth' ? (
-          <LinkDom to='/'>
-            <img src={close} alt='close' />
-          </LinkDom>
-        ) : (
-          <div className={Styles.burger} onClick={openBurger}>
-            <span className={Styles.row}>{}</span>
-            <span className={Styles.row}>{}</span>
-            <span className={Styles.row}>{}</span>
-          </div>
-        )}
+        {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null}
+        {
+          location.pathname === '/auth' ? (
+            <LinkDom to='/'>
+              <img src={close} alt='close' />
+            </LinkDom>
+          ) : null
+          // <div className={Styles.burger} onClick={openBurger}>
+          //   <span className={Styles.row}>{}</span>
+          //   <span className={Styles.row}>{}</span>
+          //   <span className={Styles.row}>{}</span>
+          // </div>
+        }
         <div className={burgerStyles}>
           <Container title='' onClose={closeBurger}>
             <img className={Styles.logoInOpenBurger} src={logoIcon} alt='Лого' />
-            <ul className={Styles.list}>
-              {tempLink?.map((item) => {
-                return (
-                  <Link
-                    className={Styles.link}
-                    key={item.id}
-                    to={item.link}
-                    spy={item.spy}
-                    smooth={item.smooth}
-                    onClick={closeBurger}
-                  >
-                    {item.value}
-                  </Link>
-                )
-              })}
-            </ul>
-            <ul className={Styles.social}>
+            {!isAuth ? (
+              <ul className={Styles.list}>
+                {tempLink?.map((item) => {
+                  return (
+                    <Link
+                      className={Styles.link}
+                      key={item.id}
+                      to={item.link}
+                      spy={item.spy}
+                      smooth={item.smooth}
+                      onClick={closeBurger}
+                    >
+                      {item.value}
+                    </Link>
+                  )
+                })}
+              </ul>
+            ) : null}
+            {/* <ul className={Styles.social}>
               <li>
                 <a href='https://twitter.com' target='blank' rel='noopener noreferrer'>
                   <img src={twitter} className={Styles.socialIcon} />
@@ -118,7 +131,7 @@ export const HeaderMobile: React.FC = () => {
                   <img src={facebook} className={Styles.socialIcon} />
                 </a>
               </li>
-            </ul>
+            </ul> */}
             <div className={Styles.group}>
               <p className={Styles.email}>info@limcore.com</p>
               <div className={Styles.languageGroup}>

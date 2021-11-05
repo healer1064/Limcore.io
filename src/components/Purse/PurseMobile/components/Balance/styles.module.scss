@@ -129,6 +129,67 @@
     letter-spacing: -0.2px;
     color: $color-4F-black;
   }
+
+  .progressContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 700px;
+  
+    img {
+      margin-top: 10px;
+    }
+
+    .progress {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      background: #dbe0ee;
+      border-radius: 6px;
+      padding: 5px 10px;
+      margin-top: 30px;
+      width: 100%;
+    }
+  
+    $barProportion: calc(0 / 80000 * 100%);
+    
+    .bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #4a70f8;
+      border-radius: 6px 0 0 6px;
+      width: $barProportion;
+      height: 100%;
+    }
+    
+    .count {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 150%;
+      color: #868da7;
+      z-index: 3;
+    }
+  
+    .etherscan {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 13px;
+      color: #4A70F8;
+      text-decoration: none;
+    }
+    
+    .etherscanIcon {
+      transform: translateY(6px);
+      margin-top: 0 !important;
+      margin-right: 6px;
+    }
+  }
+
 }
 
 .reg {
