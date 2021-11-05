@@ -221,7 +221,6 @@ export const PurseMobile: FC = () => {
           <ButtonBig className={styles.buy} onClick={() => setViewContent('balance')}>
             Купить LIMC
           </ButtonBig>
-          <p className={styles.buySubtitle}>После завершения Round 1 начнется отсчет</p>
         </div>
         {isLimcBought?.length ? (
           <StartMining onButtonClick={handleStartClick} />

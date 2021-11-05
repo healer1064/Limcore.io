@@ -18,6 +18,7 @@ export const Balance = () => {
   // const [money, setMoney] = useState('0')
   const walletAddress = useAppSelector((state) => state.wallet.address)
   const money = useAppSelector((state) => state.wallet.usdt_balance)
+  const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
   const limcCount = useAppSelector((state) => state.wallet.limcCount)
   const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
 
@@ -62,7 +63,7 @@ export const Balance = () => {
       </div>
 
       <Modal active={isBalanceVisible} setActive={() => {}}>
-        <Overall onClick={handleCloseBalanceModal} money={money} />
+        <Overall limcBalance={limcBalance} onClick={handleCloseBalanceModal} money={money} />
       </Modal>
       <Modal classname={styles.reg} active={isRegModalVisible} setActive={handleFirstRegModalClose} crossFlag>
         <div className={styles.regModal}>
