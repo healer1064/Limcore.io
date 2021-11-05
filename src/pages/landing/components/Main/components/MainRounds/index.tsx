@@ -25,19 +25,35 @@ export const MainRounds: React.FC = () => {
   const { width } = useWindowSize()
   const desktop = width >= 768
 
-  const data = new Date()
-  let day = '05'
-  let local = Math.abs(data.getTimezoneOffset() / 60)
-  console.log(`local - ${local}`)
-  let resultHour = 15 + local
+  // x =18 по мск
+  // y = разница с мск
+  // z = x + y - во сколько по местному времени должен сработать таймер
+  // T = z - date.now()  - остаток времени до истечения таймера ( z нужно перевести в милисекунды)
+  // кидаем T в счетчик в милисекундах    1580518923000 // Timestamp in milliseconds
+
+  const date = new Date()
+
+  const x = 18
+  const y = Math.abs(date.getTimezoneOffset() / 60) - 3 // разница с мск, можно взять пояс чела и с +3 ковырнуть
+  const z = new Date(2021, 10, 5, x + y, 0, 0, 0) // время в которое срабатывает таймер
+
+  // console.log(`y = ${y}`)
+  // console.log(`z = ${z}`)
+  // console.log(`T = ${T}`)
+
+  // const date = new Date()
+  // let day = '05'
+  // let local = Math.abs(date.getTimezoneOffset() / 60)
+  // console.log(`local - ${local}`)
+  // let resultHour = 15 + local
   // нужна разница между его временем и временем по мск
 
-  if (resultHour > 23) {
-    local = 3
-    resultHour = 15 + local
-    day = '06'
-  }
-  console.log(`resultHour - ${resultHour}`)
+  // if (resultHour > 23) {
+  //   local = 3
+  //   resultHour = 15 + local
+  //   day = '06'
+  // }
+  // console.log(`resultHour - ${resultHour}`)
 
   const closePopup = () => {
     setPopupOpen(false)
@@ -62,7 +78,8 @@ export const MainRounds: React.FC = () => {
         <p className={Styles.temporarily}>Запуск сайта и начало Round 1 продаж токена LIMC</p>
         <p className={Styles.temporarily}>
           {/* <Countdown date={`2021-11-05T${resultHour}:00:00`} /> */}
-          <Countdown date={`2021-11-${day}T${resultHour}:00:00`} />
+          {/* <Countdown date={`2021-11-${day}T${resultHour}:00:00`} /> */}
+          <Countdown date={z} />
         </p>
         <ul className={Styles.list}>
           <li className={Styles.item}>
