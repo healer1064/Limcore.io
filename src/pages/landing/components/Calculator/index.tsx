@@ -6,7 +6,7 @@ import { CalculatorSlider } from './components/CalculatorSlider'
 
 export const Calculator: React.FC = () => {
   return (
-    <section className={Styles.calculator}>
+    <section id='calc' className={Styles.calculator}>
       <div className={Styles.wrapper}>
         <CalculatorCaption />
         <CalculatorSlider />

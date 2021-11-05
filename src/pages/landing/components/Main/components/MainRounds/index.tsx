@@ -4,6 +4,7 @@ import Styles from './styles.module.scss'
 import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
 import { PopupMainPage } from '../PopupMainPage'
 import PopupStyles from '../PopupMainPage/styles.module.scss'
+import { Link } from 'react-scroll'
 
 import limcoreIcon from '@icons/limcore.svg'
 import { InfoIcon } from '@icons/InfoIcon'
@@ -75,12 +76,7 @@ export const MainRounds: React.FC = () => {
             {limcCount} / {limcLimit}
           </span>
         </div>
-        <a
-          target='blank'
-          rel='noopener noreferrer'
-          className={Styles.etherscanLink}
-          href='https://etherscan.io/address/0x3cba6aa21ef433347c27864035f711a9fd4a3eed'
-        >
+        <a target='blank' rel='noopener noreferrer' className={Styles.etherscanLink} href='https://etherscan.io'>
           <img className={Styles.etherscanIcon} src={etherscanIcon} alt='Иконка' />
           <span className={Styles.etherscan}>Etherscan</span>
         </a>
@@ -95,7 +91,9 @@ export const MainRounds: React.FC = () => {
           {desktop && <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />}
         </div>
         <div className={Styles.column}>
-          <ButtonBig className={Styles.button}>Калькулятор доходности</ButtonBig>
+          <Link to='calc' spy smooth className={Styles.secondLink}>
+            Калькулятор доходности
+          </Link>
         </div>
       </div>
       <div className={Styles.roadContainer}>
