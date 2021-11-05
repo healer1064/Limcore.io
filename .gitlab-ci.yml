@@ -35,7 +35,7 @@ dev deploy:
     - echo $CI_REGISTRY_USER
     - echo $CI_REGISTRY_PASSWORD
     - docker info
-    - docker stop limcore-frontend
+    - if docker -a |grep -q limcore-frontend; then docker rm -f limcore-frontend; fi
     - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
     - docker pull registry.gitlab.com/auditor2/production/frontend/limcore.io/dev
     - docker run -d -p 8084:8080  --network backend_default --hostname limcore-frontend --name limcore-frontend --rm registry.gitlab.com/auditor2/production/frontend/limcore.io/dev:latest
@@ -75,7 +75,7 @@ prod deploy:
     - echo $CI_REGISTRY_USER
     - echo $CI_REGISTRY_PASSWORD
     - docker info
-    - docker stop limcore-frontend
+    - if docker -a |grep -q limcore-frontend; then docker rm -f limcore-frontend; fi
     - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
     - docker pull registry.gitlab.com/auditor2/production/frontend/limcore.io/prod
     - docker run -d -p 8080:8080  --network backend_backend --hostname limcore-frontend --name limcore-frontend --rm registry.gitlab.com/auditor2/production/frontend/limcore.io/prod:latest
