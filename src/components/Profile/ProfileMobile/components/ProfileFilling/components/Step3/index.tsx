@@ -1,7 +1,11 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { updateUser, setData } from '../../../../../../../app/redux/userSlice'
-import { changeViewContent, completeProfile, changeStep } from '../../../../../../../pages/cabinet/redux/cabinetSlice'
+import { getUser, updateUser, setData } from '../../../../../../../app/redux/userSlice'
+import {
+  changeViewContent,
+  setProfileComplete,
+  changeStep,
+} from '../../../../../../../pages/cabinet/redux/cabinetSlice'
 import Styles from './styles.module.scss'
 
 import { Label } from '../../../../../../../ui-kit/Label'
@@ -21,7 +25,8 @@ export const Step3: React.FC = () => {
     event.preventDefault()
 
     dispatch(updateUser(data))
-    dispatch(completeProfile())
+    dispatch(getUser())
+
     dispatch(changeViewContent('none'))
     dispatch(changeStep(0))
   }

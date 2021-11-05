@@ -117,16 +117,16 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
               <Label>
                 <InputRadio
                   onChange={onChangeGender}
-                  value='Мужской'
-                  checked={data.gender === 'Мужской'}
+                  value='male'
+                  checked={data.gender === 'male'}
                   titleRadio='Мужской'
                 />
               </Label>
               <Label>
                 <InputRadio
                   onChange={onChangeGender}
-                  value='Женский'
-                  checked={data.gender === 'Женский'}
+                  value='female'
+                  checked={data.gender === 'female'}
                   titleRadio='Женский'
                 />
               </Label>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import moment from 'moment'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setData } from '../../../../../../../app/redux/userSlice'
 import Styles from './styles.module.scss'
@@ -104,13 +105,17 @@ export const Calendar: React.FC<CalendarProps> = ({ closePopup, dataType }) => {
 
     setDay(day)
 
+    const stringDay = day > 10 ? day : `0${day}`
     const stringMonth = month > 10 ? month : `0${month}`
-    const dateString = `${day}.${stringMonth}.${year}`
+
+    const dateString = `${year}-${stringMonth}-${stringDay}`
+
+    const newDate = String(dateString)
 
     if (dataType === 'birth') {
-      dispatch(setData({ ...data, birth_date: dateString }))
+      dispatch(setData({ ...data, birth_date: newDate }))
     } else {
-      dispatch(setData({ ...data, passport_was_issued: dateString }))
+      dispatch(setData({ ...data, passport_was_issued: newDate }))
     }
 
     closePopup()

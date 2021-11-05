@@ -6,13 +6,14 @@ export const cabinetSlice = createSlice({
   initialState: {
     viewCabinet: 'profile',
     viewContent: 'profile',
+    profileComplete: false,
     status: null,
     error: null,
     step: 0,
   } as unknown as any,
   reducers: {
-    completeProfile: (state) => {
-      state.profileComplete = !state.profileComplete
+    setProfileComplete: (state, action) => {
+      state.profileComplete = action.payload
     },
     changeViewCabinet: (state, action) => {
       state.viewCabinet = action.payload
@@ -29,5 +30,5 @@ export const cabinetSlice = createSlice({
 
 const { actions, reducer } = cabinetSlice
 
-export const { completeProfile, changeViewCabinet, changeViewContent, changeStep } = actions
+export const { setProfileComplete, changeViewCabinet, changeViewContent, changeStep } = actions
 export default reducer

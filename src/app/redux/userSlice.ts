@@ -9,9 +9,6 @@ export const getUser = createAsyncThunk('user/getUser', async () => {
 
 export const updateUser = createAsyncThunk('user/updateUser', async (data: any) => {
   const response = await api.post('users/profile/', data)
-
-  console.log(response)
-
   return response.data
 })
 
