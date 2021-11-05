@@ -61,7 +61,7 @@ export const Balance = () => {
             <h4 className={styles.regModalTitle}>Мы создали ваш USDT кошелек</h4>
             <p className={styles.regModalSubtitle}>Адрес кошелька</p>
             <p className={styles.regModalPurse}>
-              ...
+              {walletAddress}
               <img className={styles.regModalPurseCopy} src={copyIcon} />
             </p>
           </div>
