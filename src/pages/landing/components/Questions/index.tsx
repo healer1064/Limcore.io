@@ -1,22 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import Styles from './styles.module.scss'
 
+import { Answer1 } from './components/Answer1'
+import { Answer2 } from './components/Answer2'
+import { Answer3 } from './components/Answer3'
+import { Answer4 } from './components/Answer4'
 import { QuestionsMobile } from './QuestionsMobile'
 
 import { VectorIcon } from '@icons/VectorIcon'
 
 export const Questions: React.FC = () => {
   const array = [
-    { id: 1, title: 'С чего начать?', content: '' },
-    { id: 2, title: 'Как купить LIMC?', content: '' },
-    { id: 3, title: 'Как зарегистрироваться на limcore.io?', content: '' },
-    { id: 4, title: 'С чего начать?', content: '' },
-    { id: 5, title: 'Как купить LIMC?', content: '' },
-    { id: 6, title: 'Как зарегистрироваться на limcore.io?', content: '' },
-    { id: 7, title: 'С чего начать?', content: '' },
+    {
+      id: 1,
+      title: 'Чем отличается фарминг от майнинга?',
+    },
+    {
+      id: 2,
+      title: 'Как распределяется вознаграждение с майнинга среди холдеров LIMC?',
+    },
+    {
+      id: 3,
+      title: 'Какие преимущества платформы Limcore?',
+    },
+    {
+      id: 4,
+      title: 'Почему именно Chia?',
+    },
   ]
 
-  const [activeItem, setActiveItem] = useState({ id: null, title: '', content: '' })
+  const [activeItem, setActiveItem] = useState({ id: null, title: '' })
 
   useEffect(() => {
     setActiveItem(array[0])
@@ -36,47 +49,18 @@ export const Questions: React.FC = () => {
                     className={activeItem.id === item.id ? `${Styles.item} ${Styles.item_active}` : `${Styles.item}`}
                     onClick={() => setActiveItem(item)}
                   >
-                    <span>{item.title}</span>
-                    <VectorIcon />
+                    <span>
+                      {item.title} <VectorIcon />
+                    </span>
                   </li>
                 ))}
             </ul>
             <div className={Styles.info}>
               <h5 className={Styles.title}>{activeItem.title}</h5>
-              <p className={Styles.text}>
-                Иногда после верификации компания принимает решение о дополнительной проверке биографии клиента. Ее цель
-                – оценка риска.
-              </p>
-              <span className={Styles.description}>Как устроена стандартная процедура KYC?</span>
-              <p className={Styles.text}>
-                Для получения полного доступа и увеличенного лимита ввода и вывода средств пользователям необходимо
-                завершить верификацию.
-              </p>
-              <ul className={Styles.list}>
-                <li>
-                  <p className={Styles.text}>
-                    Подобно другим финансовым институтам, ведущие криптовалютные биржи во всем мире требуют от клиентов
-                    пройти обязательную верификацию для получения постоянного доступа к услугам
-                  </p>
-                </li>
-                <li>
-                  <p className={Styles.text}>
-                    Подобно другим финансовым институтам, ведущие криптовалютные биржи во всем мире требуют от клиентов
-                    пройти обязательную верификацию для получения постоянного доступа к услугам
-                  </p>
-                </li>
-                <li>
-                  <p className={Styles.text}>
-                    Подобно другим финансовым институтам, ведущие криптовалютные биржи во всем мире требуют от клиентов
-                    пройти обязательную верификацию для получения постоянного доступа к услугам
-                  </p>
-                </li>
-              </ul>
-              <p className={Styles.text}>
-                Процедуры верификации могут отличаться в зависимости от характера бизнеса, однако преследуют они одни и
-                те же цели. Основные этапы процедуры – сбор и проверка данных. Сюда также относится комплексная проверка
-                и постоянный мониторинг пользователей.
-              </p>
+              {activeItem.id === 1 && <Answer1 />}
+              {activeItem.id === 2 && <Answer2 />}
+              {activeItem.id === 3 && <Answer3 />}
+              {activeItem.id === 4 && <Answer4 />}
             </div>
           </div>
         </div>
