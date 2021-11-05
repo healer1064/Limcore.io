@@ -13,9 +13,17 @@
   }
   
   &__balance {
+    display: flex;
+    flex-wrap: wrap;
+    border: none;
     position: relative;
     width: 147px;
     padding: 20px;
+    &:hover {
+      path {
+        stroke: #8ca4f2;
+      }
+    }
   }
   
   &__title {
@@ -28,12 +36,11 @@
     @include font-style(14px, 600, 20px, $color-gray-black);
   }
 
-  &__button {
+  &__icon {
     position: absolute;
     top: 10px;
     right: 10px;
     width: 24px;
     height: 24px;
-    @include button-style();
   }
 }

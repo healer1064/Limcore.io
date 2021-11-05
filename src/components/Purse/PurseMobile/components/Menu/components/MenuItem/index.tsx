@@ -25,11 +25,15 @@ export const MenuItem: React.FC<MenuItemProps> = ({
 }) => {
   const menuItemClass = `${styles.menu__item} ${styles.menu__balance}`
 
+  const onClickHandler = () => {
+    title.includes('LIMC') ? onClick() : setActive()
+  }
+
   return (
-    <div className={menuItemClass} onClick={onClick}>
-      <button type='button' className={styles.menu__button} onClick={setActive}>
+    <button className={menuItemClass} onClick={onClickHandler}>
+      <span className={styles.menu__icon}>
         <BlueArrow />
-      </button>
+      </span>
       <img src={image} width='40' height='40' />
       <h5 className={styles.menu__title}>{title}</h5>
       <p className={styles.menu__sum}>{balance}</p>
@@ -42,6 +46,6 @@ export const MenuItem: React.FC<MenuItemProps> = ({
         image={image}
         balance={balance}
       />
-    </div>
+    </button>
   )
 }
