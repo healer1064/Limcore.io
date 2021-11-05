@@ -50,7 +50,7 @@ export const ProfileComplete: React.FC = () => {
           <div className={Styles.document}>
             <img className={Styles.icon} src={innIcon} alt='Иконка' />
             <span className={Styles.title}>ИНН</span>
-            <span className={Styles.subtitle}>456834512889</span>
+            <span className={Styles.subtitle}>{userData?.profile?.inn}</span>
             <img className={Styles.link} src={linkIcon} alt='Иконка' />
           </div>
         </div>
