@@ -90,7 +90,7 @@ export const Header: React.FC = () => {
                     readOnly
                   />
                   <div className={Styles.lang_box}>
-                    <img src={RUS} alt='Флаг' className={Styles.img} />
+                    <img src={RUS} alt='Флаг' className={Styles.lang__img} />
                     <label
                       className={`${Styles.langoption__text} ${
                         valueLanguage === 'ru' && Styles.langoption__text_checked
@@ -111,7 +111,7 @@ export const Header: React.FC = () => {
                     readOnly
                   />
                   <div className={Styles.lang_box}>
-                    <img src={ENG} alt='Флаг' className={Styles.img} />
+                    <img src={ENG} alt='Флаг' className={Styles.lang__img} />
                     <label
                       className={`${Styles.langoption__text} ${
                         valueLanguage === 'en' && Styles.langoption__text_checked

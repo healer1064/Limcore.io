@@ -20,27 +20,67 @@ import { FooterLogo } from '@components/Footer/components/FooterLogo'
 import { Link } from 'react-router-dom'
 
 export const Footer: React.FC = () => {
-  const [lang, setLang] = useState('RU')
-  const langHandler = (e) => {
-    setLang(e.target.value)
-  }
-
+  const [showPopapLanguage, setShowPopapLanguage] = useState(false)
+  const [valueLanguage, setValueLanguage] = useState('ru')
   return (
     <footer className={Styles.footer}>
       <div className={Styles.wrapper}>
         <div className={Styles.footer__container}>
           {/* <img src={logo} alt='Logo' className={Styles.logo} /> */}
           <FooterLogo />
-          <div className={Styles.footer__languageGroup}>
-            {lang === 'RU' ? (
-              <img className={Styles.footer__languageIcon} src={RUS} alt='RU' />
-            ) : (
-              <img className={Styles.footer__languageIcon} src={ENG} alt='EN' />
+          <div className={Styles.lang}>
+            <div className={Styles.block} onClick={() => setShowPopapLanguage(!showPopapLanguage)}>
+              <img src={valueLanguage === 'ru' ? RUS : ENG} alt='Флаг' className={Styles.img} />
+              <span className={Styles.lang__value}>{valueLanguage}</span>
+              <img src={arrow} className={showPopapLanguage && Styles.arrow} />
+            </div>
+            {showPopapLanguage && (
+              <div className={Styles.header__langoptions}>
+                <div className={`${Styles.langoption} ${Styles.langoption_ru}`}>
+                  <input
+                    className={Styles.langoption__checked}
+                    type='radio'
+                    name='radio1'
+                    id='answer1'
+                    onClick={() => setValueLanguage('ru')}
+                    checked
+                    readOnly
+                  />
+                  <div className={Styles.lang_box}>
+                    <img src={RUS} alt='Флаг' className={Styles.lang__img} />
+                    <label
+                      className={`${Styles.langoption__text} ${
+                        valueLanguage === 'ru' && Styles.langoption__text_checked
+                      }`}
+                      htmlFor='answer1'
+                    >
+                      RU
+                    </label>
+                  </div>
+                </div>
+                <div className={`${Styles.langoption} ${Styles.langoption_en}`}>
+                  <input
+                    className={Styles.langoption__checked}
+                    type='radio'
+                    name='radio1'
+                    id='answer2'
+                    onClick={() => setValueLanguage('en')}
+                    readOnly
+                  />
+                  <div className={Styles.lang_box}>
+                    <img src={ENG} alt='Флаг' className={Styles.lang__img} />
+                    <label
+                      className={`${Styles.langoption__text} ${
+                        valueLanguage === 'en' && Styles.langoption__text_checked
+                      }`}
+                      htmlFor='answer2'
+                    >
+                      EN
+                    </label>
+                  </div>
+                </div>
+              </div>
             )}
-            <select className={Styles.footer__language} value={lang} onChange={langHandler}>
-              <option value='RU'>RU</option>
-              <option value='EN'>EN</option>
-            </select>
           </div>
           <ul className={`${Styles.footer__etc} ${Styles.footer__list}`}>
             <h3 className={`${Styles.footer_listTitle} ${Styles.footer__listTitle_etcTitle}`}>Прочее</h3>

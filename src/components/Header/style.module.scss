@@ -172,8 +172,13 @@ position: relative;
 .img {
   width: 17px;
   height: 17px;
+  margin-right: 5px;
+  
+}
+.lang__img {
+  width: 17px;
+  height: 17px;
   margin-right: 10px;
-  cursor: pointer;
 }
 .arrow {
   transform: rotate(180deg);
