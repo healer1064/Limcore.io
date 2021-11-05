@@ -45,7 +45,6 @@ const App = () => {
   // const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
   const user = useAppSelector((state) => state.user.userData)
   const isAuth = useAppSelector((state) => state.auth.isAuth)
-  console.log(user)
   const desktop = width >= 768
 
   useEffect(() => {
@@ -61,7 +60,7 @@ const App = () => {
           dispatch(getUser())
           dispatch(getTransactions())
         })
-        .catch((err) => console.log('ERROR ===========+>>>>>>', err))
+        .catch((err) => console.log(err))
     }
   }, [isAuth])
   return (
