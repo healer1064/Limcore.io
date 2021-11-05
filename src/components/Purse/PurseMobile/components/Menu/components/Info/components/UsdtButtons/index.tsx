@@ -38,7 +38,7 @@ export const UsdtButtons = () => {
         <div className={styles.addInfoCont}>
           <p className={styles.addInfo}>Уважаемые пользователи! Приём USDT возможен только в сети ERC-20</p>
           <div className={styles.addressContainer}>
-            <p className={styles.addressName}>Адрес кошелька:</p>
+            <p className={styles.addressName}>Адрес вашего кошелька:</p>
             <span className={styles.addressValue}>{walletAddress}</span>
           </div>
         </div>

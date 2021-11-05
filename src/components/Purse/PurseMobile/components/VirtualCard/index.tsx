@@ -10,7 +10,9 @@ type CardPropsType = {
 export const VirtualCard: FC<CardPropsType> = (props) => {
   return (
     <div className={styles.card}>
-      <p className={styles.card__title}>Выпустите виртуальную карту</p>
+      <p className={styles.card__title}>
+        Скоро вы сможете <br /> выпустить виртуальную карту
+      </p>
       <img src={cardVirtual} className={styles.card__image} />
 
       <button className={styles.card__closeBtn} onClick={props.onCloseClick}>
