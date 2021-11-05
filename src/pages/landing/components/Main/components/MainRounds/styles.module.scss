@@ -6,6 +6,19 @@ $barProportion: calc(0 / 80000 * 100%);
   margin-bottom: 60px;
 }
 
+.etherscan {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  color: #4A70F8;
+}
+
+.etherscanIcon {
+  margin-top: 0 !important;
+  margin-right: 6px;
+}
+
 .block {
   display: flex;
   flex-direction: column;
@@ -293,11 +306,14 @@ $barProportion: calc(0 / 80000 * 100%);
   display: flex;
   box-sizing: border-box;
   margin: 0;
+  margin-top: 10px;
   padding: 0;
   text-decoration: none;
+  align-items: center;
 
   &:hover {
     cursor: pointer;
+    opacity: 0.7;
   }
 }
 
@@ -321,6 +337,7 @@ $barProportion: calc(0 / 80000 * 100%);
     flex-wrap: wrap;
     width: 100%;
     padding: 0 0 30px 0;
+    gap: 6px;
   }
 
   .buttons {

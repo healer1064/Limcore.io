@@ -5,7 +5,7 @@ import Styles from './style.module.scss'
 import logoIcon from '@icons/logo.svg'
 // import loginIcon from '@icons/login.svg'
 import { LoginIcon } from '@icons/LoginIcon'
-import flagIcon from '../../assets/images/flag-ru.png'
+import flagIcon from '../../assets/images/flag-ru.svg'
 import { useAppSelector } from '@app/redux/hooks'
 import ModalAuth from '../../pages/landing/components/ModalAuth'
 
@@ -39,7 +39,9 @@ export const Header: React.FC = () => {
   return (
     <header className={Styles.header}>
       <div className={Styles.wrapper}>
-        <img src={logoIcon} alt='Лого' />
+        <a href='/'>
+          <img src={logoIcon} alt='Лого' />
+        </a>
         <ul className={Styles.list}>
           {tempLink?.map((item) => {
             return (
@@ -74,7 +76,7 @@ export const Header: React.FC = () => {
               {/* </svg> */}
             </div>
           </div>
-          <button className={btnClass} onClick={handleLoginModalOpen}>
+          <button className={btnClass} onClick={() => {}} disabled>
             {/* <img src={loginIcon} alt='Иконка' /> */}
             <LoginIcon />
             <span>Войти</span>

@@ -6,10 +6,11 @@ import Styles from './styles.module.scss'
 interface ContainerProps {
   title: string
   onClick?: () => void
+  onClose?: () => void
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const Container: React.FC<ContainerProps> = ({ title, onClick, children }) => {
+export const Container: React.FC<ContainerProps> = ({ title, onClick, onClose, children }) => {
   const dispatch = useAppDispatch()
   const step = useAppSelector((state) => state.cabinet.step)
 
@@ -19,6 +20,10 @@ export const Container: React.FC<ContainerProps> = ({ title, onClick, children }
   const closeContainer = () => {
     dispatch(changeViewContent('none'))
     dispatch(changeStep(0))
+
+    /*    if (onClick) {
+      onClick()
+    } */
   }
 
   return (
@@ -32,7 +37,7 @@ export const Container: React.FC<ContainerProps> = ({ title, onClick, children }
           </button>
         )}
         <span className={Styles.caption}>{title}</span>
-        <button className={Styles.close} onClick={closeContainer}>
+        <button className={Styles.close} onClick={!onClose ? closeContainer : onClose}>
           {}
         </button>
       </div>

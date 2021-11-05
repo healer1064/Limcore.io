@@ -1,5 +1,6 @@
-import React from 'react'
-import { useAppSelector } from '@app/redux/hooks'
+import React, { useEffect } from 'react'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
+import { setProfileComplete, changeViewContent } from '../../../pages/cabinet/redux/cabinetSlice'
 import Styles from './styles.module.scss'
 
 import { Container } from '@components/Container'
@@ -11,17 +12,22 @@ import { EditEmail } from './components/EditEmail'
 import { EditName } from './components/EditName'
 import { EditLocation } from './components/EditLocation'
 import { AddAuth } from './components/AddAuth'
-import { changeViewContent } from '../../../pages/cabinet/redux/cabinetSlice'
-import { useDispatch } from 'react-redux'
 
 export const ProfileMobile: React.FC = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
+  const userData = useAppSelector((state) => state.user.userData)
   const profileComplete = useAppSelector((state) => state.cabinet.profileComplete)
   const viewContent = useAppSelector((state) => state.cabinet.viewContent)
 
   const handleFillingClick = () => {
     dispatch(changeViewContent('none'))
   }
+
+  useEffect(() => {
+    if (userData !== null) {
+      dispatch(setProfileComplete(true))
+    }
+  }, [userData])
 
   return (
     <div className={Styles.profile}>

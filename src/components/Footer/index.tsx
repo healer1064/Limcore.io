@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Styles from './styles.module.scss'
 
 // import logo from '../../assets/icons/LimLogo.png'
 // import logo from '../../assets/icons/FooterLogo.svg'
-import RU from '../../assets/images/flag-ru.png'
+import RU from '../../assets/images/flag-ru.svg'
+import EN from '../../assets/images/flag-en.svg'
 import arrow from '../../assets/icons/grey-arrow-down.png'
 import twitter from '../../assets/icons/twitter-icon.png'
 import linkedIn from '../../assets/icons/linkedIn-icon.png'
@@ -13,8 +14,15 @@ import tg from '../../assets/icons/telegram-icon.png'
 import facebook from '../../assets/icons/facebook-icon.png'
 import youTube from '../../assets/icons/SF Symbol/play.fill.svg'
 import { FooterLogo } from '@components/Footer/components/FooterLogo'
+// import booklet from '../../assets/files/booklet.pdf'
+import { Link } from 'react-router-dom'
 
 export const Footer: React.FC = () => {
+  const [lang, setLang] = useState('RU')
+  const langHandler = (e) => {
+    setLang(e.target.value)
+  }
+
   return (
     <footer className={Styles.footer}>
       <div className={Styles.wrapper}>
@@ -22,9 +30,15 @@ export const Footer: React.FC = () => {
           {/* <img src={logo} alt='Logo' className={Styles.logo} /> */}
           <FooterLogo />
           <div className={Styles.footer__languageGroup}>
-            <img className={Styles.footer__languageIcon} src={RU} alt='RU' />
-            <p className={Styles.footer__language}>RU</p>
-            {/* <img className={Styles.footer__languageArrow} src={arrow} alt='Arrow-button' /> */}
+            {lang === 'RU' ? (
+              <img className={Styles.footer__languageIcon} src={RU} alt='RU' />
+            ) : (
+              <img className={Styles.footer__languageIcon} src={EN} alt='EN' />
+            )}
+            <select className={Styles.footer__language} value={lang} onChange={langHandler}>
+              <option value='RU'>RU</option>
+              <option value='EN'>EN</option>
+            </select>
           </div>
           <ul className={`${Styles.footer__etc} ${Styles.footer__list}`}>
             <h3 className={`${Styles.footer_listTitle} ${Styles.footer__listTitle_etcTitle}`}>Прочее</h3>
@@ -35,44 +49,26 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li className={Styles.footer__listItem}>
-                <a
-                  href='../../assets/docs/buklet.pdf'
-                  download
-                  target='blank'
-                  rel='noopener noreferrer'
-                  className={Styles.footer__link}
-                >
+                <Link className={Styles.footer__link} to='/files/booklet.pdf' download target='_blank'>
                   Рекламный буклет
-                </a>
+                </Link>
               </li>
             </div>
           </ul>
           <ul className={`${Styles.footer__information} ${Styles.footer__list}`}>
             <h3 className={Styles.footer_listTitle}>Раскрытие информации</h3>
             <li className={Styles.footer__listItem}>
-              <a
-                href='../../assets/docs/rf.zip'
-                download
-                target='blank'
-                rel='noopener noreferrer'
-                className={Styles.footer__link}
-              >
+              <Link className={Styles.footer__link} to='/files/docs.zip' download target='_blank'>
                 Учредительные документы РФ
-              </a>
+              </Link>
             </li>
             <li className={Styles.footer__listItem}>
-              <a
-                target='blank'
-                rel='noopener noreferrer'
-                href='../../assets/docs/round1.zip'
-                download
-                className={Styles.footer__link}
-              >
+              <Link className={Styles.footer__link} to='/files/round1.zip' download target='_blank'>
                 Учредительные документы Round 1
-              </a>
+              </Link>
             </li>
             <li className={Styles.footer__listItem}>
-              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
+              <a href='#' target='_blank' rel='noopener noreferrer' className={Styles.footer__link}>
                 Страхование оборудования
               </a>
             </li>
@@ -123,11 +119,11 @@ export const Footer: React.FC = () => {
           </ul>
           <p className={Styles.footer__email}>info@limcore.io</p>
           <ul className={Styles.footer__social}>
-            <li>
+            {/* <li>
               <a href='https://twitter.com' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
                 <img src={twitter} className={Styles.footer__socialIcon} />
               </a>
-            </li>
+            </li> */}
             <li>
               {/* <a */}
               {/*  href='https://www.linkedin.com' */}
@@ -146,11 +142,11 @@ export const Footer: React.FC = () => {
                 <img src={youTube} className={Styles.footer__YouTubeIcon} />
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href='https://vk.com/' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
                 <img src={vk} className={Styles.footer__socialIcon} />
               </a>
-            </li>
+            </li> */}
             <li>
               <a
                 href='https://instagram.com/limcore.io?utm_medium=copy_link'
@@ -166,7 +162,7 @@ export const Footer: React.FC = () => {
                 <img src={tg} className={Styles.footer__socialIcon} />
               </a>
             </li>
-            <li>
+            {/* <li>
               <a
                 href='https://ru-ru.facebook.com/'
                 target='blank'
@@ -175,7 +171,7 @@ export const Footer: React.FC = () => {
               >
                 <img src={facebook} className={Styles.footer__socialIcon} />
               </a>
-            </li>
+            </li> */}
           </ul>
           <p className={Styles.footer__copyright}>
             &copy;

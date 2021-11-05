@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-scroll'
+import { Link as LinkDom } from 'react-router-dom'
 import Styles from './styles.module.scss'
 
 import logoIcon from '@icons/logo.svg'
@@ -11,16 +12,23 @@ import vk from '@icons/vk-icon.png'
 import insta from '@icons/insta-icon.png'
 import tg from '@icons/telegram-icon.png'
 import facebook from '@icons/facebook-icon.png'
-import RU from '../../../assets/images/flag-ru.png'
+import RU from '../../../assets/images/flag-ru.svg'
+import { useHistory, useLocation } from 'react-router'
+import { useAppSelector } from '@app/redux/hooks'
+import close from '@icons/close.svg'
 
 export const HeaderMobile: React.FC = () => {
   const [burgerOpen, setBurgerOpen] = useState(false)
+  const isAuth = useAppSelector((state) => state.auth.isAuth)
+  const history = useHistory()
+  const location = useLocation()
   const closeBurger = () => {
     setBurgerOpen(false)
   }
   const openBurger = () => {
     setBurgerOpen(true)
   }
+
   const burgerStyles = `${burgerOpen ? Styles.burgerMenuOpened : Styles.burgerMenuClosed}`
   const tempLink = [
     { id: 1, value: 'Что такое Limcore?', link: 'main', spy: true, smooth: true },
@@ -33,16 +41,24 @@ export const HeaderMobile: React.FC = () => {
     <header className={Styles.header}>
       <img className={Styles.logo} src={logoIcon} alt='Лого' />
       <div className={Styles.wrap}>
-        <Link to='auth'>
-          <img src={userIcon} alt='Иконка' />
-        </Link>
-        <div className={Styles.burger} onClick={openBurger}>
-          <span className={Styles.row}>{}</span>
-          <span className={Styles.row}>{}</span>
-          <span className={Styles.row}>{}</span>
-        </div>
+        {!isAuth && location.pathname !== '/auth' && (
+          <a onClick={() => {}}>
+            <img src={userIcon} alt='Иконка' />
+          </a>
+        )}
+        {location.pathname === '/auth' ? (
+          <LinkDom to='/'>
+            <img src={close} alt='close' />
+          </LinkDom>
+        ) : (
+          <div className={Styles.burger} onClick={openBurger}>
+            <span className={Styles.row}>{}</span>
+            <span className={Styles.row}>{}</span>
+            <span className={Styles.row}>{}</span>
+          </div>
+        )}
         <div className={burgerStyles}>
-          <Container title=''>
+          <Container title='' onClose={closeBurger}>
             <img className={Styles.logoInOpenBurger} src={logoIcon} alt='Лого' />
             <ul className={Styles.list}>
               {tempLink?.map((item) => {
@@ -102,7 +118,7 @@ export const HeaderMobile: React.FC = () => {
               </li>
             </ul>
             <div className={Styles.group}>
-              <p className={Styles.email}>info@limcore.io</p>
+              <p className={Styles.email}>info@limcore.com</p>
               <div className={Styles.languageGroup}>
                 <img className={Styles.languageIcon} src={RU} alt='RU' />
                 <p className={Styles.language}>RU</p>

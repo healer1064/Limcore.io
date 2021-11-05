@@ -7,14 +7,17 @@ import PopupStyles from '../PopupMainPage/styles.module.scss'
 
 import limcoreIcon from '@icons/limcore.svg'
 import { InfoIcon } from '@icons/InfoIcon'
-import etherscanIcon from '@icons/etherscan.png'
+import etherscanIcon from '@icons/etherscan1.png'
 import useWindowSize from '@helpers/useWindowSizeHook'
 import { useHistory } from 'react-router'
 import ModalAuth from '../../../../../../pages/landing/components/ModalAuth'
-import { useAppDispatch } from '@app/redux/hooks'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice'
+import Countdown from 'react-countdown'
 
 export const MainRounds: React.FC = () => {
+  const limcCount = useAppSelector((state) => state.wallet.limcCount)
+  const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
   const [popupOpen, setPopupOpen] = useState(false)
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
   const dispatch = useAppDispatch()
@@ -42,12 +45,14 @@ export const MainRounds: React.FC = () => {
         <div className={Styles.wrap}>
           <span className={Styles.name}>Раунд №1</span>
         </div>
-        <p className={Styles.temporarily}>Открываемся 5 ноября 2021г.</p>
-        <p className={Styles.temporarily}>Сайт в процессе разработки</p>
+        <p className={Styles.temporarily}>Запуск сайта и начало Round 1 продаж токена LIMC</p>
+        <p className={Styles.temporarily}>
+          <Countdown date='2021-11-05T18:00:00' />
+        </p>
         <ul className={Styles.list}>
           <li className={Styles.item}>
             <span className={Styles.designation}>Лимит</span>
-            <span className={Styles.value}>80,000 LIMC</span>
+            <span className={Styles.value}>{limcLimit} LIMC</span>
             <img className={Styles.icon} src={limcoreIcon} alt='Иконка' />
           </li>
           <li className={Styles.item}>
@@ -69,7 +74,9 @@ export const MainRounds: React.FC = () => {
       <div className={Styles.container}>
         <div className={Styles.progress}>
           <span className={Styles.bar}>{}</span>
-          <span className={Styles.count}>0 / 80000</span>
+          <span className={Styles.count}>
+            {limcCount} / {limcLimit}
+          </span>
         </div>
         <a
           target='blank'
@@ -77,12 +84,14 @@ export const MainRounds: React.FC = () => {
           className={Styles.etherscanLink}
           href='https://etherscan.io/address/0x3cba6aa21ef433347c27864035f711a9fd4a3eed'
         >
-          <img src={etherscanIcon} alt='Иконка' />
+          <img className={Styles.etherscanIcon} src={etherscanIcon} alt='Иконка' />
+          <span className={Styles.etherscan}>Etherscan</span>
         </a>
       </div>
       <div className={Styles.buttons}>
         <div className={Styles.column}>
-          <button className={Styles.second} onClick={handleLoginModalOpen}>
+          {/* TODO DELETE DISABLED */}
+          <button className={Styles.second} disabled onClick={handleLoginModalOpen}>
             Купить LIMC
           </button>
           <span>Lock-up период 6 месяцев</span>

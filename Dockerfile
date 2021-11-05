@@ -1,5 +1,5 @@
 # stage1 - build react app first
-FROM node:16-alpine3.11 as build
+FROM node:12-alpine as build
 WORKDIR /app
 COPY ./package.json /app/
 RUN yarn 

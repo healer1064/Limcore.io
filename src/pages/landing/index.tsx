@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Styles from './styles.module.scss'
+import { useAppDispatch } from '@app/redux/hooks'
 
 import { Main } from './components/Main'
 import { Calculator } from './components/Calculator'
@@ -10,8 +11,14 @@ import { Team } from './components/Team'
 import { Questions } from './components/Questions'
 import { Media } from './components/Media'
 import { Footer } from '@components/Footer'
+import { getLimcCount } from '@components/Wallet/redux/walletSlice'
 
 export const LandingPage: React.FC = () => {
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(getLimcCount())
+  }, [])
+
   return (
     <div className={Styles.landing}>
       <Main />

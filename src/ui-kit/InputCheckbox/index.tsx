@@ -2,14 +2,17 @@ import React from 'react'
 import Styles from './styles.module.scss'
 
 interface InputCheckboxProps {
+  onChange?: any
+  value?: string
+  checked?: boolean
   icon?: any
   titleCheckbox: string
 }
 
-export const InputCheckbox: React.FC<InputCheckboxProps> = ({ icon, titleCheckbox }) => {
+export const InputCheckbox: React.FC<InputCheckboxProps> = ({ onChange, value, checked, icon, titleCheckbox }) => {
   return (
     <div className={Styles.block}>
-      <input className={Styles.input} type='checkbox' />
+      <input className={Styles.input} onChange={onChange} type='checkbox' value={value} checked={checked} />
       <span className={Styles.checkbox}>{}</span>
       {icon && <img src={icon} className={Styles.icon} />}
       {titleCheckbox}

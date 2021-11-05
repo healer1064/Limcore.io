@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useAppDispatch } from '@app/redux/hooks'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { changeViewContent } from '../../.././../../pages/cabinet/redux/cabinetSlice'
 import Styles from './styles.module.scss'
 
@@ -19,10 +19,10 @@ import smartphoneImage from '../../../../../assets/images/smartphone.png'
 
 export const ProfileComplete: React.FC = () => {
   const dispatch = useAppDispatch()
+  const userData = useAppSelector((state) => state.user.userData)
   const [notificationOpen, setNotificationOpen] = useState(true)
-  const closeNotification = () => {
-    setNotificationOpen(false)
-  }
+
+  const closeNotification = () => setNotificationOpen(false)
   const changeView = (view) => dispatch(changeViewContent(view))
 
   return (
@@ -32,7 +32,9 @@ export const ProfileComplete: React.FC = () => {
           <img src={avatarImage} alt='Аватар' />
           <i className={Styles.edit}>{}</i>
         </div>
-        <span className={Styles.name}>Дмитрий Константинопольский</span>
+        <span className={Styles.name}>
+          {userData.profile.first_name} {userData.profile.last_name}
+        </span>
       </div>
       <div className={Styles.container}>
         <span className={Styles.caption}>Документы</span>
@@ -40,7 +42,9 @@ export const ProfileComplete: React.FC = () => {
           <div className={Styles.document}>
             <img className={Styles.icon} src={passportIcon} alt='Иконка' />
             <span className={Styles.title}>Паспорт РФ</span>
-            <span className={Styles.subtitle}>234556</span>
+            <span className={Styles.subtitle}>
+              {userData.profile.passport_series} {userData.profile.passport_number}
+            </span>
             <img className={Styles.link} src={linkIcon} alt='Иконка' />
           </div>
           <div className={Styles.document}>
@@ -56,7 +60,7 @@ export const ProfileComplete: React.FC = () => {
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
                 <span className={Styles.label}>Телефон</span>
-                <span className={Styles.content}>+7 (913) 654-73-87</span>
+                <span className={Styles.content}>{userData.phone}</span>
               </div>
               <ButtonSmall onClick={() => changeView('editPhone')}>Изменить</ButtonSmall>
             </div>
@@ -66,7 +70,7 @@ export const ProfileComplete: React.FC = () => {
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
                 <span className={Styles.label}>E-mail</span>
-                <span className={Styles.content}>shcherbina96@gmail.com</span>
+                <span className={Styles.content}>{userData.email}</span>
               </div>
               <ButtonSmall onClick={() => changeView('editEmail')}>Изменить</ButtonSmall>
             </div>

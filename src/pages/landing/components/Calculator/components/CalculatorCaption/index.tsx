@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Styles from './styles.module.scss'
 import classNames from 'classnames'
 
@@ -17,6 +17,7 @@ import ModalAuth from '../../../../../landing/components/ModalAuth/index'
 import { useAppDispatch } from '@app/redux/hooks'
 import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice'
 import { InfoIcon } from '@icons/InfoIcon'
+import { InputRange } from './InputRange'
 
 export const CalculatorCaption: React.FC = () => {
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
@@ -44,17 +45,20 @@ export const CalculatorCaption: React.FC = () => {
   }
 
   // Calculator
-  const [limcNumber, setLimcNumber] = useState('1')
-  const [investNumber, setInvestNumber] = useState('95')
-  // const [limcNumber, setLimcNumber] = useState('1 LIMC')
-  // const [investNumber, setInvestNumber] = useState('95 USDT')
+  const [limcNumber, setLimcNumber] = useState('40000')
+  const [investNumber, setInvestNumber] = useState('3800000')
+  const [rangeLimcNumber, setRangeLimcNumber] = useState(1)
   const [classForCurrency, setClassForCurrency] = useState(Styles.currency)
   const [classForTranslate, setClassForTranslate] = useState(false)
   const topLabelClass = classForTranslate ? Styles.labelToBottom : null
   const bottomLabelClass = classForTranslate ? Styles.labelToTop : null
+  const [hour, setHour] = useState(0)
+  const [day, setDay] = useState(0)
+  const [month, setMonth] = useState(0)
 
   useEffect(() => {
     handleCurrencyClass()
+    handleInvestNumberChange(investNumber)
   }, [limcNumber, investNumber])
   const handleCurrencyClass = () => {
     if ((limcNumber.length >= 3 && limcNumber.length < 6) || (investNumber.length >= 3 && investNumber.length < 6)) {
@@ -75,23 +79,33 @@ export const CalculatorCaption: React.FC = () => {
       return
     }
 
+    setRangeLimcNumber(validated)
     setLimcNumber(validated.toLocaleString('en'))
     setInvestNumber((validated * 95).toLocaleString('en'))
   }
-  const handleInvestNumberChange = (event) => {
-    const validated = Number(event.target.value.replace(/,/g, '')) // убираю запятые, затем проверяю цифра это или нет
+
+  const handleInvestNumberChange = (data) => {
+    let validated = null
+    typeof data !== 'string'
+      ? (validated = Number(data.target.value.replace(/,/g, '')))
+      : (validated = Number(data.replace(/,/g, '')))
+
     if (!validated) {
       return
     }
 
     const limc = Math.round(validated / 95)
+    setRangeLimcNumber(limc)
     setLimcNumber(limc.toLocaleString('en'))
     setInvestNumber(validated.toLocaleString('en'))
+
+    const hour = (validated * 0.85 * 0.216) / 12 / 30 / 24
+    const day = (validated * 0.85 * 0.216) / 12 / 30
+    const month = Math.round((validated * 0.85 * 0.216) / 12)
+    setHour(hour)
+    setDay(day)
+    setMonth(month)
   }
-  const investNumberToNumber = Number(investNumber)
-  const hour = (investNumberToNumber * 0.85 * 0.216) / 12 / 30 / 24
-  const day = (investNumberToNumber * 0.85 * 0.216) / 12 / 30
-  const month = (investNumberToNumber * 0.85 * 0.216) / 12
 
   return (
     <div className={Styles.caption}>
@@ -119,6 +133,7 @@ export const CalculatorCaption: React.FC = () => {
                 value={limcNumber}
                 onChange={handleLimcNumberChange}
                 placeholder=''
+                maxLength={6}
               />
               <span className={classForCurrency}>LIMC</span>
             </Label>
@@ -131,6 +146,7 @@ export const CalculatorCaption: React.FC = () => {
                 value={investNumber}
                 onChange={handleInvestNumberChange}
                 placeholder=''
+                maxLength={8}
               />
               <span className={classForCurrency}>USDT</span>
             </Label>
@@ -144,7 +160,15 @@ export const CalculatorCaption: React.FC = () => {
                 <img src={limcoreIcon} alt='Иконка' /> 100,000 LIMC
               </span>
             </div>
-            <input type='range' min='1' max='100000' onChange={handleLimcNumberChange} className={Styles.rangeInput} />
+            <input
+              type='range'
+              min='1'
+              max='100000'
+              onChange={handleLimcNumberChange}
+              value={rangeLimcNumber}
+              className={Styles.e_range}
+            />
+            {/* <InputRange value={rangeLimcNumber} onChange={handleLimcNumberChange} /> */}
           </div>
         </div>
         <div className={Styles.block}>
@@ -171,15 +195,15 @@ export const CalculatorCaption: React.FC = () => {
                 <div className={Styles.row}>
                   <div className={Styles.inner}>
                     <span>В час</span>
-                    <span>$ 0</span>
+                    <span>{`$ ${hour}`.slice(0, 8)}</span>
                   </div>
                   <div className={Styles.inner}>
                     <span>В день</span>
-                    <span>$ 0</span>
+                    <span>{`$ ${day}`.slice(0, 8)}</span>
                   </div>
                   <div className={Styles.inner}>
                     <span>В месяц</span>
-                    <span>$ 0</span>
+                    <span>{`$ ${month}`.slice(0, 8)}</span>
                   </div>
                 </div>
               </div>
@@ -188,7 +212,10 @@ export const CalculatorCaption: React.FC = () => {
               Покрытие расходов на поддержание инфраструктуры
             </PopupMainPage>
           </div>
-          <ButtonBig onClick={handleLoginModalOpen}>Купить LIMC</ButtonBig>
+          {/* TODO DELETE DISABLED */}
+          <ButtonBig disabled onClick={handleLoginModalOpen}>
+            Купить LIMC
+          </ButtonBig>
 
           {desktop && <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />}
         </div>

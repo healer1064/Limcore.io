@@ -8,7 +8,7 @@
   font-style: normal;
   font-weight: 600;
   font-size: 32px;
-  line-height: 100%;
+  linheight: 100%;
   color: #3a3b3d;
   margin: 0;
   margin-bottom: 30px;
@@ -34,7 +34,7 @@
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
-    line-height: 130%;
+    linheight: 130%;
     color: #4f535a;
   }
 }
@@ -44,7 +44,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
-  line-height: 130%;
+  linheight: 130%;
   color: #4f535a;
 }
 
@@ -65,7 +65,7 @@
 
   &:last-child {
     gap: 29px;
-    max-width: 444px;
+    max-width: 472px;
   }
 
   img {
@@ -95,9 +95,9 @@
 .range {
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
+  margin-top: 10px;
+  padding: 10px;
 }
-
 .scale {
   display: flex;
   align-items: center;
@@ -111,7 +111,7 @@
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
-    line-height: 17px;
+    linheight: 17px;
     color: #3a3b3d;
 
     img {
@@ -119,6 +119,139 @@
     }
   }
 }
+// excess height to improve interactive area / accessibility
+$height: 30px;
+$thumb-height: 16px;
+$track-height: 6px;
+
+// colours
+$upper-color: #B4BFD5;
+$lower-color: #4A70F8;
+$thumb-color: #fff;
+$thumb-hover-color: #55c2ff;
+
+$upper-background: linear-gradient(to bottom, $upper-color, $upper-color) 100% 50% / 100% $track-height no-repeat transparent;
+$lower-background: linear-gradient(to bottom, $lower-color, $lower-color) 100% 50% / 100% $track-height no-repeat transparent;
+
+// Webkit cannot style progress so we fake it with a long shadow
+// on the thumb element
+@function webkit-slider-thumb-shadow($i: 1) {
+  $val: #{$i}px 0 0 -#{($thumb-height - $track-height) / 2} #{$upper-color};
+  @if $i == 1 {
+    @for $k from 2 through 1000 {
+      $val: #{$val}, webkit-slider-thumb-shadow($k);
+    }
+  }
+  @return $val;
+}
+
+.e_range {
+  display: block;
+  appearance: none;
+  width: 100%;
+  margin: 0;
+  height: $height;
+  overflow: hidden;
+  cursor: pointer;
+  
+  &:focus {
+    outline: none;
+  }
+}
+
+// Webkit
+.e_range::-webkit-slider-runnable-track {
+  width: 100%;
+  height: $height;
+  background: $lower-background;
+  
+}
+
+.e_range::-webkit-slider-thumb {
+  position: relative;
+  appearance: none;
+  height: $thumb-height;
+  width: $thumb-height;
+  background: $thumb-color;
+  border-radius: 100%;
+  border: 3px solid #4A70F8;
+  top: 50%;
+  margin-top: (-$thumb-height/2);
+  box-shadow: webkit-slider-thumb-shadow();
+  transition: background-color 150ms;
+}
+
+// Firefox
+.e_range::-moz-range-track,
+.e_range::-moz-range-progress {
+  width: 100%;
+  height: $height;
+  background: $upper-background;
+}
+
+.e_range::-moz-range-progress {
+  background: $lower-background;
+}
+
+.e_range::-moz-range-thumb {
+  appearance: none;
+  margin: 0;
+  height: $thumb-height;
+  width: $thumb-height;
+  background: $thumb-color;
+  border-radius: 100%;
+  border: 3px solid #4A70F8;
+  transition: background-color 150ms;
+}
+
+// Internet Exploder
+.e_range::-ms-track {
+  width: 100%;
+  height: $height;
+  border: 0;
+  // color needed to hide track marks
+  color: transparent;
+  background: transparent;
+}
+
+.e_range::-ms-fill-lower {
+  background: $lower-background;
+  
+}
+
+.e_range::-ms-fill-upper {
+  background: $upper-background;
+}
+
+.e_range::-ms-thumb {
+  appearance: none;
+  height: $thumb-height;
+  width: $thumb-height;
+  background: $thumb-color;
+  border-radius: 100%;
+  border: 3px solid #4A70F8;
+  transition: background-color 150ms;
+  // IE Edge thinks it can support -webkit prefixes
+  top: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+.e_range:hover,
+.e_range:focus {
+
+  &::-webkit-slider-thumb {
+    background-color: #fff;
+  }
+  &::-moz-range-thumb {
+    background-color: #fff;
+  }
+  &::-ms-thumb {
+    background-color: #fff;
+  }
+}
+
+
 
 .info {
   display: flex;
@@ -139,7 +272,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
-  line-height: 140%;
+  linheight: 140%;
   color: #99a0ad;
   margin-bottom: 14px;
 }
@@ -162,13 +295,13 @@
 
     &:first-child {
       font-size: 16px;
-      line-height: 100%;
+      linheight: 100%;
       color: #4f535a;
     }
 
     &:last-child {
       font-size: 20px;
-      line-height: 22px;
+      linheight: 22px;
       color: #4a70f8;
     }
   }
@@ -204,14 +337,14 @@
     &:first-child {
       font-weight: 500;
       font-size: 13px;
-      line-height: 140%;
+      linheight: 140%;
       color: #99a0ad;
     }
 
     &:last-child {
       font-weight: 600;
       font-size: 16px;
-      line-height: 130%;
+      linheight: 130%;
       color: #4f535a;
     }
   }
@@ -262,21 +395,21 @@
   }
 }
 
-.rangeInput {
-  cursor: pointer;
-}
-
 .labelToBottom {
-  transform: translateY(114px);
+  transform: translateY(118px);
   transition: transform .3s ease;
 }
 .labelToTop {
   transition: transform .3s ease;
-  transform: translateY(-114px);
+  transform: translateY(-118px);
+}
+
+.rangeInput {
+  cursor: pointer;
 }
 
 .inputCount {
-  //text-align: end;
+  padding: 14px 18px;
 }
 
 .currency {
@@ -286,11 +419,12 @@
   font-family: Montserrat;
   font-style: normal;
   font-size: 16px;
-  line-height: 1.13;
+  linheight: 1.13;
   color: #4F535A;
   position: relative;
+  max-width: 100px;
   top: -31px;
-  left: 10%;
+  left: 13%;
 }
 
 .currencyMiddlePadding {
@@ -300,11 +434,12 @@
   font-family: Montserrat;
   font-style: normal;
   font-size: 16px;
-  line-height: 1.13;
+  linheight: 1.13;
   color: #4F535A;
   position: relative;
+  max-width: 100px;
   top: -31px;
-  left: 24%;
+  left: 26%;
 }
 
 .currencyLongPadding {
@@ -314,11 +449,12 @@
   font-family: Montserrat;
   font-style: normal;
   font-size: 16px;
-  line-height: 1.13;
+  linheight: 1.13;
   color: #4F535A;
   position: relative;
+  max-width: 100px;
   top: -31px;
-  left: 29%;
+  left: 31%;
 }
 
 @media all and (max-width: 768px) {

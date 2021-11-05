@@ -5,10 +5,35 @@
   }
 
   &Inner {
+    position: relative;
     margin: 0 auto;
     padding: 40px 20px;
     border-radius: 14px;
     
     background-color: #fff;
+  }
+
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+  
+    width: 24px;
+    height: 24px;
+    border: none;
+  
+    outline: none;
+    background-color: transparent;
+    
+    & > svg > path {
+      transition: stroke .3s ease;
+    }
+
+    &:hover {
+      & > svg > path {
+        stroke: #4A70F8;
+        transition: stroke .3s ease;
+      }
+    }
   }
 }
