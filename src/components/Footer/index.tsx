@@ -3,8 +3,10 @@ import Styles from './styles.module.scss'
 
 // import logo from '../../assets/icons/LimLogo.png'
 // import logo from '../../assets/icons/FooterLogo.svg'
-import RU from '../../assets/images/flag-ru.svg'
-import EN from '../../assets/images/flag-en.svg'
+// import RU from '../../assets/images/flag-ru.svg'
+import RUS from '../../assets/images/russia-flag.png'
+import ENG from '../../assets/images/en-flag.png'
+// import EN from '../../assets/images/flag-en.svg'
 import arrow from '../../assets/icons/grey-arrow-down.png'
 import twitter from '../../assets/icons/twitter-icon.png'
 import linkedIn from '../../assets/icons/linkedIn-icon.png'
@@ -31,9 +33,9 @@ export const Footer: React.FC = () => {
           <FooterLogo />
           <div className={Styles.footer__languageGroup}>
             {lang === 'RU' ? (
-              <img className={Styles.footer__languageIcon} src={RU} alt='RU' />
+              <img className={Styles.footer__languageIcon} src={RUS} alt='RU' />
             ) : (
-              <img className={Styles.footer__languageIcon} src={EN} alt='EN' />
+              <img className={Styles.footer__languageIcon} src={ENG} alt='EN' />
             )}
             <select className={Styles.footer__language} value={lang} onChange={langHandler}>
               <option value='RU'>RU</option>

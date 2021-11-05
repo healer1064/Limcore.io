@@ -5,7 +5,10 @@ import Styles from './style.module.scss'
 import logoIcon from '@icons/logo.svg'
 // import loginIcon from '@icons/login.svg'
 import { LoginIcon } from '@icons/LoginIcon'
-import flagIcon from '../../assets/images/flag-ru.svg'
+// import flagIcon from '../../assets/images/flag-ru.svg'
+import RUS from '../../assets/images/russia-flag.png'
+import ENG from '../../assets/images/en-flag.png'
+import arrow from '../../assets/icons/arrow-lang.svg'
 import { useAppSelector } from '@app/redux/hooks'
 import ModalAuth from '../../pages/landing/components/ModalAuth'
 
@@ -35,7 +38,8 @@ export const Header: React.FC = () => {
       setIsLoginModalVisible(false)
     }
   }, [isAuth])
-
+  const [showPopapLanguage, setShowPopapLanguage] = useState(false)
+  const [valueLanguage, setValueLanguage] = useState('ru')
   return (
     <header className={Styles.header}>
       <div className={Styles.wrapper}>
@@ -53,28 +57,58 @@ export const Header: React.FC = () => {
         </ul>
         <div className={Styles.container}>
           <div className={Styles.lang}>
-            <img src={flagIcon} alt='Флаг' />
-            <div className={Styles.block}>
-              <span>ru</span>
-
-              {/* <svg */}
-              {/*  width='11' */}
-              {/*  height='6' */}
-              {/*  viewBox='0 0 11 6' */}
-              {/*  fill='none' */}
-              {/*  xmlns='http://www.w3.org/2000/svg' */}
-              {/*  className={Styles.svg} */}
-              {/* > */}
-              {/*  <path */}
-              {/*    d='M1 1L5.5 5L10 1' */}
-              {/*    stroke='#67686C' */}
-              {/*    strokeWidth='2' */}
-              {/*    strokeLinecap='round' */}
-              {/*    strokeLinejoin='round' */}
-              {/*    className={Styles.path} */}
-              {/*  /> */}
-              {/* </svg> */}
+            <div className={Styles.block} onClick={() => setShowPopapLanguage(!showPopapLanguage)}>
+              <img src={valueLanguage === 'ru' ? RUS : ENG} alt='Флаг' className={Styles.img} />
+              <span>{valueLanguage}</span>
+              <img src={arrow} className={showPopapLanguage && Styles.arrow} />
             </div>
+            {showPopapLanguage && (
+              <div className={Styles.header__langoptions}>
+                <div className={`${Styles.langoption} ${Styles.langoption_ru}`}>
+                  <input
+                    className={Styles.langoption__checked}
+                    type='radio'
+                    name='radio1'
+                    id='answer1'
+                    onClick={() => setValueLanguage('ru')}
+                    checked
+                    readOnly
+                  />
+                  <div className={Styles.lang_box}>
+                    <img src={RUS} alt='Флаг' className={Styles.img} />
+                    <label
+                      className={`${Styles.langoption__text} ${
+                        valueLanguage === 'ru' && Styles.langoption__text_checked
+                      }`}
+                      htmlFor='answer1'
+                    >
+                      RU
+                    </label>
+                  </div>
+                </div>
+                <div className={`${Styles.langoption} ${Styles.langoption_en}`}>
+                  <input
+                    className={Styles.langoption__checked}
+                    type='radio'
+                    name='radio1'
+                    id='answer2'
+                    onClick={() => setValueLanguage('en')}
+                    readOnly
+                  />
+                  <div className={Styles.lang_box}>
+                    <img src={ENG} alt='Флаг' className={Styles.img} />
+                    <label
+                      className={`${Styles.langoption__text} ${
+                        valueLanguage === 'en' && Styles.langoption__text_checked
+                      }`}
+                      htmlFor='answer2'
+                    >
+                      EN
+                    </label>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           <button className={btnClass} onClick={handleLoginModalOpen}>
             {/* <img src={loginIcon} alt='Иконка' /> */}
