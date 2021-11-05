@@ -17,10 +17,12 @@ export const Balance = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const [money, setMoney] = useState('0')
   const walletAddress = useAppSelector((state) => state.wallet.address)
-  const money = useAppSelector((state) => state.wallet.usdt_balance)
+  const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
   const limcCount = useAppSelector((state) => state.wallet.limcCount)
   const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
+  const sum: number = Number(usdtBalance) + Number(limcBalance)
+  const money = isNaN(sum) ? '...' : sum
 
   const handleFirstRegModalClose = () => {
     setIsRegModalVisible(false)
@@ -63,7 +65,7 @@ export const Balance = () => {
       </div>
 
       <Modal active={isBalanceVisible} setActive={() => {}}>
-        <Overall limcBalance={limcBalance} onClick={handleCloseBalanceModal} money={money} />
+        <Overall onClick={handleCloseBalanceModal} money={money} limcBalance={limcBalance} usdtBalance={usdtBalance} />
       </Modal>
       <Modal classname={styles.reg} active={isRegModalVisible} setActive={handleFirstRegModalClose} crossFlag>
         <div className={styles.regModal}>
