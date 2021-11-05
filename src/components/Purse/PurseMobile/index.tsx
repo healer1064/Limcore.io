@@ -39,6 +39,7 @@ export const PurseMobile: FC = () => {
   const [viewContent, setViewContent] = useState('')
 
   const [value, setValue] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const dispatch = useAppDispatch()
   const prices = useAppSelector((state) => state.wallet.limc_price)
@@ -73,6 +74,7 @@ export const PurseMobile: FC = () => {
   }
 
   const handleBuyLIMK = async () => {
+    setIsLoading(true)
     const data = {
       limc_amount: value,
       pricing_slug: prices.slug,
@@ -92,6 +94,7 @@ export const PurseMobile: FC = () => {
         setIsSuccessVisible(false)
       }, 2000)
     }
+    setIsLoading(false)
     dispatch(getWalletBalance())
   }
 
@@ -182,7 +185,7 @@ export const PurseMobile: FC = () => {
                 Locktime: <span className={styles.price}>{prices.lock_time} дней</span>
               </span>
               <InputText onChange={(event) => handleSetValue(event)} type='number' value={value} />
-              <ButtonBig onClick={handleBuyLIMK} className={styles.button} disabled={!value}>
+              <ButtonBig onClick={handleBuyLIMK} className={styles.button} disabled={!value || isLoading}>
                 Купить
               </ButtonBig>
             </div>
