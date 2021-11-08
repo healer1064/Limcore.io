@@ -19,8 +19,9 @@ export const InputCode: React.FC<InputCodeProps> = ({ onChange, name, value, val
         value={value}
         placeholder='_ _ _ _'
         maxLength={4}
+        autoComplete='off'
       />
-      {!validValue && <span className={Styles.error}>Неверный код. Попробуйте еще раз</span>}
+      {/* {!validValue && <span className={Styles.error}>Неверный код. Попробуйте еще раз</span>} */}
     </>
   )
 }

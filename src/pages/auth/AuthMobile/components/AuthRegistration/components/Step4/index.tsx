@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setStepRegistration, setCodeEmail } from '../../../../../redux/authSlice'
+import { setStepRegistration, setCodeEmail, registerUserEmailConfirmation } from '../../../../../redux/authSlice'
 import Styles from './styles.module.scss'
 
 import { InputCode } from '../../../../../../../ui-kit/InputCode'
@@ -11,16 +11,38 @@ export const Step4: React.FC = () => {
   const dispatch = useAppDispatch()
   const email = useAppSelector((state) => state.authNew.email)
   const codeEmail = useAppSelector((state) => state.authNew.codeEmail)
+
   const [validValue, setValidValue] = useState(true)
+  const [error, setError] = useState('asdfasdf')
 
   const onChange = (event) => {
+    if (!Number(event.target.value)) {
+      return
+    }
+
     setValidValue(true)
     dispatch(setCodeEmail(event.target.value))
   }
 
   const prevStep = () => dispatch(setStepRegistration(3))
 
-  const completeRegistration = () => {}
+  const completeRegistration = async () => {
+    // нужно отдать code + unique_identifier
+    const data = {
+      code: codeEmail,
+      unique_identifier: localStorage.getItem('uniqueId'),
+    }
+
+    const response = await dispatch(registerUserEmailConfirmation(data))
+    console.log('Step4', response)
+    if (response.error) {
+      setValidValue(false)
+      setError('Что-то пошло не так..')
+    } else {
+      dispatch(registerUserEmailConfirmation(data))
+      window.location.reload()
+    }
+  }
 
   return (
     <>
@@ -59,6 +81,7 @@ export const Step4: React.FC = () => {
           <div className={Styles.wrap}>
             <span className={Styles.time}>Получить новый код можно через 00:41</span>
             {/* <ButtonSmall>Отправить новый код</ButtonSmall> */}
+            <p className={Styles.error}>{error}</p>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setStepRegistration, setEmail } from '../../../../../redux/authSlice'
+import { setStepRegistration, setEmail, registerUserEmail } from '../../../../../redux/authSlice'
 import { validateEmail } from '../../../../../../../helpers/validateValue'
 import Styles from './styles.module.scss'
 
@@ -12,18 +12,32 @@ export const Step3: React.FC = () => {
   const dispatch = useAppDispatch()
   const email = useAppSelector((state) => state.authNew.email)
   const [validValue, setValidValue] = useState(true)
+  const [error, setError] = useState('')
 
   const onChange = (event) => {
     setValidValue(true)
     dispatch(setEmail(event.target.value))
   }
 
-  const nextStep = () => {
+  const nextStep = async () => {
     if (validateEmail(email)) {
       setValidValue(true)
-      dispatch(setStepRegistration(4))
     } else {
       setValidValue(false)
+      setError('Неверные данные.')
+      return
+    }
+
+    const response = await dispatch(registerUserEmail({ email, unique_identifier: localStorage.getItem('uniqueId') }))
+    console.log('step3', response)
+    if (response.error) {
+      if (response.error.message === 'user_already_registered') {
+        setError('Пользователь уже зарегистрирован')
+      }
+
+      setError('Что-то пошло не так, попробуйте еще раз.')
+    } else {
+      dispatch(setStepRegistration(4))
     }
   }
 
@@ -57,8 +71,9 @@ export const Step3: React.FC = () => {
         </div>
         <div className={Styles.block}>
           <h3 className={Styles.title}>Регистрация</h3>
-          <Label titleText='E-mail'>
+          <Label titleText='E-mail' className={Styles.label}>
             <InputEmail onChange={onChange} value={email} validValue={validValue} placeholder='Введите e-mail' />
+            <p className={Styles.error}>{error}</p>
           </Label>
         </div>
       </div>

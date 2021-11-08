@@ -1,30 +1,41 @@
 import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setProcessType, setStepRegistration, setPhone } from '../../../../../redux/authSlice'
-import { validatePhone } from '../../../../../../../helpers/validateValue'
+import { setProcessType, setStepRegistration, setPhone, registerUserPhone } from '../../../../../redux/authSlice'
+// import { validatePhone } from '../../../../../../../helpers/validateValue'
 import Styles from './styles.module.scss'
 
 import { Label } from '../../../../../../../ui-kit/Label'
-import { InputPhone } from '../../../../../../../ui-kit/InputPhone'
+// import { InputPhone } from '../../../../../../../ui-kit/InputPhone'
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
 import { ButtonSecond } from '../../../../../../../ui-kit/ButtonSecond'
+import PhoneInput from 'react-phone-input-2'
 
 export const Step1: React.FC = () => {
   const dispatch = useAppDispatch()
   const phone = useAppSelector((state) => state.authNew.phone)
-  const [validValue, setValidValue] = useState(true)
+  const [error, setError] = useState('')
 
   const onChange = (event) => {
-    setValidValue(true)
-    dispatch(setPhone(event.target.value))
+    dispatch(setPhone(event))
   }
 
-  const nextStep = () => {
-    if (validatePhone(phone)) {
-      setValidValue(true)
-      dispatch(setStepRegistration(2))
+  const nextStep = async () => {
+    if (phone.length < 10) {
+      return setError('Введите корректные данные')
+    }
+
+    const response = await dispatch(registerUserPhone({ phone: `+${phone}` })) // придет unique_identifier
+    console.log(response)
+    if (response.error) {
+      if (response.error.message === 'user_already_registered') {
+        setError('Пользователь уже зарегистрирован')
+      } else {
+        setError('Что-то пошло не так..')
+      }
     } else {
-      setValidValue(false)
+      const id = response.payload?.data.unique_identifier || null
+      localStorage.setItem('uniqueId', id)
+      dispatch(setStepRegistration(2))
     }
   }
 
@@ -58,13 +69,14 @@ export const Step1: React.FC = () => {
         </div>
         <div className={Styles.block}>
           <h3 className={Styles.title}>Регистрация</h3>
-          <Label titleText='Телефон'>
-            <InputPhone
-              onChange={onChange}
+          <Label titleText='Телефон' className={Styles.label}>
+            <PhoneInput
+              country='ru'
+              preferredCountries={['ua', 'ru', 'by', 'kz', 'uz', 'tj']}
               value={phone}
-              validValue={validValue}
-              placeholder='Введите номер телефона'
+              onChange={onChange}
             />
+            <p className={Styles.error}>{error}</p>
           </Label>
         </div>
       </div>
@@ -72,7 +84,7 @@ export const Step1: React.FC = () => {
         <ButtonBig onClick={nextStep} disabled={!phone}>
           Получить код
         </ButtonBig>
-        <ButtonSecond onClick={() => dispatch(setProcessType('authorization'))}>Войти</ButtonSecond>
+        <ButtonSecond onClick={() => dispatch(setProcessType('authorization'))}>Авторизация</ButtonSecond>
       </div>
     </>
   )

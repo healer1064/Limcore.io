@@ -7,6 +7,7 @@ import { authSelector, setProcessType, setAuthStep } from '../../redux/auth.slic
 import styles from './Auth.module.scss'
 import { Form, List } from './parts'
 import useWindowSize from '@helpers/useWindowSizeHook'
+import { AuthMobile } from '../../../../pages/auth/AuthMobile'
 
 const AuthComponent: FC = () => {
   const dispatch = useAppDispatch()
@@ -20,29 +21,9 @@ const AuthComponent: FC = () => {
     <div className={classNames(styles.auth, { [styles.authOffsetBottom]: auth.authStep !== Auth.Step1 })}>
       {auth.processType === Process.Registration && <List />}
       <div className={desktop ? classNames(styles.authInner, styles.authInnerDesktop) : styles.authInner}>
-        <Form />
+        {/* <Form /> */}
+        <AuthMobile />
       </div>
-      {auth.authStep === Auth.Step1 && (
-        <Link
-          to='#!'
-          className={styles.authLink}
-          onClick={() => {
-            process === Process.Registration
-              ? dispatch(setProcessType(Process.Authorization))
-              : dispatch(setProcessType(Process.Registration))
-            dispatch(setAuthStep(Auth.Step1))
-          }}
-        >
-          {/* {auth.authStep === Auth.Step1
-            ? Process.Authorization
-              ? 'Зарегистрироваться'
-              : Process.Registration
-              ? 'Войти'
-              : null
-            : null} */}
-          {auth.authStep === Auth.Step1 ? (process === Process.Registration ? 'Авторизация' : 'Регистрация') : null}
-        </Link>
-      )}
     </div>
   )
 }

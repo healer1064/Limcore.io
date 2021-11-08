@@ -18,7 +18,7 @@ export const InputEmail: React.FC<InputEmailProps> = ({ onChange, value, validVa
         value={value}
         placeholder={placeholder}
       />
-      {!validValue && <span className={Styles.error}>Неверный формат e-mail</span>}
+      {/* {!validValue && <span className={Styles.error}>Неверный формат e-mail</span>} */}
     </>
   )
 }
