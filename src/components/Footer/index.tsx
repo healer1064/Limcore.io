@@ -1,13 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Styles from './styles.module.scss'
 
 // import logo from '../../assets/icons/LimLogo.png'
 // import logo from '../../assets/icons/FooterLogo.svg'
-// import RU from '../../assets/images/flag-ru.svg'
-import RUS from '../../assets/images/russia-flag.png'
-import ENG from '../../assets/images/en-flag.png'
-// import EN from '../../assets/images/flag-en.svg'
-import arrow from '../../assets/icons/grey-arrow-down.png'
 import twitter from '../../assets/icons/twitter-icon.png'
 import linkedIn from '../../assets/icons/linkedIn-icon.png'
 import vk from '../../assets/icons/vk-icon.png'
@@ -20,68 +15,12 @@ import { FooterLogo } from '@components/Footer/components/FooterLogo'
 import { Link } from 'react-router-dom'
 
 export const Footer: React.FC = () => {
-  const [showPopapLanguage, setShowPopapLanguage] = useState(false)
-  const [valueLanguage, setValueLanguage] = useState('ru')
   return (
     <footer className={Styles.footer}>
       <div className={Styles.wrapper}>
         <div className={Styles.footer__container}>
           {/* <img src={logo} alt='Logo' className={Styles.logo} /> */}
           <FooterLogo />
-          <div className={Styles.lang}>
-            <div className={Styles.block} onClick={() => setShowPopapLanguage(!showPopapLanguage)}>
-              <img src={valueLanguage === 'ru' ? RUS : ENG} alt='Флаг' className={Styles.img} />
-              <span className={Styles.lang__value}>{valueLanguage}</span>
-              <img src={arrow} className={showPopapLanguage && Styles.arrow} />
-            </div>
-            {showPopapLanguage && (
-              <div className={Styles.header__langoptions}>
-                <div className={`${Styles.langoption} ${Styles.langoption_ru}`}>
-                  <input
-                    className={Styles.langoption__checked}
-                    type='radio'
-                    name='radio1'
-                    id='answer1'
-                    onClick={() => setValueLanguage('ru')}
-                    checked
-                    readOnly
-                  />
-                  <div className={Styles.lang_box}>
-                    <img src={RUS} alt='Флаг' className={Styles.lang__img} />
-                    <label
-                      className={`${Styles.langoption__text} ${
-                        valueLanguage === 'ru' && Styles.langoption__text_checked
-                      }`}
-                      htmlFor='answer1'
-                    >
-                      RU
-                    </label>
-                  </div>
-                </div>
-                <div className={`${Styles.langoption} ${Styles.langoption_en}`}>
-                  <input
-                    className={Styles.langoption__checked}
-                    type='radio'
-                    name='radio1'
-                    id='answer2'
-                    onClick={() => setValueLanguage('en')}
-                    readOnly
-                  />
-                  <div className={Styles.lang_box}>
-                    <img src={ENG} alt='Флаг' className={Styles.lang__img} />
-                    <label
-                      className={`${Styles.langoption__text} ${
-                        valueLanguage === 'en' && Styles.langoption__text_checked
-                      }`}
-                      htmlFor='answer2'
-                    >
-                      EN
-                    </label>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
           <ul className={`${Styles.footer__etc} ${Styles.footer__list}`}>
             <h3 className={`${Styles.footer_listTitle} ${Styles.footer__listTitle_etcTitle}`}>Прочее</h3>
             <div className={Styles.footer__listItemContainer_etc}>
