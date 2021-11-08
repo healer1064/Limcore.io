@@ -42,6 +42,7 @@ export const Step1: React.FC = () => {
   return (
     <>
       <div className={Styles.content}>
+        <h3 className={Styles.title}>Регистрация</h3>
         <div className={Styles.progress}>
           <div className={Styles.step}>
             <div className={`${Styles.number} ${Styles.number_active}`}>
@@ -68,7 +69,6 @@ export const Step1: React.FC = () => {
           </div>
         </div>
         <div className={Styles.block}>
-          <h3 className={Styles.title}>Регистрация</h3>
           <Label titleText='Телефон' className={Styles.label}>
             <PhoneInput
               country='ru'
@@ -84,7 +84,7 @@ export const Step1: React.FC = () => {
         <ButtonBig onClick={nextStep} disabled={!phone}>
           Получить код
         </ButtonBig>
-        <ButtonSecond onClick={() => dispatch(setProcessType('authorization'))}>Авторизация</ButtonSecond>
+        <ButtonSecond onClick={() => dispatch(setProcessType('authorization'))}>Войти</ButtonSecond>
       </div>
     </>
   )

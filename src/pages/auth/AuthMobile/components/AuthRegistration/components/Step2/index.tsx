@@ -47,6 +47,7 @@ export const Step2: React.FC = () => {
   return (
     <>
       <div className={Styles.content}>
+        <h3 className={Styles.title}>Введите код из СМС</h3>
         <div className={Styles.progress}>
           <div className={Styles.step}>
             <div className={`${Styles.number} ${Styles.number_active}`}>
@@ -73,7 +74,6 @@ export const Step2: React.FC = () => {
           </div>
         </div>
         <div className={Styles.block}>
-          <h3 className={Styles.title}>Введите код из СМС</h3>
           <span className={Styles.notification}>
             Мы отправили код на номер +{phone} <ButtonSmall onClick={prevStep}>Изменить</ButtonSmall>
           </span>

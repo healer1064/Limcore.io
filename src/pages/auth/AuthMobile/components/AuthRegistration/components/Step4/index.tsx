@@ -47,6 +47,7 @@ export const Step4: React.FC = () => {
   return (
     <>
       <div className={Styles.content}>
+        <h3 className={Styles.title}>Введите код</h3>
         <div className={Styles.progress}>
           <div className={Styles.step}>
             <div className={`${Styles.number} ${Styles.number_active}`}>
@@ -73,7 +74,6 @@ export const Step4: React.FC = () => {
           </div>
         </div>
         <div className={Styles.block}>
-          <h3 className={Styles.title}>Введите код</h3>
           <span className={Styles.notification}>
             Мы отправили код на адрес {email} <ButtonSmall onClick={prevStep}>Изменить</ButtonSmall>
           </span>

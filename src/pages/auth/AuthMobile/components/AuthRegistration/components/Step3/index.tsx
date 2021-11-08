@@ -44,6 +44,7 @@ export const Step3: React.FC = () => {
   return (
     <>
       <div className={Styles.content}>
+        <h3 className={Styles.title}>Регистрация</h3>
         <div className={Styles.progress}>
           <div className={Styles.step}>
             <div className={`${Styles.number} ${Styles.number_active}`}>
@@ -70,7 +71,6 @@ export const Step3: React.FC = () => {
           </div>
         </div>
         <div className={Styles.block}>
-          <h3 className={Styles.title}>Регистрация</h3>
           <Label titleText='E-mail' className={Styles.label}>
             <InputEmail onChange={onChange} value={email} validValue={validValue} placeholder='Введите e-mail' />
             <p className={Styles.error}>{error}</p>
