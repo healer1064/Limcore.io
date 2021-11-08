@@ -15,7 +15,7 @@ import { useHistory } from 'react-router'
 import { VectorIcon } from '../../assets/icons/VectorIcon'
 
 const tempLink = [
-  { id: 1, value: 'Что такое Limcore?', link: 'main', spy: true, smooth: true },
+  { id: 1, value: 'Что такое Limcore?', link: 'limcore', spy: true, smooth: true },
   { id: 2, value: 'Roadmap', link: 'roadmap', spy: true, smooth: true },
   { id: 3, value: 'Команда', link: 'team', spy: true, smooth: true },
   // { id: 4, value: 'Экосистема', link: 'ecosystem', spy: true, smooth: true },
