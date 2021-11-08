@@ -12,13 +12,13 @@ SwiperCore.use([Pagination])
 export const MainHow: React.FC = () => {
   const { width } = useWindowSize()
   return (
-    <div className={Styles.how}>
+    <div className={Styles.how} id='limcore'>
       <div className={Styles.block}>
         <h2 className={Styles.caption}>Limcore</h2>
         <p className={Styles.text}>Современный дата-центр майнинга Chia и всех форков одновременно</p>
         <p className={Styles.text}>Это безопаснее и выгоднее большинства инвестиционных предложений на рынке</p>
       </div>
-      {width >= 768 ? (
+      {width > 768 ? (
         <div className={Styles.container}>
           <span className={Styles.title}>Как это работает?</span>
           <ul className={Styles.list}>

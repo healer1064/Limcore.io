@@ -68,14 +68,14 @@ export const RoadMap: React.FC = () => {
       id: 9,
       title: 'Запуск личного кабинета v0.2',
       status: 'in progress',
-      deadline: '05.11.2021',
+      deadline: '15.11.2021',
       priority: 10,
     },
     {
       id: 10,
       title: 'Старт Round №1 1 LIMC = $95 / 80,000 LIMC',
       status: 'in progress',
-      deadline: '05.11 – 30.12.2021',
+      deadline: '15.11 – 30.12.2021',
       priority: 10,
     },
     {

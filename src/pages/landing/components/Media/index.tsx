@@ -14,9 +14,14 @@ export const Media: React.FC = () => {
           <h4 className={Styles.caption}>СМИ о нас</h4>
           <div className={Styles.container}>
             <div className={Styles.news}>
-              <div className={Styles.image}>
+              <a
+                className={Styles.image}
+                href='https://blockchain-life.com/europe/ru/news/kak-dobyvaetsya-kriptovalyuta-v-rossii/'
+                target='blank'
+                rel='noopener noreferrer'
+              >
                 <img src={mediaImage} alt='Изображение' />
-              </div>
+              </a>
               <div className={Styles.newsTextWrapper}>
                 <span className={Styles.title}>Как добывается криптовалюта в России?</span>
                 <p className={Styles.description}>
@@ -24,7 +29,10 @@ export const Media: React.FC = () => {
                   LIMC и любовь к стране
                 </p>
                 <div className={Styles.row}>
-                  <a className={Styles.link} href='/'>
+                  <a
+                    className={Styles.link}
+                    href='https://blockchain-life.com/europe/ru/news/kak-dobyvaetsya-kriptovalyuta-v-rossii/'
+                  >
                     Blockchain Life
                   </a>
                   <span className={Styles.date}>24.09.2021</span>
@@ -32,9 +40,14 @@ export const Media: React.FC = () => {
               </div>
             </div>
             <div className={Styles.news}>
-              <div className={Styles.image}>
-                <img className={Styles.limcInterviewPic} src={limcInterview} alt='Изображение' />
-              </div>
+              <a
+                className={Styles.image}
+                href='https://coinpost.ru/p/interview-limcore'
+                target='blank'
+                rel='noopener noreferrer'
+              >
+                <img src={limcInterview} alt='Изображение' />
+              </a>
               <div className={Styles.newsTextWrapper}>
                 <span className={Styles.title}>
                   CEO Limcore: инвестиции в майнинг от Limcore — альтернатива банковским депозитам
