@@ -1,13 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Styles from './styles.module.scss'
 
 // import logo from '../../assets/icons/LimLogo.png'
 // import logo from '../../assets/icons/FooterLogo.svg'
-// import RU from '../../assets/images/flag-ru.svg'
-import RUS from '../../assets/images/russia-flag.png'
-import ENG from '../../assets/images/en-flag.png'
-// import EN from '../../assets/images/flag-en.svg'
-import arrow from '../../assets/icons/grey-arrow-down.png'
 import twitter from '../../assets/icons/twitter-icon.png'
 import linkedIn from '../../assets/icons/linkedIn-icon.png'
 import vk from '../../assets/icons/vk-icon.png'
@@ -20,28 +15,12 @@ import { FooterLogo } from '@components/Footer/components/FooterLogo'
 import { Link } from 'react-router-dom'
 
 export const Footer: React.FC = () => {
-  const [lang, setLang] = useState('RU')
-  const langHandler = (e) => {
-    setLang(e.target.value)
-  }
-
   return (
     <footer className={Styles.footer}>
       <div className={Styles.wrapper}>
         <div className={Styles.footer__container}>
           {/* <img src={logo} alt='Logo' className={Styles.logo} /> */}
           <FooterLogo />
-          <div className={Styles.footer__languageGroup}>
-            {lang === 'RU' ? (
-              <img className={Styles.footer__languageIcon} src={RUS} alt='RU' />
-            ) : (
-              <img className={Styles.footer__languageIcon} src={ENG} alt='EN' />
-            )}
-            <select className={Styles.footer__language} value={lang} onChange={langHandler}>
-              <option value='RU'>RU</option>
-              <option value='EN'>EN</option>
-            </select>
-          </div>
           <ul className={`${Styles.footer__etc} ${Styles.footer__list}`}>
             <h3 className={`${Styles.footer_listTitle} ${Styles.footer__listTitle_etcTitle}`}>Прочее</h3>
             <div className={Styles.footer__listItemContainer_etc}>
