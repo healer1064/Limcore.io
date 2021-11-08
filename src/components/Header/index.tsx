@@ -138,7 +138,7 @@ export const Header: React.FC = () => {
           <button className={btnClass} onClick={handleLoginModalOpen}>
             {/* <img src={loginIcon} alt='Иконка' /> */}
             <LoginIcon />
-            <span>Войти</span>
+            <span className={Styles.enter}>Войти</span>
           </button>
 
           <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />
