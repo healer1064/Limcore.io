@@ -81,4 +81,51 @@
 .buttons {
   display: flex;
   flex-direction: column;
+  margin-top: 40px;
+}
+
+.label {
+  position: relative;
+
+  margin-left: 5px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  
+  color:#4F535A;
+  cursor: pointer;
+
+  & > div {
+    margin-top: 8px;
+    height: 45px;
+
+    // Инпут
+    & > input {
+      width: 100% !important;
+      height: 45px;
+      border: 1.4px solid #B4BFD4 !important;
+      border-radius: 14px !important;
+    }
+
+    // Убираю ненужный див
+    & > div:first-child {
+      display: none;
+    }
+  }
+
+  & + div > div:first-child {
+    display: none !important;
+  }
+}
+
+.error {
+  position: absolute;
+  left: 5px;
+  bottom: -45px;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: #FF6A6A;
 }

@@ -20,6 +20,11 @@
     line-height: 150%;
     color: #b4bfd5;
   }
+
+  &:focus {
+    outline: none;
+    border: 1.4px solid #67686C;
+  }
 }
 
 .input_error {
