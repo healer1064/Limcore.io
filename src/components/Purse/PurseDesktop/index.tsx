@@ -17,9 +17,9 @@ import { Balance } from '@components/Purse/PurseDesktop/components/Balance'
 import { Menu } from '@components/Purse/PurseDesktop/components/Menu'
 import { VirtualCard } from '@components/Purse/PurseMobile/components/VirtualCard'
 import { StartMining } from '@components/Purse/PurseMobile/components/StartMining'
-import { Statistics } from '@components/Purse/PurseMobile/components/Statistics'
+import { Statistics } from '@components/Purse/PurseDesktop/components/Statistics'
 import { Details } from '@components/Purse/PurseDesktop/components/Details'
-import { Wallet } from '@components/Purse/PurseMobile/components/Wallet'
+import { Wallet } from '@components/Purse/PurseDesktop/components/Wallet'
 import { Transactions } from '@components/Purse/PurseDesktop/components/Transactions'
 import { Wallpaper } from '@components/Purse/PurseDesktop/components/Wallpaper'
 
@@ -175,9 +175,18 @@ export const PurseDesktop = () => {
           </div>
         </div>
         <div className={styles.mining}>
-          <Details />
+          <h3 className={styles.detailsTitle}>Детализация майнинга</h3>
+          <div className={styles.miningDetails}>
+            <Details />
+            {isLimcBought?.length ? (
+              <StartMining onButtonClick={handleStartClick} />
+            ) : (
+              <Statistics onClick={handleShowMoreClick} />
+            )}
+          </div>
         </div>
         <div className={styles.transactions}>
+          {isWalletVisible && <Wallet />}
           <Transactions
             onProfileClick={handleProfileClick}
             onTransactionsClick={handleTransactionsClick}

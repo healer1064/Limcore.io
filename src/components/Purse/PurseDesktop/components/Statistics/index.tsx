@@ -7,6 +7,7 @@ import Accordion from '@material-ui/core/Accordion'
 import AccordionSummary from '@material-ui/core/AccordionSummary'
 import AccordionDetails from '@material-ui/core/AccordionDetails'
 import { useAppSelector } from '@app/redux/hooks'
+import { ArrowRight } from '@icons/ArrowRight'
 
 interface IStatisticsProps {
   onClick?: () => void
@@ -51,17 +52,9 @@ export const Statistics = ({ onClick }: IStatisticsProps) => {
       <div className={styles.header}>
         <h3 className={styles.title}>До старта майнинга</h3>
         <button type='button' className={styles.tooltip}>
-          <InfoIcon onClick={handleTooltipClick} />
+          <ArrowRight />
         </button>
       </div>
-
-      <BottomModal
-        active={isTooltipVisible}
-        setActive={handleTooltipClick}
-        title='Почему нужно ждать?'
-        subtitle='Этап плоттинга начинается с создания параллельных участков. Дополнительные параметры используются для оптимального использования возможностей процессора и ОЗУ. После завершения Round 1 начнется отсчет'
-      />
-
       <div className={styles.progressbar}>
         <span className={styles.progressbar__track} />
       </div>
@@ -69,15 +62,6 @@ export const Statistics = ({ onClick }: IStatisticsProps) => {
         <span className={styles.details__days}>осталось 80 дней из 80</span>
         <span className={styles.details__memory}>0 TB / {balanceLimc} TB</span>
       </div>
-
-      <Accordion>
-        <AccordionSummary expandIcon={<AccordeonIcon />}>
-          <button type='button' className={styles.more} onClick={handleDisappearClick}>
-            Показать больше
-          </button>
-        </AccordionSummary>
-        <AccordionDetails>{/* <Table /> */}</AccordionDetails>
-      </Accordion>
     </div>
   )
 }

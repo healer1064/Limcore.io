@@ -29,13 +29,7 @@ export const Details = () => {
   return (
     <div className={styles.details}>
       <header className={styles.details__header}>
-        <h3 className={styles.details__title}>Детализация майнинга</h3>
         <DetalizationUp summary='$0' xch='$0' forks='$0' />
-
-        <button type='button' className={styles.details__button} onClick={handleDetailsOpenClick}>
-          <BlueArrow />
-        </button>
-
         <Modal active={isModalVisible} setActive={handleDetailsCloseClick}>
           <ul className={styles.detailsModal}>
             <ModalHeader title='Детализация майнинга' onClick={handleDetailsCloseClick} />

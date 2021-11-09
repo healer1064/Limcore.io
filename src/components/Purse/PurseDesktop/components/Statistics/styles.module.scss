@@ -1,6 +1,12 @@
 @import '../../../vars&mixins.scss';
 
 .statistics {
+  border: 1px solid #DCDCDC;
+  background-color: transparent;
+  width: 60%;
+  padding: 33px 30px;
+  border-radius: 14px;
+
   .title {
     position: relative;
     margin-right: 5px;
