@@ -17,6 +17,7 @@ export const InputPhone: React.FC<InputPhoneProps> = ({ onChange, value, validVa
         type='phone'
         value={value}
         placeholder={placeholder}
+        autoComplete='off'
       />
       {!validValue && <span className={Styles.error}>Неверный формат телефона</span>}
     </>

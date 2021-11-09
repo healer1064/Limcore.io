@@ -23,7 +23,8 @@ import close from '@icons/close.svg'
 
 export const HeaderMobile: React.FC = () => {
   const [burgerOpen, setBurgerOpen] = useState(false)
-  const isAuth = useAppSelector((state) => state.auth.isAuth)
+  // const isAuth = useAppSelector((state) => state.auth.isAuth)
+  const isAuth = useAppSelector((state) => state.authNew.isAuth)
   const history = useHistory()
   const location = useLocation()
   const dispatch = useAppDispatch()
@@ -42,7 +43,7 @@ export const HeaderMobile: React.FC = () => {
 
   const burgerStyles = `${burgerOpen ? Styles.burgerMenuOpened : Styles.burgerMenuClosed}`
   const tempLink = [
-    { id: 1, value: 'Что такое Limcore?', link: 'main', spy: true, smooth: true },
+    { id: 1, value: 'Что такое Limcore?', link: 'limcore', spy: true, smooth: true },
     { id: 2, value: 'Roadmap', link: 'roadmap', spy: true, smooth: true },
     { id: 3, value: 'Команда', link: 'team', spy: true, smooth: true },
     // { id: 4, value: 'Экосистема', link: 'ecosystem', spy: true, smooth: true },
@@ -58,18 +59,17 @@ export const HeaderMobile: React.FC = () => {
           </a>
         )} */}
         {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null}
-        {
-          location.pathname === '/auth' ? (
-            <LinkDom to='/'>
-              <img src={close} alt='close' />
-            </LinkDom>
-          ) : null
-          // <div className={Styles.burger} onClick={openBurger}>
-          //   <span className={Styles.row}>{}</span>
-          //   <span className={Styles.row}>{}</span>
-          //   <span className={Styles.row}>{}</span>
-          // </div>
-        }
+        {location.pathname === '/auth' ? (
+          <LinkDom to='/'>
+            <img src={close} alt='close' />
+          </LinkDom>
+        ) : (
+          <div className={Styles.burger} onClick={openBurger}>
+            <span className={Styles.row}>{}</span>
+            <span className={Styles.row}>{}</span>
+            <span className={Styles.row}>{}</span>
+          </div>
+        )}
         <div className={burgerStyles}>
           <Container title='' onClose={closeBurger}>
             <img className={Styles.logoInOpenBurger} src={logoIcon} alt='Лого' />
