@@ -48,7 +48,7 @@ const App = () => {
   const isAuth = useAppSelector((state) => state.authNew.isAuth)
   const [isLoading, setIsLoading] = useState(false)
   console.log(user)
-  const desktop = width >= 768
+  const desktop = width >= 769
 
   useEffect(() => {
     const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
@@ -86,8 +86,9 @@ const App = () => {
             {!isAuth && !isLoading && (
               <Switch>
                 <Route path='/' exact component={LandingPage} />
-                {/* <Route path='/auth' exact component={AuthPage} /> */}
-                {/* <Route path='/profile' exact component={ProfileMobile} /> */}
+                <Route path='/my' exact component={PurseMobile} />
+                <Route path='/auth' exact component={AuthPage} />
+                <Route path='/profile' exact component={ProfileMobile} />
                 {/* <Route path='/auth' exact component={AuthMobile} /> */}
                 <Route path='/not-found' exact component={PageNotFount} />
                 <Route path='*'>
