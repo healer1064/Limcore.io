@@ -27,7 +27,8 @@ export const Header: React.FC = () => {
   const [btnClass, setBtnClass] = useState(Styles.login)
   const [showPopapLanguage, setShowPopapLanguage] = useState(false)
   const [valueLanguage, setValueLanguage] = useState('ru')
-  const isAuth = useAppSelector((state) => state.auth.isAuth)
+  // const isAuth = useAppSelector((state) => state.auth.isAuth)
+  const isAuth = useAppSelector((state) => state.authNew.isAuth)
   const dispatch = useAppDispatch()
   const history = useHistory()
 

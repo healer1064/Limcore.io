@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 // import { setIsAuth, checkToken } from '../../pages/auth/redux/auth.slice'
@@ -40,11 +40,12 @@ import { getUser } from '@app/redux/userSlice'
 
 const App = () => {
   const dispatch = useAppDispatch()
-  // const { width, height } = useWindowSize()
   const { width } = useWindowSize()
   // const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
   const user = useAppSelector((state) => state.user.userData)
-  const isAuth = useAppSelector((state) => state.auth.isAuth)
+  // const isAuth = useAppSelector((state) => state.auth.isAuth)
+  const isAuth = useAppSelector((state) => state.authNew.isAuth)
+  const [isLoading, setIsLoading] = useState(false)
   console.log(user)
   const desktop = width >= 768
 
@@ -52,6 +53,8 @@ const App = () => {
     const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
 
     if (tokenObj.access) {
+      setIsLoading(true)
+
       dispatch(checkToken({ token: tokenObj.access }))
         .then(() => {
           dispatch(getWalletAdress())
@@ -60,17 +63,26 @@ const App = () => {
           dispatch(getLimcAmount())
           dispatch(getUser())
           dispatch(getTransactions())
+          setIsLoading(false)
         })
-        .catch((err) => console.log('ERROR ===========+>>>>>>', err))
+        .catch((err) => {
+          console.log('ERROR ===========+>>>>>>', err)
+          setIsLoading(false)
+        })
     }
   }, [isAuth])
   return (
     <Router>
       <div className={Styles.app_container}>
+        {isLoading && (
+          <div className={Styles.spinnerContainer}>
+            <Spinner />
+          </div>
+        )}
         {desktop ? <Header /> : <HeaderMobile />}
         <>
           <main className={desktop ? `${Styles.main}` : `${Styles.main} ${Styles.main_mobile}`}>
-            {!isAuth && (
+            {!isAuth && !isLoading && (
               <Switch>
                 <Route path='/' exact component={LandingPage} />
                 <Route path='/auth' exact component={AuthPage} />
@@ -85,7 +97,7 @@ const App = () => {
                 <ProtectedRoute allowedUsersTypes={[USER_ROlES.user]} path='/orders' exact component={OrdersPage} /> */}
               </Switch>
             )}
-            {isAuth && (
+            {isAuth && !isLoading && (
               <Switch>
                 <Route path='/' exact component={PurseMobile} />
                 <Route path='/chat' exact component={Dummy} />
