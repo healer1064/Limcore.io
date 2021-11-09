@@ -32,6 +32,7 @@ import { AuthPage } from '../../pages/auth'
 import { Dummy } from '../../components/Dummy'
 import { LandingPage } from '../../pages/landing'
 import { PurseMobile } from '@components/Purse/PurseMobile'
+import { Purse } from '@components/Purse'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getWalletAdress, getWalletBalance, getLimcPrice, getLimcAmount } from '../Wallet/redux/walletSlice'
@@ -99,7 +100,7 @@ const App = () => {
             )}
             {isAuth && !isLoading && (
               <Switch>
-                <Route path='/' exact component={PurseMobile} />
+                <Route path='/' exact component={Purse} />
                 <Route path='/chat' exact component={Dummy} />
                 <Route path='/broadcasts' exact component={BroadcastsMobile} />
                 <Route path='/profile' exact component={ProfileMobile} />
