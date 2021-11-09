@@ -37,7 +37,7 @@ export const PurseDesktop = () => {
   const [isErrorVisible, setIsErrorVisible] = useState(false)
   const [isSuccessVisible, setIsSuccessVisible] = useState(false)
 
-  const [viewContent, setViewContent] = useState('balance')
+  const [viewContent, setViewContent] = useState('')
 
   const [value, setValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -136,41 +136,43 @@ export const PurseDesktop = () => {
         </div>
         <div className={styles.balance}>
           <Balance />
-          {/* <Modal active={viewContent === 'balance'} classname={styles.balanceModal} setActive={closePopup}> */}
-          {/*  <ModalHeader title='LIMC' onClick={closePopup} /> */}
-          {/*  <div className={styles.balanceBlock}> */}
-          {/*    <div className={styles.block}> */}
-          {/*      <div className={styles.line}> */}
-          {/*        <img src={limcoreIcon} alt='' /> */}
-          {/*        <span className={styles.title}>{limcBalance} LIMC</span> */}
-          {/*      </div> */}
-          {/*      <span className={styles.usd}>{}</span> */}
-          {/*      <div className={styles.items}> */}
-          {/*        <div className={`${styles.item} ${styles.item_active}`} onClick={() => setViewContent('buy')}> */}
-          {/*          <img className={styles.icon} src={buyIcon} alt='' /> */}
-          {/*          <span>Купить</span> */}
-          {/*        </div> */}
-          {/*        <div className={styles.item}> */}
-          {/*          <img className={styles.icon} src={sellIcon} alt='' /> */}
-          {/*          <span>Продать</span> */}
-          {/*        </div> */}
-          {/*        <div className={styles.item}> */}
-          {/*          <img className={styles.icon} src={tradeIcon} alt='' /> */}
-          {/*          <span>Обменять</span> */}
-          {/*        </div> */}
-          {/*      </div> */}
-          {/*      <div className={styles.container}> */}
-          {/*        <span className={styles.trans}>Транзакции</span> */}
-          {/*        <span className={styles.desc}> */}
-          {/*          У вас еще нет транзакций. Мы предоставим доступ ко всем функциям кошелька после заполнения профиля */}
-          {/*        </span> */}
-          {/*      </div> */}
-          {/*      <div className={styles.nextCont}> */}
-          {/*        <button className={styles.next}>Перейти к заполнению</button> */}
-          {/*      </div> */}
-          {/*    </div> */}
-          {/*  </div> */}
-          {/* </Modal> */}
+          <div className={`${styles.modalContainer} ${styles.modalContainer_invisible}`}>
+            <Modal active={viewContent === 'balance'} classname={styles.balanceModal} setActive={closePopup}>
+              <ModalHeader title='LIMC' onClick={closePopup} />
+              <div className={styles.balanceBlock}>
+                <div className={styles.block}>
+                  <div className={styles.line}>
+                    <img src={limcoreIcon} alt='' />
+                    <span className={styles.title}>{limcBalance} LIMC</span>
+                  </div>
+                  <span className={styles.usd}>{}</span>
+                  <div className={styles.items}>
+                    <div className={`${styles.item} ${styles.item_active}`} onClick={() => setViewContent('buy')}>
+                      <img className={styles.icon} src={buyIcon} alt='' />
+                      <span>Купить</span>
+                    </div>
+                    <div className={styles.item}>
+                      <img className={styles.icon} src={sellIcon} alt='' />
+                      <span>Продать</span>
+                    </div>
+                    <div className={styles.item}>
+                      <img className={styles.icon} src={tradeIcon} alt='' />
+                      <span>Обменять</span>
+                    </div>
+                  </div>
+                  <div className={styles.container}>
+                    <span className={styles.trans}>Транзакции</span>
+                    <span className={styles.desc}>
+                      У вас еще нет транзакций. Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
+                    </span>
+                  </div>
+                  <div className={styles.nextCont}>
+                    <button className={styles.next}>Перейти к заполнению</button>
+                  </div>
+                </div>
+              </div>
+            </Modal>
+          </div>
         </div>
         <div className={styles.mining}>
           <Details />

@@ -131,6 +131,20 @@
   grid-area: balance;
 }
 
+.modalContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(43, 40, 41, 0.5);
+
+  &_invisible {
+    display: none;
+  }
+}
+
+
 .mining {
   grid-area: mining;
 }

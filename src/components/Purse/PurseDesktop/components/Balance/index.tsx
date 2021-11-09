@@ -38,56 +38,85 @@ export const Balance = () => {
 
   return (
     <div className={styles.balance}>
+      <h1 className={styles.balance__sumMain}>{`$${money}`}</h1>
+      <div className={styles.balance__data}>
+        <p className={styles.balance__time}>24h</p>
+        <p className={styles.balance__sum}>{`$ ${usdtBalance}`}</p>
+        <p className={styles.balance__percent}>0%</p>
+      </div>
       <div className={styles.balance__header} onClick={handleOpenBalanceClick}>
         <h3 className={styles.balance__title}>Общий баланс</h3>
         <button className={styles.balance__button}>
           <img src={balanceSvg} />
         </button>
       </div>
-
-      <p className={styles.balance__sumMain}>{`$${money}`}</p>
-      <div className={styles.balance__data}>
-        <p className={styles.balance__time}>24h</p>
-        <p className={styles.balance__sum}>$0</p>
-        <p className={styles.balance__percent}>0%</p>
-      </div>
-      <div className={styles.progressContainer}>
-        <div className={styles.progress}>
-          <span className={styles.bar}>{}</span>
-          <span className={styles.count}>
-            {limcCount} / {limcLimit}
-          </span>
-        </div>
-        <a target='blank' rel='noopener noreferrer' className={styles.etherscanLink} href='https://etherscan.io'>
-          <img className={styles.etherscanIcon} src={etherscanIcon} alt='Иконка' />
-          <span className={styles.etherscan}>Etherscan</span>
-        </a>
-      </div>
-
-      <Modal active={isBalanceVisible} setActive={() => {}}>
-        <Overall onClick={handleCloseBalanceModal} money={money} limcBalance={limcBalance} usdtBalance={usdtBalance} />
-      </Modal>
-      <Modal classname={styles.reg} active={isRegModalVisible} setActive={handleFirstRegModalClose} crossFlag>
-        <div className={styles.regModal}>
-          <div className={styles.regModalUp}>
-            <header className={styles.regModalHeader}>
-              <img src={logoIcon} onClick={handleFirstRegModalClose} />
-            </header>
-            <h4 className={styles.regModalTitle}>Мы создали ваш USDT кошелек</h4>
-            <p className={styles.regModalSubtitle}>Адрес кошелька</p>
-            <p className={styles.regModalPurse}>
-              {walletAddress}
-              <img className={styles.regModalPurseCopy} src={copyIcon} />
-            </p>
+      <ul className={styles.cardsList}>
+        <li className={styles.card}>
+          <p className={styles.card__subtitle}>Получено с майнинга</p>
+          <p className={styles.card__number}>{`$ `}</p>
+          <p className={styles.card__subtitle}>Инвестировано</p>
+          <p className={styles.card__number}>{`$ `}</p>
+        </li>
+        <li className={styles.card}>
+          <p className={styles.card__subtitle}>Получено в сети XCH</p>
+          <p className={styles.card__number}>{`$ `}</p>
+          <p className={styles.card__subtitle}>Получено с форков</p>
+          <p className={styles.card__number}>{`$ `}</p>
+        </li>
+        <li className={styles.card}>
+          <p className={styles.card__subtitle}>Баланс LIMC</p>
+          <p className={styles.card__number}>{`$ ${limcBalance}`}</p>
+          <p className={styles.card__subtitle}>Баланс USDT</p>
+          <p className={styles.card__number}>{`$ ${usdtBalance} `}</p>
+        </li>
+        <li className={`${styles.card} ${styles.card_invisible}`}>
+          <p className={styles.card__subtitle}>Получено с майнинга</p>
+          <p className={styles.card__number}>{`$ `}</p>
+          <p className={styles.card__subtitle}>Получено в сети XCH</p>
+          <p className={styles.card__number}>{`$ `}</p>
+          <p className={styles.card__subtitle}>Получено с форков</p>
+          <p className={styles.card__number}>{`$ `}</p>
+        </li>
+        <li className={`${styles.card} ${styles.card_invisible}`}>
+          <p className={styles.card__subtitle}>Инвестировано</p>
+          <p className={styles.card__number}>{`$ `}</p>
+          <p className={styles.card__subtitle}>Баланс LIMC</p>
+          <p className={styles.card__number}>{`$ ${limcBalance}`}</p>
+          <p className={styles.card__subtitle}>Баланс USDT</p>
+          <p className={styles.card__number}>{`$ ${usdtBalance} `}</p>
+        </li>
+      </ul>
+      <div className={`${styles.modalContainer} ${styles.modalContainer_invisible}`}>
+        <Modal active={isBalanceVisible} setActive={() => {}}>
+          <Overall
+            onClick={handleCloseBalanceModal}
+            money={money}
+            limcBalance={limcBalance}
+            usdtBalance={usdtBalance}
+          />
+        </Modal>
+        <Modal classname={styles.reg} active={isRegModalVisible} setActive={handleFirstRegModalClose} crossFlag>
+          <div className={styles.regModal}>
+            <div className={styles.regModalUp}>
+              <header className={styles.regModalHeader}>
+                <img src={logoIcon} onClick={handleFirstRegModalClose} />
+              </header>
+              <h4 className={styles.regModalTitle}>Мы создали ваш USDT кошелек</h4>
+              <p className={styles.regModalSubtitle}>Адрес кошелька</p>
+              <p className={styles.regModalPurse}>
+                {walletAddress}
+                <img className={styles.regModalPurseCopy} src={copyIcon} />
+              </p>
+            </div>
+            <div className={styles.regModalDown}>
+              <ButtonBig className={styles.regModalButton} onClick={handleFirstRegModalClose}>
+                Пополнить кошелек
+              </ButtonBig>
+              <p className={styles.regModalSubtitle}>На данный момент LIMC можно купить только с помощью USDT ERC-20</p>
+            </div>
           </div>
-          <div className={styles.regModalDown}>
-            <ButtonBig className={styles.regModalButton} onClick={handleFirstRegModalClose}>
-              Пополнить кошелек
-            </ButtonBig>
-            <p className={styles.regModalSubtitle}>На данный момент LIMC можно купить только с помощью USDT ERC-20</p>
-          </div>
-        </div>
-      </Modal>
+        </Modal>
+      </div>
     </div>
   )
 }
