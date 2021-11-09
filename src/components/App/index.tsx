@@ -101,7 +101,9 @@ const App = () => {
             )}
             {isAuth && !isLoading && (
               <Switch>
-                <Route path='/' exact component={PurseMobile} />
+                {/* <Route path='/' exact component={PurseMobile} /> */}
+                <Route path='/' exact component={LandingPage} />
+                <Route path='/my' exact component={PurseMobile} />
                 <Route path='/chat' exact component={Dummy} />
                 {desktop ? (
                   <Route path='/broadcasts' exact component={BroadcastsDesktop} />
