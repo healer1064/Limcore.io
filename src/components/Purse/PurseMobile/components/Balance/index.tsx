@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import { balance as balanceSvg, copyIcon } from '../../images'
 import logoIcon from '@icons/logo.svg'
@@ -7,22 +7,100 @@ import { Overall } from './components/Overall/index'
 import { useAppSelector } from '@app/redux/hooks'
 import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
 import etherscanIcon from '@icons/etherscan1.png'
+import WalletConnect from '@walletconnect/client'
+import QRCodeModal from '@walletconnect/qrcode-modal'
+import classNames from 'classnames'
 
 export const Balance = () => {
+  const [isSincBtnVisible, setIsSincBtnVisible] = useState(true)
   const [isBalanceVisible, setIsBalanceVisible] = useState(false)
+
   // Если человек попал в личныый кабинет через регистрацию, то тут будет true
   const [isRegModalVisible, setIsRegModalVisible] = useState(
     useAppSelector((state) => state.auth.processType) === 'REGISTRATION',
   )
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // const [money, setMoney] = useState('0')
   const walletAddress = useAppSelector((state) => state.wallet.address)
   const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
   const limcCount = useAppSelector((state) => state.wallet.limcCount)
   const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
+
   const sum: number = Number(usdtBalance) + Number(limcBalance)
   const money = isNaN(sum) ? '...' : sum
+
+  const connector = new WalletConnect({
+    bridge: 'https://bridge.walletconnect.org', // Required
+    qrcodeModal: QRCodeModal,
+  })
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  connector.on('disconnect', (error, payload) => {
+    if (error) {
+      throw error
+    }
+
+    window.location.reload()
+  })
+
+  // connector.on('session_update', (error, payload) => {
+  //   if (error) {
+  //     throw error
+  //   }
+  //   // Get updated accounts and chainId
+  //   const { accounts, chainId } = payload.params[0]
+  // })
+
+  useEffect(() => {
+    if (connector.connected) {
+      setIsSincBtnVisible(false)
+    }
+  }, [])
+
+  const sincWithWallet = async () => {
+    // Check if connection is already established
+    if (!connector.connected) {
+      connector.createSession()
+    }
+
+    // Subscribe to connection events
+    connector.on('connect', (error, payload) => {
+      if (error) {
+        throw error
+      }
+      // Get provided accounts and chainId
+      const { accounts, chainId } = payload.params[0]
+      console.log('connectAccounts', accounts)
+
+      setIsSincBtnVisible(false)
+      QRCodeModal.close()
+    })
+
+    // URI условный, подставляется потом автоматически другой
+    QRCodeModal.open('uri')
+    // const { accounts, chainId } = await connector.connect()
+  }
+
+  const [[mins, secs], setTime] = useState([1, 0])
+
+  const tick = () => {
+    setInterval(() => {
+      if (secs === 0) {
+        setTime([mins - 1, 59])
+      } else {
+        setTime([mins, secs - 1])
+      }
+    })
+
+    // if (mins === 0 && secs === 0) {
+    //   clearInterval(timer)
+    // }
+  }
+
+  // Надо попробовать без таймаута
+  useEffect(() => {
+    // timer = setInterval(() => tick(), 1000)
+    tick()
+  }, [])
 
   const handleFirstRegModalClose = () => {
     setIsRegModalVisible(false)
@@ -51,6 +129,15 @@ export const Balance = () => {
         <p className={styles.balance__sum}>$0</p>
         <p className={styles.balance__percent}>0%</p>
       </div>
+      {isSincBtnVisible ? (
+        <ButtonBig className={styles.sinc} onClick={sincWithWallet}>
+          Синхронизация с Trust Wallet
+        </ButtonBig>
+      ) : (
+        <div className={classNames(styles.timer)}>
+          {`${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`}
+        </div>
+      )}
       <div className={styles.progressContainer}>
         <div className={styles.progress}>
           <span className={styles.bar}>{}</span>
