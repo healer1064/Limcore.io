@@ -1,18 +1,21 @@
 import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setStepAuthorization, setCodePhoneOrEmail, getJwtToken } from '../../../../../redux/authSlice'
+import { setStepAuthorization, setCodePhoneOrEmail, getJwtToken, setIsAuth } from '../../../../../redux/authSlice'
 import Styles from './styles.module.scss'
 
 import { InputCode } from '../../../../../../../ui-kit/InputCode'
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
 import { ButtonSmall } from '../../../../../../../ui-kit/ButtonSmall'
+import { useHistory } from 'react-router'
 
 export const Step2: React.FC = () => {
+  const history = useHistory()
   const dispatch = useAppDispatch()
+
   const typeAuthorization = useAppSelector((state) => state.authNew.typeAuthorization)
   const phoneOrEmail = useAppSelector((state) => state.authNew.phoneOrEmail)
   const codePhoneOrEmail = useAppSelector((state) => state.authNew.codePhoneOrEmail)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const [validValue, setValidValue] = useState(true)
   const [authCodeError, setAuthCodeError] = useState('')
 
@@ -29,6 +32,7 @@ export const Step2: React.FC = () => {
   const completeAuthorization = async () => {
     // в теле отправить unique_identifier и code. В ответ придет токен
     if (codePhoneOrEmail.length < 4) {
+      setValidValue(false)
       return
     }
 
@@ -40,12 +44,15 @@ export const Step2: React.FC = () => {
     const response = await dispatch(getJwtToken(data))
     if (response.error) {
       setAuthCodeError('Что-то пошло не так..')
+      setValidValue(false)
 
       setTimeout(() => {
         setAuthCodeError('')
+        setValidValue(true)
       }, 2000)
     } else {
-      window.location.reload()
+      dispatch(setIsAuth(true))
+      history.push('/')
     }
   }
 

@@ -23,7 +23,8 @@ import close from '@icons/close.svg'
 
 export const HeaderMobile: React.FC = () => {
   const [burgerOpen, setBurgerOpen] = useState(false)
-  const isAuth = useAppSelector((state) => state.auth.isAuth)
+  // const isAuth = useAppSelector((state) => state.auth.isAuth)
+  const isAuth = useAppSelector((state) => state.authNew.isAuth)
   const history = useHistory()
   const location = useLocation()
   const dispatch = useAppDispatch()
