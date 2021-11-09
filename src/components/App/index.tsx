@@ -36,6 +36,7 @@ import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getWalletAdress, getWalletBalance, getLimcPrice, getLimcAmount } from '../Wallet/redux/walletSlice'
 import { getUser } from '@app/redux/userSlice'
+import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
 // import { api } from '@app/api'
 
 const App = () => {
@@ -89,7 +90,11 @@ const App = () => {
               <Switch>
                 <Route path='/' exact component={PurseMobile} />
                 <Route path='/chat' exact component={Dummy} />
-                <Route path='/broadcasts' exact component={BroadcastsMobile} />
+                {desktop ? (
+                  <Route path='/broadcasts' exact component={BroadcastsDesktop} />
+                ) : (
+                  <Route path='/broadcasts' exact component={BroadcastsMobile} />
+                )}
                 <Route path='/profile' exact component={ProfileMobile} />
                 <Route path='/buy' exact component={BuyPage} />
               </Switch>
