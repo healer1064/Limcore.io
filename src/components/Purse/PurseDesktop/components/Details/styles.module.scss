@@ -1,0 +1,202 @@
+@import '../../../../../scss/cabinet';
+@import '../../../vars&mixins.scss';
+
+.details {
+  position: relative;
+  padding: 24px 0;
+  margin: 0;
+  margin-top: 25px;
+  margin-bottom: 30px;
+
+  background-color: #FFF;
+  box-shadow: $box-shadow2;
+  border-radius: $border-radius;
+  transition: 0.5s ease-in-out;
+
+  & * {
+    padding: 0;
+    margin: 0;
+  }
+
+  &__header {
+    padding: 0 20px;
+    // border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &__title {
+    padding-bottom: 16px;
+    @include section-title();
+  }
+
+  &__balance {
+    list-style-type: none;
+    padding-bottom: 22px;
+  }
+
+  &__button {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    @include button-style();
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+
+  &Modal {
+    padding: 0 20px;
+    width: 100vw;
+    height: 100vh;
+
+    // DetalizationDown
+    & > ul {
+      padding: 0;
+
+      & > li {
+        padding: 18px 0;
+      }
+    }
+
+    // DetalizationUp
+    & > header {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      border: none;
+
+      & > ul {
+        padding: 20px;
+        box-shadow: 0px 4px 25px 0px #7070701A;
+        border-radius: 14px;
+      }
+    }
+  }
+
+  &List {
+    list-style-type: none;
+    padding: 0 20px;
+  }
+}
+
+.balanceString {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  & + & {
+    margin-top: 10px;
+  }
+
+  &__text {
+    flex: 1 1 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    color: $color-gray-mouse;    
+  }
+
+  &__data {
+    flex: none;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+
+    text-align: right;
+    color: $color-gray-medium;    
+  }
+}
+
+.detailsList {
+  list-style-type: none;
+  padding: 0 20px;
+}
+
+.detailsItem {
+  padding: 14px 0;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  & + & {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &:first-of-type {
+    padding-top: 22px;
+  }
+
+  &:last-of-type {
+    padding-bottom: 0;
+  }
+}
+
+.detailsImage {
+  margin-right: 13px;
+  display: block;
+  width: 26px;
+  height: 26px;
+}
+
+.columnText {
+  display: block;
+  flex: 1 1 0;
+
+  &__title {
+    @include subtitle-14px($color-gray-black);
+    margin-bottom: 2px;
+    text-align: left;  
+  }
+
+  &__text {
+    @include subtitle-13px($color-gray-mouse);
+    text-align: left;
+  }
+}
+
+.columnData {
+  display: block;
+  flex: none;
+
+  &__title {
+    @include subtitle-14px($color-gray-medium);
+    text-align: right;
+  }
+
+  &__text {
+    @include subtitle-13px($color-gray-mouse);
+    text-align: right;
+  }
+}
+
+.transactions {
+  &__subtitle {
+    margin-top: 15px;
+    padding-bottom: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $color-gray-mouse;
+  }
+
+  &__profileButton {
+    @include button-style();
+    width: 100%;
+    height: 50px;
+
+    background-color: #fff;
+    border: 1px solid $color-blue;    
+    border-radius: $border-radius;
+
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    text-align: center;    
+    color: $color-blue;
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+}
+
+

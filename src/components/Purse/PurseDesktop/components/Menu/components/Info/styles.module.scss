@@ -1,0 +1,44 @@
+@import '../../../../../vars&mixins.scss';
+
+.info {
+  width: 100vw;
+  height: 100vh;
+  padding: 0 20px;
+
+  .info2 {
+    margin: 0 auto;
+    max-width: 500px;
+  }
+
+  .header {
+    margin-bottom: 30px;
+    padding-top: 20px;
+    text-align: center;
+    
+    &Inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &Title {
+      margin: 0 0 0 16px;
+      
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 39px;
+      color: #3A3B3D;
+    }
+
+    &Subtitle {
+      margin: 0;
+      padding: 0;
+      @include subtitle-14px(#4F535A);
+    }
+  }
+
+  .transactions {
+    margin: 25px 0 25px 0;
+    @include section-title();
+  }
+}

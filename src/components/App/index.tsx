@@ -85,7 +85,8 @@ const App = () => {
           <main className={desktop ? `${Styles.main}` : `${Styles.main} ${Styles.main_mobile}`}>
             {!isAuth && !isLoading && (
               <Switch>
-                <Route path='/' exact component={LandingPage} />
+                {/* <Route path='/' exact component={LandingPage} /> */}
+                <Route path='/' exact component={Purse} />
                 <Route path='/auth' exact component={AuthPage} />
                 <Route path='/profile' exact component={ProfileMobile} />
                 {/* <Route path='/auth' exact component={AuthMobile} /> */}
