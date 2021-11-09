@@ -38,14 +38,11 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
 
   return (
     <div className={styles.menu}>
-      <h2>Мои счета</h2>
-      <button type='button' className={buttonPlusClass}>
-        <img src={plusSvg} width='24' height='24' />
-      </button>
+      <h2 className={styles.name}>Мои счета</h2>
       <MenuItem
         onClick={openPopup}
         image={balanceLimc}
-        title='Баланс LIMC'
+        title='LIMC'
         balance={`${limcBalance} LIMC`}
         // setActive={handleBalanceLimcOpenClick}
         // setNotActive={handleBalanceLimcCloseClick}
@@ -53,20 +50,21 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
       />
       <MenuItem
         image={balanceUsdt}
-        title='Баланс USDT'
+        title='USDT'
         balance={`${usdtBalance} USDT`}
         setActive={handleBalanceUsdtOpenClick}
         setNotActive={handleBalanceUsdtCloseClick}
         active={isUsdtInfoVisible}
       />
-      <MenuItem
-        image={creditCard}
-        title='Баланс карты'
-        balance='$0'
-        setActive={handleBalanceCardOpenClick}
-        setNotActive={handleBalanceCardCloseClick}
-        active={isCardInfoVisible}
-      />
+      <div className={styles.virtualCardGroup}>
+        <p className={styles.virtualCardGroup__text}>Выпустить виртуальную карту</p>
+        <button type='button' className={styles.button}>
+          <svg width='18' height='18' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+            <path d='M12 5V19' stroke='#67686C' strokeWidth='1.8' strokeLinecap='round' strokeLinejoin='round' />
+            <path d='M5 12H19' stroke='#67686C' strokeWidth='1.8' strokeLinecap='round' strokeLinejoin='round' />
+          </svg>
+        </button>
+      </div>
     </div>
   )
 }

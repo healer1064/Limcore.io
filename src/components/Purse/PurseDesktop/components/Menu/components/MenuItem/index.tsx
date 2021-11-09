@@ -30,22 +30,18 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   }
 
   return (
-    <button className={menuItemClass} onClick={onClickHandler}>
-      <span className={styles.menu__icon}>
-        <BlueArrow />
-      </span>
-      <img src={image} width='40' height='40' />
-      <h5 className={styles.menu__title}>{title}</h5>
+    <button className={styles.menuItem} onClick={onClickHandler}>
+      <p className={styles.menu__title}>{title}</p>
       <p className={styles.menu__sum}>{balance}</p>
-
-      <Info
-        active={active}
-        setActive={setActive}
-        title={title}
-        setNotActive={setNotActive}
-        image={image}
-        balance={balance}
-      />
+      <img className={styles.menu__logo} src={image} width='30' height='30' />
+      {/* <Info */}
+      {/*  active={active} */}
+      {/*  setActive={setActive} */}
+      {/*  title={title} */}
+      {/*  setNotActive={setNotActive} */}
+      {/*  image={image} */}
+      {/*  balance={balance} */}
+      {/* /> */}
     </button>
   )
 }
