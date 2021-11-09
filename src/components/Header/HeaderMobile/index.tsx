@@ -53,11 +53,11 @@ export const HeaderMobile: React.FC = () => {
     <header className={Styles.header}>
       <img className={Styles.logo} src={logoIcon} alt='Лого' />
       <div className={Styles.wrap}>
-        {!isAuth && location.pathname !== '/auth' && (
+        {/* {!isAuth && location.pathname !== '/auth' && (
           <a onClick={() => history.push('/auth')}>
             <img src={userIcon} alt='Иконка' />
           </a>
-        )}
+        )} */}
         {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null}
         {location.pathname === '/auth' ? (
           <LinkDom to='/'>

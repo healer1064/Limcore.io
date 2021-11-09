@@ -77,7 +77,7 @@ export const Header: React.FC = () => {
           </ul>
         ) : null}
 
-        <div className={Styles.container}>
+        {/* <div className={Styles.container}>
           {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null}
           <div className={Styles.lang}>
             <div
@@ -137,13 +137,13 @@ export const Header: React.FC = () => {
             </div>
           </div>
           <button className={btnClass} onClick={handleLoginModalOpen}>
-            {/* <img src={loginIcon} alt='Иконка' /> */}
+            <img src={loginIcon} alt='Иконка' />
             <LoginIcon />
             <span className={Styles.enter}>Войти</span>
           </button>
 
           <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />
-        </div>
+        </div> */}
       </div>
     </header>
   )

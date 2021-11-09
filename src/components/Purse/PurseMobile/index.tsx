@@ -22,6 +22,7 @@ import sellIcon from '@icons/sell.svg'
 import tradeIcon from '@icons/trade.svg'
 import { Modal } from './components/Modal'
 import { ModalHeader } from './components/ModalHeader'
+import { FooterMobile } from '@components/Footer/FooterMobile'
 
 export const PurseMobile: FC = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
@@ -237,6 +238,8 @@ export const PurseMobile: FC = () => {
           onTransactionsClick={handleTransactionsClick}
           isUserHasTransactions={isUserHasTransactions}
         />
+
+        <FooterMobile />
       </div>
     </div>
   )

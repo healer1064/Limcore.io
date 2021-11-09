@@ -24,7 +24,7 @@ import Styles from './style.module.scss'
 import { Spinner } from '@components/Spinner'
 // import { OrderCatalog } from '../../pages/catalog'
 import { Header } from '@components/Header'
-import { HeaderMobile } from '@components/Header/HeaderMobile'
+import { HeaderMobile } from '@components/Header/HeaderMobile/index'
 // import { CabinetPage } from '../../pages/cabinet'
 import { AuthPage } from '../../pages/auth'
 // import { AuthMobile } from '../../pages/auth/AuthMobile'
@@ -48,7 +48,7 @@ const App = () => {
   const isAuth = useAppSelector((state) => state.authNew.isAuth)
   const [isLoading, setIsLoading] = useState(false)
   console.log(user)
-  const desktop = width >= 768
+  const desktop = width >= 769
 
   useEffect(() => {
     const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
@@ -86,6 +86,7 @@ const App = () => {
             {!isAuth && !isLoading && (
               <Switch>
                 <Route path='/' exact component={LandingPage} />
+                <Route path='/my' exact component={PurseMobile} />
                 <Route path='/auth' exact component={AuthPage} />
                 <Route path='/profile' exact component={ProfileMobile} />
                 {/* <Route path='/auth' exact component={AuthMobile} /> */}
@@ -100,7 +101,9 @@ const App = () => {
             )}
             {isAuth && !isLoading && (
               <Switch>
-                <Route path='/' exact component={PurseMobile} />
+                {/* <Route path='/' exact component={PurseMobile} /> */}
+                <Route path='/' exact component={LandingPage} />
+                <Route path='/my' exact component={PurseMobile} />
                 <Route path='/chat' exact component={Dummy} />
                 {desktop ? (
                   <Route path='/broadcasts' exact component={BroadcastsDesktop} />
@@ -109,11 +112,13 @@ const App = () => {
                 )}
                 <Route path='/profile' exact component={ProfileMobile} />
                 <Route path='/buy' exact component={BuyPage} />
+                {/* <FooterMobile /> */}
               </Switch>
             )}
           </main>
         </>
-        {isAuth && <FooterMobile />}
+        {/* {isAuth && <FooterMobile />} */}
+        {/* {isAuth && } */}
       </div>
     </Router>
   )

@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Styles from './styles.module.scss'
 
 import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
 import { PopupMainPage } from '../PopupMainPage'
 import PopupStyles from '../PopupMainPage/styles.module.scss'
 import { Link } from 'react-scroll'
+import TGIcon from '@icons/TGIcon.svg'
 
 import limcoreIcon from '@icons/limcore.svg'
 import { InfoIcon } from '@icons/InfoIcon'
@@ -14,6 +15,7 @@ import { useHistory } from 'react-router'
 import ModalAuth from '../../../../../../pages/landing/components/ModalAuth'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice'
+// import Countdown from 'react-countdown'
 
 export const MainRounds: React.FC = () => {
   const limcCount = useAppSelector((state) => state.wallet.limcCount)
@@ -24,6 +26,36 @@ export const MainRounds: React.FC = () => {
   const history = useHistory()
   const { width } = useWindowSize()
   const desktop = width >= 768
+
+  // x =18 по мск
+  // y = разница с мск
+  // z = x + y - во сколько по местному времени должен сработать таймер
+  // T = z - date.now()  - остаток времени до истечения таймера ( z нужно перевести в милисекунды)
+  // кидаем T в счетчик в милисекундах    1580518923000 // Timestamp in milliseconds
+
+  const date = new Date()
+
+  const x = 18
+  const y = Math.abs(date.getTimezoneOffset() / 60) - 3 // разница с мск, можно взять пояс чела и с +3 ковырнуть
+  const z = new Date(2021, 10, 5, x + y, 0, 0, 0) // время в которое срабатывает таймер
+
+  // console.log(`y = ${y}`)
+  // console.log(`z = ${z}`)
+  // console.log(`T = ${T}`)
+
+  // const date = new Date()
+  // let day = '05'
+  // let local = Math.abs(date.getTimezoneOffset() / 60)
+  // console.log(`local - ${local}`)
+  // let resultHour = 15 + local
+  // нужна разница между его временем и временем по мск
+
+  // if (resultHour > 23) {
+  //   local = 3
+  //   resultHour = 15 + local
+  //   day = '06'
+  // }
+  // console.log(`resultHour - ${resultHour}`)
 
   const closePopup = () => {
     setPopupOpen(false)
@@ -45,8 +77,6 @@ export const MainRounds: React.FC = () => {
         <div className={Styles.wrap}>
           <span className={Styles.name}>Раунд №1</span>
         </div>
-        <p className={Styles.temporarily}>Открываемся 15 ноября 2021г.</p>
-        <p className={Styles.temporarily}>Сайт в процессе разработки</p>
         <ul className={Styles.list}>
           <li className={Styles.item}>
             <span className={Styles.designation}>Лимит</span>
@@ -70,30 +100,27 @@ export const MainRounds: React.FC = () => {
         </p>
       </PopupMainPage>
       <div className={Styles.container}>
-        <div className={Styles.progress}>
+        {/* <div className={Styles.progress}>
           <span className={Styles.bar}>{}</span>
           <span className={Styles.count}>
             {limcCount} / {limcLimit}
           </span>
-        </div>
-        <a target='blank' rel='noopener noreferrer' className={Styles.etherscanLink} href='https://etherscan.io'>
+        </div> */}
+        {/* <a target='blank' rel='noopener noreferrer' className={Styles.etherscanLink} href='https://etherscan.io'>
           <img className={Styles.etherscanIcon} src={etherscanIcon} alt='Иконка' />
           <span className={Styles.etherscan}>Etherscan</span>
-        </a>
+        </a> */}
       </div>
-      <div className={Styles.buttons}>
-        <div className={Styles.column}>
-          <button className={Styles.second} onClick={handleLoginModalOpen}>
-            Купить LIMC
-          </button>
-          <span>Lock-up период 6 месяцев</span>
-
-          {desktop && <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />}
-        </div>
-        <div className={Styles.column}>
-          <Link to='calc' spy smooth className={Styles.secondLink}>
-            Калькулятор доходности
-          </Link>
+      <div className={Styles.tempDeclaration}>
+        <h4 className={Styles.tempDeclaration__title}>Старт продаж состоится 15 ноября в 00:01 по МСК</h4>
+        <div>
+          <p className={Styles.tempDeclaration__paragraph}>Следите за новостями в нашей группе в Telegram</p>
+          <div>
+            <img className={Styles.tempDeclaration__icon} src={TGIcon} alt='telegram_icon' />
+            <a className={Styles.tempDeclaration__link} href='https://t.me/limc_russ' target='_blank' rel='noreferrer'>
+              @limc_russ
+            </a>
+          </div>
         </div>
       </div>
       <div className={Styles.roadContainer}>

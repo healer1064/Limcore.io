@@ -37,7 +37,7 @@ export const ProfileComplete: React.FC = () => {
         </span>
       </div>
       <div className={Styles.container}>
-        <span className={Styles.caption}>Документы</span>
+        {/* <span className={Styles.caption}>Документы</span>
         <div className={Styles.documents}>
           <div className={Styles.document}>
             <img className={Styles.icon} src={passportIcon} alt='Иконка' />
@@ -53,7 +53,7 @@ export const ProfileComplete: React.FC = () => {
             <span className={Styles.subtitle}>{userData?.profile?.inn}</span>
             <img className={Styles.link} src={linkIcon} alt='Иконка' />
           </div>
-        </div>
+        </div> */}
         <ul className={Styles.list}>
           <li className={Styles.item}>
             <img className={Styles.icon} src={phoneIcon} alt='Иконка' />
@@ -65,7 +65,7 @@ export const ProfileComplete: React.FC = () => {
               <ButtonSmall onClick={() => changeView('editPhone')}>Изменить</ButtonSmall>
             </div>
           </li>
-          <li className={Styles.item}>
+          {/* <li className={Styles.item}>
             <img className={Styles.icon} src={emailIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
@@ -74,8 +74,8 @@ export const ProfileComplete: React.FC = () => {
               </div>
               <ButtonSmall onClick={() => changeView('editEmail')}>Изменить</ButtonSmall>
             </div>
-          </li>
-          <li className={Styles.item}>
+          </li> */}
+          {/* <li className={Styles.item}>
             <img className={Styles.icon} src={nameIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
@@ -83,7 +83,7 @@ export const ProfileComplete: React.FC = () => {
               </div>
               <ButtonSmall onClick={() => changeView('editName')}>Изменить</ButtonSmall>
             </div>
-          </li>
+          </li> */}
           <li className={Styles.item}>
             <img className={Styles.icon} src={locationIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
