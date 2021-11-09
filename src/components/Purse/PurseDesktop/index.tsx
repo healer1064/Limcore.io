@@ -3,8 +3,8 @@ import { Link } from 'react-scroll'
 import styles from './styles.module.scss'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { buyLimc, getWalletBalance } from '@components/Wallet/redux/walletSlice'
-import { Modal } from '@components/Purse/PurseMobile/components/Modal'
-import { ModalHeader } from '@components/Purse/PurseMobile/components/ModalHeader'
+import { Modal } from '@components/Purse/PurseDesktop/components/Modal'
+import { ModalHeader } from '@components/Purse/PurseDesktop/components/ModalHeader'
 import limcoreIcon from '@icons/limcore.svg'
 import buyIcon from '@icons/buy.svg'
 import sellIcon from '@icons/sell.svg'
@@ -13,14 +13,14 @@ import profile from '@icons/profileIcon.png'
 import { Container } from '@components/Container'
 import { InputText } from '../../../ui-kit/InputText'
 import { ButtonBig } from '../../../ui-kit/ButtonBig'
-import { Balance } from '@components/Purse/PurseMobile/components/Balance'
-import { Menu } from '@components/Purse/PurseMobile/components/Menu'
+import { Balance } from '@components/Purse/PurseDesktop/components/Balance'
+import { Menu } from '@components/Purse/PurseDesktop/components/Menu'
 import { VirtualCard } from '@components/Purse/PurseMobile/components/VirtualCard'
 import { StartMining } from '@components/Purse/PurseMobile/components/StartMining'
 import { Statistics } from '@components/Purse/PurseMobile/components/Statistics'
-import { Details } from '@components/Purse/PurseMobile/components/Details'
+import { Details } from '@components/Purse/PurseDesktop/components/Details'
 import { Wallet } from '@components/Purse/PurseMobile/components/Wallet'
-import { Transactions } from '@components/Purse/PurseMobile/components/Transactions'
+import { Transactions } from '@components/Purse/PurseDesktop/components/Transactions'
 import { Wallpaper } from '@components/Purse/PurseDesktop/components/Wallpaper'
 
 export const PurseDesktop = () => {
@@ -37,7 +37,7 @@ export const PurseDesktop = () => {
   const [isErrorVisible, setIsErrorVisible] = useState(false)
   const [isSuccessVisible, setIsSuccessVisible] = useState(false)
 
-  const [viewContent, setViewContent] = useState('')
+  const [viewContent, setViewContent] = useState('balance')
 
   const [value, setValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -125,43 +125,64 @@ export const PurseDesktop = () => {
           <p className={styles.profileName}>{name}</p>
         </div>
       </header>
-      {/* {viewContent === 'balance' && ( */}
-      {/*  <Modal active={viewContent === 'balance'} classname={styles.balanceModal} setActive={closePopup}> */}
-      {/*    <ModalHeader title='LIMC' onClick={closePopup} /> */}
-      {/*    <div className={styles.balanceBlock}> */}
-      {/*      <div className={styles.block}> */}
-      {/*        <div className={styles.line}> */}
-      {/*          <img src={limcoreIcon} alt='' /> */}
-      {/*          <span className={styles.title}>{limcBalance} LIMC</span> */}
-      {/*        </div> */}
-      {/*        <span className={styles.usd}>{}</span> */}
-      {/*        <div className={styles.items}> */}
-      {/*          <div className={`${styles.item} ${styles.item_active}`} onClick={() => setViewContent('buy')}> */}
-      {/*            <img className={styles.icon} src={buyIcon} alt='' /> */}
-      {/*            <span>Купить</span> */}
-      {/*          </div> */}
-      {/*          <div className={styles.item}> */}
-      {/*            <img className={styles.icon} src={sellIcon} alt='' /> */}
-      {/*            <span>Продать</span> */}
-      {/*          </div> */}
-      {/*          <div className={styles.item}> */}
-      {/*            <img className={styles.icon} src={tradeIcon} alt='' /> */}
-      {/*            <span>Обменять</span> */}
-      {/*          </div> */}
-      {/*        </div> */}
-      {/*        <div className={styles.container}> */}
-      {/*          <span className={styles.trans}>Транзакции</span> */}
-      {/*          <span className={styles.desc}> */}
-      {/*            У вас еще нет транзакций. Мы предоставим доступ ко всем функциям кошелька после заполнения профиля */}
-      {/*          </span> */}
-      {/*        </div> */}
-      {/*        <div className={styles.nextCont}> */}
-      {/*          <button className={styles.next}>Перейти к заполнению</button> */}
-      {/*        </div> */}
-      {/*      </div> */}
-      {/*    </div> */}
-      {/*  </Modal> */}
-      {/* )} */}
+      <div className={styles.purseContainer}>
+        <div className={styles.accounts}>
+          <Menu
+            isUsdtInfoVisible={isUsdtInfoVisible}
+            handleBalanceUsdtOpenClick={() => setIsUsdtInfoVisible(true)}
+            handleBalanceUsdtCloseClick={() => setIsUsdtInfoVisible(false)}
+            openPopup={() => setViewContent('balance')}
+          />
+        </div>
+        <div className={styles.balance}>
+          <Balance />
+          {/* <Modal active={viewContent === 'balance'} classname={styles.balanceModal} setActive={closePopup}> */}
+          {/*  <ModalHeader title='LIMC' onClick={closePopup} /> */}
+          {/*  <div className={styles.balanceBlock}> */}
+          {/*    <div className={styles.block}> */}
+          {/*      <div className={styles.line}> */}
+          {/*        <img src={limcoreIcon} alt='' /> */}
+          {/*        <span className={styles.title}>{limcBalance} LIMC</span> */}
+          {/*      </div> */}
+          {/*      <span className={styles.usd}>{}</span> */}
+          {/*      <div className={styles.items}> */}
+          {/*        <div className={`${styles.item} ${styles.item_active}`} onClick={() => setViewContent('buy')}> */}
+          {/*          <img className={styles.icon} src={buyIcon} alt='' /> */}
+          {/*          <span>Купить</span> */}
+          {/*        </div> */}
+          {/*        <div className={styles.item}> */}
+          {/*          <img className={styles.icon} src={sellIcon} alt='' /> */}
+          {/*          <span>Продать</span> */}
+          {/*        </div> */}
+          {/*        <div className={styles.item}> */}
+          {/*          <img className={styles.icon} src={tradeIcon} alt='' /> */}
+          {/*          <span>Обменять</span> */}
+          {/*        </div> */}
+          {/*      </div> */}
+          {/*      <div className={styles.container}> */}
+          {/*        <span className={styles.trans}>Транзакции</span> */}
+          {/*        <span className={styles.desc}> */}
+          {/*          У вас еще нет транзакций. Мы предоставим доступ ко всем функциям кошелька после заполнения профиля */}
+          {/*        </span> */}
+          {/*      </div> */}
+          {/*      <div className={styles.nextCont}> */}
+          {/*        <button className={styles.next}>Перейти к заполнению</button> */}
+          {/*      </div> */}
+          {/*    </div> */}
+          {/*  </div> */}
+          {/* </Modal> */}
+        </div>
+        <div className={styles.mining}>
+          <Details />
+        </div>
+        <div className={styles.transactions}>
+          <Transactions
+            onProfileClick={handleProfileClick}
+            onTransactionsClick={handleTransactionsClick}
+            isUserHasTransactions={isUserHasTransactions}
+          />
+        </div>
+      </div>
       {/* {viewContent === 'buy' && ( */}
       {/*  <Container title='Покупка LIMC' onClose={closePopup}> */}
       {/*    <div className={styles.cont}> */}

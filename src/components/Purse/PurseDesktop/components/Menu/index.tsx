@@ -38,6 +38,7 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
 
   return (
     <div className={styles.menu}>
+      <h2>Мои счета</h2>
       <button type='button' className={buttonPlusClass}>
         <img src={plusSvg} width='24' height='24' />
       </button>
