@@ -212,7 +212,10 @@ export const CalculatorCaption: React.FC = () => {
               Покрытие расходов на поддержание инфраструктуры
             </PopupMainPage>
           </div>
-          <ButtonBig onClick={handleLoginModalOpen}>Купить LIMC</ButtonBig>
+          {/* TODO DELETE DISABLED */}
+          <ButtonBig disabled onClick={handleLoginModalOpen}>
+            Купить LIMC
+          </ButtonBig>
 
           {desktop && <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />}
         </div>

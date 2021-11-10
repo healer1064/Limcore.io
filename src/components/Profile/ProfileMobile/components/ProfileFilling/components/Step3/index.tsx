@@ -45,12 +45,12 @@ export const Step3: React.FC = () => {
             <span>2</span>
           </div>
         </div>
-        <div className={Styles.step}>
+        {/* <div className={Styles.step}>
           <span className={`${Styles.line} ${Styles.line_active}`}>{}</span>
           <div className={`${Styles.number} ${Styles.number_active}`}>
             <span>3</span>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className={Styles.container}>
         <span className={Styles.caption}>Укажите место жительства</span>

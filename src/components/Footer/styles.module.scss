@@ -259,6 +259,10 @@
     height: 32px;
     margin: 0 10px 0 0;
     padding: 0;
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+    }
   }
 
   &__link {
@@ -398,8 +402,9 @@ color: #B4BFD5;
 .footer__YouTubeLink {
   display: flex;
   box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
   margin: 0 10px 0 0;
-  padding: 9px 10px;
   border-radius: 50%;
   background-color: #36373A;
   width: 32px;
@@ -407,11 +412,14 @@ color: #B4BFD5;
 
   &:hover {
     cursor: pointer;
+    opacity: .8;
   }
 }
 
 .footer__YouTubeIcon {
   opacity: .3;
+  width: 12px;
+  height: 12px;
 }
 
 @media screen and (max-width: 800px) {
@@ -443,7 +451,7 @@ color: #B4BFD5;
 
   .footer__social {
     justify-self: center;
-    margin: 0 auto 50px;
+    margin: 0 auto 30px;
   }
 
   .footer__socialIcon {

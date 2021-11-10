@@ -24,7 +24,7 @@ import Styles from './style.module.scss'
 import { Spinner } from '@components/Spinner'
 // import { OrderCatalog } from '../../pages/catalog'
 import { Header } from '@components/Header'
-import { HeaderMobile } from '@components/Header/HeaderMobile'
+import { HeaderMobile } from '@components/Header/HeaderMobile/index'
 // import { CabinetPage } from '../../pages/cabinet'
 import { AuthPage } from '../../pages/auth'
 // import { AuthMobile } from '../../pages/auth/AuthMobile'
@@ -32,11 +32,11 @@ import { AuthPage } from '../../pages/auth'
 import { Dummy } from '../../components/Dummy'
 import { LandingPage } from '../../pages/landing'
 import { PurseMobile } from '@components/Purse/PurseMobile'
-import { Purse } from '@components/Purse'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getWalletAdress, getWalletBalance, getLimcPrice, getLimcAmount } from '../Wallet/redux/walletSlice'
 import { getUser } from '@app/redux/userSlice'
+import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
 // import { api } from '@app/api'
 
 const App = () => {
@@ -48,7 +48,7 @@ const App = () => {
   const isAuth = useAppSelector((state) => state.authNew.isAuth)
   const [isLoading, setIsLoading] = useState(false)
   console.log(user)
-  const desktop = width >= 768
+  const desktop = width >= 769
 
   useEffect(() => {
     const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
@@ -85,8 +85,8 @@ const App = () => {
           <main className={desktop ? `${Styles.main}` : `${Styles.main} ${Styles.main_mobile}`}>
             {!isAuth && !isLoading && (
               <Switch>
-                {/* <Route path='/' exact component={LandingPage} /> */}
-                <Route path='/' exact component={Purse} />
+                <Route path='/' exact component={LandingPage} />
+                <Route path='/my' exact component={PurseMobile} />
                 <Route path='/auth' exact component={AuthPage} />
                 <Route path='/profile' exact component={ProfileMobile} />
                 {/* <Route path='/auth' exact component={AuthMobile} /> */}
@@ -101,16 +101,24 @@ const App = () => {
             )}
             {isAuth && !isLoading && (
               <Switch>
-                <Route path='/' exact component={Purse} />
+                {/* <Route path='/' exact component={PurseMobile} /> */}
+                <Route path='/' exact component={LandingPage} />
+                <Route path='/my' exact component={PurseMobile} />
                 <Route path='/chat' exact component={Dummy} />
-                <Route path='/broadcasts' exact component={BroadcastsMobile} />
+                {desktop ? (
+                  <Route path='/broadcasts' exact component={BroadcastsDesktop} />
+                ) : (
+                  <Route path='/broadcasts' exact component={BroadcastsMobile} />
+                )}
                 <Route path='/profile' exact component={ProfileMobile} />
                 <Route path='/buy' exact component={BuyPage} />
+                {/* <FooterMobile /> */}
               </Switch>
             )}
           </main>
         </>
-        {isAuth && <FooterMobile />}
+        {/* {isAuth && <FooterMobile />} */}
+        {/* {isAuth && } */}
       </div>
     </Router>
   )
