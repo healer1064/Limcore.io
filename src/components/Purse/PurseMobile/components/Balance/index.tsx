@@ -89,7 +89,8 @@ export const Balance = () => {
     })
 
     // URI условный, подставляется потом автоматически другой
-    QRCodeModal.open('uri')
+    const noop = () => {}
+    QRCodeModal.open('uri', noop)
     // const { accounts, chainId } = await connector.connect()
   }
 

@@ -1,0 +1,44 @@
+.menuItem {
+  display: grid;
+  box-sizing: border-box;
+  margin: 16px 0 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  grid-template-rows: repeat(2, minmax(min-content, max-content));
+  grid-template-columns: repeat(2, minmax(min-content, max-content));
+  grid-template-areas:
+  'title logo'
+  'balance logo';
+  justify-content: space-between;
+}
+
+.menu__title {
+  grid-area: title;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #99A0AD;
+  padding: 0;
+  margin: 0;
+
+}
+
+.menu__sum {
+  grid-area: balance;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #4F535A;
+  padding: 6px 0 0;
+  margin: 0;
+}
+
+.menu__logo {
+  grid-area: logo;
+  align-self: center;
+}
