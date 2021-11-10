@@ -10,12 +10,10 @@ const BalanceString = (text, data) => (
 
 export const DetalizationUp = ({ summary, xch, forks }) => {
   return (
-    <header className={styles.details__header}>
-      <ul className={styles.details__balance}>
-        {BalanceString('Общий доход', summary)}
-        {BalanceString('XCH 24h', xch)}
-        {BalanceString('Все форки 24h', forks)}
-      </ul>
-    </header>
+    <ul className={styles.details__balance}>
+      {BalanceString('Общий доход', summary)}
+      {BalanceString('XCH 24h', xch)}
+      {BalanceString('Все форки 24h', forks)}
+    </ul>
   )
 }

@@ -69,7 +69,7 @@ export const Balance = () => {
           <p className={styles.card__subtitle}>Баланс USDT</p>
           <p className={styles.card__number}>{`$ ${usdtBalance} `}</p>
         </li>
-        <li className={`${styles.card} ${styles.card_invisible}`}>
+        <li className={styles.cardLong}>
           <p className={styles.card__subtitle}>Получено с майнинга</p>
           <p className={styles.card__number}>{`$ `}</p>
           <p className={styles.card__subtitle}>Получено в сети XCH</p>
@@ -77,7 +77,7 @@ export const Balance = () => {
           <p className={styles.card__subtitle}>Получено с форков</p>
           <p className={styles.card__number}>{`$ `}</p>
         </li>
-        <li className={`${styles.card} ${styles.card_invisible}`}>
+        <li className={styles.cardLong}>
           <p className={styles.card__subtitle}>Инвестировано</p>
           <p className={styles.card__number}>{`$ `}</p>
           <p className={styles.card__subtitle}>Баланс LIMC</p>

@@ -418,3 +418,35 @@
     cursor: pointer;
   }
 }
+
+@media screen and (max-width: 1650px) {
+
+  .purseContainer {
+    margin: 25px 15% 0 6%;
+  }
+}
+
+
+@media screen and (max-width: 1380px) {
+  .purseContainer {
+    margin: 25px 10% 0 6%;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .purseContainer {
+    margin: 25px 6% 0;
+  }
+}
+
+@media screen and (max-width: 1040px) {
+  .purseContainer {
+    column-gap: 40px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .miningDetails {
+    flex-direction: column;
+  }
+}

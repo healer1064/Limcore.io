@@ -215,7 +215,7 @@
   padding: 0;
 }
 
-.card {
+.card, .cardLong {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -327,5 +327,21 @@
         }
       }
     }
+  }
+}
+
+@media screen and (min-width: 1139px) {
+  .cardLong {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1140px) {
+  .cardLong {
+    display: flex;
+  }
+
+  .card {
+    display: none;
   }
 }

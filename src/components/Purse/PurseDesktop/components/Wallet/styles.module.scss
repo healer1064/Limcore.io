@@ -117,3 +117,20 @@
 .arrowHidden {
   display: none;
 }
+
+@media screen and (max-width: 1230px) {
+  .wallet__image {
+    right: 29px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .wallet {
+    margin: 25px 0;
+    max-height: 100%;
+  }
+
+  .wallet__subtitle {
+    max-width: 50%;
+  }
+}

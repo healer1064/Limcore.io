@@ -1,15 +1,15 @@
 @import '../../../../../styles.module.scss';
 @import '../../../../../vars&mixins.scss';
 
-.details__header {
-  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-}
-
 .details__balance {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
-  list-style-type: none;
-  padding: 0 0 22px 0;
+  list-style: none;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
 }
 
 .balanceString {

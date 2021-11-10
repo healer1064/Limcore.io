@@ -4,7 +4,7 @@
   border: 1px solid #DCDCDC;
   background-color: transparent;
   width: 60%;
-  padding: 33px 30px;
+  padding: 17px 30px;
   border-radius: 14px;
 
   .title {
@@ -138,5 +138,11 @@
 
     //   transform: rotate(-90deg);
     // }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .statistics {
+    width: 100%;
   }
 }
