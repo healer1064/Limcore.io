@@ -20,11 +20,10 @@ export const Step2: React.FC = () => {
   const [authCodeError, setAuthCodeError] = useState('')
 
   const onChange = (event) => {
-    if (!Number(event.target.value)) {
-      return
+    const number = Number(event.target.value)
+    if (!isNaN(number)) {
+      dispatch(setCodePhoneOrEmail(event.target.value))
     }
-
-    dispatch(setCodePhoneOrEmail(event.target.value))
   }
 
   const prevStep = () => dispatch(setStepAuthorization(1))
@@ -32,6 +31,7 @@ export const Step2: React.FC = () => {
   const completeAuthorization = async () => {
     // в теле отправить unique_identifier и code. В ответ придет токен
     if (codePhoneOrEmail.length < 4) {
+      setAuthCodeError('Код должен содержать 4 цифры')
       setValidValue(false)
       return
     }
