@@ -3,19 +3,12 @@ import { Link } from 'react-scroll'
 import styles from './styles.module.scss'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { buyLimc, getWalletBalance } from '@components/Wallet/redux/walletSlice'
-import { Modal } from '@components/Purse/PurseDesktop/components/Modal'
-import { ModalHeader } from '@components/Purse/PurseDesktop/components/ModalHeader'
-import limcoreIcon from '@icons/limcore.svg'
 import buyIcon from '@icons/buy.svg'
-import sellIcon from '@icons/sell.svg'
-import tradeIcon from '@icons/trade.svg'
+import sellIcon from '@icons/sellBlue.svg'
+import tradeIcon from '@icons/changeBlue.svg'
 import profile from '@icons/profileIcon.png'
-import { Container } from '@components/Container'
-import { InputText } from '../../../ui-kit/InputText'
-import { ButtonBig } from '../../../ui-kit/ButtonBig'
 import { Balance } from '@components/Purse/PurseDesktop/components/Balance'
 import { Menu } from '@components/Purse/PurseDesktop/components/Menu'
-import { VirtualCard } from '@components/Purse/PurseMobile/components/VirtualCard'
 import { StartMining } from '@components/Purse/PurseMobile/components/StartMining'
 import { Statistics } from '@components/Purse/PurseDesktop/components/Statistics'
 import { Details } from '@components/Purse/PurseDesktop/components/Details'
@@ -23,6 +16,7 @@ import { Wallet } from '@components/Purse/PurseDesktop/components/Wallet'
 import { Transactions } from '@components/Purse/PurseDesktop/components/Transactions'
 import { Wallpaper } from '@components/Purse/PurseDesktop/components/Wallpaper'
 import { Logo } from '@components/Purse/PurseDesktop/components/Logo'
+import { TransactionsDetails } from '@components/Purse/PurseDesktop/components/Transactions/components/TransactionsDetails'
 
 export const PurseDesktop = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
@@ -136,47 +130,48 @@ export const PurseDesktop = () => {
             openPopup={() => setViewContent('balance')}
           />
         </div>
-        <div className={styles.balance}>
-          <Balance />
-          <div className={`${styles.modalContainer} ${styles.modalContainer_invisible}`}>
-            <Modal active={viewContent === 'balance'} classname={styles.balanceModal} setActive={closePopup}>
-              <ModalHeader title='LIMC' onClick={closePopup} />
-              <div className={styles.balanceBlock}>
-                <div className={styles.block}>
-                  <div className={styles.line}>
-                    <img src={limcoreIcon} alt='' />
-                    <span className={styles.title}>{limcBalance} LIMC</span>
-                  </div>
-                  <span className={styles.usd}>{}</span>
-                  <div className={styles.items}>
-                    <div className={`${styles.item} ${styles.item_active}`} onClick={() => setViewContent('buy')}>
-                      <img className={styles.icon} src={buyIcon} alt='' />
-                      <span>Купить</span>
-                    </div>
-                    <div className={styles.item}>
-                      <img className={styles.icon} src={sellIcon} alt='' />
-                      <span>Продать</span>
-                    </div>
-                    <div className={styles.item}>
-                      <img className={styles.icon} src={tradeIcon} alt='' />
-                      <span>Обменять</span>
-                    </div>
-                  </div>
-                  <div className={styles.container}>
-                    <span className={styles.trans}>Транзакции</span>
-                    <span className={styles.desc}>
-                      У вас еще нет транзакций. Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
-                    </span>
-                  </div>
-                  <div className={styles.nextCont}>
-                    <button className={styles.next}>Перейти к заполнению</button>
-                  </div>
-                </div>
-              </div>
-            </Modal>
+        <div className={styles.pageBalanceLIMC}>
+          <button className={styles.backButton} type='button'>
+            <svg
+              className={styles.backIcon}
+              width='10'
+              height='15'
+              viewBox='0 0 10 15'
+              fill='none'
+              xmlns='http://www.w3.org/2000/svg'
+            >
+              <path
+                d='M8.09521 1.42871L1.90474 7.61919L8.09521 13.8097'
+                stroke='#3A3B3D'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              />
+            </svg>
+            Назад
+          </button>
+          <h1 className={styles.pageBalanceLIMC__title}>{`${limcBalance} LIMC`}</h1>
+          <p className={styles.pageBalanceLIMC__subtitle}>{`$ ${limcBalance}`}</p>
+          <div className={styles.items}>
+            <div className={`${styles.item} ${styles.item_active}`} onClick={() => setViewContent('buy')}>
+              <img className={styles.icon} src={buyIcon} alt='' />
+              Купить
+            </div>
+            <div className={styles.item}>
+              <img className={styles.icon} src={sellIcon} alt='' />
+              Продать
+            </div>
+            <div className={styles.item}>
+              <img className={styles.icon} src={tradeIcon} alt='' />
+              Обменять
+            </div>
           </div>
+          <TransactionsDetails onClick={() => {}} />
         </div>
-        <div className={styles.mining}>
+        <div className={`${styles.balance} ${styles.balance_invisible}`}>
+          <Balance />
+        </div>
+        <div className={`${styles.mining} ${styles.mining_invisible}`}>
           <h3 className={styles.detailsTitle}>Детализация майнинга</h3>
           <div className={styles.miningDetails}>
             <Details />
@@ -187,7 +182,7 @@ export const PurseDesktop = () => {
             )}
           </div>
         </div>
-        <div className={styles.transactions}>
+        <div className={`${styles.transactions} ${styles.transactions_invisible}`}>
           {isWalletVisible && <Wallet />}
           <Transactions
             onProfileClick={handleProfileClick}

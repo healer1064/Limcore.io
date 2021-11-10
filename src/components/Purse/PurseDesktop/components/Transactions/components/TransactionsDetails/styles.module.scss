@@ -2,9 +2,46 @@
 
 .details {
   padding: 0 20px;
-  width: 100vw;
-  height: 100vh;
-  overflow-y: auto;
+  width: 100%;
+  max-height: 826px;
+  overflow: scroll;
+}
+
+.title {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.5;
+  color: #3A3B3D;
+  margin: 0;
+  padding: 0;
+}
+
+.moreButton {
+  border: none;
+  background: #EDF4FF;
+  border-radius: 14px;
+  display: flex;
+  box-sizing: border-box;
+  margin: 30px auto 37px;
+  padding: 11px 0;
+  width: 95%;
+  height: 45px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.37;
+  text-align: center;
+  color: #4A70F8;
+  justify-content: center;
+
+  &:hover {
+    background-color: #4A70F8;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
 }
 
 .transactions {

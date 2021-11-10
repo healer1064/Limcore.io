@@ -14,14 +14,6 @@
   width: 100%;
   height: 100%;
   background-color: #FFFFFF;
-
-  &__content {
-    border: 2px solid yellow;
-    position: relative;
-    margin: 0;
-    padding: 106px 20px 30px;
-    width: 100%;
-  }
 }
 
 .header {
@@ -128,6 +120,10 @@
 
 .balance {
   grid-area: balance;
+
+  &_invisible {
+    display: none;
+  }
 }
 
 .modalContainer {
@@ -146,6 +142,10 @@
 
 .mining {
   grid-area: mining;
+
+  &_invisible {
+    display: none;
+  }
 }
 
 .miningDetails {
@@ -167,257 +167,131 @@
 
 .transactions {
   grid-area: transactions;
-}
 
-.balanceModal {
-  height: 100vh;
-}
-
-.balanceBlock {
-  padding: 20px;
-  height: 100vh;
-  // width: 100vw;
-  margin: auto;
-}
-
-.text {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 22px;
-  color: #4f535a;
-
-  & > .price {
-    color: #4a70f8;
-    font-weight: 700;
+  &_invisible {
+    display: none;
   }
 }
 
-.cont {
+.pageBalanceLIMC {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+  box-sizing: border-box;
+  grid-area: balance;
 
-.cont2 {
-  display: flex;
-  flex-direction: column;
-  max-width: 500px;
-  width: 100%;
-}
+  &_invisible {
+    display: none;
+  }
 
-.button {
-  margin-top: 10px;
-}
+  &__title {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 46px;
+    line-height: 1.4;
+    color: #3A3B3D;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 0 6px 0;
+  }
 
-.buyCont {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-}
-
-.buy {
-  margin: 0 auto 10px;
-  max-width: 500px;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.buySubtitle {
-  width: fit-content;
-  margin: 0 auto;
-  font-size: 14px;
-  font-weight: 600;
-  color: #3a3b3d;
-}
-
-.block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.title {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 140%;
-  color: #3a3b3d;
+  &__subtitle {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 150%;
+    color: #4F535A;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 0 35px 0;
+  }
 }
 
 .items {
   display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 0 64px 0;
   align-items: center;
   gap: 10px;
-  margin-top: 30px;
-  margin-bottom: 40px;
 }
 
 .item {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   width: 100%;
-  max-width: 105px;
-  padding: 12px 28px;
-  background: #f7f7f7;
+  max-width: 140px;
+  padding: 15px;
+  background: #F9FAFF;
   border-radius: 14px;
-  transition: background 0.3s ease;
-  cursor: pointer;
-
-  span {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 13px;
-    line-height: 150%;
-    color: #99a0ad;
-    transition: color 0.3s ease;
-  }
+  color: #4A70F8;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.5;
 
   &:hover {
     transition: background 0.3s ease;
     background: #8ca4f2;
-
-    & > span {
-      color: #f7f7f7;
-      transition: color 0.3s ease;
-    }
+    cursor: pointer;
+    color: #FFFFFF;
   }
 }
 
 .item_active {
-  background: #4a70f8;
+  background: #4A70F8;
   transition: background 0.3s ease;
-
-  span {
-    color: #ffffff;
-  }
+  color: #FFFFFF;
 
   &:hover {
     background: #8ca4f2;
     transition: background 0.3s ease;
-  }
-}
-
-.line {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-
-  img {
-    width: 40px;
-    height: 40px;
-  }
-}
-
-.usd {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 140%;
-  color: #4f535a;
-  margin-top: 3px;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.trans {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 140%;
-  color: #393c42;
-  margin-bottom: 16px;
-}
-
-.desc {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 150%;
-  color: #99a0ad;
-}
-
-.nextCont {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.next {
-  max-width: 500px;
-  width: 100%;
-  padding: 14px 0;
-  border: 1px solid #4a70f8;
-  border-radius: 14px;
-
-  font-family: 'Montserrat';
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: 600;
-  font-style: normal;
-  text-align: center;
-
-  background: none;
-  color: #4a70f8;
-
-  transition: color .3s ease, border .3s ease;
-
-  &:hover {
-    color: #3159E9 !important;
-    border: 1px solid #3159E9 !important;
-    background-color: none;
-    transition: color .3s ease, border .3s ease !important;
-  }
-}
-
-.errorModal {
-  // margin: 0 auto;
-  margin-top: 30px;
-  padding: 17px 20px;
-  max-width: 500px;
-  width: calc(100vw - 20px);
-  height: 100%;
-  border-radius: 14px;
-
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  text-align: center;
-  color: #fff;
-
-  // transform: translateY(calc(-45vh + 12px));
-  background-color: #99A0AD;
-
-  .errorSubtitle {
-    margin: 5px auto 0;
-    width: fit-content;
-    border-bottom: 2px solid #fff;
-
-    font-weight: 700;
-    color: #fff;
-
     cursor: pointer;
   }
 }
 
 .icon {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 6px 0 0;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.backIcon {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 12px 0 0;
+  padding: 0;
+}
+
+.backButton {
+  display: flex;
+  box-sizing: border-box;
+  border: none;
+  margin: 0 0 23px 0;
+  padding: 0;
+  flex-direction: row;
+  background-color: transparent;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #3A3B3D;
+  align-items: center;
+  
   &:hover {
     cursor: pointer;
   }
 }
+
 
 @media screen and (max-width: 1650px) {
 

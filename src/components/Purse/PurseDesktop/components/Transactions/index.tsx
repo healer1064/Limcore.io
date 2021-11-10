@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
-import { UserHasTransactions } from './components/UserHasTransactions/index'
 import { balanceLimc, balanceUsdt, s7 } from '../../images/index'
 import { Modal } from '../Modal'
 import { TransactionsDetails } from './components/TransactionsDetails/index'
-import BlueArrow from '../../images/BlueArrow/BlueArrow'
+import { Calendar } from '@components/Purse/PurseDesktop/components/Transactions/components/Calendar'
 
 interface ITransactionsProps {
   onProfileClick: () => void
@@ -40,17 +39,11 @@ export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTra
   return (
     <div className={styles.transactions}>
       <h3 className={styles.transactions__title}>Транзакции</h3>
-      {/* <button type='button' className={styles.transactions__button} onClick={onTransactionsClick}>
-        <BlueArrow onClick={handleTransactionsOpen} />
-      </button> */}
-
       <Modal active={isTransactionsVisible} setActive={handleTransactionsClose}>
         <TransactionsDetails onClick={handleTransactionsClose} />
       </Modal>
-
       <p className={styles.transactions__subtitle}>
-        У вас еще нет транзакций. <br />
-        Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
+        У вас еще нет транзакций. Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
       </p>
       <div className={styles.transactions__cont}>
         <button type='button' className={styles.transactions__profileButton} onClick={onProfileClick}>
