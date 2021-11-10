@@ -36,6 +36,9 @@ export const Step3: React.FC = () => {
         case 'user_already_registered':
           setError('Пользователь уже зарегистрирован')
           break
+        case 'email_using_in_another_account':
+          setError('Пользователь уже зарегистрирован')
+          break
         case 'wait_one_minute':
           setError('Минута еще не прошла после первого запроса')
           break
