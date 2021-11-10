@@ -116,7 +116,7 @@ export const PurseMobile: FC = () => {
                 <img src={limcoreIcon} alt='' />
                 <span className={styles.title}>{limcBalance} LIMC</span>
               </div>
-              <span className={styles.usd}>$0</span>
+              <span className={styles.usd}>{}</span>
               <div className={styles.items}>
                 <div className={`${styles.item} ${styles.item_active}`} onClick={() => setViewContent('buy')}>
                   <img className={styles.icon} src={buyIcon} alt='' />

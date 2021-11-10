@@ -40,16 +40,36 @@ export const registerUserPhone: any = createAsyncThunk('auth/registerUserPhone',
 export const registerUserEmailConfirmation: any = createAsyncThunk(
   'auth/registerUserEmailConfirmation',
   async function (data) {
-    const response = await api.post('users/registration/confirmation/email/', data)
-    return response
+    try {
+      const response = await api.post('users/registration/confirmation/email/', data)
+      return response
+    } catch (error) {
+      const customError = {
+        name: 'Custom axios error',
+        message: error.response.data.code_error,
+        data: error.response.data,
+      }
+
+      throw customError
+    }
   },
 )
 
 export const registerUserPhoneConfirmation: any = createAsyncThunk(
   'auth/registerUserPhoneConfirmation',
   async function (data) {
-    const response = await api.post('users/registration/confirmation/phone/', data)
-    return response
+    try {
+      const response = await api.post('users/registration/confirmation/phone/', data)
+      return response
+    } catch (error) {
+      const customError = {
+        name: 'Custom axios error',
+        message: error.response.data.code_error,
+        data: error.response.data,
+      }
+
+      throw customError
+    }
   },
 )
 
@@ -62,13 +82,33 @@ export const authorizationUserEmailConfirmation: any = createAsyncThunk(
 )
 
 export const getJwtToken: any = createAsyncThunk('auth/getJwtToken', async function (data) {
-  const response = await api.post('users/login/', data)
-  return response
+  try {
+    const response = await api.post('users/login/', data)
+    return response
+  } catch (error) {
+    const customError = {
+      name: 'Custom axios error',
+      message: error.response.data.code_error,
+      data: error.response.data,
+    }
+
+    throw customError
+  }
 })
 
 export const getJwtTokenTest: any = createAsyncThunk('auth/getJwtTokenTest', async function (data) {
-  const response = await api.post('users/login-code/', data)
-  return response
+  try {
+    const response = await api.post('users/login-code/', data)
+    return response
+  } catch (error) {
+    const customError = {
+      name: 'Custom axios error',
+      message: error.response.data.code_error,
+      data: error.response.data,
+    }
+
+    throw customError
+  }
 })
 
 export const getNewCode: any = createAsyncThunk('auth/getNewCode', async function (data) {
@@ -85,6 +125,7 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState: {
     isAuth: false,
+    isSincWithWallet: false,
     processType: 'authorization',
     stepRegistration: 1,
     stepAuthorization: 1,
@@ -101,6 +142,9 @@ export const authSlice = createSlice({
   reducers: {
     setIsAuth: (state, { payload }) => {
       state.isAuth = payload
+    },
+    setIsSincWithWallet: (state, { payload }) => {
+      state.isSincWithWallet = payload
     },
     setProcessType: (state, { payload }) => {
       state.processType = payload
@@ -196,6 +240,7 @@ export const authSlice = createSlice({
 const { actions, reducer } = authSlice
 export const {
   setIsAuth,
+  setIsSincWithWallet,
   setProcessType,
   setStepRegistration,
   setStepAuthorization,

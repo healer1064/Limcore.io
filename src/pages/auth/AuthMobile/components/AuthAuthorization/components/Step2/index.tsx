@@ -20,11 +20,10 @@ export const Step2: React.FC = () => {
   const [authCodeError, setAuthCodeError] = useState('')
 
   const onChange = (event) => {
-    if (!Number(event.target.value)) {
-      return
+    const number = Number(event.target.value)
+    if (!isNaN(number)) {
+      dispatch(setCodePhoneOrEmail(event.target.value))
     }
-
-    dispatch(setCodePhoneOrEmail(event.target.value))
   }
 
   const prevStep = () => dispatch(setStepAuthorization(1))
@@ -32,6 +31,7 @@ export const Step2: React.FC = () => {
   const completeAuthorization = async () => {
     // в теле отправить unique_identifier и code. В ответ придет токен
     if (codePhoneOrEmail.length < 4) {
+      setAuthCodeError('Код должен содержать 4 цифры')
       setValidValue(false)
       return
     }
@@ -43,8 +43,24 @@ export const Step2: React.FC = () => {
 
     const response = await dispatch(getJwtToken(data))
     if (response.error) {
-      setAuthCodeError('Что-то пошло не так..')
-      setValidValue(false)
+      switch (response.error.message) {
+        case 'need_get_code_again':
+          setAuthCodeError('Нужно снова получить код подтверждения')
+          setValidValue(false)
+          break
+        case 'code_invalid':
+          setAuthCodeError('Код недействителен')
+          setValidValue(false)
+          break
+        case 'limit_login_attempts':
+          setAuthCodeError('Превышено количество попыток входа (разблокировка через час)')
+          setValidValue(false)
+          break
+        default:
+          setAuthCodeError('Что-то пошло не так..')
+          setValidValue(false)
+          break
+      }
 
       setTimeout(() => {
         setAuthCodeError('')

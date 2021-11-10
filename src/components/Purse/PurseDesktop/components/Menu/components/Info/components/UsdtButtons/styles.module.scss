@@ -1,0 +1,76 @@
+@import '../../../../../../../vars&mixins.scss';
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding: 0;
+  list-style-type: none;
+
+  &Item {
+    width: 100%;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    .btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 0;
+      width: 100%;
+      border: none;
+      border-radius: 14px;
+      
+      background: #EDF4FF;
+      outline: none;
+  
+      @include subtitle-13px($color-4A-blue);
+      font-weight: 600;
+
+      &__active {
+        color: #fff;
+        background-color: $color-4A-blue;
+      }
+    }
+  }  
+}
+
+.addInfoCont {
+  padding: 10px;
+  border-radius: 14px;
+
+  background-color: #EDF4FF;
+
+  .addInfo {
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+  }
+  
+  .addressContainer {
+    display: flex;
+    flex-direction: column;
+  
+    .addressName {
+      margin: 0 0 5px 0;
+    
+      font-size: 16px;
+      font-weight: 500;
+      text-align: center;
+    }
+    
+    .addressValue {
+      margin: 0 0 10px 0;
+      
+      word-wrap: break-word;
+      font-size: 16px;
+      font-weight: 500;
+      text-align: center;
+      color: $color-4A-blue;
+    }
+  }
+}
+

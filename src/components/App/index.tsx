@@ -3,6 +3,7 @@ import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 // import { setIsAuth, checkToken } from '../../pages/auth/redux/auth.slice'
 import { checkToken, getTransactions } from '../../pages/auth/redux/auth.slice'
+import { setIsAuth } from '../../pages/auth/redux/authSlice'
 
 // import { Footer } from '../Footer'
 import { FooterMobile } from '../Footer/FooterMobile'
@@ -31,7 +32,7 @@ import { AuthPage } from '../../pages/auth'
 
 import { Dummy } from '../../components/Dummy'
 import { LandingPage } from '../../pages/landing'
-import { PurseMobile } from '@components/Purse/PurseMobile'
+import { Purse } from '@components/Purse'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getWalletAdress, getWalletBalance, getLimcPrice, getLimcAmount } from '../Wallet/redux/walletSlice'
@@ -58,6 +59,7 @@ const App = () => {
 
       dispatch(checkToken({ token: tokenObj.access }))
         .then(() => {
+          dispatch(setIsAuth(true))
           dispatch(getWalletAdress())
           dispatch(getWalletBalance())
           dispatch(getLimcPrice())
@@ -86,7 +88,7 @@ const App = () => {
             {!isAuth && !isLoading && (
               <Switch>
                 <Route path='/' exact component={LandingPage} />
-                <Route path='/my' exact component={PurseMobile} />
+                <Route path='/my' exact component={Purse} />
                 <Route path='/auth' exact component={AuthPage} />
                 <Route path='/profile' exact component={ProfileMobile} />
                 {/* <Route path='/auth' exact component={AuthMobile} /> */}
@@ -103,7 +105,7 @@ const App = () => {
               <Switch>
                 {/* <Route path='/' exact component={PurseMobile} /> */}
                 <Route path='/' exact component={LandingPage} />
-                <Route path='/my' exact component={PurseMobile} />
+                <Route path='/my' exact component={Purse} />
                 <Route path='/chat' exact component={Dummy} />
                 {desktop ? (
                   <Route path='/broadcasts' exact component={BroadcastsDesktop} />

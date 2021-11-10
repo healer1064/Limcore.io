@@ -32,14 +32,20 @@ export const Step3: React.FC = () => {
     console.log('step3', response)
 
     if (response.error) {
-      if (
-        response.error.message === 'email_using_in_another_account' ||
-        response.error.message === 'user_already_registered'
-      ) {
-        setError('Пользователь уже зарегистрирован')
+      switch (response.error.message) {
+        case 'user_already_registered':
+          setError('Пользователь уже зарегистрирован')
+          break
+        case 'email_using_in_another_account':
+          setError('Пользователь уже зарегистрирован')
+          break
+        case 'wait_one_minute':
+          setError('Минута еще не прошла после первого запроса')
+          break
+        default:
+          setError('Что-то пошло не так..')
+          break
       }
-
-      setError('Что-то пошло не так, попробуйте еще раз.')
     } else {
       dispatch(setStepRegistration(4))
     }

@@ -1,6 +1,11 @@
 import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setStepRegistration, setCodeEmail, registerUserEmailConfirmation } from '../../../../../redux/authSlice'
+import {
+  setStepRegistration,
+  setCodeEmail,
+  registerUserEmailConfirmation,
+  setProcessType,
+} from '../../../../../redux/authSlice'
 import Styles from './styles.module.scss'
 
 import { InputCode } from '../../../../../../../ui-kit/InputCode'
@@ -16,12 +21,11 @@ export const Step4: React.FC = () => {
   const [error, setError] = useState('asdfasdf')
 
   const onChange = (event) => {
-    if (!Number(event.target.value)) {
-      return
+    const number = Number(event.target.value)
+    if (!isNaN(number)) {
+      setValidValue(true)
+      dispatch(setCodeEmail(event.target.value))
     }
-
-    setValidValue(true)
-    dispatch(setCodeEmail(event.target.value))
   }
 
   const prevStep = () => dispatch(setStepRegistration(3))
@@ -36,11 +40,27 @@ export const Step4: React.FC = () => {
     const response = await dispatch(registerUserEmailConfirmation(data))
     console.log('Step4', response)
     if (response.error) {
-      setValidValue(false)
-      setError('Что-то пошло не так..')
+      switch (response.error.message) {
+        case 'email_already_verified':
+          setValidValue(false)
+          setError('Email уже подтвержден')
+          break
+        case 'need_get_code_again':
+          setValidValue(false)
+          setError('Нужно снова получить код подтверждения')
+          break
+        case 'code_invalid':
+          setValidValue(false)
+          setError(' Код недействителен')
+          break
+        default:
+          setValidValue(false)
+          setError('Что-то пошло не так..')
+          break
+      }
     } else {
       dispatch(registerUserEmailConfirmation(data))
-      window.location.reload()
+      dispatch(setProcessType('authorization'))
     }
   }
 

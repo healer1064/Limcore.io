@@ -16,8 +16,11 @@ export const Step2: React.FC = () => {
   const [error, setError] = useState('')
 
   const onChange = (event) => {
-    setValidValue(true)
-    dispatch(setCodePhone(event.target.value))
+    const number = Number(event.target.value)
+    if (!isNaN(number)) {
+      dispatch(setCodePhone(event.target.value))
+      setValidValue(true)
+    }
   }
 
   const prevStep = () => dispatch(setStepRegistration(1))
@@ -26,6 +29,7 @@ export const Step2: React.FC = () => {
     // в теле отправить unique_identifier и code. В ответ придет токен
     if (codePhone.length < 4) {
       setValidValue(false)
+      setError('Код должен содержать 4 цифры')
       return
     }
 
@@ -39,8 +43,24 @@ export const Step2: React.FC = () => {
     // console.log(response)
 
     if (response.error) {
-      setValidValue(false)
-      setError('Что-то пошло не так..')
+      switch (response.error.message) {
+        case 'phone_already_verified':
+          setValidValue(false)
+          setError('Телефон уже подтвержден')
+          break
+        case 'need_get_code_again':
+          setValidValue(false)
+          setError('Нужно снова получить код подтверждения')
+          break
+        case 'code_invalid':
+          setValidValue(false)
+          setError('Код недействителен')
+          break
+        default:
+          setValidValue(false)
+          setError('Что-то пошло не так..')
+          break
+      }
     } else {
       const jwtObj = { ...response.payload.data }
       localStorage.setItem('jwtToken', JSON.stringify(jwtObj))

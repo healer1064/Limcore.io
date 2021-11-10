@@ -1,15 +1,16 @@
 @import '../../../../../scss/cabinet';
 
+.menu_sinc {
+  top: 267px !important;
+}
+
 .menu {
   position: absolute;
-  // top: 165px;
-  top: 240px;
-  // top: 235px;
+  top: 300px;
   left: 0;
   z-index: 100;
 
   width: 100%;
-  // width: fit-content;
   padding: 0 20px;
   margin: 0;
 
