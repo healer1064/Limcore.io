@@ -23,7 +23,14 @@ export const MediaMobile = () => {
             <SwiperSlide className={Styles.slide}>
               <div className={Styles.block}>
                 <div className={Styles.image}>
-                  <img src={mediaImage} alt='Изображение' />
+                  <a
+                    className={Styles.image}
+                    href='https://blockchain-life.com/europe/ru/news/kak-dobyvaetsya-kriptovalyuta-v-rossii/'
+                    target='blank'
+                    rel='noopener noreferrer'
+                  >
+                    <img src={mediaImage} alt='Изображение' />
+                  </a>
                 </div>
                 <span className={Styles.title}>Как добывается криптовалюта в России?</span>
                 <p className={Styles.description}>
@@ -41,7 +48,15 @@ export const MediaMobile = () => {
             <SwiperSlide className={Styles.slide}>
               <div className={Styles.block}>
                 <div className={Styles.image}>
-                  <img src={limcInterview} alt='Изображение' />
+                  {/* <img src={limcInterview} alt='Изображение' /> */}
+                  <a
+                    className={Styles.image}
+                    href='https://coinpost.ru/p/interview-limcore'
+                    target='blank'
+                    rel='noopener noreferrer'
+                  >
+                    <img src={limcInterview} alt='Изображение' />
+                  </a>
                 </div>
                 <span className={Styles.title}>
                   CEO Limcore: инвестиции в майнинг от Limcore — альтернатива банковским депозитам
