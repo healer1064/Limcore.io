@@ -29,6 +29,7 @@ export const Header: React.FC = () => {
   const [valueLanguage, setValueLanguage] = useState('ru')
   // const isAuth = useAppSelector((state) => state.auth.isAuth)
   const isAuth = useAppSelector((state) => state.authNew.isAuth)
+  console.log('isAuth', isAuth)
   const dispatch = useAppDispatch()
   const history = useHistory()
 
@@ -136,10 +137,12 @@ export const Header: React.FC = () => {
               </div>
             </div>
           </div>
-          <button className={btnClass} onClick={handleLoginModalOpen}>
-            <LoginIcon />
-            <span className={Styles.enter}>Войти</span>
-          </button>
+          {!isAuth && (
+            <button className={btnClass} onClick={handleLoginModalOpen}>
+              <LoginIcon />
+              <span className={Styles.enter}>Войти</span>
+            </button>
+          )}
 
           <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />
         </div>

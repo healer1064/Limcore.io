@@ -32,11 +32,6 @@ export const Step1: React.FC = () => {
       return setError('Вы забыли ввести телефон или e-mail')
     }
 
-    // Временно, пока авторизация только по телефону
-    if (phoneOrEmail.length < 10) {
-      return setError('Введите корректные данные')
-    }
-
     if (phoneOrEmail.includes('@')) {
       const valid = validateEmail(phoneOrEmail)
 
@@ -50,7 +45,7 @@ export const Step1: React.FC = () => {
       const valid = validatePhone(phoneOrEmail)
 
       if (!valid) {
-        setError('Неверный формат телефона')
+        setError('Некорректно введен номер')
       } else {
         setError('')
         dispatch(setTypeAuthorization('phone'))
@@ -59,6 +54,8 @@ export const Step1: React.FC = () => {
 
     // users/login-code/ - в теле отправить email/phone, будет отправлен код. UPD (08.11) - пока что только 'phone'
     console.log(`+${phoneOrEmail}`)
+    localStorage.setItem('userPhone', phoneOrEmail) // для WalletConnect
+
     const response = await dispatch(getJwtTokenTest({ phone: `+${phoneOrEmail}` }))
     if (response.error) {
       switch (response.error.message) {
@@ -73,6 +70,9 @@ export const Step1: React.FC = () => {
           break
         case 'user_not_registered':
           setError('Пользователь не зарегистрирован')
+          break
+        case 'phone_invalid':
+          setError('Некорректно введен номер')
           break
         default:
           setError('Что-то пошло не так..')

@@ -16,8 +16,11 @@ export const Step2: React.FC = () => {
   const [error, setError] = useState('')
 
   const onChange = (event) => {
-    setValidValue(true)
-    dispatch(setCodePhone(event.target.value))
+    const number = Number(event.target.value)
+    if (!isNaN(number)) {
+      dispatch(setCodePhone(event.target.value))
+      setValidValue(true)
+    }
   }
 
   const prevStep = () => dispatch(setStepRegistration(1))
@@ -26,6 +29,7 @@ export const Step2: React.FC = () => {
     // в теле отправить unique_identifier и code. В ответ придет токен
     if (codePhone.length < 4) {
       setValidValue(false)
+      setError('Код должен содержать 4 цифры')
       return
     }
 

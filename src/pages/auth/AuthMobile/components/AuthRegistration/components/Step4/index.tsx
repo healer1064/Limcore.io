@@ -21,12 +21,11 @@ export const Step4: React.FC = () => {
   const [error, setError] = useState('asdfasdf')
 
   const onChange = (event) => {
-    if (!Number(event.target.value)) {
-      return
+    const number = Number(event.target.value)
+    if (!isNaN(number)) {
+      setValidValue(true)
+      dispatch(setCodeEmail(event.target.value))
     }
-
-    setValidValue(true)
-    dispatch(setCodeEmail(event.target.value))
   }
 
   const prevStep = () => dispatch(setStepRegistration(3))

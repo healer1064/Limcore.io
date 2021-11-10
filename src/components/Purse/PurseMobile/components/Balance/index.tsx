@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import { balance as balanceSvg, copyIcon } from '../../images'
 import logoIcon from '@icons/logo.svg'
@@ -7,22 +7,91 @@ import { Overall } from './components/Overall/index'
 import { useAppSelector } from '@app/redux/hooks'
 import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
 import etherscanIcon from '@icons/etherscan1.png'
+import WalletConnect from '@walletconnect/client'
+import QRCodeModal from '@walletconnect/qrcode-modal'
+import { setIsSincWithWallet } from '../../../../../pages/auth/redux/authSlice'
+import { useDispatch } from 'react-redux'
+import { LogoLimc } from './Icons/LogoLimc'
+import { LogoTrustWallet } from './Icons/LogoTrustWallet'
+import GrayCrossIcon from '../../images/GrayCross/GrayCrossIcon'
+import { WalletPurseIcon } from './Icons/WalletPurseIcon'
 
 export const Balance = () => {
+  // const [isSincBtnVisible, setIsSincBtnVisible] = useState(true)
   const [isBalanceVisible, setIsBalanceVisible] = useState(false)
+  const [purseFromWallet, setPurseFromWallet] = useState('')
+
+  const dispatch = useDispatch()
   // Если человек попал в личныый кабинет через регистрацию, то тут будет true
   const [isRegModalVisible, setIsRegModalVisible] = useState(
     useAppSelector((state) => state.auth.processType) === 'REGISTRATION',
   )
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // const [money, setMoney] = useState('0')
   const walletAddress = useAppSelector((state) => state.wallet.address)
   const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
   const limcCount = useAppSelector((state) => state.wallet.limcCount)
   const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
+  const isSinc = useAppSelector((state) => state.authNew.isSincWithWallet)
+  console.log(isSinc)
+
   const sum: number = Number(usdtBalance) + Number(limcBalance)
   const money = isNaN(sum) ? '...' : sum
+
+  const connector = new WalletConnect({
+    bridge: 'https://bridge.walletconnect.org', // Required
+    qrcodeModal: QRCodeModal,
+  })
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  connector.on('disconnect', (error, payload) => {
+    if (error) {
+      throw error
+    }
+
+    setPurseFromWallet('')
+    dispatch(setIsSincWithWallet(false))
+    window.location.reload()
+  })
+
+  connector.on('session_update', (error, payload) => {
+    if (error) {
+      throw error
+    }
+    // Get updated accounts and chainId
+    // const { accounts, chainId } = payload.params[0]
+    console.log('session_update')
+  })
+
+  useEffect(() => {
+    if (connector.connected) {
+      dispatch(setIsSincWithWallet(true))
+      setPurseFromWallet(JSON.parse(localStorage.getItem('walletconnect')).accounts[0])
+    }
+  }, [])
+
+  const sincWithWallet = async () => {
+    // Check if connection is already established
+    if (!connector.connected) {
+      connector.createSession()
+    }
+
+    // Subscribe to connection events
+    connector.on('connect', (error, payload) => {
+      if (error) {
+        throw error
+      }
+      // Get provided accounts and chainId
+      const { accounts } = payload.params[0]
+      setPurseFromWallet(accounts[0])
+
+      dispatch(setIsSincWithWallet(true))
+      QRCodeModal.close()
+    })
+
+    // URI условный, подставляется потом автоматически другой
+    QRCodeModal.open('uri')
+    // const { accounts, chainId } = await connector.connect()
+  }
 
   const handleFirstRegModalClose = () => {
     setIsRegModalVisible(false)
@@ -38,19 +107,47 @@ export const Balance = () => {
 
   return (
     <div className={styles.balance}>
-      <div className={styles.balance__header} onClick={handleOpenBalanceClick}>
+      {/* <div className={styles.balance__header} onClick={handleOpenBalanceClick}>
         <h3 className={styles.balance__title}>Общий баланс</h3>
         <button className={styles.balance__button}>
           <img src={balanceSvg} />
         </button>
       </div>
-
       <p className={styles.balance__sumMain}>{`$${money}`}</p>
       <div className={styles.balance__data}>
         <p className={styles.balance__time}>24h</p>
         <p className={styles.balance__sum}>$0</p>
         <p className={styles.balance__percent}>0%</p>
+      </div> */}
+
+      <div className={styles.trust}>
+        <div className={styles.trust_logos}>
+          <LogoLimc />
+          <GrayCrossIcon />
+          <LogoTrustWallet />
+        </div>
+        <button className={styles.trust_sinc} onClick={sincWithWallet}>
+          {isSinc ? (
+            <>
+              <WalletPurseIcon className={styles.trust_walletpurse} />
+              {purseFromWallet.substr(0, 9)}...{purseFromWallet.slice(-7)}
+            </>
+          ) : (
+            'Синхронизировать'
+          )}
+        </button>
+        {!isSinc ? (
+          <p className={styles.trust_subtitle}>Для старта майнинга синхронизируйте Limcore Wallet с Trust Wallet</p>
+        ) : null}
       </div>
+
+      {/* {isSincBtnVisible ? (
+        <ButtonBig className={styles.sinc} onClick={sincWithWallet}>
+          Синхронизация с Trust Wallet
+        </ButtonBig>
+      ) : (
+        <div className={classNames(styles.timer)}>Hello</div>
+      )} */}
       <div className={styles.progressContainer}>
         <div className={styles.progress}>
           <span className={styles.bar}>{}</span>

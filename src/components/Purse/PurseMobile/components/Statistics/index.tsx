@@ -59,7 +59,7 @@ export const Statistics = ({ onClick }: IStatisticsProps) => {
         active={isTooltipVisible}
         setActive={handleTooltipClick}
         title='Почему нужно ждать?'
-        subtitle='Этап плоттинга начинается с создания параллельных участков. Дополнительные параметры используются для оптимального использования возможностей процессора и ОЗУ. После завершения Round 1 начнется отсчет'
+        subtitle='Майнинг начинается спустя 80 дней с момента завершения раунда. Раунд может закончиться раньше указанного срока'
       />
 
       <div className={styles.progressbar}>
