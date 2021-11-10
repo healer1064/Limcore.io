@@ -1,13 +1,16 @@
 @import '../../../../../scss/cabinet';
 
 .wallet {
-  position: relative;
   width: 100%;
   padding: 0 60px;
-  margin: 60px 0 0;
+  margin: 0;
   background-color: $color-cyan-pale;
   border-radius: 14px;
   max-height: 137px;
+
+  &_violet {
+    background-color: #F0F5FD;;
+  }
 
   & * {
     padding: 0;
@@ -119,21 +122,27 @@
   display: none;
 }
 
-@media screen and (max-width: 1230px) {
-  .wallet__image {
-    right: 29px;
-  }
+.swiper {
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  margin: 60px 0 0;
+  padding: 0;
+  width: 50%;
+  overflow: visible;
 }
 
-.swiper {
-  max-width: 800px;
+.slide {
   display: flex;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-.slide {
+@media screen and (max-width: 1230px) {
+  .wallet__image {
+    right: 29px;
+  }
 }
 
 @media screen and (max-width: 1100px) {
