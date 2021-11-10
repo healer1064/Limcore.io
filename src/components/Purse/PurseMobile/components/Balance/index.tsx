@@ -126,7 +126,7 @@ export const Balance = () => {
           <GrayCrossIcon />
           <LogoTrustWallet />
         </div>
-        <ButtonBig className={styles.trust_sinc} onClick={sincWithWallet}>
+        <button className={styles.trust_sinc} onClick={sincWithWallet}>
           {isSinc ? (
             <>
               <WalletPurseIcon className={styles.trust_walletpurse} />
@@ -135,7 +135,7 @@ export const Balance = () => {
           ) : (
             'Синхронизировать'
           )}
-        </ButtonBig>
+        </button>
         {!isSinc ? (
           <p className={styles.trust_subtitle}>Для старта майнинга синхронизируйте Limcore Wallet с Trust Wallet</p>
         ) : null}

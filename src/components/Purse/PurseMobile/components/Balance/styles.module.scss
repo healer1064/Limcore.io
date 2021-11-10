@@ -298,6 +298,11 @@
   padding: 14px 65px;
   width: 100%;
   border: 1px solid #4A70F8;
+  border-radius: 14px;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
 
   color: #4A70F8;
   background-color: #ffffff;
@@ -305,7 +310,7 @@
   
   &:hover {
     color: #2D4EC5;
-    background-color: #2D4EC5;
+    border-color: #2D4EC5;
     transition: background-color .3s ease, color .3s ease;
   }
 }

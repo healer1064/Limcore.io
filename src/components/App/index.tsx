@@ -3,6 +3,7 @@ import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 // import { setIsAuth, checkToken } from '../../pages/auth/redux/auth.slice'
 import { checkToken, getTransactions } from '../../pages/auth/redux/auth.slice'
+import { setIsAuth } from '../../pages/auth/redux/authSlice'
 
 // import { Footer } from '../Footer'
 import { FooterMobile } from '../Footer/FooterMobile'
@@ -58,6 +59,7 @@ const App = () => {
 
       dispatch(checkToken({ token: tokenObj.access }))
         .then(() => {
+          dispatch(setIsAuth(true))
           dispatch(getWalletAdress())
           dispatch(getWalletBalance())
           dispatch(getLimcPrice())
