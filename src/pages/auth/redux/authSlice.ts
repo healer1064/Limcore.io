@@ -125,6 +125,7 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState: {
     isAuth: false,
+    isSincWithWallet: false,
     processType: 'authorization',
     stepRegistration: 1,
     stepAuthorization: 1,
@@ -141,6 +142,9 @@ export const authSlice = createSlice({
   reducers: {
     setIsAuth: (state, { payload }) => {
       state.isAuth = payload
+    },
+    setIsSincWithWallet: (state, { payload }) => {
+      state.isSincWithWallet = payload
     },
     setProcessType: (state, { payload }) => {
       state.processType = payload
@@ -236,6 +240,7 @@ export const authSlice = createSlice({
 const { actions, reducer } = authSlice
 export const {
   setIsAuth,
+  setIsSincWithWallet,
   setProcessType,
   setStepRegistration,
   setStepAuthorization,
