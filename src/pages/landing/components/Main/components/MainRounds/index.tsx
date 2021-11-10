@@ -77,8 +77,6 @@ export const MainRounds: React.FC = () => {
         <div className={Styles.wrap}>
           <span className={Styles.name}>Раунд №1</span>
         </div>
-        {/* <p className={Styles.temporarily}>Открываемся 5 ноября 2021г.</p>
-        <p className={Styles.temporarily}>Сайт в процессе разработки</p> */}
         <ul className={Styles.list}>
           <li className={Styles.item}>
             <span className={Styles.designation}>Лимит</span>
@@ -91,7 +89,7 @@ export const MainRounds: React.FC = () => {
           </li>
           <li className={Styles.item}>
             <span className={Styles.designation}>Сроки</span>
-            <span className={Styles.value}>05.11.2021 — 30.12.21</span>
+            <span className={Styles.value}>15.11.2021 — 30.12.21</span>
             <InfoIcon className={Styles.icon} onClick={openPopup} />
           </li>
         </ul>
@@ -166,11 +164,11 @@ export const MainRounds: React.FC = () => {
           </div>
           <div className={Styles.dates}>
             <div className={Styles.date}>
-              <span>10.01.2022</span>
+              <span className={Styles.date__span}>10.01.2022</span>
             </div>
             <div className={Styles.date}>
-              <span>25.02.2022</span>
-              <span>конец 2022</span>
+              <span className={Styles.date__span}>25.02.2022</span>
+              <span className={Styles.date__lastSpan}>конец 2022</span>
             </div>
           </div>
         </div>

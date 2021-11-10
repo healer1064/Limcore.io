@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 // import { setIsAuth, checkToken } from '../../pages/auth/redux/auth.slice'
@@ -36,21 +36,26 @@ import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getWalletAdress, getWalletBalance, getLimcPrice, getLimcAmount } from '../Wallet/redux/walletSlice'
 import { getUser } from '@app/redux/userSlice'
+import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
 // import { api } from '@app/api'
 
 const App = () => {
   const dispatch = useAppDispatch()
-  // const { width, height } = useWindowSize()
   const { width } = useWindowSize()
   // const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
   const user = useAppSelector((state) => state.user.userData)
-  const isAuth = useAppSelector((state) => state.auth.isAuth)
-  const desktop = width >= 768
+  // const isAuth = useAppSelector((state) => state.auth.isAuth)
+  const isAuth = useAppSelector((state) => state.authNew.isAuth)
+  const [isLoading, setIsLoading] = useState(false)
+  console.log(user)
+  const desktop = width >= 769
 
   useEffect(() => {
     const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
 
     if (tokenObj.access) {
+      setIsLoading(true)
+
       dispatch(checkToken({ token: tokenObj.access }))
         .then(() => {
           dispatch(getWalletAdress())
@@ -59,21 +64,31 @@ const App = () => {
           dispatch(getLimcAmount())
           dispatch(getUser())
           dispatch(getTransactions())
+          setIsLoading(false)
         })
-        .catch((err) => console.log(err))
+        .catch((err) => {
+          console.log('ERROR ===========+>>>>>>', err)
+          setIsLoading(false)
+        })
     }
   }, [isAuth])
   return (
     <Router>
       <div className={Styles.app_container}>
+        {isLoading && (
+          <div className={Styles.spinnerContainer}>
+            <Spinner />
+          </div>
+        )}
         {desktop ? <Header /> : <HeaderMobile />}
         <>
           <main className={desktop ? `${Styles.main}` : `${Styles.main} ${Styles.main_mobile}`}>
-            {!isAuth && (
+            {!isAuth && !isLoading && (
               <Switch>
                 <Route path='/' exact component={LandingPage} />
-                {/* <Route path='/auth' exact component={AuthPage} /> */}
-                {/* <Route path='/profile' exact component={ProfileMobile} /> */}
+                <Route path='/my' exact component={PurseMobile} />
+                <Route path='/auth' exact component={AuthPage} />
+                <Route path='/profile' exact component={ProfileMobile} />
                 {/* <Route path='/auth' exact component={AuthMobile} /> */}
                 <Route path='/not-found' exact component={PageNotFount} />
                 <Route path='*'>
@@ -84,19 +99,26 @@ const App = () => {
                 <ProtectedRoute allowedUsersTypes={[USER_ROlES.user]} path='/orders' exact component={OrdersPage} /> */}
               </Switch>
             )}
-            {
-              isAuth && null
-              // <Switch>
-              //   <Route path='/' exact component={PurseMobile} />
-              //   <Route path='/chat' exact component={Dummy} />
-              //   <Route path='/broadcasts' exact component={BroadcastsMobile} />
-              //   <Route path='/profile' exact component={ProfileMobile} />
-              //   <Route path='/buy' exact component={BuyPage} />
-              // </Switch>
-            }
+            {isAuth && !isLoading && (
+              <Switch>
+                {/* <Route path='/' exact component={PurseMobile} /> */}
+                <Route path='/' exact component={LandingPage} />
+                <Route path='/my' exact component={PurseMobile} />
+                <Route path='/chat' exact component={Dummy} />
+                {desktop ? (
+                  <Route path='/broadcasts' exact component={BroadcastsDesktop} />
+                ) : (
+                  <Route path='/broadcasts' exact component={BroadcastsMobile} />
+                )}
+                <Route path='/profile' exact component={ProfileMobile} />
+                <Route path='/buy' exact component={BuyPage} />
+                {/* <FooterMobile /> */}
+              </Switch>
+            )}
           </main>
         </>
-        {isAuth && <FooterMobile />}
+        {/* {isAuth && <FooterMobile />} */}
+        {/* {isAuth && } */}
       </div>
     </Router>
   )

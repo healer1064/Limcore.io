@@ -18,8 +18,9 @@ export const ProfileFilling: React.FC = () => {
   return (
     <>
       {step === 0 && <Step1 nextStep={nextStep} />}
-      {step === 1 && <Step2 nextStep={nextStep} />}
-      {step === 2 && <Step3 />}
+      {/* {step === 1 && <Step2 nextStep={nextStep} />} */}
+      {/* {step === 2 && <Step3 />} */}
+      {step === 1 && <Step3 />}
     </>
   )
 }

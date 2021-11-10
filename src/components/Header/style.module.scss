@@ -7,9 +7,9 @@
   width: 100%;
   height: 70px;
   background: $white;
-  padding: 0 20px;
-  padding-top: 12px;
-  padding-bottom: 18px;
+  box-sizing: border-box;
+  margin: 15px auto;
+  padding: 0;
 }
 
 .logout:hover {
@@ -57,6 +57,7 @@
 }
 
 .lang {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -70,20 +71,24 @@
 .block {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 5px;
   height: 100%;
   cursor: pointer;
-position: relative;
-  &:hover {      
-    .path {
-      stroke: #4a70f8;
-      transition: stroke .3s ease;
-    }
-
-    span {
-      color: #4a70f8;
-      transition: color .3s ease;
-    }
+  position: relative;
+  min-width: 65px;
+  transition: all .3s ease;
+  &:hover, &:focus {   
+    .langTitle, path {
+      color: $primary-color;
+      stroke: $primary-color;
+     }    
+  }
+  &.active {
+    .langTitle, path {
+      color: $primary-color;
+      stroke: $primary-color;
+      }  
   }
 
   span {
@@ -139,7 +144,7 @@ position: relative;
     }
   }
   
-  span {
+  .langTitle {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
@@ -172,11 +177,20 @@ position: relative;
 .img {
   width: 17px;
   height: 17px;
+  margin-right: 5px;
+  
+}
+.lang__img {
+  width: 17px;
+  height: 17px;
   margin-right: 10px;
-  cursor: pointer;
 }
 .arrow {
-  transform: rotate(180deg);
+  height: 15px;
+  transform: rotate(90deg);
+}
+.arrowActive {
+  transform: rotate(-90deg);
 }
 
 input[type=radio] {
@@ -185,9 +199,12 @@ input[type=radio] {
   
 
 .header__langoptions {
+  transition: opacity .3s ease;
   display: flex;
+  opacity: 0;
+  top: 30px;
+  left: -15px;
   position: absolute;
-  top: 60px;
   width: 99px;
   height: 96px;
   background: #f9f9f7;
@@ -195,9 +212,11 @@ input[type=radio] {
   border-radius: 14px;
   list-style: none;
   flex-direction: column;
- padding: 18px 16px;
+  padding: 18px 16px;
+  &.active {
+  opacity: 1;
+  }
 }
-
 
 
 .langoption_ru {
@@ -224,8 +243,21 @@ input[type=radio] {
   line-height: 140%;
   color: #4F535A;
   cursor: pointer;
+  &:hover, &:focus {
+    color: $primary-color;
+    transition: all .3s ease;
+  }
 }
 .langoption__text_checked {
 font-weight: 600;
 color: #3A3B3D;
+}
+
+.enter {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #4a70f8;
 }
