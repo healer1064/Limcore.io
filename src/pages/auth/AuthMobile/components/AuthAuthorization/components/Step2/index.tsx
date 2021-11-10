@@ -52,7 +52,7 @@ export const Step2: React.FC = () => {
       }, 2000)
     } else {
       dispatch(setIsAuth(true))
-      history.push('/')
+      history.push('/my')
     }
   }
 

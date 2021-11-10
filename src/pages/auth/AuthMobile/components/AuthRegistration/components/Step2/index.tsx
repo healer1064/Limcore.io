@@ -36,10 +36,14 @@ export const Step2: React.FC = () => {
     console.log(data)
 
     const response = await dispatch(registerUserPhoneConfirmation(data))
+    // console.log(response)
+
     if (response.error) {
       setValidValue(false)
       setError('Что-то пошло не так..')
     } else {
+      const jwtObj = { ...response.payload.data }
+      localStorage.setItem('jwtToken', JSON.stringify(jwtObj))
       dispatch(setStepRegistration(3))
     }
   }

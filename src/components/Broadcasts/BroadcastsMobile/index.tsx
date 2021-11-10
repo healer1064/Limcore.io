@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './styles.module.scss'
 import { BroadcastItem } from './components/broadcastItem'
 import { broadcastsList } from '../broadcastsList'
+import { FooterMobile } from '@components/Footer/FooterMobile'
 
 export const BroadcastsMobile = () => {
   return (
@@ -13,6 +14,8 @@ export const BroadcastsMobile = () => {
           </li>
         ))}
       </ul>
+
+      <FooterMobile />
     </div>
   )
 }
