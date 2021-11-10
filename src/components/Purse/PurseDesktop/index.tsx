@@ -22,6 +22,7 @@ import { Details } from '@components/Purse/PurseDesktop/components/Details'
 import { Wallet } from '@components/Purse/PurseDesktop/components/Wallet'
 import { Transactions } from '@components/Purse/PurseDesktop/components/Transactions'
 import { Wallpaper } from '@components/Purse/PurseDesktop/components/Wallpaper'
+import { Logo } from '@components/Purse/PurseDesktop/components/Logo'
 
 export const PurseDesktop = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
@@ -108,6 +109,7 @@ export const PurseDesktop = () => {
   return (
     <section className={styles.purse}>
       <Wallpaper />
+      <Logo />
       <header className={styles.header}>
         <nav className={styles.nav}>
           <Link className={`${styles.nav__link} ${styles.nav__link_active} `} to='main'>
@@ -194,69 +196,6 @@ export const PurseDesktop = () => {
           />
         </div>
       </div>
-      {/* {viewContent === 'buy' && ( */}
-      {/*  <Container title='Покупка LIMC' onClose={closePopup}> */}
-      {/*    <div className={styles.cont}> */}
-      {/*      <div className={styles.cont2}> */}
-      {/*        <span className={styles.text}> */}
-      {/*          Цена за LIMC в USDT: <span className={styles.price}>{prices.usdt_amount}</span> */}
-      {/*        </span> */}
-      {/* <span className={styles.text}>Locktime: {prices.lock_time} дней</span> */}
-      {/* <span className={styles.text}> */}
-      {/*  Locktime: <span className={styles.price}>{prices.lock_time} дней</span> */}
-      {/* </span> */}
-      {/* <InputText onChange={(event) => handleSetValue(event)} type='number' value={value} /> */}
-      {/* <ButtonBig onClick={handleBuyLIMK} className={styles.button} disabled={!value || isLoading}> */}
-      {/*  Купить */}
-      {/* </ButtonBig> */}
-      {/* </div> */}
-      {/* {isErrorVisible && ( */}
-      {/*  <div className={styles.errorModal}> */}
-      {/*    У вас недостаточно средств. */}
-      {/*    <br /> */}
-      {/*    <p className={styles.errorSubtitle} onClick={handleNeedToPayClick}> */}
-      {/*      Необходимо пополнить USDT кошелек */}
-      {/*    </p> */}
-      {/*  </div> */}
-      {/* )} */}
-      {/* </div> */}
-      {/* </Container> */}
-      {/* )} */}
-      {/* <Modal active={isErrorVisible} style={{ zIndex: 1001, backgroundColor: 'transparent' }} setActive={() => {}}>
-        <div className={styles.errorModal}>У вас недостаточно средств.</div>
-      </Modal> */}
-      {/* <Modal active={isSuccessVisible} style={{ zIndex: 1001, backgroundColor: 'transparent' }}> */}
-      {/*  <div className={styles.errorModal} style={{ backgroundColor: 'green' }}> */}
-      {/*    Успешно! */}
-      {/*  </div> */}
-      {/* </Modal> */}
-      {/* <Balance /> */}
-      {/* <Menu */}
-      {/*  isUsdtInfoVisible={isUsdtInfoVisible} */}
-      {/*  handleBalanceUsdtOpenClick={() => setIsUsdtInfoVisible(true)} */}
-      {/*  handleBalanceUsdtCloseClick={() => setIsUsdtInfoVisible(false)} */}
-      {/*  openPopup={() => setViewContent('balance')} */}
-      {/* /> */}
-      {/* <div className={styles.purse__content}> */}
-      {/*  {isCardVisible && <VirtualCard onCloseClick={handleCardCloseClick} />} */}
-      {/*  <div className={styles.buyCont}> */}
-      {/*    <ButtonBig className={styles.buy} onClick={() => setViewContent('balance')}> */}
-      {/*      Купить LIMC */}
-      {/*    </ButtonBig> */}
-      {/*  </div> */}
-      {/*  {isLimcBought?.length ? ( */}
-      {/*    <StartMining onButtonClick={handleStartClick} /> */}
-      {/*  ) : ( */}
-      {/*    <Statistics onClick={handleShowMoreClick} /> */}
-      {/*  )} */}
-      {/*  <Details /> */}
-      {/*  {isWalletVisible && <Wallet onCloseClick={handleWalletCloseClick} />} */}
-      {/*  <Transactions */}
-      {/*    onProfileClick={handleProfileClick} */}
-      {/*    onTransactionsClick={handleTransactionsClick} */}
-      {/*    isUserHasTransactions={isUserHasTransactions} */}
-      {/*  /> */}
-      {/* </div> */}
     </section>
   )
 }
