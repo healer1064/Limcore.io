@@ -31,6 +31,7 @@ export const userSlice = createSlice({
     email: null,
     middleName: false,
     data: {
+      avatar: '',
       first_name: '',
       middle_name: '',
       last_name: '',

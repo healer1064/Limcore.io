@@ -117,7 +117,12 @@ export const getNewCode: any = createAsyncThunk('auth/getNewCode', async functio
 })
 
 export const checkToken: any = createAsyncThunk('auth/checkToken', async function (data) {
-  const response = await api.post('api/v1/token/verify/', data)
+  const response = await api.post('token/verify/', data)
+  return response
+})
+
+export const refreshToken: any = createAsyncThunk('auth/refreshToken', async function (data) {
+  const response = await api.post('token/refresh/', data)
   return response
 })
 
@@ -233,6 +238,12 @@ export const authSlice = createSlice({
       } else {
         api.setUserToken('')
       }
+    },
+    [refreshToken.fulfilled]: (state, action) => {
+      console.log('refreshToken', action)
+      const jwtObj = JSON.parse(localStorage.getItem('jwtToken'))
+      const data = { ...jwtObj, access: action.payload.data.access }
+      localStorage.setItem('jwtToken', JSON.stringify(data))
     },
   },
 })
