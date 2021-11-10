@@ -57,12 +57,12 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
             <span>2</span>
           </div>
         </div>
-        <div className={Styles.step}>
+        {/* <div className={Styles.step}>
           <span className={Styles.line}>{}</span>
           <div className={Styles.number}>
             <span>3</span>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className={Styles.container}>
         <span className={Styles.caption}>Укажите ФИО, дату рождения и пол</span>

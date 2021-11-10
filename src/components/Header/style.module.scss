@@ -199,6 +199,7 @@ input[type=radio] {
   
 
 .header__langoptions {
+  z-index: 10;
   transition: opacity .3s ease;
   display: flex;
   opacity: 0;
@@ -260,4 +261,23 @@ color: #3A3B3D;
   font-size: 16px;
   line-height: 22px;
   color: #4a70f8;
+}
+
+.logoLink {
+  margin-right: 10px;
+}
+
+@media (max-width: 900px) {
+  .link {
+    font-size: 12.5px;
+  }
+
+  .lang {
+    margin-right: 0;
+    transform: translateX(5px);
+  }
+
+  .list {
+    gap: 12px;
+  }
 }

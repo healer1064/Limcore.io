@@ -57,8 +57,7 @@ export const Step1: React.FC = () => {
       }
     }
 
-    // users/login-code/ - в теле отправить email/phone, будет отправлен код
-    // UPD (08.11) - пока что только 'phone'
+    // users/login-code/ - в теле отправить email/phone, будет отправлен код. UPD (08.11) - пока что только 'phone'
     console.log(`+${phoneOrEmail}`)
     localStorage.setItem('userPhone', phoneOrEmail) // для WalletConnect
 

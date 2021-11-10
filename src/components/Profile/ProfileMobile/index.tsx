@@ -12,10 +12,12 @@ import { EditEmail } from './components/EditEmail'
 import { EditName } from './components/EditName'
 import { EditLocation } from './components/EditLocation'
 import { AddAuth } from './components/AddAuth'
+import { FooterMobile } from '@components/Footer/FooterMobile'
 
 export const ProfileMobile: React.FC = () => {
   const dispatch = useAppDispatch()
   const userData = useAppSelector((state) => state.user.userData)
+  const user = useAppSelector((state) => state.user.data)
   const profileComplete = useAppSelector((state) => state.cabinet.profileComplete)
   const viewContent = useAppSelector((state) => state.cabinet.viewContent)
 
@@ -24,8 +26,14 @@ export const ProfileMobile: React.FC = () => {
   }
 
   useEffect(() => {
-    if (userData !== null) {
+    if (userData !== null && user.first_name && user.last_name && user.gender) {
       dispatch(setProfileComplete(true))
+    }
+
+    if (!user.first_name && !user.last_name && !user.gender) {
+      dispatch(changeViewContent('filling'))
+    } else {
+      dispatch(changeViewContent('profile'))
     }
   }, [userData])
 
@@ -33,37 +41,42 @@ export const ProfileMobile: React.FC = () => {
     <div className={Styles.profile}>
       {profileComplete ? <ProfileComplete /> : <Profile />}
       <>
-        {viewContent === 'filling' && (
-          <Container title='Заполните профиль' onClick={handleFillingClick}>
-            <ProfileFilling />
-          </Container>
-        )}
-        {viewContent === 'editPhone' && (
-          <Container title='Телефон'>
-            <EditPhone />
-          </Container>
-        )}
-        {viewContent === 'editEmail' && (
-          <Container title='E-mail'>
-            <EditEmail />
-          </Container>
-        )}
-        {viewContent === 'editName' && (
-          <Container title='Имя в чатах'>
-            <EditName />
-          </Container>
-        )}
-        {viewContent === 'editLocation' && (
-          <Container title='Мои адреса'>
-            <EditLocation />
-          </Container>
-        )}
-        {viewContent === 'addAuth' && (
-          <Container title='2-FA'>
-            <AddAuth />
-          </Container>
-        )}
+        {viewContent ? (
+          <>
+            {viewContent === 'filling' && (
+              <Container title='Заполните профиль' onClick={handleFillingClick}>
+                <ProfileFilling />
+              </Container>
+            )}
+            {viewContent === 'editPhone' && (
+              <Container title='Телефон'>
+                <EditPhone />
+              </Container>
+            )}
+            {viewContent === 'editEmail' && (
+              <Container title='E-mail'>
+                <EditEmail />
+              </Container>
+            )}
+            {viewContent === 'editName' && (
+              <Container title='Имя в чатах'>
+                <EditName />
+              </Container>
+            )}
+            {viewContent === 'editLocation' && (
+              <Container title='Мои адреса'>
+                <EditLocation />
+              </Container>
+            )}
+            {viewContent === 'addAuth' && (
+              <Container title='2-FA'>
+                <AddAuth />
+              </Container>
+            )}
+          </>
+        ) : null}
       </>
+      <FooterMobile />
     </div>
   )
 }

@@ -12,6 +12,7 @@ import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
 export const EditLocation: React.FC = () => {
   const dispatch = useAppDispatch()
   const step = useAppSelector((state) => state.cabinet.step)
+  const userData = useAppSelector((state) => state.user.userData)
 
   const nextStep = (step) => {
     dispatch(changeStep(step))
@@ -25,7 +26,8 @@ export const EditLocation: React.FC = () => {
             <div className={Styles.wrapper}>
               <span className={Styles.title}>Адрес регистрации</span>
             </div>
-            <span className={Styles.subtitle}>644874, Московская обл, г Москва, ул Ленина, д 8</span>
+            {/* <span className={Styles.subtitle}>644874, Московская обл, г Москва, ул Ленина, д 8</span> */}
+            <span className={Styles.subtitle}>{userData.profile.street}</span>
             <Label className={Styles.label}>
               <InputRadio titleRadio='Письма по этому адресу' />
             </Label>

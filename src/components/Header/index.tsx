@@ -61,7 +61,7 @@ export const Header: React.FC = () => {
   return (
     <header className={Styles.header}>
       <div className={Styles.wrapper}>
-        <a href='/'>
+        <a href='/' className={Styles.logoLink}>
           <img src={logoIcon} alt='Лого' />
         </a>
 
@@ -137,7 +137,6 @@ export const Header: React.FC = () => {
             </div>
           </div>
           <button className={btnClass} onClick={handleLoginModalOpen}>
-            {/* <img src={loginIcon} alt='Иконка' /> */}
             <LoginIcon />
             <span className={Styles.enter}>Войти</span>
           </button>
