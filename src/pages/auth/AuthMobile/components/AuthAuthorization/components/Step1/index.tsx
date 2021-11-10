@@ -61,7 +61,23 @@ export const Step1: React.FC = () => {
     console.log(`+${phoneOrEmail}`)
     const response = await dispatch(getJwtTokenTest({ phone: `+${phoneOrEmail}` }))
     if (response.error) {
-      setError('Что-то пошло не так..')
+      switch (response.error.message) {
+        case 'phone_is_not_confirmed':
+          setError('Телефон не подтвержден')
+          break
+        case 'email_is_not_confirmed':
+          setError('Email не подтвержден')
+          break
+        case 'limit_login_attempts':
+          setError('Превышено количество попыток входа (разблокировка через час)')
+          break
+        case 'user_not_registered':
+          setError('Пользователь не зарегистрирован')
+          break
+        default:
+          setError('Что-то пошло не так..')
+          break
+      }
     } else {
       const id = response.payload?.data.unique_identifier || null
       localStorage.setItem('uniqueId', id)

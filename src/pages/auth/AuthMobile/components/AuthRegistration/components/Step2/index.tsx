@@ -39,8 +39,24 @@ export const Step2: React.FC = () => {
     // console.log(response)
 
     if (response.error) {
-      setValidValue(false)
-      setError('Что-то пошло не так..')
+      switch (response.error.message) {
+        case 'phone_already_verified':
+          setValidValue(false)
+          setError('Телефон уже подтвержден')
+          break
+        case 'need_get_code_again':
+          setValidValue(false)
+          setError('Нужно снова получить код подтверждения')
+          break
+        case 'code_invalid':
+          setValidValue(false)
+          setError('Код недействителен')
+          break
+        default:
+          setValidValue(false)
+          setError('Что-то пошло не так..')
+          break
+      }
     } else {
       const jwtObj = { ...response.payload.data }
       localStorage.setItem('jwtToken', JSON.stringify(jwtObj))
