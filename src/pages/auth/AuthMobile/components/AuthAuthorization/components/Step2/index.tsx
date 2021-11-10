@@ -43,8 +43,24 @@ export const Step2: React.FC = () => {
 
     const response = await dispatch(getJwtToken(data))
     if (response.error) {
-      setAuthCodeError('Что-то пошло не так..')
-      setValidValue(false)
+      switch (response.error.message) {
+        case 'need_get_code_again':
+          setAuthCodeError('Нужно снова получить код подтверждения')
+          setValidValue(false)
+          break
+        case 'code_invalid':
+          setAuthCodeError('Код недействителен')
+          setValidValue(false)
+          break
+        case 'limit_login_attempts':
+          setAuthCodeError('Превышено количество попыток входа (разблокировка через час)')
+          setValidValue(false)
+          break
+        default:
+          setAuthCodeError('Что-то пошло не так..')
+          setValidValue(false)
+          break
+      }
 
       setTimeout(() => {
         setAuthCodeError('')
