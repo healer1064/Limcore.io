@@ -34,16 +34,16 @@ export const Wallet = () => {
           </button>
         </div>
       </SwiperSlide>
-      <SwiperSlide className={styles.slide}>
-        <div className={`${styles.wallet} ${styles.wallet_violet}`}>
-          <p className={styles.wallet__title}>Выпустите виртуальную карту</p>
-          <p className={styles.wallet__subtitle}>Оплачивайте покупки заработанными средствами</p>
-          <img src={walletViolet} className={styles.wallet__image} />
-          <button className={styles.moreButton} type='button'>
-            Перейти
-          </button>
-        </div>
-      </SwiperSlide>
+      {/* <SwiperSlide className={styles.slide}> */}
+      {/*  <div className={`${styles.wallet} ${styles.wallet_violet}`}> */}
+      {/*    <p className={styles.wallet__title}>Выпустите виртуальную карту</p> */}
+      {/*    <p className={styles.wallet__subtitle}>Оплачивайте покупки заработанными средствами</p> */}
+      {/*    <img src={walletViolet} className={styles.wallet__image} /> */}
+      {/*    <button className={styles.moreButton} type='button'> */}
+      {/*      Перейти */}
+      {/*    </button> */}
+      {/*  </div> */}
+      {/* </SwiperSlide> */}
     </Swiper>
   )
 }
