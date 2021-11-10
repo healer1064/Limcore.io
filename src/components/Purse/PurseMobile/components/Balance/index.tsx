@@ -32,7 +32,6 @@ export const Balance = () => {
   const limcCount = useAppSelector((state) => state.wallet.limcCount)
   const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
   const isSinc = useAppSelector((state) => state.authNew.isSincWithWallet)
-  console.log(isSinc)
 
   const sum: number = Number(usdtBalance) + Number(limcBalance)
   const money = isNaN(sum) ? '...' : sum

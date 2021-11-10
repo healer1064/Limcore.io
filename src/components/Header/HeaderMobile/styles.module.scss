@@ -9,9 +9,10 @@
 }
 
 .wrap {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 15px;
 }
 
 .logout:hover {
@@ -26,6 +27,18 @@
   &:hover {
     cursor: pointer;
   }
+}
+
+.logo {
+  max-width: 150px;
+}
+
+.profileLogo {
+  transform: translateY(2px);
+}
+
+.logoLink {
+  margin-right: 8px;
 }
 
 .row {
