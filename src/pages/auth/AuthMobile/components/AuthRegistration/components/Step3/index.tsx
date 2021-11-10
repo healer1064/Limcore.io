@@ -30,6 +30,7 @@ export const Step3: React.FC = () => {
 
     const response = await dispatch(registerUserEmail({ email, unique_identifier: localStorage.getItem('uniqueId') }))
     console.log('step3', response)
+
     if (response.error) {
       if (response.error.message === 'user_already_registered') {
         setError('Пользователь уже зарегистрирован')

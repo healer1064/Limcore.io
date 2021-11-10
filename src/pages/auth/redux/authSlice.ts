@@ -8,14 +8,33 @@ export const authorizationUserEmail: any = createAsyncThunk('auth/authorizationU
 })
 
 export const registerUserEmail: any = createAsyncThunk('auth/registerUserEmail', async function (data) {
-  const response = await api.post('users/registration/email/', data)
-  return response
+  try {
+    const response = await api.post('users/registration/email/', data)
+    return response
+  } catch (error) {
+    const customError = {
+      name: 'Custom axios error',
+      message: error.response.data.code_error,
+      data: error.response.data,
+    }
+
+    throw customError
+  }
 })
 
 export const registerUserPhone: any = createAsyncThunk('auth/registerUserPhone', async function (data) {
-  const response = await api.post('users/registration/phone/', data)
-  console.log(response)
-  return response
+  try {
+    const response = await api.post('users/registration/phone/', data)
+    return response
+  } catch (error) {
+    const customError = {
+      name: 'Custom axios error',
+      message: error.response.data.code_error,
+      data: error.response.data,
+    }
+
+    throw customError
+  }
 })
 
 export const registerUserEmailConfirmation: any = createAsyncThunk(
@@ -115,6 +134,18 @@ export const authSlice = createSlice({
     },
   },
   extraReducers: {
+    [registerUserPhone.fulfilled]: (state, action) => {
+      console.log('fulfilled!!!', action)
+    },
+    [registerUserPhone.rejected]: (state, action) => {
+      console.log('rejected!!!', action)
+    },
+    [registerUserEmail.fulfilled]: (state, action) => {
+      console.log('fulfilled!!!', action)
+    },
+    [registerUserEmail.rejected]: (state, action) => {
+      console.log('rejected!!!', action)
+    },
     [authorizationUserEmail.fulfilled]: (state, action) => {
       console.log('action', action)
       const data = { code: '', unique_identifier: '' }
