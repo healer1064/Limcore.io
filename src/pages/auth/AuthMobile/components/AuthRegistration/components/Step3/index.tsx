@@ -32,7 +32,10 @@ export const Step3: React.FC = () => {
     console.log('step3', response)
 
     if (response.error) {
-      if (response.error.message === 'user_already_registered') {
+      if (
+        response.error.message === 'email_using_in_another_account' ||
+        response.error.message === 'user_already_registered'
+      ) {
         setError('Пользователь уже зарегистрирован')
       }
 

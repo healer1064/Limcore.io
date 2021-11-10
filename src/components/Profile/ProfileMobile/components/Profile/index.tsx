@@ -9,11 +9,9 @@ import avatarImage from '../../../../../assets/images/noAvatar.png'
 
 export const Profile: React.FC = () => {
   const dispatch = useAppDispatch()
-  const user = useAppSelector((state) => state.user.userData)
+  const userData = useAppSelector((state) => state.user.userData)
 
-  const startFilling = () => {
-    dispatch(changeViewContent('filling'))
-  }
+  const startFilling = () => dispatch(changeViewContent('filling'))
 
   return (
     <>
@@ -22,7 +20,7 @@ export const Profile: React.FC = () => {
           <img src={avatarImage} alt='Аватар' />
           <i className={Styles.edit}>{}</i>
         </div>
-        <span className={Styles.phone}>{formatPhoneNumber(user?.phone)}</span>
+        <span className={Styles.phone}>{formatPhoneNumber(userData?.phone)}</span>
       </div>
       <div className={Styles.block}>
         <span className={Styles.title}>Заполните профиль</span>

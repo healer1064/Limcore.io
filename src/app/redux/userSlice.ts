@@ -12,6 +12,11 @@ export const updateUser = createAsyncThunk('user/updateUser', async (data: any) 
   return response.data
 })
 
+export const updateProfileUser = createAsyncThunk('user/updateProfileUser', async (data: any) => {
+  const response = await api.patch('users/profile/', data)
+  return response.data
+})
+
 export const postUserEmail = createAsyncThunk('user/setUserEmail', async (data: { userId: string; email: string }) => {
   const response = await api.post<apiTypes.UserData>(`user/${data.userId}/email/${data.email}`, {})
   return response.data
@@ -41,6 +46,11 @@ export const userSlice = createSlice({
       house_number: '',
       building_number: '',
       apartment_number: '',
+      home_city: '',
+      home_street: '',
+      home_house_number: '',
+      home_building_number: '',
+      home_apartment_number: '',
       chat_name: null,
     },
   },
@@ -63,11 +73,15 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getUser.fulfilled, (state, { payload }) => {
+      console.log('getUser', payload)
       state.userData = payload as any // TODO - убрать any
     })
     builder.addCase(updateUser.fulfilled, (state, { payload }) => {
-      console.log(payload)
+      console.log('updateUser', payload)
       // state.userData = payload as any // TODO - убрать any
+    })
+    builder.addCase(updateProfileUser.fulfilled, (state, { payload }) => {
+      console.log('updateProfileUser', payload)
     })
   },
 })

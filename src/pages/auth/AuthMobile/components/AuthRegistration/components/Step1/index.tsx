@@ -28,7 +28,10 @@ export const Step1: React.FC = () => {
     console.log(response)
 
     if (response.error) {
-      if (response.error.message === 'user_already_registered') {
+      if (
+        response.error.message === 'phone_using_in_another_account' ||
+        response.error.message === 'user_already_registered'
+      ) {
         setError('Пользователь уже зарегистрирован')
       } else {
         setError('Что-то пошло не так..')
