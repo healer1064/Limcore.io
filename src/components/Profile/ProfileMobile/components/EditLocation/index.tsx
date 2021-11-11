@@ -27,17 +27,29 @@ export const EditLocation: React.FC = () => {
     dispatch(setData({ ...data, [name]: value }))
   }
 
-  const addHomeAddress = (event) => {
+  const addHomeAddress = async (event) => {
     event.preventDefault()
 
-    dispatch(updateProfileUser(data))
-    dispatch(getUser())
+    const addData = {
+      home_apartment_number: data.home_apartment_number,
+      home_building_number: data.home_building_number,
+      home_city: data.home_city,
+      home_house_number: data.home_house_number,
+      home_street: data.home_street,
+      house_number: data.house_number,
+    }
 
-    dispatch(changeViewContent('none'))
-    dispatch(changeStep(0))
+    const response = await dispatch(updateProfileUser(addData))
+
+    if (response.error) {
+      console.log('error updateProfileUser')
+    } else {
+      dispatch(getUser())
+
+      dispatch(changeViewContent('none'))
+      dispatch(changeStep(0))
+    }
   }
-
-  console.log(data)
 
   return (
     <div className={Styles.location}>
@@ -47,7 +59,9 @@ export const EditLocation: React.FC = () => {
             <div className={Styles.wrapper}>
               <span className={Styles.title}>Адрес регистрации</span>
             </div>
-            <span className={Styles.subtitle}>{userData.profile?.street}</span>
+            <span className={Styles.subtitle}>
+              г {userData.profile?.city}, ул {userData.profile?.street}, дом {userData.profile?.house_number}
+            </span>
             <Label className={Styles.label}>
               <InputRadio
                 onChange={onChange}
@@ -60,8 +74,18 @@ export const EditLocation: React.FC = () => {
           <div className={Styles.block}>
             <div className={Styles.wrapper}>
               <span className={Styles.title}>Домашний адрес</span>
-              <ButtonSmall onClick={() => nextStep(1)}>Добавить</ButtonSmall>
+              {userData.profile?.home_city ? (
+                <ButtonSmall onClick={() => nextStep(1)}>Изменить</ButtonSmall>
+              ) : (
+                <ButtonSmall onClick={() => nextStep(1)}>Добавить</ButtonSmall>
+              )}
             </div>
+            {userData.profile?.home_city && (
+              <span className={Styles.subtitle}>
+                г {userData.profile?.home_city}, ул {userData.profile?.home_street}, дом{' '}
+                {userData.profile?.home_house_number}
+              </span>
+            )}
             <Label className={Styles.label}>
               <InputRadio
                 onChange={onChange}

@@ -1,13 +1,6 @@
 import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import {
-  setStepAuthorization,
-  setCodePhoneOrEmail,
-  getJwtToken,
-  setIsAuth,
-  checkToken,
-  refreshToken,
-} from '../../../../../redux/authSlice'
+import { setStepAuthorization, setCodePhoneOrEmail, getJwtToken, setIsAuth } from '../../../../../redux/authSlice'
 import Styles from './styles.module.scss'
 
 import { InputCode } from '../../../../../../../ui-kit/InputCode'
@@ -28,6 +21,7 @@ export const Step2: React.FC = () => {
 
   const onChange = (event) => {
     const number = Number(event.target.value)
+
     if (!isNaN(number)) {
       dispatch(setCodePhoneOrEmail(event.target.value))
     }
@@ -49,12 +43,6 @@ export const Step2: React.FC = () => {
     }
 
     const response = await dispatch(getJwtToken(data))
-
-    const responseCheck = await dispatch(checkToken({ token: response.payload.data.access }))
-
-    if (responseCheck.error) {
-      await dispatch(refreshToken({ refresh: response.payload.data.refresh }))
-    }
 
     if (response.error) {
       switch (response.error.message) {
