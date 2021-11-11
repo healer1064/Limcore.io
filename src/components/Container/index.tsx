@@ -7,23 +7,19 @@ interface ContainerProps {
   title: string
   onClick?: () => void
   onClose?: () => void
+  onClickBack?: () => void
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const Container: React.FC<ContainerProps> = ({ title, onClick, onClose, children }) => {
+export const Container: React.FC<ContainerProps> = ({ title, onClick, onClose, onClickBack, children }) => {
   const dispatch = useAppDispatch()
   const step = useAppSelector((state) => state.cabinet.step)
 
-  const previousStep = () => {
-    dispatch(changeStep(step - 1))
-  }
+  const previousStep = () => dispatch(changeStep(step - 1))
+
   const closeContainer = () => {
     dispatch(changeViewContent('none'))
     dispatch(changeStep(0))
-
-    /*    if (onClick) {
-      onClick()
-    } */
   }
 
   return (
@@ -32,7 +28,7 @@ export const Container: React.FC<ContainerProps> = ({ title, onClick, onClose, c
         {step === 0 ? (
           <button className={`${Styles.back} ${Styles.back_hide}`}>{}</button>
         ) : (
-          <button className={Styles.back} onClick={previousStep}>
+          <button className={Styles.back} onClick={!onClickBack ? previousStep : onClickBack}>
             {}
           </button>
         )}

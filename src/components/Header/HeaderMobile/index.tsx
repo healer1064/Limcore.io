@@ -5,6 +5,7 @@ import Styles from './styles.module.scss'
 
 import logoIcon from '@icons/logo.svg'
 import userIcon from '@icons/user.svg'
+import { ProfileHeaderIcon } from '@icons/ProfileHeaderIcon'
 import logout from '@icons/logout.svg'
 import { Container } from '../../../components/Container'
 import twitter from '@icons/twitter-icon.png'
@@ -51,14 +52,23 @@ export const HeaderMobile: React.FC = () => {
   ]
   return (
     <header className={Styles.header}>
-      <img className={Styles.logo} src={logoIcon} alt='Лого' />
+      <LinkDom to='/'>
+        <img className={Styles.logo} src={logoIcon} alt='Лого' />
+      </LinkDom>
       <div className={Styles.wrap}>
         {!isAuth && location.pathname !== '/auth' && (
-          <a onClick={() => history.push('/auth')}>
+          <a onClick={() => history.push('/auth')} className={Styles.logoLink}>
             <img src={userIcon} alt='Иконка' />
           </a>
         )}
-        {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null}
+        {isAuth ? (
+          <>
+            <LinkDom to='/my'>
+              <ProfileHeaderIcon className={Styles.profileLogo} />
+            </LinkDom>
+            <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' />
+          </>
+        ) : null}
         {location.pathname === '/auth' ? (
           <LinkDom to='/'>
             <img src={close} alt='close' />

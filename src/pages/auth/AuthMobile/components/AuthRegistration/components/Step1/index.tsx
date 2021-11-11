@@ -32,6 +32,9 @@ export const Step1: React.FC = () => {
         case 'user_already_registered':
           setError('Пользователь уже зарегистрирован')
           break
+        case 'phone_using_in_another_account':
+          setError('Пользователь уже зарегистрирован')
+          break
         default:
           setError('Что-то пошло не так..')
           break

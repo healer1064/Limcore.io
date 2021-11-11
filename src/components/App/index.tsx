@@ -49,6 +49,7 @@ const App = () => {
   const isAuth = useAppSelector((state) => state.authNew.isAuth)
   const [isLoading, setIsLoading] = useState(false)
   console.log(user)
+  console.log('isAuth', isAuth)
   const desktop = width >= 769
 
   useEffect(() => {
@@ -93,6 +94,7 @@ const App = () => {
                 <Route path='/profile' exact component={ProfileMobile} />
                 {/* <Route path='/auth' exact component={AuthMobile} /> */}
                 <Route path='/not-found' exact component={PageNotFount} />
+                <Route path='/chat' exact component={Dummy} />
                 <Route path='*'>
                   <Redirect to='/not-found' />
                 </Route>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import Styles from './styles.module.scss'
 
 import { InputText } from '../../../../../../../ui-kit/InputText'
@@ -10,6 +11,8 @@ interface StepProps {
 }
 
 export const Step2: React.FC<StepProps> = ({ nextStep }) => {
+  const userData = useAppSelector((state) => state.user.userData)
+
   return (
     <>
       <div className={Styles.component}>
@@ -35,7 +38,7 @@ export const Step2: React.FC<StepProps> = ({ nextStep }) => {
         <div className={Styles.container}>
           <span className={Styles.caption}>Введите код из СМС</span>
           <span className={Styles.info}>
-            Мы отправили код на номер +7 (999) 098 65−34 <ButtonSmall className={Styles.edit}>Изменить</ButtonSmall>
+            Мы отправили код на номер {userData.phone} <ButtonSmall className={Styles.edit}>Изменить</ButtonSmall>
           </span>
           <InputText className={Styles.input} placeholder='_ _ _ _' />
           <span className={Styles.timer}>Получить новый код можно через 00:41</span>

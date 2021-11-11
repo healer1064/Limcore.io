@@ -20,6 +20,7 @@ export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
   const dispatch = useAppDispatch()
   const data = useAppSelector((state) => state.user.data)
   const [popup, setPopup] = useState(false)
+  const maxLength = 200
 
   const openPopup = () => setPopup(true)
   const closePopup = () => setPopup(false)
@@ -54,32 +55,35 @@ export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
         <span className={Styles.caption}>Укажите паспортные данные</span>
         <form className={Styles.form}>
           <div className={Styles.wrapper}>
-            <Label titleText='Серия*'>
+            <Label titleText='Серия'>
               <InputText
                 className={Styles.input}
                 onChange={onChangeValue}
                 name='passport_series'
                 value={data.passport_series}
+                maxLength={maxLength}
               />
             </Label>
-            <Label titleText='Номер*'>
+            <Label titleText='Номер'>
               <InputText
                 className={Styles.input}
                 onChange={onChangeValue}
                 name='passport_number'
                 value={data.passport_number}
+                maxLength={maxLength}
               />
             </Label>
           </div>
-          <Label className={Styles.label} titleText='Код подразделения*'>
+          <Label className={Styles.label} titleText='Код подразделения'>
             <InputText
               onChange={onChangeValue}
               name='passport_division_code'
               value={data.passport_division_code}
               placeholder='Введите код'
+              maxLength={maxLength}
             />
           </Label>
-          <Label className={Styles.label} titleText='Дата выдачи*'>
+          <Label className={Styles.label} titleText='Дата выдачи'>
             <div className={Styles.block} onClick={openPopup}>
               <input
                 className={Styles.date}
@@ -91,12 +95,13 @@ export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
               <img src={calendarIcon} alt='Иконка' />
             </div>
           </Label>
-          <Label className={Styles.edit} titleText='Паспорт выдан*'>
+          <Label className={Styles.edit} titleText='Паспорт выдан'>
             <InputText
               onChange={onChangeValue}
               name='passport_division_name'
               value={data.passport_division_name}
               placeholder='Введите учреждения'
+              maxLength={maxLength}
             />
           </Label>
           <ButtonBig onClick={(event) => nextStep(event, 2)}>Продолжить</ButtonBig>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-scroll'
 import Styles from './style.module.scss'
 import classNames from 'classnames/bind'
+import { Link as LinkDom } from 'react-router-dom'
 
 import logoIcon from '@icons/logo.svg'
 import logout from '@icons/logout.svg'
@@ -13,6 +14,7 @@ import ModalAuth from '../../pages/landing/components/ModalAuth'
 import { setIsAuth } from '../../pages/auth/redux/auth.slice'
 import { useHistory } from 'react-router'
 import { VectorIcon } from '../../assets/icons/VectorIcon'
+import { ProfileHeaderIcon } from '@icons/ProfileHeaderIcon'
 
 const tempLink = [
   { id: 1, value: 'Что такое Limcore?', link: 'limcore', spy: true, smooth: true },
@@ -79,7 +81,15 @@ export const Header: React.FC = () => {
         ) : null}
 
         <div className={Styles.container}>
-          {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null}
+          {/* {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null} */}
+          {isAuth ? (
+            <>
+              <LinkDom to='/my'>
+                <ProfileHeaderIcon className={Styles.profileLogo} />
+              </LinkDom>
+              <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' />
+            </>
+          ) : null}
           <div className={Styles.lang}>
             <div
               className={classNames(Styles.block, showPopapLanguage && Styles.active)}
