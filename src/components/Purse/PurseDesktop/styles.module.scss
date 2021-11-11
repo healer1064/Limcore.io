@@ -13,16 +13,7 @@
   padding: 0;
   width: 100%;
   height: 100%;
-  background-color: #FFFFFF;
-  overflow-y: auto;
-
-  &__content {
-    border: 2px solid yellow;
-    position: relative;
-    margin: 0;
-    padding: 106px 20px 30px;
-    width: 100%;
-  }
+  background-color: #ffffff;
 }
 
 .header {
@@ -46,7 +37,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 1.4;
-    color: #67686C;
+    color: #67686c;
     display: flex;
     box-sizing: border-box;
     margin: 0;
@@ -57,7 +48,7 @@
     }
 
     &_active {
-      color:  #4A70F8;
+      color: #4a70f8;
     }
 
     &:hover {
@@ -94,7 +85,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 1.4;
-  color: #3A3B3D;
+  color: #3a3b3d;
   display: flex;
   box-sizing: border-box;
   padding: 0;
@@ -110,9 +101,9 @@
   grid-template-rows: repeat(3, minmax(min-content, max-content));
   column-gap: 80px;
   grid-template-areas:
-  'accounts balance'
-  'accounts mining'
-  '. transactions'
+    'accounts balance'
+    'accounts mining'
+    '. transactions';
 }
 
 .accounts {
@@ -122,13 +113,17 @@
   padding: 40px 30px 0;
   height: 657px;
   width: 308px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
   border-radius: 14px;
 }
 
 .balance {
   grid-area: balance;
+
+  &_invisible {
+    display: none;
+  }
 }
 
 .modalContainer {
@@ -144,9 +139,12 @@
   }
 }
 
-
 .mining {
   grid-area: mining;
+
+  &_invisible {
+    display: none;
+  }
 }
 
 .miningDetails {
@@ -161,272 +159,78 @@
   font-weight: 600;
   font-size: 24px;
   line-height: 1.5;
-  color: #3A3B3D;
+  color: #3a3b3d;
   padding: 60px 0 20px 0;
   margin: 0;
 }
 
 .transactions {
   grid-area: transactions;
-}
 
-.balanceModal {
-  height: 100vh;
-}
-
-.balanceBlock {
-  padding: 20px;
-  // height: 100vh;
-  // width: 100vw;
-  margin: auto;
-}
-
-.text {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 22px;
-  color: #4f535a;
-
-  & > .price {
-    color: #4a70f8;
-    font-weight: 700;
+  &_invisible {
+    display: none;
   }
-}
-
-.cont {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.cont2 {
-  display: flex;
-  flex-direction: column;
-  max-width: 500px;
-  width: 100%;
-}
-
-.button {
-  margin-top: 10px;
-}
-
-.buyCont {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-}
-
-.buy {
-  margin: 0 auto 10px;
-  max-width: 500px;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.buySubtitle {
-  width: fit-content;
-  margin: 0 auto;
-  font-size: 14px;
-  font-weight: 600;
-  color: #3a3b3d;
-}
-
-.block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.title {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 140%;
-  color: #3a3b3d;
 }
 
 .items {
   display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 0 64px 0;
   align-items: center;
   gap: 10px;
-  margin-top: 30px;
-  margin-bottom: 40px;
 }
 
 .item {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   width: 100%;
-  max-width: 105px;
-  padding: 12px 28px;
-  background: #f7f7f7;
+  max-width: 140px;
+  padding: 15px;
+  background: #f9faff;
   border-radius: 14px;
-  transition: background 0.3s ease;
-  cursor: pointer;
-
-  span {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 13px;
-    line-height: 150%;
-    color: #99a0ad;
-    transition: color 0.3s ease;
-  }
+  color: #4a70f8;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.5;
 
   &:hover {
     transition: background 0.3s ease;
     background: #8ca4f2;
-
-    & > span {
-      color: #f7f7f7;
-      transition: color 0.3s ease;
-    }
+    cursor: pointer;
+    color: #ffffff;
   }
 }
 
 .item_active {
   background: #4a70f8;
   transition: background 0.3s ease;
-
-  span {
-    color: #ffffff;
-  }
+  color: #ffffff;
 
   &:hover {
     background: #8ca4f2;
     transition: background 0.3s ease;
-  }
-}
-
-.line {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-
-  img {
-    width: 40px;
-    height: 40px;
-  }
-}
-
-.usd {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 140%;
-  color: #4f535a;
-  margin-top: 3px;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.trans {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 140%;
-  color: #393c42;
-  margin-bottom: 16px;
-}
-
-.desc {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 150%;
-  color: #99a0ad;
-}
-
-.nextCont {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.next {
-  max-width: 500px;
-  width: 100%;
-  padding: 14px 0;
-  border: 1px solid #4a70f8;
-  border-radius: 14px;
-
-  font-family: 'Montserrat';
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: 600;
-  font-style: normal;
-  text-align: center;
-
-  background: none;
-  color: #4a70f8;
-
-  transition: color .3s ease, border .3s ease;
-
-  &:hover {
-    color: #3159E9 !important;
-    border: 1px solid #3159E9 !important;
-    background-color: none;
-    transition: color .3s ease, border .3s ease !important;
-  }
-}
-
-.errorModal {
-  // margin: 0 auto;
-  margin-top: 30px;
-  padding: 17px 20px;
-  max-width: 500px;
-  width: calc(100vw - 20px);
-  height: 100%;
-  border-radius: 14px;
-
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  text-align: center;
-  color: #fff;
-
-  // transform: translateY(calc(-45vh + 12px));
-  background-color: #99A0AD;
-
-  .errorSubtitle {
-    margin: 5px auto 0;
-    width: fit-content;
-    border-bottom: 2px solid #fff;
-
-    font-weight: 700;
-    color: #fff;
-
     cursor: pointer;
   }
 }
 
 .icon {
-  &:hover {
-    cursor: pointer;
-  }
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 6px 0 0;
+  padding: 0;
+  width: 24px;
+  height: 24px;
 }
 
 @media screen and (max-width: 1650px) {
-
   .purseContainer {
     margin: 25px 15% 0 6%;
   }
 }
-
 
 @media screen and (max-width: 1380px) {
   .purseContainer {

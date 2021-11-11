@@ -267,6 +267,19 @@ color: #3A3B3D;
   margin-right: 10px;
 }
 
+.profileLogo {
+  margin-right: 8px;
+  transform: translateY(2px);
+  transition: opacity .3s ease;
+
+  &:hover {
+    path {
+      opacity: 0.7;
+      transition: opacity .3s ease;
+    }
+  }
+}
+
 @media (max-width: 900px) {
   .link {
     font-size: 12.5px;

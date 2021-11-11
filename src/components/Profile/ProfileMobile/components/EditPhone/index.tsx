@@ -12,6 +12,7 @@ import { ButtonSmall } from '../../../../../ui-kit/ButtonSmall'
 export const EditPhone: React.FC = () => {
   const dispatch = useAppDispatch()
   const step = useAppSelector((state) => state.cabinet.step)
+  const userData = useAppSelector((state) => state.user.userData)
 
   const [value, setValue] = useState('')
   const [validValue, setValidValue] = useState(true)

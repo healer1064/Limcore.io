@@ -6,7 +6,7 @@ import { checkToken, getTransactions } from '../../pages/auth/redux/auth.slice'
 import { setIsAuth } from '../../pages/auth/redux/authSlice'
 
 // import { Footer } from '../Footer'
-import { FooterMobile } from '../Footer/FooterMobile'
+// import { FooterMobile } from '../Footer/FooterMobile'
 // import { HomePage } from '../../pages/home'
 // import { Wrapper } from '../Wrapper'
 
@@ -38,18 +38,22 @@ import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getWalletAdress, getWalletBalance, getLimcPrice, getLimcAmount } from '../Wallet/redux/walletSlice'
 import { getUser } from '@app/redux/userSlice'
 import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
-// import { api } from '@app/api'
+import { TRANSLATION } from '../../translation'
+import { setTranslation } from '../../pages/cabinet/redux/cabinetSlice'
 
 const App = () => {
   const dispatch = useAppDispatch()
   const { width } = useWindowSize()
-  // const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
-  const user = useAppSelector((state) => state.user.userData)
-  // const isAuth = useAppSelector((state) => state.auth.isAuth)
-  const isAuth = useAppSelector((state) => state.authNew.isAuth)
-  const [isLoading, setIsLoading] = useState(false)
-  console.log(user)
   const desktop = width >= 769
+
+  const [isLoading, setIsLoading] = useState(false)
+
+  // const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
+  // const user = useAppSelector((state) => state.user.userData)
+  const isAuth = useAppSelector((state) => state.authNew.isAuth)
+
+  const language = useAppSelector((state) => state.cabinet.language)
+  language === 'ru' ? dispatch(setTranslation(TRANSLATION.ru)) : dispatch(setTranslation(TRANSLATION.en))
 
   useEffect(() => {
     const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
@@ -93,6 +97,7 @@ const App = () => {
                 <Route path='/profile' exact component={ProfileMobile} />
                 {/* <Route path='/auth' exact component={AuthMobile} /> */}
                 <Route path='/not-found' exact component={PageNotFount} />
+                <Route path='/chat' exact component={Dummy} />
                 <Route path='*'>
                   <Redirect to='/not-found' />
                 </Route>
@@ -114,13 +119,13 @@ const App = () => {
                 )}
                 <Route path='/profile' exact component={ProfileMobile} />
                 <Route path='/buy' exact component={BuyPage} />
+                <Route path='*' exact component={PageNotFount} />
                 {/* <FooterMobile /> */}
               </Switch>
             )}
           </main>
         </>
         {/* {isAuth && <FooterMobile />} */}
-        {/* {isAuth && } */}
       </div>
     </Router>
   )

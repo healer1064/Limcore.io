@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-scroll'
 import Styles from './style.module.scss'
 import classNames from 'classnames/bind'
+import { Link as LinkDom } from 'react-router-dom'
 
 import logoIcon from '@icons/logo.svg'
 import logout from '@icons/logout.svg'
@@ -13,6 +14,8 @@ import ModalAuth from '../../pages/landing/components/ModalAuth'
 import { setIsAuth } from '../../pages/auth/redux/auth.slice'
 import { useHistory } from 'react-router'
 import { VectorIcon } from '../../assets/icons/VectorIcon'
+import { ProfileHeaderIcon } from '@icons/ProfileHeaderIcon'
+import { setLanguage } from '../../pages/cabinet/redux/cabinetSlice'
 
 const tempLink = [
   { id: 1, value: 'Что такое Limcore?', link: 'limcore', spy: true, smooth: true },
@@ -23,15 +26,15 @@ const tempLink = [
 ]
 
 export const Header: React.FC = () => {
+  const dispatch = useAppDispatch()
+  const history = useHistory()
+
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
   const [btnClass, setBtnClass] = useState(Styles.login)
   const [showPopapLanguage, setShowPopapLanguage] = useState(false)
-  const [valueLanguage, setValueLanguage] = useState('ru')
-  // const isAuth = useAppSelector((state) => state.auth.isAuth)
+
+  const language = useAppSelector((state) => state.cabinet.language)
   const isAuth = useAppSelector((state) => state.authNew.isAuth)
-  console.log('isAuth', isAuth)
-  const dispatch = useAppDispatch()
-  const history = useHistory()
 
   const handleLoginModalOpen = () => {
     setIsLoginModalVisible(true)
@@ -42,7 +45,7 @@ export const Header: React.FC = () => {
   }
 
   const handleLanguageChange = (lang) => {
-    setValueLanguage(lang)
+    dispatch(setLanguage(lang))
     setShowPopapLanguage(false)
   }
 
@@ -79,14 +82,22 @@ export const Header: React.FC = () => {
         ) : null}
 
         <div className={Styles.container}>
-          {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null}
+          {/* {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null} */}
+          {isAuth ? (
+            <>
+              <LinkDom to='/my'>
+                <ProfileHeaderIcon className={Styles.profileLogo} />
+              </LinkDom>
+              <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' />
+            </>
+          ) : null}
           <div className={Styles.lang}>
             <div
               className={classNames(Styles.block, showPopapLanguage && Styles.active)}
               onClick={() => setShowPopapLanguage(!showPopapLanguage)}
             >
-              <img src={valueLanguage === 'ru' ? RUS : ENG} alt='Флаг' className={Styles.img} />
-              <span className={Styles.langTitle}>{valueLanguage}</span>
+              <img src={language === 'ru' ? RUS : ENG} alt='Флаг' className={Styles.img} />
+              <span className={Styles.langTitle}>{language}</span>
               <span className={classNames(showPopapLanguage && Styles.arrowActive, Styles.arrow)}>
                 <VectorIcon />
               </span>
@@ -105,9 +116,7 @@ export const Header: React.FC = () => {
                 <div className={Styles.lang_box}>
                   <img src={RUS} alt='Флаг' className={Styles.lang__img} />
                   <label
-                    className={`${Styles.langoption__text} ${
-                      valueLanguage === 'ru' && Styles.langoption__text_checked
-                    }`}
+                    className={`${Styles.langoption__text} ${language === 'ru' && Styles.langoption__text_checked}`}
                     htmlFor='answer1'
                   >
                     RU
@@ -126,9 +135,7 @@ export const Header: React.FC = () => {
                 <div className={Styles.lang_box}>
                   <img src={ENG} alt='Флаг' className={Styles.lang__img} />
                   <label
-                    className={`${Styles.langoption__text} ${
-                      valueLanguage === 'en' && Styles.langoption__text_checked
-                    }`}
+                    className={`${Styles.langoption__text} ${language === 'en' && Styles.langoption__text_checked}`}
                     htmlFor='answer2'
                   >
                     EN

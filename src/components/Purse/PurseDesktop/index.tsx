@@ -3,19 +3,12 @@ import { Link } from 'react-scroll'
 import styles from './styles.module.scss'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { buyLimc, getWalletBalance } from '@components/Wallet/redux/walletSlice'
-import { Modal } from '@components/Purse/PurseDesktop/components/Modal'
-import { ModalHeader } from '@components/Purse/PurseDesktop/components/ModalHeader'
-import limcoreIcon from '@icons/limcore.svg'
 import buyIcon from '@icons/buy.svg'
-import sellIcon from '@icons/sell.svg'
-import tradeIcon from '@icons/trade.svg'
+import sellIcon from '@icons/sellBlue.svg'
+import tradeIcon from '@icons/changeBlue.svg'
 import profile from '@icons/profileIcon.png'
-import { Container } from '@components/Container'
-import { InputText } from '../../../ui-kit/InputText'
-import { ButtonBig } from '../../../ui-kit/ButtonBig'
 import { Balance } from '@components/Purse/PurseDesktop/components/Balance'
 import { Menu } from '@components/Purse/PurseDesktop/components/Menu'
-import { VirtualCard } from '@components/Purse/PurseMobile/components/VirtualCard'
 import { StartMining } from '@components/Purse/PurseMobile/components/StartMining'
 import { Statistics } from '@components/Purse/PurseDesktop/components/Statistics'
 import { Details } from '@components/Purse/PurseDesktop/components/Details'
@@ -27,11 +20,20 @@ import classnames from 'classnames'
 
 import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
 import { ProfileDesctop } from '@components/Profile/ProfileDesctop'
+import { TransactionsDetails } from '@components/Purse/PurseDesktop/components/Transactions/components/TransactionsDetails'
+import { PageBalanceLIMC } from '@components/Purse/PurseDesktop/components/PageBalanceLIMC'
+import { PageBalanceUSDT } from '@components/Purse/PurseDesktop/components/PageBalanceUSDT'
+import { PageCardBalance } from '@components/Purse/PurseDesktop/components/PageCardBalance'
+import { Modal } from '../PurseMobile/components/Modal'
+import { ModalHeader } from '../PurseMobile/components/ModalHeader'
 
 export const PurseDesktop = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
   const [isWalletVisible, setIsWalletVisible] = useState(true)
   const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
+  const [isPageBalanceLIMCVisible, setIsPageBalanceLIMCVisible] = useState(false)
+  const [isPageBalanceUSDTVisible, setIsPageBalanceUSDTVisible] = useState(false)
+  const [isPageCardBalanceVisible, setIsPageCardBalanceVisible] = useState(false)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const [isLimcBought, setIsLimcBought] = useState(false)
   const isLimcBought = useAppSelector((state) => state.auth.transactions)
@@ -54,6 +56,7 @@ export const PurseDesktop = () => {
   const prices = useAppSelector((state) => state.wallet.limc_price)
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
   const [isProfileOpen, setIsProfileOpen] = useState(false)
+  const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
 
   const handleSetValue = (event) => setValue(event.target.value)
 
@@ -66,7 +69,6 @@ export const PurseDesktop = () => {
   const handleWalletCloseClick = () => {
     setIsWalletVisible(false)
   }
-
   const handleStartClick = () => {
     console.log('Start mining')
   }
@@ -165,50 +167,48 @@ export const PurseDesktop = () => {
             handleBalanceUsdtOpenClick={() => setIsUsdtInfoVisible(true)}
             handleBalanceUsdtCloseClick={() => setIsUsdtInfoVisible(false)}
             openPopup={() => setViewContent('balance')}
+            handlePageBalanceLIMCOpenClick={() => setIsPageBalanceLIMCVisible(true)}
+            handlePageBalanceUSDTOpenClick={() => setIsPageBalanceUSDTVisible(true)}
+            handlePageCardBalanceOpenClick={() => setIsPageCardBalanceVisible(true)}
+            handlePageBalanceLIMCCloseClick={() => setIsPageBalanceLIMCVisible(false)}
+            handlePageBalanceUSDTCloseClick={() => setIsPageBalanceUSDTVisible(false)}
+            handlePageCardBalanceCloseClick={() => setIsPageCardBalanceVisible(false)}
+            isPageBalanceLIMCVisible={isPageBalanceLIMCVisible}
+            isPageBalanceUSDTVisible={isPageBalanceUSDTVisible}
+            isPageCardBalanceVisible={isPageCardBalanceVisible}
           />
         </div>
-        {window === 'broadcasts' && <BroadcastsDesktop />}
-        <div className={styles.balance} hidden={window !== 'main'}>
+        <PageCardBalance
+          usdtBalance={usdtBalance}
+          isOpen={isPageCardBalanceVisible}
+          handlePageCardBalanceCloseClick={() => setIsPageCardBalanceVisible(false)}
+        />
+        <PageBalanceLIMC
+          limcBalance={limcBalance}
+          isOpen={isPageBalanceLIMCVisible}
+          handlePageBalanceLIMCCloseClick={() => setIsPageBalanceLIMCVisible(false)}
+        />
+        <PageBalanceUSDT
+          usdtBalance={usdtBalance}
+          isOpen={isPageBalanceUSDTVisible}
+          handlePageBalanceUSDTCloseClick={() => setIsPageBalanceUSDTVisible(false)}
+        />
+        <div
+          className={`${
+            isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
+              ? styles.balance_invisible
+              : styles.balance
+          }`}
+        >
           <Balance />
-          <div className={`${styles.modalContainer} ${styles.modalContainer_invisible}`}>
-            <Modal active={viewContent === 'balance'} classname={styles.balanceModal} setActive={closePopup}>
-              <ModalHeader title='LIMC' onClick={closePopup} />
-              <div className={styles.balanceBlock}>
-                <div className={styles.block}>
-                  <div className={styles.line}>
-                    <img src={limcoreIcon} alt='' />
-                    <span className={styles.title}>{limcBalance} LIMC</span>
-                  </div>
-                  <span className={styles.usd}>{}</span>
-                  <div className={styles.items}>
-                    <div className={`${styles.item} ${styles.item_active}`} onClick={() => setViewContent('buy')}>
-                      <img className={styles.icon} src={buyIcon} alt='' />
-                      <span>Купить</span>
-                    </div>
-                    <div className={styles.item}>
-                      <img className={styles.icon} src={sellIcon} alt='' />
-                      <span>Продать</span>
-                    </div>
-                    <div className={styles.item}>
-                      <img className={styles.icon} src={tradeIcon} alt='' />
-                      <span>Обменять</span>
-                    </div>
-                  </div>
-                  <div className={styles.container}>
-                    <span className={styles.trans}>Транзакции</span>
-                    <span className={styles.desc}>
-                      У вас еще нет транзакций. Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
-                    </span>
-                  </div>
-                  <div className={styles.nextCont}>
-                    <button className={styles.next}>Перейти к заполнению</button>
-                  </div>
-                </div>
-              </div>
-            </Modal>
-          </div>
         </div>
-        <div className={styles.mining} hidden={window !== 'main'}>
+        <div
+          className={`${
+            isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
+              ? styles.mining_invisible
+              : styles.mining
+          }`}
+        >
           <h3 className={styles.detailsTitle}>Детализация майнинга</h3>
           <div className={styles.miningDetails}>
             <Details />
@@ -219,7 +219,13 @@ export const PurseDesktop = () => {
             )}
           </div>
         </div>
-        <div className={styles.transactions} hidden={window !== 'main'}>
+        <div
+          className={`${
+            isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
+              ? styles.transactions_invisible
+              : styles.transactions
+          }`}
+        >
           {isWalletVisible && <Wallet />}
           <Transactions
             onProfileClick={handleProfileClick}

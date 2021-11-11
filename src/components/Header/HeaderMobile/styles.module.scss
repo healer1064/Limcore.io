@@ -9,23 +9,52 @@
 }
 
 .wrap {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 15px;
 }
 
-.logout:hover {
-  cursor: pointer;
-  opacity: 0.7;
+.logout {
+  margin-right: 8px;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
 }
 
 .burger {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 18px;
 
   &:hover {
     cursor: pointer;
   }
+}
+
+.logo {
+  max-width: 150px;
+  transform: translateY(42px);
+}
+
+.profileLogo {
+  margin-right: 8px;
+  transform: translateY(2px);
+}
+
+.logoLink {
+  margin-right: 8px;
+
+  & > img {
+    transform: translateY(1px);
+  }
+}
+
+.logoIcon {
+  transform: translateY(-42px);
 }
 
 .row {
@@ -176,4 +205,45 @@
 
 .burgerMenuClosed {
   display: none;
+}
+
+.content {
+  margin-bottom: auto;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  &_item:not(:last-child) {
+    margin-bottom: 15px;
+  }
+  
+  &_link {
+    display: flex;
+    align-items: center;
+
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+    color: #4A70F8;
+    text-decoration: none;
+
+    & > svg > path,
+    & > svg > circle {
+      stroke: #4A70F8;
+    }
+  }
+
+  &_icon {
+    height: 30px;
+  }
+
+  &_title {
+    margin-left: 15px;
+  }
+}
+
+.social {
+  display: flex;
+  margin: 0 auto;
+  max-width: 200px;
+  width: 100%;
 }
