@@ -315,6 +315,26 @@
   }
 }
 
+.trust_sinc_success {
+  border: 1px solid #4DBE28;
+}
+
+.trust_logos_cont__success {
+  padding: 2px 3px;
+  border-radius: 50%;
+  border: 2px solid #4DBE28;
+
+  & > svg:nth-child(1) {
+    transform: translateY(1.6px);
+  }
+}
+
+.trust_cross_success {
+  & > svg > path {
+    stroke: #4DBE28;
+  }
+}
+
 .trust_subtitle {
   font-size: 13px;
   font-weight: 500;
