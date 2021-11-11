@@ -19,13 +19,14 @@ import { Logo } from '@components/Purse/PurseDesktop/components/Logo'
 import classnames from 'classnames'
 
 import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
-import { ProfileDesctop } from '@components/Profile/ProfileDesctop'
+import { ProfileDesktop } from '@components/Profile/ProfileDesktop'
 import { TransactionsDetails } from '@components/Purse/PurseDesktop/components/Transactions/components/TransactionsDetails'
 import { PageBalanceLIMC } from '@components/Purse/PurseDesktop/components/PageBalanceLIMC'
 import { PageBalanceUSDT } from '@components/Purse/PurseDesktop/components/PageBalanceUSDT'
 import { PageCardBalance } from '@components/Purse/PurseDesktop/components/PageCardBalance'
-import { Modal } from '../PurseMobile/components/Modal'
-import { ModalHeader } from '../PurseMobile/components/ModalHeader'
+import { Modal } from '../PurseDesktop/components/Modal'
+import { ModalHeader } from '../PurseDesktop/components/ModalHeader'
+import { RoadMap } from './components/RoadMap'
 
 export const PurseDesktop = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
@@ -157,7 +158,7 @@ export const PurseDesktop = () => {
         </div>
         <Modal active={isProfileOpen} setActive={handleProfileClose}>
           <ModalHeader title={name} onClick={handleProfileClose} />
-          <ProfileDesctop />
+          <ProfileDesktop />
         </Modal>
       </header>
       <div className={styles.purseContainer}>
@@ -200,39 +201,45 @@ export const PurseDesktop = () => {
               : styles.balance
           }`}
         >
-          <Balance />
+          {window === 'broadcasts' && <BroadcastsDesktop />}
         </div>
-        <div
-          className={`${
-            isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
-              ? styles.mining_invisible
-              : styles.mining
-          }`}
-        >
-          <h3 className={styles.detailsTitle}>Детализация майнинга</h3>
-          <div className={styles.miningDetails}>
-            <Details />
-            {isLimcBought?.length ? (
-              <StartMining onButtonClick={handleStartClick} />
-            ) : (
-              <Statistics onClick={handleShowMoreClick} />
-            )}
-          </div>
-        </div>
-        <div
-          className={`${
-            isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
-              ? styles.transactions_invisible
-              : styles.transactions
-          }`}
-        >
-          {isWalletVisible && <Wallet />}
-          <Transactions
-            onProfileClick={handleProfileClick}
-            onTransactionsClick={handleTransactionsClick}
-            isUserHasTransactions={isUserHasTransactions}
-          />
-        </div>
+        {window === 'main' && (
+          <>
+            <div
+              className={`${
+                isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
+                  ? styles.mining_invisible
+                  : styles.mining
+              }`}
+            >
+              <Balance />
+              <RoadMap />
+              <h3 className={styles.detailsTitle}>Детализация майнинга</h3>
+              <div className={styles.miningDetails}>
+                <Details />
+                {isLimcBought?.length ? (
+                  <StartMining onButtonClick={handleStartClick} />
+                ) : (
+                  <Statistics onClick={handleShowMoreClick} />
+                )}
+              </div>
+            </div>
+            <div
+              className={`${
+                isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
+                  ? styles.transactions_invisible
+                  : styles.transactions
+              }`}
+            >
+              {isWalletVisible && <Wallet />}
+              <Transactions
+                onProfileClick={handleProfileClick}
+                onTransactionsClick={handleTransactionsClick}
+                isUserHasTransactions={isUserHasTransactions}
+              />
+            </div>
+          </>
+        )}
       </div>
     </section>
   )

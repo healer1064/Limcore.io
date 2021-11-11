@@ -39,7 +39,7 @@
   &__image {
     position: absolute;
     bottom: 0;
-    right: 159px;
+    right: 10%;
     width: 140px;
   }
 }
@@ -148,7 +148,7 @@
 
 @media screen and (max-width: 1230px) {
   .wallet__image {
-    right: 29px;
+    right: 10%;
   }
 }
 

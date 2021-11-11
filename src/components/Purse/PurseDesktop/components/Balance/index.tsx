@@ -7,6 +7,9 @@ import { Overall } from './components/Overall/index'
 import { useAppSelector } from '@app/redux/hooks'
 import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
 import etherscanIcon from '@icons/etherscan1.png'
+import { TwtIcon } from '@icons/twtIcon'
+import { DataBaseIcon } from '@icons/dataBaseIcon'
+import { BlackCross } from '@icons/BlackCross'
 
 export const Balance = () => {
   const [isBalanceVisible, setIsBalanceVisible] = useState(false)
@@ -38,7 +41,16 @@ export const Balance = () => {
 
   return (
     <div className={styles.balance}>
-      <h1 className={styles.balance__sumMain}>{`$${money}`}</h1>
+      <div className={styles.iconsWrapper}>
+        <DataBaseIcon />
+        <BlackCross />
+        <TwtIcon />
+        <p>Для старта майнинга синхронизируйте Limcore Wallet с&nbsp;Trust Wallet</p>
+      </div>
+      <button className={styles.syncButton} onClick={() => {}}>
+        Синхронизировать
+      </button>
+      {/* <h1 className={styles.balance__sumMain}>{`$${money}`}</h1>
       <div className={styles.balance__data}>
         <p className={styles.balance__time}>24h</p>
         <p className={styles.balance__sum}>{`$ ${usdtBalance}`}</p>
@@ -85,7 +97,7 @@ export const Balance = () => {
           <p className={styles.card__subtitle}>Баланс USDT</p>
           <p className={styles.card__number}>{`$ ${usdtBalance} `}</p>
         </li>
-      </ul>
+      </ul> */}
       <div className={`${styles.modalContainer} ${styles.modalContainer_invisible}`}>
         <Modal active={isBalanceVisible} setActive={handleCloseBalanceModal}>
           <Overall

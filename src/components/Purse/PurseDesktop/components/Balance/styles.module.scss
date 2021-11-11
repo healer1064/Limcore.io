@@ -338,3 +338,28 @@
     display: none;
   }
 }
+
+.iconsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  p {
+    @include subtitle-13px($color-4F-black);
+    max-width: 280px;
+  }  
+}
+.syncButton {
+  @include section-title();
+  color: $color-4A-blue;
+  border: none;
+  outline: none;
+  padding: 15px 0;
+  max-width: 270px;
+  margin: 30px 0 50px;
+  background-color: #FFFF;
+  border: 1px solid $color-4A-blue;
+  border-radius: 14px;
+  &:hover {
+    outline: 1px solid $color-4A-blue;
+  }
+}
