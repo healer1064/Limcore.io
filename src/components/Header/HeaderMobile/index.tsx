@@ -148,33 +148,34 @@ export const HeaderMobile: React.FC = () => {
                 </a>
               </li>
             </ul> */}
-            <ul className={Styles.content}>
-              <li className={Styles.content_item}>
-                <LinkDom to='/my' className={Styles.content_link} onClick={closeBurger}>
-                  <PurseIcon />
-                  <span className={Styles.content_title}>Кошелек</span>
-                </LinkDom>
-              </li>
-              <li className={Styles.content_item}>
-                <LinkDom to='/broadcasts' className={Styles.content_link} onClick={closeBurger}>
-                  <BroadcastsIcon />
-                  <span className={Styles.content_title}>Трансляции</span>
-                </LinkDom>
-              </li>
-              <li className={Styles.content_item}>
-                <LinkDom to='/chat' className={Styles.content_link} onClick={closeBurger}>
-                  <ChatIcon />
-                  <span className={Styles.content_title}>Чат</span>
-                </LinkDom>
-              </li>
-              <li className={Styles.content_item}>
-                <LinkDom to='/profile' className={Styles.content_link} onClick={closeBurger}>
-                  <ProfileIcon />
-                  <span className={Styles.content_title}>Профиль</span>
-                </LinkDom>
-              </li>
-            </ul>
-
+            {isAuth && (
+              <ul className={Styles.content}>
+                <li className={Styles.content_item}>
+                  <LinkDom to='/my' className={Styles.content_link} onClick={closeBurger}>
+                    <PurseIcon />
+                    <span className={Styles.content_title}>Кошелек</span>
+                  </LinkDom>
+                </li>
+                <li className={Styles.content_item}>
+                  <LinkDom to='/broadcasts' className={Styles.content_link} onClick={closeBurger}>
+                    <BroadcastsIcon />
+                    <span className={Styles.content_title}>Трансляции</span>
+                  </LinkDom>
+                </li>
+                <li className={Styles.content_item}>
+                  <LinkDom to='/chat' className={Styles.content_link} onClick={closeBurger}>
+                    <ChatIcon />
+                    <span className={Styles.content_title}>Чат</span>
+                  </LinkDom>
+                </li>
+                <li className={Styles.content_item}>
+                  <LinkDom to='/profile' className={Styles.content_link} onClick={closeBurger}>
+                    <ProfileIcon />
+                    <span className={Styles.content_title}>Профиль</span>
+                  </LinkDom>
+                </li>
+              </ul>
+            )}
             <ul className={Styles.social}>
               <li className={Styles.content_item}>
                 <a href='https://t.me/limc_russ' target='blank' rel='noopener noreferrer'>
