@@ -116,13 +116,13 @@ const App = () => {
                 )}
                 <Route path='/profile' exact component={ProfileMobile} />
                 <Route path='/buy' exact component={BuyPage} />
+                <Route path='*' exact component={PageNotFount} />
                 {/* <FooterMobile /> */}
               </Switch>
             )}
           </main>
         </>
         {/* {isAuth && <FooterMobile />} */}
-        {/* {isAuth && } */}
       </div>
     </Router>
   )
