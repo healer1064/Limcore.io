@@ -6,4 +6,8 @@
   position: absolute;
   top: 25px;
   left: 10%;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

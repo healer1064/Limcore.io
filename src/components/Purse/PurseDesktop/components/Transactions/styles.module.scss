@@ -4,21 +4,19 @@
 .transactions {
   position: relative;
   width: 100%;
-  padding: 24px 20px;
+  padding: 0;
   margin: 0;
-  margin-top: 40px;
-
-  background-color: #FFF;
-  box-shadow: $box-shadow2;
-  border-radius: $border-radius;  
-
-  & * {
-    padding: 0;
-    margin: 0;
-  }
+  background-color: transparent;
 
   &__title {
-    @include section-title();
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.5;
+    color: #3A3B3D;
+    margin: 0 0 26px 0;
+    padding: 0;
   }
 
   &__subtitle {
