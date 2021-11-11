@@ -72,6 +72,7 @@ export const Step3: React.FC = () => {
               <InputText
                 className={Styles.input}
                 onChange={onChangeValue}
+                type='number'
                 name='house_number'
                 value={data.house_number}
                 maxLength={maxLength}
@@ -81,6 +82,7 @@ export const Step3: React.FC = () => {
               <InputText
                 className={Styles.input}
                 onChange={onChangeValue}
+                type='number'
                 name='building_number'
                 value={data.building_number}
                 maxLength={maxLength}
@@ -90,6 +92,7 @@ export const Step3: React.FC = () => {
               <InputText
                 className={Styles.input}
                 onChange={onChangeValue}
+                type='number'
                 name='apartment_number'
                 value={data.apartment_number}
                 maxLength={maxLength}

@@ -13,13 +13,18 @@ import { ButtonSmall } from '../../../../../ui-kit/ButtonSmall'
 import { ToggleButton } from '../../../../../ui-kit/ToggleButton'
 
 export const AddAuth: React.FC = () => {
-  const [yesAuth] = useState(false)
+  const [yesAuth] = useState(true)
   const [offAuth, setOffAuth] = useState(false)
+  const [checkedToggle, setCheckedToggle] = useState(true)
 
   const dispatch = useAppDispatch()
   const step = useAppSelector((state) => state.cabinet.step)
 
   const nextStep = (step) => dispatch(changeStep(step))
+
+  const changeOffAuth = (event) => {
+    setCheckedToggle(event.target.checked)
+  }
 
   const changePhone = () => {
     dispatch(changeViewContent('changePhone'))
@@ -44,7 +49,7 @@ export const AddAuth: React.FC = () => {
                       <span className={Styles.title}>Приложение привязано к номеру</span>
                       <span className={Styles.subtitle}>+7 (913) 654-73-87</span>
                     </div>
-                    <ToggleButton />
+                    <ToggleButton onChange={changeOffAuth} checked={checkedToggle} />
                   </div>
                   <div className={`${Styles.block} ${Styles.block_edit}`}>
                     <ButtonSmall onClick={changePhone}>Изменить номер телефона</ButtonSmall>

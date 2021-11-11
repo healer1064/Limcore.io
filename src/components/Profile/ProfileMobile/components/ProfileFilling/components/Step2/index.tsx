@@ -59,6 +59,7 @@ export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
               <InputText
                 className={Styles.input}
                 onChange={onChangeValue}
+                type='number'
                 name='passport_series'
                 value={data.passport_series}
                 maxLength={maxLength}
@@ -68,6 +69,7 @@ export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
               <InputText
                 className={Styles.input}
                 onChange={onChangeValue}
+                type='number'
                 name='passport_number'
                 value={data.passport_number}
                 maxLength={maxLength}
@@ -77,6 +79,7 @@ export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
           <Label className={Styles.label} titleText='Код подразделения'>
             <InputText
               onChange={onChangeValue}
+              type='number'
               name='passport_division_code'
               value={data.passport_division_code}
               placeholder='Введите код'
@@ -90,7 +93,7 @@ export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
                 onChange={() => {}}
                 type='text'
                 value={data.passport_was_issued}
-                placeholder='01.01.21'
+                placeholder='2021-01-01'
               />
               <img src={calendarIcon} alt='Иконка' />
             </div>
