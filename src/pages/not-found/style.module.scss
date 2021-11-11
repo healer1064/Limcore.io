@@ -4,6 +4,11 @@
   width: 100%;
   align-items: center;
   height: calc(100vh - 210px);
+
+  background-image: url(../../assets/icons/404.svg);
+  background-repeat: no-repeat;
+  background-position: right -15px;
+  background-size: 75%;
 }
 
 @media (max-width: 1024px) {

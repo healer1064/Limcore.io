@@ -15,6 +15,7 @@ import { LogoLimc } from './Icons/LogoLimc'
 import { LogoTrustWallet } from './Icons/LogoTrustWallet'
 import GrayCrossIcon from '../../images/GrayCross/GrayCrossIcon'
 import { WalletPurseIcon } from './Icons/WalletPurseIcon'
+import classNames from 'classnames'
 
 export const Balance = () => {
   // const [isSincBtnVisible, setIsSincBtnVisible] = useState(true)
@@ -35,6 +36,11 @@ export const Balance = () => {
 
   const sum: number = Number(usdtBalance) + Number(limcBalance)
   const money = isNaN(sum) ? '...' : sum
+
+  const buttonSincClass = isSinc ? classNames(styles.trust_sinc, styles.trust_sinc_success) : styles.trust_sinc
+  const logosClass = isSinc ? classNames(styles.trust_logos, styles.trust_logos_success) : styles.trust_logos
+  const logosContClass = isSinc ? styles.trust_logos_cont__success : null
+  const logosCrossClass = isSinc ? styles.trust_cross_success : null
 
   const connector = new WalletConnect({
     bridge: 'https://bridge.walletconnect.org', // Required
@@ -82,6 +88,7 @@ export const Balance = () => {
       // Get provided accounts and chainId
       const { accounts } = payload.params[0]
       setPurseFromWallet(accounts[0])
+      console.log(payload)
 
       dispatch(setIsSincWithWallet(true))
       QRCodeModal.close()
@@ -121,12 +128,21 @@ export const Balance = () => {
       </div> */}
 
       <div className={styles.trust}>
-        <div className={styles.trust_logos}>
-          <LogoLimc />
+        <div className={logosClass}>
+          {/* <LogoLimc />
           <GrayCrossIcon />
-          <LogoTrustWallet />
+          <LogoTrustWallet /> */}
+          <div className={logosContClass}>
+            <LogoLimc />
+          </div>
+          <div className={logosCrossClass}>
+            <GrayCrossIcon />
+          </div>
+          <div className={logosContClass}>
+            <LogoTrustWallet />
+          </div>
         </div>
-        <button className={styles.trust_sinc} onClick={sincWithWallet}>
+        <button className={buttonSincClass} onClick={sincWithWallet}>
           {isSinc ? (
             <>
               <WalletPurseIcon className={styles.trust_walletpurse} />
@@ -138,7 +154,9 @@ export const Balance = () => {
         </button>
         {!isSinc ? (
           <p className={styles.trust_subtitle}>Для старта майнинга синхронизируйте Limcore Wallet с Trust Wallet</p>
-        ) : null}
+        ) : (
+          <p className={styles.trust_subtitle}>Limcore Wallet синхронизирован с Trust Wallet</p>
+        )}
       </div>
 
       {/* {isSincBtnVisible ? (
