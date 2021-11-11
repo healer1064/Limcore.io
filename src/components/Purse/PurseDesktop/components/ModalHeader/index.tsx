@@ -12,16 +12,15 @@ interface IModalHeader {
 export const ModalHeader = ({ title, onClick, crossFlag }: IModalHeader) => {
   return (
     <div className={styles.header}>
-      <button type='button' className={styles.headerButton} onClick={onClick}>
-        <BlueArrow />
-      </button>
-      <h3 className={styles.headerTitle}>{title}</h3>
-
       {crossFlag && (
-        <button type='button' className={styles.cross} onClick={onClick}>
-          <img src={buttonCloseBlue} />
+        <button type='button' className={styles.headerButton} onClick={onClick}>
+          <BlueArrow />
         </button>
       )}
+      <h3 className={styles.headerTitle}>{title}</h3>
+      <button type='button' className={styles.cross} onClick={onClick}>
+        <img src={buttonCloseBlue} />
+      </button>
     </div>
   )
 }

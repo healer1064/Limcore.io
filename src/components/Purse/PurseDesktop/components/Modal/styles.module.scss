@@ -5,37 +5,41 @@
   bottom: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  width: 471px;
+  width: 100vw;
   height: 100vh;
   z-index: 999;
-
-  // background-color: rgba(0, 0, 0, 0.4);
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
   pointer-events: none;
   transition: .3s ease;
+  visibility: hidden
 }
 
 .modal {
   @include modal();
+  &Content {
+    left: 900px;
+    position: relative;
+    background-color: #fff;
+    width: 470px;
+    min-height: 100vh;
+    overflow-y: auto;
+    transition: left .5s ease;
+  }
 
   &Active {
     @include modal();
+    visibility: visible;
     opacity: 1;
+    display: flex;
     pointer-events: all;
-    overflow: hidden;
   }
-
-  &Content {
-    position: relative;
-
-    border-radius: 12px;
-
-    // background-color: #fff;
-    background-color: transparent;
+  &Active &Content {
+    left: 0;
   }
+  
 }
 
 .close {

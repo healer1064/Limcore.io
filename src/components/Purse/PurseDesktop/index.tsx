@@ -16,10 +16,17 @@ import { Wallet } from '@components/Purse/PurseDesktop/components/Wallet'
 import { Transactions } from '@components/Purse/PurseDesktop/components/Transactions'
 import { Wallpaper } from '@components/Purse/PurseDesktop/components/Wallpaper'
 import { Logo } from '@components/Purse/PurseDesktop/components/Logo'
+import classnames from 'classnames'
+
+import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
+import { ProfileDesktop } from '@components/Profile/ProfileDesktop'
 import { TransactionsDetails } from '@components/Purse/PurseDesktop/components/Transactions/components/TransactionsDetails'
 import { PageBalanceLIMC } from '@components/Purse/PurseDesktop/components/PageBalanceLIMC'
 import { PageBalanceUSDT } from '@components/Purse/PurseDesktop/components/PageBalanceUSDT'
 import { PageCardBalance } from '@components/Purse/PurseDesktop/components/PageCardBalance'
+import { Modal } from '../PurseDesktop/components/Modal'
+import { ModalHeader } from '../PurseDesktop/components/ModalHeader'
+import { RoadMap } from './components/RoadMap'
 
 export const PurseDesktop = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
@@ -43,16 +50,19 @@ export const PurseDesktop = () => {
   const [value, setValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
+  const [window, setWindow] = useState('main')
+  const [isChatOpen, setIsChatOpen] = useState(false)
+
   const dispatch = useAppDispatch()
   const prices = useAppSelector((state) => state.wallet.limc_price)
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
+  const [isProfileOpen, setIsProfileOpen] = useState(false)
   const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
 
   const handleSetValue = (event) => setValue(event.target.value)
 
   // const [displayPopup, setDisplayPopup] = useState(false)
   const closePopup = () => setViewContent('')
-
   const handleCardCloseClick = () => {
     setIsCardVisible(false)
   }
@@ -106,26 +116,50 @@ export const PurseDesktop = () => {
     setViewContent('')
   }
 
+  const handleProfileClose = () => {
+    return setIsProfileOpen(false)
+  }
+
+  const handleProfileOpen = () => {
+    setIsProfileOpen(true)
+  }
+
   return (
     <section className={styles.purse}>
       <Wallpaper />
       <Logo />
       <header className={styles.header}>
         <nav className={styles.nav}>
-          <Link className={`${styles.nav__link} ${styles.nav__link_active} `} to='main'>
+          <Link
+            className={classnames([styles.nav__link, window === 'main' && styles.nav__link_active])}
+            to='main'
+            onClick={() => setWindow('main')}
+          >
             Главная
           </Link>
-          <Link className={styles.nav__link} to='broadcasts'>
+          <Link
+            className={classnames([styles.nav__link, window === 'broadcasts' && styles.nav__link_active])}
+            to='broadcasts'
+            onClick={() => setWindow('broadcasts')}
+          >
             Трансляции
           </Link>
-          <Link className={styles.nav__link} to='chat'>
+          <Link
+            className={classnames([styles.nav__link, isChatOpen && styles.nav__link_active])}
+            to='chat'
+            onClick={() => setIsChatOpen(true)}
+          >
             Чат
           </Link>
         </nav>
-        <div className={styles.profileGroup}>
+        <div className={styles.profileGroup} onClick={handleProfileOpen}>
           <img className={styles.profileIcon} src={profile} />
           <p className={styles.profileName}>{name}</p>
         </div>
+        <Modal active={isProfileOpen} setActive={handleProfileClose}>
+          <ModalHeader title={name} onClick={handleProfileClose} />
+          <ProfileDesktop />
+        </Modal>
       </header>
       <div className={styles.purseContainer}>
         <div className={styles.accounts}>
@@ -167,39 +201,45 @@ export const PurseDesktop = () => {
               : styles.balance
           }`}
         >
-          <Balance />
+          {window === 'broadcasts' && <BroadcastsDesktop />}
         </div>
-        <div
-          className={`${
-            isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
-              ? styles.mining_invisible
-              : styles.mining
-          }`}
-        >
-          <h3 className={styles.detailsTitle}>Детализация майнинга</h3>
-          <div className={styles.miningDetails}>
-            <Details />
-            {isLimcBought?.length ? (
-              <StartMining onButtonClick={handleStartClick} />
-            ) : (
-              <Statistics onClick={handleShowMoreClick} />
-            )}
-          </div>
-        </div>
-        <div
-          className={`${
-            isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
-              ? styles.transactions_invisible
-              : styles.transactions
-          }`}
-        >
-          {isWalletVisible && <Wallet />}
-          <Transactions
-            onProfileClick={handleProfileClick}
-            onTransactionsClick={handleTransactionsClick}
-            isUserHasTransactions={isUserHasTransactions}
-          />
-        </div>
+        {window === 'main' && (
+          <>
+            <div
+              className={`${
+                isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
+                  ? styles.mining_invisible
+                  : styles.mining
+              }`}
+            >
+              <Balance />
+              <RoadMap />
+              <h3 className={styles.detailsTitle}>Детализация майнинга</h3>
+              <div className={styles.miningDetails}>
+                <Details />
+                {isLimcBought?.length ? (
+                  <StartMining onButtonClick={handleStartClick} />
+                ) : (
+                  <Statistics onClick={handleShowMoreClick} />
+                )}
+              </div>
+            </div>
+            <div
+              className={`${
+                isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
+                  ? styles.transactions_invisible
+                  : styles.transactions
+              }`}
+            >
+              {isWalletVisible && <Wallet />}
+              <Transactions
+                onProfileClick={handleProfileClick}
+                onTransactionsClick={handleTransactionsClick}
+                isUserHasTransactions={isUserHasTransactions}
+              />
+            </div>
+          </>
+        )}
       </div>
     </section>
   )
