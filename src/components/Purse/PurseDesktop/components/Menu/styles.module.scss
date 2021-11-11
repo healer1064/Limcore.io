@@ -39,6 +39,10 @@
     padding: 0;
     max-width: 135px;
   }
+
+  &_invisible {
+    display: none;
+  }
 }
 
 .button {

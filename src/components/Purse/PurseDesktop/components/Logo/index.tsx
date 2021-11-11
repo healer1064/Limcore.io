@@ -1,9 +1,16 @@
 import React from 'react'
+import { Link } from 'react-scroll'
+import { useHistory } from 'react-router'
 import styles from './styles.module.scss'
 
 export const Logo = () => {
+  const history = useHistory()
+  const handleLogoClick = () => {
+    history.push('/')
+  }
   return (
     <svg
+      onClick={handleLogoClick}
       className={styles.logo}
       width='159'
       height='41'

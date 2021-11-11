@@ -19,6 +19,7 @@ import { Logo } from '@components/Purse/PurseDesktop/components/Logo'
 import { TransactionsDetails } from '@components/Purse/PurseDesktop/components/Transactions/components/TransactionsDetails'
 import { PageBalanceLIMC } from '@components/Purse/PurseDesktop/components/PageBalanceLIMC'
 import { PageBalanceUSDT } from '@components/Purse/PurseDesktop/components/PageBalanceUSDT'
+import { PageCardBalance } from '@components/Purse/PurseDesktop/components/PageCardBalance'
 
 export const PurseDesktop = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
@@ -26,6 +27,7 @@ export const PurseDesktop = () => {
   const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
   const [isPageBalanceLIMCVisible, setIsPageBalanceLIMCVisible] = useState(false)
   const [isPageBalanceUSDTVisible, setIsPageBalanceUSDTVisible] = useState(false)
+  const [isPageCardBalanceVisible, setIsPageCardBalanceVisible] = useState(false)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const [isLimcBought, setIsLimcBought] = useState(false)
   const isLimcBought = useAppSelector((state) => state.auth.transactions)
@@ -134,8 +136,17 @@ export const PurseDesktop = () => {
             openPopup={() => setViewContent('balance')}
             handlePageBalanceLIMCOpenClick={() => setIsPageBalanceLIMCVisible(true)}
             handlePageBalanceUSDTOpenClick={() => setIsPageBalanceUSDTVisible(true)}
+            handlePageCardBalanceOpenClick={() => setIsPageCardBalanceVisible(true)}
+            isPageBalanceLIMCVisible={isPageBalanceLIMCVisible}
+            isPageBalanceUSDTVisible={isPageBalanceUSDTVisible}
+            isPageCardBalanceVisible={isPageCardBalanceVisible}
           />
         </div>
+        <PageCardBalance
+          usdtBalance={usdtBalance}
+          isOpen={isPageCardBalanceVisible}
+          handlePageCardBalanceCloseClick={() => setIsPageCardBalanceVisible(false)}
+        />
         <PageBalanceLIMC
           limcBalance={limcBalance}
           isOpen={isPageBalanceLIMCVisible}
@@ -148,14 +159,18 @@ export const PurseDesktop = () => {
         />
         <div
           className={`${
-            isPageBalanceLIMCVisible || isPageBalanceUSDTVisible ? styles.balance_invisible : styles.balance
+            isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
+              ? styles.balance_invisible
+              : styles.balance
           }`}
         >
           <Balance />
         </div>
         <div
           className={`${
-            isPageBalanceLIMCVisible || isPageBalanceUSDTVisible ? styles.mining_invisible : styles.mining
+            isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
+              ? styles.mining_invisible
+              : styles.mining
           }`}
         >
           <h3 className={styles.detailsTitle}>Детализация майнинга</h3>
@@ -170,7 +185,9 @@ export const PurseDesktop = () => {
         </div>
         <div
           className={`${
-            isPageBalanceLIMCVisible || isPageBalanceUSDTVisible ? styles.transactions_invisible : styles.transactions
+            isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
+              ? styles.transactions_invisible
+              : styles.transactions
           }`}
         >
           {isWalletVisible && <Wallet />}
