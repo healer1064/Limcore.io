@@ -4,7 +4,13 @@ import { balanceLimc, balanceUsdt, creditCard, plusSvg } from '../../images'
 import { MenuItem } from './components/MenuItem/index'
 import { useAppSelector } from '@app/redux/hooks'
 
-export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtCloseClick, isUsdtInfoVisible }) => {
+export const Menu = ({
+  openPopup,
+  handleBalanceUsdtOpenClick,
+  handleBalanceUsdtCloseClick,
+  isUsdtInfoVisible,
+  handlePageBalanceLIMCOpenClick,
+}) => {
   const [isLimcInfoVisible, setIsLimcInfoVisible] = useState(false)
   // const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
   const [isCardInfoVisible, setIsCardInfoVisible] = useState(false)
@@ -40,7 +46,7 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
     <div className={styles.menu}>
       <h2 className={styles.name}>Мои счета</h2>
       <MenuItem
-        onClick={openPopup}
+        onClick={handlePageBalanceLIMCOpenClick}
         image={balanceLimc}
         title='LIMC'
         balance={`${limcBalance} LIMC`}

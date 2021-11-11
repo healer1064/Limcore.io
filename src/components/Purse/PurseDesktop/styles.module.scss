@@ -173,43 +173,6 @@
   }
 }
 
-.pageBalanceLIMC {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  grid-area: balance;
-
-  &_invisible {
-    display: none;
-  }
-
-  &__title {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 46px;
-    line-height: 1.4;
-    color: #3A3B3D;
-    display: flex;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0 0 6px 0;
-  }
-
-  &__subtitle {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 150%;
-    color: #4F535A;
-    display: flex;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0 0 35px 0;
-  }
-}
-
 .items {
   display: flex;
   box-sizing: border-box;
@@ -262,34 +225,6 @@
   padding: 0;
   width: 24px;
   height: 24px;
-}
-
-.backIcon {
-  display: flex;
-  box-sizing: border-box;
-  margin: 0 12px 0 0;
-  padding: 0;
-}
-
-.backButton {
-  display: flex;
-  box-sizing: border-box;
-  border: none;
-  margin: 0 0 23px 0;
-  padding: 0;
-  flex-direction: row;
-  background-color: transparent;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 1.25;
-  color: #3A3B3D;
-  align-items: center;
-  
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 

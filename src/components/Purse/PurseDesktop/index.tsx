@@ -17,11 +17,13 @@ import { Transactions } from '@components/Purse/PurseDesktop/components/Transact
 import { Wallpaper } from '@components/Purse/PurseDesktop/components/Wallpaper'
 import { Logo } from '@components/Purse/PurseDesktop/components/Logo'
 import { TransactionsDetails } from '@components/Purse/PurseDesktop/components/Transactions/components/TransactionsDetails'
+import { PageBalanceLIMC } from '@components/Purse/PurseDesktop/components/PageBalanceLIMC'
 
 export const PurseDesktop = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
   const [isWalletVisible, setIsWalletVisible] = useState(true)
   const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
+  const [isPageBalanceLIMCVisible, setIsPageBalanceLIMCVisible] = useState(false)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const [isLimcBought, setIsLimcBought] = useState(false)
   const isLimcBought = useAppSelector((state) => state.auth.transactions)
@@ -52,6 +54,13 @@ export const PurseDesktop = () => {
 
   const handleWalletCloseClick = () => {
     setIsWalletVisible(false)
+  }
+  const handlePageBalanceLIMCOpenClick = () => {
+    setIsPageBalanceLIMCVisible(true)
+  }
+
+  const handlePageBalanceLIMCCloseClick = () => {
+    setIsPageBalanceLIMCVisible(false)
   }
 
   const handleStartClick = () => {
@@ -128,50 +137,18 @@ export const PurseDesktop = () => {
             handleBalanceUsdtOpenClick={() => setIsUsdtInfoVisible(true)}
             handleBalanceUsdtCloseClick={() => setIsUsdtInfoVisible(false)}
             openPopup={() => setViewContent('balance')}
+            handlePageBalanceLIMCOpenClick={() => setIsPageBalanceLIMCVisible(true)}
           />
         </div>
-        <div className={styles.pageBalanceLIMC}>
-          <button className={styles.backButton} type='button'>
-            <svg
-              className={styles.backIcon}
-              width='10'
-              height='15'
-              viewBox='0 0 10 15'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <path
-                d='M8.09521 1.42871L1.90474 7.61919L8.09521 13.8097'
-                stroke='#3A3B3D'
-                strokeWidth='2'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-              />
-            </svg>
-            Назад
-          </button>
-          <h1 className={styles.pageBalanceLIMC__title}>{`${limcBalance} LIMC`}</h1>
-          <p className={styles.pageBalanceLIMC__subtitle}>{`$ ${limcBalance}`}</p>
-          <div className={styles.items}>
-            <div className={`${styles.item} ${styles.item_active}`} onClick={() => setViewContent('buy')}>
-              <img className={styles.icon} src={buyIcon} alt='' />
-              Купить
-            </div>
-            <div className={styles.item}>
-              <img className={styles.icon} src={sellIcon} alt='' />
-              Продать
-            </div>
-            <div className={styles.item}>
-              <img className={styles.icon} src={tradeIcon} alt='' />
-              Обменять
-            </div>
-          </div>
-          <TransactionsDetails onClick={() => {}} />
-        </div>
-        <div className={`${styles.balance} ${styles.balance_invisible}`}>
+        <PageBalanceLIMC
+          limcBalance={limcBalance}
+          isOpen={isPageBalanceLIMCVisible}
+          handlePageBalanceLIMCCloseClick={() => setIsPageBalanceLIMCVisible(false)}
+        />
+        <div className={`${isPageBalanceLIMCVisible ? styles.balance_invisible : styles.balance}`}>
           <Balance />
         </div>
-        <div className={`${styles.mining} ${styles.mining_invisible}`}>
+        <div className={`${isPageBalanceLIMCVisible ? styles.mining_invisible : styles.mining}`}>
           <h3 className={styles.detailsTitle}>Детализация майнинга</h3>
           <div className={styles.miningDetails}>
             <Details />
@@ -182,7 +159,7 @@ export const PurseDesktop = () => {
             )}
           </div>
         </div>
-        <div className={`${styles.transactions} ${styles.transactions_invisible}`}>
+        <div className={`${isPageBalanceLIMCVisible ? styles.transactions_invisible : styles.transactions}`}>
           {isWalletVisible && <Wallet />}
           <Transactions
             onProfileClick={handleProfileClick}
