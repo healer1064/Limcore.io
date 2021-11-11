@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
-import { balance as balanceSvg, copyIcon } from '../../images'
+import { copyIcon } from '../../images'
 import logoIcon from '@icons/logo.svg'
 import { Modal } from '../Modal'
 import { Overall } from './components/Overall/index'
@@ -16,11 +16,16 @@ import { LogoTrustWallet } from './Icons/LogoTrustWallet'
 import GrayCrossIcon from '../../images/GrayCross/GrayCrossIcon'
 import { WalletPurseIcon } from './Icons/WalletPurseIcon'
 import classNames from 'classnames'
+import { getAccountAssets } from './walletConnect'
 
 export const Balance = () => {
   // const [isSincBtnVisible, setIsSincBtnVisible] = useState(true)
   const [isBalanceVisible, setIsBalanceVisible] = useState(false)
   const [purseFromWallet, setPurseFromWallet] = useState('')
+  const [userPurse, setUserPurse] = useState({
+    address: '',
+    chainId: null,
+  })
 
   const dispatch = useDispatch()
   // Если человек попал в личныый кабинет через регистрацию, то тут будет true
@@ -58,6 +63,7 @@ export const Balance = () => {
     window.location.reload()
   })
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   connector.on('session_update', (error, payload) => {
     if (error) {
       throw error
@@ -86,27 +92,33 @@ export const Balance = () => {
         throw error
       }
       // Get provided accounts and chainId
-      const { accounts } = payload.params[0]
-      setPurseFromWallet(accounts[0])
-      console.log(payload)
+      const { accounts, chainId } = payload.params[0]
+      // setPurseFromWallet(accounts[0])у
+      setUserPurse({ address: accounts[0], chainId })
 
       dispatch(setIsSincWithWallet(true))
       QRCodeModal.close()
     })
 
-    // URI условный, подставляется потом автоматически другой
+    // URI условный, подставляется автоматически другой
     const noop = () => {}
     QRCodeModal.open('uri', noop)
-    // const { accounts, chainId } = await connector.connect()
   }
+
+  useEffect(() => {
+    if (userPurse.chainId) {
+      // getAccountAssets(userPurse.address, userPurse.chainId)
+      getAccountAssets(userPurse.chainId)
+    }
+  }, [userPurse])
 
   const handleFirstRegModalClose = () => {
     setIsRegModalVisible(false)
   }
 
-  const handleOpenBalanceClick = () => {
-    setIsBalanceVisible(true)
-  }
+  // const handleOpenBalanceClick = () => {
+  //   setIsBalanceVisible(true)
+  // }
 
   const handleCloseBalanceModal = () => {
     setIsBalanceVisible(false)

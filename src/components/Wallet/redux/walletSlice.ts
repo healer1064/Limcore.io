@@ -41,6 +41,7 @@ export const walletSlice = createSlice({
     address: '',
     sum_limc_balance: '0',
     usdt_balance: '0',
+    walletConnect_balance: '',
     limc_price: {
       lock_time: 0,
       slug: '',
@@ -55,6 +56,10 @@ export const walletSlice = createSlice({
     [getWalletAdress.fulfilled]: (state, { payload }) => {
       state.address = payload.data.eth_address
     },
+    // [getWalletAdress.fulfilled]: (state, { payload }) => {
+    //   console.log('payload', payload)
+    //   state.walletConnect_balance = payload.data.eth_address
+    // },
     [getWalletBalance.fulfilled]: (state, { payload }) => {
       state.sum_limc_balance = payload.data.limc.sum_limc_balance
       state.usdt_balance = payload.data.usdt.usdt_balance
