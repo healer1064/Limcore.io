@@ -18,17 +18,20 @@ export const Step3: React.FC = () => {
     dispatch(setData({ ...data, [name]: value }))
   }
 
-  const completeFilling = (event) => {
+  const completeFilling = async (event) => {
     event.preventDefault()
 
-    dispatch(updateUser(data))
-    dispatch(getUser())
+    const response = await dispatch(updateUser(data))
 
-    dispatch(changeViewContent('none'))
-    dispatch(changeStep(0))
+    if (response.error) {
+      console.log('error updateUser!!!')
+    } else {
+      dispatch(getUser())
+
+      dispatch(changeViewContent('none'))
+      dispatch(changeStep(0))
+    }
   }
-
-  console.log(data)
 
   return (
     <>

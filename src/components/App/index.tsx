@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
-// import { setIsAuth, checkToken } from '../../pages/auth/redux/auth.slice'
-import { checkToken, getTransactions } from '../../pages/auth/redux/auth.slice'
-import { setIsAuth } from '../../pages/auth/redux/authSlice'
+import { getTransactions } from '../../pages/auth/redux/auth.slice'
+import { checkToken, setIsAuth } from '../../pages/auth/redux/authSlice'
 
 // import { Footer } from '../Footer'
 import { FooterMobile } from '../Footer/FooterMobile'
@@ -45,11 +44,8 @@ const App = () => {
   const { width } = useWindowSize()
   // const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
   const user = useAppSelector((state) => state.user.userData)
-  // const isAuth = useAppSelector((state) => state.auth.isAuth)
   const isAuth = useAppSelector((state) => state.authNew.isAuth)
   const [isLoading, setIsLoading] = useState(false)
-  console.log(user)
-  console.log('isAuth', isAuth)
   const desktop = width >= 769
 
   useEffect(() => {
@@ -75,6 +71,9 @@ const App = () => {
         })
     }
   }, [isAuth])
+
+  console.log('isAuth', isAuth)
+
   return (
     <Router>
       <div className={Styles.app_container}>
