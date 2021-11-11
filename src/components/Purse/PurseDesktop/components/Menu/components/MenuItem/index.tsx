@@ -27,6 +27,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
 
   const onClickHandler = () => {
     title.includes('LIMC') ? onClick() : setActive()
+    title.includes('USDT') ? onClick() : setActive()
   }
 
   return (

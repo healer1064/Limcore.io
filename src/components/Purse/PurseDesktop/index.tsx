@@ -18,12 +18,14 @@ import { Wallpaper } from '@components/Purse/PurseDesktop/components/Wallpaper'
 import { Logo } from '@components/Purse/PurseDesktop/components/Logo'
 import { TransactionsDetails } from '@components/Purse/PurseDesktop/components/Transactions/components/TransactionsDetails'
 import { PageBalanceLIMC } from '@components/Purse/PurseDesktop/components/PageBalanceLIMC'
+import { PageBalanceUSDT } from '@components/Purse/PurseDesktop/components/PageBalanceUSDT'
 
 export const PurseDesktop = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
   const [isWalletVisible, setIsWalletVisible] = useState(true)
   const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
   const [isPageBalanceLIMCVisible, setIsPageBalanceLIMCVisible] = useState(false)
+  const [isPageBalanceUSDTVisible, setIsPageBalanceUSDTVisible] = useState(false)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const [isLimcBought, setIsLimcBought] = useState(false)
   const isLimcBought = useAppSelector((state) => state.auth.transactions)
@@ -42,6 +44,7 @@ export const PurseDesktop = () => {
   const dispatch = useAppDispatch()
   const prices = useAppSelector((state) => state.wallet.limc_price)
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
+  const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
 
   const handleSetValue = (event) => setValue(event.target.value)
 
@@ -55,14 +58,6 @@ export const PurseDesktop = () => {
   const handleWalletCloseClick = () => {
     setIsWalletVisible(false)
   }
-  const handlePageBalanceLIMCOpenClick = () => {
-    setIsPageBalanceLIMCVisible(true)
-  }
-
-  const handlePageBalanceLIMCCloseClick = () => {
-    setIsPageBalanceLIMCVisible(false)
-  }
-
   const handleStartClick = () => {
     console.log('Start mining')
   }
@@ -138,6 +133,7 @@ export const PurseDesktop = () => {
             handleBalanceUsdtCloseClick={() => setIsUsdtInfoVisible(false)}
             openPopup={() => setViewContent('balance')}
             handlePageBalanceLIMCOpenClick={() => setIsPageBalanceLIMCVisible(true)}
+            handlePageBalanceUSDTOpenClick={() => setIsPageBalanceUSDTVisible(true)}
           />
         </div>
         <PageBalanceLIMC
@@ -145,10 +141,23 @@ export const PurseDesktop = () => {
           isOpen={isPageBalanceLIMCVisible}
           handlePageBalanceLIMCCloseClick={() => setIsPageBalanceLIMCVisible(false)}
         />
-        <div className={`${isPageBalanceLIMCVisible ? styles.balance_invisible : styles.balance}`}>
+        <PageBalanceUSDT
+          usdtBalance={usdtBalance}
+          isOpen={isPageBalanceUSDTVisible}
+          handlePageBalanceUSDTCloseClick={() => setIsPageBalanceUSDTVisible(false)}
+        />
+        <div
+          className={`${
+            isPageBalanceLIMCVisible || isPageBalanceUSDTVisible ? styles.balance_invisible : styles.balance
+          }`}
+        >
           <Balance />
         </div>
-        <div className={`${isPageBalanceLIMCVisible ? styles.mining_invisible : styles.mining}`}>
+        <div
+          className={`${
+            isPageBalanceLIMCVisible || isPageBalanceUSDTVisible ? styles.mining_invisible : styles.mining
+          }`}
+        >
           <h3 className={styles.detailsTitle}>Детализация майнинга</h3>
           <div className={styles.miningDetails}>
             <Details />
@@ -159,7 +168,11 @@ export const PurseDesktop = () => {
             )}
           </div>
         </div>
-        <div className={`${isPageBalanceLIMCVisible ? styles.transactions_invisible : styles.transactions}`}>
+        <div
+          className={`${
+            isPageBalanceLIMCVisible || isPageBalanceUSDTVisible ? styles.transactions_invisible : styles.transactions
+          }`}
+        >
           {isWalletVisible && <Wallet />}
           <Transactions
             onProfileClick={handleProfileClick}

@@ -10,6 +10,7 @@ export const Menu = ({
   handleBalanceUsdtCloseClick,
   isUsdtInfoVisible,
   handlePageBalanceLIMCOpenClick,
+  handlePageBalanceUSDTOpenClick,
 }) => {
   const [isLimcInfoVisible, setIsLimcInfoVisible] = useState(false)
   // const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
@@ -55,6 +56,7 @@ export const Menu = ({
         active={isLimcInfoVisible}
       />
       <MenuItem
+        onClick={handlePageBalanceUSDTOpenClick}
         image={balanceUsdt}
         title='USDT'
         balance={`${usdtBalance} USDT`}
