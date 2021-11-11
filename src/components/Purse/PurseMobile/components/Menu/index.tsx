@@ -15,7 +15,7 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
   const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
   const isSinc = useAppSelector((state) => state.authNew.isSincWithWallet)
 
-  const buttonPlusClass = `${styles.menu__item} ${styles.menu__buttonPlus}`
+  // const buttonPlusClass = `${styles.menu__item} ${styles.menu__buttonPlus}`
   const menuClass = isSinc ? classNames(styles.menu, styles.menu_sinc) : styles.menu
 
   // const handleBalanceLimcOpenClick = () => {
@@ -44,9 +44,9 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
 
   return (
     <div className={menuClass}>
-      <button type='button' className={buttonPlusClass}>
+      {/* <button type='button' className={buttonPlusClass}>
         <img src={plusSvg} width='24' height='24' />
-      </button>
+      </button> */}
       <MenuItem
         onClick={openPopup}
         image={balanceLimc}

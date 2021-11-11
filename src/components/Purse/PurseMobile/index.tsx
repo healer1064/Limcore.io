@@ -23,6 +23,7 @@ import tradeIcon from '@icons/trade.svg'
 import { Modal } from './components/Modal'
 import { ModalHeader } from './components/ModalHeader'
 import { FooterMobile } from '@components/Footer/FooterMobile'
+import { useHistory } from 'react-router'
 
 export const PurseMobile: FC = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
@@ -42,6 +43,7 @@ export const PurseMobile: FC = () => {
   const [value, setValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
+  const history = useHistory()
   const dispatch = useAppDispatch()
   const prices = useAppSelector((state) => state.wallet.limc_price)
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
@@ -64,7 +66,7 @@ export const PurseMobile: FC = () => {
   }
 
   const handleProfileClick = () => {
-    console.log('Profile click')
+    history.push('/profile')
   }
 
   const handleTransactionsClick = () => {
