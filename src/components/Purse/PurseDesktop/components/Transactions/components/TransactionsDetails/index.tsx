@@ -227,14 +227,13 @@ export const TransactionsDetails = ({ onClick }) => {
 
   return (
     <div className={styles.details}>
-      <ModalHeader title='Транзакции' onClick={onClick} />
+      <h2 className={styles.title}>Транзакции</h2>
       <ul className={styles.list}>
         <li className={styles.item}>
           <button className={styles.btn} onClick={handleCurrencyOpenClick}>
             Валюта
             <img src={chevronDown} />
           </button>
-
           <BottomModal title='Валюта' active={isCurrencyVisible} setActive={handleCurrencyCloseClick}>
             <CurrencySort onChange={handleCurrencyChange} />
           </BottomModal>
@@ -244,7 +243,6 @@ export const TransactionsDetails = ({ onClick }) => {
             Тип операции
             <img src={chevronDown} />
           </button>
-
           <BottomModal title='Тип операции' active={isTypeVisible} setActive={handleTypeCloseClick}>
             <TypeSort onChange={handleTypeChange} />
           </BottomModal>
@@ -333,6 +331,9 @@ export const TransactionsDetails = ({ onClick }) => {
 
       <h4 className={styles.transactions}>{tempInfo[3].date}</h4>
       <UserHasTransactions data={tempInfo[3].data} />
+      <button className={styles.moreButton} type='button'>
+        Загрузить еще
+      </button>
     </div>
   )
 }

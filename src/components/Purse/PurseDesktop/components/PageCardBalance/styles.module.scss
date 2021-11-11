@@ -1,0 +1,118 @@
+.pageCardBalance {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  grid-area: balance;
+
+  &_invisible {
+    display: none;
+  }
+
+  &__title {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 46px;
+    line-height: 1.4;
+    color: #3A3B3D;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 0 6px 0;
+  }
+
+  &__subtitle {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 150%;
+    color: #4F535A;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 0 35px 0;
+  }
+}
+
+.backIcon {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 12px 0 0;
+  padding: 0;
+}
+
+.backButton {
+  display: flex;
+  box-sizing: border-box;
+  border: none;
+  margin: 0 0 23px 0;
+  padding: 0;
+  flex-direction: row;
+  background-color: transparent;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #3A3B3D;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.items {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 0 64px 0;
+  align-items: center;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  max-width: 140px;
+  padding: 15px;
+  background: #F9FAFF;
+  border-radius: 14px;
+  color: #4A70F8;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.5;
+
+  &:hover {
+    transition: background 0.3s ease;
+    background: #8ca4f2;
+    cursor: pointer;
+    color: #FFFFFF;
+  }
+}
+
+.item_active {
+  background: #4A70F8;
+  transition: background 0.3s ease;
+  color: #FFFFFF;
+
+  &:hover {
+    background: #8ca4f2;
+    transition: background 0.3s ease;
+    cursor: pointer;
+  }
+}
+
+.icon {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 6px 0 0;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+}

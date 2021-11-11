@@ -11,6 +11,10 @@
   'title logo'
   'balance logo';
   justify-content: space-between;
+
+  &_invisible {
+    display: none;
+  }
 }
 
 .menu__title {
@@ -23,6 +27,7 @@
   color: #99A0AD;
   padding: 0;
   margin: 0;
+  text-align: left;
 
 }
 
@@ -36,6 +41,7 @@
   color: #4F535A;
   padding: 6px 0 0;
   margin: 0;
+  text-align: left;
 }
 
 .menu__logo {
