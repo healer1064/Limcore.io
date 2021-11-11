@@ -18,7 +18,7 @@ export const Step4: React.FC = () => {
   const codeEmail = useAppSelector((state) => state.authNew.codeEmail)
 
   const [validValue, setValidValue] = useState(true)
-  const [error, setError] = useState('asdfasdf')
+  const [error, setError] = useState('')
 
   const onChange = (event) => {
     const number = Number(event.target.value)

@@ -3,7 +3,7 @@ import React from 'react'
 export const LogoLimc = () => {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64' fill='none'>
-      <circle cx='32' cy='32' r='32' fill='#CED6F3' />
+      <circle cx='32' cy='32' r='32' fill='#CED6F3' stroke='none' />
       <g clipPath='url(#clip0_4085:29354)'>
         <path d='M17.9958 35.218H45.9959V41.6466H17.9958V35.218Z' fill='#5679F8' />
         <path d='M17.9958 22.3594H45.9959V28.7879H17.9958V22.3594Z' fill='#5679F8' />

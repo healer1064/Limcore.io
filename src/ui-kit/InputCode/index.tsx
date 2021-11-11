@@ -20,6 +20,7 @@ export const InputCode: React.FC<InputCodeProps> = ({ onChange, name, value, val
         placeholder='_ _ _ _'
         maxLength={4}
         autoComplete='off'
+        inputMode='numeric'
       />
       {/* {!validValue && <span className={Styles.error}>Неверный код. Попробуйте еще раз</span>} */}
     </>
