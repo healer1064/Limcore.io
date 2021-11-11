@@ -118,7 +118,7 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
                 onChange={() => {}}
                 type='text'
                 value={data.birth_date}
-                placeholder='01.01.2021'
+                placeholder='2021-01-01'
               />
               <img src={calendarIcon} alt='Иконка' />
             </div>

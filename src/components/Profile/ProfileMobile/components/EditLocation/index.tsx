@@ -102,6 +102,7 @@ export const EditLocation: React.FC = () => {
                   <InputText
                     className={Styles.input}
                     onChange={onChangeValue}
+                    type='number'
                     name='home_house_number'
                     value={data.home_house_number}
                     maxLength={maxLength}
@@ -111,6 +112,7 @@ export const EditLocation: React.FC = () => {
                   <InputText
                     className={Styles.input}
                     onChange={onChangeValue}
+                    type='number'
                     name='home_building_number'
                     value={data.home_building_number}
                     maxLength={maxLength}
@@ -120,6 +122,7 @@ export const EditLocation: React.FC = () => {
                   <InputText
                     className={Styles.input}
                     onChange={onChangeValue}
+                    type='number'
                     name='home_apartment_number'
                     value={data.home_apartment_number}
                     maxLength={maxLength}

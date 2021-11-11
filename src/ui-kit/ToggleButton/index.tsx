@@ -1,10 +1,15 @@
 import React from 'react'
 import Styles from './styles.module.scss'
 
-export const ToggleButton: React.FC = () => {
+interface ToggleButtonProps {
+  onChange?: any
+  checked?: boolean
+}
+
+export const ToggleButton: React.FC<ToggleButtonProps> = ({ onChange, checked }) => {
   return (
     <label className={Styles.toggle}>
-      <input type='checkbox' />
+      <input onChange={onChange} type='checkbox' checked={checked} />
       <span className={Styles.slider}>{}</span>
     </label>
   )
