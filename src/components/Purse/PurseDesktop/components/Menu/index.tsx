@@ -13,6 +13,9 @@ export const Menu = ({
   handlePageBalanceLIMCOpenClick,
   handlePageBalanceUSDTOpenClick,
   handlePageCardBalanceOpenClick,
+  handlePageBalanceLIMCCloseClick,
+  handlePageBalanceUSDTCloseClick,
+  handlePageCardBalanceCloseClick,
   isPageBalanceLIMCVisible,
   isPageBalanceUSDTVisible,
   isPageCardBalanceVisible,
@@ -50,11 +53,29 @@ export const Menu = ({
     setIsCardInfoVisible(false)
   }
 
+  const handleCardBalance = () => {
+    handlePageCardBalanceOpenClick()
+    handlePageBalanceUSDTCloseClick()
+    handlePageBalanceLIMCCloseClick()
+  }
+
+  const handleLIMCBalance = () => {
+    handlePageBalanceLIMCOpenClick()
+    handlePageBalanceUSDTCloseClick()
+    handlePageCardBalanceCloseClick()
+  }
+
+  const handleUSDTBalance = () => {
+    handlePageBalanceUSDTOpenClick()
+    handlePageBalanceLIMCCloseClick()
+    handlePageCardBalanceCloseClick()
+  }
+
   return (
     <div className={styles.menu}>
       <h2 className={styles.name}>Мои счета</h2>
       <MenuItem
-        onClick={handlePageBalanceLIMCOpenClick}
+        onClick={handleLIMCBalance}
         image={balanceLimc}
         title='LIMC'
         balance={`${limcBalance} LIMC`}
@@ -63,7 +84,7 @@ export const Menu = ({
         active={isLimcInfoVisible}
       />
       <MenuItem
-        onClick={handlePageBalanceUSDTOpenClick}
+        onClick={handleUSDTBalance}
         image={balanceUsdt}
         title='USDT'
         balance={`${usdtBalance} USDT`}
@@ -72,7 +93,7 @@ export const Menu = ({
         active={isUsdtInfoVisible}
       />
       <MenuItem
-        onClick={handlePageCardBalanceOpenClick}
+        onClick={handleCardBalance}
         image={purseIcon}
         title={`Карта *${lastNumbersOfCard}`}
         balance={cardBalance}

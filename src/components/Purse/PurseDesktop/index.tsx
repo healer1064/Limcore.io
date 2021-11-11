@@ -137,6 +137,9 @@ export const PurseDesktop = () => {
             handlePageBalanceLIMCOpenClick={() => setIsPageBalanceLIMCVisible(true)}
             handlePageBalanceUSDTOpenClick={() => setIsPageBalanceUSDTVisible(true)}
             handlePageCardBalanceOpenClick={() => setIsPageCardBalanceVisible(true)}
+            handlePageBalanceLIMCCloseClick={() => setIsPageBalanceLIMCVisible(false)}
+            handlePageBalanceUSDTCloseClick={() => setIsPageBalanceUSDTVisible(false)}
+            handlePageCardBalanceCloseClick={() => setIsPageCardBalanceVisible(false)}
             isPageBalanceLIMCVisible={isPageBalanceLIMCVisible}
             isPageBalanceUSDTVisible={isPageBalanceUSDTVisible}
             isPageCardBalanceVisible={isPageCardBalanceVisible}

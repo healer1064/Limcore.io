@@ -26,8 +26,11 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   const menuItemClass = `${styles.menu__item} ${styles.menu__balance}`
 
   const onClickHandler = () => {
-    title.includes('LIMC') ? onClick() : setActive()
-    title.includes('USDT') ? onClick() : setActive()
+    if (title.includes('LIMC') || title.includes('USDT') || title.includes('Карта')) {
+      onClick()
+    } else {
+      setActive()
+    }
   }
 
   return (
