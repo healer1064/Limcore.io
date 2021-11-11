@@ -23,6 +23,10 @@ import { Wallet } from '@components/Purse/PurseDesktop/components/Wallet'
 import { Transactions } from '@components/Purse/PurseDesktop/components/Transactions'
 import { Wallpaper } from '@components/Purse/PurseDesktop/components/Wallpaper'
 import { Logo } from '@components/Purse/PurseDesktop/components/Logo'
+import classnames from 'classnames'
+
+import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
+import { ProfileDesctop } from '@components/Profile/ProfileDesctop'
 
 export const PurseDesktop = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
@@ -43,15 +47,18 @@ export const PurseDesktop = () => {
   const [value, setValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
+  const [window, setWindow] = useState('main')
+  const [isChatOpen, setIsChatOpen] = useState(false)
+
   const dispatch = useAppDispatch()
   const prices = useAppSelector((state) => state.wallet.limc_price)
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
+  const [isProfileOpen, setIsProfileOpen] = useState(false)
 
   const handleSetValue = (event) => setValue(event.target.value)
 
   // const [displayPopup, setDisplayPopup] = useState(false)
   const closePopup = () => setViewContent('')
-
   const handleCardCloseClick = () => {
     setIsCardVisible(false)
   }
@@ -106,26 +113,50 @@ export const PurseDesktop = () => {
     setViewContent('')
   }
 
+  const handleProfileClose = () => {
+    return setIsProfileOpen(false)
+  }
+
+  const handleProfileOpen = () => {
+    setIsProfileOpen(true)
+  }
+
   return (
     <section className={styles.purse}>
       <Wallpaper />
       <Logo />
       <header className={styles.header}>
         <nav className={styles.nav}>
-          <Link className={`${styles.nav__link} ${styles.nav__link_active} `} to='main'>
+          <Link
+            className={classnames([styles.nav__link, window === 'main' && styles.nav__link_active])}
+            to='main'
+            onClick={() => setWindow('main')}
+          >
             Главная
           </Link>
-          <Link className={styles.nav__link} to='broadcasts'>
+          <Link
+            className={classnames([styles.nav__link, window === 'broadcasts' && styles.nav__link_active])}
+            to='broadcasts'
+            onClick={() => setWindow('broadcasts')}
+          >
             Трансляции
           </Link>
-          <Link className={styles.nav__link} to='chat'>
+          <Link
+            className={classnames([styles.nav__link, isChatOpen && styles.nav__link_active])}
+            to='chat'
+            onClick={() => setIsChatOpen(true)}
+          >
             Чат
           </Link>
         </nav>
-        <div className={styles.profileGroup}>
+        <div className={styles.profileGroup} onClick={handleProfileOpen}>
           <img className={styles.profileIcon} src={profile} />
           <p className={styles.profileName}>{name}</p>
         </div>
+        <Modal active={isProfileOpen} setActive={handleProfileClose}>
+          <ModalHeader title={name} onClick={handleProfileClose} />
+          <ProfileDesctop />
+        </Modal>
       </header>
       <div className={styles.purseContainer}>
         <div className={styles.accounts}>
@@ -136,7 +167,8 @@ export const PurseDesktop = () => {
             openPopup={() => setViewContent('balance')}
           />
         </div>
-        <div className={styles.balance}>
+        {window === 'broadcasts' && <BroadcastsDesktop />}
+        <div className={styles.balance} hidden={window !== 'main'}>
           <Balance />
           <div className={`${styles.modalContainer} ${styles.modalContainer_invisible}`}>
             <Modal active={viewContent === 'balance'} classname={styles.balanceModal} setActive={closePopup}>
@@ -176,7 +208,7 @@ export const PurseDesktop = () => {
             </Modal>
           </div>
         </div>
-        <div className={styles.mining}>
+        <div className={styles.mining} hidden={window !== 'main'}>
           <h3 className={styles.detailsTitle}>Детализация майнинга</h3>
           <div className={styles.miningDetails}>
             <Details />
@@ -187,7 +219,7 @@ export const PurseDesktop = () => {
             )}
           </div>
         </div>
-        <div className={styles.transactions}>
+        <div className={styles.transactions} hidden={window !== 'main'}>
           {isWalletVisible && <Wallet />}
           <Transactions
             onProfileClick={handleProfileClick}

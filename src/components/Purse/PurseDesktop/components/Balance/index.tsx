@@ -87,7 +87,7 @@ export const Balance = () => {
         </li>
       </ul>
       <div className={`${styles.modalContainer} ${styles.modalContainer_invisible}`}>
-        <Modal active={isBalanceVisible} setActive={() => {}}>
+        <Modal active={isBalanceVisible} setActive={handleCloseBalanceModal}>
           <Overall
             onClick={handleCloseBalanceModal}
             money={money}
