@@ -6,17 +6,20 @@ import { Modal } from '../Modal'
 import { Overall } from './components/Overall/index'
 import { useAppSelector } from '@app/redux/hooks'
 import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
-import etherscanIcon from '@icons/etherscan1.png'
 import WalletConnect from '@walletconnect/client'
 import QRCodeModal from '@walletconnect/qrcode-modal'
-import { setIsSincWithWallet, setWalletConnectBalance } from '../../../../../pages/auth/redux/authSlice'
+import {
+  setIsSincWithWallet,
+  setWalletConnectLimc,
+  setWalletConnectUsdt,
+} from '../../../../../pages/auth/redux/authSlice'
 import { useDispatch } from 'react-redux'
 import { LogoLimc } from './Icons/LogoLimc'
 import { LogoTrustWallet } from './Icons/LogoTrustWallet'
 import GrayCrossIcon from '../../images/GrayCross/GrayCrossIcon'
 import { WalletPurseIcon } from './Icons/WalletPurseIcon'
 import classNames from 'classnames'
-import { getAccountAssets } from './walletConnect'
+import { getUsdt, getLimc } from './walletConnect'
 
 export const Balance = () => {
   const [isBalanceVisible, setIsBalanceVisible] = useState(false)
@@ -31,14 +34,16 @@ export const Balance = () => {
     useAppSelector((state) => state.auth.processType) === 'REGISTRATION',
   )
   const walletAddress = useAppSelector((state) => state.wallet.address)
-  // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
-  const usdtBalance = useAppSelector((state) => state.authNew.walletConnectBalance)
-  const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
-  const limcCount = useAppSelector((state) => state.wallet.limcCount)
-  const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
+  // const usdtWalletBalance = useAppSelector((state) => state.wallet.usdt_balance)
+  const usdtWalletBalance = useAppSelector((state) => state.authNew.walletConnectUsdt)
+  const limcWalletBalance = useAppSelector((state) => state.authNew.walletConnectLimc)
+  // const limcWalletBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
+
+  // const limcCount = useAppSelector((state) => state.wallet.limcCount)
+  // const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
   const isSinc = useAppSelector((state) => state.authNew.isSincWithWallet)
 
-  const sum: number = Number(usdtBalance) + Number(limcBalance)
+  const sum: number = Number(usdtWalletBalance) + Number(limcWalletBalance)
   const money = isNaN(sum) ? '...' : sum
 
   const buttonSincClass = isSinc ? classNames(styles.trust_sinc, styles.trust_sinc_success) : styles.trust_sinc
@@ -105,7 +110,8 @@ export const Balance = () => {
 
   useEffect(() => {
     if (userPurse.chainId) {
-      getAccountAssets(userPurse.address).then((res) => dispatch(setWalletConnectBalance(res)))
+      getUsdt(userPurse.address).then((res) => dispatch(setWalletConnectUsdt(res)))
+      getLimc(userPurse.address).then((res) => dispatch(setWalletConnectLimc(res)))
     }
   }, [userPurse])
 
@@ -159,9 +165,11 @@ export const Balance = () => {
           )}
         </button>
         {!isSinc ? (
-          <p className={styles.trust_subtitle}>Для старта майнинга синхронизируйте Limcore Wallet с Trust Wallet</p>
+          <p className={styles.trust_subtitle}>
+            Для старта майнинга синхронизируйте Limcore Wallet с внешним кошельком
+          </p>
         ) : (
-          <p className={styles.trust_subtitle}>Limcore Wallet синхронизирован с Trust Wallet</p>
+          <p className={styles.trust_subtitle}>Limcore Wallet синхронизирован с внешним кошельком</p>
         )}
       </div>
       {/* {isSincBtnVisible ? (
@@ -173,7 +181,12 @@ export const Balance = () => {
       )} */}
 
       <Modal active={isBalanceVisible} setActive={() => {}}>
-        <Overall onClick={handleCloseBalanceModal} money={money} limcBalance={limcBalance} usdtBalance={usdtBalance} />
+        <Overall
+          onClick={handleCloseBalanceModal}
+          money={money}
+          limcBalance={limcWalletBalance}
+          usdtBalance={usdtWalletBalance}
+        />
       </Modal>
       <Modal classname={styles.reg} active={isRegModalVisible} setActive={handleFirstRegModalClose} crossFlag>
         <div className={styles.regModal}>

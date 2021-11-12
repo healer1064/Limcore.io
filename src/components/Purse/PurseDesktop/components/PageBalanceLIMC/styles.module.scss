@@ -1,3 +1,5 @@
+@import '../../../vars&mixins.scss';
+
 .pageBalanceLIMC {
   display: flex;
   flex-direction: column;
@@ -60,6 +62,10 @@
 
   &:hover {
     cursor: pointer;
+    color: $color-4A-blue;
+    path {
+      stroke: $color-4A-blue;
+    }
   }
 }
 
@@ -88,6 +94,7 @@
   font-weight: 600;
   font-size: 13px;
   line-height: 1.5;
+  border: none;
 
   &:hover {
     transition: background 0.3s ease;
@@ -131,4 +138,19 @@
   padding: 0;
   width: 24px;
   height: 24px;
+}
+
+.buyLink {
+  text-decoration: none;
+  display: flex;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #FFFFFF;
+  align-items: center;
 }

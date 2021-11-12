@@ -11,7 +11,7 @@ export const UntilMiningStart = () => {
   return (
     <div className={styles.untilMiningContainer}>
       <h3 className={styles.untilMiningTitle}>До старта майнинга</h3>
-      <span className={styles.visualization} style={visualizationStyle(10 / 80)} />
+      <span className={styles.visualization} style={visualizationStyle(0 / 80)} />
       <div className={styles.descWrapper}>
         <p className={styles.untilMiningDesc}>осталось 80 дней из 80</p>
         <span className={styles.visualizationNumber}>0 TB</span>

@@ -24,9 +24,10 @@ export const Menu = ({
   // const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
   const [isCardInfoVisible, setIsCardInfoVisible] = useState(false)
   const buttonPlusClass = `${styles.menu__item} ${styles.menu__buttonPlus}`
-  const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
+  // const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
   // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
-  const usdtBalance = useAppSelector((state) => state.authNew.walletConnectBalance)
+  const limcBalance = useAppSelector((state) => state.authNew.walletConnectLimc)
+  const usdtBalance = useAppSelector((state) => state.authNew.walletConnectUsdt)
   const [lastNumbersOfCard, setLastNumbersOfCard] = useState('3580')
   const [cardBalance, setCardBalance] = useState(`$3,587`)
 

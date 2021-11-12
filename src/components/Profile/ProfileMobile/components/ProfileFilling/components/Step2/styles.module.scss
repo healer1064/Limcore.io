@@ -9,12 +9,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
   width: 100%;
+
+  &:nth-child(1) {
+    div {
+      margin-right: 14px;
+    }
+  }
 
   &:nth-child(2) {
     width: inherit;
     margin: 0 14px;
+  }
+
+  &:nth-child(3) {
+    div {
+      margin-left: 14px;
+    }
   }
 }
 
@@ -75,22 +86,21 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+
+  label {
+    margin-bottom: 20px;
+  }
 }
 
 .wrapper {
   display: flex;
   align-items: center;
-  gap: 16px;
 
-  .label {
-    width: 100px;
-    margin-bottom: 0;
+  label {
+    &:first-child {
+      margin-right: 16px;
+    }
   }
-}
-
-.edit {
-  margin-bottom: 20px;
 }
 
 .block {
