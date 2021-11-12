@@ -5,8 +5,9 @@
 
 .input {
   -webkit-appearance: none;
-  position: absolute;
   appearance: none;
+  position: absolute;
+  z-index: -10;
 
   &:checked + .checkbox {
     background-image: url('../../assets/icons/input-checkbox-check.svg');
@@ -20,6 +21,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: #fff;
   margin-right: 12px;
 }
 
