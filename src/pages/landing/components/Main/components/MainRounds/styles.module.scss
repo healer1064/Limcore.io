@@ -459,6 +459,10 @@ $barProportion: calc(0 / 80000 * 100%);
     box-sizing: border-box;
     margin: 0 0 10px 10px;
     padding: 0;
+
+    &:last-child {
+      margin-top: 10px;
+    }
   }
 
   .button {
