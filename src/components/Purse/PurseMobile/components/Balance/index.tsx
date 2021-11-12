@@ -9,7 +9,7 @@ import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
 import etherscanIcon from '@icons/etherscan1.png'
 import WalletConnect from '@walletconnect/client'
 import QRCodeModal from '@walletconnect/qrcode-modal'
-import { setIsSincWithWallet } from '../../../../../pages/auth/redux/authSlice'
+import { setIsSincWithWallet, setWalletConnectBalance } from '../../../../../pages/auth/redux/authSlice'
 import { useDispatch } from 'react-redux'
 import { LogoLimc } from './Icons/LogoLimc'
 import { LogoTrustWallet } from './Icons/LogoTrustWallet'
@@ -17,11 +17,19 @@ import GrayCrossIcon from '../../images/GrayCross/GrayCrossIcon'
 import { WalletPurseIcon } from './Icons/WalletPurseIcon'
 import classNames from 'classnames'
 import { getAccountAssets } from './walletConnect'
+// import WalletConnectProvider from '@walletconnect/web3-provider'
+
+//  Create WalletConnect Provider
+// const provider = new WalletConnectProvider({
+//   infuraId: '27e484dcd9e3efcfd25a83a78777cdf1', // Required
+// })
+// console.log(provider)
+//  Create Web3
 
 export const Balance = () => {
   // const [isSincBtnVisible, setIsSincBtnVisible] = useState(true)
   const [isBalanceVisible, setIsBalanceVisible] = useState(false)
-  const [purseFromWallet, setPurseFromWallet] = useState('')
+  // const [purseFromWallet, setPurseFromWallet] = useState('')
   const [userPurse, setUserPurse] = useState({
     address: '',
     chainId: null,
@@ -33,7 +41,8 @@ export const Balance = () => {
     useAppSelector((state) => state.auth.processType) === 'REGISTRATION',
   )
   const walletAddress = useAppSelector((state) => state.wallet.address)
-  const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
+  // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
+  const usdtBalance = useAppSelector((state) => state.authNew.walletConnectBalance)
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
   const limcCount = useAppSelector((state) => state.wallet.limcCount)
   const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
@@ -58,7 +67,7 @@ export const Balance = () => {
       throw error
     }
 
-    setPurseFromWallet('')
+    setUserPurse({ address: '', chainId: null })
     dispatch(setIsSincWithWallet(false))
     window.location.reload()
   })
@@ -76,7 +85,8 @@ export const Balance = () => {
   useEffect(() => {
     if (connector.connected) {
       dispatch(setIsSincWithWallet(true))
-      setPurseFromWallet(JSON.parse(localStorage.getItem('walletconnect')).accounts[0])
+      const dataFromLS = JSON.parse(localStorage.getItem('walletconnect'))
+      setUserPurse({ address: dataFromLS.accounts[0], chainId: dataFromLS.chainId })
     }
   }, [])
 
@@ -86,14 +96,12 @@ export const Balance = () => {
       connector.createSession()
     }
 
-    // Subscribe to connection events
     connector.on('connect', (error, payload) => {
       if (error) {
         throw error
       }
-      // Get provided accounts and chainId
+
       const { accounts, chainId } = payload.params[0]
-      // setPurseFromWallet(accounts[0])у
       setUserPurse({ address: accounts[0], chainId })
 
       dispatch(setIsSincWithWallet(true))
@@ -107,8 +115,7 @@ export const Balance = () => {
 
   useEffect(() => {
     if (userPurse.chainId) {
-      // getAccountAssets(userPurse.address, userPurse.chainId)
-      getAccountAssets(userPurse.chainId)
+      getAccountAssets(userPurse.address).then((res) => dispatch(setWalletConnectBalance(res)))
     }
   }, [userPurse])
 
@@ -141,9 +148,6 @@ export const Balance = () => {
 
       <div className={styles.trust}>
         <div className={logosClass}>
-          {/* <LogoLimc />
-          <GrayCrossIcon />
-          <LogoTrustWallet /> */}
           <div className={logosContClass}>
             <LogoLimc />
           </div>
@@ -158,7 +162,7 @@ export const Balance = () => {
           {isSinc ? (
             <>
               <WalletPurseIcon className={styles.trust_walletpurse} />
-              {purseFromWallet.substr(0, 9)}...{purseFromWallet.slice(-7)}
+              {userPurse.address.substr(0, 9)}...{userPurse.address.slice(-7)}
             </>
           ) : (
             'Синхронизировать'
@@ -171,13 +175,6 @@ export const Balance = () => {
         )}
       </div>
 
-      {/* {isSincBtnVisible ? (
-        <ButtonBig className={styles.sinc} onClick={sincWithWallet}>
-          Синхронизация с Trust Wallet
-        </ButtonBig>
-      ) : (
-        <div className={classNames(styles.timer)}>Hello</div>
-      )} */}
       <div className={styles.progressContainer}>
         <div className={styles.progress}>
           <span className={styles.bar}>{}</span>
