@@ -291,6 +291,10 @@ $barProportion: calc(0 / 80000 * 100%);
   }
 }
 
+.date__mobile {
+  display: none;
+}
+
 .info {
   display: flex;
   gap: 42px;
@@ -431,9 +435,9 @@ $barProportion: calc(0 / 80000 * 100%);
   .roadContainer {
     display: grid;
     position: relative;
-    grid-template-columns: 30px 0px 1fr;
+    grid-template-columns: 30px 1fr;
     grid-template-rows: minmax(min-content, max-content);
-    grid-template-areas: 'empty shell road';
+    grid-template-areas: 'empty road';
     margin: 20px 0 0;
     padding: 0;
     box-sizing: border-box;
@@ -441,12 +445,12 @@ $barProportion: calc(0 / 80000 * 100%);
 
   .road {
     grid-area: road;
-    margin-top: 19px;
+    margin-top: 0;
   }
 
   .round {
     margin-bottom: 14px;
-    margin-top: 10px;
+    margin-top: 0;
 
     &:last-child {
       margin-bottom: 30px;
@@ -463,51 +467,20 @@ $barProportion: calc(0 / 80000 * 100%);
   }
 
   .shell {
-    grid-area: shell;
-    position: absolute;
-    top: 0px;
-    bottom: 0;
-    margin-top: 0;
+    display: none;
+  }
+
+  .date__mobile {
+    display: flex;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #4f535a;
     box-sizing: border-box;
-  }
-
-  .lines {
-    flex-direction: column;
-  }
-
-  .line {
-    border: none;
-
-    &:last-child {
-      flex: 3;
-      border: none;
-    }
-  }
-
-  .dates {
-    flex-direction: column;
-    height: 100%;
+    margin: 0 0 10px 10px;
     padding: 0;
-  }
-
-  .date {
-    flex-direction: column;
-    white-space: nowrap;
-    position: relative;
-
-    &__span {
-      display: flex;
-      position: absolute;
-      top: 0px;
-      left: 10px;
-    }
-
-    &__lastSpan {
-      display: flex;
-      position: absolute;
-      bottom: 0px;
-      left: 10px;
-    }
   }
 
   .button {
@@ -531,7 +504,7 @@ $barProportion: calc(0 / 80000 * 100%);
 
   .emptyContainer {
     display: flex;
-    margin: 0 0 10px 0;
+    margin: 0 0 17px 0;
     padding: 0;
     box-sizing: border-box;
     width: 100%;
@@ -545,7 +518,7 @@ $barProportion: calc(0 / 80000 * 100%);
       padding: 0;
       box-sizing: border-box;
       width: 100%;
-      height: 150px;
+      height: 205px;
       border-top: 2px solid #4a70f8;
       border-left: 4px solid #4a70f8;
       border-bottom: 2px solid #4a70f8;
