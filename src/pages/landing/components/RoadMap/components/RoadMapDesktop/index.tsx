@@ -224,6 +224,7 @@ export const RoadMapDesktop = () => {
 
   return (
     <div className={Styles.container}>
+      <span className={Styles.blueLine} />
       <button className={`${Styles.scrollButton} ${Styles.scrollButtonLeft}`} type='button' onClick={scrollLeft}>
         <ArrowRight className={Styles.scrollIcon} />
       </button>

@@ -320,13 +320,13 @@
 }
 
 .trust_logos_cont__success {
-  padding: 2px 3px;
+  padding: 3.5px 3px 0 3px;
   border-radius: 50%;
   border: 2px solid #4DBE28;
 
-  & > svg:nth-child(1) {
-    transform: translateY(2px);
-  }
+  // & > svg:nth-child(1) {
+  //   transform: translateY(2px);
+  // }
 }
 
 .trust_cross_success {

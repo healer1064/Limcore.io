@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 
 import { Balance } from './components/Balance'
@@ -51,6 +51,10 @@ export const PurseMobile: FC = () => {
   const limcBalance = useAppSelector((state) => state.authNew.walletConnectLimc)
 
   const handleSetValue = (event) => setValue(event.target.value)
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   // const [displayPopup, setDisplayPopup] = useState(false)
   const closePopup = () => setViewContent('')
