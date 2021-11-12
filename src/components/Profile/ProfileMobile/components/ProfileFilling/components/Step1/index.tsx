@@ -123,7 +123,7 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
               <img src={calendarIcon} alt='Иконка' />
             </div>
           </Label>
-          <Label className={Styles.edit} titleText='Пол*'>
+          <Label className={Styles.label} titleText='Пол*'>
             <div className={Styles.radios}>
               <Label>
                 <InputRadio

@@ -13,17 +13,26 @@ import { ButtonSmall } from '../../../../../ui-kit/ButtonSmall'
 import { ToggleButton } from '../../../../../ui-kit/ToggleButton'
 
 export const AddAuth: React.FC = () => {
-  const [yesAuth] = useState(true)
-  const [offAuth, setOffAuth] = useState(false)
-  const [checkedToggle, setCheckedToggle] = useState(true)
-
   const dispatch = useAppDispatch()
   const step = useAppSelector((state) => state.cabinet.step)
+  const userData = useAppSelector((state) => state.user.userData)
+  const is2FA = useAppSelector((state) => state.user.is2FA)
+  const [offAuth, setOffAuth] = useState(false)
+  const [checkedToggle, setCheckedToggle] = useState(true)
 
   const nextStep = (step) => dispatch(changeStep(step))
 
   const changeOffAuth = (event) => {
-    setCheckedToggle(event.target.checked)
+    if (!event.target.checked) {
+      setOffAuth(true)
+    } else {
+      setCheckedToggle(event.target.checked)
+    }
+  }
+
+  const off2fa = () => {
+    setOffAuth(false)
+    setCheckedToggle(false)
   }
 
   const changePhone = () => {
@@ -36,7 +45,7 @@ export const AddAuth: React.FC = () => {
       <>
         {step === 0 && (
           <>
-            {yesAuth ? (
+            {is2FA ? (
               <>
                 <div className={Styles.block}>
                   <span className={Styles.caption}>Двухфакторная аутентификация включена</span>
@@ -47,7 +56,7 @@ export const AddAuth: React.FC = () => {
                   <div className={Styles.wrapper}>
                     <div className={Styles.container}>
                       <span className={Styles.title}>Приложение привязано к номеру</span>
-                      <span className={Styles.subtitle}>+7 (913) 654-73-87</span>
+                      <span className={Styles.subtitle}>{userData.phone}</span>
                     </div>
                     <ToggleButton onChange={changeOffAuth} checked={checkedToggle} />
                   </div>
@@ -82,7 +91,7 @@ export const AddAuth: React.FC = () => {
         <Popup closePopup={() => setOffAuth(false)}>
           <span className={Styles.designation}>Выключить двухфакторную аутентификацию?</span>
           <div className={Styles.buttons}>
-            <ButtonBig>Выключить</ButtonBig>
+            <ButtonBig onClick={off2fa}>Выключить</ButtonBig>
             <ButtonBig className={Styles.button} onClick={() => setOffAuth(false)}>
               Отмена
             </ButtonBig>

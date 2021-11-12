@@ -35,7 +35,7 @@ import { Purse } from '@components/Purse'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getWalletAdress, getWalletBalance, getLimcPrice, getLimcAmount } from '../Wallet/redux/walletSlice'
-import { getUser } from '@app/redux/userSlice'
+import { getUser, setIs2FA } from '@app/redux/userSlice'
 import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
 import { TRANSLATION } from '../../translation'
 import { setTranslation } from '../../pages/cabinet/redux/cabinetSlice'
@@ -50,7 +50,6 @@ const App = () => {
   // const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
   // const user = useAppSelector((state) => state.user.userData)
   const isAuth = useAppSelector((state) => state.authNew.isAuth)
-
   const language = useAppSelector((state) => state.cabinet.language)
   language === 'ru' ? dispatch(setTranslation(TRANSLATION.ru)) : dispatch(setTranslation(TRANSLATION.en))
 
@@ -59,6 +58,7 @@ const App = () => {
 
     if (tokenObj.access) {
       setIsLoading(true)
+      dispatch(setIs2FA(tokenObj.is_2fa))
 
       dispatch(checkToken({ token: tokenObj.access }))
         .then(() => {

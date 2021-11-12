@@ -39,8 +39,16 @@ export const Step1: React.FC<StepProps> = ({ nextStep }) => {
           <div className={Styles.block}>
             <img src={authIcon} alt='Иконка' />
             <div className={Styles.stors}>
-              <img src={storeIcon} alt='Иконка' />
-              <img src={playIcon} alt='Иконка' />
+              <a
+                href='https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <img src={storeIcon} alt='Иконка' />
+              </a>
+              <a href='https://apps.apple.com/ru/app/google-authenticator/id388497605' target='_blank' rel='noreferrer'>
+                <img src={playIcon} alt='Иконка' />
+              </a>
             </div>
           </div>
         </div>
