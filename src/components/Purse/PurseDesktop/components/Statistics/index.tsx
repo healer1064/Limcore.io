@@ -44,14 +44,13 @@ export const Statistics = ({ onClick }: IStatisticsProps) => {
 
   const handleDisappearClick = () => {
     console.log('handleDisappearClick')
-    onClick()
   }
 
   return (
     <div className={styles.statistics}>
       <div className={styles.header}>
         <h3 className={styles.title}>До старта майнинга</h3>
-        <button type='button' className={styles.tooltip}>
+        <button type='button' className={styles.tooltip} onClick={onClick}>
           <ArrowRight />
         </button>
       </div>

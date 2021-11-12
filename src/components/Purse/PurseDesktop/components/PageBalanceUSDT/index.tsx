@@ -4,17 +4,20 @@ import buyIcon from '@icons/buy.svg'
 import sellIcon from '@icons/sellBlue.svg'
 import tradeIcon from '@icons/changeBlue.svg'
 import { TransactionsDetails } from '@components/Purse/PurseDesktop/components/Transactions/components/TransactionsDetails'
+import { Transactions } from '../Transactions'
 
 type PageBalanceUSDTPropsType = {
   usdtBalance: any
   isOpen: any
   handlePageBalanceUSDTCloseClick: () => void
+  openProfile: () => void
 }
 
 export const PageBalanceUSDT: React.FC<PageBalanceUSDTPropsType> = ({
   usdtBalance,
   isOpen,
   handlePageBalanceUSDTCloseClick,
+  openProfile,
 }) => {
   return (
     <div className={`${isOpen ? styles.pageBalanceUSDT : styles.pageBalanceUSDT_invisible}`}>
@@ -91,7 +94,8 @@ export const PageBalanceUSDT: React.FC<PageBalanceUSDTPropsType> = ({
           Вывести
         </div>
       </div>
-      <TransactionsDetails onClick={() => {}} />
+      {/* <TransactionsDetails onClick={() => {}} /> */}
+      <Transactions onProfileClick={openProfile} onTransactionsClick={() => {}} isUserHasTransactions />
     </div>
   )
 }

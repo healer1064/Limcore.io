@@ -28,6 +28,10 @@ import { Modal } from '../PurseDesktop/components/Modal'
 import { ModalHeader } from '../PurseDesktop/components/ModalHeader'
 import { RoadMap } from './components/RoadMap'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
+import { setIsAuth } from '../../../pages/auth/redux/auth.slice'
+import { useHistory } from 'react-router'
+import { UntilMiningStart } from './components/UntilMiningStart/UntilMiningStart'
+import { LogoutIcon } from '@icons/LogoutIcon'
 
 export const PurseDesktop = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
@@ -61,9 +65,11 @@ export const PurseDesktop = () => {
   const userName = useAppSelector((state) => state.user.userData?.name)
   const userPhone = useAppSelector((state) => state.user.userData?.phone)
   const currentName = userName || userPhone
-  const usdtBalance = useAppSelector((state) => state.authNew.walletConnectBalance)
+  const usdtBalance = useAppSelector((state) => state.authNew.walletConnectBalance) || 0
 
   const handleSetValue = (event) => setValue(event.target.value)
+  const history = useHistory()
+  const [UntilMiningModalOpen, setUntilMiningModalOpen] = useState(false)
 
   // const [displayPopup, setDisplayPopup] = useState(false)
   const closePopup = () => setViewContent('')
@@ -76,10 +82,6 @@ export const PurseDesktop = () => {
   }
   const handleStartClick = () => {
     console.log('Start mining')
-  }
-
-  const handleProfileClick = () => {
-    console.log('Profile click')
   }
 
   const handleTransactionsClick = () => {
@@ -128,6 +130,22 @@ export const PurseDesktop = () => {
     setIsProfileOpen(true)
   }
 
+  const handleUntilMiningModalClose = () => {
+    setUntilMiningModalOpen(false)
+  }
+
+  const handleUntilMiningModalOpen = () => {
+    console.log('qq')
+    setUntilMiningModalOpen(true)
+  }
+
+  const onLogout = () => {
+    localStorage.clear()
+    dispatch(setIsAuth(false))
+    history.push('/')
+    location.reload()
+  }
+
   return (
     <section className={styles.purse}>
       <Wallpaper />
@@ -148,20 +166,22 @@ export const PurseDesktop = () => {
           >
             Трансляции
           </Link>
-          <Link
+          {/* <Link
             className={classnames([styles.nav__link, isChatOpen && styles.nav__link_active])}
             to='chat'
             onClick={() => setIsChatOpen(true)}
           >
             Чат
-          </Link>
+          </Link> */}
         </nav>
         <div className={styles.profileGroup} onClick={handleProfileOpen}>
           <img className={styles.profileIcon} src={profile} />
           <p className={styles.profileName}>{currentName}</p>
+          <button className={styles.logoutBtn} onClick={onLogout}>
+            <LogoutIcon />
+          </button>
         </div>
-        <Modal active={isProfileOpen} setActive={handleProfileClose}>
-          <ModalHeader title={currentName} onClick={handleProfileClose} />
+        <Modal active={isProfileOpen} setActive={handleProfileClose} crossFlag>
           <ProfileMobile />
         </Modal>
       </header>
@@ -172,8 +192,14 @@ export const PurseDesktop = () => {
             handleBalanceUsdtOpenClick={() => setIsUsdtInfoVisible(true)}
             handleBalanceUsdtCloseClick={() => setIsUsdtInfoVisible(false)}
             openPopup={() => setViewContent('balance')}
-            handlePageBalanceLIMCOpenClick={() => setIsPageBalanceLIMCVisible(true)}
-            handlePageBalanceUSDTOpenClick={() => setIsPageBalanceUSDTVisible(true)}
+            handlePageBalanceLIMCOpenClick={() => {
+              setIsPageBalanceLIMCVisible(true)
+              setWindow('main')
+            }}
+            handlePageBalanceUSDTOpenClick={() => {
+              setIsPageBalanceUSDTVisible(true)
+              setWindow('main')
+            }}
             handlePageCardBalanceOpenClick={() => setIsPageCardBalanceVisible(true)}
             handlePageBalanceLIMCCloseClick={() => setIsPageBalanceLIMCVisible(false)}
             handlePageBalanceUSDTCloseClick={() => setIsPageBalanceUSDTVisible(false)}
@@ -183,24 +209,26 @@ export const PurseDesktop = () => {
             isPageCardBalanceVisible={isPageCardBalanceVisible}
           />
         </div>
-        <PageCardBalance
-          usdtBalance={usdtBalance}
-          isOpen={isPageCardBalanceVisible}
-          handlePageCardBalanceCloseClick={() => setIsPageCardBalanceVisible(false)}
-        />
-        <PageBalanceLIMC
-          limcBalance={limcBalance}
-          isOpen={isPageBalanceLIMCVisible}
-          handlePageBalanceLIMCCloseClick={() => setIsPageBalanceLIMCVisible(false)}
-        />
-        <PageBalanceUSDT
-          usdtBalance={usdtBalance}
-          isOpen={isPageBalanceUSDTVisible}
-          handlePageBalanceUSDTCloseClick={() => setIsPageBalanceUSDTVisible(false)}
-        />
         {window === 'broadcasts' && <BroadcastsDesktop />}
         {window === 'main' && (
           <>
+            <PageCardBalance
+              usdtBalance={usdtBalance}
+              isOpen={isPageCardBalanceVisible}
+              handlePageCardBalanceCloseClick={() => setIsPageCardBalanceVisible(false)}
+            />
+            <PageBalanceLIMC
+              limcBalance={limcBalance}
+              isOpen={isPageBalanceLIMCVisible}
+              handlePageBalanceLIMCCloseClick={() => setIsPageBalanceLIMCVisible(false)}
+              openProfile={handleProfileOpen}
+            />
+            <PageBalanceUSDT
+              usdtBalance={usdtBalance}
+              isOpen={isPageBalanceUSDTVisible}
+              handlePageBalanceUSDTCloseClick={() => setIsPageBalanceUSDTVisible(false)}
+              openProfile={handleProfileOpen}
+            />
             <div
               className={`${
                 isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
@@ -232,9 +260,12 @@ export const PurseDesktop = () => {
                 {isLimcBought?.length ? (
                   <StartMining onButtonClick={handleStartClick} />
                 ) : (
-                  <Statistics onClick={handleShowMoreClick} />
+                  <Statistics onClick={handleUntilMiningModalOpen} />
                 )}
               </div>
+              <Modal active={UntilMiningModalOpen} setActive={handleUntilMiningModalClose} crossFlag>
+                <UntilMiningStart />
+              </Modal>
             </div>
             <div
               className={`${
@@ -245,7 +276,7 @@ export const PurseDesktop = () => {
             >
               {isWalletVisible && <Wallet />}
               <Transactions
-                onProfileClick={handleProfileClick}
+                onProfileClick={handleProfileOpen}
                 onTransactionsClick={handleTransactionsClick}
                 isUserHasTransactions={isUserHasTransactions}
               />

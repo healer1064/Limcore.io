@@ -43,7 +43,8 @@ export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTra
         <TransactionsDetails onClick={handleTransactionsClose} />
       </Modal>
       <p className={styles.transactions__subtitle}>
-        У вас еще нет транзакций. Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
+        У&nbsp;вас еще нет транзакций. Мы&nbsp;предоставим доступ ко&nbsp;всем функциям кошелька после заполнения
+        профиля.
       </p>
       <div className={styles.transactions__cont}>
         <button type='button' className={styles.transactions__profileButton} onClick={onProfileClick}>
