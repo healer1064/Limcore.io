@@ -360,6 +360,7 @@
   border: 1px solid $color-4A-blue;
   border-radius: 14px;
   &:hover {
-    outline: 1px solid $color-4A-blue;
+    border: 1px solid $color-31-blue;
+    color: $color-31-blue;
   }
 }
