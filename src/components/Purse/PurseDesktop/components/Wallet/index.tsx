@@ -8,15 +8,15 @@ import 'swiper/swiper.scss'
 import 'swiper/components/navigation/navigation.scss'
 import 'swiper/components/pagination/pagination.scss'
 import 'swiper/components/scrollbar/scrollbar.scss'
-import SwiperCore, { Keyboard, Navigation } from 'swiper'
-SwiperCore.use([Navigation, Keyboard])
+import SwiperCore, { Keyboard, Navigation, Pagination } from 'swiper'
+SwiperCore.use([Navigation, Keyboard, Pagination])
 
 // type WalletPropsType = {}
 
 export const Wallet = () => {
   return (
     <div className={styles.swiperWrapper}>
-      <Swiper className={styles.swiper} spaceBetween={50} slidesPerView={1} navigation keyboard>
+      <Swiper className={styles.swiper} spaceBetween={50} slidesPerView={1} navigation keyboard pagination>
         <SwiperSlide className={styles.slide}>
           <div className={styles.wallet}>
             <p className={styles.wallet__title}>Привяжите внешние кошельки</p>

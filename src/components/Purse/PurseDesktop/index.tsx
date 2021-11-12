@@ -27,6 +27,7 @@ import { PageCardBalance } from '@components/Purse/PurseDesktop/components/PageC
 import { Modal } from '../PurseDesktop/components/Modal'
 import { ModalHeader } from '../PurseDesktop/components/ModalHeader'
 import { RoadMap } from './components/RoadMap'
+import { ProfileMobile } from '@components/Profile/ProfileMobile'
 
 export const PurseDesktop = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
@@ -40,7 +41,6 @@ export const PurseDesktop = () => {
   const isLimcBought = useAppSelector((state) => state.auth.transactions)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isUserHasTransactions, setIsUserHasTransactions] = useState(true)
-  const [name, setName] = useState('Константин К.')
 
   const [isErrorVisible, setIsErrorVisible] = useState(false)
   const [isSuccessVisible, setIsSuccessVisible] = useState(false)
@@ -58,6 +58,9 @@ export const PurseDesktop = () => {
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
   const [isProfileOpen, setIsProfileOpen] = useState(false)
   // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
+  const userName = useAppSelector((state) => state.user.userData?.name)
+  const userPhone = useAppSelector((state) => state.user.userData?.phone)
+  const currentName = userName || userPhone
   const usdtBalance = useAppSelector((state) => state.authNew.walletConnectBalance)
 
   const handleSetValue = (event) => setValue(event.target.value)
@@ -128,8 +131,8 @@ export const PurseDesktop = () => {
   return (
     <section className={styles.purse}>
       <Wallpaper />
-      <Logo />
       <header className={styles.header}>
+        <Logo />
         <nav className={styles.nav}>
           <Link
             className={classnames([styles.nav__link, window === 'main' && styles.nav__link_active])}
@@ -155,11 +158,11 @@ export const PurseDesktop = () => {
         </nav>
         <div className={styles.profileGroup} onClick={handleProfileOpen}>
           <img className={styles.profileIcon} src={profile} />
-          <p className={styles.profileName}>{name}</p>
+          <p className={styles.profileName}>{currentName}</p>
         </div>
         <Modal active={isProfileOpen} setActive={handleProfileClose}>
-          <ModalHeader title={name} onClick={handleProfileClose} />
-          <ProfileDesktop />
+          <ModalHeader title={currentName} onClick={handleProfileClose} />
+          <ProfileMobile />
         </Modal>
       </header>
       <div className={styles.purseContainer}>
@@ -195,17 +198,27 @@ export const PurseDesktop = () => {
           isOpen={isPageBalanceUSDTVisible}
           handlePageBalanceUSDTCloseClick={() => setIsPageBalanceUSDTVisible(false)}
         />
-        <div
-          className={`${
-            isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
-              ? styles.balance_invisible
-              : styles.balance
-          }`}
-        >
-          {window === 'broadcasts' && <BroadcastsDesktop />}
-        </div>
+        {window === 'broadcasts' && <BroadcastsDesktop />}
         {window === 'main' && (
           <>
+            <div
+              className={`${
+                isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
+                  ? styles.balance_invisible
+                  : styles.balance
+              }`}
+            >
+              <Balance />
+            </div>
+            <div
+              className={`${
+                isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
+                  ? styles.roadMap_invisible
+                  : styles.roadMap
+              }`}
+            >
+              <RoadMap />
+            </div>
             <div
               className={`${
                 isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
@@ -213,8 +226,6 @@ export const PurseDesktop = () => {
                   : styles.mining
               }`}
             >
-              <Balance />
-              <RoadMap />
               <h3 className={styles.detailsTitle}>Детализация майнинга</h3>
               <div className={styles.miningDetails}>
                 <Details />
