@@ -10,8 +10,8 @@ export const MainCaption: React.FC = () => {
     <div className={Styles.caption}>
       <div className={Styles.block}>
         <h1 className={Styles.title}>
-          {/* Облачный майнинг всех форков <img src={chiaIcon} alt='chia' /> */}
-          {translation.mainCaption.title} <img src={chiaIcon} alt='chia' />
+          Облачный майнинг всех форков <img src={chiaIcon} alt='chia' />
+          {/* {translation.mainCaption.title} <img src={chiaIcon} alt='chia' /> */}
         </h1>
         <h3 className={Styles.subtitle}>Самый быстрый и выгодный способ инвестирования в криптовалюту</h3>
       </div>
