@@ -131,6 +131,7 @@ export const MainRounds: React.FC = () => {
         <div className={Styles.road}>
           <div className={Styles.cover}>
             <div className={Styles.round}>
+              <span className={Styles.date__mobile}>10.01.2022</span>
               <span className={Styles.subtitle}>Раунд №2</span>
               <div className={Styles.row}>
                 <span>LIMC (min $110)</span>
@@ -138,6 +139,7 @@ export const MainRounds: React.FC = () => {
               </div>
             </div>
             <div className={Styles.round}>
+              <span className={Styles.date__mobile}>25.02.2022</span>
               <span className={Styles.subtitle}>Раунд №3</span>
               <div className={Styles.row}>
                 <span>LIMC (price and limit later)</span>
@@ -155,6 +157,7 @@ export const MainRounds: React.FC = () => {
                 <span>LIMC (price and limit later)</span>
               </div>
             </div>
+            <span className={Styles.date__mobile}>конец 2022</span>
           </div>
         </div>
         <div className={Styles.shell}>
