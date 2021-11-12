@@ -99,17 +99,11 @@ export const MainRounds: React.FC = () => {
           Майнинг начинается спустя 80 дней с момента завершения раунда. Раунд может закончиться раньше указанного срока
         </p>
       </PopupMainPage>
-      <div className={Styles.container}>
-        {/* <div className={Styles.progress}>
-          <span className={Styles.bar}>{}</span>
-          <span className={Styles.count}>
-            {limcCount} / {limcLimit}
-          </span>
-        </div> */}
-        {/* <a target='blank' rel='noopener noreferrer' className={Styles.etherscanLink} href='https://etherscan.io'>
-          <img className={Styles.etherscanIcon} src={etherscanIcon} alt='Иконка' />
-          <span className={Styles.etherscan}>Etherscan</span>
-        </a> */}
+      <div className={Styles.progress}>
+        <span className={Styles.bar}>{}</span>
+        <span className={Styles.count}>
+          {limcCount} / {limcLimit}
+        </span>
       </div>
       <div className={Styles.tempDeclaration}>
         <h4 className={Styles.tempDeclaration__title}>Старт продаж состоится 15 ноября в 00:01 по МСК</h4>

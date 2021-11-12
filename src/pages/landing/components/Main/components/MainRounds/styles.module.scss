@@ -78,16 +78,6 @@ $barProportion: calc(0 / 80000 * 100%);
   color: #3a3b3d;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-
-  img {
-    margin-top: 10px;
-  }
-}
-
 .progress {
   position: relative;
   display: flex;
@@ -95,7 +85,7 @@ $barProportion: calc(0 / 80000 * 100%);
   background: #dbe0ee;
   border-radius: 6px;
   padding: 5px 10px;
-  margin-top: 30px;
+  margin: 30px auto;
   width: 100%;
 }
 
@@ -365,6 +355,7 @@ $barProportion: calc(0 / 80000 * 100%);
     width: 100%;
     padding: 0 0 15px 0;
     gap: 6px;
+    border-bottom: 1px solid #DBDFEE;
   }
 
   .buttons {
@@ -373,12 +364,7 @@ $barProportion: calc(0 / 80000 * 100%);
   }
 
   .progress {
-    margin-top: 15px;
-  }
-
-  .container {
-    padding-bottom: 20px;
-    border-top: 1px solid #dbdfee;
+    margin: 15px auto;
   }
 
   .wrap {
