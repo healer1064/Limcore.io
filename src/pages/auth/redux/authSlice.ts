@@ -131,6 +131,7 @@ export const authSlice = createSlice({
   initialState: {
     isAuth: false,
     isSincWithWallet: false,
+    walletConnectBalance: '',
     processType: 'authorization',
     stepRegistration: 1,
     stepAuthorization: 1,
@@ -150,6 +151,9 @@ export const authSlice = createSlice({
     },
     setIsSincWithWallet: (state, { payload }) => {
       state.isSincWithWallet = payload
+    },
+    setWalletConnectBalance: (state, { payload }) => {
+      state.walletConnectBalance = payload
     },
     setProcessType: (state, { payload }) => {
       state.processType = payload
@@ -262,6 +266,7 @@ export const {
   setCodeEmail,
   setPhoneOrEmail,
   setCodePhoneOrEmail,
+  setWalletConnectBalance,
 } = actions
 export const authSelector = (state: RootState) => state.auth
 
