@@ -20,7 +20,8 @@ export const Balance = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const [money, setMoney] = useState('0')
   const walletAddress = useAppSelector((state) => state.wallet.address)
-  const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
+  // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
+  const usdtBalance = useAppSelector((state) => state.authNew.walletConnectBalance)
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
   const limcCount = useAppSelector((state) => state.wallet.limcCount)
   const limcLimit = useAppSelector((state) => state.wallet.limcLimit)

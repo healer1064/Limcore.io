@@ -37,8 +37,8 @@ export const PageBalanceUSDT: React.FC<PageBalanceUSDTPropsType> = ({
         </svg>
         Назад
       </button>
-      <h1 className={styles.pageBalanceLIMC__title}>{`${usdtBalance} USDT`}</h1>
-      <p className={styles.pageBalanceLIMC__subtitle}>{`$ ${usdtBalance}`}</p>
+      <h1 className={styles.pageBalanceUSDT__title}>{`${usdtBalance} USDT`}</h1>
+      <p className={styles.pageBalanceUSDT__subtitle}>{`$ ${usdtBalance}`}</p>
       <div className={styles.items}>
         <div className={`${styles.item} ${styles.item_active}`}>
           <svg

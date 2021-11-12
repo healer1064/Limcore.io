@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
-import { balanceLimc, balanceUsdt, creditCard, plusSvg } from '../../images'
+// import { balanceLimc, balanceUsdt, creditCard, plusSvg } from '../../images'
+import { balanceLimc, balanceUsdt, creditCard } from '../../images'
 import { MenuItem } from './components/MenuItem/index'
 import { useAppSelector } from '@app/redux/hooks'
 import classNames from 'classnames'
@@ -12,7 +13,8 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
   const [isCardInfoVisible, setIsCardInfoVisible] = useState(false)
 
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
-  const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
+  // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
+  const usdtBalance = useAppSelector((state) => state.authNew.walletConnectBalance)
   const isSinc = useAppSelector((state) => state.authNew.isSincWithWallet)
 
   // const buttonPlusClass = `${styles.menu__item} ${styles.menu__buttonPlus}`
@@ -64,14 +66,14 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
         setNotActive={handleBalanceUsdtCloseClick}
         active={isUsdtInfoVisible}
       />
-      <MenuItem
-        image={creditCard}
-        title='Баланс карты'
-        balance='$0'
-        setActive={handleBalanceCardOpenClick}
-        setNotActive={handleBalanceCardCloseClick}
-        active={isCardInfoVisible}
-      />
+      {/* <MenuItem */}
+      {/*  image={creditCard} */}
+      {/*  title='Баланс карты' */}
+      {/*  balance='$0' */}
+      {/*  setActive={handleBalanceCardOpenClick} */}
+      {/*  setNotActive={handleBalanceCardCloseClick} */}
+      {/*  active={isCardInfoVisible} */}
+      {/* /> */}
     </div>
   )
 }
