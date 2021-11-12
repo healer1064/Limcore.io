@@ -37,8 +37,6 @@ import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getWalletAdress, getWalletBalance, getLimcPrice, getLimcAmount } from '../Wallet/redux/walletSlice'
 import { getUser, setIs2FA } from '@app/redux/userSlice'
 import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
-import { TRANSLATION } from '../../translation'
-import { setTranslation } from '../../pages/cabinet/redux/cabinetSlice'
 
 const App = () => {
   const dispatch = useAppDispatch()
