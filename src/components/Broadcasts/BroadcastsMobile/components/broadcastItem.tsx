@@ -5,6 +5,10 @@ import styles from '../styles.module.scss'
 export const BroadcastItem = ({ broadcast }) => {
   const [fullScreen, setFullScreen] = useState(false)
 
+  const fontFamily = {
+    fontFamily: 'Montserrat',
+  }
+
   return (
     <>
       <div className={classNames(styles.broadcast__item, fullScreen && styles.fullScreen)}>
@@ -17,8 +21,12 @@ export const BroadcastItem = ({ broadcast }) => {
         <div className={styles.fullScreenToggler} onClick={() => setFullScreen((prev) => !prev)} />
       </div>
       <div className={styles.item__text}>
-        <h3 className={styles.item__title}>{broadcast.title}</h3>
-        <p className={styles.item__number}>Камера №{broadcast.number}</p>
+        <h3 className={styles.item__title} style={fontFamily}>
+          {broadcast.title}
+        </h3>
+        <p className={styles.item__number} style={fontFamily}>
+          Камера №{broadcast.number}
+        </p>
       </div>
     </>
   )
