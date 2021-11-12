@@ -57,7 +57,8 @@ export const PurseDesktop = () => {
   const prices = useAppSelector((state) => state.wallet.limc_price)
   const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
   const [isProfileOpen, setIsProfileOpen] = useState(false)
-  const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
+  // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
+  const usdtBalance = useAppSelector((state) => state.authNew.walletConnectBalance)
 
   const handleSetValue = (event) => setValue(event.target.value)
 
