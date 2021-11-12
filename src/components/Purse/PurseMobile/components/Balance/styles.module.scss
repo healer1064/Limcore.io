@@ -49,7 +49,7 @@
     outline: none;
     box-shadow: none;
     transition: opacity .3s ease;
-    
+
     &:hover {
       transition: opacity .3s ease;
       opacity: 0.5;
@@ -138,7 +138,7 @@
     align-items: flex-end;
     width: 100%;
     max-width: 700px;
-  
+
     img {
       margin-top: 10px;
     }
@@ -153,9 +153,9 @@
       // margin-top: 15px;
       width: 100%;
     }
-  
+
     $barProportion: calc(0 / 80000 * 100%);
-    
+
     .bar {
       position: absolute;
       top: 0;
@@ -165,7 +165,7 @@
       width: $barProportion;
       height: 100%;
     }
-    
+
     .count {
       font-family: Montserrat;
       font-style: normal;
@@ -175,7 +175,7 @@
       color: #868da7;
       z-index: 3;
     }
-  
+
     .etherscan {
       font-family: Montserrat;
       font-style: normal;
@@ -184,7 +184,7 @@
       color: #4A70F8;
       text-decoration: none;
     }
-    
+
     .etherscanIcon {
       transform: translateY(6px);
       margin-top: 0 !important;
@@ -231,20 +231,20 @@
           padding-bottom: 28px;
           border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
-    
+
         &Title {
           margin: 0 0 20px 0;
-    
+
           font-size: 18px;
           font-weight: 600;
           line-height: 27px;
           color: #393C42;
         }
-  
-    
+
+
         &Purse {
           margin: 0;
-    
+
           font-size: 14px;
           font-weight: 500;
           line-height: 19px;
@@ -258,7 +258,7 @@
         }
       }
     }
-  
+
     &Down {
       .regModal {
         &Button {
@@ -290,7 +290,7 @@
   width: 100%;
 }
 
-.trust_sinc {    
+.trust_sinc {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -307,7 +307,7 @@
   color: #4A70F8;
   background-color: #ffffff;
   transition: background-color .3s ease, color .3s ease;
-  
+
   &:hover {
     color: #2D4EC5;
     border-color: #2D4EC5;

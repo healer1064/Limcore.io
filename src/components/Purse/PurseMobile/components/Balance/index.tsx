@@ -164,19 +164,13 @@ export const Balance = () => {
           <p className={styles.trust_subtitle}>Limcore Wallet синхронизирован с Trust Wallet</p>
         )}
       </div>
-
-      <div className={styles.progressContainer}>
-        <div className={styles.progress}>
-          <span className={styles.bar}>{}</span>
-          <span className={styles.count}>
-            {limcCount} / {limcLimit}
-          </span>
-        </div>
-        <a target='blank' rel='noopener noreferrer' className={styles.etherscanLink} href='https://etherscan.io'>
-          <img className={styles.etherscanIcon} src={etherscanIcon} alt='Иконка' />
-          <span className={styles.etherscan}>Etherscan</span>
-        </a>
-      </div>
+      {/* {isSincBtnVisible ? (
+        <ButtonBig className={styles.sinc} onClick={sincWithWallet}>
+          Синхронизация с Trust Wallet
+        </ButtonBig>
+      ) : (
+        <div className={classNames(styles.timer)}>Hello</div>
+      )} */}
 
       <Modal active={isBalanceVisible} setActive={() => {}}>
         <Overall onClick={handleCloseBalanceModal} money={money} limcBalance={limcBalance} usdtBalance={usdtBalance} />

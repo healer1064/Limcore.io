@@ -66,14 +66,14 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
         setNotActive={handleBalanceUsdtCloseClick}
         active={isUsdtInfoVisible}
       />
-      <MenuItem
-        image={creditCard}
-        title='Баланс карты'
-        balance='$0'
-        setActive={handleBalanceCardOpenClick}
-        setNotActive={handleBalanceCardCloseClick}
-        active={isCardInfoVisible}
-      />
+      {/* <MenuItem */}
+      {/*  image={creditCard} */}
+      {/*  title='Баланс карты' */}
+      {/*  balance='$0' */}
+      {/*  setActive={handleBalanceCardOpenClick} */}
+      {/*  setNotActive={handleBalanceCardCloseClick} */}
+      {/*  active={isCardInfoVisible} */}
+      {/* /> */}
     </div>
   )
 }
