@@ -8,7 +8,6 @@ SwiperCore.use([Navigation, Thumbs, Keyboard])
 
 export const BroadcastsDesktop = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
-
   return (
     <div className={styles.broadcastsContainer}>
       <Swiper
@@ -34,8 +33,8 @@ export const BroadcastsDesktop = () => {
         ))}
       </Swiper>
       <Swiper
-        spaceBetween={15}
-        slidesPerView={broadcastsList.length}
+        spaceBetween={2}
+        slidesPerView={broadcastsList.length - 1}
         onSwiper={setThumbsSwiper}
         className={styles.thumbSwiper}
         tag='ul'

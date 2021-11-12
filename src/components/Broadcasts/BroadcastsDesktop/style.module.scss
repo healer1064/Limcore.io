@@ -8,13 +8,12 @@ ul, li {
 }
 
 .broadcastsContainer{
-  width: 100%;
-  max-width: 900px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
 .mainSwiper {
-  width: 70%;
+  width: 90%;
   :global(.swiper-button-disabled) {
     display: none;
   }

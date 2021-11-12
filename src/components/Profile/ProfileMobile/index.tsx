@@ -19,12 +19,9 @@ import { FooterMobile } from '@components/Footer/FooterMobile'
 export const ProfileMobile: React.FC = () => {
   const dispatch = useAppDispatch()
   const userData = useAppSelector((state) => state.user.userData)
-  const data = useAppSelector((state) => state.user.data)
   const user = useAppSelector((state) => state.user.data)
   const profileComplete = useAppSelector((state) => state.cabinet.profileComplete)
   const viewContent = useAppSelector((state) => state.cabinet.viewContent)
-
-  // const handleFillingClick = () => dispatch(changeViewContent('none'))
 
   const onBackAddAuth = () => {
     dispatch(changeViewContent('addAuth'))
@@ -47,6 +44,8 @@ export const ProfileMobile: React.FC = () => {
     // }
   }, [userData])
 
+  console.log('userData', userData)
+
   return (
     <div className={Styles.profile}>
       {profileComplete ? <ProfileComplete /> : <Profile />}
@@ -54,7 +53,7 @@ export const ProfileMobile: React.FC = () => {
         {viewContent ? (
           <>
             {viewContent === 'filling' && (
-              <Container title='Заполните профиль' /* onClick={handleFillingClick} */>
+              <Container title='Заполните профиль'>
                 <ProfileFilling />
               </Container>
             )}
