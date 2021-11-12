@@ -1,6 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { apiTypes } from '@app/apiTypes'
+// import { apiTypes } from '@app/apiTypes'
 import { api } from '@app/api'
+
+// export const postUserEmail = createAsyncThunk('user/setUserEmail', async (data: { userId: string; email: string }) => {
+//   const response = await api.post<apiTypes.UserData>(`user/${data.userId}/email/${data.email}`, {})
+//   return response.data
+// })
 
 export const getUser = createAsyncThunk('user/getUser', async () => {
   const response = await api.get('users/me/')
@@ -17,8 +22,18 @@ export const updateProfileUser = createAsyncThunk('user/updateProfileUser', asyn
   return response.data
 })
 
-export const postUserEmail = createAsyncThunk('user/setUserEmail', async (data: { userId: string; email: string }) => {
-  const response = await api.post<apiTypes.UserData>(`user/${data.userId}/email/${data.email}`, {})
+export const get2FAUrl = createAsyncThunk('user/get2FAUrl', async (data: any) => {
+  const response = await api.get('users/totp/create/', data)
+  return response.data
+})
+
+export const confirm2FA = createAsyncThunk('user/confirm2FA', async (data: any) => {
+  const response = await api.get('users/totp/confirm/{code}/', data)
+  return response.data
+})
+
+export const login2FA = createAsyncThunk('user/login2FA', async (data: any) => {
+  const response = await api.post('users/login/2fa/', data)
   return response.data
 })
 
@@ -30,6 +45,7 @@ export const userSlice = createSlice({
     userData: null,
     email: null,
     middleName: false,
+    is2FA: null,
     data: {
       avatar: '',
       first_name: '',
@@ -56,6 +72,9 @@ export const userSlice = createSlice({
     },
   },
   reducers: {
+    setIs2FA(state, { payload }) {
+      state.is2FA = payload
+    },
     setUserId(state, { payload }) {
       state.userId = payload
     },
@@ -87,6 +106,6 @@ export const userSlice = createSlice({
   },
 })
 
-export const { setUserId, setDealerId, setUserEmail, setData, setMiddleName } = userSlice.actions
+export const { setIs2FA, setUserId, setDealerId, setUserEmail, setData, setMiddleName } = userSlice.actions
 
 export default userSlice.reducer
