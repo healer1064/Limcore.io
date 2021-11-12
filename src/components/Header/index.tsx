@@ -92,57 +92,59 @@ export const Header: React.FC = () => {
             </>
           ) : null}
           <div className={Styles.lang}>
-            <div
-              className={classNames(Styles.block, showPopapLanguage && Styles.active)}
-              onClick={() => setShowPopapLanguage(!showPopapLanguage)}
-            >
-              <img src={language === 'ru' ? RUS : ENG} alt='Флаг' className={Styles.img} />
-              <span className={Styles.langTitle}>{language}</span>
-              <span className={classNames(showPopapLanguage && Styles.arrowActive, Styles.arrow)}>
-                <VectorIcon />
-              </span>
-            </div>
-            <div className={classNames(Styles.header__langoptions, showPopapLanguage && Styles.active)}>
-              <div className={`${Styles.langoption} ${Styles.langoption_ru}`}>
-                <input
-                  className={Styles.langoption__checked}
-                  type='radio'
-                  name='radio1'
-                  id='answer1'
-                  onClick={() => handleLanguageChange('ru')}
-                  checked
-                  readOnly
-                />
-                <div className={Styles.lang_box}>
-                  <img src={RUS} alt='Флаг' className={Styles.lang__img} />
-                  <label
-                    className={`${Styles.langoption__text} ${language === 'ru' && Styles.langoption__text_checked}`}
-                    htmlFor='answer1'
-                  >
-                    RU
-                  </label>
-                </div>
-              </div>
-              <div className={`${Styles.langoption} ${Styles.langoption_en}`}>
-                <input
-                  className={Styles.langoption__checked}
-                  type='radio'
-                  name='radio1'
-                  id='answer2'
-                  onClick={() => handleLanguageChange('en')}
-                  readOnly
-                />
-                <div className={Styles.lang_box}>
-                  <img src={ENG} alt='Флаг' className={Styles.lang__img} />
-                  <label
-                    className={`${Styles.langoption__text} ${language === 'en' && Styles.langoption__text_checked}`}
-                    htmlFor='answer2'
-                  >
-                    EN
-                  </label>
-                </div>
-              </div>
-            </div>
+            <img src={RUS} alt='Флаг' className={Styles.img} />
+            <span className={Styles.langTitle}>RU</span>
+            {/* <div */}
+            {/*  className={classNames(Styles.block, showPopapLanguage && Styles.active)} */}
+            {/*  onClick={() => setShowPopapLanguage(!showPopapLanguage)} */}
+            {/* > */}
+            {/*  <img src={language === 'ru' ? RUS : ENG} alt='Флаг' className={Styles.img} /> */}
+            {/*  <span className={Styles.langTitle}>{language}</span> */}
+            {/*  <span className={classNames(showPopapLanguage && Styles.arrowActive, Styles.arrow)}> */}
+            {/*    <VectorIcon /> */}
+            {/*  </span> */}
+            {/* </div> */}
+            {/* <div className={classNames(Styles.header__langoptions, showPopapLanguage && Styles.active)}> */}
+            {/*  <div className={`${Styles.langoption} ${Styles.langoption_ru}`}> */}
+            {/*    <input */}
+            {/*      className={Styles.langoption__checked} */}
+            {/*      type='radio' */}
+            {/*      name='radio1' */}
+            {/*      id='answer1' */}
+            {/*      onClick={() => handleLanguageChange('ru')} */}
+            {/*      checked */}
+            {/*      readOnly */}
+            {/*    /> */}
+            {/*    <div className={Styles.lang_box}> */}
+            {/*      <img src={RUS} alt='Флаг' className={Styles.lang__img} /> */}
+            {/*      <label */}
+            {/*        className={`${Styles.langoption__text} ${language === 'ru' && Styles.langoption__text_checked}`} */}
+            {/*        htmlFor='answer1' */}
+            {/*      > */}
+            {/*        RU */}
+            {/*      </label> */}
+            {/*    </div> */}
+            {/*  </div> */}
+            {/*  <div className={`${Styles.langoption} ${Styles.langoption_en}`}> */}
+            {/*    <input */}
+            {/*      className={Styles.langoption__checked} */}
+            {/*      type='radio' */}
+            {/*      name='radio1' */}
+            {/*      id='answer2' */}
+            {/*      onClick={() => handleLanguageChange('en')} */}
+            {/*      readOnly */}
+            {/*    /> */}
+            {/*    <div className={Styles.lang_box}> */}
+            {/*      <img src={ENG} alt='Флаг' className={Styles.lang__img} /> */}
+            {/*      <label */}
+            {/*        className={`${Styles.langoption__text} ${language === 'en' && Styles.langoption__text_checked}`} */}
+            {/*        htmlFor='answer2' */}
+            {/*      > */}
+            {/*        EN */}
+            {/*      </label> */}
+            {/*    </div> */}
+            {/*  </div> */}
+            {/* </div> */}
           </div>
           {!isAuth && (
             <button className={btnClass} onClick={handleLoginModalOpen}>

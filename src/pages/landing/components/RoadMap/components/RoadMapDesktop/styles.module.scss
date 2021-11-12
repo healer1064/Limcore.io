@@ -93,6 +93,19 @@
   display: none;
 }
 
+.blueLine {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  height: 6px;
+  width: 100%;
+  background-color: #4A70F8;
+  position: absolute;
+  z-index: -2;
+  top: 52%;
+}
+
 @media screen and (max-width: 1450px) {
   .roadMap {
     width: 100%;
