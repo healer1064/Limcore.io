@@ -159,9 +159,11 @@ export const Balance = () => {
           )}
         </button>
         {!isSinc ? (
-          <p className={styles.trust_subtitle}>Для старта майнинга синхронизируйте Limcore Wallet с Trust Wallet</p>
+          <p className={styles.trust_subtitle}>
+            Для старта майнинга синхронизируйте Limcore Wallet с внешним кошельком
+          </p>
         ) : (
-          <p className={styles.trust_subtitle}>Limcore Wallet синхронизирован с Trust Wallet</p>
+          <p className={styles.trust_subtitle}>Limcore Wallet синхронизирован с внешним кошельком</p>
         )}
       </div>
       {/* {isSincBtnVisible ? (
