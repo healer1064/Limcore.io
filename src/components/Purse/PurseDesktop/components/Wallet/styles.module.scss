@@ -2,7 +2,7 @@
 
 .wallet {
   padding: 0 50px;
-  margin: 0 20px;
+  margin: 60px 20px;
   background-color: $color-cyan-pale;
   border-radius: 14px;
   max-height: 137px;
@@ -38,7 +38,8 @@
 
   &__image {
     position: absolute;
-    bottom: 0;
+    top: 50%;
+    transform: translate(0, -50%);
     right: 10%;
     width: 140px;
   }
@@ -56,14 +57,6 @@
   background-color: transparent;
   padding: 14px 0 26px;
   margin: 0;
-}
-
-.scrollButtonLeft {
-
-}
-
-.scrollButtonRight {
-  
 }
 
 .scrollIcon {
@@ -148,7 +141,7 @@
 
 @media screen and (max-width: 1230px) {
   .wallet__image {
-    right: 10%;
+    right: 0;
   }
 }
 

@@ -194,17 +194,27 @@ export const PurseDesktop = () => {
           isOpen={isPageBalanceUSDTVisible}
           handlePageBalanceUSDTCloseClick={() => setIsPageBalanceUSDTVisible(false)}
         />
-        <div
-          className={`${
-            isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
-              ? styles.balance_invisible
-              : styles.balance
-          }`}
-        >
-          {window === 'broadcasts' && <BroadcastsDesktop />}
-        </div>
+        {window === 'broadcasts' && <BroadcastsDesktop />}
         {window === 'main' && (
           <>
+            <div
+              className={`${
+                isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
+                  ? styles.balance_invisible
+                  : styles.balance
+              }`}
+            >
+              <Balance />
+            </div>
+            <div
+              className={`${
+                isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
+                  ? styles.roadMap_invisible
+                  : styles.roadMap
+              }`}
+            >
+              <RoadMap />
+            </div>
             <div
               className={`${
                 isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
@@ -212,8 +222,6 @@ export const PurseDesktop = () => {
                   : styles.mining
               }`}
             >
-              <Balance />
-              <RoadMap />
               <h3 className={styles.detailsTitle}>Детализация майнинга</h3>
               <div className={styles.miningDetails}>
                 <Details />
