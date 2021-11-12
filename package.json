@@ -28,6 +28,7 @@
     "node-sass": "^6.0.0",
     "normalize.scss": "^0.1.0",
     "notistack": "^1.0.10",
+    "qrcode.react": "^1.0.1",
     "react": "^17.0.2",
     "react-countdown": "^2.3.2",
     "react-countdown-hook": "^1.1.0",
