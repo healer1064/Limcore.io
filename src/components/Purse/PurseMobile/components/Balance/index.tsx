@@ -17,19 +17,9 @@ import GrayCrossIcon from '../../images/GrayCross/GrayCrossIcon'
 import { WalletPurseIcon } from './Icons/WalletPurseIcon'
 import classNames from 'classnames'
 import { getAccountAssets } from './walletConnect'
-// import WalletConnectProvider from '@walletconnect/web3-provider'
-
-//  Create WalletConnect Provider
-// const provider = new WalletConnectProvider({
-//   infuraId: '27e484dcd9e3efcfd25a83a78777cdf1', // Required
-// })
-// console.log(provider)
-//  Create Web3
 
 export const Balance = () => {
-  // const [isSincBtnVisible, setIsSincBtnVisible] = useState(true)
   const [isBalanceVisible, setIsBalanceVisible] = useState(false)
-  // const [purseFromWallet, setPurseFromWallet] = useState('')
   const [userPurse, setUserPurse] = useState({
     address: '',
     chainId: null,
