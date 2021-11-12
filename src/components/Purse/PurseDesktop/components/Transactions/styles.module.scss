@@ -4,8 +4,9 @@
 .transactions {
   position: relative;
   width: 100%;
+  max-width: 450px;
   padding: 0;
-  margin: 0;
+  margin: 0 0 20px 0;
   background-color: transparent;
 
   &__title {

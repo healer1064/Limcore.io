@@ -4,17 +4,20 @@ import buyIcon from '@icons/buy.svg'
 import sellIcon from '@icons/sellBlue.svg'
 import tradeIcon from '@icons/changeBlue.svg'
 import { TransactionsDetails } from '@components/Purse/PurseDesktop/components/Transactions/components/TransactionsDetails'
+import { Transactions } from '../Transactions'
 
 type PageBalanceLIMCPropsType = {
   limcBalance: any
   isOpen: any
   handlePageBalanceLIMCCloseClick: () => void
+  openProfile: () => void
 }
 
 export const PageBalanceLIMC: React.FC<PageBalanceLIMCPropsType> = ({
   limcBalance,
   isOpen,
   handlePageBalanceLIMCCloseClick,
+  openProfile,
 }) => {
   return (
     <div className={`${isOpen ? styles.pageBalanceLIMC : styles.pageBalanceLIMC_invisible}`}>
@@ -55,7 +58,8 @@ export const PageBalanceLIMC: React.FC<PageBalanceLIMCPropsType> = ({
         {/*  Обменять */}
         {/* </div> */}
       </div>
-      <TransactionsDetails onClick={() => {}} />
+      {/* <TransactionsDetails onClick={() => {}} /> */}
+      <Transactions onProfileClick={openProfile} onTransactionsClick={() => {}} isUserHasTransactions />
     </div>
   )
 }

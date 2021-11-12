@@ -1,3 +1,5 @@
+@import '../../../vars&mixins.scss';
+
 @mixin modal() {
   position: fixed;
   top: 0;
@@ -26,7 +28,8 @@
     width: 470px;
     min-height: 100vh;
     overflow-y: auto;
-    transition: left .5s ease;
+    transition: all .5s ease;
+    padding: 20px 0 0 0;
   }
 
   &Active {
@@ -47,17 +50,20 @@
   top: 10px;
   right: 10px;
   z-index: 1;
-
-  width: 24px;
-  height: 24px;
+  width: 34px;
+  height: 34px;
   border: none;
-
   cursor: pointer;
-  background-image: url(../../../../../assets/icons/close.svg);
-  background-position: center;
-  background-repeat: no-repeat;
+  padding: 0;
   background-color: transparent;
   outline: none;
+  display: flex;
+  align-items: center;
+  &:hover {
+    path {
+      stroke: $color-4A-blue;
+    }
+  }
 }
 
 // @media only screen and (min-width: 1250px) {
