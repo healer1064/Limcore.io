@@ -35,7 +35,9 @@ const AccordeonIcon = () => {
 }
 
 export const Statistics = ({ onClick }: IStatisticsProps) => {
-  const balanceLimc = useAppSelector((state) => state.wallet.sum_limc_balance)
+  // const balanceLimc = useAppSelector((state) => state.wallet.sum_limc_balance)
+  const balanceLimc = useAppSelector((state) => state.authNew.walletConnectLimc)
+
   const [isTooltipVisible, setIsTooltipVisible] = useState(false)
 
   const handleTooltipClick = () => {
@@ -44,14 +46,13 @@ export const Statistics = ({ onClick }: IStatisticsProps) => {
 
   const handleDisappearClick = () => {
     console.log('handleDisappearClick')
-    onClick()
   }
 
   return (
     <div className={styles.statistics}>
       <div className={styles.header}>
         <h3 className={styles.title}>До старта майнинга</h3>
-        <button type='button' className={styles.tooltip}>
+        <button type='button' className={styles.tooltip} onClick={onClick}>
           <ArrowRight />
         </button>
       </div>

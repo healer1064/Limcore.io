@@ -2,6 +2,7 @@ import React, { SyntheticEvent } from 'react'
 import ReactDOM from 'react-dom'
 import styles from './styles.module.scss'
 import classNames from 'classnames'
+import { CloseIcon } from '@icons/CloseIcon'
 
 interface IModalProps {
   active: boolean
@@ -31,7 +32,11 @@ export const Modal = ({ active, setActive, children, style, classname, crossFlag
   return ReactDOM.createPortal(
     <div className={classNames(modalClass, classname)} onClick={handleModalOutClick} style={style}>
       <div className={styles.modalContent} onClick={handleModalContentClick}>
-        {crossFlag && <button type='button' className={styles.close} onClick={setActive} />}
+        {crossFlag && (
+          <button type='button' className={styles.close} onClick={setActive}>
+            <CloseIcon />
+          </button>
+        )}
         {children}
       </div>
     </div>,

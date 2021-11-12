@@ -2,7 +2,7 @@
 
 .statistics {
   border: 1px solid #DCDCDC;
-  background-color: transparent;
+  background-color: #F9FAFE;
   width: 60%;
   padding: 17px 30px;
   border-radius: 14px;
@@ -23,6 +23,14 @@
     background-color: transparent;
     outline: none;
     transform: translateY(1px);
+    path {
+      stroke: $color-4F-black;
+    }
+    &:hover {
+          path {
+      stroke: $color-4A-blue;
+    }
+    }
   }
 
   .progressbar { 

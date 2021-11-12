@@ -24,6 +24,7 @@ import { Modal } from './components/Modal'
 import { ModalHeader } from './components/ModalHeader'
 import { FooterMobile } from '@components/Footer/FooterMobile'
 import { useHistory } from 'react-router'
+import { RoadMap } from '@components/Purse/PurseMobile/components/RoadMap'
 
 export const PurseMobile: FC = () => {
   const [isCardVisible, setIsCardVisible] = useState(true)
@@ -46,7 +47,8 @@ export const PurseMobile: FC = () => {
   const history = useHistory()
   const dispatch = useAppDispatch()
   const prices = useAppSelector((state) => state.wallet.limc_price)
-  const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
+  // const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
+  const limcBalance = useAppSelector((state) => state.authNew.walletConnectLimc)
 
   const handleSetValue = (event) => setValue(event.target.value)
 
@@ -223,6 +225,7 @@ export const PurseMobile: FC = () => {
       />
       <div className={styles.purse__content}>
         {isCardVisible && <VirtualCard onCloseClick={handleCardCloseClick} />}
+        <RoadMap />
         <div className={styles.buyCont}>
           <ButtonBig className={styles.buy} onClick={() => setViewContent('balance')}>
             Купить LIMC
