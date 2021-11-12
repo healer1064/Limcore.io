@@ -50,9 +50,6 @@ const App = () => {
   // const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
   // const user = useAppSelector((state) => state.user.userData)
   const isAuth = useAppSelector((state) => state.authNew.isAuth)
-  const language = useAppSelector((state) => state.cabinet.language)
-  language === 'ru' ? dispatch(setTranslation(TRANSLATION.ru)) : dispatch(setTranslation(TRANSLATION.en))
-
   useEffect(() => {
     const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
 
@@ -71,14 +68,11 @@ const App = () => {
           dispatch(getTransactions())
           setIsLoading(false)
         })
-        .catch((err) => {
-          console.log('ERROR ===========+>>>>>>', err)
+        .catch(() => {
           setIsLoading(false)
         })
     }
   }, [isAuth])
-
-  console.log('isAuth', isAuth)
 
   return (
     <Router>

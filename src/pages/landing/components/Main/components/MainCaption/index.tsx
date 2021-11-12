@@ -1,19 +1,17 @@
 import React from 'react'
 import Styles from './styles.module.scss'
 import chiaIcon from '@icons/chia.svg'
-import { useAppSelector } from '@app/redux/hooks'
+import { useTranslation } from 'react-i18next'
 
 export const MainCaption: React.FC = () => {
-  const translation = useAppSelector((state) => state.cabinet.translation)
-
+  const [t] = useTranslation()
   return (
     <div className={Styles.caption}>
       <div className={Styles.block}>
         <h1 className={Styles.title}>
-          {/* Облачный майнинг всех форков <img src={chiaIcon} alt='chia' /> */}
-          {translation.mainCaption.title} <img src={chiaIcon} alt='chia' />
+          {t('landing_title')} <img src={chiaIcon} alt='chia' />
         </h1>
-        <h3 className={Styles.subtitle}>Самый быстрый и выгодный способ инвестирования в криптовалюту</h3>
+        <h3 className={Styles.subtitle}>{t('landing_subtitle')}</h3>
       </div>
       <div className={Styles.wrap}>
         <iframe

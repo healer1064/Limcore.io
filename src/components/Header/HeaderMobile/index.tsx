@@ -7,12 +7,13 @@ import logoIcon from '@icons/logo.svg'
 import userIcon from '@icons/user.svg'
 import { ProfileHeaderIcon } from '@icons/ProfileHeaderIcon'
 import logout from '@icons/logout.svg'
-import { Container } from '../../../components/Container'
-import RUS from '../../../assets/images/russia-flag.png'
+import { Container } from '@components/Container'
+import RUS from '@icons/flag-ru.svg'
+import ENG from '@icons/flag-en.svg'
+
 import { Telegram } from '@icons/Telegram'
 import { Instagram } from '@icons/Instagram'
 import { Youtube } from '@icons/Youtube'
-// import ENG from '../../../assets/images/en-flag.png'
 import { useHistory, useLocation } from 'react-router'
 import { setIsAuth } from '../../../pages/auth/redux/auth.slice'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
@@ -22,9 +23,12 @@ import { BroadcastsIcon } from '@icons/BroadcastsIcon'
 import { ChatIcon } from '@icons/ChatIcon'
 import { PurseIcon } from '@icons/PurseIcon'
 import { ProfileIcon } from '@icons/ProfileIcon'
+import { useTranslation } from 'react-i18next'
 
 export const HeaderMobile: React.FC = () => {
   const [burgerOpen, setBurgerOpen] = useState(false)
+  const [t, i18n] = useTranslation()
+
   const isAuth = useAppSelector((state) => state.authNew.isAuth)
   const history = useHistory()
   const location = useLocation()
@@ -200,8 +204,8 @@ export const HeaderMobile: React.FC = () => {
             <div className={Styles.group}>
               <p className={Styles.email}>info@limcore.com</p>
               <div className={Styles.languageGroup}>
-                <img className={Styles.languageIcon} src={RUS} alt='RU' />
-                <p className={Styles.language}>RU</p>
+                <img className={Styles.languageIcon} src={i18n.language === 'ru' ? RUS : ENG} alt='lang' />
+                <p className={Styles.language}>{i18n.language === 'ru' ? 'RU' : 'EN'}</p>
                 {/* <img className={Styles.footer__languageArrow} src={arrow} alt='Arrow-button' /> */}
               </div>
             </div>
