@@ -98,7 +98,7 @@ export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
               <img src={calendarIcon} alt='Иконка' />
             </div>
           </Label>
-          <Label className={Styles.edit} titleText='Паспорт выдан'>
+          <Label titleText='Паспорт выдан'>
             <InputText
               onChange={onChangeValue}
               name='passport_division_name'
