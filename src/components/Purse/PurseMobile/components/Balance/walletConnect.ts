@@ -51,6 +51,10 @@ async function getLimcBalance(address: string) {
     `?module=account&action=tokenbalance&contractaddress=${contactAdress}&address=${address}&tag=latest&apikey=${myKey}`,
   )
   const { result } = response.data
+  if (Number(result)) {
+    return 0
+  }
+
   console.log('LIMC BALANCE', result)
   return result
   // const resultString = String(result)
