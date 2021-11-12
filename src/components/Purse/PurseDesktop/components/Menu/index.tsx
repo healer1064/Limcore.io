@@ -92,30 +92,6 @@ export const Menu = ({
         setNotActive={handleBalanceUsdtCloseClick}
         active={isUsdtInfoVisible}
       />
-      <MenuItem
-        onClick={handleCardBalance}
-        image={purseIcon}
-        title={`Карта *${lastNumbersOfCard}`}
-        balance={cardBalance}
-        setActive={handleBalanceUsdtOpenClick}
-        setNotActive={handleBalanceUsdtCloseClick}
-        active={isUsdtInfoVisible}
-      />
-      <div
-        className={`${
-          isPageCardBalanceVisible || isPageBalanceUSDTVisible || isPageBalanceLIMCVisible
-            ? styles.virtualCardGroup_invisible
-            : styles.virtualCardGroup
-        }`}
-      >
-        <p className={styles.virtualCardGroup__text}>Выпустить виртуальную карту</p>
-        <button type='button' className={styles.button}>
-          <svg width='18' height='18' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-            <path d='M12 5V19' stroke='#67686C' strokeWidth='1.8' strokeLinecap='round' strokeLinejoin='round' />
-            <path d='M5 12H19' stroke='#67686C' strokeWidth='1.8' strokeLinecap='round' strokeLinejoin='round' />
-          </svg>
-        </button>
-      </div>
     </div>
   )
 }

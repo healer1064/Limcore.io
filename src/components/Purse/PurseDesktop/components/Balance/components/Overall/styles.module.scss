@@ -1,9 +1,6 @@
 @import '../../../../../vars&mixins.scss';
 
 .modal {
-  width: 100vw;
-  height: 100vh;
-  background-color: #fff;
 
   .balance {
     display: flex;
@@ -72,12 +69,12 @@
 
       .body {
         margin-right: auto;
-        max-width: 246px;
+        width: 100%;
 
         .title {
           margin: 0 0 4px 0;
           padding: 0;
-          @include subtitle-14px($color-39-black);
+          @include subtitle-14px($color-4F-black);
         }
         
         .subtitle {
@@ -113,11 +110,56 @@
 }
 
 .pay {
-  .label {
+  position: relative;
+  width: 50%;
+  margin: 20px 0 0 0;
+  &Select {
     @include subtitle-14px($color-4F-black);
-
-    &:not(:last-child) {
-      margin-bottom: 20px;
+    background: none;
+    outline: none;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    border: 1.4px solid #B4BFD5;
+    border-radius: 14px;
+    align-items: center;
+    padding: 10px 20px;
+    svg {
+      transform: rotate(-90deg);
+      path {
+        stroke: #99A0AD;
+      }
     }
   }
+  &Options {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px 20px;
+    box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+    border-radius: 14px;
+    transition: all .3s ease;
+    button {
+      @include subtitle-14px($color-4F-black);
+      background: none;
+      outline: none;
+      border: none;
+      width: 100%;
+      padding: 0;
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+  .visible {
+      visibility: visible;
+      opacity: 1;
+      top: 50px;
+    }
 }

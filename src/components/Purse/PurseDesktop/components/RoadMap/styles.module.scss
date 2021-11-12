@@ -1,0 +1,47 @@
+@import '../../../vars&mixins.scss';
+
+.roadMapContainer {
+  display: flex;
+  margin: 50px 0 0 0;
+  h3,p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .roadMapRound {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+  }
+
+  .roundText {
+    display: flex;
+    gap: 12px;
+    h3{
+      @include section-title()
+    }
+    p {
+      @include subtitle-14px(#868DA7)
+    }
+  }
+
+  .roundVisualization {
+    @include subtitle-14px(#868DA7);
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 10px 10px 0;
+    padding: 5px 10px;
+    border-radius: 6px;
+  }
+
+  .roundLine {
+    width: 100%;
+    height: 28px;
+    border-top: 2px solid $color-4A-blue;
+    border-left: 1px solid $color-4A-blue;
+  }
+
+  .roundDate {
+    @include subtitle-13px($color-4F-black)
+  }
+}

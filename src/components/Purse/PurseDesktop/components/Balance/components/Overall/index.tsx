@@ -9,6 +9,8 @@ import { BottomModal } from '../../../BottomModal'
 import { Modal } from '../../../Modal/index'
 import { ModalHeader } from '../../../ModalHeader'
 import { Calc } from '../Calc/index'
+import { ArrowLeft } from '@icons/ArrowLeft'
+import classNames from 'classnames'
 
 export const Overall = ({ onClick, money, limcBalance, usdtBalance }) => {
   const [isSwitchToggled, setIsSwitchToggled] = useState(true)
@@ -16,7 +18,9 @@ export const Overall = ({ onClick, money, limcBalance, usdtBalance }) => {
   const [dotsColor, setDotsColor] = useState('#99A0AD')
   const [isModalVisible, setIsModalVisible] = useState(false)
   const [isCalcOpen, setIsCalcOpen] = useState(false)
+  const [replenishment, setReplenishment] = useState('С майнинга')
   // const [payInputRadioChecked, setPayInputRadioChecked] = useState(true)
+  const [payOptions, setPayOptions] = useState(false)
 
   const Item = (title, sum) => (
     <li className={styles.modalItem}>
@@ -85,13 +89,17 @@ export const Overall = ({ onClick, money, limcBalance, usdtBalance }) => {
             <img src={downloadIcon} />
           </div>
           <div className={styles.body}>
-            <h4 className={styles.title}>Автоматически покупать LIMC на деньги с форков</h4>
+            <h4 className={styles.title}>Автоматически покупать LIMC&nbsp;на деньги с&nbsp;форков</h4>
             <p className={styles.subtitle}>Доходность составит 30%</p>
             <button type='button' className={styles.btn} onClick={handleCalcOpenClick}>
               Расчет в калькуляторе
             </button>
 
-            <Modal active={isCalcOpen} setActive={handleCalcCloseClick} style={{ zIndex: 1111, overflow: 'auto' }}>
+            <Modal
+              active={isCalcOpen}
+              setActive={handleCalcCloseClick}
+              style={{ zIndex: 1111, backgroundColor: 'transparent' }}
+            >
               <Calc onClick={handleCalcCloseClick} money={money} />
             </Modal>
           </div>
@@ -120,42 +128,36 @@ export const Overall = ({ onClick, money, limcBalance, usdtBalance }) => {
             <h4 className={styles.title} style={{ color: disabledColor }}>
               Пополнение виртуальной карты
             </h4>
-            <p className={styles.subtitle}>С баланса LIMC</p>
-          </div>
-          <button type='button' className={styles.btn__modal} disabled={isSwitchToggled} onClick={handleModalOpenClick}>
-            <svg width='18' height='4' viewBox='0 0 18 4' fill='none' xmlns='http://www.w3.org/2000/svg'>
-              <circle cx='2' cy='2' r='2' fill={dotsColor} />
-              <circle cx='9' cy='2' r='2' fill={dotsColor} />
-              <circle cx='16' cy='2' r='2' fill={dotsColor} />
-            </svg>
-          </button>
-
-          <BottomModal
-            active={isModalVisible}
-            setActive={handleModalCloseClick}
-            title='Пополнение виртуальной карты'
-            subtitle='Задать приоритетный способ пополнения виртуальной карты'
-          >
             <div className={styles.pay}>
-              <Label className={styles.label}>
-                <InputRadio
-                  titleRadio='С майнинга'
-                  // checked={payInputRadioChecked}
-                  // onChange={handlePayInputRadioChange}
-                />
-              </Label>
-              <Label className={styles.label}>
-                <InputRadio
-                  titleRadio='С баланса LIMC'
-                  // checked={!payInputRadioChecked}
-                  // onChange={handlePayInputRadioChange}
-                />
-              </Label>
-              <ButtonBig onClick={handleApplyClick} className={styles.apply}>
-                Применить
-              </ButtonBig>
+              <button
+                style={{ color: disabledColor }}
+                className={styles.paySelect}
+                onClick={() => setPayOptions((prev) => !prev)}
+                disabled={isSwitchToggled}
+              >
+                {replenishment}
+                <ArrowLeft />
+              </button>
+              <div className={classNames([styles.payOptions, payOptions && styles.visible])}>
+                <button
+                  onClick={() => {
+                    setReplenishment('С баланса LIMC')
+                    setPayOptions(false)
+                  }}
+                >
+                  С баланса LIMC
+                </button>
+                <button
+                  onClick={() => {
+                    setReplenishment('С майнинга')
+                    setPayOptions(false)
+                  }}
+                >
+                  С майнинга
+                </button>
+              </div>
             </div>
-          </BottomModal>
+          </div>
         </li>
       </ul>
     </div>

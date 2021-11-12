@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
-// import { setIsAuth, checkToken } from '../../pages/auth/redux/auth.slice'
-import { checkToken, getTransactions } from '../../pages/auth/redux/auth.slice'
-import { setIsAuth } from '../../pages/auth/redux/authSlice'
+import { getTransactions } from '../../pages/auth/redux/auth.slice'
+import { checkToken, setIsAuth } from '../../pages/auth/redux/authSlice'
 
 // import { Footer } from '../Footer'
 // import { FooterMobile } from '../Footer/FooterMobile'
@@ -78,6 +77,9 @@ const App = () => {
         })
     }
   }, [isAuth])
+
+  console.log('isAuth', isAuth)
+
   return (
     <Router>
       <div className={Styles.app_container}>

@@ -3,6 +3,7 @@ import styles from './styles.module.scss'
 // import { blueArrow } from '../../../../images'
 import { Info } from '../Info/index'
 import BlueArrow from '../../../../images/BlueArrow/BlueArrow'
+import { UnsyncIcon } from '../../../../../../../assets/icons/unsync'
 
 interface MenuItemProps {
   onClick?: any
@@ -35,8 +36,11 @@ export const MenuItem: React.FC<MenuItemProps> = ({
 
   return (
     <button className={styles.menuItem} onClick={onClickHandler}>
-      <p className={styles.menu__title}>{title}</p>
-      <p className={styles.menu__sum}>{balance}</p>
+      <p className={styles.menu__title}>
+        {title}
+        <UnsyncIcon />
+      </p>
+      <p className={styles.menu__sum}>Не синхронизирован</p>
       <img className={styles.menu__logo} src={image} width='30' height='30' />
       {/* <Info */}
       {/*  active={active} */}
