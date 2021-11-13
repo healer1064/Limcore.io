@@ -18,14 +18,6 @@ import { ProfileHeaderIcon } from '@icons/ProfileHeaderIcon'
 
 import { useTranslation } from 'react-i18next'
 
-const tempLink = [
-  { id: 1, value: 'Что такое Limcore?', link: 'limcore', spy: true, smooth: true },
-  { id: 2, value: 'Roadmap', link: 'roadmap', spy: true, smooth: true },
-  { id: 3, value: 'Команда', link: 'team', spy: true, smooth: true },
-  // { id: 4, value: 'Экосистема', link: 'ecosystem', spy: true, smooth: true },
-  { id: 5, value: 'Вопрос-ответ', link: 'questions', spy: true, smooth: true },
-]
-
 export const Header: React.FC = () => {
   const dispatch = useAppDispatch()
   const history = useHistory()
@@ -35,6 +27,19 @@ export const Header: React.FC = () => {
   const [btnClass, setBtnClass] = useState(Styles.login)
   const [showPopapLanguage, setShowPopapLanguage] = useState(false)
   const isAuth = useAppSelector((state) => state.authNew.isAuth)
+
+  const tempLink = [
+    // { id: 1, value: 'Что такое Limcore?', link: 'limcore', spy: true, smooth: true },
+    // { id: 2, value: 'Roadmap', link: 'roadmap', spy: true, smooth: true },
+    // { id: 3, value: 'Команда', link: 'team', spy: true, smooth: true },
+    // // { id: 4, value: 'Экосистема', link: 'ecosystem', spy: true, smooth: true },
+    // { id: 5, value: 'Вопрос-ответ', link: 'questions', spy: true, smooth: true },
+
+    { id: 1, value: t('nav_about'), link: 'limcore', spy: true, smooth: true },
+    { id: 2, value: t('nav_roadmap'), link: 'roadmap', spy: true, smooth: true },
+    { id: 3, value: t('nav_team'), link: 'team', spy: true, smooth: true },
+    { id: 5, value: t('nav_qa'), link: 'questions', spy: true, smooth: true },
+  ]
 
   const languages = ['ru', 'en']
   const changeLanguage = (lang) => {
@@ -136,7 +141,8 @@ export const Header: React.FC = () => {
           {!isAuth && (
             <button className={btnClass} onClick={handleLoginModalOpen}>
               <LoginIcon />
-              <span className={Styles.enter}>Войти</span>
+              {/* <span className={Styles.enter}>Войти</span> */}
+              <span className={Styles.enter}>{t('login')}</span>
             </button>
           )}
 
