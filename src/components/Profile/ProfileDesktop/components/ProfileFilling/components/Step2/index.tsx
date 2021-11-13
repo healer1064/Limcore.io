@@ -59,7 +59,7 @@ export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
               <InputText
                 className={Styles.input}
                 onChange={onChangeValue}
-                type='number'
+                // type='number'
                 name='passport_series'
                 value={data.passport_series}
                 maxLength={maxLength}
@@ -69,7 +69,7 @@ export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
               <InputText
                 className={Styles.input}
                 onChange={onChangeValue}
-                type='number'
+                // type='number'
                 name='passport_number'
                 value={data.passport_number}
                 maxLength={maxLength}
