@@ -17,6 +17,8 @@ const AuthComponent: FC = () => {
   const { width } = useWindowSize()
   const desktop = width >= 768
 
+  return <AuthMobile />
+
   return (
     <div className={classNames(styles.auth, { [styles.authOffsetBottom]: auth.authStep !== Auth.Step1 })}>
       {auth.processType === Process.Registration && <List />}
