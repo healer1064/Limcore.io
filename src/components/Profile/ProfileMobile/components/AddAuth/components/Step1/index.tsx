@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import QRCode from 'qrcode.react'
 import { useAppDispatch } from '@app/redux/hooks'
-import { get2FAUrl } from '../../../../../../../app/redux/userSlice'
+import { setData2FA, get2FAUrl } from '../../../../../../../app/redux/userSlice'
 import Styles from './styles.module.scss'
 
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
@@ -16,15 +15,12 @@ interface StepProps {
 
 export const Step1: React.FC<StepProps> = ({ nextStep }) => {
   const dispatch = useAppDispatch()
-  const [qrcode, setQrcode] = useState('')
 
-  const stepNext = () => {
-    nextStep(2)
-  }
+  const stepNext = () => nextStep(2)
 
   useEffect(() => {
     dispatch(get2FAUrl())
-      .then((res: any) => setQrcode(res.payload.qr_url))
+      .then((res: any) => dispatch(setData2FA(res.payload)))
       .catch((error) => console.log(error))
   }, [])
 
@@ -38,15 +34,15 @@ export const Step1: React.FC<StepProps> = ({ nextStep }) => {
             </div>
             <span className={`${Styles.line} ${Styles.line_active}`}>{}</span>
           </div>
-          <div className={Styles.step}>
+          {/* <div className={Styles.step}>
             <div className={Styles.number}>
               <span>2</span>
             </div>
-          </div>
+          </div> */}
           <div className={Styles.step}>
             <span className={Styles.line}>{}</span>
             <div className={Styles.number}>
-              <span>3</span>
+              <span>2</span>
             </div>
           </div>
         </div>
@@ -68,7 +64,6 @@ export const Step1: React.FC<StepProps> = ({ nextStep }) => {
             </div>
           </div>
         </div>
-        {/* {qrcode && <QRCode value={qrcode} />} */}
       </div>
       <ButtonBig onClick={stepNext}>Продолжить</ButtonBig>
     </>

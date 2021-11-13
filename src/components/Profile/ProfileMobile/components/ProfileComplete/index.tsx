@@ -20,6 +20,7 @@ import smartphoneImage from '../../../../../assets/images/smartphone.png'
 export const ProfileComplete: React.FC = () => {
   const dispatch = useAppDispatch()
   const userData = useAppSelector((state) => state.user.userData)
+  const is2FA = useAppSelector((state) => state.authNew.is2FA)
   const [notificationOpen, setNotificationOpen] = useState(true)
 
   const closeNotification = () => setNotificationOpen(false)
@@ -103,11 +104,13 @@ export const ProfileComplete: React.FC = () => {
             </div>
           </li>
         </ul>
-        <div className={`${notificationOpen ? Styles.notification : Styles.notification_invisible}`}>
-          <span className={Styles.text}>Подключите двухфакторную аутентификацию</span>
-          <img className={Styles.smartphone} src={smartphoneImage} alt='Иконка' />
-          <img className={Styles.close} src={closeIcon} alt='Иконка' onClick={closeNotification} />
-        </div>
+        {!is2FA && notificationOpen && (
+          <div className={Styles.notification}>
+            <span className={Styles.text}>Подключите двухфакторную аутентификацию</span>
+            <img className={Styles.smartphone} src={smartphoneImage} alt='Иконка' />
+            <img className={Styles.close} src={closeIcon} alt='Иконка' onClick={closeNotification} />
+          </div>
+        )}
       </div>
     </>
   )
