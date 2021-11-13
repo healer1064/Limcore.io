@@ -13,8 +13,11 @@ import youTube from '../../assets/icons/SF Symbol/play.fill.svg'
 import { FooterLogo } from '@components/Footer/components/FooterLogo'
 // import booklet from '../../assets/files/booklet.pdf'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 export const Footer: React.FC = () => {
+  const [t] = useTranslation()
+
   return (
     <footer className={Styles.footer}>
       <div className={Styles.wrapper}>
@@ -31,71 +34,67 @@ export const Footer: React.FC = () => {
               </li>
               <li className={Styles.footer__listItem}>
                 <Link className={Styles.footer__link} to='/files/booklet.pdf' download target='_blank'>
-                  Рекламный буклет
+                  {t('footer_leaflet')}
                 </Link>
               </li>
             </div>
           </ul>
           <ul className={`${Styles.footer__information} ${Styles.footer__list}`}>
-            <h3 className={Styles.footer_listTitle}>Раскрытие информации</h3>
+            <h3 className={Styles.footer_listTitle}>{t('footer_infoDeclosure')}</h3>
             <li className={Styles.footer__listItem}>
               <Link className={Styles.footer__link} to='/files/docs.zip' download target='_blank'>
-                Учредительные документы РФ
+                {t('footer_docsRF')}
               </Link>
             </li>
             <li className={Styles.footer__listItem}>
               <Link className={Styles.footer__link} to='/files/round1.zip' download target='_blank'>
-                Учредительные документы Round 1
+                {t('footer_docsRound1')}
               </Link>
             </li>
             <li className={Styles.footer__listItem}>
               <a href='#' target='_blank' rel='noopener noreferrer' className={Styles.footer__link}>
-                Страхование оборудования
+                {t('footer_equipInsurance')}
               </a>
             </li>
             <li className={Styles.footer__listItem}>
               <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
-                Страхование здания и прочего имущества
+                {t('footer_buildingInsurance')}
               </a>
             </li>
           </ul>
           <ul className={`${Styles.footer__users} ${Styles.footer__list}`}>
-            <h3 className={Styles.footer_listTitle}>Взаимодействие с пользователями</h3>
+            <h3 className={Styles.footer_listTitle}>{t('footer_coop')}</h3>
             <li className={Styles.footer__listItem}>
               <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
-                Пользовательское соглашение об обработке персональных данных
+                {t('footer_agreementPersonalData')}
               </a>
             </li>
             <li className={Styles.footer__listItem}>
               <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
-                Договор оферта о покупке токена LIMC
+                {t('footer_agreementLimcBuy')}
               </a>
             </li>
           </ul>
           <div className={Styles.footer__line} />
           <ul className={`${Styles.footer__address} ${Styles.footer__list}`}>
-            <h3 className={Styles.footer_listTitle}>Россия</h3>
+            <h3 className={Styles.footer_listTitle}>{t('footer_russia')}</h3>
             <li className={`${Styles.footer__listItem_gray} ${Styles.footer__listItem_address}`}>
-              ООО «Лимкор Дата Центр»
+              {t('footer_fullOrganisationName')}
             </li>
-            <li className={`${Styles.footer__listItem_gray} ${Styles.footer__listItem_address}`}>
-              КПП: 502801001 / ИНН: 9729264079
-            </li>
-            <li className={`${Styles.footer__listItem_gray} ${Styles.footer__listItem_city}`}>
-              Юридический адрес компании: г. Можайск, улица Мира, дом 98
-            </li>
+            <li className={`${Styles.footer__listItem_gray} ${Styles.footer__listItem_address}`}>{t('footer_docs')}</li>
+            <li className={`${Styles.footer__listItem_gray} ${Styles.footer__listItem_city}`}>{t('footer_address')}</li>
           </ul>
           <ul className={`${Styles.footer__issuer} ${Styles.footer__list}`}>
             <div className={Styles.footer__listItemContainer}>
-              <h3 className={Styles.footer_listTitle_noWrap}>Эмитент LIMC Round 1</h3>
+              <h3 className={Styles.footer_listTitle_noWrap}>{t('footer_issuer')}</h3>
               <li className={Styles.footer__listItem_gray}>QQ Global Markets LLC</li>
               <li className={Styles.footer__listItem_gray}>P.O. Box 1574</li>
               <li className={Styles.footer__listItem_gray}>Kingstown, VC 0100</li>
               <li className={Styles.footer__listItem_gray}>St. Vincent and the Grenadines</li>
             </div>
             <div className={Styles.footer__listItemContainer}>
-              <h3 className={Styles.footer_listTitle}>Швейцария</h3>
-              <li className={Styles.footer__listItem_gray}>В процессе регистрации</li>
+              <h3 className={Styles.footer_listTitle}>{t('footer_switzerland')}</h3>
+              <li className={Styles.footer__listItem_gray}>{t('footer_inRegProcess')}</li>
             </div>
           </ul>
           <p className={Styles.footer__email}>info@limcore.io</p>
