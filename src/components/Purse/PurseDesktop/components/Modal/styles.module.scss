@@ -16,7 +16,7 @@
   opacity: 0;
   pointer-events: none;
   transition: .3s ease;
-  visibility: hidden
+  visibility: hidden;
 }
 
 .modal {
@@ -26,12 +26,11 @@
     position: relative;
     background-color: #fff;
     width: 470px;
-    min-height: 100vh;
+    height: 100%;
     overflow-y: auto;
     transition: all .5s ease;
     padding: 20px 0 0 0;
   }
-
   &Active {
     @include modal();
     visibility: visible;

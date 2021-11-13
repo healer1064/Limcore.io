@@ -7,7 +7,8 @@
   grid-area: balance;
 
   &_invisible {
-    display: none;
+    visibility: hidden;
+    position: absolute;
   }
 
   &__title {
