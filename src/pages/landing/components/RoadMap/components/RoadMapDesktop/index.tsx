@@ -71,7 +71,7 @@ export const RoadMapDesktop = () => {
     },
     {
       id: 7,
-      title: t('roadmap_novermber1'),
+      title: t('roadmap_november1'),
       status: 'done',
       deadline: '01.11.2021',
       priority: 10,
