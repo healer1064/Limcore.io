@@ -50,7 +50,7 @@ export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTra
 
       <p className={styles.transactions__subtitle}>
         У вас еще нет транзакций. <br />
-        Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
+        Заполните профиль, чтобы в будущем восстановить аккаунт.
       </p>
       <div className={styles.transactions__cont}>
         <button type='button' className={styles.transactions__profileButton} onClick={onProfileClick}>
