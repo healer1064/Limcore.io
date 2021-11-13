@@ -22,17 +22,17 @@ export const updateProfileUser: any = createAsyncThunk('user/updateProfileUser',
   return response.data
 })
 
-export const get2FAUrl = createAsyncThunk('user/get2FAUrl', async (data: any) => {
-  const response = await api.get('users/totp/create/', data)
+export const get2FAUrl = createAsyncThunk('user/get2FAUrl', async () => {
+  const response = await api.get('users/totp/create/')
   return response.data
 })
 
-export const confirm2FA = createAsyncThunk('user/confirm2FA', async (data: any) => {
+export const confirm2FA: any = createAsyncThunk('user/confirm2FA', async (data: any) => {
   const response = await api.get('users/totp/confirm/{code}/', data)
   return response.data
 })
 
-export const login2FA = createAsyncThunk('user/login2FA', async (data: any) => {
+export const login2FA: any = createAsyncThunk('user/login2FA', async (data: any) => {
   const response = await api.post('users/login/2fa/', data)
   return response.data
 })
@@ -110,6 +110,24 @@ export const userSlice = createSlice({
     })
     builder.addCase(updateProfileUser.rejected, (state, { payload }) => {
       console.log('updateProfileUser', payload)
+    })
+    builder.addCase(get2FAUrl.fulfilled, (state, { payload }) => {
+      console.log('get2FAUrl', payload)
+    })
+    builder.addCase(get2FAUrl.rejected, (state, { payload }) => {
+      console.log('get2FAUrl', payload)
+    })
+    builder.addCase(confirm2FA.fulfilled, (state, { payload }) => {
+      console.log('confirm2FA', payload)
+    })
+    builder.addCase(confirm2FA.rejected, (state, { payload }) => {
+      console.log('confirm2FA', payload)
+    })
+    builder.addCase(login2FA.fulfilled, (state, { payload }) => {
+      console.log('login2FA', payload)
+    })
+    builder.addCase(login2FA.rejected, (state, { payload }) => {
+      console.log('login2FA', payload)
     })
   },
 })

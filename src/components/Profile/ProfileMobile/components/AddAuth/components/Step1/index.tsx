@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import QRCode from 'qrcode.react'
+import { useAppDispatch } from '@app/redux/hooks'
+import { get2FAUrl } from '../../../../../../../app/redux/userSlice'
 import Styles from './styles.module.scss'
 
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
@@ -12,6 +15,19 @@ interface StepProps {
 }
 
 export const Step1: React.FC<StepProps> = ({ nextStep }) => {
+  const dispatch = useAppDispatch()
+  const [qrcode, setQrcode] = useState('')
+
+  const stepNext = () => {
+    nextStep(2)
+  }
+
+  useEffect(() => {
+    dispatch(get2FAUrl())
+      .then((res: any) => setQrcode(res.payload.qr_url))
+      .catch((error) => console.log(error))
+  }, [])
+
   return (
     <>
       <div className={Styles.component}>
@@ -39,21 +55,22 @@ export const Step1: React.FC<StepProps> = ({ nextStep }) => {
           <div className={Styles.block}>
             <img src={authIcon} alt='Иконка' />
             <div className={Styles.stors}>
+              <a href='https://apps.apple.com/ru/app/google-authenticator/id388497605' target='_blank' rel='noreferrer'>
+                <img src={storeIcon} alt='Иконка' />
+              </a>
               <a
                 href='https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2'
                 target='_blank'
                 rel='noreferrer'
               >
-                <img src={storeIcon} alt='Иконка' />
-              </a>
-              <a href='https://apps.apple.com/ru/app/google-authenticator/id388497605' target='_blank' rel='noreferrer'>
                 <img src={playIcon} alt='Иконка' />
               </a>
             </div>
           </div>
         </div>
+        {/* {qrcode && <QRCode value={qrcode} />} */}
       </div>
-      <ButtonBig onClick={() => nextStep(2)}>Продолжить</ButtonBig>
+      <ButtonBig onClick={stepNext}>Продолжить</ButtonBig>
     </>
   )
 }

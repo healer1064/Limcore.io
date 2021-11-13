@@ -7,24 +7,27 @@ import { Answer3 } from '../components/Answer3'
 import { Answer4 } from '../components/Answer4'
 
 import { VectorIcon } from '@icons/VectorIcon'
+import { useTranslation } from 'react-i18next'
 
 export const QuestionsMobile: React.FC = () => {
+  const [t] = useTranslation()
+
   const array = [
     {
       id: 1,
-      title: 'Чем отличается фарминг от майнинга?',
+      title: t('qa_card1_title'),
     },
     {
       id: 2,
-      title: 'Как распределяется вознаграждение с майнинга среди холдеров LIMC?',
+      title: t('qa_card2_title'),
     },
     {
       id: 3,
-      title: 'Какие преимущества платформы Limcore?',
+      title: t('qa_card3_title'),
     },
     {
       id: 4,
-      title: 'Почему именно Chia?',
+      title: t('qa_card4_title'),
     },
   ]
 
@@ -41,7 +44,7 @@ export const QuestionsMobile: React.FC = () => {
   return (
     <>
       <div className={Styles.wrapper} id='questionsMobile'>
-        <h4 className={Styles.caption}>Вопросы и ответы</h4>
+        <h4 className={Styles.caption}>{t('qa_title')}</h4>
         <ul className={Styles.question}>
           {array &&
             array.map((item) => {
