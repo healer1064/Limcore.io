@@ -30,7 +30,7 @@ export const ProfileComplete: React.FC = () => {
       <div className={Styles.avatar}>
         <div className={Styles.image}>
           <img src={avatarImage} alt='Аватар' />
-          <i className={Styles.edit}>{}</i>
+          {/* <i className={Styles.edit}>{}</i> */}
         </div>
         <span className={Styles.name}>
           {userData?.profile?.first_name} {userData?.profile?.last_name}
@@ -55,7 +55,7 @@ export const ProfileComplete: React.FC = () => {
           </div>
         </div> */}
         <ul className={Styles.list}>
-          <li className={Styles.item}>
+          {/* <li className={Styles.item}>
             <img className={Styles.icon} src={phoneIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
@@ -64,7 +64,7 @@ export const ProfileComplete: React.FC = () => {
               </div>
               <ButtonSmall onClick={() => changeView('editPhone')}>Изменить</ButtonSmall>
             </div>
-          </li>
+          </li> */}
           {/* <li className={Styles.item}>
             <img className={Styles.icon} src={emailIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
@@ -84,22 +84,22 @@ export const ProfileComplete: React.FC = () => {
               <ButtonSmall onClick={() => changeView('editName')}>Изменить</ButtonSmall>
             </div>
           </li> */}
-          <li className={Styles.item}>
+          <li className={Styles.item} onClick={() => changeView('editLocation')}>
             <img className={Styles.icon} src={locationIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
                 <span className={Styles.content}>Мои адреса</span>
               </div>
-              <img className={Styles.arrow} src={linkIcon} alt='Иконка' onClick={() => changeView('editLocation')} />
+              <img className={Styles.arrow} src={linkIcon} alt='Иконка' />
             </div>
           </li>
-          <li className={Styles.item}>
+          <li className={Styles.item} onClick={() => changeView('addAuth')}>
             <img className={Styles.icon} src={authIcon} alt='Иконка' />
             <div className={`${Styles.wrapper} ${Styles.wrapper_edit}`}>
               <div className={Styles.block}>
                 <span className={Styles.content}>Двухфакторная аутентификация</span>
               </div>
-              <img className={Styles.arrow} src={linkIcon} alt='Иконка' onClick={() => changeView('addAuth')} />
+              <img className={Styles.arrow} src={linkIcon} alt='Иконка' />
             </div>
           </li>
         </ul>
