@@ -2,7 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 24px;
+
+  button {
+    background: transparent;
+    border: none;
+  }
 }
 
 .title {
@@ -37,9 +42,9 @@
   }
 
   &:hover {
-    background-color: #4A70F8;
+    background-color: #4a70f8;
     cursor: pointer;
-    color: #FFFFFF;
+    color: #ffffff;
   }
 }
 
@@ -97,9 +102,9 @@
   border-radius: 100%;
 
   &:hover {
-    background-color: #4A70F8;
+    background-color: #4a70f8;
     cursor: pointer;
-    color: #FFFFFF;
+    color: #ffffff;
   }
 }
 

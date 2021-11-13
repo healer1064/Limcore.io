@@ -18,7 +18,7 @@ export const Profile: React.FC = () => {
       <div className={Styles.avatar}>
         <div className={Styles.image}>
           <img src={avatarImage} alt='Аватар' />
-          <i className={Styles.edit}>{}</i>
+          {/* <i className={Styles.edit}>{}</i> */}
         </div>
         <span className={Styles.phone}>{formatPhoneNumber(userData?.phone)}</span>
       </div>

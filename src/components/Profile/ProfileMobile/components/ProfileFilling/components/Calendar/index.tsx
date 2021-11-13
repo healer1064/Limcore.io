@@ -160,9 +160,13 @@ export const Calendar: React.FC<CalendarProps> = ({ closePopup, dataType }) => {
       {view === 'years' && (
         <>
           <div className={Styles.select}>
-            <img className={Styles.leftIcon} src={leftIcon} alt='Иконка' onClick={backwardYears} />
+            <button onClick={backwardYears}>
+              <img className={Styles.leftIcon} src={leftIcon} alt='Иконка' />
+            </button>
             <span className={Styles.title}>{title}</span>
-            <img className={Styles.rightIcon} src={rightIcon} alt='Иконка' onClick={forwardYears} />
+            <button onClick={forwardYears}>
+              <img className={Styles.rightIcon} src={rightIcon} alt='Иконка' />
+            </button>
           </div>
           <div className={Styles.grid}>
             {years &&
@@ -177,9 +181,13 @@ export const Calendar: React.FC<CalendarProps> = ({ closePopup, dataType }) => {
       {view === 'months' && (
         <>
           <div className={Styles.select}>
-            <img className={Styles.leftIcon} src={leftIcon} alt='Иконка' onClick={() => backwardYear(year - 1)} />
+            <button onClick={() => backwardYear(year - 1)}>
+              <img className={Styles.leftIcon} src={leftIcon} alt='Иконка' />
+            </button>
             <span className={Styles.title}>{title}</span>
-            <img className={Styles.rightIcon} src={rightIcon} alt='Иконка' onClick={() => forwardYear(year + 1)} />
+            <button onClick={() => forwardYear(year + 1)}>
+              <img className={Styles.rightIcon} src={rightIcon} alt='Иконка' />
+            </button>
           </div>
           <div className={Styles.grid}>
             {months &&
@@ -194,9 +202,13 @@ export const Calendar: React.FC<CalendarProps> = ({ closePopup, dataType }) => {
       {view === 'days' && (
         <>
           <div className={Styles.select}>
-            <img className={Styles.leftIcon} src={leftIcon} alt='Иконка' onClick={() => backwardMonth()} />
+            <button onClick={() => backwardMonth()}>
+              <img className={Styles.leftIcon} src={leftIcon} alt='Иконка' />
+            </button>
             <span className={Styles.title}>{title}</span>
-            <img className={Styles.rightIcon} src={rightIcon} alt='Иконка' onClick={() => forwardMonth()} />
+            <button onClick={() => forwardMonth()}>
+              <img className={Styles.rightIcon} src={rightIcon} alt='Иконка' />
+            </button>
           </div>
           <div className={Styles.container}>
             <div className={Styles.head}>
