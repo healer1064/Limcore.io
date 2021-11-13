@@ -44,7 +44,7 @@ export const PageBalanceLIMC: React.FC<PageBalanceLIMCPropsType> = ({
       <p className={styles.pageBalanceLIMC__subtitle}>{`$ ${limcBalance}`}</p>
       <div className={styles.items}>
         <button type='button' className={`${styles.item} ${styles.item_active}`}>
-          <a className={styles.buyLink} href='http://croudsale.limcore.io' target='blank' rel='noreferrer'>
+          <a className={styles.buyLink} href='https://crowdsale.limcore.io' target='blank' rel='noreferrer'>
             <img className={styles.icon} src={buyIcon} alt='' />
             Купить
           </a>
