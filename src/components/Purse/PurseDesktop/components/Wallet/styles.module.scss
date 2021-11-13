@@ -1,8 +1,8 @@
 @import '../../../../../scss/cabinet';
 
 .wallet {
-  padding: 0 50px;
-  margin: 60px 20px;
+  padding: 0 60px;
+  margin: 60px 0;
   background-color: $color-cyan-pale;
   border-radius: 14px;
   max-height: 137px;
@@ -75,13 +75,10 @@
 }
 
 .swiperWrapper {
-  :global(.swiper-slide) {
-    width: 80%;
-  }
-  max-width: 48vw;
+  width: 100%;
   margin: 0 auto;
+  overflow: hidden;
   :global(.swiper-button-prev), :global(.swiper-button-next) {
-    display: flex;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -110,11 +107,11 @@
   }
   :global(.swiper-button-prev) {
     background-image: url(../../../../../assets/icons/arrow-left-blue.svg);
-    transform: translate(0, -50%);
+    transform: translate(-15%, -50%);
   }
   :global(.swiper-button-next) {
     background-image: url(../../../../../assets/icons/arrow-right-blue.svg);
-    transform: translate(0, -50%);
+    transform: translate(15%, -50%);
   }
   :global(.swiper-button-disabled) {
       display: none;

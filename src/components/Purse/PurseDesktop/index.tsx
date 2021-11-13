@@ -17,9 +17,9 @@ import { Transactions } from '@components/Purse/PurseDesktop/components/Transact
 import { Wallpaper } from '@components/Purse/PurseDesktop/components/Wallpaper'
 import { Logo } from '@components/Purse/PurseDesktop/components/Logo'
 import classnames from 'classnames'
+import { DetailTable } from './components/DetailTable/DetailTable'
 
 import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
-import { ProfileDesktop } from '@components/Profile/ProfileDesktop'
 import { TransactionsDetails } from '@components/Purse/PurseDesktop/components/Transactions/components/TransactionsDetails'
 import { PageBalanceLIMC } from '@components/Purse/PurseDesktop/components/PageBalanceLIMC'
 import { PageBalanceUSDT } from '@components/Purse/PurseDesktop/components/PageBalanceUSDT'
@@ -148,143 +148,154 @@ export const PurseDesktop = () => {
   }
 
   return (
-    <section className={styles.purse}>
+    <>
       <Wallpaper />
-      <header className={styles.header}>
-        <Logo />
-        <nav className={styles.nav}>
-          <Link
-            className={classnames([styles.nav__link, window === 'main' && styles.nav__link_active])}
-            to='main'
-            onClick={() => setWindow('main')}
-          >
-            Главная
-          </Link>
-          <Link
-            className={classnames([styles.nav__link, window === 'broadcasts' && styles.nav__link_active])}
-            to='broadcasts'
-            onClick={() => setWindow('broadcasts')}
-          >
-            Трансляции
-          </Link>
-          {/* <Link
-            className={classnames([styles.nav__link, isChatOpen && styles.nav__link_active])}
-            to='chat'
-            onClick={() => setIsChatOpen(true)}
-          >
-            Чат
-          </Link> */}
-        </nav>
-        <div className={styles.profileGroup} onClick={handleProfileOpen}>
-          <img className={styles.profileIcon} src={profile} />
-          <p className={styles.profileName}>{currentName}</p>
-          <button className={styles.logoutBtn} onClick={onLogout}>
-            <LogoutIcon />
-          </button>
-        </div>
-        <Modal active={isProfileOpen} setActive={handleProfileClose} crossFlag>
-          <ProfileMobile />
-        </Modal>
-      </header>
-      <div className={styles.purseContainer}>
-        <div className={styles.accounts}>
-          <Menu
-            isUsdtInfoVisible={isUsdtInfoVisible}
-            handleBalanceUsdtOpenClick={() => setIsUsdtInfoVisible(true)}
-            handleBalanceUsdtCloseClick={() => setIsUsdtInfoVisible(false)}
-            openPopup={() => setViewContent('balance')}
-            handlePageBalanceLIMCOpenClick={() => {
-              setIsPageBalanceLIMCVisible(true)
-              setWindow('main')
-            }}
-            handlePageBalanceUSDTOpenClick={() => {
-              setIsPageBalanceUSDTVisible(true)
-              setWindow('main')
-            }}
-            handlePageCardBalanceOpenClick={() => setIsPageCardBalanceVisible(true)}
-            handlePageBalanceLIMCCloseClick={() => setIsPageBalanceLIMCVisible(false)}
-            handlePageBalanceUSDTCloseClick={() => setIsPageBalanceUSDTVisible(false)}
-            handlePageCardBalanceCloseClick={() => setIsPageCardBalanceVisible(false)}
-            isPageBalanceLIMCVisible={isPageBalanceLIMCVisible}
-            isPageBalanceUSDTVisible={isPageBalanceUSDTVisible}
-            isPageCardBalanceVisible={isPageCardBalanceVisible}
-          />
-        </div>
-        {window === 'broadcasts' && <BroadcastsDesktop />}
-        {window === 'main' && (
-          <>
-            <PageCardBalance
-              usdtBalance={usdtBalance}
-              isOpen={isPageCardBalanceVisible}
-              handlePageCardBalanceCloseClick={() => setIsPageCardBalanceVisible(false)}
-            />
-            <PageBalanceLIMC
-              limcBalance={limcBalance}
-              isOpen={isPageBalanceLIMCVisible}
+      <section className={styles.purse}>
+        <header className={styles.header}>
+          <Logo />
+          <nav className={styles.nav}>
+            <Link
+              className={classnames([styles.nav__link, window === 'main' && styles.nav__link_active])}
+              to='main'
+              onClick={() => setWindow('main')}
+            >
+              Главная
+            </Link>
+            <Link
+              className={classnames([styles.nav__link, window === 'broadcasts' && styles.nav__link_active])}
+              to='broadcasts'
+              onClick={() => setWindow('broadcasts')}
+            >
+              Трансляции
+            </Link>
+            {/* <Link
+      className={classnames([styles.nav__link, isChatOpen && styles.nav__link_active])}
+      to='chat'
+      onClick={() => setIsChatOpen(true)}
+    >
+      Чат
+    </Link> */}
+          </nav>
+          <div className={styles.profileGroup} onClick={handleProfileOpen}>
+            <img className={styles.profileIcon} src={profile} />
+            <p className={styles.profileName}>{currentName}</p>
+            <button className={styles.logoutBtn} onClick={onLogout}>
+              <LogoutIcon />
+            </button>
+          </div>
+          <Modal active={isProfileOpen} setActive={handleProfileClose} crossFlag>
+            <ModalHeader title={currentName} onClick={handleProfileClose} />
+            <ProfileMobile />
+          </Modal>
+        </header>
+        <div className={styles.purseContainer}>
+          <div className={styles.accounts}>
+            <Menu
+              isUsdtInfoVisible={isUsdtInfoVisible}
+              handleBalanceUsdtOpenClick={() => setIsUsdtInfoVisible(true)}
+              handleBalanceUsdtCloseClick={() => setIsUsdtInfoVisible(false)}
+              openPopup={() => setViewContent('balance')}
+              handlePageBalanceLIMCOpenClick={() => {
+                setIsPageBalanceLIMCVisible(true)
+                setWindow('main')
+              }}
+              handlePageBalanceUSDTOpenClick={() => {
+                setIsPageBalanceUSDTVisible(true)
+                setWindow('main')
+              }}
+              handlePageCardBalanceOpenClick={() => setIsPageCardBalanceVisible(true)}
               handlePageBalanceLIMCCloseClick={() => setIsPageBalanceLIMCVisible(false)}
-              openProfile={handleProfileOpen}
-            />
-            <PageBalanceUSDT
-              usdtBalance={usdtBalance}
-              isOpen={isPageBalanceUSDTVisible}
               handlePageBalanceUSDTCloseClick={() => setIsPageBalanceUSDTVisible(false)}
-              openProfile={handleProfileOpen}
+              handlePageCardBalanceCloseClick={() => setIsPageCardBalanceVisible(false)}
+              isPageBalanceLIMCVisible={isPageBalanceLIMCVisible}
+              isPageBalanceUSDTVisible={isPageBalanceUSDTVisible}
+              isPageCardBalanceVisible={isPageCardBalanceVisible}
             />
-            <div
-              className={`${
-                isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
-                  ? styles.balance_invisible
-                  : styles.balance
-              }`}
-            >
-              <Balance />
-            </div>
-            <div
-              className={`${
-                isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
-                  ? styles.roadMap_invisible
-                  : styles.roadMap
-              }`}
-            >
-              <RoadMap />
-            </div>
-            <div
-              className={`${
-                isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
-                  ? styles.mining_invisible
-                  : styles.mining
-              }`}
-            >
-              <h3 className={styles.detailsTitle}>Детализация майнинга</h3>
-              <div className={styles.miningDetails}>
-                <Details />
-                {isLimcBought?.length ? (
-                  <StartMining onButtonClick={handleStartClick} />
-                ) : (
-                  <Statistics onClick={handleUntilMiningModalOpen} />
-                )}
-              </div>
-              <Modal active={UntilMiningModalOpen} setActive={handleUntilMiningModalClose} crossFlag>
-                <UntilMiningStart />
-              </Modal>
-            </div>
-            <div
-              className={`${
-                isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
-                  ? styles.transactions_invisible
-                  : styles.transactions
-              }`}
-            >
-              {isWalletVisible && <Wallet />}
-              <Transactions
-                onProfileClick={handleProfileOpen}
-                onTransactionsClick={handleTransactionsClick}
-                isUserHasTransactions={isUserHasTransactions}
+          </div>
+          {window === 'broadcasts' && <BroadcastsDesktop />}
+          {window === 'main' && (
+            <>
+              <PageCardBalance
+                usdtBalance={usdtBalance}
+                isOpen={isPageCardBalanceVisible}
+                handlePageCardBalanceCloseClick={() => setIsPageCardBalanceVisible(false)}
               />
-            </div>
-          </>
-        )}
-      </div>
-    </section>
+              <PageBalanceLIMC
+                limcBalance={limcBalance}
+                isOpen={isPageBalanceLIMCVisible}
+                handlePageBalanceLIMCCloseClick={() => setIsPageBalanceLIMCVisible(false)}
+                openProfile={handleProfileOpen}
+              />
+              <PageBalanceUSDT
+                usdtBalance={usdtBalance}
+                isOpen={isPageBalanceUSDTVisible}
+                handlePageBalanceUSDTCloseClick={() => setIsPageBalanceUSDTVisible(false)}
+                openProfile={handleProfileOpen}
+              />
+              <div
+                className={`${
+                  isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
+                    ? styles.balance_invisible
+                    : styles.balance
+                }`}
+              >
+                <Balance />
+              </div>
+              <div
+                className={`${
+                  isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
+                    ? styles.roadMap_invisible
+                    : styles.roadMap
+                }`}
+              >
+                <RoadMap />
+                <a className={styles.byLimcBtn} href='https://crowdsale.limcore.io' target='_blank' rel='noreferrer'>
+                  Купить LIMC
+                </a>
+              </div>
+              <div
+                className={`${
+                  isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
+                    ? styles.mining_invisible
+                    : styles.mining
+                }`}
+              >
+                <h3 className={styles.detailsTitle}>Детализация майнинга</h3>
+                <div className={styles.miningDetails}>
+                  <div className={styles.miningDetailsWrapper}>
+                    <Details />
+                    {isLimcBought?.length ? (
+                      <StartMining onButtonClick={handleStartClick} />
+                    ) : (
+                      <Statistics onClick={handleUntilMiningModalOpen} />
+                    )}
+                  </div>
+                  <DetailTable />
+                </div>
+                <Modal active={UntilMiningModalOpen} setActive={handleUntilMiningModalClose} crossFlag>
+                  <UntilMiningStart />
+                </Modal>
+              </div>
+              <div className={styles.wallet_invisible}>
+                <Wallet />
+              </div>
+              <div
+                className={`${
+                  isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
+                    ? styles.transactions_invisible
+                    : styles.transactions
+                }`}
+              >
+                {/* <Transactions
+                  onProfileClick={handleProfileOpen}
+                  onTransactionsClick={handleTransactionsClick}
+                  isUserHasTransactions={isUserHasTransactions}
+                /> */}
+              </div>
+            </>
+          )}
+        </div>
+      </section>
+    </>
   )
 }
