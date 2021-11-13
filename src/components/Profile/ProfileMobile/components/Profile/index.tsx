@@ -24,7 +24,7 @@ export const Profile: React.FC = () => {
       </div>
       <div className={Styles.block}>
         <span className={Styles.title}>Заполните профиль</span>
-        <span className={Styles.info}>Мы предоставим доступ ко всем функциям</span>
+        <span className={Styles.info}>Для восстановления доступа в случае полной потери доступа к аккаунту</span>
         <ButtonBig onClick={startFilling}>Перейти к заполнению</ButtonBig>
       </div>
       <p className={Styles.text}>Нужно будет указать ФИО, дату рождения, паспортные данные, ИНН и место жительства </p>

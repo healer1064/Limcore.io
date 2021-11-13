@@ -20,10 +20,17 @@ import smartphoneImage from '../../../../../assets/images/smartphone.png'
 export const ProfileComplete: React.FC = () => {
   const dispatch = useAppDispatch()
   const userData = useAppSelector((state) => state.user.userData)
+  const is2FA = useAppSelector((state) => state.authNew.is2FA)
   const [notificationOpen, setNotificationOpen] = useState(true)
 
-  const closeNotification = () => setNotificationOpen(false)
+  const closeNotification = (event) => {
+    event.stopPropagation()
+    setNotificationOpen(false)
+  }
+
   const changeView = (view) => dispatch(changeViewContent(view))
+
+  const onClick2FA = () => changeView('addAuth')
 
   return (
     <>
@@ -93,7 +100,7 @@ export const ProfileComplete: React.FC = () => {
               <img className={Styles.arrow} src={linkIcon} alt='Иконка' />
             </div>
           </li>
-          <li className={Styles.item} onClick={() => changeView('addAuth')}>
+          <li className={Styles.item} onClick={onClick2FA}>
             <img className={Styles.icon} src={authIcon} alt='Иконка' />
             <div className={`${Styles.wrapper} ${Styles.wrapper_edit}`}>
               <div className={Styles.block}>
@@ -103,11 +110,13 @@ export const ProfileComplete: React.FC = () => {
             </div>
           </li>
         </ul>
-        <div className={`${notificationOpen ? Styles.notification : Styles.notification_invisible}`}>
-          <span className={Styles.text}>Подключите двухфакторную аутентификацию</span>
-          <img className={Styles.smartphone} src={smartphoneImage} alt='Иконка' />
-          <img className={Styles.close} src={closeIcon} alt='Иконка' onClick={closeNotification} />
-        </div>
+        {!is2FA && notificationOpen && (
+          <div className={Styles.notification} onClick={onClick2FA}>
+            <span className={Styles.text}>Подключите двухфакторную аутентификацию</span>
+            <img className={Styles.smartphone} src={smartphoneImage} alt='Иконка' />
+            <img className={Styles.close} src={closeIcon} alt='Иконка' onClick={closeNotification} />
+          </div>
+        )}
       </div>
     </>
   )

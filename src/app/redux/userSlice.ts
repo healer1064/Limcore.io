@@ -28,12 +28,7 @@ export const get2FAUrl = createAsyncThunk('user/get2FAUrl', async () => {
 })
 
 export const confirm2FA: any = createAsyncThunk('user/confirm2FA', async (data: any) => {
-  const response = await api.get('users/totp/confirm/{code}/', data)
-  return response.data
-})
-
-export const login2FA: any = createAsyncThunk('user/login2FA', async (data: any) => {
-  const response = await api.post('users/login/2fa/', data)
+  const response = await api.get(`users/totp/confirm/${data}/`)
   return response.data
 })
 
@@ -45,7 +40,10 @@ export const userSlice = createSlice({
     userData: null,
     email: null,
     middleName: false,
-    is2FA: null,
+    data2FA: {
+      key: '',
+      qr_url: '',
+    },
     data: {
       avatar: '',
       first_name: '',
@@ -72,8 +70,8 @@ export const userSlice = createSlice({
     },
   },
   reducers: {
-    setIs2FA(state, { payload }) {
-      state.is2FA = payload
+    setData2FA(state, { payload }) {
+      state.data2FA = payload
     },
     setUserId(state, { payload }) {
       state.userId = payload
@@ -123,15 +121,9 @@ export const userSlice = createSlice({
     builder.addCase(confirm2FA.rejected, (state, { payload }) => {
       console.log('confirm2FA', payload)
     })
-    builder.addCase(login2FA.fulfilled, (state, { payload }) => {
-      console.log('login2FA', payload)
-    })
-    builder.addCase(login2FA.rejected, (state, { payload }) => {
-      console.log('login2FA', payload)
-    })
   },
 })
 
-export const { setIs2FA, setUserId, setDealerId, setUserEmail, setData, setMiddleName } = userSlice.actions
+export const { setData2FA, setUserId, setDealerId, setUserEmail, setData, setMiddleName } = userSlice.actions
 
 export default userSlice.reducer

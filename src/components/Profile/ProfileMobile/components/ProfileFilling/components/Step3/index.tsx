@@ -91,7 +91,7 @@ export const Step3: React.FC = () => {
                 maxLength={maxLength}
               />
             </Label>
-            <Label titleText='Квартира*'>
+            <Label titleText='Квартира'>
               <InputText
                 className={Styles.input}
                 onChange={onChangeValue}

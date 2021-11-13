@@ -126,10 +126,16 @@ export const refreshToken: any = createAsyncThunk('auth/refreshToken', async fun
   return response
 })
 
+export const login2FA: any = createAsyncThunk('user/login2FA', async (data: any) => {
+  const response = await api.post('users/login/2fa/', data)
+  return response.data
+})
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
     isAuth: false,
+    is2FA: null,
     isSincWithWallet: false,
     walletConnectUsdt: '',
     walletConnectLimc: '',
@@ -143,12 +149,15 @@ export const authSlice = createSlice({
     codeEmail: '',
     phoneOrEmail: '',
     codePhoneOrEmail: '',
-
+    code2FA: '',
     confirmationEmail: { code: '', unique_identifier: '' },
   },
   reducers: {
     setIsAuth: (state, { payload }) => {
       state.isAuth = payload
+    },
+    setIs2FA(state, { payload }) {
+      state.is2FA = payload
     },
     setIsSincWithWallet: (state, { payload }) => {
       state.isSincWithWallet = payload
@@ -189,22 +198,35 @@ export const authSlice = createSlice({
     setCodePhoneOrEmail: (state, { payload }) => {
       state.codePhoneOrEmail = payload
     },
+    setCode2FA: (state, { payload }) => {
+      state.code2FA = payload
+    },
   },
   extraReducers: {
+    [login2FA.fulfilled]: (state, action) => {
+      console.log('login2FA', action)
+
+      const data = { ...action.payload, is_2fa: true }
+      localStorage.setItem('jwtToken', JSON.stringify(data))
+    },
+    [login2FA.rejected]: (state, action) => {
+      console.log('login2FA', action)
+    },
     [registerUserPhone.fulfilled]: (state, action) => {
-      console.log('fulfilled!!!', action)
+      console.log('registerUserPhone', action)
     },
     [registerUserPhone.rejected]: (state, action) => {
-      console.log('rejected!!!', action)
+      console.log('registerUserPhone', action)
     },
     [registerUserEmail.fulfilled]: (state, action) => {
-      console.log('fulfilled!!!', action)
+      console.log('registerUserEmail', action)
     },
     [registerUserEmail.rejected]: (state, action) => {
-      console.log('rejected!!!', action)
+      console.log('registerUserEmail', action)
     },
     [authorizationUserEmail.fulfilled]: (state, action) => {
-      console.log('action', action)
+      console.log('authorizationUserEmail', action)
+
       const data = { code: '', unique_identifier: '' }
 
       data.code = action.payload.data.result.slice(35, 40)
@@ -222,24 +244,30 @@ export const authSlice = createSlice({
     //   state.confirmationEmail = data
     // },
     [registerUserEmailConfirmation.fulfilled]: (state, action) => {
-      console.log('action', action)
+      console.log('registerUserEmailConfirmation', action)
+
       state.isAuth = !state.isAuth
     },
     [authorizationUserEmailConfirmation.fulfilled]: (state, action) => {
-      console.log('action', action)
+      console.log('authorizationUserEmailConfirmation', action)
+
       state.isAuth = !state.isAuth
     },
     [getJwtToken.fulfilled]: (state, action) => {
-      console.log(action)
+      console.log('getJwtToken', action)
+
       const data = { ...action.payload.data }
       localStorage.setItem('jwtToken', JSON.stringify(data))
     },
     [getNewCode.fulfilled]: (state, action) => {
-      console.log(action)
+      console.log('getNewCode', action)
     },
     [checkToken.fulfilled]: (state, action) => {
+      console.log('checkToken', action)
+
       const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
       const token = tokenObj.access
+
       if (action.payload.status === 200) {
         state.isAuth = true
         api.setUserToken(token)
@@ -249,8 +277,10 @@ export const authSlice = createSlice({
     },
     [refreshToken.fulfilled]: (state, action) => {
       console.log('refreshToken', action)
+
       const jwtObj = JSON.parse(localStorage.getItem('jwtToken'))
       const data = { ...jwtObj, access: action.payload.data.access }
+
       localStorage.setItem('jwtToken', JSON.stringify(data))
     },
   },
@@ -259,6 +289,7 @@ export const authSlice = createSlice({
 const { actions, reducer } = authSlice
 export const {
   setIsAuth,
+  setIs2FA,
   setIsSincWithWallet,
   setProcessType,
   setStepRegistration,
@@ -272,7 +303,8 @@ export const {
   setCodePhoneOrEmail,
   setWalletConnectUsdt,
   setWalletConnectLimc,
+  setCode2FA,
 } = actions
-export const authSelector = (state: RootState) => state.auth
 
+export const authSelector = (state: RootState) => state.auth
 export default reducer
