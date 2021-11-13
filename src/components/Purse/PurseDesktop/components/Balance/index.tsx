@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import { balance as balanceSvg, copyIcon } from '../../images'
 import logoIcon from '@icons/logo.svg'
@@ -6,10 +6,20 @@ import { Modal } from '../Modal'
 import { Overall } from './components/Overall/index'
 import { useAppSelector } from '@app/redux/hooks'
 import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
-import etherscanIcon from '@icons/etherscan1.png'
 import { TwtIcon } from '@icons/twtIcon'
 import { DataBaseIcon } from '@icons/dataBaseIcon'
+import { ShieldIcon } from '@icons/ShieldtIcon'
 import { BlackCross } from '@icons/BlackCross'
+import WalletConnect from '@walletconnect/client'
+import QRCodeModal from '@walletconnect/qrcode-modal'
+import {
+  setIsSincWithWallet,
+  setWalletConnectLimc,
+  setWalletConnectUsdt,
+} from '../../../../../pages/auth/redux/authSlice'
+import { useDispatch } from 'react-redux'
+import { getLimc, getUsdt } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
+import classNames from 'classnames'
 
 export const Balance = () => {
   const [isBalanceVisible, setIsBalanceVisible] = useState(false)
@@ -28,6 +38,14 @@ export const Balance = () => {
   const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
   const sum: number = Number(usdtBalance) + Number(limcBalance)
   const money = isNaN(sum) ? '...' : sum
+  const isSync = useAppSelector((state) => state.authNew.isSincWithWallet)
+
+  const [userPurse, setUserPurse] = useState({
+    address: '',
+    chainId: null,
+  })
+
+  const dispatch = useDispatch()
 
   const handleFirstRegModalClose = () => {
     setIsRegModalVisible(false)
@@ -41,17 +59,96 @@ export const Balance = () => {
     setIsBalanceVisible(false)
   }
 
+  useEffect(() => {
+    if (isSync) {
+      const connector = new WalletConnect({
+        bridge: 'https://bridge.walletconnect.org', // Required
+        qrcodeModal: QRCodeModal,
+      })
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      connector.on('disconnect', (error, payload) => {
+        if (error) {
+          throw error
+        }
+
+        setUserPurse({ address: '', chainId: null })
+        dispatch(setIsSincWithWallet(false))
+        window.location.reload()
+      })
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      connector.on('session_update', (error, payload) => {
+        if (error) {
+          throw error
+        }
+        // Get updated accounts and chainId
+        // const { accounts, chainId } = payload.params[0]
+        console.log('session_update')
+      })
+      if (connector.connected) {
+        dispatch(setIsSincWithWallet(true))
+        const dataFromLS = JSON.parse(localStorage.getItem('walletconnect'))
+        setUserPurse({ address: dataFromLS.accounts[0], chainId: dataFromLS.chainId })
+      }
+    }
+  }, [isSync])
+
+  const sincWithWallet = async () => {
+    const connector = new WalletConnect({
+      bridge: 'https://bridge.walletconnect.org', // Required
+      qrcodeModal: QRCodeModal,
+    })
+
+    // Check if connection is already established
+    if (!connector.connected) {
+      connector.createSession()
+    }
+
+    connector.on('connect', (error, payload) => {
+      if (error) {
+        throw error
+      }
+
+      const { accounts, chainId } = payload.params[0]
+      setUserPurse({ address: accounts[0], chainId })
+
+      dispatch(setIsSincWithWallet(true))
+      QRCodeModal.close()
+    })
+  }
+
+  useEffect(() => {
+    if (userPurse.chainId) {
+      getUsdt(userPurse.address).then((res) => dispatch(setWalletConnectUsdt(res)))
+      getLimc(userPurse.address).then((res) => dispatch(setWalletConnectLimc(res)))
+    }
+  }, [userPurse])
+
   return (
     <div className={styles.balance}>
       <div className={styles.iconsWrapper}>
-        <DataBaseIcon />
+        <DataBaseIcon isSync={isSync} />
         <BlackCross />
-        <TwtIcon />
-        <p>Для старта майнинга синхронизируйте Limcore Wallet с&nbsp;Trust Wallet</p>
+        <TwtIcon isSync={isSync} />
+        {isSync ? (
+          <p>Limcore Wallet синхронизирован с&nbsp;Trust Wallet</p>
+        ) : (
+          <p>Для старта майнинга синхронизируйте Limcore Wallet с&nbsp;Trust Wallet</p>
+        )}
       </div>
-      <button className={styles.syncButton} onClick={() => {}}>
-        Синхронизировать
-      </button>
+      {isSync ? (
+        <div className={styles.walletId}>
+          <ShieldIcon />
+          <p>
+            wc:6cbadff7-e03c-4815-9d9b-519e82284e56@1?bridge=https%3A%2F%2F0.bridge.walletconnect.org&key=116467495c7317bee633dbdd20e38b96958e9cfe90cdf163ca97b9c4243359f1
+          </p>
+        </div>
+      ) : (
+        <button className={styles.syncButton} onClick={sincWithWallet}>
+          Синхронизировать
+        </button>
+      )}
       {/* <h1 className={styles.balance__sumMain}>{`$${money}`}</h1>
       <div className={styles.balance__data}>
         <p className={styles.balance__time}>24h</p>
