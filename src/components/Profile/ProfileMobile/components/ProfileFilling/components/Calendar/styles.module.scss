@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
 
   button {
     background: transparent;
@@ -17,12 +16,12 @@
   font-size: 14px;
   line-height: 17px;
   color: #4f535a;
+  margin: 0 24px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
   margin-top: 30px;
 }
 
@@ -38,7 +37,7 @@
   text-align: center;
 
   &:nth-child(-n + 8) {
-    margin-bottom: 10px;
+    margin-bottom: 25px;
   }
 
   &:hover {
