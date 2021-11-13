@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'https://api.etherscan.io/api',
+  baseURL: 'https://api.bscscan.com/api',
   timeout: 30000, // 30 secs
   headers: {
     Accept: 'application/json',
@@ -9,7 +9,7 @@ const api = axios.create({
   },
 })
 
-const myKey = 'RJTBA1MHS67411M7487KD2E3CUAYHGS1FZ'
+const myKey = '2WPRCBSXAY2VH1ZVGZQXK2VDUSJ4GX9XJV' // bcscan api key, мб надо в другом месте хранить
 
 export const getUsdt = async (address) => {
   try {
@@ -29,7 +29,7 @@ export const getLimc = async (address) => {
 }
 
 async function getUsdtBalance(address: string) {
-  const contactAdress = '0xdac17f958d2ee523a2206206994597c13d831ec7' // USDT contract address, required
+  const contactAdress = '0xe4b62383c69b33bb0d51f106b72fb38ab49b9480' // USDT contract address, required
 
   const response = await api.get(
     `?module=account&action=tokenbalance&contractaddress=${contactAdress}&address=${address}&tag=latest&apikey=${myKey}`,
@@ -49,7 +49,7 @@ async function getUsdtBalance(address: string) {
 }
 
 async function getLimcBalance(address: string) {
-  const contactAdress = '0x3cba6Aa21eF433347c27864035f711A9FD4A3eEd' // LIMC contract address, required
+  const contactAdress = '0xae608d06816dd2e2feeb4e2dea9eb807786cdc43' // LIMC contract address, required
 
   const response = await api.get(
     `?module=account&action=tokenbalance&contractaddress=${contactAdress}&address=${address}&tag=latest&apikey=${myKey}`,
