@@ -35,6 +35,10 @@ async function getUsdtBalance(address: string) {
     `?module=account&action=tokenbalance&contractaddress=${contactAdress}&address=${address}&tag=latest&apikey=${myKey}`,
   )
   const { result } = response.data
+  if (Number(result) === 0) {
+    return 0
+  }
+
   const resultString = String(result)
   const firstPart = resultString.substr(0, resultString.length - 6)
   const secondPart = resultString.substr(resultString.length - 6).substr(0, 2)
@@ -51,7 +55,7 @@ async function getLimcBalance(address: string) {
     `?module=account&action=tokenbalance&contractaddress=${contactAdress}&address=${address}&tag=latest&apikey=${myKey}`,
   )
   const { result } = response.data
-  if (Number(result)) {
+  if (Number(result) === 0) {
     return 0
   }
 

@@ -13,7 +13,8 @@
   &__content {
     position: relative;
     margin: 0;
-    padding: 106px 20px 30px;
+    // padding: 106px 20px 30px;
+    padding: 55px 20px 30px;
     width: 100%;
   }
 }
@@ -266,4 +267,18 @@
   &:hover {
     cursor: pointer;
   }
+}
+
+.buyBtn {
+  margin: 20px 0;
+  width: 100%;
+}
+
+.buyLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+  color: #fff;
 }

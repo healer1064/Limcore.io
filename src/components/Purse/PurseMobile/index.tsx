@@ -18,8 +18,8 @@ import { InputText } from '../../../ui-kit/InputText'
 
 import limcoreIcon from '@icons/limcore.svg'
 import buyIcon from '@icons/buy.svg'
-import sellIcon from '@icons/sell.svg'
-import tradeIcon from '@icons/trade.svg'
+// import sellIcon from '@icons/sell.svg'
+// import tradeIcon from '@icons/trade.svg'
 import { Modal } from './components/Modal'
 import { ModalHeader } from './components/ModalHeader'
 import { FooterMobile } from '@components/Footer/FooterMobile'
@@ -27,7 +27,7 @@ import { useHistory } from 'react-router'
 import { RoadMap } from '@components/Purse/PurseMobile/components/RoadMap'
 
 export const PurseMobile: FC = () => {
-  const [isCardVisible, setIsCardVisible] = useState(true)
+  // const [isCardVisible, setIsCardVisible] = useState(true)
   const [isWalletVisible, setIsWalletVisible] = useState(true)
   const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -59,9 +59,9 @@ export const PurseMobile: FC = () => {
   // const [displayPopup, setDisplayPopup] = useState(false)
   const closePopup = () => setViewContent('')
 
-  const handleCardCloseClick = () => {
-    setIsCardVisible(false)
-  }
+  // const handleCardCloseClick = () => {
+  //   setIsCardVisible(false)
+  // }
 
   const handleWalletCloseClick = () => {
     setIsWalletVisible(false)
@@ -125,7 +125,13 @@ export const PurseMobile: FC = () => {
                 <span className={styles.title}>{limcBalance} LIMC</span>
               </div>
               <span className={styles.usd}>{}</span>
-              <div className={styles.items}>
+              <ButtonBig className={styles.buyBtn}>
+                <a href='http://croudsale.limcore.io' target='_blank' className={styles.buyLink} rel='noreferrer'>
+                  <img className={styles.icon} src={buyIcon} alt='' />
+                  Купить
+                </a>
+              </ButtonBig>
+              {/* <div className={styles.items}>
                 <div className={`${styles.item} ${styles.item_active}`} onClick={() => setViewContent('buy')}>
                   <img className={styles.icon} src={buyIcon} alt='' />
                   <span>Купить</span>
@@ -138,7 +144,7 @@ export const PurseMobile: FC = () => {
                   <img className={styles.icon} src={tradeIcon} alt='' />
                   <span>Обменять</span>
                 </div>
-              </div>
+              </div> */}
               <div className={styles.container}>
                 <span className={styles.trans}>Транзакции</span>
                 <span className={styles.desc}>
@@ -146,7 +152,9 @@ export const PurseMobile: FC = () => {
                 </span>
               </div>
               <div className={styles.nextCont}>
-                <button className={styles.next}>Перейти к заполнению</button>
+                <button className={styles.next} onClick={() => history.push('/profile')}>
+                  Перейти к заполнению
+                </button>
               </div>
             </div>
           </div>
@@ -228,7 +236,7 @@ export const PurseMobile: FC = () => {
         openPopup={() => setViewContent('balance')}
       />
       <div className={styles.purse__content}>
-        {isCardVisible && <VirtualCard onCloseClick={handleCardCloseClick} />}
+        {/* {isCardVisible && <VirtualCard onCloseClick={handleCardCloseClick} />} */}
         <RoadMap />
         <div className={styles.buyCont}>
           <ButtonBig className={styles.buy} onClick={() => setViewContent('balance')}>

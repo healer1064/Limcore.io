@@ -10,7 +10,7 @@ export const Dummy = () => {
         Чат находится в разработке.
         <br />
         Вступай в чат в Telegram{' '}
-        <a href='https://t.me/limccore_chat' className={styles.link}>
+        <a href='https://t.me/limcore_chat' className={styles.link}>
           @limcore_chat
         </a>
       </p>
