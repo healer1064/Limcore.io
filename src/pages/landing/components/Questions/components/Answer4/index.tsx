@@ -1,30 +1,18 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import Styles from './styles.module.scss'
 
 export const Answer4 = () => {
+  const [t] = useTranslation()
+
   return (
     <>
-      <p className={Styles.text}>
-        Мы в Limcore уверены, что Chia Network — это один из наиболее интересных и перспективных проектов.
-      </p>
-      <p className={Styles.text}>
-        Основатель проекта Брэм Коен — опытный предприниматель, основатель «тех самых» торрентов (BitTorrent). Он собрал
-        сильную команду, обладающую необходимыми компетенциями для лидера рынка.
-      </p>
-      <p className={Styles.text}>
-        Президент компании Джин Хоффман — в прошлом генеральный директор eMusic.com и Vindicia.
-      </p>
-      <p className={Styles.text}>
-        Финансовый директор Митч Эдвардс — в прошлом заместитель генерального директора компании Overstock.
-      </p>
-      <p className={Styles.text}>
-        Партнер Майкл Новограц — член Федерального резервного банка нью-йоркского консультативного комитета по
-        финансовым рынкам, управляющий хэдж-фондом, долларовый миллиардер. Ранее являлся руководителем отделения Goldman
-        Sachs в Латинской Америке.
-      </p>
-      <p className={Styles.text}>
-        Опытный состав команды сети Chia позволяет быть уверенным в работе платформы Limcore.
-      </p>
+      <p className={Styles.text}>{t('qa_card4_subtitle1')}</p>
+      <p className={Styles.text}>{t('qa_card4_subtitle2')}</p>
+      <p className={Styles.text}>{t('qa_card4_subtitle3')}</p>
+      <p className={Styles.text}>{t('qa_card4_subtitle4')}</p>
+      <p className={Styles.text}>{t('qa_card4_subtitle5')}</p>
+      <p className={Styles.text}>{t('qa_card4_subtitle6')}</p>
     </>
   )
 }

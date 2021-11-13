@@ -20,17 +20,24 @@ import smartphoneImage from '../../../../../assets/images/smartphone.png'
 export const ProfileComplete: React.FC = () => {
   const dispatch = useAppDispatch()
   const userData = useAppSelector((state) => state.user.userData)
+  const is2FA = useAppSelector((state) => state.authNew.is2FA)
   const [notificationOpen, setNotificationOpen] = useState(true)
 
-  const closeNotification = () => setNotificationOpen(false)
+  const closeNotification = (event) => {
+    event.stopPropagation()
+    setNotificationOpen(false)
+  }
+
   const changeView = (view) => dispatch(changeViewContent(view))
+
+  const onClick2FA = () => changeView('addAuth')
 
   return (
     <>
       <div className={Styles.avatar}>
         <div className={Styles.image}>
           <img src={avatarImage} alt='Аватар' />
-          <i className={Styles.edit}>{}</i>
+          {/* <i className={Styles.edit}>{}</i> */}
         </div>
         <span className={Styles.name}>
           {userData?.profile?.first_name} {userData?.profile?.last_name}
@@ -55,7 +62,7 @@ export const ProfileComplete: React.FC = () => {
           </div>
         </div> */}
         <ul className={Styles.list}>
-          <li className={Styles.item}>
+          {/* <li className={Styles.item}>
             <img className={Styles.icon} src={phoneIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
@@ -64,7 +71,7 @@ export const ProfileComplete: React.FC = () => {
               </div>
               <ButtonSmall onClick={() => changeView('editPhone')}>Изменить</ButtonSmall>
             </div>
-          </li>
+          </li> */}
           {/* <li className={Styles.item}>
             <img className={Styles.icon} src={emailIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
@@ -84,30 +91,32 @@ export const ProfileComplete: React.FC = () => {
               <ButtonSmall onClick={() => changeView('editName')}>Изменить</ButtonSmall>
             </div>
           </li> */}
-          <li className={Styles.item}>
+          <li className={Styles.item} onClick={() => changeView('editLocation')}>
             <img className={Styles.icon} src={locationIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
                 <span className={Styles.content}>Мои адреса</span>
               </div>
-              <img className={Styles.arrow} src={linkIcon} alt='Иконка' onClick={() => changeView('editLocation')} />
+              <img className={Styles.arrow} src={linkIcon} alt='Иконка' />
             </div>
           </li>
-          <li className={Styles.item}>
+          <li className={Styles.item} onClick={onClick2FA}>
             <img className={Styles.icon} src={authIcon} alt='Иконка' />
             <div className={`${Styles.wrapper} ${Styles.wrapper_edit}`}>
               <div className={Styles.block}>
                 <span className={Styles.content}>Двухфакторная аутентификация</span>
               </div>
-              <img className={Styles.arrow} src={linkIcon} alt='Иконка' onClick={() => changeView('addAuth')} />
+              <img className={Styles.arrow} src={linkIcon} alt='Иконка' />
             </div>
           </li>
         </ul>
-        <div className={`${notificationOpen ? Styles.notification : Styles.notification_invisible}`}>
-          <span className={Styles.text}>Подключите двухфакторную аутентификацию</span>
-          <img className={Styles.smartphone} src={smartphoneImage} alt='Иконка' />
-          <img className={Styles.close} src={closeIcon} alt='Иконка' onClick={closeNotification} />
-        </div>
+        {!is2FA && notificationOpen && (
+          <div className={Styles.notification} onClick={onClick2FA}>
+            <span className={Styles.text}>Подключите двухфакторную аутентификацию</span>
+            <img className={Styles.smartphone} src={smartphoneImage} alt='Иконка' />
+            <img className={Styles.close} src={closeIcon} alt='Иконка' onClick={closeNotification} />
+          </div>
+        )}
       </div>
     </>
   )

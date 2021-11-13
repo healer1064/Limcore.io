@@ -345,7 +345,7 @@
   gap: 15px;
   p {
     @include subtitle-13px($color-4F-black);
-    max-width: 280px;
+    max-width: 275px;
   }  
 }
 .syncButton {
@@ -363,4 +363,34 @@
     border: 1px solid $color-31-blue;
     color: $color-31-blue;
   }
+  &:active {
+    border: 1px solid $color-2D-blue;
+    color: $color-2D-blue;
+  }
 }
+
+  .walletId {
+    display: flex;
+    align-items: center;
+    max-width: 275px;
+    max-height: 55px;
+    margin: 30px 0 50px;
+    border: 2px solid $color-4D-green;
+    border-radius: 14px;
+    padding: 15px 30px;
+    background-color: #fff;
+    svg {
+      min-width: 24px;
+      min-height: 24px;
+      margin: 0 10px 0 0;
+     }
+    p {
+      @include section-title();
+      margin: 0;
+      padding: 0;
+      color: $color-4A-blue;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }

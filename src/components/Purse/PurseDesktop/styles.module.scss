@@ -11,11 +11,10 @@
   bottom: 0;
   left: 0;
   margin: 0 auto;
-  padding: 0;
   width: 100%;
   max-width: 1280px;
   height: 100%;
-  background-color: #ffffff;
+  background-color: transparent;
   // overflow: auto;
 }
 
@@ -129,13 +128,14 @@
   margin: 30px 20px 0 6%;
   // max-width: 1280px;
   // padding: 0;
-  grid-template-columns: minmax(min-content, max-content);
+  grid-template-columns: 350px 65%;
   // grid-template-rows: repeat(3, minmax(min-content, max-content));
   column-gap: 40px;
   grid-template-areas:
     'accounts balance'
     'accounts roadMap'
     'accounts mining'
+    'accounts wallet'
     'accounts transactions';
 }
 
@@ -165,6 +165,25 @@
   &_invisible {
     display: none;
   }
+  .byLimcBtn {
+    @include section-title();
+    display: inline-block;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    border-radius: 14px;
+    padding: 15px 75px;
+    color: #ffffff;
+    background-color: $color-4A-blue;
+    margin: 30px 0;
+    &:hover {
+      background-color: $color-31-blue;
+    }
+    &:active {
+      background-color: $color-2D-blue;
+    }
+  }
 }
 
 .modalContainer {
@@ -191,7 +210,11 @@
 
 .miningDetails {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  .miningDetailsWrapper {
+    width: 100%;
+    display: flex;
+  }
 }
 
 .detailsTitle {
@@ -204,7 +227,13 @@
   padding: 60px 0 20px 0;
   margin: 0;
 }
-
+.wallet {
+  grid-area: wallet;
+  max-width: 100%;
+  &_invisible {
+    display: none;
+  }
+}
 .transactions {
   grid-area: transactions;
 

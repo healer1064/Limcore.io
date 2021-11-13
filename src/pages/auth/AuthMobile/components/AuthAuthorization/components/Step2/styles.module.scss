@@ -29,6 +29,10 @@
   max-width: 225px;
 }
 
+.notification_edit {
+  max-width: none;
+}
+
 .wrap {
   position: relative;
 
@@ -44,11 +48,11 @@
 
     margin: 0;
     padding: 0;
-  
+
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;
-    color: #FF6A6A;
+    color: #ff6a6a;
   }
 }
 

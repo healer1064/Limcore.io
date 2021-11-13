@@ -16,7 +16,7 @@ export const AddAuth: React.FC = () => {
   const dispatch = useAppDispatch()
   const step = useAppSelector((state) => state.cabinet.step)
   const userData = useAppSelector((state) => state.user.userData)
-  const is2FA = useAppSelector((state) => state.user.is2FA)
+  const is2FA = useAppSelector((state) => state.authNew.is2FA)
   const [offAuth, setOffAuth] = useState(false)
   const [checkedToggle, setCheckedToggle] = useState(true)
 
@@ -84,8 +84,10 @@ export const AddAuth: React.FC = () => {
           </>
         )}
         {step === 1 && <Step1 nextStep={nextStep} />}
+        {step === 2 && <Step3 />}
+        {/* {step === 1 && <Step1 nextStep={nextStep} />}
         {step === 2 && <Step2 nextStep={nextStep} />}
-        {step === 3 && <Step3 />}
+        {step === 3 && <Step3 />} */}
       </>
       {offAuth && (
         <Popup closePopup={() => setOffAuth(false)}>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 import { getTransactions } from '../../pages/auth/redux/auth.slice'
-import { checkToken, setIsAuth } from '../../pages/auth/redux/authSlice'
+import { checkToken, setIsAuth, setIs2FA } from '../../pages/auth/redux/authSlice'
 
 // import { Footer } from '../Footer'
 // import { FooterMobile } from '../Footer/FooterMobile'
@@ -35,19 +35,18 @@ import { Purse } from '@components/Purse'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getWalletAdress, getWalletBalance, getLimcPrice, getLimcAmount } from '../Wallet/redux/walletSlice'
-import { getUser, setIs2FA } from '@app/redux/userSlice'
+import { getUser } from '@app/redux/userSlice'
 import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
 
 const App = () => {
   const dispatch = useAppDispatch()
   const { width } = useWindowSize()
   const desktop = width >= 769
-
   const [isLoading, setIsLoading] = useState(false)
-
   // const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
   // const user = useAppSelector((state) => state.user.userData)
   const isAuth = useAppSelector((state) => state.authNew.isAuth)
+
   useEffect(() => {
     const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
 

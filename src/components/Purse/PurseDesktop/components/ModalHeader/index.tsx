@@ -18,9 +18,9 @@ export const ModalHeader = ({ title, onClick, crossFlag }: IModalHeader) => {
         </button>
       )}
       <h3 className={styles.headerTitle}>{title}</h3>
-      <button type='button' className={styles.cross} onClick={onClick}>
+      {/* <button type='button' className={styles.cross} onClick={onClick}>
         <img src={buttonCloseBlue} />
-      </button>
+      </button> */}
     </div>
   )
 }
