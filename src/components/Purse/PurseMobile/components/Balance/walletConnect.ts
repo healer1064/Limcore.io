@@ -35,3 +35,11 @@ async function getLimcBalance(address: string) {
   const balance = await contractLimc.methods.balanceOf(address).call()
   return balance / 10 ** 18
 }
+export const getSoldLimcs = async () => {
+  const contractAddress = '0x45B71c4b18313fB58eed0f55FfFac512d704288f'
+  const instance = new web3.eth.Contract(contract as any, contractAddress)
+
+  const total = await instance.methods.sold().call()
+  const totalResult = Math.trunc(total / 10 ** 18)
+  return totalResult
+}
