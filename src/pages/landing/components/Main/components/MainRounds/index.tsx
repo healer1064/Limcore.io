@@ -18,7 +18,8 @@ import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice
 import { useTranslation } from 'react-i18next'
 
 export const MainRounds: React.FC = () => {
-  const limcCount = useAppSelector((state) => state.wallet.limcCount)
+  // const limcCount = useAppSelector((state) => state.wallet.limcCount)
+  const limcCount = useAppSelector((state) => state.authNew.walletConnectSoldLimcs)
   const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
   const [popupOpen, setPopupOpen] = useState(false)
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
@@ -104,9 +105,7 @@ export const MainRounds: React.FC = () => {
       </PopupMainPage>
       <div className={Styles.progress}>
         <span className={Styles.bar}>{}</span>
-        <span className={Styles.count}>
-          {limcCount} / {limcLimit}
-        </span>
+        <span className={Styles.count}>{limcCount} / 80000</span>
       </div>
       <div className={Styles.wrapp}>
         <a href='https://round1.limcore.io' className={Styles.buy}>

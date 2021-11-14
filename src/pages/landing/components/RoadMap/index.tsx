@@ -70,14 +70,14 @@ export const RoadMap: React.FC = () => {
     {
       id: 9,
       title: t('roadmap_november15'),
-      status: 'in progress',
+      status: 'done',
       deadline: '15.11.2021',
       priority: 10,
     },
     {
       id: 10,
       title: t('roadmap_startRound1'),
-      status: 'in progress',
+      status: 'done',
       deadline: '15.11 – 30.12.2021',
       priority: 10,
     },
