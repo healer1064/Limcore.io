@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 import { getTransactions } from '../../pages/auth/redux/auth.slice'
-import { checkToken, setIsAuth } from '../../pages/auth/redux/authSlice'
+import { checkToken, setIsAuth, setWalletConnectSoldLimcs } from '../../pages/auth/redux/authSlice'
 
 // import { Footer } from '../Footer'
 // import { FooterMobile } from '../Footer/FooterMobile'
@@ -37,6 +37,7 @@ import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getWalletAdress, getWalletBalance, getLimcPrice, getLimcAmount } from '../Wallet/redux/walletSlice'
 import { getUser } from '@app/redux/userSlice'
 import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
+import { getSoldLimcs } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -55,6 +56,11 @@ const App = () => {
 
       dispatch(checkToken({ token: tokenObj.access }))
         .then(() => {
+          // getSoldLimcs().then((res) => {
+          //   console.log('res', res)
+          //   dispatch(setWalletConnectSoldLimcs(res))
+          // })
+          getSoldLimcs().then((res) => dispatch(setWalletConnectSoldLimcs(res)))
           dispatch(setIsAuth(true))
           dispatch(getWalletAdress())
           dispatch(getWalletBalance())
