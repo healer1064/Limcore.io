@@ -58,6 +58,7 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
         // setActive={handleBalanceLimcOpenClick}
         // setNotActive={handleBalanceLimcCloseClick}
         active={isLimcInfoVisible}
+        type='limc'
       />
       <MenuItem
         image={balanceUsdt}

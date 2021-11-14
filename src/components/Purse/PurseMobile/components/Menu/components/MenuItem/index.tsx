@@ -15,6 +15,7 @@ interface MenuItemProps {
   image: any
   title: any
   balance: any
+  type?: string
 }
 
 export const MenuItem: React.FC<MenuItemProps> = ({
@@ -25,6 +26,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   image,
   title,
   balance,
+  type,
 }) => {
   const isSinc = useAppSelector((state) => state.authNew.isSincWithWallet)
   const menuItemClass = `${styles.menu__item} ${styles.menu__balance}`
@@ -38,7 +40,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
       <span className={styles.menu__icon}>{isSinc ? <BlueArrow /> : <ShouldSinc />}</span>
       <img src={image} width='40' height='40' />
       <h5 className={styles.menu__title}>{title}</h5>
-      {isSinc ? (
+      {isSinc && type === 'limc' ? (
         <div className={styles.row}>
           <span>{balance}</span>
           <img src={lockIcon} alt='Lock' />

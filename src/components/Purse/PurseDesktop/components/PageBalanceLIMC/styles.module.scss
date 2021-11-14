@@ -17,7 +17,7 @@
     font-weight: bold;
     font-size: 46px;
     line-height: 1.4;
-    color: #3A3B3D;
+    color: #3a3b3d;
     display: flex;
     box-sizing: border-box;
     padding: 0;
@@ -30,7 +30,7 @@
     font-weight: 600;
     font-size: 20px;
     line-height: 150%;
-    color: #4F535A;
+    color: #4f535a;
     display: flex;
     box-sizing: border-box;
     padding: 0;
@@ -58,7 +58,7 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 1.25;
-  color: #3A3B3D;
+  color: #3a3b3d;
   align-items: center;
 
   &:hover {
@@ -74,7 +74,7 @@
   display: flex;
   box-sizing: border-box;
   padding: 0;
-  margin: 0 0 64px 0;
+  margin: 0 0 10px 0;
   align-items: center;
   gap: 10px;
 }
@@ -87,9 +87,9 @@
   max-width: 140px;
   padding: 15px;
   margin: 0 10px 0 0;
-  background: #F9FAFF;
+  background: #f9faff;
   border-radius: 14px;
-  color: #4A70F8;
+  color: #4a70f8;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 600;
@@ -101,34 +101,34 @@
     transition: background 0.3s ease;
     // border: 1px solid #3159E9;
     cursor: pointer;
-    color: #3159E9;
+    color: #3159e9;
   }
 
   &:active {
-    border: 1px solid #2D4EC5;
-    color: #2D4EC5;
+    border: 1px solid #2d4ec5;
+    color: #2d4ec5;
   }
-  
+
   &:last-child {
     margin: 0;
   }
 }
 
 .item_active {
-  background-color: #4A70F8;
+  background-color: #4a70f8;
   transition: background 0.3s ease;
-  color: #FFFFFF;
+  color: #ffffff;
 
   &:hover {
     transition: background 0.3s ease;
     cursor: pointer;
-    background-color: #3159E9;
-    color: #FFFFFF;
+    background-color: #3159e9;
+    color: #ffffff;
   }
 
   &:active {
-    background-color: #2D4EC5;
-    color: #FFFFFF;
+    background-color: #2d4ec5;
+    color: #ffffff;
   }
 }
 
@@ -152,6 +152,15 @@
   font-weight: 600;
   font-size: 13px;
   line-height: 1.5;
-  color: #FFFFFF;
+  color: #ffffff;
   align-items: center;
+}
+
+.lockup {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 160%;
+  color: #67686c;
+  margin-top: 6px;
 }

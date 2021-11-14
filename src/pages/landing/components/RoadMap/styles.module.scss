@@ -3,8 +3,8 @@
   position: relative;
   background-color: #f9fafe;
   padding: 20px 60px;
-  min-height: 12%;
-  height: auto;
+  // min-height: 12%;
+  // height: auto;
 }
 
 .wrapper {
@@ -13,8 +13,7 @@
   max-width: 1024px;
   width: 100%;
   margin: 0 auto;
-  min-height: 100%;
-  height: auto;
+  min-height: 480px;
 }
 
 .header {
@@ -83,6 +82,12 @@
   width: 100%;
 }
 
+@media screen and (max-width: 768px) {
+  .wrapper {
+    height: none;
+  }
+}
+
 @media (min-width: 720px) {
   .header {
     flex-direction: row;
@@ -113,8 +118,8 @@
     background-color: #f9fafe;
     padding: 80px;
     // padding: 20px 80px;
-    min-height: 12%;
-    height: auto;
+    // min-height: 12%;
+    // height: auto;
   }
 }
 
@@ -123,7 +128,7 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    margin-top: 0;
+    margin: 0;
     padding-left: 0;
     overflow: visible;
   }
