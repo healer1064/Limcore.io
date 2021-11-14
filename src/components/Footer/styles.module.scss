@@ -535,11 +535,12 @@ color: #B4BFD5;
   }
 
   .footer__container {
-    grid-template-columns: repeat(2, minmax(min-content, max-content));;
-    grid-template-rows: repeat(10, minmax(min-content, max-content));
+    grid-template-columns: repeat(1, minmax(min-content, max-content));;
+    grid-template-rows: repeat(11, minmax(min-content, max-content));
     grid-template-areas:
     'logo logo'
     'social social'
+    'translation translation'
     'email language'
     'address address'
     'issuer issuer'
@@ -548,6 +549,10 @@ color: #B4BFD5;
     'etc etc'
     'line line'
     'copyright .';
+  }
+
+  .footer__langoptions {
+    top: 90px;
   }
 
   .logo {
