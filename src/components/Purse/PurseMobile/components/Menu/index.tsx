@@ -67,6 +67,7 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
         setActive={handleBalanceUsdtOpenClick}
         setNotActive={handleBalanceUsdtCloseClick}
         active={isUsdtInfoVisible}
+        type='usdt'
       />
       {/* <MenuItem */}
       {/*  image={creditCard} */}
