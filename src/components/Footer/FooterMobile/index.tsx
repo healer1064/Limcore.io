@@ -15,7 +15,7 @@ export const FooterMobile: React.FC = () => {
           <PurseIcon />
           <span>Кошелек</span>
         </NavLink>
-        <NavLink to='/broadcasts' exact className={Styles.link} activeClassName={`${Styles.link_active}`}>
+        <NavLink to='/broadcasts' exact className={Styles.link} activeClassName={Styles.broadcasts}>
           <BroadcastsIcon />
           <span>Трансляции</span>
         </NavLink>

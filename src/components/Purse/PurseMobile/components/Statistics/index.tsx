@@ -72,14 +72,14 @@ export const Statistics = ({ onClick }: IStatisticsProps) => {
         <span className={styles.details__memory}>0 TB / {balanceLimc} TB</span>
       </div>
 
-      <Accordion>
+      {/* <Accordion>
         <AccordionSummary expandIcon={<AccordeonIcon />}>
           <button type='button' className={styles.more} onClick={handleDisappearClick}>
             Показать больше
           </button>
         </AccordionSummary>
-        <AccordionDetails>{/* <Table /> */}</AccordionDetails>
-      </Accordion>
+        <AccordionDetails><Table /></AccordionDetails>
+      </Accordion> */}
     </div>
   )
 }

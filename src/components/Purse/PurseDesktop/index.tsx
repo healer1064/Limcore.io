@@ -32,8 +32,10 @@ import { setIsAuth } from '../../../pages/auth/redux/auth.slice'
 import { useHistory } from 'react-router'
 import { UntilMiningStart } from './components/UntilMiningStart/UntilMiningStart'
 import { LogoutIcon } from '@icons/LogoutIcon'
+import { useTranslation } from 'react-i18next'
 
 export const PurseDesktop = () => {
+  const [t] = useTranslation()
   const [isCardVisible, setIsCardVisible] = useState(true)
   const [isWalletVisible, setIsWalletVisible] = useState(true)
   const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
@@ -249,8 +251,8 @@ export const PurseDesktop = () => {
                 }`}
               >
                 <RoadMap />
-                <a className={styles.byLimcBtn} href='https://round1.limcore.io' target='_blank' rel='noreferrer'>
-                  Купить LIMC
+                <a className={styles.byLimcBtn} href='https://round1.limcore.io'>
+                  {t('buyLimc')}
                 </a>
               </div>
               <div

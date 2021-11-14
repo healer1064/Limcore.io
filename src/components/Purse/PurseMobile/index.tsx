@@ -25,8 +25,10 @@ import { ModalHeader } from './components/ModalHeader'
 import { FooterMobile } from '@components/Footer/FooterMobile'
 import { useHistory } from 'react-router'
 import { RoadMap } from '@components/Purse/PurseMobile/components/RoadMap'
+import { useTranslation } from 'react-i18next'
 
 export const PurseMobile: FC = () => {
+  const [t] = useTranslation()
   // const [isCardVisible, setIsCardVisible] = useState(true)
   const [isWalletVisible, setIsWalletVisible] = useState(true)
   const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
@@ -126,7 +128,7 @@ export const PurseMobile: FC = () => {
               </div>
               <span className={styles.usd}>{}</span>
               <ButtonBig className={styles.buyBtn}>
-                <a href='https://round1.limcore.io' target='_blank' className={styles.buyLink} rel='noreferrer'>
+                <a href='https://round1.limcore.io' className={styles.buyLink}>
                   <img className={styles.icon} src={buyIcon} alt='' />
                   Купить
                 </a>
@@ -239,7 +241,7 @@ export const PurseMobile: FC = () => {
         <RoadMap />
         <div className={styles.buyCont}>
           <ButtonBig className={styles.buy} onClick={() => setViewContent('balance')}>
-            Купить LIMC
+            {t('buyLimc')}
           </ButtonBig>
         </div>
         {isLimcBought?.length ? (
@@ -249,11 +251,11 @@ export const PurseMobile: FC = () => {
         )}
         <Details />
         {/* {isWalletVisible && <Wallet onCloseClick={handleWalletCloseClick} />} */}
-        <Transactions
+        {/* <Transactions
           onProfileClick={handleProfileClick}
           onTransactionsClick={handleTransactionsClick}
           isUserHasTransactions={isUserHasTransactions}
-        />
+        /> */}
         <FooterMobile />
       </div>
     </div>
