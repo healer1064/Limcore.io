@@ -27,8 +27,6 @@ export const Balance = () => {
   const [isRegModalVisible, setIsRegModalVisible] = useState(
     useAppSelector((state) => state.auth.processType) === 'REGISTRATION',
   )
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // const [money, setMoney] = useState('0')
   const walletAddress = useAppSelector((state) => state.wallet.address)
   // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
   const usdtBalance = useAppSelector((state) => state.authNew.walletConnectUsdt)
@@ -132,7 +130,7 @@ export const Balance = () => {
         <BlackCross />
         <TwtIcon isSync={isSync} />
         {isSync ? (
-          <p>Limcore Wallet синхронизирован с&nbsp;Trust Wallet</p>
+          <p>Limcore Wallet синхронизирован с&nbsp;внешним кошельком</p>
         ) : (
           <p>Для старта майнинга синхронизируйте Limcore Wallet с&nbsp;Trust Wallet</p>
         )}
@@ -141,7 +139,7 @@ export const Balance = () => {
         <div className={styles.walletId}>
           <ShieldIcon />
           <p>
-            wc:6cbadff7-e03c-4815-9d9b-519e82284e56@1?bridge=https%3A%2F%2F0.bridge.walletconnect.org&key=116467495c7317bee633dbdd20e38b96958e9cfe90cdf163ca97b9c4243359f1
+            {userPurse.address.substr(0, 9)}...{userPurse.address.slice(-7)}
           </p>
         </div>
       ) : (

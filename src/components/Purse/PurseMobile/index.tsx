@@ -247,7 +247,7 @@ export const PurseMobile: FC = () => {
           <Statistics onClick={handleShowMoreClick} />
         )}
         <Details />
-        {isWalletVisible && <Wallet onCloseClick={handleWalletCloseClick} />}
+        {/* {isWalletVisible && <Wallet onCloseClick={handleWalletCloseClick} />} */}
         <Transactions
           onProfileClick={handleProfileClick}
           onTransactionsClick={handleTransactionsClick}
