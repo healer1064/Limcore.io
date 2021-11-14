@@ -26,14 +26,25 @@ async function getUsdtBalance(address: string) {
   const contractUsdt = new web3.eth.Contract(contract as any, contractAddress)
 
   const balance = await contractUsdt.methods.balanceOf(address).call()
-  return balance / 10 ** 18
+
+  const numberBalance = balance / 10 ** 18
+  if (numberBalance === 0) {
+    return 0
+  }
+  return Number(numberBalance.toFixed(4))
 }
+
 async function getLimcBalance(address: string) {
   const contractAddress = '0x078ca3af061603bd5a1Ee2388116DAaCe87244C3' // LIMC contract address
   const contractLimc = new web3.eth.Contract(contract as any, contractAddress)
 
   const balance = await contractLimc.methods.balanceOfSum(address).call()
-  return balance / 10 ** 18
+
+  const numberBalance = balance / 10 ** 18
+  if (numberBalance === 0) {
+    return 0
+  }
+  return Number(numberBalance.toFixed(4))
 }
 export const getSoldLimcs = async () => {
   const contractAddress = '0x45B71c4b18313fB58eed0f55FfFac512d704288f'
