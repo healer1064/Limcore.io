@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useAppSelector } from '@app/redux/hooks'
 import styles from './styles.module.scss'
 import { balanceLimc, balanceUsdt, s7 } from '../../images/index'
 import { Modal } from '../Modal'
@@ -12,6 +13,7 @@ interface ITransactionsProps {
 }
 
 export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTransactions }: ITransactionsProps) => {
+  const userData = useAppSelector((state) => state.user.userData)
   const [isTransactionsVisible, setIsTransactionsVisible] = useState(false)
   // Временные данные для прокидки в транзакции, когда будет ясен объект с бэка можно будет все в порядок привести
   const tempDataForTransactions = [
@@ -42,16 +44,21 @@ export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTra
       <Modal active={isTransactionsVisible} setActive={handleTransactionsClose}>
         <TransactionsDetails onClick={handleTransactionsClose} />
       </Modal>
-      <p className={styles.transactions__subtitle}>
-        {/* У&nbsp;вас еще нет транзакций. Мы&nbsp;предоставим доступ ко&nbsp;всем функциям кошелька после заполнения */}
-        {/* профиля. */}
-        Заполните профиль, чтобы в будущем восстановить аккаунт.
-      </p>
-      <div className={styles.transactions__cont}>
-        <button type='button' className={styles.transactions__profileButton} onClick={onProfileClick}>
-          Перейти к заполнению
-        </button>
-      </div>
+      {userData?.profile === null && (
+        <>
+          <p className={styles.transactions__subtitle}>
+            {/* У&nbsp;вас еще нет транзакций. Мы&nbsp;предоставим доступ ко&nbsp;всем функциям кошелька после заполнения */}
+            {/* профиля. */}
+            Заполните профиль, чтобы в будущем восстановить аккаунт.
+          </p>
+          <div className={styles.transactions__cont}>
+            <button type='button' className={styles.transactions__profileButton} onClick={onProfileClick}>
+              Перейти к заполнению
+            </button>
+          </div>
+        </>
+      )}
+
       {/* {isUserHasTransactions ? (
         <UserHasTransactions data={tempDataForTransactions} />
       ) : (
