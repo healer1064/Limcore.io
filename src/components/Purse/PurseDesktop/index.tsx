@@ -249,7 +249,7 @@ export const PurseDesktop = () => {
                 }`}
               >
                 <RoadMap />
-                <a className={styles.byLimcBtn} href='https://crowdsale.limcore.io' target='_blank' rel='noreferrer'>
+                <a className={styles.byLimcBtn} href='https://round1.limcore.io' target='_blank' rel='noreferrer'>
                   Купить LIMC
                 </a>
               </div>
