@@ -60,7 +60,6 @@
     "use-debounce": "^7.0.0",
     "validator": "^13.6.0",
     "web3": "^1.6.0",
-    "web3-providers-http": "^1.6.0",
     "yup": "^0.32.11"
   },
   "scripts": {

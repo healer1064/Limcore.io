@@ -19,7 +19,7 @@ import {
 } from '../../../../../pages/auth/redux/authSlice'
 import { useDispatch } from 'react-redux'
 // import { getLimc, getUsdt } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
-import { getUsdt } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
+import { getLimc, getUsdt } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
 import classNames from 'classnames'
 
 export const Balance = () => {
@@ -58,13 +58,21 @@ export const Balance = () => {
     setIsBalanceVisible(false)
   }
 
+  const connector = new WalletConnect({
+    bridge: 'https://bridge.walletconnect.org', // Required
+    qrcodeModal: QRCodeModal,
+  })
+
+  useEffect(() => {
+    if (connector.connected) {
+      dispatch(setIsSincWithWallet(true))
+      const dataFromLS = JSON.parse(localStorage.getItem('walletconnect'))
+      setUserPurse({ address: dataFromLS.accounts[0], chainId: dataFromLS.chainId })
+    }
+  }, [])
+
   useEffect(() => {
     if (isSync) {
-      const connector = new WalletConnect({
-        bridge: 'https://bridge.walletconnect.org', // Required
-        qrcodeModal: QRCodeModal,
-      })
-
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       connector.on('disconnect', (error, payload) => {
         if (error) {
@@ -120,8 +128,7 @@ export const Balance = () => {
   useEffect(() => {
     if (userPurse.chainId) {
       getUsdt(userPurse.address).then((res) => dispatch(setWalletConnectUsdt(res)))
-      // getLimc(userPurse.address).then((res) => dispatch(setWalletConnectLimc(res)))
-      dispatch(setWalletConnectLimc(0))
+      getLimc(userPurse.address).then((res) => dispatch(setWalletConnectLimc(res)))
     }
   }, [userPurse])
 
