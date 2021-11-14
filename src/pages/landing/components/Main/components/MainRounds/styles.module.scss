@@ -592,11 +592,29 @@ $barProportion: calc(0 / 80000 * 100%);
 }
 
 .buy {
+  padding: 14px 0;
+  border: 1px solid #4a70f8;
+  border-radius: 14px;
+  font-family: 'Montserrat';
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  font-style: normal;
+  text-align: center;
+  color: #ffffff;
   width: 100%;
   max-width: 285px;
+  background: #4a70f8;
+  transition: background 0.2s ease;
+  text-decoration: none;
 
-  a {
-    width: 100%;
-    height: 100%;
+  &:hover {
+    background: #3257dd;
+    transition: background 0.2s ease;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    opacity: 0.5;
   }
 }
