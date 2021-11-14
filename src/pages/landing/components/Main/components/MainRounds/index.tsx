@@ -15,7 +15,7 @@ import { useHistory } from 'react-router'
 import ModalAuth from '../../../../../../pages/landing/components/ModalAuth'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice'
-// import Countdown from 'react-countdown'
+import { useTranslation } from 'react-i18next'
 
 export const MainRounds: React.FC = () => {
   const limcCount = useAppSelector((state) => state.wallet.limcCount)
@@ -25,6 +25,7 @@ export const MainRounds: React.FC = () => {
   const dispatch = useAppDispatch()
   const history = useHistory()
   const { width } = useWindowSize()
+  const [t] = useTranslation()
   const desktop = width >= 768
 
   // x =18 по мск
@@ -64,32 +65,34 @@ export const MainRounds: React.FC = () => {
     setPopupOpen(true)
   }
 
-  const handleLoginModalOpen = () => {
-    dispatch(setIsBuyLimcClick(true))
-    desktop ? setIsLoginModalVisible(true) : history.push('/auth')
-  }
-  const handleLoginModalClose = () => {
-    setIsLoginModalVisible(false)
-  }
+  // const handleLoginModalOpen = () => {
+  //   dispatch(setIsBuyLimcClick(true))
+  //   desktop ? setIsLoginModalVisible(true) : history.push('/auth')
+  // }
+  // const handleLoginModalClose = () => {
+  //   setIsLoginModalVisible(false)
+  // }
+
   return (
     <div className={Styles.rounds}>
       <div className={Styles.block}>
         <div className={Styles.wrap}>
-          <span className={Styles.name}>Раунд №1</span>
+          {/* <span className={Styles.name}>Раунд №1</span> */}
+          <span className={Styles.name}>{t('firstRound_round1')}</span>
         </div>
         <ul className={Styles.list}>
           <li className={Styles.item}>
-            <span className={Styles.designation}>Лимит</span>
+            <span className={Styles.designation}>{t('firstRound_limit')}</span>
             <span className={Styles.value}>{limcLimit} LIMC</span>
             <img className={Styles.icon} src={limcoreIcon} alt='Иконка' />
           </li>
           <li className={Styles.item}>
-            <span className={Styles.designation}>Цена за 1 LIMC</span>
+            <span className={Styles.designation}>{t('firstRound_limcPrice')}</span>
             <span className={Styles.value}>$95</span>
           </li>
           <li className={Styles.item}>
-            <span className={Styles.designation}>Сроки</span>
-            <span className={Styles.value}>15.11.2021 — 30.12.21</span>
+            <span className={Styles.designation}>{t('firstRound_terms')}</span>
+            <span className={Styles.value}>{t('firstRound_firstRoundTerms')}</span>
             <InfoIcon className={Styles.icon} onClick={openPopup} />
           </li>
         </ul>
@@ -99,22 +102,22 @@ export const MainRounds: React.FC = () => {
           Майнинг начинается спустя 80 дней с момента завершения раунда. Раунд может закончиться раньше указанного срока
         </p>
       </PopupMainPage>
-      <div className={Styles.container}>
-        {/* <div className={Styles.progress}>
-          <span className={Styles.bar}>{}</span>
-          <span className={Styles.count}>
-            {limcCount} / {limcLimit}
-          </span>
-        </div> */}
-        {/* <a target='blank' rel='noopener noreferrer' className={Styles.etherscanLink} href='https://etherscan.io'>
-          <img className={Styles.etherscanIcon} src={etherscanIcon} alt='Иконка' />
-          <span className={Styles.etherscan}>Etherscan</span>
-        </a> */}
+      <div className={Styles.progress}>
+        <span className={Styles.bar}>{}</span>
+        <span className={Styles.count}>
+          {limcCount} / {limcLimit}
+        </span>
       </div>
-      <div className={Styles.tempDeclaration}>
-        <h4 className={Styles.tempDeclaration__title}>Старт продаж состоится 15 ноября в 00:01 по МСК</h4>
+      <div className={Styles.wrapp}>
+        <a href='https://round1.limcore.io' className={Styles.buy}>
+          {t('buyLimc')}
+        </a>
+        <span>Lock-up период 6 месяцев</span>
+      </div>
+      {/* <div className={Styles.tempDeclaration}>
+        <h4 className={Styles.tempDeclaration__title}>{t('firstRound_startSelling')}</h4>
         <div>
-          <p className={Styles.tempDeclaration__paragraph}>Следите за новостями в нашей группе в Telegram</p>
+          <p className={Styles.tempDeclaration__paragraph}>{t('firstRound_followNews')}</p>
           <div>
             <img className={Styles.tempDeclaration__icon} src={TGIcon} alt='telegram_icon' />
             <a className={Styles.tempDeclaration__link} href='https://t.me/limc_russ' target='_blank' rel='noreferrer'>
@@ -122,7 +125,7 @@ export const MainRounds: React.FC = () => {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className={Styles.roadContainer}>
         <div className={Styles.emptyContainers}>
           <div className={Styles.emptyContainer_first} />
@@ -131,30 +134,33 @@ export const MainRounds: React.FC = () => {
         <div className={Styles.road}>
           <div className={Styles.cover}>
             <div className={Styles.round}>
-              <span className={Styles.subtitle}>Раунд №2</span>
+              <span className={Styles.date__mobile}>10.01.2022</span>
+              <span className={Styles.subtitle}>{t('roundsRoadmap_round2')}</span>
               <div className={Styles.row}>
                 <span>LIMC (min $110)</span>
                 <span>120,000</span>
               </div>
             </div>
             <div className={Styles.round}>
-              <span className={Styles.subtitle}>Раунд №3</span>
+              <span className={Styles.date__mobile}>25.02.2022</span>
+              <span className={Styles.subtitle}>{t('roundsRoadmap_round3')}</span>
               <div className={Styles.row}>
                 <span>LIMC (price and limit later)</span>
               </div>
             </div>
             <div className={Styles.round}>
-              <span className={Styles.subtitle}>Раунд №4</span>
+              <span className={Styles.subtitle}>{t('roundsRoadmap_round4')}</span>
               <div className={Styles.row}>
                 <span>LIMC (price and limit later)</span>
               </div>
             </div>
             <div className={Styles.round}>
-              <span className={Styles.subtitle}>Раунд №5 (Final)</span>
+              <span className={Styles.subtitle}>{t('roundsRoadmap_round5')}</span>
               <div className={Styles.row}>
                 <span>LIMC (price and limit later)</span>
               </div>
             </div>
+            <span className={Styles.date__mobile}>{t('roundsRoadmap_endSelling')}</span>
           </div>
         </div>
         <div className={Styles.shell}>
@@ -168,22 +174,14 @@ export const MainRounds: React.FC = () => {
             </div>
             <div className={Styles.date}>
               <span className={Styles.date__span}>25.02.2022</span>
-              <span className={Styles.date__lastSpan}>конец 2022</span>
+              <span className={Styles.date__lastSpan}>{t('roundsRoadmap_endSelling')}</span>
             </div>
           </div>
         </div>
       </div>
       <div className={Styles.info}>
-        <p className={Styles.description}>
-          Лимит токенов в каждом раунде напрямую зависит от готовности нашей инфраструктуры и производственной мощности
-          заводов изготовителей серверного оборудования. С каждым раундом LIMC продаётся дороже, из-за нашего
-          постепенного увеличения объемов майнинговых мощностей (терабайт) закреплённых за каждым токеном LIMC
-        </p>
-        <p className={Styles.description}>
-          Стоимость и лимиты для Раундов №3,4,5 будут опубликованы позже, т.к. на момент последнего обновления нашего
-          сайта мы не получили гарантированное количество получаемого нами оборудования от заводов изготовителей к
-          планируемым датам завершения раундов
-        </p>
+        <p className={Styles.description}>{t('roundsRoadmap_description1')}</p>
+        <p className={Styles.description}>{t('roundsRoadmap_description2')}</p>
       </div>
     </div>
   )

@@ -1,12 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-// import { apiTypes } from '@app/apiTypes'
 
 export const cabinetSlice = createSlice({
   name: 'cabinetPage',
   initialState: {
-    viewCabinet: 'profile',
-    viewContent: 'profile',
     profileComplete: false,
+    viewContent: 'profile',
     status: null,
     error: null,
     step: 0,
@@ -14,9 +12,6 @@ export const cabinetSlice = createSlice({
   reducers: {
     setProfileComplete: (state, action) => {
       state.profileComplete = action.payload
-    },
-    changeViewCabinet: (state, action) => {
-      state.viewCabinet = action.payload
     },
     changeViewContent: (state, action) => {
       state.viewContent = action.payload
@@ -30,5 +25,5 @@ export const cabinetSlice = createSlice({
 
 const { actions, reducer } = cabinetSlice
 
-export const { setProfileComplete, changeViewCabinet, changeViewContent, changeStep } = actions
+export const { setProfileComplete, changeViewContent, changeStep } = actions
 export default reducer

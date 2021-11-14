@@ -32,11 +32,6 @@ export const Step1: React.FC = () => {
       return setError('Вы забыли ввести телефон или e-mail')
     }
 
-    // Временно, пока авторизация только по телефону
-    if (phoneOrEmail.length < 10) {
-      return setError('Введите корректные данные')
-    }
-
     if (phoneOrEmail.includes('@')) {
       const valid = validateEmail(phoneOrEmail)
 
@@ -50,7 +45,7 @@ export const Step1: React.FC = () => {
       const valid = validatePhone(phoneOrEmail)
 
       if (!valid) {
-        setError('Неверный формат телефона')
+        setError('Некорректно введен номер')
       } else {
         setError('')
         dispatch(setTypeAuthorization('phone'))
@@ -58,10 +53,32 @@ export const Step1: React.FC = () => {
     }
 
     // users/login-code/ - в теле отправить email/phone, будет отправлен код. UPD (08.11) - пока что только 'phone'
-    console.log(`+${phoneOrEmail}`)
+
+    localStorage.setItem('userPhone', phoneOrEmail) // для WalletConnect
+
     const response = await dispatch(getJwtTokenTest({ phone: `+${phoneOrEmail}` }))
+
     if (response.error) {
-      setError('Что-то пошло не так..')
+      switch (response.error.message) {
+        case 'phone_is_not_confirmed':
+          setError('Телефон не подтвержден')
+          break
+        case 'email_is_not_confirmed':
+          setError('Email не подтвержден')
+          break
+        case 'limit_login_attempts':
+          setError('Превышено количество попыток входа (разблокировка через час)')
+          break
+        case 'user_not_registered':
+          setError('Пользователь не зарегистрирован')
+          break
+        case 'phone_invalid':
+          setError('Некорректно введен номер')
+          break
+        default:
+          setError('Что-то пошло не так..')
+          break
+      }
     } else {
       const id = response.payload?.data.unique_identifier || null
       localStorage.setItem('uniqueId', id)
@@ -72,7 +89,6 @@ export const Step1: React.FC = () => {
   return (
     <>
       <div className={Styles.content}>
-        {/* <h3 className={Styles.caption}>Авторизация</h3> */}
         <h3 className={Styles.caption}> {isLimcClick ? 'Чтобы купить LIMC, нужно авторизоваться' : 'Авторизация'}</h3>
         <Label titleText='Телефон или e-mail' className={Styles.label}>
           <PhoneInput

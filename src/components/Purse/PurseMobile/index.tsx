@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 
 import { Balance } from './components/Balance'
@@ -18,14 +18,18 @@ import { InputText } from '../../../ui-kit/InputText'
 
 import limcoreIcon from '@icons/limcore.svg'
 import buyIcon from '@icons/buy.svg'
-import sellIcon from '@icons/sell.svg'
-import tradeIcon from '@icons/trade.svg'
+// import sellIcon from '@icons/sell.svg'
+// import tradeIcon from '@icons/trade.svg'
 import { Modal } from './components/Modal'
 import { ModalHeader } from './components/ModalHeader'
 import { FooterMobile } from '@components/Footer/FooterMobile'
+import { useHistory } from 'react-router'
+import { RoadMap } from '@components/Purse/PurseMobile/components/RoadMap'
+import { useTranslation } from 'react-i18next'
 
 export const PurseMobile: FC = () => {
-  const [isCardVisible, setIsCardVisible] = useState(true)
+  const [t] = useTranslation()
+  // const [isCardVisible, setIsCardVisible] = useState(true)
   const [isWalletVisible, setIsWalletVisible] = useState(true)
   const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -42,18 +46,24 @@ export const PurseMobile: FC = () => {
   const [value, setValue] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
+  const history = useHistory()
   const dispatch = useAppDispatch()
   const prices = useAppSelector((state) => state.wallet.limc_price)
-  const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
+  // const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
+  const limcBalance = useAppSelector((state) => state.authNew.walletConnectLimc)
 
   const handleSetValue = (event) => setValue(event.target.value)
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   // const [displayPopup, setDisplayPopup] = useState(false)
   const closePopup = () => setViewContent('')
 
-  const handleCardCloseClick = () => {
-    setIsCardVisible(false)
-  }
+  // const handleCardCloseClick = () => {
+  //   setIsCardVisible(false)
+  // }
 
   const handleWalletCloseClick = () => {
     setIsWalletVisible(false)
@@ -64,7 +74,7 @@ export const PurseMobile: FC = () => {
   }
 
   const handleProfileClick = () => {
-    console.log('Profile click')
+    history.push('/profile')
   }
 
   const handleTransactionsClick = () => {
@@ -116,8 +126,14 @@ export const PurseMobile: FC = () => {
                 <img src={limcoreIcon} alt='' />
                 <span className={styles.title}>{limcBalance} LIMC</span>
               </div>
-              <span className={styles.usd}>$0</span>
-              <div className={styles.items}>
+              <span className={styles.usd}>{}</span>
+              <ButtonBig className={styles.buyBtn}>
+                <a href='https://round1.limcore.io' className={styles.buyLink}>
+                  <img className={styles.icon} src={buyIcon} alt='' />
+                  Купить
+                </a>
+              </ButtonBig>
+              {/* <div className={styles.items}>
                 <div className={`${styles.item} ${styles.item_active}`} onClick={() => setViewContent('buy')}>
                   <img className={styles.icon} src={buyIcon} alt='' />
                   <span>Купить</span>
@@ -130,15 +146,16 @@ export const PurseMobile: FC = () => {
                   <img className={styles.icon} src={tradeIcon} alt='' />
                   <span>Обменять</span>
                 </div>
-              </div>
+              </div> */}
               <div className={styles.container}>
                 <span className={styles.trans}>Транзакции</span>
-                <span className={styles.desc}>
-                  У вас еще нет транзакций. Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
-                </span>
+                <span className={styles.desc}>Заполните профиль, чтобы в будущем восстановить аккаунт.</span>
+                <span className={styles.desc}>Lock-up период — 6 месяцев</span>
               </div>
               <div className={styles.nextCont}>
-                <button className={styles.next}>Перейти к заполнению</button>
+                <button className={styles.next} onClick={() => history.push('/profile')}>
+                  Перейти к заполнению
+                </button>
               </div>
             </div>
           </div>
@@ -220,10 +237,11 @@ export const PurseMobile: FC = () => {
         openPopup={() => setViewContent('balance')}
       />
       <div className={styles.purse__content}>
-        {isCardVisible && <VirtualCard onCloseClick={handleCardCloseClick} />}
+        {/* {isCardVisible && <VirtualCard onCloseClick={handleCardCloseClick} />} */}
+        <RoadMap />
         <div className={styles.buyCont}>
           <ButtonBig className={styles.buy} onClick={() => setViewContent('balance')}>
-            Купить LIMC
+            {t('buyLimc')}
           </ButtonBig>
         </div>
         {isLimcBought?.length ? (
@@ -232,13 +250,12 @@ export const PurseMobile: FC = () => {
           <Statistics onClick={handleShowMoreClick} />
         )}
         <Details />
-        {isWalletVisible && <Wallet onCloseClick={handleWalletCloseClick} />}
-        <Transactions
+        {/* {isWalletVisible && <Wallet onCloseClick={handleWalletCloseClick} />} */}
+        {/* <Transactions
           onProfileClick={handleProfileClick}
           onTransactionsClick={handleTransactionsClick}
           isUserHasTransactions={isUserHasTransactions}
-        />
-
+        /> */}
         <FooterMobile />
       </div>
     </div>

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
-// import { setIsAuth, checkToken } from '../../pages/auth/redux/auth.slice'
-import { checkToken, getTransactions } from '../../pages/auth/redux/auth.slice'
+import { getTransactions } from '../../pages/auth/redux/auth.slice'
+import { checkToken, setIsAuth, setWalletConnectSoldLimcs } from '../../pages/auth/redux/authSlice'
 
 // import { Footer } from '../Footer'
-import { FooterMobile } from '../Footer/FooterMobile'
+// import { FooterMobile } from '../Footer/FooterMobile'
 // import { HomePage } from '../../pages/home'
 // import { Wrapper } from '../Wrapper'
 
@@ -31,24 +31,22 @@ import { AuthPage } from '../../pages/auth'
 
 import { Dummy } from '../../components/Dummy'
 import { LandingPage } from '../../pages/landing'
-import { PurseMobile } from '@components/Purse/PurseMobile'
+import { Purse } from '@components/Purse'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getWalletAdress, getWalletBalance, getLimcPrice, getLimcAmount } from '../Wallet/redux/walletSlice'
 import { getUser } from '@app/redux/userSlice'
 import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
-// import { api } from '@app/api'
+import { getSoldLimcs } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
 
 const App = () => {
   const dispatch = useAppDispatch()
   const { width } = useWindowSize()
-  // const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
-  const user = useAppSelector((state) => state.user.userData)
-  // const isAuth = useAppSelector((state) => state.auth.isAuth)
-  const isAuth = useAppSelector((state) => state.authNew.isAuth)
-  const [isLoading, setIsLoading] = useState(false)
-  console.log(user)
   const desktop = width >= 769
+  const [isLoading, setIsLoading] = useState(false)
+  // const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
+  // const user = useAppSelector((state) => state.user.userData)
+  const isAuth = useAppSelector((state) => state.authNew.isAuth)
 
   useEffect(() => {
     const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
@@ -58,6 +56,12 @@ const App = () => {
 
       dispatch(checkToken({ token: tokenObj.access }))
         .then(() => {
+          // getSoldLimcs().then((res) => {
+          //   console.log('res', res)
+          //   dispatch(setWalletConnectSoldLimcs(res))
+          // })
+          getSoldLimcs().then((res) => dispatch(setWalletConnectSoldLimcs(res)))
+          dispatch(setIsAuth(true))
           dispatch(getWalletAdress())
           dispatch(getWalletBalance())
           dispatch(getLimcPrice())
@@ -66,12 +70,12 @@ const App = () => {
           dispatch(getTransactions())
           setIsLoading(false)
         })
-        .catch((err) => {
-          console.log('ERROR ===========+>>>>>>', err)
+        .catch(() => {
           setIsLoading(false)
         })
     }
   }, [isAuth])
+
   return (
     <Router>
       <div className={Styles.app_container}>
@@ -86,11 +90,12 @@ const App = () => {
             {!isAuth && !isLoading && (
               <Switch>
                 <Route path='/' exact component={LandingPage} />
-                <Route path='/my' exact component={PurseMobile} />
+                <Route path='/my' exact component={Purse} />
                 <Route path='/auth' exact component={AuthPage} />
                 <Route path='/profile' exact component={ProfileMobile} />
                 {/* <Route path='/auth' exact component={AuthMobile} /> */}
                 <Route path='/not-found' exact component={PageNotFount} />
+                <Route path='/chat' exact component={Dummy} />
                 <Route path='*'>
                   <Redirect to='/not-found' />
                 </Route>
@@ -103,7 +108,7 @@ const App = () => {
               <Switch>
                 {/* <Route path='/' exact component={PurseMobile} /> */}
                 <Route path='/' exact component={LandingPage} />
-                <Route path='/my' exact component={PurseMobile} />
+                <Route path='/my' exact component={Purse} />
                 <Route path='/chat' exact component={Dummy} />
                 {desktop ? (
                   <Route path='/broadcasts' exact component={BroadcastsDesktop} />
@@ -112,13 +117,13 @@ const App = () => {
                 )}
                 <Route path='/profile' exact component={ProfileMobile} />
                 <Route path='/buy' exact component={BuyPage} />
+                <Route path='*' exact component={PageNotFount} />
                 {/* <FooterMobile /> */}
               </Switch>
             )}
           </main>
         </>
         {/* {isAuth && <FooterMobile />} */}
-        {/* {isAuth && } */}
       </div>
     </Router>
   )

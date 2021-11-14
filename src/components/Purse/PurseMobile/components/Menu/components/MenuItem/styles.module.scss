@@ -6,12 +6,11 @@
     height: 132px;
     margin-right: 10px;
     margin-bottom: 30px;
-  
     background-color: #fff;
     border-radius: $border-radius;
     box-shadow: $box-shadow2;
   }
-  
+
   &__balance {
     display: flex;
     flex-wrap: wrap;
@@ -25,15 +24,19 @@
       }
     }
   }
-  
+
   &__title {
     @include font-style(14px, 600, 20px, $color-gray-mouse);
     margin-top: 10px;
     margin-bottom: 2px;
   }
-  
+
   &__sum {
     @include font-style(14px, 600, 20px, $color-gray-black);
+    // word-wrap: break-word;
+    text-align: start;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   &__icon {
@@ -43,4 +46,31 @@
     width: 24px;
     height: 24px;
   }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  span {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 140%;
+    color: #3a3b3d;
+  }
+
+  img {
+    margin-left: 5px;
+  }
+}
+
+.lockup {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 140%;
+  color: #99a0ad;
+  margin-top: 3px;
 }

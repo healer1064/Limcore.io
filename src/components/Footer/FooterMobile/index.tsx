@@ -11,11 +11,11 @@ export const FooterMobile: React.FC = () => {
   return (
     <footer className={Styles.footer}>
       <ul className={Styles.list}>
-        <NavLink to='/' exact className={Styles.link} activeClassName={`${Styles.link_active}`}>
+        <NavLink to='/my' exact className={Styles.link} activeClassName={`${Styles.link_active}`}>
           <PurseIcon />
           <span>Кошелек</span>
         </NavLink>
-        <NavLink to='/broadcasts' exact className={Styles.link} activeClassName={`${Styles.link_active}`}>
+        <NavLink to='/broadcasts' exact className={Styles.link} activeClassName={Styles.broadcasts}>
           <BroadcastsIcon />
           <span>Трансляции</span>
         </NavLink>

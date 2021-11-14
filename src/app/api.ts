@@ -76,6 +76,8 @@ export const api = {
 
   put: <T>(path: string, data: AxiosRequestConfig['data']) => api.request<T>('PUT', path, { data }),
 
+  patch: <T>(path: string, data: AxiosRequestConfig['data']) => api.request<T>('PATCH', path, { data }),
+
   delete: <T extends unknown = void>(path: string) => api.request<T>('DELETE', path),
 
   sendFile: <T>(path: string, data: AxiosRequestConfig['data']) =>

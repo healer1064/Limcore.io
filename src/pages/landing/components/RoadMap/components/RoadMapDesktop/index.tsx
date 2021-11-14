@@ -3,12 +3,15 @@ import Styles from './styles.module.scss'
 import { RoadMapItemDesktop } from '../../partsDesktop'
 import { ArrowLeft } from '@icons/ArrowLeft'
 import { ArrowRight } from '@icons/ArrowRight'
+import { useTranslation } from 'react-i18next'
 
 export const RoadMapDesktop = () => {
+  const [t] = useTranslation()
+
   const roadMapArray = [
     {
       id: 1,
-      title: 'Сборка тестовой стойки для майнинга',
+      title: t('roadmap_may30'),
       status: 'done',
       deadline: '31.05.2021',
       priority: 10,
@@ -18,7 +21,7 @@ export const RoadMapDesktop = () => {
     },
     {
       id: 2,
-      title: 'Запуск личного кабинета v0.1 ',
+      title: t('roadmap_june24'),
       status: 'done',
       deadline: '24.06.2021',
       priority: 10,
@@ -28,7 +31,7 @@ export const RoadMapDesktop = () => {
     },
     {
       id: 3,
-      title: 'Подписание и авансирование договора о покупке земельного участка и здания',
+      title: t('roadmap_july10'),
       status: 'done',
       deadline: '10.07.2021',
       priority: 10,
@@ -38,7 +41,7 @@ export const RoadMapDesktop = () => {
     },
     {
       id: 4,
-      title: 'Прокладка первых электрических сетей',
+      title: t('roadmap_july22'),
       status: 'done',
       deadline: '22.07.2021',
       priority: 10,
@@ -48,7 +51,7 @@ export const RoadMapDesktop = () => {
     },
     {
       id: 5,
-      title: 'Завершение регистрации здания и земельного участка',
+      title: t('roadmap_august03'),
       status: 'done',
       deadline: '03.08.2021',
       priority: 10,
@@ -58,7 +61,7 @@ export const RoadMapDesktop = () => {
     },
     {
       id: 6,
-      title: 'Создание Limcore Token',
+      title: t('roadmap_october15'),
       status: 'done',
       deadline: '15.10.2021',
       priority: 10,
@@ -68,7 +71,7 @@ export const RoadMapDesktop = () => {
     },
     {
       id: 7,
-      title: 'Запуск Российского юридического лица',
+      title: t('roadmap_november1'),
       status: 'done',
       deadline: '01.11.2021',
       priority: 10,
@@ -78,9 +81,9 @@ export const RoadMapDesktop = () => {
     },
     {
       id: 8,
-      title: 'Регистрация Швейцарского юридического лица',
+      title: t('roadmap_registration'),
       status: 'in progress',
-      deadline: 'В процессе',
+      deadline: t('roadmap_inProcess'),
       priority: 10,
       vertikal: 'short',
       position: 'down',
@@ -88,7 +91,7 @@ export const RoadMapDesktop = () => {
     },
     {
       id: 9,
-      title: 'Запуск личного кабинета v0.2',
+      title: t('roadmap_november15'),
       status: 'in progress',
       deadline: '15.11.2021',
       priority: 10,
@@ -98,7 +101,7 @@ export const RoadMapDesktop = () => {
     },
     {
       id: 10,
-      title: 'Старт Round №1 1 LIMC = $95 / 80,000 LIMC',
+      title: t('roadmap_startRound1'),
       status: 'in progress',
       deadline: '15.11 – 30.12.2021',
       priority: 10,
@@ -120,7 +123,7 @@ export const RoadMapDesktop = () => {
       id: 12,
       title: 'Chia Network IPO',
       status: 'in progress',
-      deadline: 'конец декабря 2021',
+      deadline: t('roadmap_decemberEnd'),
       priority: 10,
       vertikal: 'short',
       position: 'down',
@@ -128,7 +131,7 @@ export const RoadMapDesktop = () => {
     },
     {
       id: 13,
-      title: 'Старт Round №2 1 LIMC = min $110 / 120,000 LIMC',
+      title: t('roadmap_startRound2'),
       status: 'in progress',
       deadline: '10.01 – 25.02.2022',
       priority: 10,
@@ -138,7 +141,7 @@ export const RoadMapDesktop = () => {
     },
     {
       id: 14,
-      title: 'Листинг LIMC на биржах HITBTC + BitGlobal',
+      title: t('roadmap_listing'),
       status: 'in progress',
       deadline: '25.01.2022',
       priority: 10,
@@ -148,7 +151,7 @@ export const RoadMapDesktop = () => {
     },
     {
       id: 15,
-      title: 'Завершение ремонта ЦОД в г. Можайск',
+      title: t('roadmap_buildUp'),
       status: 'in progress',
       deadline: '25.02.2022',
       priority: 10,
@@ -158,7 +161,7 @@ export const RoadMapDesktop = () => {
     },
     {
       id: 16,
-      title: 'Старт Round №3',
+      title: t('roadmap_startRound3'),
       status: 'in progress',
       deadline: '2022',
       priority: 10,
@@ -168,7 +171,7 @@ export const RoadMapDesktop = () => {
     },
     {
       id: 17,
-      title: 'Старт Round №4',
+      title: t('roadmap_startRound4'),
       status: 'in progress',
       deadline: '2022',
       priority: 10,
@@ -178,7 +181,7 @@ export const RoadMapDesktop = () => {
     },
     {
       id: 18,
-      title: 'Старт Round №5',
+      title: t('roadmap_startRound5'),
       status: 'in progress',
       deadline: '2022',
       priority: 10,
@@ -188,7 +191,7 @@ export const RoadMapDesktop = () => {
     },
     {
       id: 19,
-      title: 'Проектирование и создание MVP собственного ленточного накопителя',
+      title: t('roadmap_mvp'),
       status: 'in progress',
       deadline: '2023 – 2024',
       priority: 10,
@@ -198,7 +201,7 @@ export const RoadMapDesktop = () => {
     },
     {
       id: 20,
-      title: 'Запуск серийного производства ленточного накопителя данных',
+      title: t('roadmap_launch'),
       status: 'in progress',
       deadline: '2025 – 2026',
       priority: 10,
@@ -224,6 +227,7 @@ export const RoadMapDesktop = () => {
 
   return (
     <div className={Styles.container}>
+      <span className={Styles.blueLine} />
       <button className={`${Styles.scrollButton} ${Styles.scrollButtonLeft}`} type='button' onClick={scrollLeft}>
         <ArrowRight className={Styles.scrollIcon} />
       </button>

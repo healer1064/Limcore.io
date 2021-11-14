@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import Styles from './styles.module.scss'
 
 interface Answer3Props {
@@ -6,39 +7,31 @@ interface Answer3Props {
 }
 
 export const Answer3: React.FC<Answer3Props> = ({ list }) => {
+  const [t] = useTranslation()
+
   return (
     <>
       <ul className={list === 'mobile' ? `${Styles.list} ${Styles.list_mod}` : `${Styles.list}`}>
         <li>
-          <p className={Styles.text}>Низкий порог входа, начиная всего с 0,1 LIMC</p>
+          <p className={Styles.text}>{t('qa_card3_subtitle1')}</p>
         </li>
         <li>
-          <p className={Styles.text}>Не требуется дорогостоящее оборудование или техническое обслуживание.</p>
+          <p className={Styles.text}>{t('qa_card3_subtitle2')}</p>
         </li>
         <li>
-          <p className={Styles.text}>Никаких дополнительных затрат на электроэнергию и т. д.</p>
+          <p className={Styles.text}>{t('qa_card3_subtitle3')}</p>
         </li>
         <li>
-          <p className={Styles.text}>Высокая эффективность фарминга.</p>
+          <p className={Styles.text}>{t('qa_card3_subtitle4')}</p>
         </li>
         <li>
-          <p className={Styles.text}>Прозрачность.</p>
+          <p className={Styles.text}>{t('qa_card3_subtitle5')}</p>
         </li>
         <li>
-          <p className={Styles.text}>Механика DeFi в распределении наград.</p>
+          <p className={Styles.text}>{t('qa_card3_subtitle6')}</p>
         </li>
       </ul>
-      <p className={Styles.text}>
-        Список поддерживаемых форков постоянно увеличивается, позволяя увеличивать доход для пользователей Limcore.
-      </p>
-      <p className={Styles.text}>
-        Награда рассчитывается real time и переводится на счет раз в сутки на кошелек XCH. Вся недвижимость, земля и
-        оборудование полностью принадлежат Проекту по праву собственности.
-      </p>
-      <p className={Styles.text}>
-        Мы открыты к встречам и приглашаем всех желающих на экскурсии. Московская область, город Можайск. улица Мира дом
-        98.
-      </p>
+      <p className={Styles.text}>{t('qa_card3_subtitle7')}</p>
     </>
   )
 }

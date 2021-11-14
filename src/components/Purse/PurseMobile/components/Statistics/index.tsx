@@ -34,7 +34,9 @@ const AccordeonIcon = () => {
 }
 
 export const Statistics = ({ onClick }: IStatisticsProps) => {
-  const balanceLimc = useAppSelector((state) => state.wallet.sum_limc_balance)
+  // const balanceLimc = useAppSelector((state) => state.wallet.sum_limc_balance)
+  const balanceLimc = useAppSelector((state) => state.authNew.walletConnectLimc)
+
   const [isTooltipVisible, setIsTooltipVisible] = useState(false)
 
   const handleTooltipClick = () => {
@@ -59,7 +61,7 @@ export const Statistics = ({ onClick }: IStatisticsProps) => {
         active={isTooltipVisible}
         setActive={handleTooltipClick}
         title='Почему нужно ждать?'
-        subtitle='Этап плоттинга начинается с создания параллельных участков. Дополнительные параметры используются для оптимального использования возможностей процессора и ОЗУ. После завершения Round 1 начнется отсчет'
+        subtitle='Майнинг начинается спустя 80 дней с момента завершения раунда. Раунд может закончиться раньше указанного срока'
       />
 
       <div className={styles.progressbar}>
@@ -70,14 +72,14 @@ export const Statistics = ({ onClick }: IStatisticsProps) => {
         <span className={styles.details__memory}>0 TB / {balanceLimc} TB</span>
       </div>
 
-      <Accordion>
+      {/* <Accordion>
         <AccordionSummary expandIcon={<AccordeonIcon />}>
           <button type='button' className={styles.more} onClick={handleDisappearClick}>
             Показать больше
           </button>
         </AccordionSummary>
-        <AccordionDetails>{/* <Table /> */}</AccordionDetails>
-      </Accordion>
+        <AccordionDetails><Table /></AccordionDetails>
+      </Accordion> */}
     </div>
   )
 }

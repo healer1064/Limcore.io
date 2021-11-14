@@ -1,6 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setStepRegistration, setCodeEmail, registerUserEmailConfirmation } from '../../../../../redux/authSlice'
+import {
+  setStepRegistration,
+  setCodeEmail,
+  registerUserEmailConfirmation,
+  setProcessType,
+  setIsAuth,
+  registerUserEmail,
+} from '../../../../../redux/authSlice'
 import Styles from './styles.module.scss'
 
 import { InputCode } from '../../../../../../../ui-kit/InputCode'
@@ -8,23 +16,30 @@ import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
 import { ButtonSmall } from '../../../../../../../ui-kit/ButtonSmall'
 
 export const Step4: React.FC = () => {
+  const history = useHistory()
   const dispatch = useAppDispatch()
   const email = useAppSelector((state) => state.authNew.email)
   const codeEmail = useAppSelector((state) => state.authNew.codeEmail)
 
   const [validValue, setValidValue] = useState(true)
-  const [error, setError] = useState('asdfasdf')
+  const [error, setError] = useState('')
+  const [counter, setCounter] = useState(59)
 
   const onChange = (event) => {
-    if (!Number(event.target.value)) {
-      return
-    }
+    const number = Number(event.target.value)
 
-    setValidValue(true)
-    dispatch(setCodeEmail(event.target.value))
+    if (!isNaN(number)) {
+      setValidValue(true)
+      dispatch(setCodeEmail(event.target.value))
+    }
   }
 
   const prevStep = () => dispatch(setStepRegistration(3))
+
+  const resendCode = () => {
+    dispatch(registerUserEmail({ email, unique_identifier: localStorage.getItem('uniqueId') }))
+    setCounter(59)
+  }
 
   const completeRegistration = async () => {
     // нужно отдать code + unique_identifier
@@ -34,15 +49,38 @@ export const Step4: React.FC = () => {
     }
 
     const response = await dispatch(registerUserEmailConfirmation(data))
-    console.log('Step4', response)
+
     if (response.error) {
-      setValidValue(false)
-      setError('Что-то пошло не так..')
+      switch (response.error.message) {
+        case 'email_already_verified':
+          setValidValue(false)
+          setError('Email уже подтвержден')
+          break
+        case 'need_get_code_again':
+          setValidValue(false)
+          setError('Нужно снова получить код подтверждения')
+          break
+        case 'code_invalid':
+          setValidValue(false)
+          setError(' Код недействителен')
+          break
+        default:
+          setValidValue(false)
+          setError('Что-то пошло не так..')
+          break
+      }
     } else {
-      dispatch(registerUserEmailConfirmation(data))
-      window.location.reload()
+      dispatch(setIsAuth(true))
+      history.push('/my')
+      // dispatch(registerUserEmailConfirmation(data))
+      // dispatch(setProcessType('authorization'))
     }
   }
+
+  useEffect(() => {
+    const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000)
+    return () => clearInterval(timer)
+  }, [counter])
 
   return (
     <>
@@ -79,9 +117,16 @@ export const Step4: React.FC = () => {
           </span>
           <InputCode onChange={onChange} value={codeEmail} validValue={validValue} />
           <div className={Styles.wrap}>
-            <span className={Styles.time}>Получить новый код можно через 00:41</span>
-            {/* <ButtonSmall>Отправить новый код</ButtonSmall> */}
-            <p className={Styles.error}>{error}</p>
+            {counter < 1 ? (
+              <ButtonSmall onClick={resendCode}>Отправить новый код</ButtonSmall>
+            ) : (
+              <>
+                <span className={Styles.time}>
+                  Получить новый код можно через {counter >= 10 ? `00:${counter}` : `00:0${counter}`}
+                </span>
+                <p className={Styles.error}>{error}</p>
+              </>
+            )}
           </div>
         </div>
       </div>

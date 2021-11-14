@@ -1,17 +1,18 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import Styles from './styles.module.scss'
 
 export const Answer2 = () => {
+  const [t] = useTranslation()
+
   return (
     <>
-      <p className={Styles.text}>Например, услугами Limcore воспользовались два пользователя.</p>
-      <p className={Styles.text}>Первый пользователь владеет 1 LIMC, второй 2 LIMC.</p>
-      <p className={Styles.text}>ЦОД компании Limcore добыл 1200 Chia coin за 24 часа.</p>
-      <p className={Styles.text}>
-        Limcore оставляет за собой 15% - 150 Chia coin, для эксплуатационных расходов и затрат на электроэнергию.
-      </p>
-      <p className={Styles.text}>Первый пользователь получит ⅓ от 850 Chia coin - 340 Chia coin.</p>
-      <p className={Styles.text}>Второй пользователь получит ⅔ от 850 Chia coin - 680 Chia coin.</p>
+      <p className={Styles.text}>{t('qa_card2_subtitle1')}</p>
+      <p className={Styles.text}>{t('qa_card2_subtitle2')}</p>
+      <p className={Styles.text}>{t('qa_card2_subtitle3')}</p>
+      <p className={Styles.text}>{t('qa_card2_subtitle4')}</p>
+      <p className={Styles.text}>{t('qa_card2_subtitle5')}</p>
+      <p className={Styles.text}>{t('qa_card2_subtitle6')}</p>
     </>
   )
 }

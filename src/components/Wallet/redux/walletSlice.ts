@@ -39,8 +39,8 @@ export const walletSlice = createSlice({
   name: 'wallet',
   initialState: {
     address: '',
-    sum_limc_balance: '...',
-    usdt_balance: '...',
+    sum_limc_balance: '0',
+    usdt_balance: '0',
     limc_price: {
       lock_time: 0,
       slug: '',

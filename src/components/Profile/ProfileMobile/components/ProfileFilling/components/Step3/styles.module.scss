@@ -9,12 +9,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
   width: 100%;
+
+  &:nth-child(1) {
+    div {
+      margin-right: 14px;
+    }
+  }
 
   &:nth-child(2) {
     width: inherit;
     margin: 0 14px;
+  }
+
+  &:nth-child(3) {
+    div {
+      margin-left: 14px;
+    }
   }
 }
 
@@ -86,14 +97,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 15px;
+
+  label {
+    margin-bottom: 20px;
+  }
 }
 
 .wrapper {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 30px;
+  justify-content: space-between;
 }
 
 .input {

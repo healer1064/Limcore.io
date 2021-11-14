@@ -1,6 +1,8 @@
 @import '../../../vars&mixins.scss';
 
 .balance {
+  position: relative;
+
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -47,7 +49,7 @@
     outline: none;
     box-shadow: none;
     transition: opacity .3s ease;
-    
+
     &:hover {
       transition: opacity .3s ease;
       opacity: 0.5;
@@ -69,7 +71,7 @@
   &__data {
     display: flex;
     flex-flow: row nowrap;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 
     font-size: 14px;
     font-weight: 600;
@@ -136,7 +138,7 @@
     align-items: flex-end;
     width: 100%;
     max-width: 700px;
-  
+
     img {
       margin-top: 10px;
     }
@@ -148,12 +150,12 @@
       background: #dbe0ee;
       border-radius: 6px;
       padding: 5px 10px;
-      margin-top: 30px;
+      // margin-top: 15px;
       width: 100%;
     }
-  
+
     $barProportion: calc(0 / 80000 * 100%);
-    
+
     .bar {
       position: absolute;
       top: 0;
@@ -163,7 +165,7 @@
       width: $barProportion;
       height: 100%;
     }
-    
+
     .count {
       font-family: Montserrat;
       font-style: normal;
@@ -173,7 +175,7 @@
       color: #868da7;
       z-index: 3;
     }
-  
+
     .etherscan {
       font-family: Montserrat;
       font-style: normal;
@@ -182,7 +184,7 @@
       color: #4A70F8;
       text-decoration: none;
     }
-    
+
     .etherscanIcon {
       transform: translateY(6px);
       margin-top: 0 !important;
@@ -229,20 +231,20 @@
           padding-bottom: 28px;
           border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
-    
+
         &Title {
           margin: 0 0 20px 0;
-    
+
           font-size: 18px;
           font-weight: 600;
           line-height: 27px;
           color: #393C42;
         }
-  
-    
+
+
         &Purse {
           margin: 0;
-    
+
           font-size: 14px;
           font-weight: 500;
           line-height: 19px;
@@ -256,7 +258,7 @@
         }
       }
     }
-  
+
     &Down {
       .regModal {
         &Button {
@@ -266,4 +268,79 @@
       }
     }
   }
+}
+
+.trust {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100% - 40px);
+  margin: 0 auto 15px;
+  // margin: 0 20px 15px;
+
+  text-align: center;
+}
+
+.trust_logos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  max-width: 188px;
+  width: 100%;
+}
+
+.trust_sinc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  padding: 14px 65px;
+  width: 100%;
+  border: 1px solid #4A70F8;
+  border-radius: 14px;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+
+  color: #4A70F8;
+  background-color: #ffffff;
+  transition: background-color .3s ease, color .3s ease;
+
+  &:hover {
+    color: #2D4EC5;
+    border-color: #2D4EC5;
+    transition: background-color .3s ease, color .3s ease;
+  }
+}
+
+.trust_sinc_success {
+  border: 1px solid #4DBE28;
+}
+
+.trust_logos_cont__success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  border-radius: 50%;
+  border: 2px solid #4DBE28;
+}
+
+.trust_cross_success {
+  & > svg > path {
+    stroke: #4DBE28;
+  }
+}
+
+.trust_subtitle {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  color: #99A0AD;
+}
+
+.trust_walletpurse {
+  margin-right: 10px;
 }

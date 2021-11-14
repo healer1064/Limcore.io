@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setData, setMiddleName } from '../../../../../../../app/redux/userSlice'
 import { api } from '@app/api'
@@ -24,6 +24,8 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
   const data = useAppSelector((state) => state.user.data)
   const middleName = useAppSelector((state) => state.user.middleName)
   const [popup, setPopup] = useState(false)
+  const [complete, setComplete] = useState(true)
+  const maxLength = 200
 
   const openPopup = () => setPopup(true)
   const closePopup = () => setPopup(false)
@@ -43,6 +45,12 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
     dispatch(setData({ ...data, gender: value }))
   }
 
+  // useEffect(() => {
+  //   if (data.first_name) {
+  //     setComplete(true)
+  //   }
+  // }, [data])
+
   return (
     <>
       <div className={Styles.progress}>
@@ -57,12 +65,12 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
             <span>2</span>
           </div>
         </div>
-        {/* <div className={Styles.step}>
+        <div className={Styles.step}>
           <span className={Styles.line}>{}</span>
           <div className={Styles.number}>
             <span>3</span>
           </div>
-        </div> */}
+        </div>
       </div>
       <div className={Styles.container}>
         <span className={Styles.caption}>Укажите ФИО, дату рождения и пол</span>
@@ -73,6 +81,7 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
               name='first_name'
               value={data.first_name}
               placeholder='Введите ваше имя'
+              maxLength={maxLength}
             />
           </Label>
           <Label className={Styles.label} titleText='Фамилия*'>
@@ -81,6 +90,7 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
               name='last_name'
               value={data.last_name}
               placeholder='Введите вашу фамилию'
+              maxLength={maxLength}
             />
           </Label>
           <Label className={Styles.label} titleText='Отчество*'>
@@ -90,6 +100,7 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
               value={data.middle_name}
               placeholder='Введите ваше отчество'
               disabled={middleName}
+              maxLength={maxLength}
             />
           </Label>
           <Label className={Styles.label}>
@@ -107,12 +118,12 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
                 onChange={() => {}}
                 type='text'
                 value={data.birth_date}
-                placeholder='01.01.2021'
+                placeholder='2021-01-01'
               />
               <img src={calendarIcon} alt='Иконка' />
             </div>
           </Label>
-          <Label className={Styles.edit} titleText='Пол*'>
+          <Label className={Styles.label} titleText='Пол*'>
             <div className={Styles.radios}>
               <Label>
                 <InputRadio
@@ -132,7 +143,9 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
               </Label>
             </div>
           </Label>
-          <ButtonBig onClick={(event) => nextStep(event, 1)}>Продолжить</ButtonBig>
+          <ButtonBig onClick={(event) => nextStep(event, 1)} disabled={!complete}>
+            Продолжить
+          </ButtonBig>
         </form>
       </div>
       {popup && (

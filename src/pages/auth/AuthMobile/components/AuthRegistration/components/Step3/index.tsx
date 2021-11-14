@@ -29,13 +29,22 @@ export const Step3: React.FC = () => {
     }
 
     const response = await dispatch(registerUserEmail({ email, unique_identifier: localStorage.getItem('uniqueId') }))
-    console.log('step3', response)
-    if (response.error) {
-      if (response.error.message === 'user_already_registered') {
-        setError('Пользователь уже зарегистрирован')
-      }
 
-      setError('Что-то пошло не так, попробуйте еще раз.')
+    if (response.error) {
+      switch (response.error.message) {
+        case 'user_already_registered':
+          setError('Пользователь уже зарегистрирован')
+          break
+        case 'email_using_in_another_account':
+          setError('Пользователь уже зарегистрирован')
+          break
+        case 'wait_one_minute':
+          setError('Минута еще не прошла после первого запроса')
+          break
+        default:
+          setError('Что-то пошло не так..')
+          break
+      }
     } else {
       dispatch(setStepRegistration(4))
     }

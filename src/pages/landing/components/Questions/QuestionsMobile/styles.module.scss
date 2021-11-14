@@ -76,9 +76,17 @@
   }
 }
 
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 10px;
+}
+
 .block {
   display: none;
   flex-direction: column;
+  padding-left: 20px;
 }
 
 .text {

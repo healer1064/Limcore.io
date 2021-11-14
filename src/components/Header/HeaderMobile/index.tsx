@@ -5,29 +5,35 @@ import Styles from './styles.module.scss'
 
 import logoIcon from '@icons/logo.svg'
 import userIcon from '@icons/user.svg'
+import { ProfileHeaderIcon } from '@icons/ProfileHeaderIcon'
 import logout from '@icons/logout.svg'
-import { Container } from '../../../components/Container'
-import twitter from '@icons/twitter-icon.png'
-import youTube from '@icons/SF Symbol/play.fill.svg'
-import vk from '@icons/vk-icon.png'
-import insta from '@icons/insta-icon.png'
-import tg from '@icons/telegram-icon.png'
-import facebook from '@icons/facebook-icon.png'
-// import RU from '../../../assets/images/flag-ru.svg'
-import RUS from '../../../assets/images/russia-flag.png'
-import ENG from '../../../assets/images/en-flag.png'
+import { Container } from '@components/Container'
+import RUS from '@icons/flag-ru.svg'
+import ENG from '@icons/flag-en.svg'
+
+import { Telegram } from '@icons/Telegram'
+import { Instagram } from '@icons/Instagram'
+import { Youtube } from '@icons/Youtube'
 import { useHistory, useLocation } from 'react-router'
 import { setIsAuth } from '../../../pages/auth/redux/auth.slice'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import close from '@icons/close.svg'
+import { Logo } from '@components/Purse/PurseDesktop/components/Logo'
+import { useTranslation } from 'react-i18next'
+import classNames from 'classnames'
+import { VectorIcon } from '@icons/VectorIcon'
+import { LoginIcon } from '@icons/LoginIcon'
 
 export const HeaderMobile: React.FC = () => {
   const [burgerOpen, setBurgerOpen] = useState(false)
-  // const isAuth = useAppSelector((state) => state.auth.isAuth)
+  const [showPopapLanguage, setShowPopapLanguage] = useState(false)
+  const [t, i18n] = useTranslation()
+
   const isAuth = useAppSelector((state) => state.authNew.isAuth)
   const history = useHistory()
   const location = useLocation()
   const dispatch = useAppDispatch()
+
   const closeBurger = () => {
     setBurgerOpen(false)
   }
@@ -41,6 +47,18 @@ export const HeaderMobile: React.FC = () => {
     window.location.reload()
   }
 
+  const languages = ['ru', 'en']
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang)
+    setShowPopapLanguage(false)
+  }
+
+  const iconCondition =
+    (isAuth && window.location.pathname.includes('my')) ||
+    (isAuth && window.location.pathname.includes('chat')) ||
+    (isAuth && window.location.pathname.includes('broadcasts')) ||
+    (isAuth && window.location.pathname.includes('profile'))
+
   const burgerStyles = `${burgerOpen ? Styles.burgerMenuOpened : Styles.burgerMenuClosed}`
   const tempLink = [
     { id: 1, value: 'Что такое Limcore?', link: 'limcore', spy: true, smooth: true },
@@ -49,31 +67,89 @@ export const HeaderMobile: React.FC = () => {
     // { id: 4, value: 'Экосистема', link: 'ecosystem', spy: true, smooth: true },
     { id: 5, value: 'Вопрос-ответ', link: 'questionsMobile', spy: true, smooth: true },
   ]
+
   return (
     <header className={Styles.header}>
-      <img className={Styles.logo} src={logoIcon} alt='Лого' />
+      {isAuth ? (
+        <LinkDom to='/my' className={Styles.logoIcon}>
+          {iconCondition ? <Logo /> : <img className={Styles.logo} src={logoIcon} alt='Лого' />}
+        </LinkDom>
+      ) : (
+        <LinkDom to='/' className={Styles.logoIcon}>
+          {iconCondition ? <Logo /> : <img className={Styles.logo} src={logoIcon} alt='Лого' />}
+        </LinkDom>
+      )}
       <div className={Styles.wrap}>
-        {/* {!isAuth && location.pathname !== '/auth' && (
-          <a onClick={() => history.push('/auth')}>
+        {!isAuth && location.pathname !== '/auth' && (
+          <a onClick={() => history.push('/auth')} className={Styles.logoLink}>
             <img src={userIcon} alt='Иконка' />
           </a>
-        )} */}
-        {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null}
-        {location.pathname === '/auth' ? (
-          <LinkDom to='/'>
-            <img src={close} alt='close' />
-          </LinkDom>
+        )}
+        {isAuth && window.location.pathname === '/' ? (
+          <>
+            <button className={Styles.profileBtn}>
+              <LinkDom to='/my' className={Styles.profileBtn_link}>
+                <LoginIcon />
+                <span className={Styles.enter}>{t('profile')}</span>
+              </LinkDom>
+            </button>
+            <div className={Styles.burger} onClick={openBurger}>
+              <span className={Styles.row}>{}</span>
+              <span className={Styles.row}>{}</span>
+              <span className={Styles.row}>{}</span>
+            </div>
+          </>
         ) : (
-          <div className={Styles.burger} onClick={openBurger}>
-            <span className={Styles.row}>{}</span>
-            <span className={Styles.row}>{}</span>
-            <span className={Styles.row}>{}</span>
-          </div>
+          <>
+            {/* <div className={Styles.lang}>
+              <div
+                className={classNames(Styles.block, showPopapLanguage && Styles.active)}
+                onClick={() => setShowPopapLanguage(!showPopapLanguage)}
+              >
+                <img src={i18n.language === 'ru' ? RUS : ENG} alt='Флаг' className={Styles.img} />
+                <span className={Styles.langTitle}>{i18n.language === 'ru' ? 'RU' : 'EN'}</span>
+                <span className={classNames(showPopapLanguage && Styles.arrowActive, Styles.arrow)}>
+                  <VectorIcon />
+                </span>
+              </div>
+              <div className={classNames(Styles.header__langoptions2, showPopapLanguage && Styles.active)}>
+                {languages.map((lang) => (
+                  <div
+                    key={lang}
+                    className={`${Styles.langoption} ${lang === 'ru' ? Styles.langoption_ru : Styles.langoption_en}`}
+                  >
+                    <input
+                      className={Styles.langoption__checked}
+                      type='radio'
+                      id={lang}
+                      name='languages'
+                      value={lang}
+                      checked={i18n.language === lang}
+                      onChange={() => changeLanguage(lang)}
+                      readOnly
+                    />
+                    <div className={Styles.lang_box}>
+                      <img src={lang === 'ru' ? RUS : ENG} alt='Флаг' className={Styles.lang__img} />
+                      <label
+                        className={`${Styles.langoption__text} ${
+                          i18n.language === lang && Styles.langoption__text_checked
+                        }`}
+                        htmlFor={lang}
+                      >
+                        {lang === 'ru' ? 'RU' : 'EN'}
+                      </label>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div> */}
+            {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null}
+          </>
         )}
         <div className={burgerStyles}>
           <Container title='' onClose={closeBurger}>
             <img className={Styles.logoInOpenBurger} src={logoIcon} alt='Лого' />
-            {!isAuth ? (
+            {window.location.pathname === '/' ? (
               <ul className={Styles.list}>
                 {tempLink?.map((item) => {
                   return (
@@ -91,53 +167,77 @@ export const HeaderMobile: React.FC = () => {
                 })}
               </ul>
             ) : null}
-            {/* <ul className={Styles.social}>
-              <li>
-                <a href='https://twitter.com' target='blank' rel='noopener noreferrer'>
-                  <img src={twitter} className={Styles.socialIcon} />
+
+            <ul className={Styles.social}>
+              <li className={Styles.content_item}>
+                <a href='https://t.me/limc_russ' target='blank' rel='noopener noreferrer'>
+                  <Telegram className={Styles.content_icon} />
                 </a>
               </li>
-              <li>
-                <a
-                  href='https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg'
-                  target='blank'
-                  rel='noopener noreferrer'
-                  className={Styles.YouTubeLink}
-                >
-                  <img src={youTube} className={Styles.YouTubeIcon} />
-                </a>
-              </li>
-              <li>
-                <a href='https://vk.com/' target='blank' rel='noopener noreferrer'>
-                  <img src={vk} className={Styles.socialIcon} />
-                </a>
-              </li>
-              <li>
+              <li className={Styles.content_item}>
                 <a
                   href='https://instagram.com/limcore.io?utm_medium=copy_link'
                   target='blank'
                   rel='noopener noreferrer'
                 >
-                  <img src={insta} className={Styles.socialIcon} />
+                  <Instagram className={Styles.content_icon} />
                 </a>
               </li>
-              <li>
-                <a href='https://t.me/limc_russ' target='blank' rel='noopener noreferrer'>
-                  <img src={tg} className={Styles.socialIcon} />
+              <li className={Styles.content_item}>
+                <a href='https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg' target='blank' rel='noopener noreferrer'>
+                  <Youtube className={Styles.content_icon} />
                 </a>
               </li>
-              <li>
-                <a href='https://ru-ru.facebook.com/' target='blank' rel='noopener noreferrer'>
-                  <img src={facebook} className={Styles.socialIcon} />
-                </a>
-              </li>
-            </ul> */}
+            </ul>
             <div className={Styles.group}>
-              <p className={Styles.email}>info@limcore.com</p>
-              <div className={Styles.languageGroup}>
-                <img className={Styles.languageIcon} src={RUS} alt='RU' />
-                <p className={Styles.language}>RU</p>
-                {/* <img className={Styles.footer__languageArrow} src={arrow} alt='Arrow-button' /> */}
+              <p className={Styles.email}>
+                <a href='mailto:info@limcore.io'>info@limcore.io</a>
+              </p>
+              {/* <div className={Styles.languageGroup}>
+                <img className={Styles.languageIcon} src={i18n.language === 'ru' ? RUS : ENG} alt='lang' />
+                <p className={Styles.language}>{i18n.language === 'ru' ? 'RU' : 'EN'}</p>
+              </div> */}
+              <div className={Styles.lang}>
+                <div
+                  className={classNames(Styles.block, showPopapLanguage && Styles.active)}
+                  onClick={() => setShowPopapLanguage(!showPopapLanguage)}
+                >
+                  <img src={i18n.language === 'ru' ? RUS : ENG} alt='Флаг' className={Styles.img} />
+                  <span className={Styles.langTitle}>{i18n.language === 'ru' ? 'RU' : 'EN'}</span>
+                  <span className={classNames(showPopapLanguage && Styles.arrowActive, Styles.arrow)}>
+                    <VectorIcon />
+                  </span>
+                </div>
+                <div className={classNames(Styles.header__langoptions, showPopapLanguage && Styles.active)}>
+                  {languages.map((lang) => (
+                    <div
+                      key={lang}
+                      className={`${Styles.langoption} ${lang === 'ru' ? Styles.langoption_ru : Styles.langoption_en}`}
+                    >
+                      <input
+                        className={Styles.langoption__checked}
+                        type='radio'
+                        id={lang}
+                        name='languages'
+                        value={lang}
+                        checked={i18n.language === lang}
+                        onChange={() => changeLanguage(lang)}
+                        readOnly
+                      />
+                      <div className={Styles.lang_box}>
+                        <img src={lang === 'ru' ? RUS : ENG} alt='Флаг' className={Styles.lang__img} />
+                        <label
+                          className={`${Styles.langoption__text} ${
+                            i18n.language === lang && Styles.langoption__text_checked
+                          }`}
+                          htmlFor={lang}
+                        >
+                          {lang === 'ru' ? 'RU' : 'EN'}
+                        </label>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </Container>

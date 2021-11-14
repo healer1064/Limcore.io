@@ -1,0 +1,165 @@
+@import '../../../../../vars&mixins.scss';
+
+.modal {
+
+  .balance {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-top: 20px;
+
+    &Title {
+      margin: 0 0 4px 0;
+      @include subtitle-14px($color-99-gray);
+    }
+
+    &Sum {
+      margin: 0;
+
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1;
+      color: $color-3A-black;
+    }
+  }
+
+  .list {
+    margin-bottom: 30px;
+    padding: 0 20px;
+    list-style-type: none;
+  }
+
+  &Item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    &Title {
+      margin: 0;
+      @include subtitle-14px($color-99-gray)
+    }
+    
+    &Sum {
+      margin: 0;
+      @include subtitle-14px($color-4F-black)
+    }
+  }
+
+  .btns {
+    padding: 0 20px;
+    list-style-type: none;
+
+    .item {
+      display: flex;
+
+      &:not(:last-child) {
+        margin-bottom: 25px;
+      }
+
+      .icon {
+        margin-right: 10px;
+        transform: translateX(-4px);
+      }
+
+      .body {
+        margin-right: auto;
+        width: 100%;
+
+        .title {
+          margin: 0 0 4px 0;
+          padding: 0;
+          @include subtitle-14px($color-4F-black);
+        }
+        
+        .subtitle {
+          margin: 0 0 8px 0;
+          padding: 0;
+          @include subtitle-14px($color-99-gray);
+        }
+
+        .btn {
+          @include subtitle-14px($color-4A-blue);
+          font-weight: 500;
+
+          margin: 0;
+          padding: 0;
+          border: none;
+          background-color: transparent;
+          outline: none;
+        }
+      }
+
+      .btn__modal {
+        height: fit-content;
+        border: none;
+        background-color: transparent;
+        outline: none;
+      }
+    }
+  }
+}
+
+.apply {
+  width: 100%;
+}
+
+.pay {
+  position: relative;
+  width: 50%;
+  margin: 20px 0 0 0;
+  &Select {
+    @include subtitle-14px($color-4F-black);
+    background: none;
+    outline: none;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    border: 1.4px solid #B4BFD5;
+    border-radius: 14px;
+    align-items: center;
+    padding: 10px 20px;
+    svg {
+      transform: rotate(-90deg);
+      path {
+        stroke: #99A0AD;
+      }
+    }
+  }
+  &Options {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px 20px;
+    box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+    border-radius: 14px;
+    transition: all .3s ease;
+    button {
+      @include subtitle-14px($color-4F-black);
+      background: none;
+      outline: none;
+      border: none;
+      width: 100%;
+      padding: 0;
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+  .visible {
+      visibility: visible;
+      opacity: 1;
+      top: 50px;
+    }
+}

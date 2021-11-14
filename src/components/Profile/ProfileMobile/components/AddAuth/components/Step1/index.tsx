@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useAppDispatch } from '@app/redux/hooks'
+import { setData2FA, get2FAUrl } from '../../../../../../../app/redux/userSlice'
 import Styles from './styles.module.scss'
 
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
@@ -12,6 +14,16 @@ interface StepProps {
 }
 
 export const Step1: React.FC<StepProps> = ({ nextStep }) => {
+  const dispatch = useAppDispatch()
+
+  const stepNext = () => nextStep(2)
+
+  useEffect(() => {
+    dispatch(get2FAUrl())
+      .then((res: any) => dispatch(setData2FA(res.payload)))
+      .catch((error) => console.log(error))
+  }, [])
+
   return (
     <>
       <div className={Styles.component}>
@@ -22,15 +34,15 @@ export const Step1: React.FC<StepProps> = ({ nextStep }) => {
             </div>
             <span className={`${Styles.line} ${Styles.line_active}`}>{}</span>
           </div>
-          <div className={Styles.step}>
+          {/* <div className={Styles.step}>
             <div className={Styles.number}>
               <span>2</span>
             </div>
-          </div>
+          </div> */}
           <div className={Styles.step}>
             <span className={Styles.line}>{}</span>
             <div className={Styles.number}>
-              <span>3</span>
+              <span>2</span>
             </div>
           </div>
         </div>
@@ -39,13 +51,21 @@ export const Step1: React.FC<StepProps> = ({ nextStep }) => {
           <div className={Styles.block}>
             <img src={authIcon} alt='Иконка' />
             <div className={Styles.stors}>
-              <img src={storeIcon} alt='Иконка' />
-              <img src={playIcon} alt='Иконка' />
+              <a href='https://apps.apple.com/ru/app/google-authenticator/id388497605' target='_blank' rel='noreferrer'>
+                <img src={storeIcon} alt='Иконка' />
+              </a>
+              <a
+                href='https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <img src={playIcon} alt='Иконка' />
+              </a>
             </div>
           </div>
         </div>
       </div>
-      <ButtonBig onClick={() => nextStep(2)}>Продолжить</ButtonBig>
+      <ButtonBig onClick={stepNext}>Продолжить</ButtonBig>
     </>
   )
 }

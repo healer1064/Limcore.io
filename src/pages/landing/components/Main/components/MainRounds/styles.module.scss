@@ -48,7 +48,9 @@ $barProportion: calc(0 / 80000 * 100%);
 .list {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 644px;
   padding: 14px 0 0 0;
   margin: 0;
   list-style: none;
@@ -78,16 +80,6 @@ $barProportion: calc(0 / 80000 * 100%);
   color: #3a3b3d;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-
-  img {
-    margin-top: 10px;
-  }
-}
-
 .progress {
   position: relative;
   display: flex;
@@ -95,7 +87,7 @@ $barProportion: calc(0 / 80000 * 100%);
   background: #dbe0ee;
   border-radius: 6px;
   padding: 5px 10px;
-  margin-top: 30px;
+  margin: 30px auto;
   width: 100%;
 }
 
@@ -197,13 +189,16 @@ $barProportion: calc(0 / 80000 * 100%);
 
 .cover {
   display: flex;
-  gap: 8px;
 }
 
 .round {
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  &:not(:first-child) {
+    margin-left: 8px;
+  }
 
   //span {
   //  font-family: Montserrat;
@@ -291,6 +286,10 @@ $barProportion: calc(0 / 80000 * 100%);
   }
 }
 
+.date__mobile {
+  display: none;
+}
+
 .info {
   display: flex;
   gap: 42px;
@@ -339,6 +338,11 @@ $barProportion: calc(0 / 80000 * 100%);
   }
 }
 
+.buyLimc {
+  color: #fff;
+  text-decoration: none;
+}
+
 @media all and (max-width: 768px) {
   .rounds {
     flex-wrap: wrap;
@@ -361,6 +365,7 @@ $barProportion: calc(0 / 80000 * 100%);
     width: 100%;
     padding: 0 0 15px 0;
     gap: 6px;
+    border-bottom: 1px solid #dbdfee;
   }
 
   .buttons {
@@ -369,12 +374,7 @@ $barProportion: calc(0 / 80000 * 100%);
   }
 
   .progress {
-    margin-top: 15px;
-  }
-
-  .container {
-    padding-bottom: 20px;
-    border-top: 1px solid #dbdfee;
+    margin: 15px auto;
   }
 
   .wrap {
@@ -430,30 +430,23 @@ $barProportion: calc(0 / 80000 * 100%);
 
   .roadContainer {
     display: grid;
-    grid-template-columns: 30px 0px 1fr;
+    position: relative;
+    grid-template-columns: 30px 1fr;
     grid-template-rows: minmax(min-content, max-content);
-    grid-template-areas: 'empty shell road';
-    margin: 20px 0 0;
+    grid-template-areas: 'empty road';
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
 
   .road {
     grid-area: road;
-    margin-top: 19px;
+    margin-top: 0;
   }
 
   .round {
     margin-bottom: 14px;
     margin-top: 10px;
-
-    &:last-child {
-      margin-bottom: 30px;
-    }
-
-    &:first-child {
-      margin-bottom: 40px;
-    }
   }
 
   .cover {
@@ -462,47 +455,23 @@ $barProportion: calc(0 / 80000 * 100%);
   }
 
   .shell {
-    grid-area: shell;
-    margin-top: 0;
+    display: none;
+  }
+
+  .date__mobile {
+    display: flex;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #4f535a;
     box-sizing: border-box;
-  }
-
-  .lines {
-    flex-direction: column;
-  }
-
-  .line {
-    border: none;
+    margin: 0 0 10px 10px;
+    padding: 0;
 
     &:last-child {
-      flex: 3;
-      border: none;
-    }
-  }
-
-  .dates {
-    flex-direction: column;
-    height: 100%;
-    padding: 0;
-  }
-
-  .date {
-    flex-direction: column;
-    white-space: nowrap;
-    position: relative;
-
-    &__span {
-      display: flex;
-      position: absolute;
-      top: 0px;
-      left: 10px;
-    }
-
-    &__lastSpan {
-      display: flex;
-      position: absolute;
-      bottom: 0px;
-      left: 10px;
+      margin-top: 10px;
     }
   }
 
@@ -527,7 +496,7 @@ $barProportion: calc(0 / 80000 * 100%);
 
   .emptyContainer {
     display: flex;
-    margin: 0 0 10px 0;
+    margin: 0 0 17px 0;
     padding: 0;
     box-sizing: border-box;
     width: 100%;
@@ -537,11 +506,11 @@ $barProportion: calc(0 / 80000 * 100%);
 
     &_first {
       display: flex;
-      margin: 10px 0 0;
+      margin: 20px 0 0;
       padding: 0;
       box-sizing: border-box;
       width: 100%;
-      height: 150px;
+      height: 185px;
       border-top: 2px solid #4a70f8;
       border-left: 4px solid #4a70f8;
       border-bottom: 2px solid #4a70f8;
@@ -601,7 +570,51 @@ $barProportion: calc(0 / 80000 * 100%);
     text-decoration: none;
     &:hover {
       cursor: pointer;
-      opacity: .8;
+      opacity: 0.8;
     }
+  }
+}
+
+.wrapp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  span {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 160%;
+    color: #67686c;
+    margin-top: 6px;
+  }
+}
+
+.buy {
+  padding: 14px 0;
+  border: 1px solid #4a70f8;
+  border-radius: 14px;
+  font-family: 'Montserrat';
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  font-style: normal;
+  text-align: center;
+  color: #ffffff;
+  width: 100%;
+  max-width: 285px;
+  background: #4a70f8;
+  transition: background 0.2s ease;
+  text-decoration: none;
+
+  &:hover {
+    background: #3257dd;
+    transition: background 0.2s ease;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    opacity: 0.5;
   }
 }

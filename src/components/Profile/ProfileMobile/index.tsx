@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setProfileComplete, changeViewContent } from '../../../pages/cabinet/redux/cabinetSlice'
+import { setProfileComplete, changeViewContent, changeStep } from '../../../pages/cabinet/redux/cabinetSlice'
+import { setData } from '../../../app/redux/userSlice'
 import Styles from './styles.module.scss'
 
 import { Container } from '@components/Container'
@@ -12,6 +13,8 @@ import { EditEmail } from './components/EditEmail'
 import { EditName } from './components/EditName'
 import { EditLocation } from './components/EditLocation'
 import { AddAuth } from './components/AddAuth'
+import { ChangePhone } from './components/AddAuth/components/ChangePhone'
+import { FooterMobile } from '@components/Footer/FooterMobile'
 
 export const ProfileMobile: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -20,21 +23,28 @@ export const ProfileMobile: React.FC = () => {
   const profileComplete = useAppSelector((state) => state.cabinet.profileComplete)
   const viewContent = useAppSelector((state) => state.cabinet.viewContent)
 
-  const handleFillingClick = () => {
-    dispatch(changeViewContent('none'))
+  const onBackAddAuth = () => {
+    dispatch(changeViewContent('addAuth'))
+    dispatch(changeStep(0))
   }
 
   useEffect(() => {
-    if (userData !== null && user.first_name && user.last_name && user.gender) {
+    if (userData !== null) {
+      dispatch(setData({ ...userData.profile }))
+    }
+
+    if (userData !== null && userData?.profile !== null /* && user.first_name && user.last_name && user.gender */) {
       dispatch(setProfileComplete(true))
     }
 
-    if (!user.first_name && !user.last_name && !user.gender) {
-      dispatch(changeViewContent('filling'))
-    } else {
-      dispatch(changeViewContent('profile'))
-    }
+    // if (!user.first_name && !user.last_name && !user.gender) {
+    //   dispatch(changeViewContent('filling'))
+    // } else {
+    //   dispatch(changeViewContent('profile'))
+    // }
   }, [userData])
+
+  console.log('userData', userData)
 
   return (
     <div className={Styles.profile}>
@@ -43,7 +53,7 @@ export const ProfileMobile: React.FC = () => {
         {viewContent ? (
           <>
             {viewContent === 'filling' && (
-              <Container title='Заполните профиль' onClick={handleFillingClick}>
+              <Container title='Заполните профиль'>
                 <ProfileFilling />
               </Container>
             )}
@@ -72,9 +82,15 @@ export const ProfileMobile: React.FC = () => {
                 <AddAuth />
               </Container>
             )}
+            {viewContent === 'changePhone' && (
+              <Container title='Изменить номер телефона' onClickBack={onBackAddAuth}>
+                <ChangePhone />
+              </Container>
+            )}
           </>
         ) : null}
       </>
+      <FooterMobile />
     </div>
   )
 }

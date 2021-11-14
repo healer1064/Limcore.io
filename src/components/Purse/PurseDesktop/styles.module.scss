@@ -1,0 +1,328 @@
+@import '../../../scss/cabinet';
+@import '../vars&mixins.scss';
+
+.purse {
+  z-index: 102;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
+  height: 100%;
+  background-color: transparent;
+  // overflow: auto;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 20px 20px 0 140px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+
+
+  &__link {
+    list-style: none;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #67686c;
+    display: flex;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 50px 0 0;
+
+    &:last-child {
+      padding: 0;
+    }
+    &:hover {
+      cursor: pointer;
+      color: #4a70f8;
+    }
+
+    &_active, &:active {
+      color: #2D4EC5
+    }
+
+  }
+}
+
+.profileGroup {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 28px;
+  margin: 0 0 0 10px;
+  path {
+    fill: $color-99-gray;
+  }
+  &:hover {
+      path {
+    fill: $color-4A-blue;
+  }
+  }
+}
+.profileIcon {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 8px 0 0;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  &:hover {
+    border: 1px solid $color-4A-blue;
+  }
+}
+
+.profileName {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #3a3b3d;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  &:hover {
+    color: $color-4A-blue;
+  }
+}
+
+.purseContainer {
+  display: grid;
+  box-sizing: border-box;
+  margin: 30px 20px 0 6%;
+  // max-width: 1280px;
+  // padding: 0;
+  // grid-template-columns: 350px 65%;
+  grid-template-columns: 300px 65%;
+  // grid-template-rows: repeat(3, minmax(min-content, max-content));
+  column-gap: 40px;
+  grid-template-areas:
+    'accounts balance'
+    'accounts roadMap'
+    'accounts mining'
+    'accounts wallet'
+    'accounts transactions';
+}
+
+.accounts {
+  grid-area: accounts;
+  box-sizing: border-box;
+  padding: 40px 30px 0;
+  height: 657px;
+  width: 308px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+  border-radius: 14px;
+}
+
+.balance {
+  grid-area: balance;
+  padding: 60px 0 0 0;
+
+  &_invisible {
+    display: none;
+  }
+}
+
+.roadMap {
+  grid-area: roadMap;
+
+  &_invisible {
+    display: none;
+  }
+  .byLimcBtn {
+    @include section-title();
+    display: inline-block;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    border-radius: 14px;
+    padding: 15px 75px;
+    color: #ffffff;
+    background-color: $color-4A-blue;
+    margin: 30px 0;
+    &:hover {
+      background-color: $color-31-blue;
+    }
+    &:active {
+      background-color: $color-2D-blue;
+    }
+  }
+}
+
+.modalContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(43, 40, 41, 0.5);
+
+  &_invisible {
+    display: none;
+  }
+}
+
+.mining {
+  grid-area: mining;
+  width: 100%;
+  max-width: 100%;
+  &_invisible {
+    display: none;
+  }
+}
+
+.miningDetails {
+  display: flex;
+  flex-direction: column;
+  .miningDetailsWrapper {
+    width: 100%;
+    display: flex;
+  }
+}
+
+.detailsTitle {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.5;
+  color: #3a3b3d;
+  padding: 60px 0 20px 0;
+  margin: 0;
+}
+.wallet {
+  grid-area: wallet;
+  max-width: 100%;
+  &_invisible {
+    display: none;
+  }
+}
+.transactions {
+  grid-area: transactions;
+
+  &_invisible {
+    display: none;
+  }
+}
+
+.items {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 0 64px 0;
+  align-items: center;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  max-width: 140px;
+  padding: 15px;
+  background: #f9faff;
+  border-radius: 14px;
+  color: #4a70f8;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.5;
+
+  &:hover {
+    transition: background 0.3s ease;
+    background: #8ca4f2;
+    cursor: pointer;
+    color: #ffffff;
+  }
+}
+
+.item_active {
+  background: #4a70f8;
+  transition: background 0.3s ease;
+  color: #ffffff;
+
+  &:hover {
+    background: #8ca4f2;
+    transition: background 0.3s ease;
+    cursor: pointer;
+  }
+}
+
+.icon {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 6px 0 0;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+}
+
+// @media screen and (max-width: 1650px) {
+//   .purseContainer {
+//     margin: 25px 15% 0 6%;
+//   }
+// }
+
+// @media screen and (max-width: 1380px) {
+//   .purseContainer {
+//     margin: 25px 10% 0 6%;
+//   }
+// }
+
+// @media screen and (max-width: 1280px) {
+//   .purseContainer {
+//     margin: 25px 6% 0;
+//   }
+// }
+
+// @media screen and (max-width: 1040px) {
+//   .purseContainer {
+//     column-gap: 40px;
+//   }
+// }
+
+@media screen and (max-width: 900px) {
+  .miningDetails {
+    flex-direction: column;
+  }
+}

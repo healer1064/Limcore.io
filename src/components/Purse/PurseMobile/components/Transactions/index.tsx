@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { UserHasTransactions } from './components/UserHasTransactions/index'
 import { balanceLimc, balanceUsdt, s7 } from '../../images/index'
 import { Modal } from '../Modal'
@@ -14,6 +15,7 @@ interface ITransactionsProps {
 
 export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTransactions }: ITransactionsProps) => {
   const [isTransactionsVisible, setIsTransactionsVisible] = useState(false)
+  const userData = useAppSelector((state) => state.user.userData)
   // Временные данные для прокидки в транзакции, когда будет ясен объект с бэка можно будет все в порядок привести
   const tempDataForTransactions = [
     { img: balanceLimc, title: 'LIMC', sum: '+120 LIMC', isSwitch: false },
@@ -48,15 +50,20 @@ export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTra
         <TransactionsDetails onClick={handleTransactionsClose} />
       </Modal>
 
-      <p className={styles.transactions__subtitle}>
-        У вас еще нет транзакций. <br />
-        Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
-      </p>
-      <div className={styles.transactions__cont}>
-        <button type='button' className={styles.transactions__profileButton} onClick={onProfileClick}>
-          Перейти к заполнению
-        </button>
-      </div>
+      {userData?.profile === null && (
+        <>
+          <p className={styles.transactions__subtitle}>
+            У вас еще нет транзакций. <br />
+            Заполните профиль, чтобы в будущем восстановить аккаунт.
+          </p>
+          <div className={styles.transactions__cont}>
+            <button type='button' className={styles.transactions__profileButton} onClick={onProfileClick}>
+              Перейти к заполнению
+            </button>
+          </div>
+        </>
+      )}
+
       {/* {isUserHasTransactions ? (
         <UserHasTransactions data={tempDataForTransactions} />
       ) : (

@@ -25,12 +25,18 @@ export const Step1: React.FC = () => {
     }
 
     const response = await dispatch(registerUserPhone({ phone: `+${phone}` })) // придет unique_identifier
-    console.log(response)
+
     if (response.error) {
-      if (response.error.message === 'user_already_registered') {
-        setError('Пользователь уже зарегистрирован')
-      } else {
-        setError('Что-то пошло не так..')
+      switch (response.error.message) {
+        case 'user_already_registered':
+          setError('Пользователь уже зарегистрирован')
+          break
+        case 'phone_using_in_another_account':
+          setError('Пользователь уже зарегистрирован')
+          break
+        default:
+          setError('Что-то пошло не так..')
+          break
       }
     } else {
       const id = response.payload?.data.unique_identifier || null
