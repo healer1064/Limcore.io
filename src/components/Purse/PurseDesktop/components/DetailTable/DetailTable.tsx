@@ -61,7 +61,7 @@ const mock = [
   {
     id: 4,
     name: 'HDDcoin',
-    // code: 'NCN',
+    code: 'HDD',
     logo: thddIcon,
     current: false,
     balance: 0,
@@ -79,7 +79,7 @@ const mock = [
   {
     id: 6,
     name: 'Spare',
-    // code: 'NCN',
+    code: 'SPARE',
     logo: tspareIcon,
     current: false,
     balance: 0,
@@ -88,7 +88,7 @@ const mock = [
   {
     id: 7,
     name: 'Flora',
-    // code: 'NCN',
+    code: 'XFL',
     logo: tfloraIcon,
     current: false,
     balance: 0,
@@ -97,7 +97,7 @@ const mock = [
   {
     id: 8,
     name: 'GreenDoge',
-    // code: 'NCN',
+    code: 'GDOG',
     logo: tgreendogeIcon,
     current: false,
     balance: 0,
@@ -106,7 +106,7 @@ const mock = [
   {
     id: 9,
     name: 'STAI',
-    // code: 'NCN',
+    code: 'STAI',
     logo: tstaiIcon,
     current: false,
     balance: 0,
@@ -115,7 +115,7 @@ const mock = [
   {
     id: 10,
     name: 'DogeChia',
-    // code: 'NCN',
+    code: 'XDG',
     logo: tdogechiaIcon,
     current: false,
     balance: 0,
@@ -124,7 +124,7 @@ const mock = [
   {
     id: 11,
     name: 'Apple',
-    // code: 'NCN',
+    code: 'APPLE',
     logo: tappleIcon,
     current: false,
     balance: 0,
@@ -133,7 +133,7 @@ const mock = [
   {
     id: 12,
     name: 'Wheat',
-    // code: 'NCN',
+    code: 'WHEAT',
     logo: twheatIcon,
     current: false,
     balance: 0,
@@ -142,7 +142,7 @@ const mock = [
   {
     id: 13,
     name: 'Maize',
-    // code: 'NCN',
+    code: 'XMZ',
     logo: tmaizeIcon,
     current: false,
     balance: 0,
@@ -151,7 +151,7 @@ const mock = [
   {
     id: 14,
     name: 'Chives',
-    // code: 'NCN',
+    code: 'XCC',
     logo: tchivesIcon,
     current: false,
     balance: 0,
@@ -160,7 +160,7 @@ const mock = [
   {
     id: 15,
     name: 'Kale',
-    // code: 'NCN',
+    code: 'XKA',
     logo: tkaleIcon,
     current: false,
     balance: 0,
@@ -169,7 +169,7 @@ const mock = [
   {
     id: 16,
     name: 'Avocado',
-    // code: 'NCN',
+    code: 'AVO',
     logo: tavacadoIcon,
     current: false,
     balance: 0,
@@ -178,7 +178,7 @@ const mock = [
   {
     id: 17,
     name: 'Socks',
-    // code: 'NCN',
+    code: 'SOCK',
     logo: tsocksIcon,
     current: false,
     balance: 0,
@@ -187,7 +187,7 @@ const mock = [
   {
     id: 18,
     name: 'CryptoDoge',
-    // code: 'NCN',
+    code: 'XCD',
     logo: tcryptodogeIcon,
     current: false,
     balance: 0,
@@ -196,7 +196,7 @@ const mock = [
   {
     id: 19,
     name: 'Taco',
-    // code: 'NCN',
+    code: 'XTX',
     logo: ttacoIcon,
     current: false,
     balance: 0,
@@ -205,7 +205,7 @@ const mock = [
   {
     id: 20,
     name: 'Lucky',
-    // code: 'NCN',
+    code: 'SIX',
     logo: tluckyIcon,
     current: false,
     balance: 0,
@@ -214,7 +214,7 @@ const mock = [
   {
     id: 21,
     name: 'Tad',
-    // code: 'NCN',
+    code: 'TAD',
     logo: ttadIcon,
     current: false,
     balance: 0,
@@ -223,7 +223,7 @@ const mock = [
   {
     id: 22,
     name: 'Сactus',
-    // code: 'NCN',
+    code: 'CAC',
     logo: cactusIcon,
     current: false,
     balance: 0,
@@ -233,7 +233,7 @@ const mock = [
   {
     id: 23,
     name: 'Covid',
-    // code: 'NCN',
+    code: 'COV',
     logo: covidIcon,
     current: false,
     balance: 0,
@@ -242,7 +242,7 @@ const mock = [
   {
     id: 24,
     name: 'Seno',
-    // code: 'NCN',
+    code: 'XSE',
     logo: senoIcon,
     current: false,
     balance: 0,
@@ -251,7 +251,7 @@ const mock = [
   {
     id: 25,
     name: 'Chaingreen',
-    // code: 'NCN',
+    code: 'CGN',
     logo: chaingreenIcon,
     current: false,
     balance: 0,
@@ -260,7 +260,7 @@ const mock = [
   {
     id: 26,
     name: 'Goji',
-    // code: 'NCN',
+    code: 'XGJ',
     logo: goji,
     current: false,
     balance: 0,
@@ -294,7 +294,7 @@ export const DetailTable = () => {
                 </div>
                 <h4 className={styles.tableDataName}>{item.name}</h4>
                 <p className={styles.tableDataCode}>{item.code}</p>
-                {item.current ? <WalletIcon /> : null}
+                {/* {item.current ? <WalletIcon /> : null} */}
               </div>
             </td>
             <td className={styles.tableData}>{item.balance}</td>

@@ -58,6 +58,7 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
         // setActive={handleBalanceLimcOpenClick}
         // setNotActive={handleBalanceLimcCloseClick}
         active={isLimcInfoVisible}
+        type='limc'
       />
       <MenuItem
         image={balanceUsdt}
@@ -66,6 +67,7 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
         setActive={handleBalanceUsdtOpenClick}
         setNotActive={handleBalanceUsdtCloseClick}
         active={isUsdtInfoVisible}
+        type='usdt'
       />
       {/* <MenuItem */}
       {/*  image={creditCard} */}

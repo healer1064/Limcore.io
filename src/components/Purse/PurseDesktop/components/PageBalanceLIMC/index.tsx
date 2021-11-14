@@ -49,6 +49,7 @@ export const PageBalanceLIMC: React.FC<PageBalanceLIMCPropsType> = ({
             Купить
           </a>
         </button>
+        <span className={styles.lockup}>Lock-up период 6 месяцев</span>
         {/* <div className={styles.item}> */}
         {/*  <img className={styles.icon} src={sellIcon} alt='' /> */}
         {/*  Продать */}

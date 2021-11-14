@@ -12,7 +12,7 @@ export const AuthMobile: React.FC = () => {
   const desktop = width >= 769
 
   return (
-    <div className={desktop ? `${Styles.auth}` : `${Styles.auth} ${Styles.auth_edit}`}>
+    <div className={Styles.auth}>
       <div className={Styles.body}>
         {processType === 'authorization' && <AuthAuthorization />}
         {processType === 'registration' && <AuthRegistration />}
