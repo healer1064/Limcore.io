@@ -5,12 +5,12 @@ import { addMoneyIcon, withdrawIcon } from '../../../../../../images/index'
 import { useAppSelector } from '@app/redux/hooks'
 
 export const UsdtButtons = () => {
-  const [addInfoVisible, setAddInfoVisible] = useState(false)
-  const walletAddress = useAppSelector((state) => state.wallet.address)
+  // const [addInfoVisible, setAddInfoVisible] = useState(false)
+  // const walletAddress = useAppSelector((state) => state.wallet.address)
 
-  const handleAddMoneyClick = () => {
-    setAddInfoVisible(true)
-  }
+  // const handleAddMoneyClick = () => {
+  //   setAddInfoVisible(true)
+  // }
   const handleWithdrawClick = () => {
     console.log('handleWithdrawClick')
   }
@@ -18,7 +18,8 @@ export const UsdtButtons = () => {
     <>
       <ul className={styles.buttons}>
         <li className={styles.buttonsItem}>
-          <button type='button' className={classNames(styles.btn, styles.btn__active)} onClick={handleAddMoneyClick}>
+          {/* <button type='button' className={classNames(styles.btn, styles.btn__active)} onClick={handleAddMoneyClick}> */}
+          <button type='button' className={classNames(styles.btn, styles.btn__active)}>
             <span className={styles.btnIcon}>
               <img src={addMoneyIcon} />
             </span>
@@ -34,7 +35,7 @@ export const UsdtButtons = () => {
           </button>
         </li>
       </ul>
-      {addInfoVisible && (
+      {/* {addInfoVisible && (
         <div className={styles.addInfoCont}>
           <p className={styles.addInfo}>Уважаемые пользователи! Приём USDT возможен только в сети ERC-20</p>
           <div className={styles.addressContainer}>
@@ -42,7 +43,7 @@ export const UsdtButtons = () => {
             <span className={styles.addressValue}>{walletAddress}</span>
           </div>
         </div>
-      )}
+      )} */}
     </>
   )
 }
