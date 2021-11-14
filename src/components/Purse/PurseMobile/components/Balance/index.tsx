@@ -19,7 +19,8 @@ import { LogoTrustWallet } from './Icons/LogoTrustWallet'
 import GrayCrossIcon from '../../images/GrayCross/GrayCrossIcon'
 import { WalletPurseIcon } from './Icons/WalletPurseIcon'
 import classNames from 'classnames'
-import { getUsdt, getLimc } from './walletConnect'
+// import { getUsdt, getLimc } from './walletConnect'
+import { getUsdt } from './walletConnect'
 
 export const Balance = () => {
   const [isBalanceVisible, setIsBalanceVisible] = useState(false)
@@ -111,7 +112,8 @@ export const Balance = () => {
   useEffect(() => {
     if (userPurse.chainId) {
       getUsdt(userPurse.address).then((res) => dispatch(setWalletConnectUsdt(res)))
-      getLimc(userPurse.address).then((res) => dispatch(setWalletConnectLimc(res)))
+      dispatch(setWalletConnectLimc(0))
+      // getLimc(userPurse.address).then((res) => dispatch(setWalletConnectLimc(res)))
     }
   }, [userPurse])
 

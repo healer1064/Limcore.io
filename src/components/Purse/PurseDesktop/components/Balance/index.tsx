@@ -18,7 +18,8 @@ import {
   setWalletConnectUsdt,
 } from '../../../../../pages/auth/redux/authSlice'
 import { useDispatch } from 'react-redux'
-import { getLimc, getUsdt } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
+// import { getLimc, getUsdt } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
+import { getUsdt } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
 import classNames from 'classnames'
 
 export const Balance = () => {
@@ -119,7 +120,8 @@ export const Balance = () => {
   useEffect(() => {
     if (userPurse.chainId) {
       getUsdt(userPurse.address).then((res) => dispatch(setWalletConnectUsdt(res)))
-      getLimc(userPurse.address).then((res) => dispatch(setWalletConnectLimc(res)))
+      // getLimc(userPurse.address).then((res) => dispatch(setWalletConnectLimc(res)))
+      dispatch(setWalletConnectLimc(0))
     }
   }, [userPurse])
 
