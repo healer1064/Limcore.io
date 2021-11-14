@@ -109,11 +109,9 @@ export const MainRounds: React.FC = () => {
         </span>
       </div>
       <div className={Styles.wrapp}>
-        <ButtonBig className={Styles.buy}>
-          <a href='https://round1.limcore.io' className={Styles.buyLimc}>
-            {t('buyLimc')}
-          </a>
-        </ButtonBig>
+        <a href='https://round1.limcore.io' className={Styles.buy}>
+          {t('buyLimc')}
+        </a>
         <span>Lock-up период 6 месяцев</span>
       </div>
       {/* <div className={Styles.tempDeclaration}>
