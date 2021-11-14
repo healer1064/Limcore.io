@@ -213,8 +213,11 @@ export const CalculatorCaption: React.FC = () => {
             </PopupMainPage>
           </div>
           {/* TODO DELETE DISABLED */}
-          <ButtonBig disabled onClick={handleLoginModalOpen}>
-            Купить LIMC
+          {/* <ButtonBig onClick={handleLoginModalOpen}> */}
+          <ButtonBig>
+            <a href='https://crowdsale.limcore.io' className={Styles.buyLimc} target='_blank' rel='noreferrer'>
+              Купить LIMC
+            </a>
           </ButtonBig>
 
           {desktop && <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />}

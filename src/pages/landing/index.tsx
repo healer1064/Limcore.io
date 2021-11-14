@@ -22,7 +22,7 @@ export const LandingPage: React.FC = () => {
   return (
     <div className={Styles.landing}>
       <Main />
-      {/* <Calculator /> */}
+      <Calculator />
       <RoadMap />
       <Team />
       {/* <UpEcosystem /> */}

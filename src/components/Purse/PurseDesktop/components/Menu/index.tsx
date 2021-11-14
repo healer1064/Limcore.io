@@ -21,15 +21,16 @@ export const Menu = ({
   isPageCardBalanceVisible,
 }) => {
   const [isLimcInfoVisible, setIsLimcInfoVisible] = useState(false)
+  const isSync = useAppSelector((state) => state.authNew.isSincWithWallet)
   // const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
-  const [isCardInfoVisible, setIsCardInfoVisible] = useState(false)
-  const buttonPlusClass = `${styles.menu__item} ${styles.menu__buttonPlus}`
+  // const [isCardInfoVisible, setIsCardInfoVisible] = useState(false)
+  // const buttonPlusClass = `${styles.menu__item} ${styles.menu__buttonPlus}`
   // const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
   // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
   const limcBalance = useAppSelector((state) => state.authNew.walletConnectLimc)
   const usdtBalance = useAppSelector((state) => state.authNew.walletConnectUsdt)
-  const [lastNumbersOfCard, setLastNumbersOfCard] = useState('3580')
-  const [cardBalance, setCardBalance] = useState(`$3,587`)
+  // const [lastNumbersOfCard, setLastNumbersOfCard] = useState('3580')
+  // const [cardBalance, setCardBalance] = useState(`$3,587`)
 
   // const handleBalanceLimcOpenClick = () => {
   //   setIsLimcInfoVisible(true)
@@ -47,19 +48,19 @@ export const Menu = ({
   //   setIsUsdtInfoVisible(false)
   // }
 
-  const handleBalanceCardOpenClick = () => {
-    setIsCardInfoVisible(true)
-  }
+  // const handleBalanceCardOpenClick = () => {
+  //   setIsCardInfoVisible(true)
+  // }
 
-  const handleBalanceCardCloseClick = () => {
-    setIsCardInfoVisible(false)
-  }
+  // const handleBalanceCardCloseClick = () => {
+  //   setIsCardInfoVisible(false)
+  // }
 
-  const handleCardBalance = () => {
-    handlePageCardBalanceOpenClick()
-    handlePageBalanceUSDTCloseClick()
-    handlePageBalanceLIMCCloseClick()
-  }
+  // const handleCardBalance = () => {
+  //   handlePageCardBalanceOpenClick()
+  //   handlePageBalanceUSDTCloseClick()
+  //   handlePageBalanceLIMCCloseClick()
+  // }
 
   const handleLIMCBalance = () => {
     handlePageBalanceLIMCOpenClick()
@@ -80,7 +81,7 @@ export const Menu = ({
         onClick={handleLIMCBalance}
         image={balanceLimc}
         title='LIMC'
-        balance={`${limcBalance} LIMC`}
+        balance={isSync ? `${limcBalance} LIMC` : 'Не синхронизован'}
         // setActive={handleBalanceLimcOpenClick}
         // setNotActive={handleBalanceLimcCloseClick}
         active={isLimcInfoVisible}
@@ -89,7 +90,7 @@ export const Menu = ({
         onClick={handleUSDTBalance}
         image={balanceUsdt}
         title='USDT'
-        balance={`${usdtBalance} USDT`}
+        balance={isSync ? `${usdtBalance} USDT` : 'Не синхронизован'}
         setActive={handleBalanceUsdtOpenClick}
         setNotActive={handleBalanceUsdtCloseClick}
         active={isUsdtInfoVisible}

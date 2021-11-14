@@ -14,9 +14,11 @@ import ModalAuth from '../../pages/landing/components/ModalAuth'
 import { setIsAuth } from '../../pages/auth/redux/auth.slice'
 import { useHistory } from 'react-router'
 import { VectorIcon } from '@icons/VectorIcon'
-import { ProfileHeaderIcon } from '@icons/ProfileHeaderIcon'
+// import { ProfileHeaderIcon } from '@icons/ProfileHeaderIcon'
 
 import { useTranslation } from 'react-i18next'
+import { ButtonBig } from '../../ui-kit/ButtonBig'
+import { styled } from '@material-ui/core'
 
 export const Header: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -24,7 +26,7 @@ export const Header: React.FC = () => {
   const [t, i18n] = useTranslation()
 
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
-  const [btnClass, setBtnClass] = useState(Styles.login)
+  // const [btnClass, setBtnClass] = useState(Styles.login)
   const [showPopapLanguage, setShowPopapLanguage] = useState(false)
   const isAuth = useAppSelector((state) => state.authNew.isAuth)
 
@@ -63,7 +65,7 @@ export const Header: React.FC = () => {
   }
   useEffect(() => {
     if (isAuth) {
-      setBtnClass(Styles.displayNone)
+      // setBtnClass(Styles.displayNone)
       setIsLoginModalVisible(false)
     }
   }, [isAuth])
@@ -74,28 +76,26 @@ export const Header: React.FC = () => {
           <img src={logoIcon} alt='Лого' />
         </a>
 
-        {!isAuth ? (
-          <ul className={Styles.list}>
-            {tempLink?.map((item) => {
-              return (
-                <Link className={Styles.link} key={item.id} to={item.link} spy={item.spy} smooth={item.smooth}>
-                  {item.value}
-                </Link>
-              )
-            })}
-          </ul>
-        ) : null}
+        <ul className={Styles.list}>
+          {tempLink?.map((item) => {
+            return (
+              <Link className={Styles.link} key={item.id} to={item.link} spy={item.spy} smooth={item.smooth}>
+                {item.value}
+              </Link>
+            )
+          })}
+        </ul>
 
         <div className={Styles.container}>
           {/* {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null} */}
-          {isAuth ? (
+          {/* {isAuth ? (
             <>
               <LinkDom to='/my'>
                 <ProfileHeaderIcon className={Styles.profileLogo} />
               </LinkDom>
               <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' />
             </>
-          ) : null}
+          ) : null} */}
           <div className={Styles.lang}>
             <div
               className={classNames(Styles.block, showPopapLanguage && Styles.active)}
@@ -138,13 +138,25 @@ export const Header: React.FC = () => {
               ))}
             </div>
           </div>
-          {!isAuth && (
-            <button className={btnClass} onClick={handleLoginModalOpen}>
+          {isAuth ? (
+            <button className={Styles.profileBtn}>
+              <LinkDom to='/my' className={Styles.profileBtn_link}>
+                <LoginIcon />
+                <span className={Styles.enter}>{t('profile')}</span>
+              </LinkDom>
+            </button>
+          ) : (
+            <button className={Styles.loginBtn} onClick={handleLoginModalOpen}>
               <LoginIcon />
-              {/* <span className={Styles.enter}>Войти</span> */}
               <span className={Styles.enter}>{t('login')}</span>
             </button>
           )}
+          {/* {!isAuth && (
+            <button className={btnClass} onClick={handleLoginModalOpen}>
+              <LoginIcon />
+              <span className={Styles.enter}>{t('login')}</span>
+            </button>
+          )} */}
 
           <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />
         </div>

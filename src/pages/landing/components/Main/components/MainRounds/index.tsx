@@ -65,13 +65,14 @@ export const MainRounds: React.FC = () => {
     setPopupOpen(true)
   }
 
-  const handleLoginModalOpen = () => {
-    dispatch(setIsBuyLimcClick(true))
-    desktop ? setIsLoginModalVisible(true) : history.push('/auth')
-  }
-  const handleLoginModalClose = () => {
-    setIsLoginModalVisible(false)
-  }
+  // const handleLoginModalOpen = () => {
+  //   dispatch(setIsBuyLimcClick(true))
+  //   desktop ? setIsLoginModalVisible(true) : history.push('/auth')
+  // }
+  // const handleLoginModalClose = () => {
+  //   setIsLoginModalVisible(false)
+  // }
+
   return (
     <div className={Styles.rounds}>
       <div className={Styles.block}>
@@ -107,7 +108,12 @@ export const MainRounds: React.FC = () => {
           {limcCount} / {limcLimit}
         </span>
       </div>
-      <div className={Styles.tempDeclaration}>
+      <ButtonBig>
+        <a href='https://crowdsale.limcore.io' className={Styles.buyLimc} target='_blank' rel='noreferrer'>
+          Купить LIMC
+        </a>
+      </ButtonBig>
+      {/* <div className={Styles.tempDeclaration}>
         <h4 className={Styles.tempDeclaration__title}>{t('firstRound_startSelling')}</h4>
         <div>
           <p className={Styles.tempDeclaration__paragraph}>{t('firstRound_followNews')}</p>
@@ -118,7 +124,7 @@ export const MainRounds: React.FC = () => {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className={Styles.roadContainer}>
         <div className={Styles.emptyContainers}>
           <div className={Styles.emptyContainer_first} />
