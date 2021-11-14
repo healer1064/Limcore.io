@@ -253,7 +253,6 @@ export const PurseMobile: FC = () => {
           onTransactionsClick={handleTransactionsClick}
           isUserHasTransactions={isUserHasTransactions}
         />
-
         <FooterMobile />
       </div>
     </div>
