@@ -23,8 +23,11 @@ import covidIcon from '@icons/covidIcon.png'
 import senoIcon from '@icons/senoIcon.png'
 import chaingreenIcon from '@icons/chaingreen.png'
 import goji from '@icons/gojiIcon.png'
+import useWindowSize from '@helpers/useWindowSizeHook'
 
 export const Details = () => {
+  const { width } = useWindowSize()
+  const desktop = width >= 769
   const [isModalVisible, setIsModalVisible] = useState(false)
   // let flagForDetalisation = 3
 
@@ -110,6 +113,24 @@ export const Details = () => {
           )
         })}
       </ul>
+      {/* {desktop ? (
+        <ul className={styles.detailsList}>
+          {tempData.map((item) => {
+            // Такая чехарда, потому что в основном лендинге должно быть только 3 карточки, а уже в детализации все
+            return (
+              <DetalizationDownItem
+                img={item.img}
+                title={item.title}
+                subtitle={item.subtitle}
+                number={item.number}
+                money={item.money}
+                key={Math.random()}
+                flagForButton={false}
+              />
+            )
+          })}
+        </ul>
+      ) : null} */}
       {/* <ul className={styles.detailsList}>
         {tempData.map((item) => {
           // Такая чехарда, потому что в основном лендинге должно быть только 3 карточки, а уже в детализации все
