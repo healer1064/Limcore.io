@@ -69,7 +69,7 @@ export const Statistics = ({ onClick }: IStatisticsProps) => {
       </div>
       <div className={styles.details}>
         <span className={styles.details__days}>осталось 80 дней из 80</span>
-        <span className={styles.details__memory}>0 TB / {balanceLimc} TB</span>
+        <span className={styles.details__memory}>0 TB / {Number(balanceLimc).toFixed(2)} TB</span>
       </div>
 
       {/* <Accordion>
