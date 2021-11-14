@@ -55,6 +55,21 @@ export const Details = () => {
           </ul>
         </Modal>
       </header>
+      <ul className={styles.detailsList}>
+        {tempData.map((item) => {
+          return (
+            <DetalizationDownItem
+              img={item.img}
+              title={item.title}
+              subtitle={item.subtitle}
+              number={item.number}
+              money={item.money}
+              key={Math.random()}
+              flagForButton={false}
+            />
+          )
+        })}
+      </ul>
       {/* <ul className={styles.detailsList}>
         {tempData.map((item) => {
           // Такая чехарда, потому что в основном лендинге должно быть только 3 карточки, а уже в детализации все

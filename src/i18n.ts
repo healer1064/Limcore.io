@@ -10,6 +10,8 @@ i18n.use(LanguageDetector).init({
       translations: {
         login: 'Login',
         profile: 'Profile',
+        other: 'Other',
+        buyLimc: 'Buy LIMC',
 
         nav_about: 'About Limcore',
         nav_roadmap: 'Roadmap',
@@ -165,12 +167,21 @@ i18n.use(LanguageDetector).init({
         qa_card4_subtitle5:
           'Partner Michael Novogratz is a member of the consultative committee on financial markets in FRBNY (Federal Reserve Bank of New York), Managing director of the hedge fund, dollar billionaire. He used to be a Goldman Sachs Branch Office Director in Latin America.',
         qa_card4_subtitle6: 'The experienced Chia team can guarantee the Limcore platform work.',
+
+        mm_main: 'We are in Mass Media',
+        mm1_title: 'How cryptocurrency is mined in Russia?',
+        mm1_subtitle:
+          'Blockchain Life press center and Limcore CEO Dmitry Shumaev discussed private mining, LIMC token possibilities and love for the country.',
+        mm2_title: 'Limcore CEO says: investments into Limcore mining is an alternative to bank deposites.',
+        mm2_subtitle: 'Limcore: all project’s advantages and possible benefits for the first investors',
       },
     },
     ru: {
       translations: {
         login: 'Войти',
         profile: 'Профиль',
+        other: 'Прочее',
+        buyLimc: 'Купить LIMC',
 
         nav_about: 'Что такое Limcore?',
         nav_roadmap: 'Roadmap',
@@ -327,6 +338,13 @@ i18n.use(LanguageDetector).init({
         qa_card4_subtitle5:
           'Партнер Майкл Новограц — член Федерального резервного банка нью-йоркского консультативного комитета по финансовым рынкам, управляющий хэдж-фондом, долларовый миллиардер. Ранее являлся руководителем отделения Goldman Sachs в Латинской Америке.',
         qa_card4_subtitle6: 'Опытный состав команды сети Chia позволяет быть уверенным в работе платформы Limcore.',
+
+        mm_main: 'СМИ о нас',
+        mm1_title: 'Как добывается криптовалюта в России?',
+        mm1_subtitle:
+          'Пресс-центр Blockchain Life и CEO Limcore Дмитрий Шумаев обсудили частный майнинг, возможности токена LIMC и любовь к стране',
+        mm2_title: 'CEO Limcore: инвестиции в майнинг от Limcore — альтернатива банковским депозитам',
+        mm2_subtitle: 'Limcore: чем примечателен проект и какие преимущества могут получить ранние инвесторы',
       },
     },
   },

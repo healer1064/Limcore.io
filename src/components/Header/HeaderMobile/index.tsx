@@ -70,16 +70,21 @@ export const HeaderMobile: React.FC = () => {
 
   return (
     <header className={Styles.header}>
-      <LinkDom to='/' className={Styles.logoIcon}>
-        {iconCondition ? <Logo /> : <img className={Styles.logo} src={logoIcon} alt='Лого' />}
-      </LinkDom>
+      {isAuth ? (
+        <LinkDom to='/my' className={Styles.logoIcon}>
+          {iconCondition ? <Logo /> : <img className={Styles.logo} src={logoIcon} alt='Лого' />}
+        </LinkDom>
+      ) : (
+        <LinkDom to='/' className={Styles.logoIcon}>
+          {iconCondition ? <Logo /> : <img className={Styles.logo} src={logoIcon} alt='Лого' />}
+        </LinkDom>
+      )}
       <div className={Styles.wrap}>
         {!isAuth && location.pathname !== '/auth' && (
           <a onClick={() => history.push('/auth')} className={Styles.logoLink}>
             <img src={userIcon} alt='Иконка' />
           </a>
         )}
-        {console.log(isAuth && window.location.pathname === '/')}
         {isAuth && window.location.pathname === '/' ? (
           <>
             <button className={Styles.profileBtn}>

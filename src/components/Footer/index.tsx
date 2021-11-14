@@ -79,7 +79,7 @@ export const Footer: React.FC = () => {
             ))}
           </div>
           <ul className={`${Styles.footer__etc} ${Styles.footer__list}`}>
-            <h3 className={`${Styles.footer_listTitle} ${Styles.footer__listTitle_etcTitle}`}>Прочее</h3>
+            <h3 className={`${Styles.footer_listTitle} ${Styles.footer__listTitle_etcTitle}`}>{t('other')}</h3>
             <div className={Styles.footer__listItemContainer_etc}>
               <li className={Styles.footer__listItem}>
                 <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>

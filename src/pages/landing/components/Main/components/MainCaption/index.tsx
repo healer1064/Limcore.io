@@ -9,7 +9,7 @@ export const MainCaption: React.FC = () => {
     <div className={Styles.caption}>
       <div className={Styles.block}>
         <h1 className={Styles.title}>
-          {t('landing_title')} <img src={chiaIcon} alt='chia' />
+          {t('landing_title')} <img src={chiaIcon} className={Styles.chia} alt='chia' />
         </h1>
         <h3 className={Styles.subtitle}>{t('landing_subtitle')}</h3>
       </div>
