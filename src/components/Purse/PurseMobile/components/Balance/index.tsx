@@ -205,7 +205,7 @@ export const Balance = () => {
             <ButtonBig className={styles.regModalButton} onClick={handleFirstRegModalClose}>
               Пополнить кошелек
             </ButtonBig>
-            <p className={styles.regModalSubtitle}>На данный момент LIMC можно купить только с помощью USDT ERC-20</p>
+            {/* <p className={styles.regModalSubtitle}>На данный момент LIMC можно купить только с помощью USDT ERC-20</p> */}
           </div>
         </div>
       </Modal>
