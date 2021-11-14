@@ -15,7 +15,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
   pointer-events: none;
-  transition: .3s ease;
+  transition: 0.3s ease;
   visibility: hidden;
 }
 
@@ -28,7 +28,7 @@
     width: 470px;
     height: 100%;
     overflow-y: auto;
-    transition: all .5s ease;
+    transition: all 0.5s ease;
     padding: 20px 0 0 0;
   }
   &Active {
@@ -41,7 +41,6 @@
   &Active &Content {
     left: 0;
   }
-  
 }
 
 .close {

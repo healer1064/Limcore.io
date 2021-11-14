@@ -7,7 +7,7 @@ import { api } from '@app/api'
 //   return response.data
 // })
 
-export const getUser = createAsyncThunk('user/getUser', async () => {
+export const getUser: any = createAsyncThunk('user/getUser', async () => {
   const response = await api.get('users/me/')
   return response.data
 })
@@ -22,7 +22,7 @@ export const updateProfileUser: any = createAsyncThunk('user/updateProfileUser',
   return response.data
 })
 
-export const get2FAUrl = createAsyncThunk('user/get2FAUrl', async () => {
+export const get2FAUrl: any = createAsyncThunk('user/get2FAUrl', async () => {
   const response = await api.get('users/totp/create/')
   return response.data
 })

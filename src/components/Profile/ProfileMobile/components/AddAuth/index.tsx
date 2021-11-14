@@ -16,7 +16,6 @@ export const AddAuth: React.FC = () => {
   const dispatch = useAppDispatch()
   const step = useAppSelector((state) => state.cabinet.step)
   const userData = useAppSelector((state) => state.user.userData)
-  const is2FA = useAppSelector((state) => state.authNew.is2FA)
   const [offAuth, setOffAuth] = useState(false)
   const [checkedToggle, setCheckedToggle] = useState(true)
 
@@ -45,7 +44,7 @@ export const AddAuth: React.FC = () => {
       <>
         {step === 0 && (
           <>
-            {is2FA ? (
+            {userData?.is_connected_2fa ? (
               <>
                 <div className={Styles.block}>
                   <span className={Styles.caption}>Двухфакторная аутентификация включена</span>
@@ -58,15 +57,15 @@ export const AddAuth: React.FC = () => {
                       <span className={Styles.title}>Приложение привязано к номеру</span>
                       <span className={Styles.subtitle}>{userData.phone}</span>
                     </div>
-                    <ToggleButton onChange={changeOffAuth} checked={checkedToggle} />
+                    <ToggleButton onChange={changeOffAuth} checked={checkedToggle} disabled={!!true} />
                   </div>
-                  <div className={`${Styles.block} ${Styles.block_edit}`}>
+                  {/* <div className={`${Styles.block} ${Styles.block_edit}`}>
                     <ButtonSmall onClick={changePhone}>Изменить номер телефона</ButtonSmall>
                     <p className={Styles.text}>
                       Если вы измените номер телефона для двухфакторной аутентификации,он будет также автоматически
                       измененв разделе личной информации
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </>
             ) : (
