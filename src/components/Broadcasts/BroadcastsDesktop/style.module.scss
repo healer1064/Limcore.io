@@ -1,13 +1,7 @@
 @import '../../../scss/typography.scss';
 @import '../../../scss/_vars.scss';
 
-ul, li {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-.broadcastsContainer{
+.broadcastsContainer {
   max-width: 700px;
   margin: 0;
 }
@@ -23,7 +17,8 @@ ul, li {
   :global(.swiper-button-prev) {
     background-image: url(../../../assets/icons/arrow-left-blue.svg);
   }
-  :global(.swiper-button-next), :global(.swiper-button-prev) {
+  :global(.swiper-button-next),
+  :global(.swiper-button-prev) {
     top: 45%;
     width: 50px;
     height: 50px;
@@ -35,12 +30,12 @@ ul, li {
     box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.05);
     border: 2px solid #fff;
     box-sizing: border-box;
-    
+
     &::after {
       display: none;
     }
     &:hover {
-      border: 2px solid #4A70F8;
+      border: 2px solid #4a70f8;
     }
   }
 }
@@ -69,16 +64,15 @@ ul, li {
     margin: 0 0 0 20px;
     gap: 5px;
     h3 {
-      @include mediumP3(#4F535A);
+      @include mediumP3(#4f535a);
       margin: 0;
     }
     p {
-      @include regularP4(#4F535A);
+      @include regularP4(#4f535a);
       margin: 0;
     }
   }
 }
-
 
 .thumbSwiper {
   margin: 60px 0 0 0;
@@ -107,18 +101,18 @@ ul, li {
     .frameToggler {
       position: absolute;
       width: 100%;
-      height: 100%
+      height: 100%;
     }
     iframe {
       width: 100%;
     }
   }
   h3 {
-    @include mediumP3(#4F535A);
+    @include mediumP3(#4f535a);
     margin: 15px 0 0 10px;
   }
   p {
-    @include regularP4(#4F535A);
-    margin: 5px 0 0 10px;;
+    @include regularP4(#4f535a);
+    margin: 5px 0 0 10px;
   }
 }

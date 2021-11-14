@@ -54,6 +54,7 @@
 .container {
   display: flex;
   align-items: center;
+  margin-right: 5px;
   gap: 20px;
 }
 
@@ -159,6 +160,86 @@
   }
 }
 
+.profileBtn {
+  padding: 8px 18px;
+  border: 1px solid #4a70f8;
+  border-radius: 14px;
+
+  outline: none;
+  background-color: #fff;
+  transition: color .3s ease, border .3s ease;
+  
+  &_link {
+    display: flex;
+    align-items: center;
+    
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    color: #4a70f8;
+    text-decoration: none;
+    transition: color .3s ease;
+    
+    & > svg > path,
+    & > svg > ellipse {
+      transition: stroke .3s ease;
+    }
+  }
+  
+
+  &:hover {
+    border: 1px solid #2D4EC5;
+    transition: border .3s ease;
+
+    & > .profileBtn_link {
+      color: #2D4EC5;
+      transition: color .3s ease;
+      // transition: color .3s ease, border .3s ease;
+  
+      & > svg > path,
+      & > svg > ellipse {
+        stroke: #2D4EC5;
+        transition: stroke .3s ease;
+      }
+    }
+  }
+}
+
+.loginBtn {
+  display: flex;
+  align-items: center;
+  padding: 8px 18px;
+  border: 1px solid #4a70f8;
+  border-radius: 14px;
+
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  color: #4a70f8;
+  text-decoration: none;
+
+  outline: none;
+  background-color: #fff;
+  transition: color .3s ease, border .3s ease;
+    
+  & > svg > path,
+  & > svg > ellipse {
+    transition: stroke .3s ease;
+  }  
+
+  &:hover {
+    border: 1px solid #2D4EC5;
+    color: #2D4EC5;
+    transition: color .3s ease, border .3s ease;
+
+    & > svg > path,
+    & > svg > ellipse {
+      stroke: #2D4EC5;
+      transition: stroke .3s ease;
+    }
+  }
+}
+
 .modalAuth {
   & > div {
     width: 454px;
@@ -206,7 +287,7 @@ input[type='radio'] {
   display: flex;
   opacity: 0;
   top: 30px;
-  left: -15px;
+  left: -33px;
   position: absolute;
   width: 99px;
   height: 96px;
@@ -255,14 +336,14 @@ input[type='radio'] {
   color: #3a3b3d;
 }
 
-.enter {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 22px;
-  color: #4a70f8;
-}
+// .enter {
+//   font-family: 'Montserrat';
+//   font-style: normal;
+//   font-weight: 600;
+//   font-size: 16px;
+//   line-height: 22px;
+//   color: #4a70f8;
+// }
 
 .logoLink {
   margin-right: 10px;

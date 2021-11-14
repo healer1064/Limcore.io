@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 import { getTransactions } from '../../pages/auth/redux/auth.slice'
-import { checkToken, setIsAuth, setIs2FA } from '../../pages/auth/redux/authSlice'
+import { checkToken, setIsAuth } from '../../pages/auth/redux/authSlice'
 
 // import { Footer } from '../Footer'
 // import { FooterMobile } from '../Footer/FooterMobile'
@@ -52,7 +52,6 @@ const App = () => {
 
     if (tokenObj.access) {
       setIsLoading(true)
-      dispatch(setIs2FA(tokenObj.is_2fa))
 
       dispatch(checkToken({ token: tokenObj.access }))
         .then(() => {

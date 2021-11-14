@@ -9,6 +9,7 @@ i18n.use(LanguageDetector).init({
     en: {
       translations: {
         login: 'Login',
+        profile: 'Profile',
 
         nav_about: 'About Limcore',
         nav_roadmap: 'Roadmap',
@@ -169,6 +170,7 @@ i18n.use(LanguageDetector).init({
     ru: {
       translations: {
         login: 'Войти',
+        profile: 'Профиль',
 
         nav_about: 'Что такое Limcore?',
         nav_roadmap: 'Roadmap',

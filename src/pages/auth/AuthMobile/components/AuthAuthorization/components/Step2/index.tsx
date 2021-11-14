@@ -5,7 +5,6 @@ import {
   setCodePhoneOrEmail,
   getJwtToken,
   setIsAuth,
-  setIs2FA,
   setTypeAuthorization,
   setCode2FA,
   login2FA,
@@ -150,9 +149,7 @@ export const Step2: React.FC = () => {
                 maxLength={6}
               />
               <div className={Styles.wrap}>
-                {/* <span className={Styles.time}>Получить новый код можно через 00:41</span> */}
                 <p className={Styles.error}>{authCodeError}</p>
-                {/* <ButtonSmall>Отправить новый код</ButtonSmall> */}
               </div>
             </div>
           </div>

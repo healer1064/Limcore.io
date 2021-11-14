@@ -135,7 +135,6 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState: {
     isAuth: false,
-    is2FA: null,
     isSincWithWallet: false,
     walletConnectUsdt: '',
     walletConnectLimc: '',
@@ -155,9 +154,6 @@ export const authSlice = createSlice({
   reducers: {
     setIsAuth: (state, { payload }) => {
       state.isAuth = payload
-    },
-    setIs2FA(state, { payload }) {
-      state.is2FA = payload
     },
     setIsSincWithWallet: (state, { payload }) => {
       state.isSincWithWallet = payload
@@ -289,7 +285,6 @@ export const authSlice = createSlice({
 const { actions, reducer } = authSlice
 export const {
   setIsAuth,
-  setIs2FA,
   setIsSincWithWallet,
   setProcessType,
   setStepRegistration,

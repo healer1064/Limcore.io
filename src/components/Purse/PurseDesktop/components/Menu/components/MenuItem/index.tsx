@@ -4,6 +4,7 @@ import styles from './styles.module.scss'
 import { Info } from '../Info/index'
 import BlueArrow from '../../../../images/BlueArrow/BlueArrow'
 import { UnsyncIcon } from '../../../../../../../assets/icons/unsync'
+import { useAppSelector } from '@app/redux/hooks'
 
 interface MenuItemProps {
   onClick?: any
@@ -24,7 +25,8 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   title,
   balance,
 }) => {
-  const menuItemClass = `${styles.menu__item} ${styles.menu__balance}`
+  // const menuItemClass = `${styles.menu__item} ${styles.menu__balance}`
+  const isSync = useAppSelector((state) => state.authNew.isSincWithWallet)
 
   const onClickHandler = () => {
     if (title.includes('LIMC') || title.includes('USDT') || title.includes('Карта')) {
@@ -38,9 +40,9 @@ export const MenuItem: React.FC<MenuItemProps> = ({
     <button className={styles.menuItem} onClick={onClickHandler}>
       <p className={styles.menu__title}>
         {title}
-        <UnsyncIcon />
+        {isSync ? null : <UnsyncIcon />}
       </p>
-      <p className={styles.menu__sum}>Не синхронизирован</p>
+      <p className={styles.menu__sum}>{balance}</p>
       <img className={styles.menu__logo} src={image} width='30' height='30' />
       {/* <Info */}
       {/*  active={active} */}

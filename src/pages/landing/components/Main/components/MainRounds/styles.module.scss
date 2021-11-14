@@ -333,6 +333,11 @@ $barProportion: calc(0 / 80000 * 100%);
   }
 }
 
+.buyLimc {
+  color: #fff;
+  text-decoration: none;
+}
+
 @media all and (max-width: 768px) {
   .rounds {
     flex-wrap: wrap;

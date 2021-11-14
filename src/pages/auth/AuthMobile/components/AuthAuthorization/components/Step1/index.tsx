@@ -88,7 +88,6 @@ export const Step1: React.FC = () => {
   return (
     <>
       <div className={Styles.content}>
-        {/* <h3 className={Styles.caption}>Авторизация</h3> */}
         <h3 className={Styles.caption}> {isLimcClick ? 'Чтобы купить LIMC, нужно авторизоваться' : 'Авторизация'}</h3>
         <Label titleText='Телефон или e-mail' className={Styles.label}>
           <PhoneInput
