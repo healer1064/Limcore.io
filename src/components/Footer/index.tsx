@@ -119,13 +119,15 @@ export const Footer: React.FC = () => {
           <ul className={`${Styles.footer__users} ${Styles.footer__list}`}>
             <h3 className={Styles.footer_listTitle}>{t('footer_coop')}</h3>
             <li className={Styles.footer__listItem}>
-              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
+              <Link className={Styles.footer__link} to='/files/termsConditions.docx' download target='_blank'>
                 {t('footer_agreementPersonalData')}
-              </a>
+              </Link>
             </li>
             <li className={Styles.footer__listItem}>
               <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
-                {t('footer_agreementLimcBuy')}
+                <Link className={Styles.footer__link} to='/files/offerBuyLimcore.docx' download target='_blank'>
+                  {t('footer_agreementLimcBuy')}
+                </Link>
               </a>
             </li>
           </ul>
