@@ -32,7 +32,7 @@ async function getLimcBalance(address: string) {
   const contractAddress = '0x078ca3af061603bd5a1Ee2388116DAaCe87244C3' // LIMC contract address
   const contractLimc = new web3.eth.Contract(contract as any, contractAddress)
 
-  const balance = await contractLimc.methods.balanceOf(address).call()
+  const balance = await contractLimc.methods.balanceOfSum(address).call()
   return balance / 10 ** 18
 }
 export const getSoldLimcs = async () => {

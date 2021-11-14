@@ -38,7 +38,7 @@ export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTra
 
   return (
     <div className={styles.transactions}>
-      <h3 className={styles.transactions__title}>Транзакции</h3>
+      {/* <h3 className={styles.transactions__title}>Транзакции</h3> */}
       <Modal active={isTransactionsVisible} setActive={handleTransactionsClose}>
         <TransactionsDetails onClick={handleTransactionsClose} />
       </Modal>
