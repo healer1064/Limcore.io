@@ -1,7 +1,10 @@
+import { useAppSelector } from '@app/redux/hooks'
 import React from 'react'
 import styles from './styles.module.scss'
 
 export const RoadMap = () => {
+  const soldLimcs = useAppSelector((state) => state.authNew.walletConnectSoldLimcs)
+
   const visualizationStyle = (num) => {
     const percent = num * 100
     return { background: `linear-gradient(90deg, #B3BEE3 ${percent}%, #DCDFEE ${percent}%)` }
@@ -19,8 +22,8 @@ export const RoadMap = () => {
           <h3 className={styles.round}>Раунд №1</h3>
           <p>LIMC ($95)</p>
         </div>
-        <div className={styles.roundVisualization} style={visualizationStyle(0 / 80000)}>
-          0/80,000
+        <div className={styles.roundVisualization} style={visualizationStyle(soldLimcs / 80000)}>
+          {soldLimcs}/80,000
         </div>
         <p className={styles.roundDate}>25.02.2022</p>
         <div className={styles.roundText}>
