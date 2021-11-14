@@ -10,14 +10,17 @@ import 'swiper/components/scrollbar/scrollbar.scss'
 
 import mediaImage from '../../../../../assets/images/media.png'
 import limcInterview from '../../../../../assets/images/limcInterview.png'
+import { useTranslation } from 'react-i18next'
 
 SwiperCore.use([Pagination])
 
 export const MediaMobile = () => {
+  const [t] = useTranslation()
+
   return (
     <>
       <div className={Styles.wrapper}>
-        <h4 className={Styles.caption}>СМИ о нас</h4>
+        <h4 className={Styles.caption}>{t('mm_main')}</h4>
         <div className={Styles.container}>
           <Swiper spaceBetween={10} slidesPerView={1} pagination={{ clickable: true }}>
             <SwiperSlide className={Styles.slide}>
@@ -32,11 +35,8 @@ export const MediaMobile = () => {
                     <img src={mediaImage} alt='Изображение' />
                   </a>
                 </div>
-                <span className={Styles.title}>Как добывается криптовалюта в России?</span>
-                <p className={Styles.description}>
-                  Пресс-центр Blockchain Life и CEO Limcore Дмитрий Шумаев обсудили частный майнинг, возможности токена
-                  LIMC и любовь к стране
-                </p>
+                <span className={Styles.title}>{t('mm1_title')}</span>
+                <p className={Styles.description}>{t('mm1_subtitle')}</p>
                 <div className={Styles.row}>
                   <a className={Styles.link} href='/'>
                     Blockchain Life
@@ -58,12 +58,8 @@ export const MediaMobile = () => {
                     <img src={limcInterview} alt='Изображение' />
                   </a>
                 </div>
-                <span className={Styles.title}>
-                  CEO Limcore: инвестиции в майнинг от Limcore — альтернатива банковским депозитам
-                </span>
-                <p className={Styles.description}>
-                  Limcore: чем примечателен проект и какие преимущества могут получить ранние инвесторы
-                </p>
+                <span className={Styles.title}>{t('mm2_title')}</span>
+                <p className={Styles.description}>{t('mm2_subtitle')}</p>
                 <div className={Styles.row}>
                   <a
                     className={Styles.link}

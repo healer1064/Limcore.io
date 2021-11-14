@@ -18,8 +18,10 @@ import { useAppDispatch } from '@app/redux/hooks'
 import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice'
 import { InfoIcon } from '@icons/InfoIcon'
 import { InputRange } from './InputRange'
+import { useTranslation } from 'react-i18next'
 
 export const CalculatorCaption: React.FC = () => {
+  const [t] = useTranslation()
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
   const [popupOpen, setPopupOpen] = useState(false)
 
@@ -215,8 +217,8 @@ export const CalculatorCaption: React.FC = () => {
           {/* TODO DELETE DISABLED */}
           {/* <ButtonBig onClick={handleLoginModalOpen}> */}
           <ButtonBig>
-            <a href='https://round1.limcore.io' className={Styles.buyLimc} target='_blank' rel='noreferrer'>
-              Купить LIMC
+            <a href='https://round1.limcore.io' className={Styles.buyLimc}>
+              {t('buyLimc')}
             </a>
           </ButtonBig>
 
