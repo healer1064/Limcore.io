@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import {
   setStepAuthorization,
@@ -8,6 +8,7 @@ import {
   setTypeAuthorization,
   setCode2FA,
   login2FA,
+  getJwtTokenTest,
 } from '../../../../../redux/authSlice'
 import Styles from './styles.module.scss'
 
@@ -28,6 +29,7 @@ export const Step2: React.FC = () => {
   const [validValue, setValidValue] = useState(true)
   const [authCodeError, setAuthCodeError] = useState('')
   const [uniqId, setUniqId] = useState('')
+  const [counter, setCounter] = useState(59)
 
   const onChange = (event) => {
     const number = Number(event.target.value)
@@ -43,6 +45,11 @@ export const Step2: React.FC = () => {
     if (!isNaN(number)) {
       dispatch(setCode2FA(event.target.value))
     }
+  }
+
+  const resendCode = () => {
+    dispatch(getJwtTokenTest({ phone: `+${phoneOrEmail}` }))
+    setCounter(59)
   }
 
   const prevStep = () => dispatch(setStepAuthorization(1))
@@ -108,6 +115,11 @@ export const Step2: React.FC = () => {
     }
   }
 
+  useEffect(() => {
+    const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000)
+    return () => clearInterval(timer)
+  }, [counter])
+
   return (
     <>
       {typeAuthorization === 'phone' && (
@@ -120,9 +132,16 @@ export const Step2: React.FC = () => {
               </span>
               <InputCode onChange={onChange} value={codePhoneOrEmail} validValue={validValue} />
               <div className={Styles.wrap}>
-                <span className={Styles.time}>Получить новый код можно через 00:41</span>
-                <p className={Styles.error}>{authCodeError}</p>
-                {/* <ButtonSmall>Отправить новый код</ButtonSmall> */}
+                {counter < 1 ? (
+                  <ButtonSmall onClick={resendCode}>Отправить новый код</ButtonSmall>
+                ) : (
+                  <>
+                    <span className={Styles.time}>
+                      Получить новый код можно через {counter >= 10 ? `00:${counter}` : `00:0${counter}`}
+                    </span>
+                    <p className={Styles.error}>{authCodeError}</p>
+                  </>
+                )}
               </div>
             </div>
           </div>

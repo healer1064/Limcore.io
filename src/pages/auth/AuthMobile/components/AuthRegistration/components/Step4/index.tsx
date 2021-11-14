@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import {
@@ -7,6 +7,7 @@ import {
   registerUserEmailConfirmation,
   setProcessType,
   setIsAuth,
+  registerUserEmail,
 } from '../../../../../redux/authSlice'
 import Styles from './styles.module.scss'
 
@@ -22,6 +23,7 @@ export const Step4: React.FC = () => {
 
   const [validValue, setValidValue] = useState(true)
   const [error, setError] = useState('')
+  const [counter, setCounter] = useState(59)
 
   const onChange = (event) => {
     const number = Number(event.target.value)
@@ -34,6 +36,11 @@ export const Step4: React.FC = () => {
 
   const prevStep = () => dispatch(setStepRegistration(3))
 
+  const resendCode = () => {
+    dispatch(registerUserEmail({ email, unique_identifier: localStorage.getItem('uniqueId') }))
+    setCounter(59)
+  }
+
   const completeRegistration = async () => {
     // нужно отдать code + unique_identifier
     const data = {
@@ -42,7 +49,6 @@ export const Step4: React.FC = () => {
     }
 
     const response = await dispatch(registerUserEmailConfirmation(data))
-    console.log('Step4', response)
 
     if (response.error) {
       switch (response.error.message) {
@@ -70,6 +76,11 @@ export const Step4: React.FC = () => {
       // dispatch(setProcessType('authorization'))
     }
   }
+
+  useEffect(() => {
+    const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000)
+    return () => clearInterval(timer)
+  }, [counter])
 
   return (
     <>
@@ -106,9 +117,16 @@ export const Step4: React.FC = () => {
           </span>
           <InputCode onChange={onChange} value={codeEmail} validValue={validValue} />
           <div className={Styles.wrap}>
-            <span className={Styles.time}>Получить новый код можно через 00:41</span>
-            {/* <ButtonSmall>Отправить новый код</ButtonSmall> */}
-            <p className={Styles.error}>{error}</p>
+            {counter < 1 ? (
+              <ButtonSmall onClick={resendCode}>Отправить новый код</ButtonSmall>
+            ) : (
+              <>
+                <span className={Styles.time}>
+                  Получить новый код можно через {counter >= 10 ? `00:${counter}` : `00:0${counter}`}
+                </span>
+                <p className={Styles.error}>{error}</p>
+              </>
+            )}
           </div>
         </div>
       </div>
