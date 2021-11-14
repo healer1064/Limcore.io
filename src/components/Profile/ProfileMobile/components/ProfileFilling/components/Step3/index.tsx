@@ -26,10 +26,14 @@ export const Step3: React.FC = () => {
     if (response.error) {
       console.log('error updateUser!!!')
     } else {
-      dispatch(getUser())
+      const res = await dispatch(getUser())
 
-      dispatch(changeViewContent('none'))
-      dispatch(changeStep(0))
+      if (res.error) {
+        console.log('error getUser!!!')
+      } else {
+        dispatch(changeViewContent('none'))
+        dispatch(changeStep(0))
+      }
     }
   }
 
