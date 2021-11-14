@@ -5,6 +5,7 @@ import { Info } from '../Info/index'
 import BlueArrow from '../../../../images/BlueArrow/BlueArrow'
 import { ShouldSinc } from '../../../Balance/Icons/ShouldSinc'
 import { useAppSelector } from '@app/redux/hooks'
+import lockIcon from '@icons/lock-me.svg'
 
 interface MenuItemProps {
   onClick?: any
@@ -37,8 +38,14 @@ export const MenuItem: React.FC<MenuItemProps> = ({
       <span className={styles.menu__icon}>{isSinc ? <BlueArrow /> : <ShouldSinc />}</span>
       <img src={image} width='40' height='40' />
       <h5 className={styles.menu__title}>{title}</h5>
-      <p className={styles.menu__sum}>{balance}</p>
-
+      {isSinc ? (
+        <div className={styles.row}>
+          <span>{balance}</span>
+          <img src={lockIcon} alt='Lock' />
+        </div>
+      ) : (
+        <p className={styles.menu__sum}>{balance}</p>
+      )}
       <Info
         active={active}
         setActive={setActive}

@@ -215,7 +215,7 @@ export const CalculatorCaption: React.FC = () => {
           {/* TODO DELETE DISABLED */}
           {/* <ButtonBig onClick={handleLoginModalOpen}> */}
           <ButtonBig>
-            <a href='https://crowdsale.limcore.io' className={Styles.buyLimc} target='_blank' rel='noreferrer'>
+            <a href='https://round1.limcore.io' className={Styles.buyLimc} target='_blank' rel='noreferrer'>
               Купить LIMC
             </a>
           </ButtonBig>

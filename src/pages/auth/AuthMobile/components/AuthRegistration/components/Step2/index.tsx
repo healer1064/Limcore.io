@@ -1,6 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setStepRegistration, setCodePhone, registerUserPhoneConfirmation } from '../../../../../redux/authSlice'
+import {
+  setStepRegistration,
+  setCodePhone,
+  registerUserPhoneConfirmation,
+  registerUserPhone,
+} from '../../../../../redux/authSlice'
 import Styles from './styles.module.scss'
 
 import { InputCode } from '../../../../../../../ui-kit/InputCode'
@@ -14,6 +19,7 @@ export const Step2: React.FC = () => {
 
   const [validValue, setValidValue] = useState(true)
   const [error, setError] = useState('')
+  const [counter, setCounter] = useState(59)
 
   const onChange = (event) => {
     const number = Number(event.target.value)
@@ -24,6 +30,11 @@ export const Step2: React.FC = () => {
   }
 
   const prevStep = () => dispatch(setStepRegistration(1))
+
+  const resendCode = () => {
+    dispatch(registerUserPhone({ phone: `+${phone}` }))
+    setCounter(59)
+  }
 
   const nextStep = async () => {
     // в теле отправить unique_identifier и code. В ответ придет токен
@@ -37,10 +48,8 @@ export const Step2: React.FC = () => {
       code: codePhone,
       unique_identifier: localStorage.getItem('uniqueId'),
     }
-    console.log(data)
 
     const response = await dispatch(registerUserPhoneConfirmation(data))
-    // console.log(response)
 
     if (response.error) {
       switch (response.error.message) {
@@ -67,6 +76,11 @@ export const Step2: React.FC = () => {
       dispatch(setStepRegistration(3))
     }
   }
+
+  useEffect(() => {
+    const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000)
+    return () => clearInterval(timer)
+  }, [counter])
 
   return (
     <>
@@ -103,9 +117,16 @@ export const Step2: React.FC = () => {
           </span>
           <InputCode onChange={onChange} value={codePhone} validValue={validValue} />
           <div className={Styles.wrap}>
-            <span className={Styles.time}>Получить новый код можно через 00:41</span>
-            <p className={Styles.error}>{error}</p>
-            {/* <ButtonSmall>Отправить новый код</ButtonSmall> */}
+            {counter < 1 ? (
+              <ButtonSmall onClick={resendCode}>Отправить новый код</ButtonSmall>
+            ) : (
+              <>
+                <span className={Styles.time}>
+                  Получить новый код можно через {counter >= 10 ? `00:${counter}` : `00:0${counter}`}
+                </span>
+                <p className={Styles.error}>{error}</p>
+              </>
+            )}
           </div>
         </div>
       </div>

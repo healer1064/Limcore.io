@@ -29,7 +29,6 @@ export const Step3: React.FC = () => {
     }
 
     const response = await dispatch(registerUserEmail({ email, unique_identifier: localStorage.getItem('uniqueId') }))
-    console.log('step3', response)
 
     if (response.error) {
       switch (response.error.message) {

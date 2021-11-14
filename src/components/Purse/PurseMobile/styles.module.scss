@@ -198,6 +198,10 @@
   font-size: 14px;
   line-height: 150%;
   color: #99a0ad;
+
+  &:last-child {
+    margin-top: 20px;
+  }
 }
 
 .nextCont {
@@ -219,17 +223,17 @@
   font-weight: 600;
   font-style: normal;
   text-align: center;
-  
+
   background: none;
   color: #4a70f8;
 
-  transition: color .3s ease, border .3s ease;
-    
+  transition: color 0.3s ease, border 0.3s ease;
+
   &:hover {
-    color: #3159E9 !important;
-    border: 1px solid #3159E9 !important;    
+    color: #3159e9 !important;
+    border: 1px solid #3159e9 !important;
     background-color: none;
-    transition: color .3s ease, border .3s ease !important;
+    transition: color 0.3s ease, border 0.3s ease !important;
   }
 }
 
@@ -249,7 +253,7 @@
   color: #fff;
 
   // transform: translateY(calc(-45vh + 12px));
-  background-color: #99A0AD;  
+  background-color: #99a0ad;
 
   .errorSubtitle {
     margin: 5px auto 0;

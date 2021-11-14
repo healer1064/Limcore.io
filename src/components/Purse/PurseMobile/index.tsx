@@ -126,7 +126,7 @@ export const PurseMobile: FC = () => {
               </div>
               <span className={styles.usd}>{}</span>
               <ButtonBig className={styles.buyBtn}>
-                <a href='https://crowdsale.limcore.io' target='_blank' className={styles.buyLink} rel='noreferrer'>
+                <a href='https://round1.limcore.io' target='_blank' className={styles.buyLink} rel='noreferrer'>
                   <img className={styles.icon} src={buyIcon} alt='' />
                   Купить
                 </a>
@@ -148,6 +148,7 @@ export const PurseMobile: FC = () => {
               <div className={styles.container}>
                 <span className={styles.trans}>Транзакции</span>
                 <span className={styles.desc}>Заполните профиль, чтобы в будущем восстановить аккаунт.</span>
+                <span className={styles.desc}>Lock-up период — 6 месяцев</span>
               </div>
               <div className={styles.nextCont}>
                 <button className={styles.next} onClick={() => history.push('/profile')}>
@@ -253,7 +254,6 @@ export const PurseMobile: FC = () => {
           onTransactionsClick={handleTransactionsClick}
           isUserHasTransactions={isUserHasTransactions}
         />
-
         <FooterMobile />
       </div>
     </div>

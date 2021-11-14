@@ -108,11 +108,14 @@ export const MainRounds: React.FC = () => {
           {limcCount} / {limcLimit}
         </span>
       </div>
-      <ButtonBig>
-        <a href='https://crowdsale.limcore.io' className={Styles.buyLimc} target='_blank' rel='noreferrer'>
-          Купить LIMC
-        </a>
-      </ButtonBig>
+      <div className={Styles.wrapp}>
+        <ButtonBig className={Styles.buy}>
+          <a href='https://round1.limcore.io' className={Styles.buyLimc} target='_blank' rel='noreferrer'>
+            Купить LIMC
+          </a>
+        </ButtonBig>
+        <span>Lock-up период 6 месяцев</span>
+      </div>
       {/* <div className={Styles.tempDeclaration}>
         <h4 className={Styles.tempDeclaration__title}>{t('firstRound_startSelling')}</h4>
         <div>

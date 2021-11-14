@@ -360,7 +360,7 @@ $barProportion: calc(0 / 80000 * 100%);
     width: 100%;
     padding: 0 0 15px 0;
     gap: 6px;
-    border-bottom: 1px solid #DBDFEE;
+    border-bottom: 1px solid #dbdfee;
   }
 
   .buttons {
@@ -565,7 +565,33 @@ $barProportion: calc(0 / 80000 * 100%);
     text-decoration: none;
     &:hover {
       cursor: pointer;
-      opacity: .8;
+      opacity: 0.8;
     }
+  }
+}
+
+.wrapp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  span {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 160%;
+    color: #67686c;
+    margin-top: 6px;
+  }
+}
+
+.buy {
+  width: 100%;
+  max-width: 285px;
+
+  a {
+    width: 100%;
+    height: 100%;
   }
 }

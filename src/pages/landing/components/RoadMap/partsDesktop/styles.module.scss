@@ -4,10 +4,10 @@
   grid-template-columns: 157px;
   grid-template-rows: repeat(4, minmax(min-content, max-content));
   grid-template-areas:
-  'date'
-  'title'
-  'vertikal'
-  'icon';
+    'date'
+    'title'
+    'vertikal'
+    'icon';
   margin: 0;
   padding: 0;
   list-style: none;
@@ -25,10 +25,10 @@
   grid-template-columns: 157px;
   grid-template-rows: repeat(4, minmax(min-content, max-content));
   grid-template-areas:
-  'icon'
-  'vertikal'
-  'date'
-  'title';
+    'icon'
+    'vertikal'
+    'date'
+    'title';
   margin: 0;
   padding: 0;
   list-style: none;
@@ -47,7 +47,7 @@
   font-size: 16px;
   line-height: 1.5;
   font-weight: 600;
-  color: #393C42;
+  color: #393c42;
   box-sizing: border-box;
   margin: 6px 0 0;
   padding: 0;
@@ -61,7 +61,7 @@
   font-size: 16px;
   line-height: 1.5;
   font-weight: 600;
-  color: #393C42;
+  color: #393c42;
   box-sizing: border-box;
   margin: 6px 0 0;
   padding: 0;
@@ -76,7 +76,7 @@
   font-size: 16px;
   line-height: 1.2;
   font-weight: 400;
-  color: #393C42;
+  color: #393c42;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -119,7 +119,7 @@
   padding: 0;
   width: 4px;
   height: 30px;
-  background: #4A70F8;
+  background: #4a70f8;
   border-radius: 6px;
 }
 
@@ -131,7 +131,7 @@
   padding: 0;
   width: 4px;
   height: 60px;
-  background: #4A70F8;
+  background: #4a70f8;
   border-radius: 6px;
 }
 

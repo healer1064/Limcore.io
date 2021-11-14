@@ -25,7 +25,6 @@ export const Step1: React.FC = () => {
     }
 
     const response = await dispatch(registerUserPhone({ phone: `+${phone}` })) // придет unique_identifier
-    console.log(response)
 
     if (response.error) {
       switch (response.error.message) {
