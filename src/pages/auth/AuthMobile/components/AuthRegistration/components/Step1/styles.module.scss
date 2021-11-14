@@ -71,8 +71,8 @@
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
-  line-height: 150%;
+  font-size: 24px;
+  line-height: 36px;
   color: #393c42;
   margin: 0;
   margin-bottom: 20px;
@@ -86,14 +86,11 @@
 
 .label {
   position: relative;
-
   margin-left: 5px;
-
   font-size: 14px;
   font-weight: 400;
   line-height: 1.2;
-  
-  color:#4F535A;
+  color: #4f535a;
   cursor: pointer;
 
   & > div {
@@ -104,7 +101,7 @@
     & > input {
       width: 100% !important;
       height: 45px;
-      border: 1.4px solid #B4BFD4 !important;
+      border: 1.4px solid #b4bfd4 !important;
       border-radius: 14px !important;
     }
 
@@ -123,9 +120,8 @@
   position: absolute;
   left: 5px;
   bottom: -45px;
-
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
-  color: #FF6A6A;
+  color: #ff6a6a;
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import QRCode from 'qrcode.react'
 import useWindowSize from '../../../../../../../helpers/useWindowSizeHook'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { confirm2FA } from '../../../../../../../app/redux/userSlice'
+import { confirm2FA, getUser } from '../../../../../../../app/redux/userSlice'
 import { changeViewContent, changeStep } from '../../../../../../../pages/cabinet/redux/cabinetSlice'
 import Styles from './styles.module.scss'
 
@@ -27,8 +27,14 @@ export const Step3: React.FC = () => {
       if (response.error) {
         console.log('error confirm2FA')
       } else {
-        dispatch(changeViewContent('none'))
-        dispatch(changeStep(0))
+        const res = await dispatch(getUser())
+
+        if (res.error) {
+          console.log('error getUser')
+        } else {
+          dispatch(changeViewContent('none'))
+          dispatch(changeStep(0))
+        }
       }
     }
   }
@@ -65,7 +71,7 @@ export const Step3: React.FC = () => {
               <QRCode value={data2FA.qr_url} />
             </div>
           )}
-          <button className={Styles.link}>Перейти в приложение</button>
+          {/* {!desktop && <button className={Styles.link}>Перейти в приложение</button>} */}
           <Label titleText='Введите код, сгенерированный приложением'>
             <InputText
               className={Styles.input}

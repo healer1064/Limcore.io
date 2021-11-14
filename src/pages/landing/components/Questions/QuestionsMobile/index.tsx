@@ -55,7 +55,9 @@ export const QuestionsMobile: React.FC = () => {
                 >
                   <div className={Styles.row} onClick={() => setActiveItem(item.id)}>
                     <span>{item.title}</span>
-                    <VectorIcon />
+                    <div className={Styles.icon}>
+                      <VectorIcon />
+                    </div>
                   </div>
                   <div className={Styles.block}>
                     {item.id === 1 && <Answer1 />}

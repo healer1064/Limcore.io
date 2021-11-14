@@ -1,42 +1,39 @@
 .modalAuth {
   & > div {
     width: 454px;
-    max-height: 454px;
     background-color: #fff;
     position: relative;
   }
 
   &Inner {
+    display: flex;
+    justify-content: center;
     margin: 0 auto;
-    // min-width: 398px;
-    // min-height: 454px;
-    // padding: 40px 20px;
-    padding: 64px 0 64px;
     border-radius: 14px;
     background-color: #fff;
-    width: 70%;
+    width: 80%;
   }
 
   .close {
     position: absolute;
     top: 10px;
     right: 20px;
-  
-    width: 24px;
-    height: 24px;
+    display: flex;
+    width: 30px;
+    height: 30px;
     border: none;
-  
+    padding: 0;
     outline: none;
     background-color: transparent;
-    
+
     & > svg > path {
-      transition: stroke .3s ease;
+      transition: stroke 0.3s ease;
     }
 
     &:hover {
       & > svg > path {
-        stroke: #4A70F8;
-        transition: stroke .3s ease;
+        stroke: #4a70f8;
+        transition: stroke 0.3s ease;
       }
     }
   }

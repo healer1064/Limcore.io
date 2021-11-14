@@ -20,7 +20,6 @@ import smartphoneImage from '../../../../../assets/images/smartphone.png'
 export const ProfileComplete: React.FC = () => {
   const dispatch = useAppDispatch()
   const userData = useAppSelector((state) => state.user.userData)
-  const is2FA = useAppSelector((state) => state.authNew.is2FA)
   const [notificationOpen, setNotificationOpen] = useState(true)
 
   const closeNotification = (event) => {
@@ -110,7 +109,7 @@ export const ProfileComplete: React.FC = () => {
             </div>
           </li>
         </ul>
-        {!is2FA && notificationOpen && (
+        {!userData?.is_connected_2fa && notificationOpen && (
           <div className={Styles.notification} onClick={onClick2FA}>
             <span className={Styles.text}>Подключите двухфакторную аутентификацию</span>
             <img className={Styles.smartphone} src={smartphoneImage} alt='Иконка' />
