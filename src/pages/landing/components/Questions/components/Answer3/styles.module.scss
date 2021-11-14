@@ -1,6 +1,7 @@
 .list {
   display: flex;
   flex-direction: column;
+  list-style: none;
   margin: 0;
   margin-bottom: 12px;
   padding: 0;
@@ -15,7 +16,7 @@
 }
 
 .list_mod {
-  padding-left: 20px;
+  // padding-left: 20px;
 }
 
 .text {
@@ -44,6 +45,6 @@
     height: 7px;
     border-radius: 50%;
 
-    background-color: #4A70F8;
+    background-color: #4a70f8;
   }
 }
