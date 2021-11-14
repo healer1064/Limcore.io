@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import QRCode from 'qrcode.react'
+import useWindowSize from '../../../../../../../helpers/useWindowSizeHook'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { confirm2FA } from '../../../../../../../app/redux/userSlice'
 import { changeViewContent, changeStep } from '../../../../../../../pages/cabinet/redux/cabinetSlice'
@@ -10,8 +12,11 @@ import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
 
 export const Step3: React.FC = () => {
   const dispatch = useAppDispatch()
+  const { width } = useWindowSize()
   const data2FA = useAppSelector((state) => state.user.data2FA)
   const [code, setCode] = useState('')
+
+  const desktop = width >= 769
 
   const handlerChange = (event) => setCode(event.target.value)
 
@@ -55,6 +60,11 @@ export const Step3: React.FC = () => {
           <Label className={Styles.label} titleText='Введите код в Google Authenticator'>
             <span>{data2FA.key}</span>
           </Label>
+          {desktop && (
+            <div className={Styles.qrcode}>
+              <QRCode value={data2FA.qr_url} />
+            </div>
+          )}
           <button className={Styles.link}>Перейти в приложение</button>
           <Label titleText='Введите код, сгенерированный приложением'>
             <InputText

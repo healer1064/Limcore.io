@@ -98,6 +98,12 @@
   }
 }
 
+.qrcode {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .link {
   padding: 12px 0;
   border: none;
