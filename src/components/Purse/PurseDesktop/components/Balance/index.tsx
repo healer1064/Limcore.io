@@ -63,6 +63,17 @@ export const Balance = () => {
     qrcodeModal: QRCodeModal,
   })
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  connector.on('disconnect', (error, payload) => {
+    if (error) {
+      throw error
+    }
+
+    setUserPurse({ address: '', chainId: null })
+    dispatch(setIsSincWithWallet(false))
+    window.location.reload()
+  })
+
   useEffect(() => {
     if (connector.connected) {
       dispatch(setIsSincWithWallet(true))
@@ -73,17 +84,6 @@ export const Balance = () => {
 
   useEffect(() => {
     if (isSync) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      connector.on('disconnect', (error, payload) => {
-        if (error) {
-          throw error
-        }
-
-        setUserPurse({ address: '', chainId: null })
-        dispatch(setIsSincWithWallet(false))
-        window.location.reload()
-      })
-
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       connector.on('session_update', (error, payload) => {
         if (error) {
