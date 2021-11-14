@@ -19,6 +19,8 @@
 }
 
 .text {
+  position: relative;
+
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
@@ -29,5 +31,19 @@
 
   &:not(:last-child) {
     margin-bottom: 12px;
+  }
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 8px;
+    left: -20px;
+
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+
+    background-color: #4A70F8;
   }
 }

@@ -14,10 +14,10 @@ export const Dummy = () => {
           @limcore_chat
         </a>
       </p>
-      <div className={styles.img} />
-      {/* <div className={styles.img}>
+      {/* <div className={styles.img} /> */}
+      <div className={styles.img}>
         <ChatTemp />
-      </div> */}
+      </div>
       <FooterMobile />
     </div>
   )

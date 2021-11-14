@@ -151,7 +151,9 @@ export const Footer: React.FC = () => {
               <li className={Styles.footer__listItem_gray}>{t('footer_inRegProcess')}</li>
             </div>
           </ul>
-          <p className={Styles.footer__email}>info@limcore.io</p>
+          <p className={Styles.footer__email}>
+            <a href='mailto:info@limcore.io'>info@limcore.io</a>
+          </p>
           <ul className={Styles.footer__social}>
             {/* <li>
               <a href='https://twitter.com' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>

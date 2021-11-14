@@ -214,6 +214,16 @@
     padding: 0;
     box-sizing: border-box;
     text-align: end;
+
+    & > a {
+      color: #b4bfd5;
+      text-decoration: none;
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.25;
+    }
   }
 
   &__copyright {
@@ -306,6 +316,9 @@ margin-right: 10px;
 }
 .arrow {
   transform: rotate(90deg);
+}
+.arrowActive {
+  transform: rotate(-90deg) translateY(3px);
 }
 
 .zIndex0 {
