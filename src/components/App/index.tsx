@@ -50,17 +50,13 @@ const App = () => {
 
   useEffect(() => {
     const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
+    getSoldLimcs().then((res) => dispatch(setWalletConnectSoldLimcs(res)))
 
     if (tokenObj.access) {
       setIsLoading(true)
 
       dispatch(checkToken({ token: tokenObj.access }))
         .then(() => {
-          // getSoldLimcs().then((res) => {
-          //   console.log('res', res)
-          //   dispatch(setWalletConnectSoldLimcs(res))
-          // })
-          getSoldLimcs().then((res) => dispatch(setWalletConnectSoldLimcs(res)))
           dispatch(setIsAuth(true))
           dispatch(getWalletAdress())
           dispatch(getWalletBalance())

@@ -27,7 +27,7 @@ export const RoadMap = () => {
         </div>
         <p className={styles.roundDate}>25.02.2022</p>
         <div className={styles.roundText}>
-          <h3 className={styles.round}>Раунд №3</h3>
+          <h3 className={styles.round}>Раунд №2</h3>
           <p>LIMC (min $110)</p>
         </div>
         <div className={styles.roundVisualization} style={visualizationStyle(0 / 120000)}>
