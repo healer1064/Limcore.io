@@ -41,7 +41,7 @@ export const PageBalanceLIMC: React.FC<PageBalanceLIMCPropsType> = ({
         Назад
       </button>
       <h1 className={styles.pageBalanceLIMC__title}>{`${limcBalance} LIMC`}</h1>
-      <p className={styles.pageBalanceLIMC__subtitle}>{`$ ${limcBalance}`}</p>
+      {/* <p className={styles.pageBalanceLIMC__subtitle}>{`$ ${limcBalance}`}</p> */}
       <div className={styles.items}>
         <button type='button' className={`${styles.item} ${styles.item_active}`}>
           <a className={styles.buyLink} href='https://round1.limcore.io'>

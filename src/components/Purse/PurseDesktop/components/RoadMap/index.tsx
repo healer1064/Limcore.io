@@ -25,7 +25,7 @@ export const RoadMap = () => {
       </div>
       <div className={styles.roadMapRound}>
         <div className={styles.roundText}>
-          <h3>Раунд №3</h3>
+          <h3>Раунд №2</h3>
           <p>LIMC (min $110)</p>
         </div>
         <div className={styles.roundVisualization} style={visualizationStyle(0 / 120000)}>

@@ -148,7 +148,7 @@ export const PurseMobile: FC = () => {
                 </div>
               </div> */}
               <div className={styles.container}>
-                <span className={styles.trans}>Транзакции</span>
+                {/* <span className={styles.trans}>Транзакции</span> */}
                 <span className={styles.desc}>Заполните профиль, чтобы в будущем восстановить аккаунт.</span>
                 <span className={styles.desc}>Lock-up период — 6 месяцев</span>
               </div>
