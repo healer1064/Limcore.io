@@ -117,9 +117,9 @@ export const Info = ({ active, setActive, title, setNotActive, image, balance })
           {type !== 'CARD' && <p className={styles.headerSubtitle}>$0</p>}
         </div>
         <div className={styles.info2}>
-          {type === 'LIMC' && <LimcButtons />}
+          {/* {type === 'LIMC' && <LimcButtons />}
           {type === 'USDT' && <UsdtButtons />}
-          {type === 'CARD' && <CardButtons />}
+          {type === 'CARD' && <CardButtons />} */}
 
           {/* <h4 className={styles.transactions}>Транзакции</h4> */}
           {/* <h4 className={styles.transactions}>{tempInfo[0].date}</h4> */}
