@@ -161,14 +161,14 @@ export const PurseDesktop = () => {
               to='main'
               onClick={() => setWindow('main')}
             >
-              Главная
+              {t('purse_navMain')}
             </Link>
             <Link
               className={classnames([styles.nav__link, window === 'broadcasts' && styles.nav__link_active])}
               to='broadcasts'
               onClick={() => setWindow('broadcasts')}
             >
-              Трансляции
+              {t('purse_navStreams')}
             </Link>
             {/* <Link
       className={classnames([styles.nav__link, isChatOpen && styles.nav__link_active])}
@@ -262,7 +262,7 @@ export const PurseDesktop = () => {
                     : styles.mining
                 }`}
               >
-                <h3 className={styles.detailsTitle}>Детализация майнинга</h3>
+                <h3 className={styles.detailsTitle}>{t('purse_mainingDetails')}</h3>
                 <div className={styles.miningDetails}>
                   <div className={styles.miningDetailsWrapper}>
                     <Details />

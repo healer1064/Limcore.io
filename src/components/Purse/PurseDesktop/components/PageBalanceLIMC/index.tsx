@@ -49,7 +49,7 @@ export const PageBalanceLIMC: React.FC<PageBalanceLIMCPropsType> = ({
         <button type='button' className={`${styles.item} ${styles.item_active}`}>
           <a className={styles.buyLink} href='https://round1.limcore.io'>
             <img className={styles.icon} src={buyIcon} alt='' />
-            Купить
+            {t('buy')}
           </a>
         </button>
         <span className={styles.lockup}>{t('lockUp')}</span>

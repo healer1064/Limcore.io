@@ -4,6 +4,7 @@ import { balanceLimc, balanceUsdt, creditCard, plusSvg } from '../../images'
 import purseIcon from '@icons/purseIcon.svg'
 import { MenuItem } from './components/MenuItem/index'
 import { useAppSelector } from '@app/redux/hooks'
+import { useTranslation } from 'react-i18next'
 
 export const Menu = ({
   openPopup,
@@ -20,6 +21,7 @@ export const Menu = ({
   isPageBalanceUSDTVisible,
   isPageCardBalanceVisible,
 }) => {
+  const [t] = useTranslation()
   const [isLimcInfoVisible, setIsLimcInfoVisible] = useState(false)
   const isSync = useAppSelector((state) => state.authNew.isSincWithWallet)
   // const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
@@ -76,12 +78,12 @@ export const Menu = ({
 
   return (
     <div className={styles.menu}>
-      <h2 className={styles.name}>Мои счета</h2>
+      <h2 className={styles.name}>{t('purse_myAccounts')}</h2>
       <MenuItem
         onClick={handleLIMCBalance}
         image={balanceLimc}
         title='LIMC'
-        balance={isSync ? `${limcBalance} LIMC` : 'Не синхронизован'}
+        balance={isSync ? `${limcBalance} LIMC` : t('purse_notSync')}
         // setActive={handleBalanceLimcOpenClick}
         // setNotActive={handleBalanceLimcCloseClick}
         active={isLimcInfoVisible}
@@ -90,7 +92,7 @@ export const Menu = ({
         onClick={handleUSDTBalance}
         image={balanceUsdt}
         title='USDT'
-        balance={isSync ? `${usdtBalance} USDT` : 'Не синхронизован'}
+        balance={isSync ? `${usdtBalance} USDT` : t('purse_notSync')}
         setActive={handleBalanceUsdtOpenClick}
         setNotActive={handleBalanceUsdtCloseClick}
         active={isUsdtInfoVisible}

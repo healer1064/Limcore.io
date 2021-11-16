@@ -21,8 +21,10 @@ import { useDispatch } from 'react-redux'
 // import { getLimc, getUsdt } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
 import { getLimc, getUsdt } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
 import classNames from 'classnames'
+import { useTranslation } from 'react-i18next'
 
 export const Balance = () => {
+  const [t] = useTranslation()
   const [isBalanceVisible, setIsBalanceVisible] = useState(false)
   // Если человек попал в личныый кабинет через регистрацию, то тут будет true
   const [isRegModalVisible, setIsRegModalVisible] = useState(
@@ -138,11 +140,7 @@ export const Balance = () => {
         <DataBaseIcon isSync={isSync} />
         <BlackCross />
         <TwtIcon isSync={isSync} />
-        {isSync ? (
-          <p>Limcore Wallet синхронизирован с&nbsp;внешним кошельком</p>
-        ) : (
-          <p>Для старта майнинга синхронизируйте Limcore Wallet с&nbsp;Trust Wallet</p>
-        )}
+        {isSync ? <p>{t('purse_walletConnectSync')}</p> : <p>{t('purse_walletConnect')}</p>}
       </div>
       {isSync ? (
         <div className={styles.walletId}>
@@ -153,7 +151,7 @@ export const Balance = () => {
         </div>
       ) : (
         <button className={styles.syncButton} onClick={sincWithWallet}>
-          Синхронизировать
+          {t('purse_sync')}
         </button>
       )}
       {/* <h1 className={styles.balance__sumMain}>{`$${money}`}</h1>
@@ -163,7 +161,7 @@ export const Balance = () => {
         <p className={styles.balance__percent}>0%</p>
       </div>
       <div className={styles.balance__header} onClick={handleOpenBalanceClick}>
-        <h3 className={styles.balance__title}>Общий баланс</h3>
+        <h3 className={styles.balance__title}>{t('commonBalance')}</h3>
         <button className={styles.balance__button}>
           <img src={balanceSvg} />
         </button>
@@ -182,9 +180,9 @@ export const Balance = () => {
           <p className={styles.card__number}>{`$ `}</p>
         </li>
         <li className={styles.card}>
-          <p className={styles.card__subtitle}>Баланс LIMC</p>
+          <p className={styles.card__subtitle}>{t('balance')} LIMC</p>
           <p className={styles.card__number}>{`$ ${limcBalance}`}</p>
-          <p className={styles.card__subtitle}>Баланс USDT</p>
+          <p className={styles.card__subtitle}>{t('balance')} USDT</p>
           <p className={styles.card__number}>{`$ ${usdtBalance} `}</p>
         </li>
         <li className={styles.cardLong}>
@@ -198,9 +196,9 @@ export const Balance = () => {
         <li className={styles.cardLong}>
           <p className={styles.card__subtitle}>Инвестировано</p>
           <p className={styles.card__number}>{`$ `}</p>
-          <p className={styles.card__subtitle}>Баланс LIMC</p>
+          <p className={styles.card__subtitle}>{t('balance')} LIMC</p>
           <p className={styles.card__number}>{`$ ${limcBalance}`}</p>
-          <p className={styles.card__subtitle}>Баланс USDT</p>
+          <p className={styles.card__subtitle}>{t('balance')} USDT</p>
           <p className={styles.card__number}>{`$ ${usdtBalance} `}</p>
         </li>
       </ul> */}
@@ -230,7 +228,6 @@ export const Balance = () => {
               <ButtonBig className={styles.regModalButton} onClick={handleFirstRegModalClose}>
                 Пополнить кошелек
               </ButtonBig>
-              {/* <p className={styles.regModalSubtitle}>На данный момент LIMC можно купить только с помощью USDT ERC-20</p> */}
             </div>
           </div>
         </Modal>

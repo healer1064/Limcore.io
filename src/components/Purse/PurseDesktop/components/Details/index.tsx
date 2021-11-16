@@ -24,8 +24,10 @@ import covidIcon from '@icons/covidIcon.png'
 import senoIcon from '@icons/senoIcon.png'
 import chaingreenIcon from '@icons/chaingreen.png'
 import goji from '@icons/gojiIcon.png'
+import { useTranslation } from 'react-i18next'
 
 export const Details = () => {
+  const [t] = useTranslation()
   const { width } = useWindowSize()
   const desktop = width >= 769
   const [isModalVisible, setIsModalVisible] = useState(false)
@@ -68,14 +70,14 @@ export const Details = () => {
         <DetalizationUp summary='$0' xch='$0' forks='$0' />
         <Modal active={isModalVisible} setActive={handleDetailsCloseClick}>
           <ul className={styles.detailsModal}>
-            <ModalHeader title='Детализация майнинга' onClick={handleDetailsCloseClick} />
+            <ModalHeader title={t('purse_mainingDetails')} onClick={handleDetailsCloseClick} />
             <DetalizationUp summary='$0' xch='$0' forks='$0' />
             <p className={styles.transactions__subtitle}>
-              У вас еще нет транзакций. <br />
-              Мы предоставим вам доступ позже
+              {t('purse_noTransactionsYet')} <br />
+              {t('purse_accessLater')}
             </p>
             <button type='button' className={styles.transactions__profileButton} onClick={handleDetailsCloseClick}>
-              Вернуться назад
+              {t('purse_getBack')}
             </button>
             {/* {tempData.map((item) => (
               <DetalizationDownItem

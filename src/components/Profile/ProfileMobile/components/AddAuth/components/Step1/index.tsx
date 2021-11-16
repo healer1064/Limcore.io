@@ -8,12 +8,14 @@ import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
 import authIcon from '../../../../../../../assets/images/google-auth.png'
 import storeIcon from '../../../../../../../assets/images/app-store.png'
 import playIcon from '../../../../../../../assets/images/google-play.png'
+import { useTranslation } from 'react-i18next'
 
 interface StepProps {
   nextStep: any
 }
 
 export const Step1: React.FC<StepProps> = ({ nextStep }) => {
+  const [t] = useTranslation()
   const dispatch = useAppDispatch()
 
   const stepNext = () => nextStep(2)
@@ -47,7 +49,7 @@ export const Step1: React.FC<StepProps> = ({ nextStep }) => {
           </div>
         </div>
         <div className={Styles.container}>
-          <span className={Styles.caption}>Скачайте мобильное приложение</span>
+          <span className={Styles.caption}>{t('profile_2fa_download')}</span>
           <div className={Styles.block}>
             <img src={authIcon} alt='Иконка' />
             <div className={Styles.stors}>
@@ -65,7 +67,7 @@ export const Step1: React.FC<StepProps> = ({ nextStep }) => {
           </div>
         </div>
       </div>
-      <ButtonBig onClick={stepNext}>Продолжить</ButtonBig>
+      <ButtonBig onClick={stepNext}>{t('profile_continue')}</ButtonBig>
     </>
   )
 }

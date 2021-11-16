@@ -78,7 +78,6 @@ export const MainRounds: React.FC = () => {
     <div className={Styles.rounds}>
       <div className={Styles.block}>
         <div className={Styles.wrap}>
-          {/* <span className={Styles.name}>Раунд №1</span> */}
           <span className={Styles.name}>{t('firstRound_round1')}</span>
         </div>
         <ul className={Styles.list}>
@@ -99,9 +98,7 @@ export const MainRounds: React.FC = () => {
         </ul>
       </div>
       <PopupMainPage closePopup={closePopup} popupOpen={popupOpen} className={PopupStyles.popup_round}>
-        <p className={PopupStyles.text}>
-          Майнинг начинается спустя 80 дней с момента завершения раунда. Раунд может закончиться раньше указанного срока
-        </p>
+        <p className={PopupStyles.text}>{t('purse_mainingStart')}</p>
       </PopupMainPage>
       <div className={Styles.progress}>
         <span className={Styles.bar}>{}</span>

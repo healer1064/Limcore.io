@@ -130,7 +130,7 @@ export const PurseMobile: FC = () => {
               <ButtonBig className={styles.buyBtn}>
                 <a href='https://round1.limcore.io' className={styles.buyLink}>
                   <img className={styles.icon} src={buyIcon} alt='' />
-                  Купить
+                  {t('buy')}
                 </a>
               </ButtonBig>
               {/* <div className={styles.items}>
@@ -149,18 +149,18 @@ export const PurseMobile: FC = () => {
               </div> */}
               <div className={styles.container}>
                 {/* <span className={styles.trans}>Транзакции</span> */}
-                <span className={styles.desc}>Заполните профиль, чтобы в будущем восстановить аккаунт.</span>
-                <span className={styles.desc}>Lock-up период — 6 месяцев</span>
+                <span className={styles.desc}>{t('purse_fillToRestore')}</span>
+                <span className={styles.desc}>{t('lockUp')}</span>
               </div>
               <div className={styles.nextCont}>
                 <button className={styles.next} onClick={() => history.push('/profile')}>
-                  Перейти к заполнению
+                  {t('purse_goFilling')}
                 </button>
               </div>
             </div>
           </div>
         </Modal>
-        // <Container title='Баланс LIMC' onClick={closePopup}>
+        // <Container title=`${t('balance')} LIMC` onClick={closePopup}>
         //   <div className={styles.block}>
         //     <div className={styles.line}>
         //       <img src={limcoreIcon} alt='' />
@@ -184,10 +184,10 @@ export const PurseMobile: FC = () => {
         //     <div className={styles.container}>
         //       <span className={styles.trans}>Транзакции</span>
         //       <span className={styles.desc}>
-        //         У вас еще нет транзакций. Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
+        //         {t('purse_noTransactionsYet')} Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
         //       </span>
         //     </div>
-        //     <ButtonBig className={styles.next}>Перейти к заполнению</ButtonBig>
+        //     <ButtonBig className={styles.next}>{t('purse_goFilling')}</ButtonBig>
         //   </div>
         // </Container>
       )}
@@ -204,7 +204,7 @@ export const PurseMobile: FC = () => {
               </span>
               <InputText onChange={(event) => handleSetValue(event)} type='number' value={value} />
               <ButtonBig onClick={handleBuyLIMK} className={styles.button} disabled={!value || isLoading}>
-                Купить
+                {t('buy')}
               </ButtonBig>
             </div>
             {isErrorVisible && (

@@ -9,8 +9,10 @@ import Styles from './styles.module.scss'
 import { Label } from '../../../../../../../ui-kit/Label'
 import { InputText } from '../../../../../../../ui-kit/InputText'
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
+import { useTranslation } from 'react-i18next'
 
 export const Step3: React.FC = () => {
+  const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const { width } = useWindowSize()
   const data2FA = useAppSelector((state) => state.user.data2FA)
@@ -62,8 +64,8 @@ export const Step3: React.FC = () => {
           </div>
         </div>
         <div className={Styles.container}>
-          <span className={Styles.caption}>Введите код из приложения</span>
-          <Label className={Styles.label} titleText='Введите код в Google Authenticator'>
+          <span className={Styles.caption}>{t('profile_2fa_enterCode')}</span>
+          <Label className={Styles.label} titleText={t('profile_2fa_enterCodeInGoogle')}>
             <span>{data2FA.key}</span>
           </Label>
           {desktop && (
@@ -72,7 +74,7 @@ export const Step3: React.FC = () => {
             </div>
           )}
           {/* {!desktop && <button className={Styles.link}>Перейти в приложение</button>} */}
-          <Label titleText='Введите код, сгенерированный приложением'>
+          <Label titleText={t('profile_2fa_enterCodeFromApp')}>
             <InputText
               className={Styles.input}
               onChange={handlerChange}
@@ -83,7 +85,7 @@ export const Step3: React.FC = () => {
           </Label>
         </div>
       </div>
-      <ButtonBig onClick={completeAdd2FA}>Завершить</ButtonBig>
+      <ButtonBig onClick={completeAdd2FA}>{t('profile_complete')}</ButtonBig>
     </>
   )
 }

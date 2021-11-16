@@ -16,8 +16,10 @@ import nameIcon from '@icons/name.svg'
 import locationIcon from '@icons/location.svg'
 import closeIcon from '@icons/close-notification.svg'
 import smartphoneImage from '../../../../../assets/images/smartphone.png'
+import { useTranslation } from 'react-i18next'
 
 export const ProfileComplete: React.FC = () => {
+  const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const userData = useAppSelector((state) => state.user.userData)
   const [notificationOpen, setNotificationOpen] = useState(true)
@@ -94,7 +96,7 @@ export const ProfileComplete: React.FC = () => {
             <img className={Styles.icon} src={locationIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
-                <span className={Styles.content}>Мои адреса</span>
+                <span className={Styles.content}>{t('profile_addresses')}</span>
               </div>
               <img className={Styles.arrow} src={linkIcon} alt='Иконка' />
             </div>
@@ -103,7 +105,7 @@ export const ProfileComplete: React.FC = () => {
             <img className={Styles.icon} src={authIcon} alt='Иконка' />
             <div className={`${Styles.wrapper} ${Styles.wrapper_edit}`}>
               <div className={Styles.block}>
-                <span className={Styles.content}>Двухфакторная аутентификация</span>
+                <span className={Styles.content}>{t('profile_2fa')}</span>
               </div>
               <img className={Styles.arrow} src={linkIcon} alt='Иконка' />
             </div>
@@ -111,7 +113,7 @@ export const ProfileComplete: React.FC = () => {
         </ul>
         {!userData?.is_connected_2fa && notificationOpen && (
           <div className={Styles.notification} onClick={onClick2FA}>
-            <span className={Styles.text}>Подключите двухфакторную аутентификацию</span>
+            <span className={Styles.text}>{t('profile_2fa_connect')}</span>
             <img className={Styles.smartphone} src={smartphoneImage} alt='Иконка' />
             <img className={Styles.close} src={closeIcon} alt='Иконка' onClick={closeNotification} />
           </div>
