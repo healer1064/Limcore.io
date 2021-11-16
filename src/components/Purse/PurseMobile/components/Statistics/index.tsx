@@ -7,6 +7,7 @@ import Accordion from '@material-ui/core/Accordion'
 import AccordionSummary from '@material-ui/core/AccordionSummary'
 import AccordionDetails from '@material-ui/core/AccordionDetails'
 import { useAppSelector } from '@app/redux/hooks'
+import { useTranslation } from 'react-i18next'
 
 interface IStatisticsProps {
   onClick?: () => void
@@ -34,6 +35,7 @@ const AccordeonIcon = () => {
 }
 
 export const Statistics = ({ onClick }: IStatisticsProps) => {
+  const [t] = useTranslation()
   // const balanceLimc = useAppSelector((state) => state.wallet.sum_limc_balance)
   const balanceLimc = useAppSelector((state) => state.authNew.walletConnectLimc)
 
@@ -51,7 +53,7 @@ export const Statistics = ({ onClick }: IStatisticsProps) => {
   return (
     <div className={styles.statistics}>
       <div className={styles.header}>
-        <h3 className={styles.title}>До старта майнинга</h3>
+        <h3 className={styles.title}>{t('purse_mainingBefore')}</h3>
         <button type='button' className={styles.tooltip}>
           <InfoIcon onClick={handleTooltipClick} />
         </button>
@@ -60,15 +62,15 @@ export const Statistics = ({ onClick }: IStatisticsProps) => {
       <BottomModal
         active={isTooltipVisible}
         setActive={handleTooltipClick}
-        title='Почему нужно ждать?'
-        subtitle='Майнинг начинается спустя 80 дней с момента завершения раунда. Раунд может закончиться раньше указанного срока'
+        title={t('purse_whyWait')}
+        subtitle={t('purse_mainingStart')}
       />
 
       <div className={styles.progressbar}>
         <span className={styles.progressbar__track} />
       </div>
       <div className={styles.details}>
-        <span className={styles.details__days}>осталось 80 дней из 80</span>
+        <span className={styles.details__days}>{t('purse_mainingDateLast')}</span>
         <span className={styles.details__memory}>0 TB / {Number(balanceLimc).toFixed(2)} TB</span>
       </div>
 

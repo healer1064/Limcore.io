@@ -1,8 +1,10 @@
 import { useAppSelector } from '@app/redux/hooks'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import styles from './styles.module.scss'
 
 export const RoadMap = () => {
+  const [t] = useTranslation()
   const visualizationStyle = (num) => {
     const percent = num * 100
     return { background: `linear-gradient(90deg, #B3BEE3 ${percent}%, #DCDFEE ${percent}%)` }
@@ -14,7 +16,7 @@ export const RoadMap = () => {
     <div className={styles.roadMapContainer}>
       <div className={styles.roadMapRound}>
         <div className={styles.roundText}>
-          <h3>Раунд №1</h3>
+          <h3>{t('firstRound_round1')}</h3>
           <p>LIMC ($95)</p>
         </div>
         <div className={styles.roundVisualization} style={visualizationStyle(soldLimcs / 80000)}>
@@ -25,7 +27,7 @@ export const RoadMap = () => {
       </div>
       <div className={styles.roadMapRound}>
         <div className={styles.roundText}>
-          <h3>Раунд №2</h3>
+          <h3>{t('roundsRoadmap_round2')}</h3>
           <p>LIMC (min $110)</p>
         </div>
         <div className={styles.roundVisualization} style={visualizationStyle(0 / 120000)}>

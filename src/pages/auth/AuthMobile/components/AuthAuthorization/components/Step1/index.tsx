@@ -15,8 +15,10 @@ import { Label } from '../../../../../../../ui-kit/Label'
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
 import { ButtonSecond } from '../../../../../../../ui-kit/ButtonSecond'
 import PhoneInput from 'react-phone-input-2'
+import { useTranslation } from 'react-i18next'
 
 export const Step1: React.FC = () => {
+  const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const phoneOrEmail = useAppSelector((state) => state.authNew.phoneOrEmail)
   const isLimcClick = useAppSelector(authSelector).isBuyLimcClick
@@ -29,14 +31,14 @@ export const Step1: React.FC = () => {
 
   const nextStep = async () => {
     if (!phoneOrEmail) {
-      return setError('Вы забыли ввести телефон или e-mail')
+      return setError(t('err_forget'))
     }
 
     if (phoneOrEmail.includes('@')) {
       const valid = validateEmail(phoneOrEmail)
 
       if (!valid) {
-        setError('Неверный формат e-mail')
+        setError(t('err_mail'))
       } else {
         setError('')
         dispatch(setTypeAuthorization('email'))
@@ -45,7 +47,7 @@ export const Step1: React.FC = () => {
       const valid = validatePhone(phoneOrEmail)
 
       if (!valid) {
-        setError('Некорректно введен номер')
+        setError(t('err_phone'))
       } else {
         setError('')
         dispatch(setTypeAuthorization('phone'))
@@ -61,22 +63,22 @@ export const Step1: React.FC = () => {
     if (response.error) {
       switch (response.error.message) {
         case 'phone_is_not_confirmed':
-          setError('Телефон не подтвержден')
+          setError(t('err_phoneNotConfirmed'))
           break
         case 'email_is_not_confirmed':
-          setError('Email не подтвержден')
+          setError(t('err_mailNotConfirmed'))
           break
         case 'limit_login_attempts':
-          setError('Превышено количество попыток входа (разблокировка через час)')
+          setError(t('err_limit'))
           break
         case 'user_not_registered':
-          setError('Пользователь не зарегистрирован')
+          setError(t('err_notRegistered'))
           break
         case 'phone_invalid':
-          setError('Некорректно введен номер')
+          setError(t('err_phoneInvalid'))
           break
         default:
-          setError('Что-то пошло не так..')
+          setError(t('err_smthWentWrong'))
           break
       }
     } else {
@@ -89,8 +91,8 @@ export const Step1: React.FC = () => {
   return (
     <>
       <div className={Styles.content}>
-        <h3 className={Styles.caption}> {isLimcClick ? 'Чтобы купить LIMC, нужно авторизоваться' : 'Авторизация'}</h3>
-        <Label titleText='Телефон или e-mail' className={Styles.label}>
+        <h3 className={Styles.caption}> {isLimcClick ? t('needToLogToBuy') : t('logIn')}</h3>
+        <Label titleText={t('cellNumber')} className={Styles.label}>
           <PhoneInput
             country='ru'
             preferredCountries={['ua', 'ru', 'by', 'kz', 'uz', 'tj']}
@@ -102,9 +104,9 @@ export const Step1: React.FC = () => {
       </div>
       <div className={Styles.buttons}>
         <ButtonBig onClick={nextStep} disabled={!phoneOrEmail}>
-          Получить код
+          {t('getCode')}
         </ButtonBig>
-        <ButtonSecond onClick={() => dispatch(setProcessType('registration'))}>Зарегистрироваться</ButtonSecond>
+        <ButtonSecond onClick={() => dispatch(setProcessType('registration'))}>{t('signUp')}</ButtonSecond>
       </div>
     </>
   )

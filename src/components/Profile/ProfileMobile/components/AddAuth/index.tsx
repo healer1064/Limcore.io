@@ -11,8 +11,10 @@ import { Popup } from '../../../../Popup'
 import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
 import { ButtonSmall } from '../../../../../ui-kit/ButtonSmall'
 import { ToggleButton } from '../../../../../ui-kit/ToggleButton'
+import { useTranslation } from 'react-i18next'
 
 export const AddAuth: React.FC = () => {
+  const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const step = useAppSelector((state) => state.cabinet.step)
   const userData = useAppSelector((state) => state.user.userData)
@@ -47,14 +49,11 @@ export const AddAuth: React.FC = () => {
             {userData?.is_connected_2fa ? (
               <>
                 <div className={Styles.block}>
-                  <span className={Styles.caption}>Двухфакторная аутентификация включена</span>
-                  <span className={Styles.subcaption}>
-                    При входе с незнакомого устройства, помимо пароля, мы будем запрашивать код для входа с помощью
-                    приложения Google Authenticator
-                  </span>
+                  <span className={Styles.caption}>{t('profile_2fa_on')}</span>
+                  <span className={Styles.subcaption}>{t('profile_2fa_subtitle')}</span>
                   <div className={Styles.wrapper}>
                     <div className={Styles.container}>
-                      <span className={Styles.title}>Приложение привязано к номеру</span>
+                      <span className={Styles.title}>{t('profile_2fa_linked')}</span>
                       <span className={Styles.subtitle}>{userData.phone}</span>
                     </div>
                     <ToggleButton onChange={changeOffAuth} checked={checkedToggle} disabled={!!true} />
@@ -71,13 +70,10 @@ export const AddAuth: React.FC = () => {
             ) : (
               <>
                 <div className={Styles.block}>
-                  <span className={Styles.caption}>Подключить двухфакторную аутентификацию</span>
-                  <span className={Styles.subcaption}>
-                    При входе с незнакомого устройства, помимо пароля, мы будем запрашивать код для входа с помощью
-                    приложения Google Authenticator
-                  </span>
+                  <span className={Styles.caption}>{t('profile_2fa_add')}</span>
+                  <span className={Styles.subcaption}>{t('profile_2fa_subtitle')}</span>
                 </div>
-                <ButtonBig onClick={() => nextStep(1)}>Подключить</ButtonBig>
+                <ButtonBig onClick={() => nextStep(1)}>{t('profile_connect')}</ButtonBig>
               </>
             )}
           </>

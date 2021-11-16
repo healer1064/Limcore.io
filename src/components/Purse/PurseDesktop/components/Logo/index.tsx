@@ -6,7 +6,7 @@ import styles from './styles.module.scss'
 export const Logo = () => {
   const history = useHistory()
   const handleLogoClick = () => {
-    history.push('/')
+    history.push('/my')
   }
   return (
     <svg

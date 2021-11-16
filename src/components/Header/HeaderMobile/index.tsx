@@ -23,6 +23,7 @@ import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
 import { VectorIcon } from '@icons/VectorIcon'
 import { LoginIcon } from '@icons/LoginIcon'
+import { LanguagePopup } from '@components/LanguagePopup'
 
 export const HeaderMobile: React.FC = () => {
   const [burgerOpen, setBurgerOpen] = useState(false)
@@ -61,11 +62,11 @@ export const HeaderMobile: React.FC = () => {
 
   const burgerStyles = `${burgerOpen ? Styles.burgerMenuOpened : Styles.burgerMenuClosed}`
   const tempLink = [
-    { id: 1, value: 'Что такое Limcore?', link: 'limcore', spy: true, smooth: true },
-    { id: 2, value: 'Roadmap', link: 'roadmap', spy: true, smooth: true },
-    { id: 3, value: 'Команда', link: 'team', spy: true, smooth: true },
+    { id: 1, value: t('nav_about'), link: 'limcore', spy: true, smooth: true },
+    { id: 2, value: t('nav_roadmap'), link: 'roadmap', spy: true, smooth: true },
+    { id: 3, value: t('nav_team'), link: 'team', spy: true, smooth: true },
     // { id: 4, value: 'Экосистема', link: 'ecosystem', spy: true, smooth: true },
-    { id: 5, value: 'Вопрос-ответ', link: 'questionsMobile', spy: true, smooth: true },
+    { id: 5, value: t('nav_qa'), link: 'questionsMobile', spy: true, smooth: true },
   ]
 
   return (
@@ -101,48 +102,7 @@ export const HeaderMobile: React.FC = () => {
           </>
         ) : (
           <>
-            {/* <div className={Styles.lang}>
-              <div
-                className={classNames(Styles.block, showPopapLanguage && Styles.active)}
-                onClick={() => setShowPopapLanguage(!showPopapLanguage)}
-              >
-                <img src={i18n.language === 'ru' ? RUS : ENG} alt='Флаг' className={Styles.img} />
-                <span className={Styles.langTitle}>{i18n.language === 'ru' ? 'RU' : 'EN'}</span>
-                <span className={classNames(showPopapLanguage && Styles.arrowActive, Styles.arrow)}>
-                  <VectorIcon />
-                </span>
-              </div>
-              <div className={classNames(Styles.header__langoptions2, showPopapLanguage && Styles.active)}>
-                {languages.map((lang) => (
-                  <div
-                    key={lang}
-                    className={`${Styles.langoption} ${lang === 'ru' ? Styles.langoption_ru : Styles.langoption_en}`}
-                  >
-                    <input
-                      className={Styles.langoption__checked}
-                      type='radio'
-                      id={lang}
-                      name='languages'
-                      value={lang}
-                      checked={i18n.language === lang}
-                      onChange={() => changeLanguage(lang)}
-                      readOnly
-                    />
-                    <div className={Styles.lang_box}>
-                      <img src={lang === 'ru' ? RUS : ENG} alt='Флаг' className={Styles.lang__img} />
-                      <label
-                        className={`${Styles.langoption__text} ${
-                          i18n.language === lang && Styles.langoption__text_checked
-                        }`}
-                        htmlFor={lang}
-                      >
-                        {lang === 'ru' ? 'RU' : 'EN'}
-                      </label>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div> */}
+            <LanguagePopup />
             {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null}
           </>
         )}
@@ -193,52 +153,7 @@ export const HeaderMobile: React.FC = () => {
               <p className={Styles.email}>
                 <a href='mailto:info@limcore.io'>info@limcore.io</a>
               </p>
-              {/* <div className={Styles.languageGroup}>
-                <img className={Styles.languageIcon} src={i18n.language === 'ru' ? RUS : ENG} alt='lang' />
-                <p className={Styles.language}>{i18n.language === 'ru' ? 'RU' : 'EN'}</p>
-              </div> */}
-              <div className={Styles.lang}>
-                <div
-                  className={classNames(Styles.block, showPopapLanguage && Styles.active)}
-                  onClick={() => setShowPopapLanguage(!showPopapLanguage)}
-                >
-                  <img src={i18n.language === 'ru' ? RUS : ENG} alt='Флаг' className={Styles.img} />
-                  <span className={Styles.langTitle}>{i18n.language === 'ru' ? 'RU' : 'EN'}</span>
-                  <span className={classNames(showPopapLanguage && Styles.arrowActive, Styles.arrow)}>
-                    <VectorIcon />
-                  </span>
-                </div>
-                <div className={classNames(Styles.header__langoptions, showPopapLanguage && Styles.active)}>
-                  {languages.map((lang) => (
-                    <div
-                      key={lang}
-                      className={`${Styles.langoption} ${lang === 'ru' ? Styles.langoption_ru : Styles.langoption_en}`}
-                    >
-                      <input
-                        className={Styles.langoption__checked}
-                        type='radio'
-                        id={lang}
-                        name='languages'
-                        value={lang}
-                        checked={i18n.language === lang}
-                        onChange={() => changeLanguage(lang)}
-                        readOnly
-                      />
-                      <div className={Styles.lang_box}>
-                        <img src={lang === 'ru' ? RUS : ENG} alt='Флаг' className={Styles.lang__img} />
-                        <label
-                          className={`${Styles.langoption__text} ${
-                            i18n.language === lang && Styles.langoption__text_checked
-                          }`}
-                          htmlFor={lang}
-                        >
-                          {lang === 'ru' ? 'RU' : 'EN'}
-                        </label>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <LanguagePopup position={{ top: '-105px', left: '-25px', background: '#4a70f8' }} />
             </div>
           </Container>
         </div>

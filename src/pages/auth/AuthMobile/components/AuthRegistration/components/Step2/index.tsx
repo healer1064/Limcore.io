@@ -11,8 +11,10 @@ import Styles from './styles.module.scss'
 import { InputCode } from '../../../../../../../ui-kit/InputCode'
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
 import { ButtonSmall } from '../../../../../../../ui-kit/ButtonSmall'
+import { useTranslation } from 'react-i18next'
 
 export const Step2: React.FC = () => {
+  const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const phone = useAppSelector((state) => state.authNew.phone)
   const codePhone = useAppSelector((state) => state.authNew.codePhone)
@@ -40,7 +42,7 @@ export const Step2: React.FC = () => {
     // в теле отправить unique_identifier и code. В ответ придет токен
     if (codePhone.length < 4) {
       setValidValue(false)
-      setError('Код должен содержать 4 цифры')
+      setError(t('err_code4'))
       return
     }
 
@@ -55,19 +57,19 @@ export const Step2: React.FC = () => {
       switch (response.error.message) {
         case 'phone_already_verified':
           setValidValue(false)
-          setError('Телефон уже подтвержден')
+          setError(t('err_phoneVerified'))
           break
         case 'need_get_code_again':
           setValidValue(false)
-          setError('Нужно снова получить код подтверждения')
+          setError(t('err_needCodeAgain'))
           break
         case 'code_invalid':
           setValidValue(false)
-          setError('Код недействителен')
+          setError(t('err_codeInvalid'))
           break
         default:
           setValidValue(false)
-          setError('Что-то пошло не так..')
+          setError(t('err_smthWentWrong'))
           break
       }
     } else {
@@ -85,7 +87,7 @@ export const Step2: React.FC = () => {
   return (
     <>
       <div className={Styles.content}>
-        <h3 className={Styles.title}>Введите код из СМС</h3>
+        <h3 className={Styles.title}>{t('cellCodeFromSms')}</h3>
         <div className={Styles.progress}>
           <div className={Styles.step}>
             <div className={`${Styles.number} ${Styles.number_active}`}>
@@ -113,16 +115,16 @@ export const Step2: React.FC = () => {
         </div>
         <div className={Styles.block}>
           <span className={Styles.notification}>
-            Мы отправили код на номер +{phone} <ButtonSmall onClick={prevStep}>Изменить</ButtonSmall>
+            {t('weSentCode')} +{phone} <ButtonSmall onClick={prevStep}>{t('change')}</ButtonSmall>
           </span>
           <InputCode onChange={onChange} value={codePhone} validValue={validValue} />
           <div className={Styles.wrap}>
             {counter < 1 ? (
-              <ButtonSmall onClick={resendCode}>Отправить новый код</ButtonSmall>
+              <ButtonSmall onClick={resendCode}>{t('getNewCode2')}</ButtonSmall>
             ) : (
               <>
                 <span className={Styles.time}>
-                  Получить новый код можно через {counter >= 10 ? `00:${counter}` : `00:0${counter}`}
+                  {t('getNewCode')} {counter >= 10 ? `00:${counter}` : `00:0${counter}`}
                 </span>
                 <p className={Styles.error}>{error}</p>
               </>
@@ -132,7 +134,7 @@ export const Step2: React.FC = () => {
       </div>
       <div className={Styles.buttons}>
         <ButtonBig onClick={nextStep} disabled={!codePhone}>
-          Далее
+          {t('next')}
         </ButtonBig>
       </div>
     </>
