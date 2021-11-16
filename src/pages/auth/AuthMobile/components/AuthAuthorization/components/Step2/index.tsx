@@ -16,10 +16,12 @@ import { InputCode } from '../../../../../../../ui-kit/InputCode'
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
 import { ButtonSmall } from '../../../../../../../ui-kit/ButtonSmall'
 import { useHistory } from 'react-router'
+import { useTranslation } from 'react-i18next'
 
 export const Step2: React.FC = () => {
   const history = useHistory()
   const dispatch = useAppDispatch()
+  const [t] = useTranslation()
 
   const typeAuthorization = useAppSelector((state) => state.authNew.typeAuthorization)
   const phoneOrEmail = useAppSelector((state) => state.authNew.phoneOrEmail)
@@ -57,7 +59,7 @@ export const Step2: React.FC = () => {
   const completeAuthorization = async () => {
     // в теле отправить unique_identifier и code. В ответ придет токен
     if (codePhoneOrEmail.length < 4) {
-      setAuthCodeError('Код должен содержать 4 цифры')
+      setAuthCodeError(t('err_code4'))
       setValidValue(false)
       return
     }
@@ -72,19 +74,19 @@ export const Step2: React.FC = () => {
     if (response.error) {
       switch (response.error.message) {
         case 'need_get_code_again':
-          setAuthCodeError('Нужно снова получить код подтверждения')
+          setAuthCodeError(t('err_needCodeAgain'))
           setValidValue(false)
           break
         case 'code_invalid':
-          setAuthCodeError('Код недействителен')
+          setAuthCodeError(t('err_codeInvalid'))
           setValidValue(false)
           break
         case 'limit_login_attempts':
-          setAuthCodeError('Превышено количество попыток входа (разблокировка через час)')
+          setAuthCodeError(t('err_limit'))
           setValidValue(false)
           break
         default:
-          setAuthCodeError('Что-то пошло не так..')
+          setAuthCodeError(t('err_smthWentWrong'))
           setValidValue(false)
           break
       }
@@ -126,18 +128,18 @@ export const Step2: React.FC = () => {
         <>
           <div className={Styles.content}>
             <div className={Styles.block}>
-              <h3 className={Styles.title}>Введите код из СМС</h3>
+              <h3 className={Styles.title}>{t('cellCodeFromSms')}</h3>
               <span className={Styles.notification}>
-                Мы отправили код на номер +{phoneOrEmail} <ButtonSmall onClick={prevStep}>Изменить</ButtonSmall>
+                {t('weSentCode')} +{phoneOrEmail} <ButtonSmall onClick={prevStep}>{t('change')}</ButtonSmall>
               </span>
               <InputCode onChange={onChange} value={codePhoneOrEmail} validValue={validValue} />
               <div className={Styles.wrap}>
                 {counter < 1 ? (
-                  <ButtonSmall onClick={resendCode}>Отправить новый код</ButtonSmall>
+                  <ButtonSmall onClick={resendCode}>{t('getNewCode2')}</ButtonSmall>
                 ) : (
                   <>
                     <span className={Styles.time}>
-                      Получить новый код можно через {counter >= 10 ? `00:${counter}` : `00:0${counter}`}
+                      {t('getNewCode')} {counter >= 10 ? `00:${counter}` : `00:0${counter}`}
                     </span>
                     <p className={Styles.error}>{authCodeError}</p>
                   </>
@@ -147,7 +149,7 @@ export const Step2: React.FC = () => {
           </div>
           <div className={Styles.buttons}>
             <ButtonBig onClick={completeAuthorization} disabled={!codePhoneOrEmail}>
-              Войти
+              {t('login')}
             </ButtonBig>
           </div>
         </>
@@ -156,9 +158,9 @@ export const Step2: React.FC = () => {
         <>
           <div className={Styles.content}>
             <div className={Styles.block}>
-              <h3 className={Styles.title}>Введите 2-FA код</h3>
+              <h3 className={Styles.title}>{t('fa_enterCode')}</h3>
               <span className={`${Styles.notification} ${Styles.notification_edit}`}>
-                Введите код, сгенерированный приложением Google Authenticator
+                {t('fa_enterCodeFromGoogle')}
               </span>
               <InputCode
                 onChange={onChange2FA}
@@ -174,7 +176,7 @@ export const Step2: React.FC = () => {
           </div>
           <div className={Styles.buttons}>
             <ButtonBig onClick={check2FA} disabled={!code2FA}>
-              Войти
+              {t('login')}
             </ButtonBig>
           </div>
         </>

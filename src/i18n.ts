@@ -2,7 +2,7 @@ import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 
 i18n.use(LanguageDetector).init({
-  lng: 'ru',
+  lng: 'en',
   // we init with resources
   // \u000A - перенос строки
   resources: {
@@ -12,6 +12,58 @@ i18n.use(LanguageDetector).init({
         profile: 'Profile',
         other: 'Other',
         buyLimc: 'Buy LIMC',
+        lockUp: '6 months lock-up',
+        phone: 'Phone number',
+        next: 'Next step',
+
+        // Auth: step1
+        logIn: 'Log on',
+        cellNumber: 'Cell number',
+        getCode: 'Get a code',
+        signUp: 'Sign up',
+        needToLogToBuy: 'You should log on to buy LIMC',
+
+        // Errors
+        err_forget: 'You forgot to enter your phone number or e-mail',
+        err_mail: 'Wrong e-mail format',
+        err_phone: 'Wrong phone number format',
+        err_phoneNotConfirmed: 'Phone number is not confirmed',
+        err_mailNotConfirmed: 'E-mail is not confirmed',
+        err_limit: 'Number of login attempts exceeded (will be unlocked after an hour)',
+        err_notRegistered: 'User is not registered',
+        err_phoneInvalid: 'Phone number is invalid',
+        err_smthWentWrong: 'Something went wrong..',
+
+        // Auth: step2
+        cellCodeFromSms: 'Enter a code from SMS message',
+        weSentCode: 'We sent you a code to cell number',
+        change: 'Change',
+        getNewCode: 'Get a new code at',
+        getNewCode2: 'Get a new code',
+
+        fa_enterCode: 'Enter 2-FA code',
+        fa_enterCodeFromGoogle: 'Enter a code from Google Authenticator',
+
+        err_code4: 'The code must be 4 digits',
+        err_needCodeAgain: 'You need to get confirmation code again',
+        err_codeInvalid: 'The code is invalid',
+
+        // Reg: step1
+        logOn: 'Registration',
+
+        err_correctNumber: 'Enter correct information',
+        err_userIsRegistered: 'User is already registered',
+        err_phoneVerified: 'The phone is already verified',
+
+        // Reg: step3
+        err_wrongInfo: 'Information is incorrect',
+        err_waitOneMinute: 'Wait one minute',
+        enterEmail: 'Cell an e-mail',
+
+        // Reg: step4
+        err_mailConfirmed: 'The email is already confirmed',
+        enterCode: 'Enter your code',
+        weSentCodeOnEmail: 'We sent you a code to',
 
         nav_about: 'About Limcore',
         nav_roadmap: 'Roadmap',
@@ -182,6 +234,58 @@ i18n.use(LanguageDetector).init({
         profile: 'Профиль',
         other: 'Прочее',
         buyLimc: 'Купить LIMC',
+        lockUp: 'Lock-up период 6 месяцев',
+        phone: 'Телефон',
+        next: 'Далее',
+
+        // Auth: step1
+        logIn: 'Авторизация',
+        cellNumber: 'Введите телефон',
+        getCode: 'Получить код',
+        signUp: 'Зарегистрироваться',
+        needToLogToBuy: 'Чтобы купить LIMC, нужно авторизоваться',
+
+        // Errors
+        err_forget: 'Вы забыли ввести телефон или e-mail',
+        err_mail: 'Неверный формат e-mail',
+        err_phone: 'Некорректно введен номер',
+        err_phoneNotConfirmed: 'Телефон не подтвержден',
+        err_mailNotConfirmed: 'Email не подтвержден',
+        err_limit: 'Превышено количество попыток входа (разблокировка через час)',
+        err_notRegistered: 'Пользователь не зарегистрирован',
+        err_phoneInvalid: 'Некорректно введен номер',
+        err_smthWentWrong: 'Что-то пошло не так..',
+
+        // Auth: step2
+        cellCodeFromSms: 'Введите код из СМС',
+        weSentCode: 'Мы отправили код на номер',
+        change: 'Изменить',
+        getNewCode: 'Получить новый код можно через',
+        getNewCode2: 'Отправить новый код',
+
+        fa_enterCode: 'Введите 2-FA код',
+        fa_enterCodeFromGoogle: 'Введите код, сгенерированный приложением Google Authenticator',
+
+        err_code4: 'Код должен содержать 4 цифры',
+        err_needCodeAgain: 'Нужно снова получить код подтверждения',
+        err_codeInvalid: 'Код недействителен',
+
+        // Reg: step1
+        logOn: 'Регистрация',
+
+        err_correctNumber: 'Введите корректные данные',
+        err_userIsRegistered: 'Пользователь уже зарегистрирован',
+        err_phoneVerified: 'Телефон уже подтвержден',
+
+        // Reg: step3
+        err_wrongInfo: 'Неверные данные',
+        err_waitOneMinute: 'Не прошла минута после первого запроса',
+        enterEmail: 'Введите e-mail',
+
+        // Reg: step4
+        err_mailConfirmed: 'Email уже подтвержден',
+        enterCode: 'Введите код',
+        weSentCodeOnEmail: 'Мы отправили код на адрес',
 
         nav_about: 'Что такое Limcore?',
         nav_roadmap: 'Roadmap',

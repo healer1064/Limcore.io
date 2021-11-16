@@ -111,7 +111,7 @@ export const MainRounds: React.FC = () => {
         <a href='https://round1.limcore.io' className={Styles.buy}>
           {t('buyLimc')}
         </a>
-        <span>Lock-up период 6 месяцев</span>
+        <span>{t('lockUp')}</span>
       </div>
       {/* <div className={Styles.tempDeclaration}>
         <h4 className={Styles.tempDeclaration__title}>{t('firstRound_startSelling')}</h4>

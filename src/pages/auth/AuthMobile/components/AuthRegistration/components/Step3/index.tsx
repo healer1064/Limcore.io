@@ -7,8 +7,10 @@ import Styles from './styles.module.scss'
 import { Label } from '../../../../../../../ui-kit/Label'
 import { InputEmail } from '../../../../../../../ui-kit/InputEmail'
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
+import { useTranslation } from 'react-i18next'
 
 export const Step3: React.FC = () => {
+  const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const email = useAppSelector((state) => state.authNew.email)
   const [validValue, setValidValue] = useState(true)
@@ -24,7 +26,7 @@ export const Step3: React.FC = () => {
       setValidValue(true)
     } else {
       setValidValue(false)
-      setError('Неверные данные.')
+      setError(t('err_wrongInfo'))
       return
     }
 
@@ -33,16 +35,16 @@ export const Step3: React.FC = () => {
     if (response.error) {
       switch (response.error.message) {
         case 'user_already_registered':
-          setError('Пользователь уже зарегистрирован')
+          setError(t('err_userIsRegistered'))
           break
         case 'email_using_in_another_account':
-          setError('Пользователь уже зарегистрирован')
+          setError(t('err_userIsRegistered'))
           break
         case 'wait_one_minute':
-          setError('Минута еще не прошла после первого запроса')
+          setError(t('err_waitOneMinute'))
           break
         default:
-          setError('Что-то пошло не так..')
+          setError(t('err_smthWentWrong'))
           break
       }
     } else {
@@ -53,7 +55,7 @@ export const Step3: React.FC = () => {
   return (
     <>
       <div className={Styles.content}>
-        <h3 className={Styles.title}>Регистрация</h3>
+        <h3 className={Styles.title}>{t('logOn')}</h3>
         <div className={Styles.progress}>
           <div className={Styles.step}>
             <div className={`${Styles.number} ${Styles.number_active}`}>
@@ -81,14 +83,14 @@ export const Step3: React.FC = () => {
         </div>
         <div className={Styles.block}>
           <Label titleText='E-mail' className={Styles.label}>
-            <InputEmail onChange={onChange} value={email} validValue={validValue} placeholder='Введите e-mail' />
+            <InputEmail onChange={onChange} value={email} validValue={validValue} placeholder={t('enterEmail')} />
             <p className={Styles.error}>{error}</p>
           </Label>
         </div>
       </div>
       <div className={Styles.buttons}>
         <ButtonBig onClick={nextStep} disabled={!email}>
-          Получить код
+          {t('getCode')}
         </ButtonBig>
       </div>
     </>
