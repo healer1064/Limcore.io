@@ -11,6 +11,7 @@ import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
 export const Step3: React.FC = () => {
   const dispatch = useAppDispatch()
   const data = useAppSelector((state) => state.user.data)
+  const error = useAppSelector((state) => state.user.error)
   const maxLength = 200
 
   const onChangeValue = (event) => {
@@ -107,6 +108,11 @@ export const Step3: React.FC = () => {
             </Label>
           </div>
           <ButtonBig onClick={completeFilling}>Завершить</ButtonBig>
+          {error && (
+            <div className={Styles.error}>
+              <span>Что-то пошло не так</span>
+            </div>
+          )}
         </form>
       </div>
     </>
