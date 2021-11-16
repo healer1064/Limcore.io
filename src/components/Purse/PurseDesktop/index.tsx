@@ -33,6 +33,7 @@ import { useHistory } from 'react-router'
 import { UntilMiningStart } from './components/UntilMiningStart/UntilMiningStart'
 import { LogoutIcon } from '@icons/LogoutIcon'
 import { useTranslation } from 'react-i18next'
+import { LanguagePopup } from '@components/LanguagePopup'
 
 export const PurseDesktop = () => {
   const [t] = useTranslation()
@@ -170,13 +171,14 @@ export const PurseDesktop = () => {
             >
               {t('purse_navStreams')}
             </Link>
+            <LanguagePopup />
             {/* <Link
-      className={classnames([styles.nav__link, isChatOpen && styles.nav__link_active])}
-      to='chat'
-      onClick={() => setIsChatOpen(true)}
-    >
-      Чат
-    </Link> */}
+              className={classnames([styles.nav__link, isChatOpen && styles.nav__link_active])}
+              to='chat'
+              onClick={() => setIsChatOpen(true)}
+            >
+              Чат
+            </Link> */}
           </nav>
           <div className={styles.profileGroup} onClick={handleProfileOpen}>
             <img className={styles.profileIcon} src={profile} />
