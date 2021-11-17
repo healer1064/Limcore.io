@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link } from 'react-scroll'
 import styles from './styles.module.scss'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { buyLimc, getWalletBalance } from '@components/Wallet/redux/walletSlice'
 import buyIcon from '@icons/buy.svg'
 import sellIcon from '@icons/sellBlue.svg'
 import tradeIcon from '@icons/changeBlue.svg'
@@ -93,31 +92,6 @@ export const PurseDesktop = () => {
   }
   const handleShowMoreClick = () => {
     console.log('Показать больше')
-  }
-
-  const handleBuyLIMK = async () => {
-    setIsLoading(true)
-    const data = {
-      limc_amount: value,
-      pricing_slug: prices.slug,
-    }
-
-    const request = await dispatch(buyLimc(data))
-    if (request.error?.message?.includes(400)) {
-      setIsErrorVisible(true)
-
-      // setTimeout(() => {
-      //   setIsErrorVisible(false)
-      // }, 2000)
-    } else {
-      setIsSuccessVisible(true)
-
-      setTimeout(() => {
-        setIsSuccessVisible(false)
-      }, 2000)
-    }
-    setIsLoading(false)
-    dispatch(getWalletBalance())
   }
 
   const handleNeedToPayClick = () => {

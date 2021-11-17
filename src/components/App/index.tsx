@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
-import { getTransactions } from '../../pages/auth/redux/auth.slice'
+// import { getTransactions } from '../../pages/auth/redux/auth.slice'
 import { checkToken, setIsAuth, setWalletConnectSoldLimcs } from '../../pages/auth/redux/authSlice'
 
 // import { Footer } from '../Footer'
@@ -34,7 +34,6 @@ import { LandingPage } from '../../pages/landing'
 import { Purse } from '@components/Purse'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
-import { getWalletAdress, getWalletBalance, getLimcPrice, getLimcAmount } from '../Wallet/redux/walletSlice'
 import { getUser } from '@app/redux/userSlice'
 import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
 import { getSoldLimcs } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
@@ -58,17 +57,25 @@ const App = () => {
       dispatch(checkToken({ token: tokenObj.access }))
         .then(() => {
           dispatch(setIsAuth(true))
-          dispatch(getWalletAdress())
-          dispatch(getWalletBalance())
-          dispatch(getLimcPrice())
-          dispatch(getLimcAmount())
           dispatch(getUser())
-          dispatch(getTransactions())
+          // dispatch(getTransactions())
           setIsLoading(false)
         })
         .catch(() => {
+          console.log('catch')
           setIsLoading(false)
         })
+      // dispatch(checkToken({ token: tokenObj.access }))
+      //   .then(() => {
+      //     dispatch(setIsAuth(true))
+      //     dispatch(getUser())
+      //     // dispatch(getTransactions())
+      //     setIsLoading(false)
+      //   })
+      //   .catch(() => {
+      //     console.log('catch')
+      //     setIsLoading(false)
+      //   })
     }
   }, [isAuth])
 
