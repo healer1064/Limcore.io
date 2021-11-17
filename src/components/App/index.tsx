@@ -10,10 +10,9 @@ import { FooterMobile } from '../Footer/FooterMobile'
 // import { Wrapper } from '../Wrapper'
 
 // import { OrdersPage } from '../../pages/orders'
-import { PageNotFount } from '../../pages/not-found'
+// import { PageNotFount } from '../../pages/not-found'
 // import { DevelopingPage } from '../../pages/developing'
 // import { AccessDeniedPage } from '../../pages/access-denied'
-import { BuyPage } from '../../pages/buy'
 
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 
@@ -35,14 +34,14 @@ import { Purse } from '@components/Purse'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getUser } from '@app/redux/userSlice'
-import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
+// import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
 import { getSoldLimcs } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
 
 const App = () => {
   const dispatch = useAppDispatch()
   const { width } = useWindowSize()
   const desktop = width >= 769
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   // const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
   // const user = useAppSelector((state) => state.user.userData)
   const isAuth = useAppSelector((state) => state.authNew.isAuth)
@@ -52,8 +51,6 @@ const App = () => {
     getSoldLimcs().then((res) => dispatch(setWalletConnectSoldLimcs(res)))
 
     if (tokenObj.access) {
-      setIsLoading(true)
-
       dispatch(checkToken({ token: tokenObj.access }))
         .then(() => {
           dispatch(setIsAuth(true))
@@ -62,20 +59,10 @@ const App = () => {
           setIsLoading(false)
         })
         .catch(() => {
-          console.log('catch')
           setIsLoading(false)
         })
-      // dispatch(checkToken({ token: tokenObj.access }))
-      //   .then(() => {
-      //     dispatch(setIsAuth(true))
-      //     dispatch(getUser())
-      //     // dispatch(getTransactions())
-      //     setIsLoading(false)
-      //   })
-      //   .catch(() => {
-      //     console.log('catch')
-      //     setIsLoading(false)
-      //   })
+    } else {
+      setIsLoading(false)
     }
   }, [isAuth])
 
@@ -87,40 +74,33 @@ const App = () => {
             <Spinner />
           </div>
         )}
-        {desktop ? <Header /> : <HeaderMobile />}
+        {desktop && !isLoading ? <Header /> : <HeaderMobile />}
         <>
           <main className={desktop ? `${Styles.main}` : `${Styles.main} ${Styles.main_mobile}`}>
             {!isAuth && !isLoading && (
               <Switch>
                 <Route path='/' exact component={LandingPage} />
-                <Route path='/my' exact component={Purse} />
-                <Route path='/auth' exact component={AuthPage} />
-                <Route path='/profile' exact component={ProfileMobile} />
-                {/* <Route path='/auth' exact component={AuthMobile} /> */}
-                <Route path='/not-found' exact component={PageNotFount} />
-                <Route path='/chat' exact component={Dummy} />
+                {!desktop && <Route path='/auth' exact component={AuthPage} />}
                 <Route path='*'>
-                  <Redirect to='/not-found' />
+                  <Redirect to='/' />
                 </Route>
-
-                {/* <Route path='/' exact component={USER_ROlES.user === userRole?.name ? HomePage : HomePage} />
-                <ProtectedRoute allowedUsersTypes={[USER_ROlES.user]} path='/orders' exact component={OrdersPage} /> */}
               </Switch>
             )}
+
             {isAuth && !isLoading && (
               <Switch>
-                {/* <Route path='/' exact component={PurseMobile} /> */}
                 <Route path='/' exact component={LandingPage} />
                 <Route path='/my' exact component={Purse} />
-                <Route path='/chat' exact component={Dummy} />
-                {desktop ? (
-                  <Route path='/broadcasts' exact component={BroadcastsDesktop} />
-                ) : (
-                  <Route path='/broadcasts' exact component={BroadcastsMobile} />
+                {!desktop && (
+                  <>
+                    <Route path='/broadcasts' exact component={BroadcastsMobile} />
+                    <Route path='/chat' exact component={Dummy} />
+                    <Route path='/profile' exact component={ProfileMobile} />
+                  </>
                 )}
-                <Route path='/profile' exact component={ProfileMobile} />
-                <Route path='/buy' exact component={BuyPage} />
-                <Route path='*' exact component={PageNotFount} />
+                <Route path='*'>
+                  <Redirect to='/my' />
+                </Route>
               </Switch>
             )}
           </main>
