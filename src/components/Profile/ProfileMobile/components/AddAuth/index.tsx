@@ -98,11 +98,11 @@ export const AddAuth: React.FC = () => {
       </>
       {offAuth && (
         <Popup closePopup={closePopup}>
-          <span className={Styles.designation}>Выключить двухфакторную аутентификацию?</span>
+          <span className={Styles.designation}>{t('profile_2fa_doWantToOff')}</span>
           <div className={Styles.buttons}>
-            <ButtonBig onClick={off2FA}>Выключить</ButtonBig>
+            <ButtonBig onClick={off2FA}>{t('profile_2fa_wantToOff')}</ButtonBig>
             <ButtonBig className={Styles.button} onClick={closePopup}>
-              Отмена
+              {t('profile_2fa_cancel')}
             </ButtonBig>
           </div>
         </Popup>
