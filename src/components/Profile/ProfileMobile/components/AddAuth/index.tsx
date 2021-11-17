@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { changeStep, changeViewContent } from '../../../../../pages/cabinet/redux/cabinetSlice'
+import { cancel2FA, getUser } from '../../../../../app/redux/userSlice'
 import Styles from './styles.module.scss'
 
 import { Step1 } from './components/Step1'
@@ -19,27 +20,38 @@ export const AddAuth: React.FC = () => {
   const step = useAppSelector((state) => state.cabinet.step)
   const userData = useAppSelector((state) => state.user.userData)
   const [offAuth, setOffAuth] = useState(false)
-  const [checkedToggle, setCheckedToggle] = useState(true)
+  const [checkedToggle, setCheckedToggle] = useState(null)
 
   const nextStep = (step) => dispatch(changeStep(step))
 
+  const closePopup = () => setOffAuth(false)
+  const openPopup = () => setOffAuth(true)
+
   const changeOffAuth = (event) => {
     if (!event.target.checked) {
-      setOffAuth(true)
-    } else {
-      setCheckedToggle(event.target.checked)
+      openPopup()
     }
   }
 
-  const off2fa = () => {
-    setOffAuth(false)
-    setCheckedToggle(false)
+  const off2FA = async () => {
+    const response = await dispatch(cancel2FA())
+
+    if (response.error) {
+      console.log('error cancel2FA')
+    } else {
+      dispatch(getUser())
+      closePopup()
+    }
   }
 
   const changePhone = () => {
     dispatch(changeViewContent('changePhone'))
     nextStep(1)
   }
+
+  useEffect(() => {
+    setCheckedToggle(userData.is_connected_2fa)
+  }, [userData])
 
   return (
     <div className={Styles.auth}>
@@ -56,7 +68,7 @@ export const AddAuth: React.FC = () => {
                       <span className={Styles.title}>{t('profile_2fa_linked')}</span>
                       <span className={Styles.subtitle}>{userData.phone}</span>
                     </div>
-                    <ToggleButton onChange={changeOffAuth} checked={checkedToggle} disabled={!!true} />
+                    <ToggleButton onChange={changeOffAuth} checked={checkedToggle} />
                   </div>
                   {/* <div className={`${Styles.block} ${Styles.block_edit}`}>
                     <ButtonSmall onClick={changePhone}>Изменить номер телефона</ButtonSmall>
@@ -85,11 +97,11 @@ export const AddAuth: React.FC = () => {
         {step === 3 && <Step3 />} */}
       </>
       {offAuth && (
-        <Popup closePopup={() => setOffAuth(false)}>
+        <Popup closePopup={closePopup}>
           <span className={Styles.designation}>Выключить двухфакторную аутентификацию?</span>
           <div className={Styles.buttons}>
-            <ButtonBig onClick={off2fa}>Выключить</ButtonBig>
-            <ButtonBig className={Styles.button} onClick={() => setOffAuth(false)}>
+            <ButtonBig onClick={off2FA}>Выключить</ButtonBig>
+            <ButtonBig className={Styles.button} onClick={closePopup}>
               Отмена
             </ButtonBig>
           </div>

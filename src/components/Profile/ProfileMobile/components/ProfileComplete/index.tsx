@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { changeViewContent } from '../../.././../../pages/cabinet/redux/cabinetSlice'
+import { updateAvatarUser, getUser } from '../../../../../app/redux/userSlice'
 import Styles from './styles.module.scss'
 
 import { ButtonSmall } from '../../../../../ui-kit/ButtonSmall'
@@ -23,6 +24,7 @@ export const ProfileComplete: React.FC = () => {
   const dispatch = useAppDispatch()
   const userData = useAppSelector((state) => state.user.userData)
   const [notificationOpen, setNotificationOpen] = useState(true)
+  const [img, setImg] = useState(null)
 
   const closeNotification = (event) => {
     event.stopPropagation()
@@ -33,19 +35,53 @@ export const ProfileComplete: React.FC = () => {
 
   const onClick2FA = () => changeView('addAuth')
 
+  const updateAvatar = async () => {
+    const data = new FormData()
+    data.append('avatar', img)
+
+    const response = await dispatch(updateAvatarUser(data))
+
+    if (response.error) {
+      console.log('error updateAvatarUser')
+    } else {
+      dispatch(getUser())
+    }
+  }
+
+  useEffect(() => {
+    if (img) {
+      updateAvatar()
+    }
+  }, [img])
+
   return (
     <>
-      <div className={Styles.avatar}>
-        <div className={Styles.image}>
-          <img src={avatarImage} alt='Аватар' />
-          {/* <i className={Styles.edit}>{}</i> */}
-        </div>
+      <div className={Styles.info}>
+        {userData?.profile?.avatar === null ? (
+          <div className={Styles.avatar}>
+            <div className={Styles.image}>
+              <img src={avatarImage} alt='Аватар' />
+            </div>
+            <label className={Styles.edit}>
+              <input type='file' onChange={(event) => setImg(event.target.files[0])} />
+            </label>
+          </div>
+        ) : (
+          <div className={Styles.avatar}>
+            <div className={Styles.image}>
+              <img src={userData?.profile?.avatar} alt='Аватар' />
+            </div>
+            <label className={Styles.edit}>
+              <input type='file' onChange={(event) => setImg(event.target.files[0])} />
+            </label>
+          </div>
+        )}
         <span className={Styles.name}>
           {userData?.profile?.first_name} {userData?.profile?.last_name}
         </span>
       </div>
       <div className={Styles.container}>
-        {/* <span className={Styles.caption}>Документы</span>
+        <span className={Styles.caption}>Документы</span>
         <div className={Styles.documents}>
           <div className={Styles.document}>
             <img className={Styles.icon} src={passportIcon} alt='Иконка' />
@@ -53,36 +89,36 @@ export const ProfileComplete: React.FC = () => {
             <span className={Styles.subtitle}>
               {userData?.profile?.passport_series} {userData?.profile?.passport_number}
             </span>
-            <img className={Styles.link} src={linkIcon} alt='Иконка' />
+            {/* <img className={Styles.link} src={linkIcon} alt='Иконка' /> */}
           </div>
-          <div className={Styles.document}>
+          {/* <div className={Styles.document}>
             <img className={Styles.icon} src={innIcon} alt='Иконка' />
             <span className={Styles.title}>ИНН</span>
             <span className={Styles.subtitle}>{userData?.profile?.inn}</span>
             <img className={Styles.link} src={linkIcon} alt='Иконка' />
-          </div>
-        </div> */}
+          </div> */}
+        </div>
         <ul className={Styles.list}>
-          {/* <li className={Styles.item}>
+          <li className={Styles.item}>
             <img className={Styles.icon} src={phoneIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
                 <span className={Styles.label}>Телефон</span>
                 <span className={Styles.content}>{userData?.phone}</span>
               </div>
-              <ButtonSmall onClick={() => changeView('editPhone')}>Изменить</ButtonSmall>
+              {/* <ButtonSmall onClick={() => changeView('editPhone')}>Изменить</ButtonSmall> */}
             </div>
-          </li> */}
-          {/* <li className={Styles.item}>
+          </li>
+          <li className={Styles.item}>
             <img className={Styles.icon} src={emailIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
                 <span className={Styles.label}>E-mail</span>
                 <span className={Styles.content}>{userData?.email}</span>
               </div>
-              <ButtonSmall onClick={() => changeView('editEmail')}>Изменить</ButtonSmall>
+              {/* <ButtonSmall onClick={() => changeView('editEmail')}>Изменить</ButtonSmall> */}
             </div>
-          </li> */}
+          </li>
           {/* <li className={Styles.item}>
             <img className={Styles.icon} src={nameIcon} alt='Иконка' />
             <div className={Styles.wrapper}>

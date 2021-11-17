@@ -5,7 +5,7 @@ import { getTransactions } from '../../pages/auth/redux/auth.slice'
 import { checkToken, setIsAuth, setWalletConnectSoldLimcs } from '../../pages/auth/redux/authSlice'
 
 // import { Footer } from '../Footer'
-// import { FooterMobile } from '../Footer/FooterMobile'
+import { FooterMobile } from '../Footer/FooterMobile'
 // import { HomePage } from '../../pages/home'
 // import { Wrapper } from '../Wrapper'
 
@@ -114,12 +114,11 @@ const App = () => {
                 <Route path='/profile' exact component={ProfileMobile} />
                 <Route path='/buy' exact component={BuyPage} />
                 <Route path='*' exact component={PageNotFount} />
-                {/* <FooterMobile /> */}
               </Switch>
             )}
           </main>
+          {isAuth && !desktop && <FooterMobile />}
         </>
-        {/* {isAuth && <FooterMobile />} */}
       </div>
     </Router>
   )

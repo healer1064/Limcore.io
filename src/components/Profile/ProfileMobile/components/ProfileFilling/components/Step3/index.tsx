@@ -13,6 +13,7 @@ export const Step3: React.FC = () => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const data = useAppSelector((state) => state.user.data)
+  const error = useAppSelector((state) => state.user.error)
   const maxLength = 200
 
   const onChangeValue = (event) => {
@@ -109,6 +110,11 @@ export const Step3: React.FC = () => {
             </Label>
           </div>
           <ButtonBig onClick={completeFilling}>{t('profile_complete')}</ButtonBig>
+          {error && (
+            <div className={Styles.error}>
+              <span>Что-то пошло не так</span>
+            </div>
+          )}
         </form>
       </div>
     </>

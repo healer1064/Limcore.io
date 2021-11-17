@@ -1,6 +1,7 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { changeViewContent } from '../../../../../pages/cabinet/redux/cabinetSlice'
+// import { updateAvatarUser, getUser } from '../../../../../app/redux/userSlice'
 import Styles from './styles.module.scss'
 import { formatPhoneNumber } from '@helpers/formatPhone'
 
@@ -17,10 +18,11 @@ export const Profile: React.FC = () => {
 
   return (
     <>
-      <div className={Styles.avatar}>
-        <div className={Styles.image}>
-          <img src={avatarImage} alt='Аватар' />
-          {/* <i className={Styles.edit}>{}</i> */}
+      <div className={Styles.info}>
+        <div className={Styles.avatar}>
+          <div className={Styles.image}>
+            <img src={avatarImage} alt='Аватар' />
+          </div>
         </div>
         <span className={Styles.phone}>{formatPhoneNumber(userData?.phone)}</span>
       </div>
