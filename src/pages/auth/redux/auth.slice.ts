@@ -84,10 +84,10 @@ export const checkToken: any = createAsyncThunk('auth/checkToken', async functio
   return response
 })
 
-export const getTransactions: any = createAsyncThunk('auth/getTransactions', async function () {
-  const response = await api.get('api/v1/transactions/')
-  return response
-})
+// export const getTransactions: any = createAsyncThunk('auth/getTransactions', async function () {
+//   const response = await api.get('api/v1/transactions/')
+//   return response
+// })
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -179,9 +179,9 @@ export const authSlice = createSlice({
         api.setUserToken('')
       }
     },
-    [getTransactions.fulfilled]: (state, { payload }) => {
-      state.transactions = payload
-    },
+    // [getTransactions.fulfilled]: (state, { payload }) => {
+    //   state.transactions = payload
+    // },
   },
 })
 

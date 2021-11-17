@@ -72,11 +72,9 @@ export const Footer: React.FC = () => {
               </Link>
             </li>
             <li className={Styles.footer__listItem}>
-              <a href='#' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
-                <Link className={Styles.footer__link} to='/files/offerBuyLimcore.docx' download target='_blank'>
-                  {t('footer_agreementLimcBuy')}
-                </Link>
-              </a>
+              <Link className={Styles.footer__link} to='/files/offerBuyLimcore.docx' download target='_blank'>
+                {t('footer_agreementLimcBuy')}
+              </Link>
             </li>
           </ul>
           <div className={Styles.footer__line} />

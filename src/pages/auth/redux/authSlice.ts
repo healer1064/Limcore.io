@@ -118,6 +118,7 @@ export const getNewCode: any = createAsyncThunk('auth/getNewCode', async functio
 
 export const checkToken: any = createAsyncThunk('auth/checkToken', async function (data) {
   const response = await api.post('token/verify/', data)
+  console.log('TOKEN VERIFY', response)
   return response
 })
 
@@ -274,6 +275,11 @@ export const authSlice = createSlice({
       } else {
         api.setUserToken('')
       }
+    },
+    [checkToken.rejected]: (state, action) => {
+      console.log('rejected token verify')
+      localStorage.removeItem('jwtToken')
+      window.location.reload()
     },
     [refreshToken.fulfilled]: (state, action) => {
       console.log('refreshToken', action)

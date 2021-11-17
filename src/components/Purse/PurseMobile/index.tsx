@@ -10,7 +10,6 @@ import { Wallet } from './components/Wallet'
 import { Transactions } from './components/Transactions'
 import { Statistics } from './components/Statistics'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { buyLimc, getWalletBalance } from '../../Wallet/redux/walletSlice'
 
 import { Container } from '../../Container'
 import { ButtonBig } from '../../../ui-kit/ButtonBig'
@@ -82,31 +81,6 @@ export const PurseMobile: FC = () => {
   }
   const handleShowMoreClick = () => {
     console.log('Показать больше')
-  }
-
-  const handleBuyLIMK = async () => {
-    setIsLoading(true)
-    const data = {
-      limc_amount: value,
-      pricing_slug: prices.slug,
-    }
-
-    const request = await dispatch(buyLimc(data))
-    if (request.error?.message?.includes(400)) {
-      setIsErrorVisible(true)
-
-      // setTimeout(() => {
-      //   setIsErrorVisible(false)
-      // }, 2000)
-    } else {
-      setIsSuccessVisible(true)
-
-      setTimeout(() => {
-        setIsSuccessVisible(false)
-      }, 2000)
-    }
-    setIsLoading(false)
-    dispatch(getWalletBalance())
   }
 
   const handleNeedToPayClick = () => {
@@ -190,34 +164,6 @@ export const PurseMobile: FC = () => {
         //     <ButtonBig className={styles.next}>{t('purse_goFilling')}</ButtonBig>
         //   </div>
         // </Container>
-      )}
-      {viewContent === 'buy' && (
-        <Container title='Покупка LIMC' onClose={closePopup}>
-          <div className={styles.cont}>
-            <div className={styles.cont2}>
-              <span className={styles.text}>
-                Цена за LIMC в USDT: <span className={styles.price}>{prices.usdt_amount}</span>
-              </span>
-              {/* <span className={styles.text}>Locktime: {prices.lock_time} дней</span> */}
-              <span className={styles.text}>
-                Locktime: <span className={styles.price}>{prices.lock_time} дней</span>
-              </span>
-              <InputText onChange={(event) => handleSetValue(event)} type='number' value={value} />
-              <ButtonBig onClick={handleBuyLIMK} className={styles.button} disabled={!value || isLoading}>
-                {t('buy')}
-              </ButtonBig>
-            </div>
-            {isErrorVisible && (
-              <div className={styles.errorModal}>
-                У вас недостаточно средств.
-                <br />
-                <p className={styles.errorSubtitle} onClick={handleNeedToPayClick}>
-                  Необходимо пополнить USDT кошелек
-                </p>
-              </div>
-            )}
-          </div>
-        </Container>
       )}
 
       {/* <Modal active={isErrorVisible} style={{ zIndex: 1001, backgroundColor: 'transparent' }} setActive={() => {}}>

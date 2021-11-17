@@ -114,7 +114,6 @@ export const userSlice = createSlice({
       console.log('updateAvatarUser', payload)
     })
     builder.addCase(getUser.fulfilled, (state, { payload }) => {
-      console.log('getUser', payload)
       state.userData = payload as any // TODO - убрать any
     })
     builder.addCase(getUser.rejected, (state, { payload }) => {
