@@ -117,7 +117,7 @@ const App = () => {
               </Switch>
             )}
           </main>
-          {!desktop && <FooterMobile />}
+          {isAuth && !desktop && <FooterMobile />}
         </>
       </div>
     </Router>
