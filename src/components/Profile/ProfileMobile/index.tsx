@@ -14,7 +14,6 @@ import { EditName } from './components/EditName'
 import { EditLocation } from './components/EditLocation'
 import { AddAuth } from './components/AddAuth'
 import { ChangePhone } from './components/AddAuth/components/ChangePhone'
-import { FooterMobile } from '@components/Footer/FooterMobile'
 
 export const ProfileMobile: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -90,7 +89,6 @@ export const ProfileMobile: React.FC = () => {
           </>
         ) : null}
       </>
-      <FooterMobile />
     </div>
   )
 }

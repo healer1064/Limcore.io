@@ -23,13 +23,11 @@ export const AddAuth: React.FC = () => {
   const nextStep = (step) => dispatch(changeStep(step))
 
   const closePopup = () => setOffAuth(false)
+  const openPopup = () => setOffAuth(true)
 
   const changeOffAuth = (event) => {
     if (!event.target.checked) {
-      setOffAuth(true)
-    } else {
-      // включение 2fa
-      // setCheckedToggle(event.target.checked)
+      openPopup()
     }
   }
 
@@ -52,8 +50,6 @@ export const AddAuth: React.FC = () => {
   useEffect(() => {
     setCheckedToggle(userData.is_connected_2fa)
   }, [userData])
-
-  console.log(userData)
 
   return (
     <div className={Styles.auth}>
