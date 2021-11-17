@@ -1,28 +1,14 @@
 .app_container {
   display: flex;
   flex-direction: column;
-  // justify-content: space-between;
   height: 100vh;
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  // margin: auto;
   width: 100%;
   height: 100%;
-  //padding-bottom: 100px;
-}
-
-// .main_mobile {
-//   height: 100%;
-// }
-
-@media (max-height: 450px) {
-  .main_mobile {
-    margin-bottom: 100px;
-    height: 100%;
-  }
 }
 
 .prp-header-logo {
@@ -42,13 +28,11 @@
   right: 0;
   z-index: 1000;
   overflow: hidden;
-
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
-
   background-color: #fff;
 }
 
@@ -59,9 +43,3 @@
 //   align-items: center;
 //   height: calc(100vh - 100px);
 // }
-
-@media screen and (min-width: 770px) {
-  .main {
-    margin: 0;
-  }
-}

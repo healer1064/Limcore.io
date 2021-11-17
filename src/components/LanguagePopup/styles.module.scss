@@ -1,0 +1,152 @@
+.lang {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 24px;
+
+  img {
+    display: block;
+  }
+}
+
+.block {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  min-width: 65px;
+  height: 100%;
+
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+  &:hover,
+  &:focus {
+    .langTitle,
+    path {
+      color: #4A70F8;
+      stroke: #4A70F8;
+    }
+  }
+  
+  &.active {
+    .langTitle,
+    path {
+      color: #4A70F8;
+      stroke: #4A70F8;
+    }
+  }
+
+  span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 140%;
+    color: #67686c;
+    text-transform: uppercase;
+    
+    transition: color 0.3s ease;
+  }
+
+  .svg {
+    transition: stroke 0.3s ease;
+  }
+}
+
+.img {
+  margin-right: 5px;
+  width: 17px;
+  height: 17px;
+}
+
+.lang__img {
+  margin-right: 10px;
+  width: 17px;
+  height: 17px;
+}
+
+.arrow {
+  height: 15px;
+  transform: rotate(90deg);
+}
+
+.arrowActive {
+  transform: rotate(-90deg);
+}
+
+.el__langoptions {
+  position: absolute;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  padding: 18px 16px;
+  width: 99px;
+  height: 96px;
+  border-radius: 14px;
+  
+  box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+  background: #f9f9f7;
+  list-style: none;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  
+  &.active {
+    opacity: 1;
+  }
+}
+
+.langoption_ru {
+  margin-bottom: 19px;
+}
+
+.langoption {
+  display: flex;
+  align-items: center;
+}
+
+.lang_box {
+  display: flex;
+}
+
+.langoption__checked {
+  margin-right: 10px;
+}
+
+.langoption__text {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 140%;
+  color: #4f535a;
+
+  cursor: pointer;
+  
+  &:hover,
+  &:focus {
+    color: #4A70F8;
+    transition: all 0.3s ease;
+  }
+}
+
+.langoption__text_checked {
+  font-weight: 600;
+  color: #3a3b3d;
+}
+
+input[type='radio'] {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .lang {
+    margin-right: 0;
+    transform: translateX(5px);
+  }
+}

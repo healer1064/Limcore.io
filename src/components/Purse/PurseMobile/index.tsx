@@ -10,7 +10,6 @@ import { Wallet } from './components/Wallet'
 import { Transactions } from './components/Transactions'
 import { Statistics } from './components/Statistics'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { buyLimc, getWalletBalance } from '../../Wallet/redux/walletSlice'
 
 import { Container } from '../../Container'
 import { ButtonBig } from '../../../ui-kit/ButtonBig'
@@ -84,31 +83,6 @@ export const PurseMobile: FC = () => {
     console.log('Показать больше')
   }
 
-  const handleBuyLIMK = async () => {
-    setIsLoading(true)
-    const data = {
-      limc_amount: value,
-      pricing_slug: prices.slug,
-    }
-
-    const request = await dispatch(buyLimc(data))
-    if (request.error?.message?.includes(400)) {
-      setIsErrorVisible(true)
-
-      // setTimeout(() => {
-      //   setIsErrorVisible(false)
-      // }, 2000)
-    } else {
-      setIsSuccessVisible(true)
-
-      setTimeout(() => {
-        setIsSuccessVisible(false)
-      }, 2000)
-    }
-    setIsLoading(false)
-    dispatch(getWalletBalance())
-  }
-
   const handleNeedToPayClick = () => {
     setIsUsdtInfoVisible(true)
     setIsErrorVisible(false)
@@ -130,7 +104,7 @@ export const PurseMobile: FC = () => {
               <ButtonBig className={styles.buyBtn}>
                 <a href='https://round1.limcore.io' className={styles.buyLink}>
                   <img className={styles.icon} src={buyIcon} alt='' />
-                  Купить
+                  {t('buy')}
                 </a>
               </ButtonBig>
               {/* <div className={styles.items}>
@@ -149,18 +123,18 @@ export const PurseMobile: FC = () => {
               </div> */}
               <div className={styles.container}>
                 {/* <span className={styles.trans}>Транзакции</span> */}
-                <span className={styles.desc}>Заполните профиль, чтобы в будущем восстановить аккаунт.</span>
-                <span className={styles.desc}>Lock-up период — 6 месяцев</span>
+                <span className={styles.desc}>{t('purse_fillToRestore')}</span>
+                <span className={styles.desc}>{t('lockUp')}</span>
               </div>
               <div className={styles.nextCont}>
                 <button className={styles.next} onClick={() => history.push('/profile')}>
-                  Перейти к заполнению
+                  {t('purse_goFilling')}
                 </button>
               </div>
             </div>
           </div>
         </Modal>
-        // <Container title='Баланс LIMC' onClick={closePopup}>
+        // <Container title=`${t('balance')} LIMC` onClick={closePopup}>
         //   <div className={styles.block}>
         //     <div className={styles.line}>
         //       <img src={limcoreIcon} alt='' />
@@ -184,40 +158,12 @@ export const PurseMobile: FC = () => {
         //     <div className={styles.container}>
         //       <span className={styles.trans}>Транзакции</span>
         //       <span className={styles.desc}>
-        //         У вас еще нет транзакций. Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
+        //         {t('purse_noTransactionsYet')} Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
         //       </span>
         //     </div>
-        //     <ButtonBig className={styles.next}>Перейти к заполнению</ButtonBig>
+        //     <ButtonBig className={styles.next}>{t('purse_goFilling')}</ButtonBig>
         //   </div>
         // </Container>
-      )}
-      {viewContent === 'buy' && (
-        <Container title='Покупка LIMC' onClose={closePopup}>
-          <div className={styles.cont}>
-            <div className={styles.cont2}>
-              <span className={styles.text}>
-                Цена за LIMC в USDT: <span className={styles.price}>{prices.usdt_amount}</span>
-              </span>
-              {/* <span className={styles.text}>Locktime: {prices.lock_time} дней</span> */}
-              <span className={styles.text}>
-                Locktime: <span className={styles.price}>{prices.lock_time} дней</span>
-              </span>
-              <InputText onChange={(event) => handleSetValue(event)} type='number' value={value} />
-              <ButtonBig onClick={handleBuyLIMK} className={styles.button} disabled={!value || isLoading}>
-                Купить
-              </ButtonBig>
-            </div>
-            {isErrorVisible && (
-              <div className={styles.errorModal}>
-                У вас недостаточно средств.
-                <br />
-                <p className={styles.errorSubtitle} onClick={handleNeedToPayClick}>
-                  Необходимо пополнить USDT кошелек
-                </p>
-              </div>
-            )}
-          </div>
-        </Container>
       )}
 
       {/* <Modal active={isErrorVisible} style={{ zIndex: 1001, backgroundColor: 'transparent' }} setActive={() => {}}>

@@ -9,8 +9,10 @@ import { BottomModal } from '../../../BottomModal'
 import { Modal } from '../../../Modal/index'
 import { ModalHeader } from '../../../ModalHeader'
 import { Calc } from '../Calc/index'
+import { useTranslation } from 'react-i18next'
 
 export const Overall = ({ onClick, money, limcBalance, usdtBalance }) => {
+  const [t] = useTranslation()
   const [isSwitchToggled, setIsSwitchToggled] = useState(true)
   const [disabledColor, setDisabledColor] = useState('#99A0AD')
   const [dotsColor, setDotsColor] = useState('#99A0AD')
@@ -65,9 +67,9 @@ export const Overall = ({ onClick, money, limcBalance, usdtBalance }) => {
 
   return (
     <div className={styles.modal}>
-      <ModalHeader title='Общий баланс' onClick={onClick} />
+      <ModalHeader title={t('commonBalance')} onClick={onClick} />
       <div className={styles.balance}>
-        <h3 className={styles.balanceTitle}>Общий баланс</h3>
+        <h3 className={styles.balanceTitle}>{t('commonBalance')}</h3>
         <p className={styles.balanceSum}>{`$${money}`}</p>
       </div>
 
@@ -75,8 +77,8 @@ export const Overall = ({ onClick, money, limcBalance, usdtBalance }) => {
         {Item('Получено с майнинга', '$0')}
         {Item('Получено в сети XCH', '$0')}
         {Item('Инвестировано', '$0')}
-        {Item('Баланс LIMC', `$${limcBalance}`)}
-        {Item('Баланс USDT', `$${usdtBalance}`)}
+        {Item(`${t('balance')} LIMC`, `$${limcBalance}`)}
+        {Item(`${t('balance')} USDT`, `$${usdtBalance}`)}
       </ul>
 
       <ul className={styles.btns}>

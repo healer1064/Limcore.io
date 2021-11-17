@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import styles from './styles.module.scss'
 
 const BalanceString = (text, data) => (
@@ -9,11 +10,13 @@ const BalanceString = (text, data) => (
 )
 
 export const DetalizationUp = ({ summary, xch, forks }) => {
+  const [t] = useTranslation()
+
   return (
     <ul className={styles.details__balance}>
-      {BalanceString('Общий доход', summary)}
-      {BalanceString('XCH 24h', xch)}
-      {BalanceString('Все форки 24h', forks)}
+      {BalanceString(t('purse_income'), summary)}
+      {BalanceString(t('purse_xch'), xch)}
+      {BalanceString(t('purse_forks'), forks)}
     </ul>
   )
 }

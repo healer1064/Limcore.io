@@ -1,13 +1,38 @@
 import React, { useState } from 'react'
 import styles from './style.module.scss'
-import { broadcastsList } from '../broadcastsList'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Navigation, Thumbs, Keyboard } from 'swiper'
+import { useTranslation } from 'react-i18next'
 
 SwiperCore.use([Navigation, Thumbs, Keyboard])
 
 export const BroadcastsDesktop = () => {
+  const [t] = useTranslation()
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
+
+  const broadcastsList = [
+    {
+      number: 1,
+      src: 'https://rtsp.me/embed/iRTG98h5/',
+      title: t('streams_title_1'),
+    },
+    {
+      number: 2,
+      src: 'https://rtsp.me/embed/TrD56fbb/',
+      title: t('streams_title_1'),
+    },
+    {
+      number: 3,
+      src: 'https://rtsp.me/embed/bK2f3neH/',
+      title: t('streams_title_2'),
+    },
+    {
+      number: 4,
+      src: 'https://rtsp.me/embed/7rDYNfA5/',
+      title: t('streams_title_2'),
+    },
+  ]
+
   return (
     <div className={styles.broadcastsContainer}>
       <Swiper
@@ -26,7 +51,9 @@ export const BroadcastsDesktop = () => {
               <div className={styles.slideText}>
                 <h3>{broadcast.title}</h3>
                 &bull;
-                <p>Камера №{broadcast.number}</p>
+                <p>
+                  {t('stream_camera')} {broadcast.number}
+                </p>
               </div>
             </div>
           </SwiperSlide>
@@ -46,7 +73,9 @@ export const BroadcastsDesktop = () => {
               <div className={styles.frameToggler} />
             </div>
             <h3>{broadcast.title}</h3>
-            <p>Камера №{broadcast.number}</p>
+            <p>
+              {t('stream_camera')} {broadcast.number}
+            </p>
           </SwiperSlide>
         ))}
       </Swiper>

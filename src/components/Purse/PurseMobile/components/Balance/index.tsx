@@ -20,6 +20,7 @@ import GrayCrossIcon from '../../images/GrayCross/GrayCrossIcon'
 import { WalletPurseIcon } from './Icons/WalletPurseIcon'
 import classNames from 'classnames'
 import { getLimc, getUsdt } from './walletConnect'
+import { useTranslation } from 'react-i18next'
 
 export const Balance = () => {
   const [isBalanceVisible, setIsBalanceVisible] = useState(false)
@@ -28,6 +29,7 @@ export const Balance = () => {
     chainId: null,
   })
 
+  const [t] = useTranslation()
   const dispatch = useDispatch()
   // Если человек попал в личныый кабинет через регистрацию, то тут будет true
   const [isRegModalVisible, setIsRegModalVisible] = useState(
@@ -130,7 +132,7 @@ export const Balance = () => {
   return (
     <div className={styles.balance}>
       {/* <div className={styles.balance__header} onClick={handleOpenBalanceClick}>
-        <h3 className={styles.balance__title}>Общий баланс</h3>
+        <h3 className={styles.balance__title}>{t('commonBalance')}</h3>
         <button className={styles.balance__button}>
           <img src={balanceSvg} />
         </button>
@@ -161,15 +163,13 @@ export const Balance = () => {
               {userPurse.address.substr(0, 9)}...{userPurse.address.slice(-7)}
             </>
           ) : (
-            'Синхронизировать'
+            t('purse_sync')
           )}
         </button>
         {!isSinc ? (
-          <p className={styles.trust_subtitle}>
-            Для старта майнинга синхронизируйте Limcore Wallet с внешним кошельком
-          </p>
+          <p className={styles.trust_subtitle}>{t('purse_walletConnect')}</p>
         ) : (
-          <p className={styles.trust_subtitle}>Limcore Wallet синхронизирован с внешним кошельком</p>
+          <p className={styles.trust_subtitle}>{t('purse_walletConnectSync')}</p>
         )}
       </div>
       {/* {isSincBtnVisible ? (
@@ -205,7 +205,6 @@ export const Balance = () => {
             <ButtonBig className={styles.regModalButton} onClick={handleFirstRegModalClose}>
               Пополнить кошелек
             </ButtonBig>
-            {/* <p className={styles.regModalSubtitle}>На данный момент LIMC можно купить только с помощью USDT ERC-20</p> */}
           </div>
         </div>
       </Modal>

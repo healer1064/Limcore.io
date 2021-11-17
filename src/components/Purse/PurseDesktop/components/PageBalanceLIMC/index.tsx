@@ -5,6 +5,7 @@ import sellIcon from '@icons/sellBlue.svg'
 import tradeIcon from '@icons/changeBlue.svg'
 import { TransactionsDetails } from '@components/Purse/PurseDesktop/components/Transactions/components/TransactionsDetails'
 import { Transactions } from '../Transactions'
+import { useTranslation } from 'react-i18next'
 
 type PageBalanceLIMCPropsType = {
   limcBalance: any
@@ -19,6 +20,8 @@ export const PageBalanceLIMC: React.FC<PageBalanceLIMCPropsType> = ({
   handlePageBalanceLIMCCloseClick,
   openProfile,
 }) => {
+  const [t] = useTranslation()
+
   return (
     <div className={`${isOpen ? styles.pageBalanceLIMC : styles.pageBalanceLIMC_invisible}`}>
       <button className={styles.backButton} type='button' onClick={handlePageBalanceLIMCCloseClick}>
@@ -46,10 +49,10 @@ export const PageBalanceLIMC: React.FC<PageBalanceLIMCPropsType> = ({
         <button type='button' className={`${styles.item} ${styles.item_active}`}>
           <a className={styles.buyLink} href='https://round1.limcore.io'>
             <img className={styles.icon} src={buyIcon} alt='' />
-            Купить
+            {t('buy')}
           </a>
         </button>
-        <span className={styles.lockup}>Lock-up период 6 месяцев</span>
+        <span className={styles.lockup}>{t('lockUp')}</span>
         {/* <div className={styles.item}> */}
         {/*  <img className={styles.icon} src={sellIcon} alt='' /> */}
         {/*  Продать */}

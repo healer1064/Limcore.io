@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import classNames from 'classnames'
 import styles from '../styles.module.scss'
+import { useTranslation } from 'react-i18next'
 
 export const BroadcastItem = ({ broadcast }) => {
+  const [t] = useTranslation()
   const [fullScreen, setFullScreen] = useState(false)
 
   const fontFamily = {
@@ -25,7 +27,7 @@ export const BroadcastItem = ({ broadcast }) => {
           {broadcast.title}
         </h3>
         <p className={styles.item__number} style={fontFamily}>
-          Камера №{broadcast.number}
+          {t('stream_camera')} {broadcast.number}
         </p>
       </div>
     </>

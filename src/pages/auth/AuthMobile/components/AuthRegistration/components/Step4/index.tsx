@@ -14,8 +14,10 @@ import Styles from './styles.module.scss'
 import { InputCode } from '../../../../../../../ui-kit/InputCode'
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
 import { ButtonSmall } from '../../../../../../../ui-kit/ButtonSmall'
+import { useTranslation } from 'react-i18next'
 
 export const Step4: React.FC = () => {
+  const [t] = useTranslation()
   const history = useHistory()
   const dispatch = useAppDispatch()
   const email = useAppSelector((state) => state.authNew.email)
@@ -54,19 +56,19 @@ export const Step4: React.FC = () => {
       switch (response.error.message) {
         case 'email_already_verified':
           setValidValue(false)
-          setError('Email уже подтвержден')
+          setError(t('err_mailConfirmed'))
           break
         case 'need_get_code_again':
           setValidValue(false)
-          setError('Нужно снова получить код подтверждения')
+          setError(t('err_needCodeAgain'))
           break
         case 'code_invalid':
           setValidValue(false)
-          setError(' Код недействителен')
+          setError(t('err_codeInvalid'))
           break
         default:
           setValidValue(false)
-          setError('Что-то пошло не так..')
+          setError(t('err_smthWentWrong'))
           break
       }
     } else {
@@ -85,7 +87,7 @@ export const Step4: React.FC = () => {
   return (
     <>
       <div className={Styles.content}>
-        <h3 className={Styles.title}>Введите код</h3>
+        <h3 className={Styles.title}>{t('enterCode')}</h3>
         <div className={Styles.progress}>
           <div className={Styles.step}>
             <div className={`${Styles.number} ${Styles.number_active}`}>
@@ -113,16 +115,16 @@ export const Step4: React.FC = () => {
         </div>
         <div className={Styles.block}>
           <span className={Styles.notification}>
-            Мы отправили код на адрес {email} <ButtonSmall onClick={prevStep}>Изменить</ButtonSmall>
+            {t('weSentCodeOnEmail')} {email} <ButtonSmall onClick={prevStep}>{t('change')}</ButtonSmall>
           </span>
           <InputCode onChange={onChange} value={codeEmail} validValue={validValue} />
           <div className={Styles.wrap}>
             {counter < 1 ? (
-              <ButtonSmall onClick={resendCode}>Отправить новый код</ButtonSmall>
+              <ButtonSmall onClick={resendCode}>{t('getNewCode2')}</ButtonSmall>
             ) : (
               <>
                 <span className={Styles.time}>
-                  Получить новый код можно через {counter >= 10 ? `00:${counter}` : `00:0${counter}`}
+                  {t('getNewCode2')} {counter >= 10 ? `00:${counter}` : `00:0${counter}`}
                 </span>
                 <p className={Styles.error}>{error}</p>
               </>
@@ -132,7 +134,7 @@ export const Step4: React.FC = () => {
       </div>
       <div className={Styles.buttons}>
         <ButtonBig onClick={completeRegistration} disabled={!codeEmail}>
-          Зарегистрироваться
+          {t('signUp')}
         </ButtonBig>
       </div>
     </>

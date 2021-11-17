@@ -2,7 +2,7 @@ import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 
 i18n.use(LanguageDetector).init({
-  lng: 'ru',
+  lng: 'en',
   // we init with resources
   // \u000A - перенос строки
   resources: {
@@ -12,6 +12,61 @@ i18n.use(LanguageDetector).init({
         profile: 'Profile',
         other: 'Other',
         buyLimc: 'Buy LIMC',
+        buy: 'Buy',
+        lockUp: '6 months lock-up',
+        phone: 'Phone number',
+        next: 'Next step',
+        balance: 'Balance',
+        commonBalance: 'Common balance',
+
+        // Auth: step1
+        logIn: 'Log on',
+        cellNumber: 'Cell number',
+        getCode: 'Get a code',
+        signUp: 'Sign up',
+        needToLogToBuy: 'You should log on to buy LIMC',
+
+        // Errors
+        err_forget: 'You forgot to enter your phone number or e-mail',
+        err_mail: 'Wrong e-mail format',
+        err_phone: 'Wrong phone number format',
+        err_phoneNotConfirmed: 'Phone number is not confirmed',
+        err_mailNotConfirmed: 'E-mail is not confirmed',
+        err_limit: 'Number of login attempts exceeded (will be unlocked after an hour)',
+        err_notRegistered: 'User is not registered',
+        err_phoneInvalid: 'Phone number is invalid',
+        err_smthWentWrong: 'Something went wrong..',
+
+        // Auth: step2
+        cellCodeFromSms: 'Enter a code from SMS message',
+        weSentCode: 'We sent you a code to cell number',
+        change: 'Change',
+        getNewCode: 'Get a new code at',
+        getNewCode2: 'Get a new code',
+
+        fa_enterCode: 'Enter 2-FA code',
+        fa_enterCodeFromGoogle: 'Enter a code from Google Authenticator',
+
+        err_code4: 'The code must be 4 digits',
+        err_needCodeAgain: 'You need to get confirmation code again',
+        err_codeInvalid: 'The code is invalid',
+
+        // Reg: step1
+        logOn: 'Registration',
+
+        err_correctNumber: 'Enter correct information',
+        err_userIsRegistered: 'User is already registered',
+        err_phoneVerified: 'The phone is already verified',
+
+        // Reg: step3
+        err_wrongInfo: 'Information is incorrect',
+        err_waitOneMinute: 'Wait one minute',
+        enterEmail: 'Cell an e-mail',
+
+        // Reg: step4
+        err_mailConfirmed: 'The email is already confirmed',
+        enterCode: 'Enter your code',
+        weSentCodeOnEmail: 'We sent you a code to',
 
         nav_about: 'About Limcore',
         nav_roadmap: 'Roadmap',
@@ -126,6 +181,10 @@ i18n.use(LanguageDetector).init({
         footer_issuer: 'Issuer LIMC Round 1',
         footer_switzerland: 'Switzerland',
         footer_inRegProcess: 'Registration in progress',
+        footer_mobNavPurse: 'Purse',
+        footer_mobNavStreams: 'Streams',
+        footer_mobNavChat: 'Chat',
+        footer_mobNavProfile: 'Profile',
 
         qa_title: 'Q & A',
         qa_card1_title: 'What is the difference between farming & mining?',
@@ -174,6 +233,112 @@ i18n.use(LanguageDetector).init({
           'Blockchain Life press center and Limcore CEO Dmitry Shumaev discussed private mining, LIMC token possibilities and love for the country.',
         mm2_title: 'Limcore CEO says: investments into Limcore mining is an alternative to bank deposites.',
         mm2_subtitle: 'Limcore: all project’s advantages and possible benefits for the first investors',
+
+        purse_navMain: 'Main page',
+        purse_navStreams: 'Streams',
+        purse_myAccounts: 'My accounts',
+        purse_notSync: 'Not synchronized',
+        purse_needSync: 'Synchronize',
+        purse_walletConnect: 'To start mining synchronize Limcore wallet with Trust wallet',
+        purse_walletConnectSync: 'Limcore Wallet is synchronized with an external wallet',
+        purse_sync: 'Synchronize',
+
+        purse_mainingDetails: 'Mining detailing',
+        purse_income: 'Common income',
+        purse_xch: 'HSN 24h',
+        purse_forks: 'All forks 24h',
+        purse_mainingBefore: 'Before mining launch',
+        purse_mainingDateLast: '80 days left out of 80',
+        purse_forksAsset: 'Asset',
+        purse_forksBalance: 'Balance',
+        purse_forksPrice: 'Price',
+        purse_showAll: 'Show all',
+        purse_getBack: 'Get back',
+        purse_goFilling: 'Go to fill in form',
+        purse_fillToRestore: 'Fill out your profile to restore your account in the future',
+        purse_noTransactionsYet: 'You do not have any transactions yet.',
+        purse_accessLater: 'We will grant you an access late',
+        purse_whyWait: 'Why do you have to wait?',
+        purse_mainingStart:
+          'Mining starts 80 days after the previous Round is completed. Round may be finished before the estimated terms.',
+
+        chat_inProcess: 'The chat is under construction.',
+        chat_tg: 'Join our Telegram chat',
+
+        profile_fillIn: 'Fill in your profile',
+        profile_willGrant: 'We will grant you an access to all functions',
+        profile_subtitle:
+          'You will need to enter you First and Last names, birth date, passport data, taxpayer ID number and place of living',
+
+        profile_title1: 'Enter your First and Last names, birth date and sex',
+        profile_firstName: 'First name',
+        profile_firstNameEnter: 'Enter your First name',
+        profile_lastName: 'Last name',
+        profile_lastNameEnter: 'Enter your Last name',
+        profile_paternityName: 'Paternity',
+        profile_paternityEnter: 'Enter your Paternity',
+        profile_noPaternity: 'I don’t have a paternity',
+        profile_birth: 'Birth date',
+        profile_sex: 'Sex',
+        profile_male: 'Male',
+        profile_female: 'Female',
+        profile_continue: 'Continue',
+
+        profile_title2: 'Enter your passport data',
+        profile_pasSer: 'Series',
+        profile_pasNumber: 'Number',
+        profile_authorityCode: 'Issuing authority code: enter the code',
+        profile_issueDate: 'Issue date',
+        profile_pasIssued: 'Passport issued',
+        profile_pasAuthority: 'Enter the issue authority name',
+
+        profile_title3: 'Enter your registration address',
+        profile_city: 'City*',
+        profile_cityEnter: 'Enter the city',
+        profile_street: 'Street*',
+        profile_streetEnter: 'Enter the street',
+        profile_house: 'House*',
+        profile_building: 'Building',
+        profile_apartment: 'Apartment*',
+        profile_complete: 'Complete',
+
+        profile_phoneNumber: 'Cell number',
+        profile_addresses: 'My addresses',
+        profile_2fa: 'Two-factor authentication',
+        profile_2fa_connect: 'Connect the two-factor authentication',
+
+        profile_addressReg: 'Registration address',
+        profile_addressLetters: 'Send letters to this address',
+        profile_addressHome: 'Home address',
+        profile_add: 'Add',
+        profile_shortStreet: ' ',
+        profile_shortHouse: ' ',
+        profile_shortCity: ' ',
+
+        profile_writeAddress: 'Enter your address',
+        profile_writeHomeAddress: 'Enter your home address',
+
+        profile_2fa_add: 'Connect the two-factor authentication',
+        profile_2fa_subtitle:
+          'If you log in from a different device, we will require a code from Google Authenticator application to enter in to the password',
+        profile_connect: 'Connect',
+        profile_2fa_on: 'The two-factor authentication is turned on',
+        profile_2fa_linked: 'The app is linked with',
+        profile_2fa_download: 'Download the mobile application',
+        profile_2fa_enterCode: 'Enter the code from app',
+        profile_2fa_enterCodeInGoogle: 'Enter the code in Google Authenticator',
+        profile_2fa_enterCodeFromApp: 'Enter the code generated by the app',
+
+        profile_rusPasport: 'Russian passport',
+        profile_documents: 'Documents',
+        profile_email: 'E-mail',
+        profile_2fa_doWantToOff: 'Do you want to turn off two-factor authentication?',
+        profile_2fa_wantToOff: 'Turn off',
+        profile_2fa_cancel: 'Cancel',
+
+        streams_title_1: 'Edifice build up',
+        streams_title_2: 'Surrounding area modification',
+        stream_camera: 'Camera',
       },
     },
     ru: {
@@ -182,6 +347,61 @@ i18n.use(LanguageDetector).init({
         profile: 'Профиль',
         other: 'Прочее',
         buyLimc: 'Купить LIMC',
+        buy: 'Купить',
+        lockUp: 'Lock-up период 6 месяцев',
+        phone: 'Телефон',
+        next: 'Далее',
+        balance: 'Баланс',
+        commonBalance: 'Общий баланс',
+
+        // Auth: step1
+        logIn: 'Авторизация',
+        cellNumber: 'Введите телефон',
+        getCode: 'Получить код',
+        signUp: 'Зарегистрироваться',
+        needToLogToBuy: 'Чтобы купить LIMC, нужно авторизоваться',
+
+        // Errors
+        err_forget: 'Вы забыли ввести телефон или e-mail',
+        err_mail: 'Неверный формат e-mail',
+        err_phone: 'Некорректно введен номер',
+        err_phoneNotConfirmed: 'Телефон не подтвержден',
+        err_mailNotConfirmed: 'Email не подтвержден',
+        err_limit: 'Превышено количество попыток входа (разблокировка через час)',
+        err_notRegistered: 'Пользователь не зарегистрирован',
+        err_phoneInvalid: 'Некорректно введен номер',
+        err_smthWentWrong: 'Что-то пошло не так..',
+
+        // Auth: step2
+        cellCodeFromSms: 'Введите код из СМС',
+        weSentCode: 'Мы отправили код на номер',
+        change: 'Изменить',
+        getNewCode: 'Получить новый код можно через',
+        getNewCode2: 'Отправить новый код',
+
+        fa_enterCode: 'Введите 2-FA код',
+        fa_enterCodeFromGoogle: 'Введите код, сгенерированный приложением Google Authenticator',
+
+        err_code4: 'Код должен содержать 4 цифры',
+        err_needCodeAgain: 'Нужно снова получить код подтверждения',
+        err_codeInvalid: 'Код недействителен',
+
+        // Reg: step1
+        logOn: 'Регистрация',
+
+        err_correctNumber: 'Введите корректные данные',
+        err_userIsRegistered: 'Пользователь уже зарегистрирован',
+        err_phoneVerified: 'Телефон уже подтвержден',
+
+        // Reg: step3
+        err_wrongInfo: 'Неверные данные',
+        err_waitOneMinute: 'Не прошла минута после первого запроса',
+        enterEmail: 'Введите e-mail',
+
+        // Reg: step4
+        err_mailConfirmed: 'Email уже подтвержден',
+        enterCode: 'Введите код',
+        weSentCodeOnEmail: 'Мы отправили код на адрес',
 
         nav_about: 'Что такое Limcore?',
         nav_roadmap: 'Roadmap',
@@ -295,6 +515,10 @@ i18n.use(LanguageDetector).init({
         footer_issuer: 'Эмитент LIMC Round 1',
         footer_switzerland: 'Швейцария',
         footer_inRegProcess: 'В процессе регистрации',
+        footer_mobNavPurse: 'Кошелек',
+        footer_mobNavStreams: 'Трансляции',
+        footer_mobNavChat: 'Чат',
+        footer_mobNavProfile: 'Профиль',
 
         qa_title: 'Вопросы и ответы',
         qa_card1_title: 'Чем отличается фарминг от майнинга?',
@@ -345,6 +569,111 @@ i18n.use(LanguageDetector).init({
           'Пресс-центр Blockchain Life и CEO Limcore Дмитрий Шумаев обсудили частный майнинг, возможности токена LIMC и любовь к стране',
         mm2_title: 'CEO Limcore: инвестиции в майнинг от Limcore — альтернатива банковским депозитам',
         mm2_subtitle: 'Limcore: чем примечателен проект и какие преимущества могут получить ранние инвесторы',
+
+        purse_navMain: 'Главная',
+        purse_navStreams: 'Трансляции',
+        purse_myAccounts: 'Мои счета',
+        purse_notSync: 'Не синхронизирован',
+        purse_needSync: 'Синхронизируйтесь',
+        purse_walletConnect: 'Для старта майнинга синхронизируйте Limcore Wallet с Trust Wallet',
+        purse_walletConnectSync: 'Limcore Wallet синхронизирован с внешним кошельком',
+        purse_sync: 'Синхронизировать',
+
+        purse_mainingDetails: 'Детализация майнинга',
+        purse_income: 'Общий доход',
+        purse_xch: 'XCH 24h',
+        purse_forks: 'Все форки 24h',
+        purse_mainingBefore: 'До старта майнинга',
+        purse_mainingDateLast: 'осталось 80 дней из 80',
+        purse_forksAsset: 'Ассет',
+        purse_forksBalance: 'Баланс',
+        purse_forksPrice: 'Стоимость',
+        purse_showAll: 'Смотреть все',
+        purse_getBack: 'Вернуться назад',
+        purse_goFilling: 'Перейти к заполнению',
+        purse_fillToRestore: 'Заполните профиль, чтобы в будущем восстановить аккаунт',
+        purse_noTransactionsYet: 'У вас еще нет транзакций.',
+        purse_accessLater: 'Мы предоставим вам доступ позже.',
+        purse_whyWait: 'Почему нужно ждать?',
+        purse_mainingStart:
+          'Майнинг начинается спустя 80&nbsp;дней с&nbsp;момента завершения раунда. Раунд может закончиться раньше указанного срока',
+
+        chat_inProcess: 'Чат находится в разработке.',
+        chat_tg: 'Вступай в чат в Telegram',
+
+        profile_fillIn: 'Заполните профиль',
+        profile_willGrant: 'Для восстановления доступа в случае полной потери доступа к аккаунту',
+        profile_subtitle: 'Нужно будет указать ФИО, дату рождения, паспортные данные, ИНН и место жительства',
+
+        profile_title1: 'Enter your First and Last names, birth date and sex',
+        profile_firstName: 'Имя',
+        profile_firstNameEnter: 'Введите ваше имя',
+        profile_lastName: 'Фамилия',
+        profile_lastNameEnter: 'Введите вашу фамилию',
+        profile_paternityName: 'Отчество',
+        profile_paternityEnter: 'Введите ваше отчество',
+        profile_noPaternity: 'У меня нет отчества',
+        profile_birth: 'День рождения',
+        profile_sex: 'Пол',
+        profile_male: 'Мужской',
+        profile_female: 'Женский',
+        profile_continue: 'Продолжить',
+
+        profile_title2: 'Укажите паспортные данные',
+        profile_pasSer: 'Серия',
+        profile_pasNumber: 'Номер',
+        profile_authorityCode: 'Код подразделения',
+        profile_issueDate: 'Дата выдачи',
+        profile_pasIssued: 'Паспорт выдан',
+        profile_pasAuthority: 'Введите учреждение',
+
+        profile_title3: 'Укажите место жительства',
+        profile_city: 'Город*',
+        profile_cityEnter: 'Введите город',
+        profile_street: 'Улица*',
+        profile_streetEnter: 'Введите название улицы',
+        profile_house: 'Дом*',
+        profile_building: 'Строение',
+        profile_apartment: 'Квартира*',
+        profile_complete: 'Завершить',
+
+        profile_phoneNumber: 'Телефон',
+        profile_addresses: 'Мои адреса',
+        profile_2fa: 'Двухфакторная аутентификация',
+        profile_2fa_connect: 'Подключите двухфакторную аутентификацию',
+
+        profile_addressReg: 'Адрес регистрации',
+        profile_addressLetters: 'Письма по этому адресу',
+        profile_addressHome: 'Домашний адрес',
+        profile_add: 'Добавить',
+        profile_shortStreet: 'ул',
+        profile_shortHouse: 'дом',
+        profile_shortCity: 'г',
+
+        profile_writeAddress: 'Укажите адрес',
+        profile_writeHomeAddress: 'Введите ваш домашний адрес',
+
+        profile_2fa_add: 'Подключить двухфакторную аутентификацию',
+        profile_2fa_subtitle:
+          'При входе с незнакомого устройства, помимо пароля, мы будем запрашивать код для входа с помощью приложения Google Authenticator',
+        profile_connect: 'Подключить',
+        profile_2fa_on: 'Двухфакторная аутентификация включена',
+        profile_2fa_linked: 'Приложение привязано к номеру',
+        profile_2fa_download: 'Скачайте мобильное приложение',
+        profile_2fa_enterCode: 'Введите код из приложения',
+        profile_2fa_enterCodeInGoogle: 'Введите код в Google Authenticator',
+        profile_2fa_enterCodeFromApp: 'Введите код, сгенерированный приложением',
+
+        profile_rusPasport: 'Паспорт РФ',
+        profile_documents: 'Документы',
+        profile_email: 'E-mail',
+        profile_2fa_doWantToOff: 'Выключить двухфакторную аутентификацию?',
+        profile_2fa_wantToOff: 'Выключить',
+        profile_2fa_cancel: 'Отмена',
+
+        streams_title_1: 'Ремонт здания',
+        streams_title_2: 'Ремонт прилегающей территории',
+        stream_camera: 'Камера',
       },
     },
   },

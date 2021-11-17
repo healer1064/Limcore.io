@@ -22,6 +22,11 @@ export const updateProfileUser: any = createAsyncThunk('user/updateProfileUser',
   return response.data
 })
 
+export const updateAvatarUser: any = createAsyncThunk('user/updateAvatarUser', async (data: any) => {
+  const response = await api.sendFile('users/profile/', data, 'PATCH')
+  return response.data
+})
+
 export const get2FAUrl: any = createAsyncThunk('user/get2FAUrl', async () => {
   const response = await api.get('users/totp/create/')
   return response.data
@@ -32,12 +37,18 @@ export const confirm2FA: any = createAsyncThunk('user/confirm2FA', async (data: 
   return response.data
 })
 
+export const cancel2FA: any = createAsyncThunk('user/cancel2FA', async () => {
+  const response = await api.get(`users/totp/remove/`)
+  return response.data
+})
+
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
     userId: null,
     dealerId: null,
     userData: null,
+    error: false,
     email: null,
     middleName: false,
     data2FA: {
@@ -90,17 +101,30 @@ export const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(cancel2FA.fulfilled, (state, { payload }) => {
+      console.log('cancel2FA', payload)
+    })
+    builder.addCase(cancel2FA.rejected, (state, { payload }) => {
+      console.log('cancel2FA', payload)
+    })
+    builder.addCase(updateAvatarUser.fulfilled, (state, { payload }) => {
+      console.log('updateAvatarUser', payload)
+    })
+    builder.addCase(updateAvatarUser.rejected, (state, { payload }) => {
+      console.log('updateAvatarUser', payload)
+    })
     builder.addCase(getUser.fulfilled, (state, { payload }) => {
-      console.log('getUser', payload)
       state.userData = payload as any // TODO - убрать any
     })
     builder.addCase(getUser.rejected, (state, { payload }) => {
       console.log('getUser', payload)
     })
     builder.addCase(updateUser.fulfilled, (state, { payload }) => {
+      state.error = false
       console.log('updateUser', payload)
     })
     builder.addCase(updateUser.rejected, (state, { payload }) => {
+      state.error = true
       console.log('updateUser', payload)
     })
     builder.addCase(updateProfileUser.fulfilled, (state, { payload }) => {

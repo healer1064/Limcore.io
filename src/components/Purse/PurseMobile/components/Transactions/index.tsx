@@ -6,6 +6,7 @@ import { balanceLimc, balanceUsdt, s7 } from '../../images/index'
 import { Modal } from '../Modal'
 import { TransactionsDetails } from './components/TransactionsDetails/index'
 import BlueArrow from '../../images/BlueArrow/BlueArrow'
+import { useTranslation } from 'react-i18next'
 
 interface ITransactionsProps {
   onProfileClick: () => void
@@ -14,6 +15,7 @@ interface ITransactionsProps {
 }
 
 export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTransactions }: ITransactionsProps) => {
+  const [t] = useTranslation()
   const [isTransactionsVisible, setIsTransactionsVisible] = useState(false)
   const userData = useAppSelector((state) => state.user.userData)
   // Временные данные для прокидки в транзакции, когда будет ясен объект с бэка можно будет все в порядок привести
@@ -53,12 +55,12 @@ export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTra
       {userData?.profile === null && (
         <>
           <p className={styles.transactions__subtitle}>
-            У вас еще нет транзакций. <br />
-            Заполните профиль, чтобы в будущем восстановить аккаунт.
+            {t('purse_noTransactionsYet')} <br />
+            {t('purse_fillToRestore')}
           </p>
           <div className={styles.transactions__cont}>
             <button type='button' className={styles.transactions__profileButton} onClick={onProfileClick}>
-              Перейти к заполнению
+              {t('purse_goFilling')}
             </button>
           </div>
         </>
@@ -69,11 +71,11 @@ export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTra
       ) : (
         <>
           <p className={styles.transactions__subtitle}>
-            У вас еще нет транзакций. <br />
+            {t('purse_noTransactionsYet')} <br />
             Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
           </p>
           <button type='button' className={styles.transactions__profileButton} onClick={onProfileClick}>
-            Перейти к заполнению
+            {t('purse_goFilling')}
           </button>
         </>
       )} */}

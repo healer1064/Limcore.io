@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link } from 'react-scroll'
 import styles from './styles.module.scss'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { buyLimc, getWalletBalance } from '@components/Wallet/redux/walletSlice'
 import buyIcon from '@icons/buy.svg'
 import sellIcon from '@icons/sellBlue.svg'
 import tradeIcon from '@icons/changeBlue.svg'
@@ -33,6 +32,7 @@ import { useHistory } from 'react-router'
 import { UntilMiningStart } from './components/UntilMiningStart/UntilMiningStart'
 import { LogoutIcon } from '@icons/LogoutIcon'
 import { useTranslation } from 'react-i18next'
+import { LanguagePopup } from '@components/LanguagePopup'
 
 export const PurseDesktop = () => {
   const [t] = useTranslation()
@@ -94,31 +94,6 @@ export const PurseDesktop = () => {
     console.log('Показать больше')
   }
 
-  const handleBuyLIMK = async () => {
-    setIsLoading(true)
-    const data = {
-      limc_amount: value,
-      pricing_slug: prices.slug,
-    }
-
-    const request = await dispatch(buyLimc(data))
-    if (request.error?.message?.includes(400)) {
-      setIsErrorVisible(true)
-
-      // setTimeout(() => {
-      //   setIsErrorVisible(false)
-      // }, 2000)
-    } else {
-      setIsSuccessVisible(true)
-
-      setTimeout(() => {
-        setIsSuccessVisible(false)
-      }, 2000)
-    }
-    setIsLoading(false)
-    dispatch(getWalletBalance())
-  }
-
   const handleNeedToPayClick = () => {
     setIsUsdtInfoVisible(true)
     setIsErrorVisible(false)
@@ -161,22 +136,23 @@ export const PurseDesktop = () => {
               to='main'
               onClick={() => setWindow('main')}
             >
-              Главная
+              {t('purse_navMain')}
             </Link>
             <Link
               className={classnames([styles.nav__link, window === 'broadcasts' && styles.nav__link_active])}
               to='broadcasts'
               onClick={() => setWindow('broadcasts')}
             >
-              Трансляции
+              {t('purse_navStreams')}
             </Link>
+            <LanguagePopup />
             {/* <Link
-      className={classnames([styles.nav__link, isChatOpen && styles.nav__link_active])}
-      to='chat'
-      onClick={() => setIsChatOpen(true)}
-    >
-      Чат
-    </Link> */}
+              className={classnames([styles.nav__link, isChatOpen && styles.nav__link_active])}
+              to='chat'
+              onClick={() => setIsChatOpen(true)}
+            >
+              Чат
+            </Link> */}
           </nav>
           <div className={styles.profileGroup} onClick={handleProfileOpen}>
             <img className={styles.profileIcon} src={profile} />
@@ -262,7 +238,7 @@ export const PurseDesktop = () => {
                     : styles.mining
                 }`}
               >
-                <h3 className={styles.detailsTitle}>Детализация майнинга</h3>
+                <h3 className={styles.detailsTitle}>{t('purse_mainingDetails')}</h3>
                 <div className={styles.miningDetails}>
                   <div className={styles.miningDetailsWrapper}>
                     <Details />

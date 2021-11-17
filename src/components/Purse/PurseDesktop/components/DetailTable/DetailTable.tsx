@@ -29,6 +29,7 @@ import covidIcon from '@icons/covidIcon.png'
 import senoIcon from '@icons/senoIcon.png'
 import chaingreenIcon from '@icons/chaingreen.png'
 import goji from '@icons/gojiIcon.png'
+import { useTranslation } from 'react-i18next'
 
 const mock = [
   {
@@ -269,6 +270,7 @@ const mock = [
 ]
 
 export const DetailTable = () => {
+  const [t] = useTranslation()
   const [displayedItems, setDisplayedItems] = useState([])
 
   const onClickMore = () => setDisplayedItems(mock)
@@ -281,9 +283,9 @@ export const DetailTable = () => {
     <>
       <table className={styles.table}>
         <tr className={styles.tableRow}>
-          <th className={classNames(styles.tableHeader, styles.tableHeader_asset)}>Ассет</th>
-          <th className={classNames(styles.tableHeader, styles.tableHeader_balance)}>Баланс</th>
-          <th className={classNames(styles.tableHeader, styles.tableHeader_price)}>Стоимость</th>
+          <th className={classNames(styles.tableHeader, styles.tableHeader_asset)}>{t('purse_forksAsset')}</th>
+          <th className={classNames(styles.tableHeader, styles.tableHeader_balance)}>{t('purse_forksBalance')}</th>
+          <th className={classNames(styles.tableHeader, styles.tableHeader_price)}>{t('purse_forksPrice')}</th>
         </tr>
         {displayedItems.map((item) => (
           <tr className={styles.tableRow} key={item.id}>
@@ -304,7 +306,7 @@ export const DetailTable = () => {
       </table>
       {displayedItems.length <= 3 && (
         <button className={styles.tableBtn} onClick={onClickMore}>
-          Смотреть все
+          {t('purse_showAll')}
         </button>
       )}
     </>
