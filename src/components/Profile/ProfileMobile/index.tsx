@@ -14,8 +14,10 @@ import { EditName } from './components/EditName'
 import { EditLocation } from './components/EditLocation'
 import { AddAuth } from './components/AddAuth'
 import { ChangePhone } from './components/AddAuth/components/ChangePhone'
+import { useTranslation } from 'react-i18next'
 
 export const ProfileMobile: React.FC = () => {
+  const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const userData = useAppSelector((state) => state.user.userData)
   const user = useAppSelector((state) => state.user.data)
@@ -52,12 +54,12 @@ export const ProfileMobile: React.FC = () => {
         {viewContent ? (
           <>
             {viewContent === 'filling' && (
-              <Container title='Заполните профиль'>
+              <Container title={t('profile_fillIn')}>
                 <ProfileFilling />
               </Container>
             )}
             {viewContent === 'editPhone' && (
-              <Container title='Телефон'>
+              <Container title={t('profile_phoneNumber')}>
                 <EditPhone />
               </Container>
             )}
@@ -72,7 +74,7 @@ export const ProfileMobile: React.FC = () => {
               </Container>
             )}
             {viewContent === 'editLocation' && (
-              <Container title='Мои адреса'>
+              <Container title={t('profile_addresses')}>
                 <EditLocation />
               </Container>
             )}

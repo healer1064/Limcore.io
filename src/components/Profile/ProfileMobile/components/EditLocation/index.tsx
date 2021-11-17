@@ -9,8 +9,10 @@ import { InputText } from '../../../../../ui-kit/InputText'
 import { InputRadio } from '../../../../../ui-kit/InputRadio'
 import { ButtonSmall } from '../../../../../ui-kit/ButtonSmall'
 import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
+import { useTranslation } from 'react-i18next'
 
 export const EditLocation: React.FC = () => {
+  const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const step = useAppSelector((state) => state.cabinet.step)
   const userData = useAppSelector((state) => state.user.userData)
@@ -57,33 +59,34 @@ export const EditLocation: React.FC = () => {
         <>
           <div className={Styles.block}>
             <div className={Styles.wrapper}>
-              <span className={Styles.title}>Адрес регистрации</span>
+              <span className={Styles.title}>{t('profile_addressReg')}</span>
             </div>
             <span className={Styles.subtitle}>
-              г {userData.profile?.city}, ул {userData.profile?.street}, дом {userData.profile?.house_number}
+              {t('profile_shortCity')} {userData.profile?.city}, {t('profile_shortStreet')} {userData.profile?.street},{' '}
+              {t('profile_shortHouse')} {userData.profile?.house_number}
             </span>
             <Label className={Styles.label}>
               <InputRadio
                 onChange={onChange}
                 value='registration'
                 checked={radioValue === 'registration'}
-                titleRadio='Письма по этому адресу'
+                titleRadio={t('profile_addressLetters')}
               />
             </Label>
           </div>
           <div className={Styles.block}>
             <div className={Styles.wrapper}>
-              <span className={Styles.title}>Домашний адрес</span>
+              <span className={Styles.title}>{t('profile_addressHome')}</span>
               {userData.profile?.home_city ? (
-                <ButtonSmall onClick={() => nextStep(1)}>Изменить</ButtonSmall>
+                <ButtonSmall onClick={() => nextStep(1)}>{t('change')}</ButtonSmall>
               ) : (
-                <ButtonSmall onClick={() => nextStep(1)}>Добавить</ButtonSmall>
+                <ButtonSmall onClick={() => nextStep(1)}>{t('profile_add')}</ButtonSmall>
               )}
             </div>
             {userData.profile?.home_city && (
               <span className={Styles.subtitle}>
-                г {userData.profile?.home_city}, ул {userData.profile?.home_street}, дом{' '}
-                {userData.profile?.home_house_number}
+                {t('profile_shortCity')} {userData.profile?.home_city}, {t('profile_shortStreet')}{' '}
+                {userData.profile?.home_street}, {t('profile_shortHouse')} {userData.profile?.home_house_number}
               </span>
             )}
             <Label className={Styles.label}>
@@ -91,7 +94,7 @@ export const EditLocation: React.FC = () => {
                 onChange={onChange}
                 value='home'
                 checked={radioValue === 'home'}
-                titleRadio='Письма по этому адресу'
+                titleRadio={t('profile_addressLetters')}
               />
             </Label>
           </div>
@@ -99,30 +102,30 @@ export const EditLocation: React.FC = () => {
       )}
       {step === 1 && (
         <>
-          <span className={Styles.caption}>Укажите адрес</span>
-          <span className={Styles.subcaption}>Введите ваш домашний адрес</span>
+          <span className={Styles.caption}>{t('profile_writeAddress')}</span>
+          <span className={Styles.subcaption}>{t('profile_writeHomeAddress')}</span>
           <form className={Styles.form}>
             <div className={Styles.container}>
-              <Label className={Styles.edit} titleText='Город*'>
+              <Label className={Styles.edit} titleText={t('profile_city')}>
                 <InputText
                   onChange={onChangeValue}
                   name='home_city'
                   value={data.home_city}
-                  placeholder='Введите город'
+                  placeholder={t('profile_cityEnter')}
                   maxLength={maxLength}
                 />
               </Label>
-              <Label className={Styles.edit} titleText='Улица*'>
+              <Label className={Styles.edit} titleText={t('profile_street')}>
                 <InputText
                   onChange={onChangeValue}
                   name='home_street'
                   value={data.home_street}
-                  placeholder='Введите название улицы'
+                  placeholder={t('profile_streetEnter')}
                   maxLength={maxLength}
                 />
               </Label>
               <div className={Styles.inputs}>
-                <Label titleText='Дом*'>
+                <Label titleText={t('profile_house')}>
                   <InputText
                     className={Styles.input}
                     onChange={onChangeValue}
@@ -132,7 +135,7 @@ export const EditLocation: React.FC = () => {
                     maxLength={maxLength}
                   />
                 </Label>
-                <Label titleText='Корпус'>
+                <Label titleText={t('profile_building')}>
                   <InputText
                     className={Styles.input}
                     onChange={onChangeValue}
@@ -142,7 +145,7 @@ export const EditLocation: React.FC = () => {
                     maxLength={maxLength}
                   />
                 </Label>
-                <Label titleText='Квартира'>
+                <Label titleText={t('profile_apartment')}>
                   <InputText
                     className={Styles.input}
                     onChange={onChangeValue}
@@ -154,7 +157,7 @@ export const EditLocation: React.FC = () => {
                 </Label>
               </div>
             </div>
-            <ButtonBig onClick={addHomeAddress}>Добавить</ButtonBig>
+            <ButtonBig onClick={addHomeAddress}>{t('profile_add')}</ButtonBig>
           </form>
         </>
       )}

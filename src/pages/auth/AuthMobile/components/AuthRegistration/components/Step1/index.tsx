@@ -9,8 +9,10 @@ import { Label } from '../../../../../../../ui-kit/Label'
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
 import { ButtonSecond } from '../../../../../../../ui-kit/ButtonSecond'
 import PhoneInput from 'react-phone-input-2'
+import { useTranslation } from 'react-i18next'
 
 export const Step1: React.FC = () => {
+  const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const phone = useAppSelector((state) => state.authNew.phone)
   const [error, setError] = useState('')
@@ -21,7 +23,7 @@ export const Step1: React.FC = () => {
 
   const nextStep = async () => {
     if (phone.length < 10) {
-      return setError('Введите корректные данные')
+      return setError(t('err_correctNumber'))
     }
 
     const response = await dispatch(registerUserPhone({ phone: `+${phone}` })) // придет unique_identifier
@@ -29,13 +31,13 @@ export const Step1: React.FC = () => {
     if (response.error) {
       switch (response.error.message) {
         case 'user_already_registered':
-          setError('Пользователь уже зарегистрирован')
+          setError(t('err_userIsRegistered'))
           break
         case 'phone_using_in_another_account':
-          setError('Пользователь уже зарегистрирован')
+          setError(t('err_userIsRegistered'))
           break
         default:
-          setError('Что-то пошло не так..')
+          setError(t('err_smthWentWrong'))
           break
       }
     } else {
@@ -48,7 +50,7 @@ export const Step1: React.FC = () => {
   return (
     <>
       <div className={Styles.content}>
-        <h3 className={Styles.title}>Регистрация</h3>
+        <h3 className={Styles.title}>{t('logOn')}</h3>
         <div className={Styles.progress}>
           <div className={Styles.step}>
             <div className={`${Styles.number} ${Styles.number_active}`}>
@@ -75,7 +77,7 @@ export const Step1: React.FC = () => {
           </div>
         </div>
         <div className={Styles.block}>
-          <Label titleText='Телефон' className={Styles.label}>
+          <Label titleText={t('phone')} className={Styles.label}>
             <PhoneInput
               country='ru'
               preferredCountries={['ua', 'ru', 'by', 'kz', 'uz', 'tj']}
@@ -88,9 +90,9 @@ export const Step1: React.FC = () => {
       </div>
       <div className={Styles.buttons}>
         <ButtonBig onClick={nextStep} disabled={!phone}>
-          Получить код
+          {t('getCode')}
         </ButtonBig>
-        <ButtonSecond onClick={() => dispatch(setProcessType('authorization'))}>Войти</ButtonSecond>
+        <ButtonSecond onClick={() => dispatch(setProcessType('authorization'))}>{t('login')}</ButtonSecond>
       </div>
     </>
   )

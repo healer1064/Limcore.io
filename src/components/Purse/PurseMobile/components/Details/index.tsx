@@ -24,8 +24,10 @@ import senoIcon from '@icons/senoIcon.png'
 import chaingreenIcon from '@icons/chaingreen.png'
 import goji from '@icons/gojiIcon.png'
 import useWindowSize from '@helpers/useWindowSizeHook'
+import { useTranslation } from 'react-i18next'
 
 export const Details = () => {
+  const [t] = useTranslation()
   const { width } = useWindowSize()
   const desktop = width >= 769
   const [isModalVisible, setIsModalVisible] = useState(false)
@@ -65,7 +67,7 @@ export const Details = () => {
   return (
     <div className={styles.details}>
       <header className={styles.details__header}>
-        <h3 className={styles.details__title}>Детализация майнинга</h3>
+        <h3 className={styles.details__title}>{t('purse_mainingDetails')}</h3>
         <DetalizationUp summary='$0' xch='$0' forks='$0' />
 
         <button type='button' className={styles.details__button} onClick={handleDetailsOpenClick}>
@@ -74,14 +76,14 @@ export const Details = () => {
 
         <Modal active={isModalVisible} setActive={handleDetailsCloseClick}>
           <ul className={styles.detailsModal}>
-            <ModalHeader title='Детализация майнинга' onClick={handleDetailsCloseClick} />
+            <ModalHeader title={t('purse_mainingDetails')} onClick={handleDetailsCloseClick} />
             <DetalizationUp summary='$0' xch='$0' forks='$0' />
             {/* <p className={styles.transactions__subtitle}>
-              У вас еще нет транзакций. <br />
+              {t('purse_noTransactionsYet')} <br />
               Мы предоставим вам доступ позже
             </p> */}
             <button type='button' className={styles.transactions__profileButton} onClick={handleDetailsCloseClick}>
-              Вернуться назад
+              {t('purse_getBack')}
             </button>
             {/* {tempData.map((item) => (
               <DetalizationDownItem

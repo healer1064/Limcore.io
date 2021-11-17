@@ -5,9 +5,11 @@ import { balanceLimc, balanceUsdt, creditCard } from '../../images'
 import { MenuItem } from './components/MenuItem/index'
 import { useAppSelector } from '@app/redux/hooks'
 import classNames from 'classnames'
+import { useTranslation } from 'react-i18next'
 
 export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtCloseClick, isUsdtInfoVisible }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [t] = useTranslation()
   const [isLimcInfoVisible, setIsLimcInfoVisible] = useState(false)
   // const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
   const [isCardInfoVisible, setIsCardInfoVisible] = useState(false)
@@ -53,8 +55,8 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
       <MenuItem
         onClick={openPopup}
         image={balanceLimc}
-        title='Баланс LIMC'
-        balance={isSinc ? `${limcBalance} LIMC` : 'Синхронизирутесь'}
+        title={`${t('balance')} LIMC`}
+        balance={isSinc ? `${limcBalance} LIMC` : t('purse_needSync')}
         // setActive={handleBalanceLimcOpenClick}
         // setNotActive={handleBalanceLimcCloseClick}
         active={isLimcInfoVisible}
@@ -62,8 +64,8 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
       />
       <MenuItem
         image={balanceUsdt}
-        title='Баланс USDT'
-        balance={isSinc ? `${usdtBalance} USDT` : 'Синхронизирутесь'}
+        title={`${t('balance')} USDT`}
+        balance={isSinc ? `${usdtBalance} USDT` : t('purse_needSync')}
         setActive={handleBalanceUsdtOpenClick}
         setNotActive={handleBalanceUsdtCloseClick}
         active={isUsdtInfoVisible}
