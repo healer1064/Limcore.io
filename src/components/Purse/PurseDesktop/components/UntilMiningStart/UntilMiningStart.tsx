@@ -1,3 +1,4 @@
+import { useAppSelector } from '@app/redux/hooks'
 import { CloseIcon } from '@icons/CloseIcon'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -6,6 +7,7 @@ import styles from './styles.module.scss'
 export const UntilMiningStart = () => {
   const [t] = useTranslation()
   const [popup, setPopup] = useState(true)
+  const daysPassed = useAppSelector((state) => state.wallet.countdown_days)
 
   const visualizationStyle = (num) => {
     const percent = num * 100
@@ -17,7 +19,9 @@ export const UntilMiningStart = () => {
       <h3 className={styles.untilMiningTitle}>{t('purse_mainingBefore')}</h3>
       <span className={styles.visualization} style={visualizationStyle(0 / 80)} />
       <div className={styles.descWrapper}>
-        <p className={styles.untilMiningDesc}>{t('purse_mainingDateLast')}</p>
+        <p className={styles.untilMiningDesc}>
+          {daysPassed} {t('purse_mainingDateLast')}
+        </p>
         <span className={styles.visualizationNumber}>0 TB</span>
       </div>
       {popup && (

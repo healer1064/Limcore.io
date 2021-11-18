@@ -36,8 +36,8 @@ const AccordeonIcon = () => {
 
 export const Statistics = ({ onClick }: IStatisticsProps) => {
   const [t] = useTranslation()
-  // const balanceLimc = useAppSelector((state) => state.wallet.sum_limc_balance)
-  const balanceLimc = useAppSelector((state) => state.authNew.walletConnectLimc)
+  const balanceLimc = useAppSelector((state) => state.wallet.limc_balance)
+  const daysPassed = useAppSelector((state) => state.wallet.countdown_days)
 
   const [isTooltipVisible, setIsTooltipVisible] = useState(false)
 
@@ -70,7 +70,9 @@ export const Statistics = ({ onClick }: IStatisticsProps) => {
         <span className={styles.progressbar__track} />
       </div>
       <div className={styles.details}>
-        <span className={styles.details__days}>{t('purse_mainingDateLast')}</span>
+        <span className={styles.details__days}>
+          {daysPassed} {t('purse_mainingDateLast')}
+        </span>
         <span className={styles.details__memory}>0 TB / {Number(balanceLimc).toFixed(2)} TB</span>
       </div>
 

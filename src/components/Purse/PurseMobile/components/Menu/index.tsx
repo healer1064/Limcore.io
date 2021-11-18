@@ -14,9 +14,8 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
   // const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
   const [isCardInfoVisible, setIsCardInfoVisible] = useState(false)
 
-  // const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
   // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
-  const limcBalance = useAppSelector((state) => state.authNew.walletConnectLimc)
+  const limcBalance = useAppSelector((state) => state.wallet.limc_balance)
   const usdtBalance = useAppSelector((state) => state.authNew.walletConnectUsdt)
   const isSinc = useAppSelector((state) => state.authNew.isSincWithWallet)
 

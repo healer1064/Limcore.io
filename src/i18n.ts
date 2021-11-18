@@ -75,6 +75,7 @@ i18n.use(LanguageDetector).init({
 
         landing_title: 'Cloud mining of all the forks',
         landing_subtitle: 'The fastest and the most profitable way of cryptocurrency investing',
+        landing_video: 'https://www.youtube.com/embed/5ZuYH1pEQhM',
 
         firstRound_round1: 'Round 1',
         firstRound_limit: 'Limit',
@@ -248,7 +249,7 @@ i18n.use(LanguageDetector).init({
         purse_xch: 'HSN 24h',
         purse_forks: 'All forks 24h',
         purse_mainingBefore: 'Before mining launch',
-        purse_mainingDateLast: '80 days left out of 80',
+        purse_mainingDateLast: 'days left out of 80',
         purse_forksAsset: 'Asset',
         purse_forksBalance: 'Balance',
         purse_forksPrice: 'Price',
@@ -410,6 +411,7 @@ i18n.use(LanguageDetector).init({
 
         landing_title: 'Облачный майнинг всех форков',
         landing_subtitle: 'Самый быстрый и выгодный способ инвестирования в криптовалюту',
+        landing_video: 'https://www.youtube.com/embed/aK9obYQi-FI',
 
         firstRound_round1: 'Раунд №1',
         firstRound_limit: 'Лимит',
@@ -584,7 +586,7 @@ i18n.use(LanguageDetector).init({
         purse_xch: 'XCH 24h',
         purse_forks: 'Все форки 24h',
         purse_mainingBefore: 'До старта майнинга',
-        purse_mainingDateLast: 'осталось 80 дней из 80',
+        purse_mainingDateLast: 'дней из 80',
         purse_forksAsset: 'Ассет',
         purse_forksBalance: 'Баланс',
         purse_forksPrice: 'Стоимость',
