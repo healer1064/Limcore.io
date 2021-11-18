@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ModalHeader } from '@components/Modal/ModalHeader'
+import { ModalHeader } from '../../../ModalHeader'
 import { UserHasTransactions } from '../UserHasTransactions'
 import {
   s7,

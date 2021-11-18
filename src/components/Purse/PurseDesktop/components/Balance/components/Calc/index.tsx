@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import classNames from 'classnames'
 import styles from './styles.module.scss'
-import { ModalHeader } from '@components/Modal/ModalHeader'
+import { ModalHeader } from '../../../ModalHeader'
 import { InputRadio } from '../../../../../../../ui-kit/InputRadio'
 import { Label } from '../../../../../../../ui-kit/Label'
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'

@@ -1,4 +1,4 @@
-@import '../../Purse/vars&mixins.scss';
+@import '../../../vars&mixins.scss';
 
 .header {
   position: relative;
@@ -14,14 +14,14 @@
 
   &Button {
     position: absolute;
-    display: flex;
+    top: 50%;
     left: 30px;
-    top: 0;
+
     padding: 0;
     border: none;
     background-color: transparent;
     outline: none;
-    transform: rotate(180deg);
+    transform: translateY(-50%) rotate(180deg);
 
     &Arrow {
       transform: rotate(180deg);

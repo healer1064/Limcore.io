@@ -1,7 +1,6 @@
 import React from 'react'
 import Styles from './styles.module.scss'
-// import { Modal } from '@components/Purse/PurseMobile/components/Modal'
-import { Modal } from '@components/Modal/index'
+import { Modal } from '@components/Purse/PurseMobile/components/Modal'
 import { BlackCross } from '@icons/BlackCross'
 import { AuthMobile } from '../../../../pages/auth/AuthMobile'
 
@@ -17,7 +16,6 @@ const ModalAuth = ({ isVisible, setModalClose }: IModalAuthProps) => {
       setActive={setModalClose}
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.4)' }}
       classname={Styles.modalAuth}
-      isAuthModal
     >
       <div className={Styles.modalAuthInner}>
         <button type='button' className={Styles.close} onClick={setModalClose}>

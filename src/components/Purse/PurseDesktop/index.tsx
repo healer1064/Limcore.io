@@ -23,8 +23,8 @@ import { TransactionsDetails } from '@components/Purse/PurseDesktop/components/T
 import { PageBalanceLIMC } from '@components/Purse/PurseDesktop/components/PageBalanceLIMC'
 import { PageBalanceUSDT } from '@components/Purse/PurseDesktop/components/PageBalanceUSDT'
 import { PageCardBalance } from '@components/Purse/PurseDesktop/components/PageCardBalance'
-import { Modal } from '@components/Modal/index'
-import { ModalHeader } from '@components/Modal/ModalHeader'
+import { Modal } from '../PurseDesktop/components/Modal'
+import { ModalHeader } from '../PurseDesktop/components/ModalHeader'
 import { RoadMap } from './components/RoadMap'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { setIsAuth } from '../../../pages/auth/redux/authSlice'
@@ -111,6 +111,7 @@ export const PurseDesktop = () => {
   }
 
   const handleUntilMiningModalOpen = () => {
+    console.log('qq')
     setUntilMiningModalOpen(true)
   }
 
@@ -158,7 +159,7 @@ export const PurseDesktop = () => {
               <LogoutIcon />
             </button>
           </div>
-          <Modal active={isProfileOpen} setActive={handleProfileClose} crossFlag isDesktop>
+          <Modal active={isProfileOpen} setActive={handleProfileClose} crossFlag>
             <ModalHeader title={currentName} onClick={handleProfileClose} />
             <ProfileMobile />
           </Modal>
@@ -243,7 +244,7 @@ export const PurseDesktop = () => {
                   </div>
                   <DetailTable />
                 </div>
-                <Modal active={UntilMiningModalOpen} setActive={handleUntilMiningModalClose} crossFlag isDesktop>
+                <Modal active={UntilMiningModalOpen} setActive={handleUntilMiningModalClose} crossFlag>
                   <UntilMiningStart />
                 </Modal>
               </div>
