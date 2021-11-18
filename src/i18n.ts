@@ -2,7 +2,7 @@ import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 
 i18n.use(LanguageDetector).init({
-  lng: 'en',
+  lng: 'cn',
   // we init with resources
   // \u000A - перенос строки
   resources: {
@@ -678,9 +678,15 @@ i18n.use(LanguageDetector).init({
         stream_camera: 'Камера',
       },
     },
+    cn: {
+      translations: {
+        landing_title: '所有Chia分叉的云端挖矿',
+        landing_subtitle: '加密货币投资的最快而有利的方式',
+      },
+    },
   },
 
-  fallbackLng: 'ru',
+  fallbackLng: 'en',
   debug: true,
 
   // have a common namespace used around the full app

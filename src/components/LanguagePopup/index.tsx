@@ -4,6 +4,7 @@ import { VectorIcon } from '@icons/VectorIcon'
 import classNames from 'classnames'
 import RUS from '../../assets/icons/flag-ru.svg'
 import ENG from '../../assets/icons/flag-en.svg'
+import CHN from '../../assets/icons/flag-cn.svg'
 import Styles from './styles.module.scss'
 import useWindowSize from '@helpers/useWindowSizeHook'
 
@@ -31,8 +32,9 @@ export const LanguagePopup = ({ position, footerStyles }: ILanguagePopupProps) =
   const footerLangStyles = footerStyles ? { height: '100%', marginBottom: '25px' } : {}
   const footerBlockStyles = footerStyles && mobile ? { marginBottom: '20px' } : {}
 
-  const languages = ['ru', 'en']
+  const languages = ['ru', 'en', 'cn']
   const changeLanguage = (lang) => {
+    console.log(lang)
     i18n.changeLanguage(lang)
     setShowPopapLanguage(false)
   }
@@ -44,8 +46,25 @@ export const LanguagePopup = ({ position, footerStyles }: ILanguagePopupProps) =
         onClick={() => setShowPopapLanguage(!showPopapLanguage)}
         style={footerBlockStyles}
       >
-        <img src={i18n.language === 'ru' ? RUS : ENG} alt='Флаг' className={Styles.img} />
-        <span className={Styles.langTitle}>{i18n.language === 'ru' ? 'RU' : 'EN'}</span>
+        {i18n.language === 'ru' && (
+          <>
+            <img src={RUS} alt='Флаг' className={Styles.img} />
+            <span className={Styles.langTitle}>RU</span>
+          </>
+        )}
+        {i18n.language === 'en' && (
+          <>
+            <img src={ENG} alt='Флаг' className={Styles.img} />
+            <span className={Styles.langTitle}>EN</span>
+          </>
+        )}
+        {i18n.language === 'cn' && (
+          <>
+            <img src={CHN} alt='Флаг' className={Styles.img} />
+            <span className={Styles.langTitle}>CN</span>
+          </>
+        )}
+
         <span className={classNames(showPopapLanguage && Styles.arrowActive, Styles.arrow)}>
           <VectorIcon />
         </span>
@@ -54,33 +73,53 @@ export const LanguagePopup = ({ position, footerStyles }: ILanguagePopupProps) =
         className={classNames(Styles.el__langoptions, showPopapLanguage && Styles.active)}
         style={elLangOptionsStyles}
       >
-        {languages.map((lang) => (
-          <div
-            key={lang}
-            className={`${Styles.langoption} ${lang === 'ru' ? Styles.langoption_ru : Styles.langoption_en}`}
-          >
-            <input
-              className={Styles.langoption__checked}
-              type='radio'
-              id={lang}
-              name='languages'
-              value={lang}
-              checked={i18n.language === lang}
-              onChange={() => changeLanguage(lang)}
-              readOnly
-            />
-            <div className={Styles.lang_box}>
-              <img src={lang === 'ru' ? RUS : ENG} alt='Флаг' className={Styles.lang__img} />
-              <label
-                className={`${Styles.langoption__text} ${i18n.language === lang && Styles.langoption__text_checked}`}
-                htmlFor={lang}
-                onClick={() => setShowPopapLanguage(false)}
-              >
-                {lang === 'ru' ? 'RU' : 'EN'}
-              </label>
+        {languages.map((lang) => {
+          let divClass = null
+          let text = null
+
+          switch (lang) {
+            case 'ru':
+              divClass = `${Styles.langoption} ${Styles.langoption_ru}`
+              text = 'RU'
+              break
+            case 'en':
+              divClass = `${Styles.langoption} ${Styles.langoption_ru}`
+              text = 'EN'
+              break
+            case 'cn':
+              divClass = `${Styles.langoption} ${Styles.langoption_cn}`
+              text = 'CN'
+              break
+          }
+
+          return (
+            <div key={lang} className={divClass}>
+              <input
+                className={Styles.langoption__checked}
+                type='radio'
+                id={lang}
+                name='languages'
+                value={lang}
+                checked={i18n.language === lang}
+                onChange={() => changeLanguage(lang)}
+                readOnly
+              />
+              <div className={Styles.lang_box}>
+                {lang === 'ru' && <img src={RUS} alt='Флаг' className={Styles.lang__img} />}
+                {lang === 'en' && <img src={ENG} alt='Флаг' className={Styles.lang__img} />}
+                {lang === 'cn' && <img src={CHN} alt='Флаг' className={Styles.lang__img} />}
+
+                <label
+                  className={`${Styles.langoption__text} ${i18n.language === lang && Styles.langoption__text_checked}`}
+                  htmlFor={lang}
+                  onClick={() => setShowPopapLanguage(false)}
+                >
+                  {text}
+                </label>
+              </div>
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </div>
   )
