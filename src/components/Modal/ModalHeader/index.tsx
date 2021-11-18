@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { buttonCloseBlue } from '../../images/index'
-import BlueArrow from '../../images/BlueArrow/BlueArrow'
+import { buttonCloseBlue } from '../../Purse/PurseDesktop/images/index'
+import BlueArrow from '../../Purse/PurseDesktop/images/BlueArrow/BlueArrow'
 
 interface IModalHeader {
   title: any

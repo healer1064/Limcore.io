@@ -1,64 +1,99 @@
-import React from 'react'
-// eslint-disable-next-line import/named
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import Modal from '@material-ui/core/Modal'
-import Backdrop from '@material-ui/core/Backdrop'
-import Fade from '@material-ui/core/Fade'
-import Styles from './style.module.scss'
-import { CloseIcon } from './closeIcon'
+import React, { SyntheticEvent, useEffect, useRef, useState } from 'react'
+import ReactDOM from 'react-dom'
+import styles from './styles.module.scss'
+import classNames from 'classnames'
+import { CloseIcon } from '@icons/CloseIcon'
+interface IModalProps {
+  active: boolean
+  setActive?: (boolean) => void
+  children?: React.ReactNode
+  style?: {
+    zIndex?: number
+    overflow?: string
+    backgroundColor?: string
+  }
+  classname?: string
+  crossFlag?: boolean
+  isMobile?: boolean
+  isDesktop?: boolean
+  isAuthModal?: boolean
+}
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    modal: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    paper: {
-      backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
-    },
-  }),
-)
+export const Modal = ({
+  active,
+  setActive,
+  children,
+  style,
+  classname,
+  crossFlag,
+  isMobile,
+  isDesktop,
+  isAuthModal,
+}: IModalProps) => {
+  const node = document.getElementById('root')
+  const modalClass = active ? styles.modalActive : styles.modal
+  const authClass = isAuthModal && styles.authModal
+  const mobileClass = isMobile && styles.mobileModal
+  const desktopClass = isDesktop && styles.desktopModal
+  const bodyEl = useRef(document.querySelector('body'))
+  const htmlEl = useRef(document.querySelector('html'))
+  const [scrollPosition, setScrollPosition] = useState(0)
 
-export const TransitionsModal = (props) => {
-  const classes = useStyles()
+  useEffect(() => {
+    setScrollPosition(window.pageYOffset)
+    const documentWidth = document.documentElement.clientWidth
+    const windowWidth = window.innerWidth
+    const scrollBarWidth = windowWidth - documentWidth
+    bodyEl.current.style.paddingRight = scrollBarWidth.toString()
 
-  const handleClose = () => {
-    props.setModalOpened(false)
+    if (active) {
+      setScrollPosition(window.pageYOffset)
+      bodyEl.current.style.top = `-${window.pageYOffset}px`
+      bodyEl.current.style.overflow = 'hidden'
+      bodyEl.current.style.position = 'fixed'
+      // htmlEl.current.style.height = '101vh'
+    } else {
+      bodyEl.current.style.removeProperty('overflow')
+      bodyEl.current.style.removeProperty('position')
+      bodyEl.current.style.removeProperty('top')
+      htmlEl.current.style.removeProperty('height')
+      window.scrollTo(0, scrollPosition)
+    }
+    return () => {
+      bodyEl.current.style.removeProperty('overflow')
+      bodyEl.current.style.removeProperty('position')
+      bodyEl.current.style.removeProperty('top')
+      htmlEl.current.style.removeProperty('height')
+    }
+  }, [active])
+
+  const handleModalOutClick = () => {
+    setActive(false)
   }
 
-  return (
-    <div>
-      <Modal
-        aria-labelledby='transition-modal-title'
-        aria-describedby='transition-modal-description'
-        className={classes.modal}
-        open={props.isOpenModal}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={props.isOpenModal}>
-          <div className={Styles.modal_container}>
-            <div className={Styles.content}>{props.children}</div>
-            <div
-              role='presentation'
-              onClick={() => {
-                props.setModalOpened(false)
-              }}
-              className={Styles.close_container}
-            >
-              <CloseIcon />
-            </div>
-          </div>
-        </Fade>
-      </Modal>
-    </div>
+  const handleModalContentClick = (event: SyntheticEvent) => {
+    event.stopPropagation()
+  }
+
+  const handleClose = () => {
+    setActive(false)
+  }
+
+  return ReactDOM.createPortal(
+    <div
+      className={classNames(modalClass, authClass, mobileClass, desktopClass, classname)}
+      onClick={handleModalOutClick}
+      style={style}
+    >
+      <div className={classNames(styles.modalContent, styles.isMomentumScrollable)} onClick={handleModalContentClick}>
+        {crossFlag && (
+          <button type='button' className={styles.close} onClick={handleClose}>
+            <CloseIcon />
+          </button>
+        )}
+        {children}
+      </div>
+    </div>,
+    node,
   )
 }

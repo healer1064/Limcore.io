@@ -1,4 +1,8 @@
-@import '../../../vars&mixins.scss';
+@import '../Purse/vars&mixins.scss';
+
+.isMomentumScrollable {
+   -webkit-overflow-scrolling: touch;
+}
 
 @mixin modal() {
   position: fixed;
@@ -12,12 +16,31 @@
   width: 100vw;
   height: 100vh;
   z-index: 999;
-  background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
   pointer-events: none;
   transition: 0.3s ease;
   visibility: hidden;
 }
+.authModal {
+    background-color: rgba(0, 0, 0, 0.4);
+    .modalContent {
+      margin: auto;
+      height: auto;
+      width: 454px;
+      border-radius: 14px;
+    }
+  }
+
+  .mobileModal {
+    background-color: rgba(0, 0, 0, 0.4);
+    .modalContent {
+      width: 100%;
+    }
+  }
+
+  .desktopModal {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
 
 .modal {
   @include modal();
