@@ -110,8 +110,6 @@ export const Balance = () => {
     if (userPurse.chainId) {
       getUsdt(userPurse.address).then((res) => dispatch(setWalletConnectUsdt(res)))
       dispatch(getSyncData({ address: userPurse.address }))
-
-      // TODO: прокинуть кол-во дней везде, где есть 80 дней, мб убрать запрос на кол-во лимков
     }
   }, [userPurse])
 

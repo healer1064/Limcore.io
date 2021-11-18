@@ -34,7 +34,8 @@ export const walletSlice = createSlice({
   reducers: {},
   extraReducers: {
     [getSyncData.fulfilled]: (state, action) => {
-      const { limc, days_passed } = action.payload.limc_balance[0]
+      const { limc } = action.payload.limc_balance[0]
+      const { days_passed } = action.payload
 
       days_passed > 80 ? (state.countdown_days = 80) : (state.countdown_days = 80 - days_passed)
 
