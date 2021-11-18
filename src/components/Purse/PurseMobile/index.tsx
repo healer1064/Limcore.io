@@ -90,14 +90,8 @@ export const PurseMobile: FC = () => {
 
   return (
     <div className={styles.purse}>
-      <Modal
-        active={viewContent === 'balance'}
-        classname={styles.balanceModal}
-        setActive={closePopup}
-        isMobile
-        crossFlag
-      >
-        <ModalHeader title='LIMC' onClick={closePopup} />
+      <Modal active={viewContent === 'balance'} classname={styles.balanceModal} setActive={closePopup} isMobile>
+        <ModalHeader title='LIMC' onClick={closePopup} crossFlag />
         <div className={styles.balanceBlock}>
           <div className={styles.block}>
             <div className={styles.line}>

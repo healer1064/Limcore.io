@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
 import { Calendar } from '../../../Calendar'
-import { BottomModal } from '../../../../../BottomModal'
+import { BottomModal } from '@components/Modal/BottomModal'
 
 export const PeriodSort = ({ ownPeriodOpen, activeForModal, setActiveForModal }) => {
   return (

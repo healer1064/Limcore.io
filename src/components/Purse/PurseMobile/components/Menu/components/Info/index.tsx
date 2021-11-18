@@ -104,9 +104,9 @@ export const Info = ({ active, setActive, title, setNotActive, image, balance })
   }
 
   return (
-    <Modal active={active} setActive={setActive} style={{ overflow: 'auto' }}>
+    <Modal active={active} setActive={setActive} style={{ overflow: 'auto' }} isMobile>
       <div className={styles.info}>
-        <ModalHeader title={title} onClick={setNotActive} />
+        <ModalHeader title={title} onClick={setNotActive} crossFlag />
         <div className={styles.header}>
           <div className={styles.headerInner}>
             <span className={styles.headerLogo}>

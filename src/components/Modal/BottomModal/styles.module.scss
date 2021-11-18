@@ -1,11 +1,10 @@
-@import '../../../vars&mixins.scss';
+@import '../../../components/Purse/vars&mixins.scss';
 
 @mixin modal() {
-  position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
-
+  position: fixed;
   display: flex;
   flex-direction: column-reverse;
   width: 100vw;
@@ -15,18 +14,11 @@
   opacity: 0;
   pointer-events: none;
   transition: .3s ease;
+  // visibility: hidden;
 }
 
 .modal {
   @include modal();
-
-  &Active {
-    @include modal();
-    opacity: 1;
-    pointer-events: all;
-    overflow: hidden;
-  }
-
   &Content {
     position: relative;
 
@@ -35,6 +27,20 @@
     border-top-right-radius: 12px;
 
     background-color: #fff;
+    bottom: -200px;
+    transition: all 0.5s ease;
+  }
+
+  &Active {
+    @include modal();
+    opacity: 1;
+    pointer-events: all;
+    overflow: hidden;
+    visibility: visible;
+  }
+
+    &Active &Content {
+    bottom: 0;
   }
 }
 
@@ -61,7 +67,7 @@
   border: none;
 
   cursor: pointer;
-  background-image: url(../../../../../assets/icons/close.svg);
+  background-image: url(../../../assets/icons/close.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-color: transparent;

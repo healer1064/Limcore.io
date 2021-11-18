@@ -45,9 +45,10 @@
   }
 
   &Modal {
-    padding: 27px 20px 0;
+    padding: 0 20px;
+    margin: 0;
     width: 100vw;
-    height: calc(100vh + 50px);
+    // height: 100vh;
     overflow-y: hidden;
 
     // DetalizationDown

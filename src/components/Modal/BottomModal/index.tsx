@@ -1,40 +1,21 @@
-import React, { SyntheticEvent, useEffect, useRef, useState } from 'react'
+import React, { SyntheticEvent, useRef, useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import styles from './styles.module.scss'
-import classNames from 'classnames'
-import { CloseIcon } from '@icons/CloseIcon'
-interface IModalProps {
+
+interface IBottomModalProps {
   active: boolean
   setActive?: (boolean) => void
   children?: React.ReactNode
+  title?: string
+  subtitle?: string
   style?: {
     zIndex?: number
-    overflow?: string
-    backgroundColor?: string
   }
-  classname?: string
-  crossFlag?: boolean
-  isMobile?: boolean
-  isDesktop?: boolean
-  isAuthModal?: boolean
 }
 
-export const Modal = ({
-  active,
-  setActive,
-  children,
-  style,
-  classname,
-  crossFlag,
-  isMobile,
-  isDesktop,
-  isAuthModal,
-}: IModalProps) => {
+export const BottomModal = ({ active, setActive, title, subtitle, children, style }: IBottomModalProps) => {
   const node = document.getElementById('root')
   const modalClass = active ? styles.modalActive : styles.modal
-  const authClass = isAuthModal && styles.authModal
-  const mobileClass = isMobile && styles.mobileModal
-  const desktopClass = isDesktop && styles.desktopModal
   const bodyEl = useRef(document.querySelector('body'))
   const htmlEl = useRef(document.querySelector('html'))
   const [scrollPosition, setScrollPosition] = useState(0)
@@ -75,22 +56,12 @@ export const Modal = ({
     event.stopPropagation()
   }
 
-  const handleClose = () => {
-    setActive(false)
-  }
-
   return ReactDOM.createPortal(
-    <div
-      className={classNames(modalClass, authClass, mobileClass, desktopClass, classname)}
-      onClick={handleModalOutClick}
-      style={style}
-    >
-      <div className={classNames(styles.modalContent, styles.isMomentumScrollable)} onClick={handleModalContentClick}>
-        {crossFlag && (
-          <button type='button' className={styles.close} onClick={handleClose}>
-            <CloseIcon />
-          </button>
-        )}
+    <div className={modalClass} onClick={handleModalOutClick} style={style}>
+      <div className={styles.modalContent} onClick={handleModalContentClick}>
+        <button type='button' className={styles.close} onClick={setActive} />
+        <h4 className={styles.title}>{title}</h4>
+        <p className={styles.subtitle}>{subtitle}</p>
         {children}
       </div>
     </div>,
