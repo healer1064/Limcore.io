@@ -10,7 +10,7 @@ export const RoadMap = () => {
     return { background: `linear-gradient(90deg, #B3BEE3 ${percent}%, #DCDFEE ${percent}%)` }
   }
 
-  const soldLimcs = useAppSelector((state) => state.authNew.walletConnectSoldLimcs)
+  const soldLimcs = useAppSelector((state) => state.auth.walletConnectSoldLimcs)
 
   return (
     <div className={styles.roadMapContainer}>

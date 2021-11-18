@@ -16,8 +16,8 @@ import { useTranslation } from 'react-i18next'
 export const Step2: React.FC = () => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
-  const phone = useAppSelector((state) => state.authNew.phone)
-  const codePhone = useAppSelector((state) => state.authNew.codePhone)
+  const phone = useAppSelector((state) => state.auth.phone)
+  const codePhone = useAppSelector((state) => state.auth.codePhone)
 
   const [validValue, setValidValue] = useState(true)
   const [error, setError] = useState('')

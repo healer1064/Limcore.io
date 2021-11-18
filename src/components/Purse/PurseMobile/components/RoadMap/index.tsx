@@ -5,7 +5,7 @@ import styles from './styles.module.scss'
 
 export const RoadMap = () => {
   const [t] = useTranslation()
-  const soldLimcs = useAppSelector((state) => state.authNew.walletConnectSoldLimcs)
+  const soldLimcs = useAppSelector((state) => state.auth.walletConnectSoldLimcs)
 
   const visualizationStyle = (num) => {
     const percent = num * 100

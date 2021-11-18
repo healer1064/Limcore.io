@@ -28,7 +28,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   balance,
   type,
 }) => {
-  const isSinc = useAppSelector((state) => state.authNew.isSincWithWallet)
+  const isSinc = useAppSelector((state) => state.auth.isSincWithWallet)
   const menuItemClass = `${styles.menu__item} ${styles.menu__balance}`
 
   const onClickHandler = () => {

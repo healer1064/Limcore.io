@@ -135,6 +135,7 @@ export const login2FA: any = createAsyncThunk('user/login2FA', async (data: any)
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
+    isBuyLimcClick: false,
     isAuth: false,
     isSincWithWallet: false,
     walletConnectUsdt: '',
@@ -153,6 +154,9 @@ export const authSlice = createSlice({
     confirmationEmail: { code: '', unique_identifier: '' },
   },
   reducers: {
+    setIsBuyLimcClick: (state, { payload }) => {
+      state.isAuth = payload
+    },
     setIsAuth: (state, { payload }) => {
       state.isAuth = payload
     },
@@ -290,6 +294,7 @@ export const authSlice = createSlice({
 
 const { actions, reducer } = authSlice
 export const {
+  setIsBuyLimcClick,
   setIsAuth,
   setIsSincWithWallet,
   setProcessType,

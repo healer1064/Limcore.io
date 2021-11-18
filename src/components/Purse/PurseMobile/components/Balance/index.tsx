@@ -34,12 +34,12 @@ export const Balance = () => {
   )
   const walletAddress = useAppSelector((state) => state.wallet.address)
   // const usdtWalletBalance = useAppSelector((state) => state.wallet.usdt_balance)
-  const usdtWalletBalance = useAppSelector((state) => state.authNew.walletConnectUsdt)
+  const usdtWalletBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
   const limcWalletBalance = useAppSelector((state) => state.wallet.limc_balance)
 
   // const limcCount = useAppSelector((state) => state.wallet.limcCount)
   // const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
-  const isSinc = useAppSelector((state) => state.authNew.isSincWithWallet)
+  const isSinc = useAppSelector((state) => state.auth.isSincWithWallet)
 
   const sum: number = Number(usdtWalletBalance) + Number(limcWalletBalance)
   const money = isNaN(sum) ? '...' : sum
