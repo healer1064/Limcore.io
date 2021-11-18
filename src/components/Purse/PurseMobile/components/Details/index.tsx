@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import { details1, details2, details3 } from '../../images'
-import { Modal } from '../Modal/index'
+import { Modal } from '@components/Modal/index'
 import { DetalizationUp } from './components/DetalizationUp/index'
 import { DetalizationDownItem } from './components/DetalizationDownItem/index'
-import { ModalHeader } from '../ModalHeader'
+import { ModalHeader } from '@components/Modal/ModalHeader'
 import BlueArrow from '../../images/BlueArrow/BlueArrow'
 import thddIcon from '@icons/thdd.png'
 import tsilicoinIcon from '@icons/tsilicoin.png'
@@ -74,9 +74,9 @@ export const Details = () => {
           <BlueArrow />
         </button>
 
-        <Modal active={isModalVisible} setActive={handleDetailsCloseClick}>
+        <Modal active={isModalVisible} setActive={handleDetailsCloseClick} isMobile>
           <ul className={styles.detailsModal}>
-            <ModalHeader title={t('purse_mainingDetails')} onClick={handleDetailsCloseClick} />
+            <ModalHeader title={t('purse_mainingDetails')} onClick={handleDetailsCloseClick} crossFlag />
             <DetalizationUp summary='$0' xch='$0' forks='$0' />
             {/* <p className={styles.transactions__subtitle}>
               {t('purse_noTransactionsYet')} <br />

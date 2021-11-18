@@ -19,8 +19,8 @@ import limcoreIcon from '@icons/limcore.svg'
 import buyIcon from '@icons/buy.svg'
 // import sellIcon from '@icons/sell.svg'
 // import tradeIcon from '@icons/trade.svg'
-import { Modal } from './components/Modal'
-import { ModalHeader } from './components/ModalHeader'
+import { Modal } from '@components/Modal/index'
+import { ModalHeader } from '@components/Modal/ModalHeader'
 import { FooterMobile } from '@components/Footer/FooterMobile'
 import { useHistory } from 'react-router'
 import { RoadMap } from '@components/Purse/PurseMobile/components/RoadMap'
@@ -91,23 +91,28 @@ export const PurseMobile: FC = () => {
 
   return (
     <div className={styles.purse}>
-      {viewContent === 'balance' && (
-        <Modal active={viewContent === 'balance'} classname={styles.balanceModal} setActive={closePopup}>
-          <ModalHeader title='LIMC' onClick={closePopup} />
-          <div className={styles.balanceBlock}>
-            <div className={styles.block}>
-              <div className={styles.line}>
-                <img src={limcoreIcon} alt='' />
-                <span className={styles.title}>{limcBalance} LIMC</span>
-              </div>
-              <span className={styles.usd}>{}</span>
-              <ButtonBig className={styles.buyBtn}>
-                <a href='https://round1.limcore.io' className={styles.buyLink}>
-                  <img className={styles.icon} src={buyIcon} alt='' />
-                  {t('buy')}
-                </a>
-              </ButtonBig>
-              {/* <div className={styles.items}>
+      <Modal
+        active={viewContent === 'balance'}
+        classname={styles.balanceModal}
+        setActive={closePopup}
+        isMobile
+        crossFlag
+      >
+        <ModalHeader title='LIMC' onClick={closePopup} />
+        <div className={styles.balanceBlock}>
+          <div className={styles.block}>
+            <div className={styles.line}>
+              <img src={limcoreIcon} alt='' />
+              <span className={styles.title}>{limcBalance} LIMC</span>
+            </div>
+            <span className={styles.usd}>{}</span>
+            <ButtonBig className={styles.buyBtn}>
+              <a href='https://round1.limcore.io' className={styles.buyLink}>
+                <img className={styles.icon} src={buyIcon} alt='' />
+                {t('buy')}
+              </a>
+            </ButtonBig>
+            {/* <div className={styles.items}>
                 <div className={`${styles.item} ${styles.item_active}`} onClick={() => setViewContent('buy')}>
                   <img className={styles.icon} src={buyIcon} alt='' />
                   <span>Купить</span>
@@ -121,20 +126,21 @@ export const PurseMobile: FC = () => {
                   <span>Обменять</span>
                 </div>
               </div> */}
-              <div className={styles.container}>
-                {/* <span className={styles.trans}>Транзакции</span> */}
-                <span className={styles.desc}>{t('purse_fillToRestore')}</span>
-                <span className={styles.desc}>{t('lockUp')}</span>
-              </div>
-              <div className={styles.nextCont}>
-                <button className={styles.next} onClick={() => history.push('/profile')}>
-                  {t('purse_goFilling')}
-                </button>
-              </div>
+            <div className={styles.container}>
+              {/* <span className={styles.trans}>Транзакции</span> */}
+              <span className={styles.desc}>{t('purse_fillToRestore')}</span>
+              <span className={styles.desc}>{t('lockUp')}</span>
+            </div>
+            <div className={styles.nextCont}>
+              <button className={styles.next} onClick={() => history.push('/profile')}>
+                {t('purse_goFilling')}
+              </button>
             </div>
           </div>
-        </Modal>
-        // <Container title=`${t('balance')} LIMC` onClick={closePopup}>
+        </div>
+      </Modal>
+
+      {/* // <Container title=`${t('balance')} LIMC` onClick={closePopup}>
         //   <div className={styles.block}>
         //     <div className={styles.line}>
         //       <img src={limcoreIcon} alt='' />
@@ -163,8 +169,7 @@ export const PurseMobile: FC = () => {
         //     </div>
         //     <ButtonBig className={styles.next}>{t('purse_goFilling')}</ButtonBig>
         //   </div>
-        // </Container>
-      )}
+        // </Container> */}
 
       {/* <Modal active={isErrorVisible} style={{ zIndex: 1001, backgroundColor: 'transparent' }} setActive={() => {}}>
         <div className={styles.errorModal}>У вас недостаточно средств.</div>
