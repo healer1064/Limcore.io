@@ -680,8 +680,326 @@ i18n.use(LanguageDetector).init({
     },
     cn: {
       translations: {
+        login: '登录',
+        // profile: 'Профиль',
+        // other: 'Прочее',
+        // buyLimc: 'Купить LIMC',
+        // buy: 'Купить',
+        // lockUp: 'Lock-up период 6 месяцев',
+        phone: '手机号码',
+        next: '下一步',
+        // balance: 'Баланс',
+        // commonBalance: 'Общий баланс',
+
+        // Auth: step1
+        logIn: '登录',
+        cellNumber: '手机号码或电子邮箱',
+        getCode: '获取验证码',
+        signUp: '注册',
+        // needToLogToBuy: 'Чтобы купить LIMC, нужно авторизоваться',
+
+        // Errors
+        // err_forget: 'Вы забыли ввести телефон или e-mail',
+        // err_mail: 'Неверный формат e-mail',
+        // err_phone: 'Некорректно введен номер',
+        // err_phoneNotConfirmed: 'Телефон не подтвержден',
+        // err_mailNotConfirmed: 'Email не подтвержден',
+        // err_limit: 'Превышено количество попыток входа (разблокировка через час)',
+        // err_notRegistered: 'Пользователь не зарегистрирован',
+        // err_phoneInvalid: 'Некорректно введен номер',
+        // err_smthWentWrong: 'Что-то пошло не так..',
+
+        // Auth: step2
+        cellCodeFromSms: '请输入短信中的验证码',
+        weSentCode: '我们已将验证码发送到该号码',
+        change: '改变',
+        getNewCode: '你可以在00：41分钟后得到新的验证码',
+        // getNewCode2: 'Отправить новый код',
+
+        // fa_enterCode: 'Введите 2-FA код',
+        // fa_enterCodeFromGoogle: 'Введите код, сгенерированный приложением Google Authenticator',
+
+        // err_code4: 'Код должен содержать 4 цифры',
+        // err_needCodeAgain: 'Нужно снова получить код подтверждения',
+        // err_codeInvalid: 'Код недействителен',
+
+        // Reg: step1
+        logOn: '注册',
+
+        // err_correctNumber: 'Введите корректные данные',
+        // err_userIsRegistered: 'Пользователь уже зарегистрирован',
+        // err_phoneVerified: 'Телефон уже подтвержден',
+
+        // Reg: step3
+        // err_wrongInfo: 'Неверные данные',
+        // err_waitOneMinute: 'Не прошла минута после первого запроса',
+        enterEmail: '请输入电子邮箱',
+
+        // Reg: step4
+        // err_mailConfirmed: 'Email уже подтвержден',
+        // enterCode: 'Введите код',
+        // weSentCodeOnEmail: 'Мы отправили код на адрес',
+
+        nav_about: '关于Limcore',
+        nav_roadmap: 'Roadmap',
+        nav_team: '团队',
+        nav_qa: '常见问题',
+
         landing_title: '所有Chia分叉的云端挖矿',
         landing_subtitle: '加密货币投资的最快而有利的方式',
+        landing_video: 'https://www.youtube.com/embed/aK9obYQi-FI',
+
+        firstRound_round1: '第1轮',
+        firstRound_limit: '限制',
+        firstRound_limcPrice: '1 LIMC价格',
+        firstRound_terms: '期限',
+        firstRound_firstRoundTerms: '2021.11.15-2021.12.30',
+        firstRound_startSelling: '市场启动将11月15号00：01莫斯科时间开始',
+        firstRound_followNews: '在我们的Telegram频道中关注新闻 @limc_russ',
+
+        roundsRoadmap_round2: '第2轮',
+        roundsRoadmap_round3: '第3轮',
+        roundsRoadmap_round4: '第4轮',
+        roundsRoadmap_round5: '第5轮 (Final)',
+        roundsRoadmap_endSelling: '2022年底',
+        roundsRoadmap_description1:
+          '每一轮的代币限额直接取决于我们的设施准备情况和服务器设备制造厂的生产能力。由于我们逐步增大分配到每一LIMC代币的挖矿功率容量（太字节），每轮LIMC代币都变得更加昂贵',
+        roundsRoadmap_description2:
+          '第3、4、5轮的价格和限额将于以后公布，因为在我们网站的最后更新中，我们没有在计划一轮完成日期前收到我们从制造厂得到的设备的保证数量',
+
+        limcoreDescription_modern: 'Chia挖矿和所有分叉的现代数据中心',
+        limcoreDescription_safe: '这比市场上的大多数投资建议安全、有利',
+        limcoreDescription_howWorks: '这是如何运作的?',
+        limcoreDescription_howSubtitle1: '当购买LIMC时，你购买我们数据中心的挖矿功率',
+        limcoreDescription_howSubtitle2:
+          '这是最简单而安全投资于挖矿的方式，因为LIMC代币很快就会在大型加以所上出现，并有自己的流动性',
+        limcoreDescription_howSubtitle3: '你可以随时提取从挖矿中获得的资产或出售自己的LIMC代币',
+        limcoreDescription_howSubtitle4:
+          '到2024年，Limcore公司将建立自己的磁带数据存储系统，这将使从挖矿中获得的收入增加数倍',
+
+        roadmap_may30: '挖矿试验台的组装',
+        roadmap_june24: '个人中心v0.1的启动',
+        roadmap_july10: '签署并预付土地和建筑购买的合同',
+        roadmap_july22: '第一排电网的铺设',
+        roadmap_august03: '土地和建筑登记的完成',
+        roadmap_october15: 'Limcore Token 的创造',
+        roadmap_november1: '俄罗斯法律实体的启动',
+        roadmap_november15: '个人中心v0.2的启动',
+        roadmap_decemberEnd: '2021年12月底',
+
+        roadmap_startRound1: 'Round 1 1LIMC = $95/80,000 LIMC的启动',
+        roadmap_startRound2: 'Round 2 1 LIMC = min $110 / 120,000 LIMC的启动',
+        roadmap_startRound3: 'Round 3 的启动',
+        roadmap_startRound4: 'Round 4的启动',
+        roadmap_startRound5: 'Round 5 的启动',
+
+        roadmap_tg: '照片和视频都在我们的Telegram频道',
+        roadmap_inProcess: '正在进行中',
+        roadmap_registration: '瑞士法律实体的登记',
+        roadmap_listing: '在HITBTC + BitGlobal交易所上LIMC的股票上市',
+        roadmap_buildUp: '莫扎伊斯克市的修理数据处理中心的完成',
+        roadmap_mvp: '自己磁带储存器的计划和MVP建造',
+        roadmap_launch: '磁带数据储存器的成批生产的启动',
+
+        team_title: '项目团队',
+        team_shumaev: '德米特里·舒马耶夫',
+        team_shumaevDesc: '年轻时他在几个俄罗斯政府机构担任过IT安全职员。管理过拜科努尔联系通知政府机构',
+
+        team_losev: '帕维尔·洛谢夫',
+        team_losevDesc: '他曾在俄罗斯联邦中央银行工作过',
+
+        team_turkinRank: '客户服务经理',
+        team_turkin: '基里尔·图尔金',
+        team_turkinDesc: '在为要求特别高的客户的跟踪部门的工作安排方面有成熟经验',
+
+        team_balikinRank: '领先的系统管理员',
+        team_balikin: '亚历山大·巴雷金',
+        team_balikinDesc: '在Limcore公司开始工作前，他为20多个法律实体经营过自己的支持网络和服务器架构的组织',
+
+        team_smirnovRank: '系统管理员',
+        team_smirnov: '德米特里·斯米尔诺夫',
+        team_smirnovDesc: '他曾在奥伦堡市政府担任过系统管理员',
+
+        team_kazachenkoRank: '保安部主任',
+        team_kazachenko: '亚历山大·卡扎琴科',
+        team_kazachenkoDesc: '他曾在俄罗斯联邦强力机构的一个特种部队连服役过。红色贝雷帽的获得者',
+
+        team_mironovRank: '律师',
+        team_mironov: '塔拉斯·米罗诺夫',
+        team_mironovDesc: '他在Limcore任务范围内为领先的律师公司形成技术任务',
+
+        team_plotnikovRank: '建筑经理',
+        team_plotnikov: '奥列格·普洛特尼科夫',
+        team_plotnikovDesc: '在俄罗斯他亲自执行了68个政府合同、完成了一千多份商业合同',
+
+        footer_leaflet: '宣传册',
+        footer_infoDeclosure: '信息披露',
+        footer_docsRF: '俄罗斯联邦成立文件',
+        footer_docsRound1: 'Round 1 成立文件',
+        footer_equipInsurance: '设备保险',
+        footer_buildingInsurance: '房屋及财产保险',
+        footer_coop: '用户体验',
+        footer_agreementPersonalData: 'П关于处理个人数据的用户协议',
+        footer_agreementLimcBuy: '关于购买LIMC代币的合同建议书',
+        footer_russia: '俄罗斯',
+        footer_fullOrganisationName: 'Limcore数据中心有限公司',
+        footer_docs: '纳税人登记原因代码： 502801001 / 个人税号：9729264079',
+        footer_address: '公司法定地址：俄罗斯联邦莫扎伊斯克市米拉（Mira)街98号',
+        footer_issuer: 'LIMC Round 1发行人',
+        footer_switzerland: '瑞士',
+        footer_inRegProcess: '正在登记过程中',
+        // footer_mobNavPurse: 'Кошелек',
+        footer_mobNavStreams: '转播',
+        // footer_mobNavChat: 'Чат',
+        // footer_mobNavProfile: 'Профиль',
+
+        qa_title: '常见问题',
+        qa_card1_title: '耕种和挖矿有什么区别?',
+        qa_card1_subtitle1:
+          '加密货币挖矿需要购买或租用和设置设备。此外，挖矿导致电力成本。这对开采加密货币的盈利能力有消极影响。',
+        qa_card1_subtitle2:
+          '与挖矿的另一个重要区别是，投资者购买数字资产用于耕种。挖矿者不需要投资于加密货币，但需要购买挖矿现场。耕种时，产生收入的是购买的加密资产',
+        qa_card1_subtitle3:
+          'Limcore在Chia网络上提供耕种的服务。该过程与具有共同算计能力的远程数据处理中心进行流动。耕种可比作购买大工业股份，每个人都按投资比例获得制成品。',
+
+        qa_card2_title: '来自挖矿的报酬如何分配给LIMC持有人？',
+        qa_card2_subtitle1: '例如，有两个使用Limcore服务的用户。',
+        qa_card2_subtitle2: '第一个用户拥有1个LIMC，第二个拥有两个LIMC。',
+        qa_card2_subtitle3: '在24小时内，Limcore公司的数据处理中心开采了1200个Chia coin。',
+        qa_card2_subtitle4: 'Limcore保留15% - 150个Chia coin作为运营和电力成本。',
+        qa_card2_subtitle5: '第一个用户将获得850个Chia coin的⅓，是340个Chia coin。',
+        qa_card2_subtitle6: '第二个用户将850个Chia coin的⅔，是680个Chia coin。',
+
+        qa_card3_title: 'Limcore平台的优势是什么？',
+        qa_card3_subtitle1: '很低准输门槛，从0,1 LIMC开始。',
+        qa_card3_subtitle2: '不需要昂贵的设备或技术维护。没有额外的电费等开支。',
+        qa_card3_subtitle3: '透明度。',
+        qa_card3_subtitle4: '在奖励分配方面应用DeFi机制。',
+        qa_card3_subtitle5: '支持的分叉列表不断扩大，使得Limcore用户的收入增加。',
+        qa_card3_subtitle6:
+          '奖励是实时计算的，每天转移到Chia钱包里。关于法律所有权，所有房地产、土地以及设备完全属于Limcore公司。',
+        qa_card3_subtitle7: '我们对会议开放，并邀请每个有兴趣的人来参观。莫斯科州莫扎伊斯克市米拉（Mira)街98号。',
+
+        qa_card4_title: '为什么Chia？',
+        qa_card4_subtitle1: '我司相信Chia Nerwork是最有趣和有前途的项目之一。',
+        qa_card4_subtitle2:
+          '项目的创始人是布莱姆·科恩，他是有经验的企业家、著名“比特洪流”（BigTorrent)的创始人。他组建了一个具有市场领导者所需的专长的强大团员。',
+        qa_card4_subtitle3: '公司总裁是吉恩·霍夫曼，是eMusic.com 和Vindicia的前任总裁。',
+        qa_card4_subtitle4: '财务主管是米彻·爱德华兹，是Overstock公司的前任副总经理。',
+        qa_card4_subtitle5:
+          '迈克尔·诺沃格拉茨搭档是纽约联邦储备银行金融市场咨询委员会的成员、对冲基金的总经理、美元的亿万富翁。他曾担任过拉丁美洲Goldman Sachs分布的主任。',
+        qa_card4_subtitle6: '经验丰富的Chia团队可以保证Limcore平台的工作。',
+
+        mm_main: '媒体对我们的报道',
+        mm1_title: '在俄罗斯，加密货币史如何开采的？',
+        mm1_subtitle:
+          'Blockchain Life新闻中心和Limcore总裁德米特里·舒马耶夫谈论了私营挖矿、LIMC代币的能力性以及爱国心。',
+        mm2_title: 'Limcore总裁：对Limcore挖矿的投资是银行存款的代替方案。',
+        mm2_subtitle: 'Limcore：项目的显著特点和第一批投资者可以得到的好处',
+
+        purse_navMain: '主页',
+        purse_navStreams: '转播',
+        purse_myAccounts: '我的帐户',
+        purse_notSync: '未同步',
+        purse_needSync: '同步',
+        purse_walletConnect: '开始挖矿需要将Limcore wallet与Trust wallet同步',
+        // purse_walletConnectSync: 'Limcore Wallet синхронизирован с внешним кошельком',
+        purse_sync: '同步',
+
+        purse_mainingDetails: '挖矿详情',
+        purse_income: '收入总额',
+        purse_xch: 'Chia 24h',
+        purse_forks: '所以分叉 24h',
+        purse_mainingBefore: '挖矿开始前还剩',
+        purse_mainingDateLast: '80天中还剩80天',
+        // purse_forksAsset: 'Ассет',
+        // purse_forksBalance: 'Баланс',
+        // purse_forksPrice: 'Стоимость',
+        // purse_showAll: 'Смотреть все',
+        // purse_getBack: 'Вернуться назад',
+        purse_goFilling: '跳转填写',
+        // purse_fillToRestore: 'Заполните профиль, чтобы в будущем восстановить аккаунт',
+        purse_noTransactionsYet: '你还没有交易。',
+        // purse_accessLater: 'Мы предоставим вам доступ позже.',
+        purse_whyWait: '为什么要等待？',
+        purse_mainingStart: '挖矿在该轮结束后80天开始。一轮可能会在指定的期限前完成',
+
+        // chat_inProcess: 'Чат находится в разработке.',
+        // chat_tg: 'Вступай в чат в Telegram',
+
+        profile_fillIn: '填写个人资料',
+        // profile_willGrant: 'Для восстановления доступа в случае полной потери доступа к аккаунту',
+        profile_subtitle: '你将需要输入你的全名、出生日期、护照细节、个人税号和居住地',
+
+        profile_title1: '请输入全名、出生日期和性别',
+        profile_firstName: '名字',
+        // profile_firstNameEnter: 'Введите ваше имя',
+        profile_lastName: '姓氏',
+        // profile_lastNameEnter: 'Введите вашу фамилию',
+        profile_paternityName: '父名',
+        // profile_paternityEnter: 'Введите ваше отчество',
+        profile_noPaternity: '我没有父名',
+        profile_birth: '出生日期',
+        profile_sex: '性别',
+        profile_male: '男',
+        profile_female: '女',
+        profile_continue: '下一步',
+
+        profile_title2: '请输入护照细节',
+        profile_pasSer: '组号',
+        profile_pasNumber: '号码',
+        profile_authorityCode: '机关代码',
+        profile_issueDate: '签发日期',
+        profile_pasIssued: '签发护照的机构',
+        profile_pasAuthority: '请输入机构',
+
+        profile_title3: '请输入居住地',
+        profile_city: '城市*',
+        profile_cityEnter: '请输入城市',
+        profile_street: '街道*',
+        profile_streetEnter: '请输入街道',
+        profile_house: '门牌号*',
+        profile_building: '楼',
+        profile_apartment: '公寓号*',
+        profile_complete: '完成',
+
+        profile_phoneNumber: '手机号码',
+        profile_addresses: '我的地址',
+        profile_2fa: '双因素身份验证',
+        profile_2fa_connect: '连接双因素身份验证',
+
+        profile_addressReg: '注册地址',
+        profile_addressLetters: '将信寄到这个地址',
+        profile_addressHome: '住所地址',
+        profile_add: '添加',
+        // profile_shortStreet: 'ул',
+        // profile_shortHouse: 'дом',
+        // profile_shortCity: 'г',
+
+        // profile_writeAddress: 'Укажите адрес',
+        // profile_writeHomeAddress: 'Введите ваш домашний адрес',
+
+        profile_2fa_add: '连接双因素身份验证',
+        profile_2fa_subtitle:
+          '当从不熟悉的设备登录时，除了密码外，我们会要求使用Google Authenticator应用程序提供登录验证码',
+        profile_connect: '连接',
+        // profile_2fa_on: 'Двухфакторная аутентификация включена',
+        // profile_2fa_linked: 'Приложение привязано к номеру',
+        profile_2fa_download: '下载手机应用程序',
+        profile_2fa_enterCode: '请输入应用程序中的验证码',
+        // profile_2fa_enterCodeInGoogle: 'Введите код в Google Authenticator',
+        profile_2fa_enterCodeFromApp: '请输入应用程序生成的验证码',
+
+        // profile_rusPasport: 'Паспорт РФ',
+        // profile_documents: 'Документы',
+        profile_email: '电子邮箱',
+        // profile_2fa_doWantToOff: 'Выключить двухфакторную аутентификацию?',
+        // profile_2fa_wantToOff: 'Выключить',
+        // profile_2fa_cancel: 'Отмена',
+
+        // streams_title_1: 'Ремонт здания',
+        // streams_title_2: 'Ремонт прилегающей территории',
+        // stream_camera: 'Камера',
       },
     },
   },
