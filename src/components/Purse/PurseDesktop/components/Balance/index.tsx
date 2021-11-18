@@ -12,16 +12,12 @@ import { ShieldIcon } from '@icons/ShieldtIcon'
 import { BlackCross } from '@icons/BlackCross'
 import WalletConnect from '@walletconnect/client'
 import QRCodeModal from '@walletconnect/qrcode-modal'
-import {
-  setIsSincWithWallet,
-  setWalletConnectLimc,
-  setWalletConnectUsdt,
-} from '../../../../../pages/auth/redux/authSlice'
+import { setIsSincWithWallet, setWalletConnectUsdt } from '../../../../../pages/auth/redux/authSlice'
 import { useDispatch } from 'react-redux'
 // import { getLimc, getUsdt } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
-import { getLimc, getUsdt } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
-import classNames from 'classnames'
+import { getUsdt } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
 import { useTranslation } from 'react-i18next'
+import { getSyncData } from '@components/Wallet/redux/walletSlice'
 
 export const Balance = () => {
   const [t] = useTranslation()
@@ -33,10 +29,9 @@ export const Balance = () => {
   const walletAddress = useAppSelector((state) => state.wallet.address)
   // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
   const usdtBalance = useAppSelector((state) => state.authNew.walletConnectUsdt)
-  // const limcBalance = useAppSelector((state) => state.wallet.sum_limc_balance)
-  const limcBalance = useAppSelector((state) => state.authNew.walletConnectLimc)
-  const limcCount = useAppSelector((state) => state.wallet.limcCount)
-  const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
+  const limcBalance = useAppSelector((state) => state.wallet.limc_balance)
+  // const limcCount = useAppSelector((state) => state.wallet.limcCount)
+  // const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
   const sum: number = Number(usdtBalance) + Number(limcBalance)
   const money = isNaN(sum) ? '...' : sum
   const isSync = useAppSelector((state) => state.authNew.isSincWithWallet)
@@ -130,7 +125,7 @@ export const Balance = () => {
   useEffect(() => {
     if (userPurse.chainId) {
       getUsdt(userPurse.address).then((res) => dispatch(setWalletConnectUsdt(res)))
-      getLimc(userPurse.address).then((res) => dispatch(setWalletConnectLimc(res)))
+      dispatch(getSyncData({ address: userPurse.address }))
     }
   }, [userPurse])
 
