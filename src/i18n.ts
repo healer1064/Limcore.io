@@ -75,6 +75,7 @@ i18n.use(LanguageDetector).init({
 
         landing_title: 'Cloud mining of all the forks',
         landing_subtitle: 'The fastest and the most profitable way of cryptocurrency investing',
+        landing_video: 'https://www.youtube.com/embed/5ZuYH1pEQhM',
 
         firstRound_round1: 'Round 1',
         firstRound_limit: 'Limit',
@@ -410,6 +411,7 @@ i18n.use(LanguageDetector).init({
 
         landing_title: 'Облачный майнинг всех форков',
         landing_subtitle: 'Самый быстрый и выгодный способ инвестирования в криптовалюту',
+        landing_video: 'https://www.youtube.com/embed/aK9obYQi-FI',
 
         firstRound_round1: 'Раунд №1',
         firstRound_limit: 'Лимит',

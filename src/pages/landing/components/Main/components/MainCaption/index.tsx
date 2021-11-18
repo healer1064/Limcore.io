@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 export const MainCaption: React.FC = () => {
   const [t] = useTranslation()
+
   return (
     <div className={Styles.caption}>
       <div className={Styles.block}>
@@ -18,7 +19,7 @@ export const MainCaption: React.FC = () => {
           className={Styles.photo}
           width='100%'
           height='100%'
-          src='https://www.youtube.com/embed/aK9obYQi-FI'
+          src={t('landing_video')}
           title='YouTube video player'
           frameBorder='0'
           allow='accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
