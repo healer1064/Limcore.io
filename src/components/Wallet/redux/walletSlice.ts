@@ -3,11 +3,11 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { api } from '../../../app/api'
 
 // только уже /landing-page/xchforks
-// export const getForksPrice: any = createAsyncThunk('wallet/getForksPrice', async function () {
-//   const response = await api.get('api/v1/wallets/xchforks/')
-//   console.log(response)
-//   return response
-// })
+export const getForksPrice: any = createAsyncThunk('landing-page/xchforks', async function () {
+  const response = await api.get('landing-page/xchforks')
+  console.log('getForksPrice', response)
+  return response
+})
 
 export const getSyncData: any = createAsyncThunk('wallet/getSyncData', async function (address) {
   const response = await api.post('walletconnect/', address)
