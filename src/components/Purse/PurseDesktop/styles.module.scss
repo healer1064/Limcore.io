@@ -217,6 +217,13 @@
     width: 100%;
     display: flex;
   }
+  .statistics {
+    border: 1px solid #DCDCDC;
+    background-color: #F9FAFE;
+    width: 60%;
+    padding: 17px 30px;
+    border-radius: 14px;
+  }
 }
 
 .detailsTitle {
@@ -329,6 +336,9 @@
      width: 100%;
      flex-direction: column;
     }
+  .statistics {
+    width: 100%;
+  }
   }
   .nav__link {
     padding: 0 20px 0 0;

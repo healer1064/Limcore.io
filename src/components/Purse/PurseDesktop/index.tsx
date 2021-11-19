@@ -240,12 +240,12 @@ export const PurseDesktop = () => {
                 <div className={styles.miningDetails}>
                   <div className={styles.miningDetailsWrapper}>
                     <Details />
-                    <Statistics onClick={handleUntilMiningModalOpen} />
+                    <UntilMiningStart onClick={handleUntilMiningModalOpen} className={styles.statistics} tooltip />
                   </div>
                   <DetailTable />
                 </div>
                 <Modal active={UntilMiningModalOpen} setActive={handleUntilMiningModalClose} crossFlag>
-                  <UntilMiningStart />
+                  <UntilMiningStart popup />
                 </Modal>
               </div>
               <div className={styles.wallet_invisible}>
