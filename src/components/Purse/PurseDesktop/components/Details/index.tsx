@@ -29,7 +29,7 @@ import { useTranslation } from 'react-i18next'
 export const Details = () => {
   const [t] = useTranslation()
   const { width } = useWindowSize()
-  const desktop = width >= 769
+  const desktop = width >= 768
   const [isModalVisible, setIsModalVisible] = useState(false)
   // let flagForDetalisation = 3
 
