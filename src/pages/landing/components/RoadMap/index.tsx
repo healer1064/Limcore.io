@@ -161,7 +161,7 @@ export const RoadMap: React.FC = () => {
           <p className={Styles.text}>
             {t('roadmap_tg')}{' '}
             <a className={Styles.link} target='blank' href='https://t.me/limc_russ'>
-              <TelegramIcon className={Styles.icon} /> @limc_russ
+              <TelegramIcon className={Styles.icon} /> {t('roadmap_tg_channel')}
             </a>
           </p>
         </div>
