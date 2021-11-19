@@ -40,10 +40,13 @@ import covidIcon from '@icons/covidIcon.png'
 import senoIcon from '@icons/senoIcon.png'
 import chaingreenIcon from '@icons/chaingreen.png'
 import goji from '@icons/gojiIcon.png'
+import { useAppSelector } from '@app/redux/hooks'
 
 SwiperCore.use([Pagination, Navigation])
 
 export const CalculatorSlider: React.FC = () => {
+  const forksPrices = useAppSelector((state) => state.wallet.forks)
+
   const { width } = useWindowSize()
 
   const buttonPrevious = (
@@ -104,7 +107,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={tchiaIcon} alt='Иконка' />
                   <span className={Styles.name}>Chia</span>
                 </div>
-                <span className={Styles.price}>$162.5400</span>
+                <span className={Styles.price}>${forksPrices.chia}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -112,7 +115,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={tflaxIcon} alt='Иконка' />
                   <span className={Styles.name}>Flax</span>
                 </div>
-                <span className={Styles.price}>$0.0196</span>
+                <span className={Styles.price}>${forksPrices.flax}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -120,7 +123,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={thddIcon} alt='Иконка' />
                   <span className={Styles.name}>HDDcoin</span>
                 </div>
-                <span className={Styles.price}>$0.2823</span>
+                <span className={Styles.price}>${forksPrices.hddcoin}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -128,7 +131,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={tsilicoinIcon} alt='Иконка' />
                   <span className={Styles.name}>Silicoin</span>
                 </div>
-                <span className={Styles.price}>$0.0717</span>
+                <span className={Styles.price}>${forksPrices.silicoin}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -136,7 +139,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={tfloraIcon} alt='Иконка' />
                   <span className={Styles.name}>Flora</span>
                 </div>
-                <span className={Styles.price}>$0.0196</span>
+                <span className={Styles.price}>${forksPrices.flora}</span>
               </div>
             </div>
           </SwiperSlide>
@@ -148,7 +151,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={tappleIcon} alt='Иконка' />
                   <span className={Styles.name}>Apple</span>
                 </div>
-                <span className={Styles.price}>$0.3425</span>
+                <span className={Styles.price}>${forksPrices.apple}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -156,7 +159,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={tmaizeIcon} alt='Иконка' />
                   <span className={Styles.name}>Maize</span>
                 </div>
-                <span className={Styles.price}>$0.2823</span>
+                <span className={Styles.price}>${forksPrices.maize}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -164,7 +167,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={tavacadoIcon} alt='Иконка' />
                   <span className={Styles.name}>Avocado</span>
                 </div>
-                <span className={Styles.price}>$0.3425</span>
+                <span className={Styles.price}>${forksPrices.avocado}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -172,7 +175,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={tsocksIcon} alt='Иконка' />
                   <span className={Styles.name}>Socks</span>
                 </div>
-                <span className={Styles.price}>$0.0196</span>
+                <span className={Styles.price}>${forksPrices.socks}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -180,7 +183,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={ttadIcon} alt='Иконка' />
                   <span className={Styles.name}>Tad</span>
                 </div>
-                <span className={Styles.price}>$0.0717</span>
+                <span className={Styles.price}>${forksPrices.tad}</span>
               </div>
             </div>
           </SwiperSlide>
@@ -192,7 +195,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={goji} alt='Иконка' />
                   <span className={Styles.name}>Goji</span>
                 </div>
-                <span className={Styles.price}>$0.0068</span>
+                <span className={Styles.price}>${forksPrices.goji}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -200,7 +203,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={chaingreenIcon} alt='Иконка' />
                   <span className={Styles.name}>Chaingreen</span>
                 </div>
-                <span className={Styles.price}>$0.0002</span>
+                <span className={Styles.price}>${forksPrices.chaingreen}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -208,7 +211,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={cactusIcon} alt='Иконка' />
                   <span className={Styles.name}>Cactus</span>
                 </div>
-                <span className={Styles.price}>{}</span>
+                <span className={Styles.price}>${forksPrices.cactus}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -216,7 +219,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={covidIcon} alt='Иконка' />
                   <span className={Styles.name}>Covid</span>
                 </div>
-                <span className={Styles.price}>{}</span>
+                <span className={Styles.price}>${forksPrices.covid}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -224,7 +227,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={senoIcon} alt='Иконка' />
                   <span className={Styles.name}>Seno</span>
                 </div>
-                <span className={Styles.price}>{}</span>
+                <span className={Styles.price}>${forksPrices.seno}</span>
               </div>
             </div>
           </SwiperSlide>
@@ -236,7 +239,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={tgreendogeIcon} alt='Иконка' />
                   <span className={Styles.name}>GreenDoge</span>
                 </div>
-                <span className={Styles.price}>$0.2823</span>
+                <span className={Styles.price}>${forksPrices.greendoge}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -245,7 +248,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={tluckyIcon} alt='Иконка' />
                   <span className={Styles.name}>Lucky</span>
                 </div>
-                <span className={Styles.price}>$0.0717</span>
+                <span className={Styles.price}>${forksPrices.lucky}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -254,7 +257,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={tcryptodogeIcon} alt='Иконка' />
                   <span className={Styles.name}>CryptoDoge</span>
                 </div>
-                <span className={Styles.price}>$0.2823</span>
+                <span className={Styles.price}>${forksPrices.cryptodoge}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -263,7 +266,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={twheatIcon} alt='Иконка' />
                   <span className={Styles.name}>Wheat</span>
                 </div>
-                <span className={Styles.price}>$0.0196</span>
+                <span className={Styles.price}>${forksPrices.wheat}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -272,7 +275,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={tchivesIcon} alt='Иконка' />
                   <span className={Styles.name}>Chives</span>
                 </div>
-                <span className={Styles.price}>$0.2823</span>
+                <span className={Styles.price}>${forksPrices.chives}</span>
               </div>
             </div>
           </SwiperSlide>
@@ -285,7 +288,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={tnchainIcon} alt='Иконка' />
                   <span className={Styles.name}>N-Chain</span>
                 </div>
-                <span className={Styles.price}>$0.1326</span>
+                <span className={Styles.price}>${forksPrices.nchain}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -294,7 +297,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={tspareIcon} alt='Иконка' />
                   <span className={Styles.name}>Spare</span>
                 </div>
-                <span className={Styles.price}>$0.3425</span>
+                <span className={Styles.price}>${forksPrices.spare}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -303,7 +306,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={tstaiIcon} alt='Иконка' />
                   <span className={Styles.name}>STAI</span>
                 </div>
-                <span className={Styles.price}>$0.1326</span>
+                <span className={Styles.price}>${forksPrices.stai}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -312,7 +315,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={tdogechiaIcon} alt='Иконка' />
                   <span className={Styles.name}>DogeChia</span>
                 </div>
-                <span className={Styles.price}>$0.0717</span>
+                <span className={Styles.price}>${forksPrices.dogechia}</span>
               </div>
               <div className={Styles.token}>
                 <div className={Styles.block}>
@@ -321,7 +324,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={ttacoIcon} alt='Иконка' />
                   <span className={Styles.name}>Taco</span>
                 </div>
-                <span className={Styles.price}>$0.1326</span>
+                <span className={Styles.price}>${forksPrices.taco}</span>
               </div>
             </div>
           </SwiperSlide>
@@ -334,7 +337,7 @@ export const CalculatorSlider: React.FC = () => {
                   <img className={Styles.icon} src={tkaleIcon} alt='Иконка' />
                   <span className={Styles.name}>Kale</span>
                 </div>
-                <span className={Styles.price}>$0.1326</span>
+                <span className={Styles.price}>${forksPrices.kale}</span>
               </div>
             </div>
           </SwiperSlide>

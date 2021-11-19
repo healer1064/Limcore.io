@@ -47,11 +47,10 @@ const App = () => {
   // const user = useAppSelector((state) => state.user.userData)
   const isAuth = useAppSelector((state) => state.authNew.isAuth)
 
-  dispatch(getForksPrice())
-
   useEffect(() => {
     const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
     getSoldLimcs().then((res) => dispatch(setWalletConnectSoldLimcs(res)))
+    dispatch(getForksPrice())
 
     if (tokenObj.access) {
       dispatch(checkToken({ token: tokenObj.access }))
