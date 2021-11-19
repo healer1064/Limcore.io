@@ -244,13 +244,13 @@ export const PurseDesktop = () => {
                     {isLimcBought?.length ? (
                       <StartMining onButtonClick={handleStartClick} />
                     ) : (
-                      <Statistics onClick={handleUntilMiningModalOpen} />
+                      <UntilMiningStart onClick={handleUntilMiningModalOpen} className={styles.statistics} tooltip />
                     )}
                   </div>
                   <DetailTable />
                 </div>
                 <Modal active={UntilMiningModalOpen} setActive={handleUntilMiningModalClose} crossFlag>
-                  <UntilMiningStart />
+                  <UntilMiningStart popup />
                 </Modal>
               </div>
               <div className={styles.wallet_invisible}>
