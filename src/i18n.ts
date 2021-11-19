@@ -83,7 +83,7 @@ i18n.use(LanguageDetector).init({
         firstRound_terms: 'Terms',
         firstRound_firstRoundTerms: 'Nov 15, 2021 – Dec 30, 2021',
         firstRound_startSelling: 'Market launch will take place on Nov 15 at 00:01 MOS.',
-        firstRound_followNews: 'Follow the news in our Telegram channel',
+        firstRound_followNews: 'Follow the news in our Telegram channel @limc_chat',
 
         roundsRoadmap_round2: 'Round 2',
         roundsRoadmap_round3: 'Round 3',
@@ -124,6 +124,7 @@ i18n.use(LanguageDetector).init({
         roadmap_startRound5: 'Round 5 launch',
 
         roadmap_tg: 'Photos and videos are in our Telegram channel',
+        roadmap_tg_channel: '@limc_chat',
         roadmap_inProcess: 'In progress',
         roadmap_registration: 'Swiss legal entity launch',
         roadmap_listing: 'LIMC listing on HITBTC + BitGlobal exchanges',
@@ -419,7 +420,7 @@ i18n.use(LanguageDetector).init({
         firstRound_terms: 'Сроки',
         firstRound_firstRoundTerms: '15.11.2021 — 30.12.21',
         firstRound_startSelling: 'Старт продаж состоится 15 ноября в 00:01 по МСК',
-        firstRound_followNews: 'Следите за новостями в нашей группе в Telegram',
+        firstRound_followNews: 'Следите за новостями в нашей группе в Telegram @limc_russ',
 
         roundsRoadmap_round2: 'Раунд №2',
         roundsRoadmap_round3: 'Раунд №3',
@@ -459,6 +460,7 @@ i18n.use(LanguageDetector).init({
         roadmap_startRound5: 'Старт Round №5',
 
         roadmap_tg: 'Фото и видео в нашей группе в Telegram',
+        roadmap_tg_channel: '@limc_russ',
         roadmap_inProcess: 'В процессе',
         roadmap_registration: 'Регистрация Швейцарского юридического лица',
         roadmap_listing: 'Листинг LIMC  на биржах HITBTC + BitGlobal',
@@ -755,7 +757,7 @@ i18n.use(LanguageDetector).init({
         firstRound_terms: '期限',
         firstRound_firstRoundTerms: '2021.11.15-2021.12.30',
         firstRound_startSelling: '市场启动将11月15号00：01莫斯科时间开始',
-        firstRound_followNews: '在我们的Telegram频道中关注新闻 @limc_russ',
+        firstRound_followNews: '在我们的Telegram频道中关注新闻 @limc_chat',
 
         roundsRoadmap_round2: '第2轮',
         roundsRoadmap_round3: '第3轮',
@@ -794,6 +796,7 @@ i18n.use(LanguageDetector).init({
         roadmap_startRound5: 'Round 5 的启动',
 
         roadmap_tg: '照片和视频都在我们的Telegram频道',
+        roadmap_tg_channel: '@limc_chat',
         roadmap_inProcess: '正在进行中',
         roadmap_registration: '瑞士法律实体的登记',
         roadmap_listing: '在HITBTC + BitGlobal交易所上LIMC的股票上市',
