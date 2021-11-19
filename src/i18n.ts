@@ -715,7 +715,7 @@ i18n.use(LanguageDetector).init({
         cellCodeFromSms: '请输入短信中的验证码',
         weSentCode: '我们已将验证码发送到该号码',
         change: '改变',
-        getNewCode: '你可以在00：41分钟后得到新的验证码',
+        getNewCode: '你可以在分钟后得到新的验证码',
         getNewCode2: '发送新验证码',
         fa_enterCode: '请输入2-FA验证码',
         fa_enterCodeFromGoogle: '请输入Google Authenticator生成的验证码',
