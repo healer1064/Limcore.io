@@ -28,13 +28,13 @@ export const Balance = () => {
   )
   const walletAddress = useAppSelector((state) => state.wallet.address)
   // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
-  const usdtBalance = useAppSelector((state) => state.authNew.walletConnectUsdt)
+  const usdtBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
   const limcBalance = useAppSelector((state) => state.wallet.limc_balance)
   // const limcCount = useAppSelector((state) => state.wallet.limcCount)
   // const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
   const sum: number = Number(usdtBalance) + Number(limcBalance)
   const money = isNaN(sum) ? '...' : sum
-  const isSync = useAppSelector((state) => state.authNew.isSincWithWallet)
+  const isSync = useAppSelector((state) => state.auth.isSincWithWallet)
 
   const [userPurse, setUserPurse] = useState({
     address: '',

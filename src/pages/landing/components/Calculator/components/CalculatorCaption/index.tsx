@@ -15,7 +15,6 @@ import useWindowSize from '@helpers/useWindowSizeHook'
 import { useHistory } from 'react-router'
 import ModalAuth from '../../../../../landing/components/ModalAuth/index'
 import { useAppDispatch } from '@app/redux/hooks'
-import { setIsBuyLimcClick } from '../../../../../../pages/auth/redux/auth.slice'
 import { InfoIcon } from '@icons/InfoIcon'
 import { InputRange } from './InputRange'
 import { useTranslation } from 'react-i18next'
@@ -37,11 +36,6 @@ export const CalculatorCaption: React.FC = () => {
     setPopupOpen(true)
   }
 
-  const handleLoginModalOpen = (event) => {
-    event.preventDefault()
-    dispatch(setIsBuyLimcClick(true))
-    desktop ? setIsLoginModalVisible(true) : history.push('/auth')
-  }
   const handleLoginModalClose = () => {
     setIsLoginModalVisible(false)
   }

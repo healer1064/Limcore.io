@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next'
 export const Step3: React.FC = () => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
-  const email = useAppSelector((state) => state.authNew.email)
+  const email = useAppSelector((state) => state.auth.email)
   const [validValue, setValidValue] = useState(true)
   const [error, setError] = useState('')
 

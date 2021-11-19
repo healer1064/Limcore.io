@@ -20,8 +20,8 @@ export const Step4: React.FC = () => {
   const [t] = useTranslation()
   const history = useHistory()
   const dispatch = useAppDispatch()
-  const email = useAppSelector((state) => state.authNew.email)
-  const codeEmail = useAppSelector((state) => state.authNew.codeEmail)
+  const email = useAppSelector((state) => state.auth.email)
+  const codeEmail = useAppSelector((state) => state.auth.codeEmail)
 
   const [validValue, setValidValue] = useState(true)
   const [error, setError] = useState('')

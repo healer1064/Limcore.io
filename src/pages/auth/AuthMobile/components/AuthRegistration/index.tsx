@@ -8,7 +8,7 @@ import { Step3 } from './components/Step3'
 import { Step4 } from './components/Step4'
 
 export const AuthRegistration: React.FC = () => {
-  const stepRegistration = useAppSelector((state) => state.authNew.stepRegistration)
+  const stepRegistration = useAppSelector((state) => state.auth.stepRegistration)
 
   return (
     <>

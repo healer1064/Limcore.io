@@ -24,7 +24,7 @@ export const Header: React.FC = () => {
 
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
   // const [btnClass, setBtnClass] = useState(Styles.login)
-  const isAuth = useAppSelector((state) => state.authNew.isAuth)
+  const isAuth = useAppSelector((state) => state.auth.isAuth)
 
   const tempLink = [
     { id: 1, value: t('nav_about'), link: 'limcore', spy: true, smooth: true },
