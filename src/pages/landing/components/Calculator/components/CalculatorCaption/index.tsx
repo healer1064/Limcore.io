@@ -111,24 +111,24 @@ export const CalculatorCaption: React.FC = () => {
 
   return (
     <div className={Styles.caption}>
-      <h2 className={Styles.title}>Калькулятор доходности</h2>
-      <span className={Styles.designation}>Данный калькулятор не учитывает</span>
+      <h2 className={Styles.title}>{t('calculator_title')}</h2>
+      <span className={Styles.designation}>{t('calculator_designation')}</span>
       <ul className={Styles.list}>
         <li className={Styles.item}>
-          <span>Возможный рост стоимости токена LIMC</span>
+          <span>{t('calculator_item_LIMC')}</span>
         </li>
         <li className={Styles.item}>
-          <span>Возможный рост стоимости Chia coin и производных форков</span>
+          <span>{t('calculator_item_Chia')}</span>
         </li>
         <li className={Styles.item}>
-          <span>Появление новых форков и их стоимость</span>
+          <span>{t('calculator_item_new')}</span>
         </li>
       </ul>
-      <span className={Styles.designation}>Все данные актуальны на текущий момент</span>
+      <span className={Styles.designation}>{t('calculator_actual')}</span>
       <form className={Styles.form}>
         <div className={Styles.block}>
           <div className={Styles.labels}>
-            <Label className={classNames(Styles.label, topLabelClass)} titleText='Количество LIMC'>
+            <Label className={classNames(Styles.label, topLabelClass)} titleText={t('calculator_LIMCquantity')}>
               {/* <InputText value={`${limcNumber} LIMC`} onChange={handleLimcNumberChange} placeholder='' /> */}
               <InputText
                 className={Styles.inputCount}
@@ -141,7 +141,7 @@ export const CalculatorCaption: React.FC = () => {
             </Label>
             {/* <img src={arrowIcon} alt='Иконка' className={Styles.arrowSwitch} onClick={handleArrowClick} /> */}
             <IconArrow className={Styles.arrowSwitch} onClick={handleArrowClick} />
-            <Label className={classNames(Styles.label, bottomLabelClass)} titleText='Сумма инвестиций в USDT'>
+            <Label className={classNames(Styles.label, bottomLabelClass)} titleText={t('calculator_USDTsum')}>
               {/* <InputText value={`${investNumber} USDT`} onChange={handleInvestNumberChange} placeholder='' /> */}
               <InputText
                 className={Styles.inputCount}
@@ -176,14 +176,14 @@ export const CalculatorCaption: React.FC = () => {
         <div className={Styles.block}>
           <div className={Styles.info}>
             <div className={Styles.container}>
-              <span className={Styles.signification}>Распределение вознаграждений</span>
+              <span className={Styles.signification}>{t('calculator_signification')}</span>
               <div className={Styles.line}>
                 <div className={Styles.column}>
-                  <strong>Холдер LIMC</strong>
+                  <strong>{t('calculator_holder')}</strong>
                   <strong>85%</strong>
                 </div>
                 <div className={Styles.column}>
-                  <strong>Limcore</strong>
+                  <strong>{t('calculator_limcore')}</strong>
                   <strong className={Styles.informationIcon}>
                     15% <InfoIcon className={Styles.icon} onClick={openPopup} />
                   </strong>
@@ -191,27 +191,27 @@ export const CalculatorCaption: React.FC = () => {
               </div>
               <div className={Styles.wrap}>
                 <div className={Styles.inner}>
-                  <span>Доход с 85%</span>
-                  <span>21,6% годовых в $</span>
+                  <span>{t('calculator_85')}</span>
+                  <span>{t('calculator_21')}</span>
                 </div>
                 <div className={Styles.row}>
                   <div className={Styles.inner}>
-                    <span>В час</span>
+                    <span>{t('calculator_hour')}</span>
                     <span>{`$ ${hour}`.slice(0, 8)}</span>
                   </div>
                   <div className={Styles.inner}>
-                    <span>В день</span>
+                    <span>{t('calculator_day')}</span>
                     <span>{`$ ${day}`.slice(0, 8)}</span>
                   </div>
                   <div className={Styles.inner}>
-                    <span>В месяц</span>
+                    <span>{t('calculator_month')}</span>
                     <span>{`$ ${month}`.slice(0, 8)}</span>
                   </div>
                 </div>
               </div>
             </div>
             <PopupMainPage closePopup={closePopup} popupOpen={popupOpen} className={PopupStyles.popup}>
-              Покрытие расходов на поддержание инфраструктуры
+              {t('calculator_popup')}
             </PopupMainPage>
           </div>
           {/* TODO DELETE DISABLED */}

@@ -41,10 +41,12 @@ import senoIcon from '@icons/senoIcon.png'
 import chaingreenIcon from '@icons/chaingreen.png'
 import goji from '@icons/gojiIcon.png'
 import { useAppSelector } from '@app/redux/hooks'
+import { useTranslation } from 'react-i18next'
 
 SwiperCore.use([Pagination, Navigation])
 
 export const CalculatorSlider: React.FC = () => {
+  const [t] = useTranslation()
   const forksPrices = useAppSelector((state) => state.wallet.forks)
 
   const { width } = useWindowSize()
@@ -63,12 +65,13 @@ export const CalculatorSlider: React.FC = () => {
   return (
     <div className={Styles.slider}>
       <h3 className={Styles.caption}>
-        <img src={limcoreIcon} alt='Иконка' /> 1 LIMC одновременно майнит все токены
+        <img src={limcoreIcon} alt='Иконка' />
+        {t('calculator_sliderTitle')}
       </h3>
       {width >= 768 ? (
         <>
-          <span className={Styles.description}>Отмеченные токены уже майнятся компанией Limcore</span>
-          <span className={Styles.description}>Остальные в процессе интеграции</span>
+          <span className={Styles.description}>{t('calculator_already')}</span>
+          <span className={Styles.description}>{t('calculator_inProcess')}</span>
         </>
       ) : (
         <span className={Styles.description}>
