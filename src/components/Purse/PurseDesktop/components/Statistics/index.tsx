@@ -37,7 +37,7 @@ const AccordeonIcon = () => {
 
 export const Statistics = ({ onClick }: IStatisticsProps) => {
   const [t] = useTranslation()
-  const balanceLimc = useAppSelector((state) => state.wallet.limc_balance)
+  const balanceLimc = useAppSelector((state) => state.auth.walletConnectLimc)
   const daysPassed = useAppSelector((state) => state.wallet.countdown_days)
 
   const [isTooltipVisible, setIsTooltipVisible] = useState(false)

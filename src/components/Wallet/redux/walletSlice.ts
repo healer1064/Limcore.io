@@ -19,7 +19,6 @@ export const walletSlice = createSlice({
   initialState: {
     address: '',
     countdown_days: 0,
-    limc_balance: 0,
     usdt_balance: '0',
     limc_price: {
       lock_time: 0,
@@ -73,13 +72,8 @@ export const walletSlice = createSlice({
   reducers: {},
   extraReducers: {
     [getSyncData.fulfilled]: (state, action) => {
-      const { limc } = action.payload.limc_balance[0]
       const { days_passed } = action.payload
-
       days_passed > 80 ? (state.countdown_days = 80) : (state.countdown_days = 80 - days_passed)
-
-      const numberLimc = Number(limc)
-      numberLimc === 0 ? (state.limc_balance = 0) : (state.limc_balance = Number(numberLimc.toFixed(4)))
     },
     [getForksPrice.fulfilled]: (state, action) => {
       const allForks = action.payload.data
