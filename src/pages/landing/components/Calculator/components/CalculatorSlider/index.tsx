@@ -74,9 +74,7 @@ export const CalculatorSlider: React.FC = () => {
           <span className={Styles.description}>{t('calculator_inProcess')}</span>
         </>
       ) : (
-        <span className={Styles.description}>
-          Отмеченные токены уже майнятся компанией Limcore. Остальные в процессе интеграции
-        </span>
+        <span className={Styles.description}>{t('calculator_already')}</span>
       )}
       <div className={Styles.container}>
         {width >= 768 ? buttonPrevious : ''}
