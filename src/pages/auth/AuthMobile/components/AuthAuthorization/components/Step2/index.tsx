@@ -23,10 +23,10 @@ export const Step2: React.FC = () => {
   const dispatch = useAppDispatch()
   const [t] = useTranslation()
 
-  const typeAuthorization = useAppSelector((state) => state.authNew.typeAuthorization)
-  const phoneOrEmail = useAppSelector((state) => state.authNew.phoneOrEmail)
-  const codePhoneOrEmail = useAppSelector((state) => state.authNew.codePhoneOrEmail)
-  const code2FA = useAppSelector((state) => state.authNew.code2FA)
+  const typeAuthorization = useAppSelector((state) => state.auth.typeAuthorization)
+  const phoneOrEmail = useAppSelector((state) => state.auth.phoneOrEmail)
+  const codePhoneOrEmail = useAppSelector((state) => state.auth.codePhoneOrEmail)
+  const code2FA = useAppSelector((state) => state.auth.code2FA)
 
   const [validValue, setValidValue] = useState(true)
   const [authCodeError, setAuthCodeError] = useState('')

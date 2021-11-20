@@ -10,7 +10,7 @@ import { useAppSelector } from '@app/redux/hooks'
 import { useTranslation } from 'react-i18next'
 
 export const MainRounds: React.FC = () => {
-  const limcCount = useAppSelector((state) => state.authNew.walletConnectSoldLimcs)
+  const limcCount = useAppSelector((state) => state.auth.walletConnectSoldLimcs)
   const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
   const [popupOpen, setPopupOpen] = useState(false)
   const [t] = useTranslation()

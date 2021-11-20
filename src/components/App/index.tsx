@@ -25,8 +25,7 @@ import { Spinner } from '@components/Spinner'
 import { Header } from '@components/Header'
 import { HeaderMobile } from '@components/Header/HeaderMobile/index'
 // import { CabinetPage } from '../../pages/cabinet'
-import { AuthPage } from '../../pages/auth'
-// import { AuthMobile } from '../../pages/auth/AuthMobile'
+import { AuthMobile } from '../../pages/auth/AuthMobile'
 
 import { Dummy } from '../../components/Dummy'
 import { LandingPage } from '../../pages/landing'
@@ -45,7 +44,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true)
   // const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
   // const user = useAppSelector((state) => state.user.userData)
-  const isAuth = useAppSelector((state) => state.authNew.isAuth)
+  const isAuth = useAppSelector((state) => state.auth.isAuth)
 
   useEffect(() => {
     const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
@@ -82,7 +81,7 @@ const App = () => {
             {!isAuth && !isLoading && (
               <Switch>
                 <Route path='/' exact component={LandingPage} />
-                {!desktop && <Route path='/auth' exact component={AuthPage} />}
+                {!desktop && <Route path='/auth' exact component={AuthMobile} />}
                 <Route path='*'>
                   <Redirect to='/' />
                 </Route>

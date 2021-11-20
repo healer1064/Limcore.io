@@ -16,8 +16,8 @@ export const Menu = ({ openPopup, handleBalanceUsdtOpenClick, handleBalanceUsdtC
 
   // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
   const limcBalance = useAppSelector((state) => state.wallet.limc_balance)
-  const usdtBalance = useAppSelector((state) => state.authNew.walletConnectUsdt)
-  const isSinc = useAppSelector((state) => state.authNew.isSincWithWallet)
+  const usdtBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
+  const isSinc = useAppSelector((state) => state.auth.isSincWithWallet)
 
   // const buttonPlusClass = `${styles.menu__item} ${styles.menu__buttonPlus}`
   const menuClass = isSinc ? classNames(styles.menu, styles.menu_sinc) : styles.menu

@@ -27,7 +27,7 @@ import { Modal } from '../PurseDesktop/components/Modal'
 import { ModalHeader } from '../PurseDesktop/components/ModalHeader'
 import { RoadMap } from './components/RoadMap'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
-import { setIsAuth } from '../../../pages/auth/redux/auth.slice'
+import { setIsAuth } from '../../../pages/auth/redux/authSlice'
 import { useHistory } from 'react-router'
 import { UntilMiningStart } from './components/UntilMiningStart/UntilMiningStart'
 import { LogoutIcon } from '@icons/LogoutIcon'
@@ -44,7 +44,6 @@ export const PurseDesktop = () => {
   const [isPageCardBalanceVisible, setIsPageCardBalanceVisible] = useState(false)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const [isLimcBought, setIsLimcBought] = useState(false)
-  const isLimcBought = useAppSelector((state) => state.auth.transactions)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isUserHasTransactions, setIsUserHasTransactions] = useState(true)
 
@@ -67,7 +66,7 @@ export const PurseDesktop = () => {
   const userName = useAppSelector((state) => state.user.userData?.name)
   const userPhone = useAppSelector((state) => state.user.userData?.phone)
   const currentName = userName || userPhone
-  const usdtBalance = useAppSelector((state) => state.authNew.walletConnectUsdt) || 0
+  const usdtBalance = useAppSelector((state) => state.auth.walletConnectUsdt) || 0
 
   const handleSetValue = (event) => setValue(event.target.value)
   const history = useHistory()
@@ -241,16 +240,12 @@ export const PurseDesktop = () => {
                 <div className={styles.miningDetails}>
                   <div className={styles.miningDetailsWrapper}>
                     <Details />
-                    {isLimcBought?.length ? (
-                      <StartMining onButtonClick={handleStartClick} />
-                    ) : (
-                      <Statistics onClick={handleUntilMiningModalOpen} />
-                    )}
+                    <UntilMiningStart onClick={handleUntilMiningModalOpen} className={styles.statistics} tooltip />
                   </div>
                   <DetailTable />
                 </div>
                 <Modal active={UntilMiningModalOpen} setActive={handleUntilMiningModalClose} crossFlag>
-                  <UntilMiningStart />
+                  <UntilMiningStart popup />
                 </Modal>
               </div>
               <div className={styles.wallet_invisible}>

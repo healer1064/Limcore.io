@@ -9,12 +9,13 @@ import { Label } from '../../../../../../../ui-kit/Label'
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
 import { ButtonSecond } from '../../../../../../../ui-kit/ButtonSecond'
 import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/material.css'
 import { useTranslation } from 'react-i18next'
 
 export const Step1: React.FC = () => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
-  const phone = useAppSelector((state) => state.authNew.phone)
+  const phone = useAppSelector((state) => state.auth.phone)
   const [error, setError] = useState('')
 
   const onChange = (event) => {

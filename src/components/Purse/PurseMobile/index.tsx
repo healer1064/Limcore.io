@@ -33,7 +33,6 @@ export const PurseMobile: FC = () => {
   const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const [isLimcBought, setIsLimcBought] = useState(false)
-  const isLimcBought = useAppSelector((state) => state.auth.transactions)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isUserHasTransactions, setIsUserHasTransactions] = useState(true)
 
@@ -189,11 +188,7 @@ export const PurseMobile: FC = () => {
             {t('buyLimc')}
           </ButtonBig>
         </div>
-        {isLimcBought?.length ? (
-          <StartMining onButtonClick={handleStartClick} />
-        ) : (
-          <Statistics onClick={handleShowMoreClick} />
-        )}
+        <Statistics onClick={handleShowMoreClick} />
         <Details />
         {/* {isWalletVisible && <Wallet onCloseClick={handleWalletCloseClick} />} */}
         {/* <Transactions

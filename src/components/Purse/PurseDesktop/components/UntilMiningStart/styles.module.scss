@@ -4,10 +4,29 @@
   display: flex;
   flex-direction: column;
   padding: 0 35px;
+  .header {
+    display: flex;
+  }
   .untilMiningTitle {
     @include section-title();
     font-size: 18px;
-    margin: 0;
+    margin: 0 5px 0 0;
+  }
+  .tooltip {
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    transform: translateY(1px);
+    path {
+      stroke: $color-4F-black;
+    }
+    &:hover {
+          path {
+      stroke: $color-4A-blue;
+    }
+    }
   }
   .visualization {
     width: 100%;

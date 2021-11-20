@@ -15,12 +15,13 @@ import { Label } from '../../../../../../../ui-kit/Label'
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
 import { ButtonSecond } from '../../../../../../../ui-kit/ButtonSecond'
 import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/material.css'
 import { useTranslation } from 'react-i18next'
 
 export const Step1: React.FC = () => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
-  const phoneOrEmail = useAppSelector((state) => state.authNew.phoneOrEmail)
+  const phoneOrEmail = useAppSelector((state) => state.auth.phoneOrEmail)
   const isLimcClick = useAppSelector(authSelector).isBuyLimcClick
   const [error, setError] = useState('')
 
