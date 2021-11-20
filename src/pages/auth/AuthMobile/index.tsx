@@ -7,7 +7,7 @@ import { AuthAuthorization } from './components/AuthAuthorization'
 import { AuthRegistration } from './components/AuthRegistration'
 
 export const AuthMobile: React.FC = () => {
-  const processType = useAppSelector((state) => state.authNew.processType)
+  const processType = useAppSelector((state) => state.auth.processType)
   const { width } = useWindowSize()
   const desktop = width >= 769
 

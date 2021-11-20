@@ -23,13 +23,13 @@ export const Menu = ({
 }) => {
   const [t] = useTranslation()
   const [isLimcInfoVisible, setIsLimcInfoVisible] = useState(false)
-  const isSync = useAppSelector((state) => state.authNew.isSincWithWallet)
+  const isSync = useAppSelector((state) => state.auth.isSincWithWallet)
   // const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
   // const [isCardInfoVisible, setIsCardInfoVisible] = useState(false)
   // const buttonPlusClass = `${styles.menu__item} ${styles.menu__buttonPlus}`
   // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
-  const limcBalance = useAppSelector((state) => state.wallet.limc_balance)
-  const usdtBalance = useAppSelector((state) => state.authNew.walletConnectUsdt)
+  const limcBalance = useAppSelector((state) => state.auth.walletConnectLimc)
+  const usdtBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
   // const [lastNumbersOfCard, setLastNumbersOfCard] = useState('3580')
   // const [cardBalance, setCardBalance] = useState(`$3,587`)
 

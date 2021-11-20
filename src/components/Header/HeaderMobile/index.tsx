@@ -15,7 +15,7 @@ import { Telegram } from '@icons/Telegram'
 import { Instagram } from '@icons/Instagram'
 import { Youtube } from '@icons/Youtube'
 import { useHistory, useLocation } from 'react-router'
-import { setIsAuth } from '../../../pages/auth/redux/auth.slice'
+import { setIsAuth } from '../../../pages/auth/redux/authSlice'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import close from '@icons/close.svg'
 import { Logo } from '@components/Purse/PurseDesktop/components/Logo'
@@ -30,7 +30,7 @@ export const HeaderMobile: React.FC = () => {
   const [showPopapLanguage, setShowPopapLanguage] = useState(false)
   const [t, i18n] = useTranslation()
 
-  const isAuth = useAppSelector((state) => state.authNew.isAuth)
+  const isAuth = useAppSelector((state) => state.auth.isAuth)
   const history = useHistory()
   const location = useLocation()
   const dispatch = useAppDispatch()

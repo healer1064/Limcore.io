@@ -2,7 +2,7 @@ import React from 'react'
 import Styles from './styles.module.scss'
 
 import { Main } from './components/Main'
-// import { Calculator } from './components/Calculator'
+import { Calculator } from './components/Calculator'
 import { RoadMap } from './components/RoadMap'
 import { Team } from './components/Team'
 // import { UpEcosystem } from './components/UpEcosystem'
@@ -15,7 +15,7 @@ export const LandingPage: React.FC = () => {
   return (
     <div className={Styles.landing}>
       <Main />
-      {/* <Calculator /> */}
+      <Calculator />
       <RoadMap />
       <Team />
       {/* <UpEcosystem /> */}

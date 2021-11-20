@@ -26,7 +26,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   balance,
 }) => {
   // const menuItemClass = `${styles.menu__item} ${styles.menu__balance}`
-  const isSync = useAppSelector((state) => state.authNew.isSincWithWallet)
+  const isSync = useAppSelector((state) => state.auth.isSincWithWallet)
 
   const onClickHandler = () => {
     if (title.includes('LIMC') || title.includes('USDT') || title.includes('Карта')) {

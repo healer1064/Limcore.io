@@ -8,14 +8,18 @@ import { useAppSelector } from '@app/redux/hooks'
 import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
 import WalletConnect from '@walletconnect/client'
 import QRCodeModal from '@walletconnect/qrcode-modal'
-import { setIsSincWithWallet, setWalletConnectUsdt } from '../../../../../pages/auth/redux/authSlice'
+import {
+  setIsSincWithWallet,
+  setWalletConnectLimc,
+  setWalletConnectUsdt,
+} from '../../../../../pages/auth/redux/authSlice'
 import { useDispatch } from 'react-redux'
 import { LogoLimc } from './Icons/LogoLimc'
 import { LogoTrustWallet } from './Icons/LogoTrustWallet'
 import GrayCrossIcon from '../../images/GrayCross/GrayCrossIcon'
 import { WalletPurseIcon } from './Icons/WalletPurseIcon'
 import classNames from 'classnames'
-import { getUsdt } from './walletConnect'
+import { getLimc, getUsdt } from './walletConnect'
 import { useTranslation } from 'react-i18next'
 import { getSyncData } from '@components/Wallet/redux/walletSlice'
 
@@ -34,12 +38,12 @@ export const Balance = () => {
   )
   const walletAddress = useAppSelector((state) => state.wallet.address)
   // const usdtWalletBalance = useAppSelector((state) => state.wallet.usdt_balance)
-  const usdtWalletBalance = useAppSelector((state) => state.authNew.walletConnectUsdt)
-  const limcWalletBalance = useAppSelector((state) => state.wallet.limc_balance)
+  const usdtWalletBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
+  const limcWalletBalance = useAppSelector((state) => state.auth.walletConnectLimc)
 
   // const limcCount = useAppSelector((state) => state.wallet.limcCount)
   // const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
-  const isSinc = useAppSelector((state) => state.authNew.isSincWithWallet)
+  const isSinc = useAppSelector((state) => state.auth.isSincWithWallet)
 
   const sum: number = Number(usdtWalletBalance) + Number(limcWalletBalance)
   const money = isNaN(sum) ? '...' : sum
@@ -109,6 +113,7 @@ export const Balance = () => {
   useEffect(() => {
     if (userPurse.chainId) {
       getUsdt(userPurse.address).then((res) => dispatch(setWalletConnectUsdt(res)))
+      getLimc(userPurse.address).then((res) => dispatch(setWalletConnectLimc(res)))
       dispatch(getSyncData({ address: userPurse.address }))
     }
   }, [userPurse])

@@ -135,9 +135,11 @@ export const login2FA: any = createAsyncThunk('user/login2FA', async (data: any)
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
+    isBuyLimcClick: false,
     isAuth: false,
     isSincWithWallet: false,
-    walletConnectUsdt: '',
+    walletConnectLimc: '0',
+    walletConnectUsdt: '0',
     walletConnectSoldLimcs: 0,
     processType: 'authorization',
     stepRegistration: 1,
@@ -153,6 +155,9 @@ export const authSlice = createSlice({
     confirmationEmail: { code: '', unique_identifier: '' },
   },
   reducers: {
+    setIsBuyLimcClick: (state, { payload }) => {
+      state.isAuth = payload
+    },
     setIsAuth: (state, { payload }) => {
       state.isAuth = payload
     },
@@ -161,6 +166,9 @@ export const authSlice = createSlice({
     },
     setWalletConnectUsdt: (state, { payload }) => {
       state.walletConnectUsdt = payload
+    },
+    setWalletConnectLimc: (state, { payload }) => {
+      state.walletConnectLimc = payload
     },
     setWalletConnectSoldLimcs: (state, { payload }) => {
       state.walletConnectSoldLimcs = payload
@@ -290,6 +298,7 @@ export const authSlice = createSlice({
 
 const { actions, reducer } = authSlice
 export const {
+  setIsBuyLimcClick,
   setIsAuth,
   setIsSincWithWallet,
   setProcessType,
@@ -303,6 +312,7 @@ export const {
   setPhoneOrEmail,
   setCodePhoneOrEmail,
   setWalletConnectUsdt,
+  setWalletConnectLimc,
   setWalletConnectSoldLimcs,
   setCode2FA,
 } = actions
