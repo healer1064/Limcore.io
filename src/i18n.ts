@@ -255,7 +255,7 @@ i18n.use(LanguageDetector).init({
         purse_myAccounts: 'My accounts',
         purse_notSync: 'Not synchronized',
         purse_needSync: 'Synchronize',
-        purse_walletConnect: 'To start mining synchronize Limcore wallet with Trust wallet',
+        purse_walletConnect: 'To start mining synchronize Limcore wallet with external wallet',
         purse_walletConnectSync: 'Limcore Wallet is synchronized with an external wallet',
         purse_sync: 'Synchronize',
 
@@ -627,7 +627,7 @@ i18n.use(LanguageDetector).init({
         purse_myAccounts: 'Мои счета',
         purse_notSync: 'Не синхронизирован',
         purse_needSync: 'Синхронизируйтесь',
-        purse_walletConnect: 'Для старта майнинга синхронизируйте Limcore Wallet с Trust Wallet',
+        purse_walletConnect: 'Для старта майнинга синхронизируйте Limcore Wallet с внешним кошельком',
         purse_walletConnectSync: 'Limcore Wallet синхронизирован с внешним кошельком',
         purse_sync: 'Синхронизировать',
 
