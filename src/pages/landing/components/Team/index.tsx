@@ -35,7 +35,8 @@ export const Team: React.FC = () => {
     },
     {
       id: 3,
-      job: `Руководитель${'\u00A0'}службы поддержки клиентов`,
+      // job: `Руководитель${'\u00A0'}службы поддержки клиентов`,
+      job: t('team_turkinRank'),
       name: t('team_turkin'),
       content: t('team_turkinDesc'),
       foto: Turkin,

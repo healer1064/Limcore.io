@@ -35,6 +35,7 @@ import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getUser } from '@app/redux/userSlice'
 // import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
 import { getSoldLimcs } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
+import { getForksPrice } from '@components/Wallet/redux/walletSlice'
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -48,6 +49,7 @@ const App = () => {
   useEffect(() => {
     const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
     getSoldLimcs().then((res) => dispatch(setWalletConnectSoldLimcs(res)))
+    dispatch(getForksPrice())
 
     if (tokenObj.access) {
       dispatch(checkToken({ token: tokenObj.access }))
