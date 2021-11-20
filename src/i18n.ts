@@ -1,9 +1,8 @@
 import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
-import React from 'react'
 
 i18n.use(LanguageDetector).init({
-  lng: 'cn',
+  lng: 'en',
   // we init with resources
   // \u000A - перенос строки
   resources: {
@@ -132,6 +131,20 @@ i18n.use(LanguageDetector).init({
         roadmap_buildUp: 'DPC (Data Processing Center) build-up completion in Mozhaysk',
         roadmap_mvp: 'Development and MVP creation of own tape data storage',
         roadmap_launch: 'Tape data storages full-scale production launch',
+
+        roadmap_deadline_may30: '31.05.2021',
+        roadmap_deadline_june24: '24.06.2021',
+        roadmap_deadline_july10: '10.07.2021',
+        roadmap_deadline_july22: '22.07.2021',
+        roadmap_deadline_august03: '03.08.2021',
+        roadmap_deadline_october15: '15.10.2021',
+        roadmap_deadline_november1: '01.11.2021',
+        roadmap_deadline_november15: '15.11.2021',
+        roadmap_deadline_1530: '15.11 – 30.12.2021',
+        roadmap_deadline_2627: '26.10 – 27.10.2021',
+        roadmap_deadline_1025: '10.01 – 25.02.2022',
+        roadmap_deadline_2501: '25.01.2022',
+        roadmap_deadline_2502: '25.02.2022',
 
         team_title: 'Project team',
         team_shumaev: 'Dmitry Shumaev',
@@ -489,7 +502,7 @@ i18n.use(LanguageDetector).init({
         roadmap_deadline_2502: '25.02.2022',
 
         roadmap_startRound1: 'Старт Round №1 1LIMC = $95/80,000 LIMC',
-        roadmap_startRound2: 'Старт Round №2 1 LIMC = min $110 / 120,000 LIMC',
+        roadmap_startRound2: 'Старт Round №2 1LIMC = min $110 / 120,000 LIMC',
         roadmap_startRound3: 'Старт Round №3',
         roadmap_startRound4: 'Старт Round №4',
         roadmap_startRound5: 'Старт Round №5',
@@ -736,30 +749,6 @@ i18n.use(LanguageDetector).init({
         calculator_inProcess: 'Остальные в процессе интеграции',
       },
     },
-    ch: {
-      translations: {
-        calculator_title: '利潤計算器',
-        calculator_designation: '這個計算器不包括',
-        calculator_item_LIMC: 'LIMC 代幣價值可能增加',
-        calculator_item_Chia: 'Chia 幣和衍生品分叉的價值可能會上漲',
-        calculator_item_new: '新分叉的出現及其成本',
-        calculator_actual: '所有數據都是最新的',
-        calculator_LIMCquantity: 'LIMC數量',
-        calculator_USDTsum: 'USDT投資金額',
-        calculator_signification: '獎勵分配',
-        calculator_holder: '持有人 LIMC',
-        calculator_limcore: 'Limcore',
-        calculator_85: '收入來自 85%',
-        calculator_21: '每年 21.6% 美元',
-        calculator_hour: '在一個小時之內',
-        calculator_day: '每天',
-        calculator_month: '每月',
-        calculator_popup: '基礎設施維護成本的覆蓋範圍',
-        calculator_sliderTitle: '1 LIMC 同時開採所有代幣',
-        calculator_already: 'Limcore 已經在開採標記的代幣',
-        calculator_inProcess: '其他正在整合中',
-      },
-    },
     cn: {
       translations: {
         login: '登录',
@@ -827,13 +816,13 @@ i18n.use(LanguageDetector).init({
 
         landing_title: '所有Chia分叉的云端挖矿',
         landing_subtitle: '加密货币投资的最快而有利的方式',
-        landing_video: 'https://www.youtube.com/embed/aK9obYQi-FI',
+        landing_video: 'https://www.youtube.com/embed/5ZuYH1pEQhM',
 
         firstRound_round1: '第1轮',
         firstRound_limit: '限制',
         firstRound_limcPrice: '1 LIMC价格',
         firstRound_terms: '期限',
-        firstRound_firstRoundTerms: '2021.11.15-2021.12.30',
+        firstRound_firstRoundTerms: '2021.11.15 - 2021.12.30',
         firstRound_startSelling: '市场启动将11月15号00：01莫斯科时间开始',
         firstRound_followNews: '在我们的Telegram频道中关注新闻 @limc_chat',
 
@@ -1094,6 +1083,27 @@ i18n.use(LanguageDetector).init({
         streams_title_1: '建筑整修',
         streams_title_2: '周边地区的整修',
         stream_camera: '摄像头',
+
+        calculator_title: '利潤計算器',
+        calculator_designation: '這個計算器不包括',
+        calculator_item_LIMC: 'LIMC 代幣價值可能增加',
+        calculator_item_Chia: 'Chia 幣和衍生品分叉的價值可能會上漲',
+        calculator_item_new: '新分叉的出現及其成本',
+        calculator_actual: '所有數據都是最新的',
+        calculator_LIMCquantity: 'LIMC數量',
+        calculator_USDTsum: 'USDT投資金額',
+        calculator_signification: '獎勵分配',
+        calculator_holder: '持有人 LIMC',
+        calculator_limcore: 'Limcore',
+        calculator_85: '收入來自 85%',
+        calculator_21: '每年 21.6% 美元',
+        calculator_hour: '在一個小時之內',
+        calculator_day: '每天',
+        calculator_month: '每月',
+        calculator_popup: '基礎設施維護成本的覆蓋範圍',
+        calculator_sliderTitle: '1 LIMC 同時開採所有代幣',
+        calculator_already: 'Limcore 已經在開採標記的代幣',
+        calculator_inProcess: '其他正在整合中',
       },
     },
   },
