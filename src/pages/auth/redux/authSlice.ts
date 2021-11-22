@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { api } from '../../../app/api'
 import { RootState } from '../../../app/redux/store'
@@ -119,6 +118,7 @@ export const getNewCode: any = createAsyncThunk('auth/getNewCode', async functio
 
 export const checkToken: any = createAsyncThunk('auth/checkToken', async function (data) {
   const response = await api.post('token/verify/', data)
+  console.log('TOKEN VERIFY', response)
   return response
 })
 
@@ -239,6 +239,15 @@ export const authSlice = createSlice({
 
       state.confirmationEmail = data
     },
+    // [registerUserEmail.fulfilled]: (state, action) => {
+    //   console.log('action', action)
+    //   const data = { code: '', unique_identifier: '' }
+
+    //   data.code = action.payload.data.result.slice(35, 40)
+    //   data.unique_identifier = action.payload.data.result.slice(42, 78)
+
+    //   state.confirmationEmail = data
+    // },
     [registerUserEmailConfirmation.fulfilled]: (state, action) => {
       console.log('registerUserEmailConfirmation', action)
 
@@ -272,7 +281,9 @@ export const authSlice = createSlice({
       }
     },
     [checkToken.rejected]: (state, action) => {
-      throw new Error('access_token_invalid')
+      console.log('rejected token verify')
+      localStorage.removeItem('jwtToken')
+      window.location.reload()
     },
     [refreshToken.fulfilled]: (state, action) => {
       console.log('refreshToken', action)
@@ -281,11 +292,6 @@ export const authSlice = createSlice({
       const data = { ...jwtObj, access: action.payload.data.access }
 
       localStorage.setItem('jwtToken', JSON.stringify(data))
-      window.location.href = '/my'
-    },
-    [refreshToken.rejected]: (state, action) => {
-      localStorage.removeItem('jwtToken')
-      window.location.reload()
     },
   },
 })
