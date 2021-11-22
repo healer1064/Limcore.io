@@ -18,6 +18,7 @@ i18n.use(LanguageDetector).init({
         next: 'Next step',
         balance: 'Balance',
         commonBalance: 'Common balance',
+        walletconnect_disconnect: 'Disconnect from external wallet',
 
         // Auth: step1
         logIn: 'Log on',
@@ -390,6 +391,7 @@ i18n.use(LanguageDetector).init({
         next: 'Далее',
         balance: 'Баланс',
         commonBalance: 'Общий баланс',
+        walletconnect_disconnect: 'Отключиться от внешнего кошелька',
 
         // Auth: step1
         logIn: 'Авторизация',
@@ -761,6 +763,7 @@ i18n.use(LanguageDetector).init({
         next: '下一步',
         balance: '平衡',
         commonBalance: '总平衡',
+        walletconnect_disconnect: '断开与外部钱包的连接',
 
         // Auth: step1
         logIn: '登录',
