@@ -35,8 +35,10 @@ export const Questions: React.FC = () => {
   const [activeItem, setActiveItem] = useState({ id: null, title: '' })
 
   useEffect(() => {
-    setActiveItem(array[0])
-  }, [])
+    setActiveItem(() => {
+      return activeItem.id ? array[activeItem.id - 1] : array[0]
+    })
+  }, [t])
 
   return (
     <>

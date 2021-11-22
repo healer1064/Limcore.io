@@ -156,7 +156,7 @@ export const authSlice = createSlice({
   },
   reducers: {
     setIsBuyLimcClick: (state, { payload }) => {
-      state.isAuth = payload
+      state.isBuyLimcClick = payload
     },
     setIsAuth: (state, { payload }) => {
       state.isAuth = payload

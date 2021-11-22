@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import {
   setProcessType,
@@ -7,6 +7,7 @@ import {
   setPhoneOrEmail,
   getJwtTokenTest,
   authSelector,
+  setIsBuyLimcClick,
 } from '../../../../../redux/authSlice'
 import { validateEmail, validatePhone } from '../../../../../../../helpers/validateValue'
 import Styles from './styles.module.scss'
@@ -88,6 +89,12 @@ export const Step1: React.FC = () => {
       dispatch(setStepAuthorization(2))
     }
   }
+
+  useEffect(() => {
+    return () => {
+      dispatch(setIsBuyLimcClick(false))
+    }
+  }, [])
 
   return (
     <>
