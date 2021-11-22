@@ -12,7 +12,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  gap: 15px;
+  //gap: 15px;
 }
 
 .logout {
@@ -47,7 +47,7 @@
 }
 
 .logoLink {
-  margin-right: 8px;
+  margin-right: 24px;
 
   & > img {
     transform: translateY(1px);
