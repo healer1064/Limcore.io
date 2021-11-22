@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch, useLocation } from 'react-router-dom'
 // import { getTransactions } from '../../pages/auth/redux/auth.slice'
-import { checkToken, refreshToken, setIsAuth, setWalletConnectSoldLimcs } from '../../pages/auth/redux/authSlice'
+import { checkToken, setIsAuth, setWalletConnectSoldLimcs } from '../../pages/auth/redux/authSlice'
 
 // import { Footer } from '../Footer'
 import { FooterMobile } from '../Footer/FooterMobile'
@@ -60,7 +60,7 @@ const App = () => {
           setIsLoading(false)
         })
         .catch(() => {
-          dispatch(refreshToken({ refresh: tokenObj.refresh }))
+          setIsLoading(false)
         })
     } else {
       setIsLoading(false)
