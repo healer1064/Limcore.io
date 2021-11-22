@@ -376,6 +376,12 @@ i18n.use(LanguageDetector).init({
         calculator_sliderTitle: '1 LIMC simultaneously mines all tokens',
         calculator_already: 'Marked tokens are already being mined by Limcore',
         calculator_inProcess: 'Others in the process of integration',
+
+        chat_form_placeholder: 'Search',
+        chat_reset_button_value: 'Cancel',
+        chat_no_results: 'No results',
+        chat_no_results_text: 'No results were found for',
+        chat_no_results_try: 'Try again',
       },
     },
     ru: {
@@ -747,6 +753,12 @@ i18n.use(LanguageDetector).init({
         calculator_sliderTitle: '1 LIMC одновременно майнит все токены',
         calculator_already: 'Отмеченные токены уже майнятся компанией Limcore',
         calculator_inProcess: 'Остальные в процессе интеграции',
+
+        chat_form_placeholder: 'Поиск',
+        chat_reset_button_value: 'Отмена',
+        chat_no_results: 'Результатов нет',
+        chat_no_results_text: 'Ничего не найдено по запросу',
+        chat_no_results_try: 'Попробуйте снова',
       },
     },
     cn: {
