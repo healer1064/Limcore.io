@@ -85,6 +85,9 @@ i18n.use(LanguageDetector).init({
         firstRound_startSelling: 'Market launch will take place on Nov 15 at 00:01 MOS.',
         firstRound_followNews: 'Follow the news in our Telegram channel @limc_chat',
 
+        roundsRoadmap_limcMin: 'LIMC (min $110)',
+        roundsRoadmap_priceLater: 'LIMC (price and limit later)',
+
         roundsRoadmap_round2: 'Round 2',
         roundsRoadmap_round3: 'Round 3',
         roundsRoadmap_round4: 'Round 4',
@@ -147,10 +150,13 @@ i18n.use(LanguageDetector).init({
         roadmap_deadline_2502: '25.02.2022',
 
         team_title: 'Project team',
+
+        team_shumaevRank: 'CEO / Owner',
         team_shumaev: 'Dmitry Shumaev',
         team_shumaevDesc:
           'Before Limcore worked in several government entities as IT Security specialist. Run the government entity BaikonurSvyazInform',
 
+        team_losevRank: 'Co-Owner / Chief\u00A0Financial\u00A0Officer',
         team_losev: 'Pavel Losev',
         team_losevDesc: 'Before Limcore worked in Central Bank of Russian Federation',
 
@@ -457,6 +463,9 @@ i18n.use(LanguageDetector).init({
         firstRound_startSelling: 'Старт продаж состоится 15 ноября в 00:01 по МСК',
         firstRound_followNews: 'Следите за новостями в нашей группе в Telegram @limc_russ',
 
+        roundsRoadmap_limcMin: 'LIMC (min $110)',
+        roundsRoadmap_priceLater: 'LIMC (price and limit later)',
+
         roundsRoadmap_round2: 'Раунд №2',
         roundsRoadmap_round3: 'Раунд №3',
         roundsRoadmap_round4: 'Раунд №4',
@@ -517,10 +526,13 @@ i18n.use(LanguageDetector).init({
         roadmap_launch: 'Запуск серийного производства ленточного накопителя данных',
 
         team_title: 'Команда проекта',
+
+        team_shumaevRank: 'CEO / Owner',
         team_shumaev: 'Дмитрий Шумаев',
         team_shumaevDesc:
           'В юношестве работал в нескольких гос. учреждениях РФ в качестве сотрудника по ИТ безопасности. Руководил гос. предприятием «БайконурСвязьИнформ»',
 
+        team_losevRank: 'Co-Owner / Chief\u00A0Financial\u00A0Officer',
         team_losev: 'Павел Лосев',
         team_losevDesc: 'Ранее работал в Центральном Банке Российской Федерации',
 
@@ -826,6 +838,9 @@ i18n.use(LanguageDetector).init({
         firstRound_startSelling: '市场启动将11月15号00：01莫斯科时间开始',
         firstRound_followNews: '在我们的Telegram频道中关注新闻 @limc_chat',
 
+        roundsRoadmap_limcMin: 'LIMC（最少$110)',
+        roundsRoadmap_priceLater: 'LIMC（价格和限额迟些时候)',
+
         roundsRoadmap_round2: '第2轮',
         roundsRoadmap_round3: '第3轮',
         roundsRoadmap_round4: '第4轮',
@@ -870,11 +885,11 @@ i18n.use(LanguageDetector).init({
         roadmap_deadline_2501: '2022.01.25',
         roadmap_deadline_2502: '2022.02.25',
 
-        roadmap_startRound1: 'Round 1 1LIMC = $95/80,000 LIMC的启动',
-        roadmap_startRound2: 'Round 2 1 LIMC = min $110 / 120,000 LIMC的启动',
-        roadmap_startRound3: 'Round 3 的启动',
-        roadmap_startRound4: 'Round 4的启动',
-        roadmap_startRound5: 'Round 5 的启动',
+        roadmap_startRound1: '第1轮1 LIMC = $95/80,000 LIMC的启动',
+        roadmap_startRound2: '第2轮1 LIMC = min $110 / 120,000 LIMC的启动',
+        roadmap_startRound3: '第3轮 的启动',
+        roadmap_startRound4: '第4轮 的启动',
+        roadmap_startRound5: '第5轮 的启动',
 
         roadmap_tg: '照片和视频都在我们的Telegram频道',
         roadmap_tg_channel: '@limc_chat',
@@ -886,9 +901,12 @@ i18n.use(LanguageDetector).init({
         roadmap_launch: '磁带数据储存器的成批生产的启动',
 
         team_title: '项目团队',
+
+        team_shumaevRank: '总裁 / 业主',
         team_shumaev: '德米特里·舒马耶夫',
         team_shumaevDesc: '年轻时他在几个俄罗斯政府机构担任过IT安全职员。管理过拜科努尔联系通知政府机构',
 
+        team_losevRank: '共同所有者 / 首席财务官',
         team_losev: '帕维尔·洛谢夫',
         team_losevDesc: '他曾在俄罗斯联邦中央银行工作过',
 
