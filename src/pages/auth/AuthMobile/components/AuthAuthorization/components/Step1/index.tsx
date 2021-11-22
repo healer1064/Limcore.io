@@ -67,6 +67,9 @@ export const Step1: React.FC = () => {
         case 'phone_is_not_confirmed':
           setError(t('err_phoneNotConfirmed'))
           break
+        case 'wait_one_minute':
+          setError(t('err_waitOneMinute'))
+          break
         case 'email_is_not_confirmed':
           setError(t('err_mailNotConfirmed'))
           break
