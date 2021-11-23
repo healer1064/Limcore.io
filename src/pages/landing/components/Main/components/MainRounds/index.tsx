@@ -91,7 +91,7 @@ export const MainRounds: React.FC = () => {
               <span className={Styles.date__mobile}>10.01.2022</span>
               <span className={Styles.subtitle}>{t('roundsRoadmap_round2')}</span>
               <div className={Styles.row}>
-                <span>LIMC (min $110)</span>
+                <span>{t('roundsRoadmap_limcMin')}</span>
                 <span>120,000</span>
               </div>
             </div>
@@ -99,19 +99,19 @@ export const MainRounds: React.FC = () => {
               <span className={Styles.date__mobile}>25.02.2022</span>
               <span className={Styles.subtitle}>{t('roundsRoadmap_round3')}</span>
               <div className={Styles.row}>
-                <span>LIMC (price and limit later)</span>
+                <span>{t('roundsRoadmap_priceLater')}</span>
               </div>
             </div>
             <div className={Styles.round}>
               <span className={Styles.subtitle}>{t('roundsRoadmap_round4')}</span>
               <div className={Styles.row}>
-                <span>LIMC (price and limit later)</span>
+                <span>{t('roundsRoadmap_priceLater')}</span>
               </div>
             </div>
             <div className={Styles.round}>
               <span className={Styles.subtitle}>{t('roundsRoadmap_round5')}</span>
               <div className={Styles.row}>
-                <span>LIMC (price and limit later)</span>
+                <span>{t('roundsRoadmap_priceLater')}</span>
               </div>
             </div>
             <span className={Styles.date__mobile}>{t('roundsRoadmap_endSelling')}</span>
