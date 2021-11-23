@@ -389,6 +389,8 @@ i18n.use(LanguageDetector).init({
         chat_no_results: 'No results',
         chat_no_results_text: 'No results were found for',
         chat_no_results_try: 'Try again',
+        support_no_messages: 'No messages yet...',
+        support_start: 'Start chatting!',
       },
     },
     ru: {
@@ -773,6 +775,8 @@ i18n.use(LanguageDetector).init({
         chat_no_results: 'Результатов нет',
         chat_no_results_text: 'Ничего не найдено по запросу',
         chat_no_results_try: 'Попробуйте снова',
+        support_no_messages: 'Сообщений пока нет...',
+        support_start: 'Начните общение!',
       },
     },
     cn: {

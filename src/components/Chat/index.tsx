@@ -12,11 +12,12 @@ export const Chat = () => {
     {
       id: 1,
       name: 'Поддержка',
-      message: 'Привет! Здесь вы можете задать свой вопрос',
+      message: 'Привет! Здесь вы можете задать вопросы по операциям и услугам нашего сервиса.',
       date: 11.08,
       image: fotoExample,
       status: 'В сети',
       unreadMessages: 0,
+      owner: false,
     },
   ]
 
