@@ -170,7 +170,12 @@ export const Balance = () => {
         {!isSinc ? (
           <p className={styles.trust_subtitle}>{t('purse_walletConnect')}</p>
         ) : (
-          <p className={styles.trust_subtitle}>{t('purse_walletConnectSync')}</p>
+          <>
+            <button className={styles.trust_kill} onClick={() => connector.killSession()}>
+              {t('walletconnect_disconnect')}
+            </button>
+            <p className={styles.trust_subtitle}>{t('purse_walletConnectSync')}</p>
+          </>
         )}
       </div>
       {/* {isSincBtnVisible ? (

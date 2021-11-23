@@ -17,7 +17,13 @@
   left: 0;
   right: 0;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 90%, #f9fafe 100%);
-  z-index: 5;
+  // z-index: 5;
+}
+
+@media (min-width: 769px) {
+  .container::before {
+    z-index: 5;
+  }
 }
 
 .roadMap::-webkit-scrollbar {

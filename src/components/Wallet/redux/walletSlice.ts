@@ -18,7 +18,7 @@ export const walletSlice = createSlice({
   name: 'wallet',
   initialState: {
     address: '',
-    countdown_days: 0,
+    countdown_days: 80,
     usdt_balance: '0',
     limc_price: {
       lock_time: 0,

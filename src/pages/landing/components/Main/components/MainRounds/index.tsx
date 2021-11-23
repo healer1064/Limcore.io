@@ -6,12 +6,20 @@ import PopupStyles from '../PopupMainPage/styles.module.scss'
 
 import limcoreIcon from '@icons/limcore.svg'
 import { InfoIcon } from '@icons/InfoIcon'
-import { useAppSelector } from '@app/redux/hooks'
+import { useAppSelector, useAppDispatch } from '@app/redux/hooks'
+import { useHistory } from 'react-router'
 import { useTranslation } from 'react-i18next'
+import { setIsBuyLimcClick } from '../../../../../auth/redux/authSlice'
+import useWindowSize from '@helpers/useWindowSizeHook'
 
 export const MainRounds: React.FC = () => {
+  const { width } = useWindowSize()
+  const desktop = width > 767
+  const dispatch = useAppDispatch()
+  const history = useHistory()
   const limcCount = useAppSelector((state) => state.auth.walletConnectSoldLimcs)
   const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
+  const isAuth = useAppSelector((state) => state.auth.isAuth)
   const [popupOpen, setPopupOpen] = useState(false)
   const [t] = useTranslation()
 
@@ -22,12 +30,14 @@ export const MainRounds: React.FC = () => {
     setPopupOpen(true)
   }
 
-  // const handleLoginModalOpen = () => {
-  //   dispatch(setIsBuyLimcClick(true))
-  //   desktop ? setIsLoginModalVisible(true) : history.push('/auth')
-  // }
+  const handleLoginModalOpen = () => {
+    dispatch(setIsBuyLimcClick(true))
+    if (!desktop) {
+      history.push('/auth')
+    }
+  }
   // const handleLoginModalClose = () => {
-  //   setIsLoginModalVisible(false)
+  //   dispatch(setIsBuyLimcClick(false))
   // }
 
   return (
@@ -91,7 +101,7 @@ export const MainRounds: React.FC = () => {
               <span className={Styles.date__mobile}>10.01.2022</span>
               <span className={Styles.subtitle}>{t('roundsRoadmap_round2')}</span>
               <div className={Styles.row}>
-                <span>LIMC (min $110)</span>
+                <span>{t('roundsRoadmap_limcMin')}</span>
                 <span>120,000</span>
               </div>
             </div>
@@ -99,19 +109,19 @@ export const MainRounds: React.FC = () => {
               <span className={Styles.date__mobile}>25.02.2022</span>
               <span className={Styles.subtitle}>{t('roundsRoadmap_round3')}</span>
               <div className={Styles.row}>
-                <span>LIMC (price and limit later)</span>
+                <span>{t('roundsRoadmap_priceLater')}</span>
               </div>
             </div>
             <div className={Styles.round}>
               <span className={Styles.subtitle}>{t('roundsRoadmap_round4')}</span>
               <div className={Styles.row}>
-                <span>LIMC (price and limit later)</span>
+                <span>{t('roundsRoadmap_priceLater')}</span>
               </div>
             </div>
             <div className={Styles.round}>
               <span className={Styles.subtitle}>{t('roundsRoadmap_round5')}</span>
               <div className={Styles.row}>
-                <span>LIMC (price and limit later)</span>
+                <span>{t('roundsRoadmap_priceLater')}</span>
               </div>
             </div>
             <span className={Styles.date__mobile}>{t('roundsRoadmap_endSelling')}</span>
