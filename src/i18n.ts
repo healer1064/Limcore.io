@@ -121,8 +121,8 @@ i18n.use(LanguageDetector).init({
         roadmap_november15: 'My profile launch v.0.2',
         roadmap_decemberEnd: 'End of December 2021',
 
-        roadmap_startRound1: 'Round 1 launch 1LIMC = $95/80,000 LIMC',
-        roadmap_startRound2: 'Round 2 launch 1 LIMC = min $110 / 120,000 LIMC',
+        roadmap_startRound1: 'Round 1 launch 1\u00a0LIMC = $95/80,000 LIMC',
+        roadmap_startRound2: 'Round 2 launch 1\u00a0LIMC = min $110 / 120,000 LIMC',
         roadmap_startRound3: 'Round 3 launch',
         roadmap_startRound4: 'Round 4 launch',
         roadmap_startRound5: 'Round 5 launch',
@@ -512,8 +512,8 @@ i18n.use(LanguageDetector).init({
         roadmap_deadline_2501: '25.01.2022',
         roadmap_deadline_2502: '25.02.2022',
 
-        roadmap_startRound1: 'Старт Round №1 1LIMC = $95/80,000 LIMC',
-        roadmap_startRound2: 'Старт Round №2 1LIMC = min $110 / 120,000 LIMC',
+        roadmap_startRound1: 'Старт Round №1 1\u00a0LIMC = $95/80,000 LIMC',
+        roadmap_startRound2: 'Старт Round №2 1\u00a0LIMC = min $110 / 120,000 LIMC',
         roadmap_startRound3: 'Старт Round №3',
         roadmap_startRound4: 'Старт Round №4',
         roadmap_startRound5: 'Старт Round №5',

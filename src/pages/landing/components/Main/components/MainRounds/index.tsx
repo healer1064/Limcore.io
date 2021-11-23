@@ -6,12 +6,20 @@ import PopupStyles from '../PopupMainPage/styles.module.scss'
 
 import limcoreIcon from '@icons/limcore.svg'
 import { InfoIcon } from '@icons/InfoIcon'
-import { useAppSelector } from '@app/redux/hooks'
+import { useAppSelector, useAppDispatch } from '@app/redux/hooks'
+import { useHistory } from 'react-router'
 import { useTranslation } from 'react-i18next'
+import { setIsBuyLimcClick } from '../../../../../auth/redux/authSlice'
+import useWindowSize from '@helpers/useWindowSizeHook'
 
 export const MainRounds: React.FC = () => {
+  const { width } = useWindowSize()
+  const desktop = width > 767
+  const dispatch = useAppDispatch()
+  const history = useHistory()
   const limcCount = useAppSelector((state) => state.auth.walletConnectSoldLimcs)
   const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
+  const isAuth = useAppSelector((state) => state.auth.isAuth)
   const [popupOpen, setPopupOpen] = useState(false)
   const [t] = useTranslation()
 
@@ -22,12 +30,14 @@ export const MainRounds: React.FC = () => {
     setPopupOpen(true)
   }
 
-  // const handleLoginModalOpen = () => {
-  //   dispatch(setIsBuyLimcClick(true))
-  //   desktop ? setIsLoginModalVisible(true) : history.push('/auth')
-  // }
+  const handleLoginModalOpen = () => {
+    dispatch(setIsBuyLimcClick(true))
+    if (!desktop) {
+      history.push('/auth')
+    }
+  }
   // const handleLoginModalClose = () => {
-  //   setIsLoginModalVisible(false)
+  //   dispatch(setIsBuyLimcClick(false))
   // }
 
   return (
@@ -63,9 +73,15 @@ export const MainRounds: React.FC = () => {
         <span className={Styles.count}>{limcCount} / 80000</span>
       </div>
       <div className={Styles.wrapp}>
-        <a href='https://round1.limcore.io' className={Styles.buy}>
-          {t('buyLimc')}
-        </a>
+        {isAuth ? (
+          <a href='https://round1.limcore.io' className={Styles.buy}>
+            {t('buyLimc')}
+          </a>
+        ) : (
+          <button className={Styles.buy} onClick={handleLoginModalOpen}>
+            {t('buyLimc')}
+          </button>
+        )}
         <span>{t('lockUp')}</span>
       </div>
       {/* <div className={Styles.tempDeclaration}>
