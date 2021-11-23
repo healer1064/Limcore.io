@@ -392,6 +392,8 @@ i18n.use(LanguageDetector).init({
         support_no_messages: 'No messages yet...',
         support_start: 'Start chatting!',
         group_number: 'participants',
+        group_title: 'Participants',
+        raiting_notice: 'Your chat rating depends on the number of purchased terabytes',
       },
     },
     ru: {
@@ -779,6 +781,8 @@ i18n.use(LanguageDetector).init({
         support_no_messages: 'Сообщений пока нет...',
         support_start: 'Начните общение!',
         group_number: 'участников',
+        group_title: 'Участники',
+        raiting_notice: 'Ваш рейтинг в чате зависит от количества купленных терабайт',
       },
     },
     cn: {

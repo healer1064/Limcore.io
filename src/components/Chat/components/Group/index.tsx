@@ -8,15 +8,25 @@ import fotoPart1 from '@icons/groupPart1.svg'
 import purple from '@icons/raitingPurple.svg'
 import fotoPart2 from '@icons/groupPart2.svg'
 import orange from '@icons/raitingOrange.svg'
-import { Message } from '@components/Chat/components/Message'
 import { GroupText } from '../GroupText'
+import { List } from '../List'
+import red from '@icons/redRaiting.svg'
 
 export const Group = ({ groupVisible, handleGroupClose, message }) => {
   const [t] = useTranslation()
   const [sendIconVisible, setSendIconVisible] = useState(false)
+  const [participantsListVisible, setParticipantsListVisible] = useState(false)
 
   const handleSendIconVisibility = () => {
     setSendIconVisible(true)
+  }
+
+  const handleParticipantsListOpen = () => {
+    setParticipantsListVisible(true)
+  }
+
+  const handleParticipantsListClose = () => {
+    setParticipantsListVisible(false)
   }
 
   const participants = [
@@ -27,6 +37,9 @@ export const Group = ({ groupVisible, handleGroupClose, message }) => {
         'Доброго времени суток всем, не могу закончить регистрацию на сайте, так как сайт не принимает паспортные данные',
       raitingIcon: grey,
       score: 0,
+      status: 'В сети',
+      rank: 'Admin',
+      name: 'Поддержка',
     },
     {
       id: 2,
@@ -34,6 +47,9 @@ export const Group = ({ groupVisible, handleGroupClose, message }) => {
       message: 'Кстати, за актуальными курсами форков можно следить на сайте https://xchforks.com',
       raitingIcon: purple,
       score: 49,
+      status: 'Не в сети',
+      rank: '',
+      name: 'Анастасия Иванова',
     },
     {
       id: 3,
@@ -42,6 +58,9 @@ export const Group = ({ groupVisible, handleGroupClose, message }) => {
         'Chia громко заявила о себe в самом начале, и тот кто хотел и имел возможность, уже зашёл. Дальше стоит ожидать только крупных игроков, типо нас!',
       raitingIcon: orange,
       score: 987,
+      status: 'Была в сети',
+      rank: 'CEO Limcore.io',
+      name: 'Дмитрий Шумаев',
     },
   ]
 
@@ -67,7 +86,9 @@ export const Group = ({ groupVisible, handleGroupClose, message }) => {
         </svg>
         <img src={message.image} alt='' className={styles.foto} />
         <p className={styles.name}>{message.name}</p>
-        <p className={styles.status}>{`${message.numberOfParticipants} ${t('group_number')}`}</p>
+        <p className={styles.status} onClick={handleParticipantsListOpen}>
+          {`${message.numberOfParticipants} ${t('group_number')}`}
+        </p>
       </article>
       {participants.map((member) => (
         <GroupText key={member.id} {...member} member={member} />
@@ -117,6 +138,12 @@ export const Group = ({ groupVisible, handleGroupClose, message }) => {
           </svg>
         </button>
       </div>
+      <List
+        handleParticipantsListClose={handleParticipantsListClose}
+        participantsListVisible={participantsListVisible}
+        participants={participants}
+        message={message}
+      />
     </section>
   )
 }

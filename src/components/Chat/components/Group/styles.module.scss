@@ -70,6 +70,10 @@
   color: #99A0AD;
   align-self: center;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &_active {
     grid-area: status;
     padding: 0;
