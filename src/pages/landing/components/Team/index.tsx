@@ -20,14 +20,14 @@ export const Team: React.FC = () => {
   const team = [
     {
       id: 1,
-      job: 'CEO / Owner',
+      job: t('team_shumaevRank'),
       name: t('team_shumaev'),
       content: t('team_shumaevDesc'),
       foto: Shumaev,
     },
     {
       id: 2,
-      job: `Co-Owner / Chief${'\u00A0'}Financial${'\u00A0'}Officer`,
+      job: t('team_losevRank'),
       name: t('team_losev'),
       content: t('team_losevDesc'),
       foto: Losev,

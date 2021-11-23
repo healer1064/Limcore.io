@@ -6,10 +6,9 @@ import { Link as LinkDom } from 'react-router-dom'
 import logoIcon from '@icons/logo.svg'
 // import logout from '@icons/logout.svg'
 import { LoginIcon } from '@icons/LoginIcon'
-// import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { useAppSelector } from '@app/redux/hooks'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import ModalAuth from '../../pages/landing/components/ModalAuth'
-// import { setIsAuth } from '../../pages/auth/redux/auth.slice'
+import { setIsBuyLimcClick } from '../../pages/auth/redux/authSlice'
 // import { useHistory } from 'react-router'
 
 import { useTranslation } from 'react-i18next'
@@ -18,13 +17,14 @@ import { useTranslation } from 'react-i18next'
 import { LanguagePopup } from '../LanguagePopup/index'
 
 export const Header: React.FC = () => {
-  // const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch()
   // const history = useHistory()
   const [t] = useTranslation()
 
   const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
   // const [btnClass, setBtnClass] = useState(Styles.login)
   const isAuth = useAppSelector((state) => state.auth.isAuth)
+  const isBuyLimcClick = useAppSelector((state) => state.auth.isBuyLimcClick)
 
   const tempLink = [
     { id: 1, value: t('nav_about'), link: 'limcore', spy: true, smooth: true },
@@ -34,12 +34,20 @@ export const Header: React.FC = () => {
     { id: 5, value: t('nav_qa'), link: 'questions', spy: true, smooth: true },
   ]
 
+  useEffect(() => {
+    setIsLoginModalVisible(isBuyLimcClick)
+  }, [isBuyLimcClick])
+
   const handleLoginModalOpen = () => {
     setIsLoginModalVisible(true)
   }
 
   const handleLoginModalClose = () => {
     setIsLoginModalVisible(false)
+    if (isBuyLimcClick) {
+      const close = () => dispatch(setIsBuyLimcClick(false))
+      setTimeout(close, 200)
+    }
   }
 
   // const onLogout = () => {

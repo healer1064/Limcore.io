@@ -139,7 +139,16 @@ export const Balance = () => {
         <DataBaseIcon isSync={isSync} />
         <BlackCross />
         <TwtIcon isSync={isSync} />
-        {isSync ? <p>{t('purse_walletConnectSync')}</p> : <p>{t('purse_walletConnect')}</p>}
+        {isSync ? (
+          <div className={styles.trust_cont}>
+            <button className={styles.trust_kill} onClick={() => connector.killSession()}>
+              {t('walletconnect_disconnect')}
+            </button>
+            <p>{t('purse_walletConnectSync')}</p>
+          </div>
+        ) : (
+          <p>{t('purse_walletConnect')}</p>
+        )}
       </div>
       {isSync ? (
         <div className={styles.walletId}>
