@@ -15,6 +15,8 @@ export const Chat = () => {
       message: 'Привет! Здесь вы можете задать свой вопрос',
       date: 11.08,
       image: fotoExample,
+      status: 'not active',
+      unreadMessages: 1,
     },
   ]
 
