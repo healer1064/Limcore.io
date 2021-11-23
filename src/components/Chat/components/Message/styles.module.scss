@@ -12,6 +12,10 @@
   'foto name date'
   'foto message unread'
   '.line line';
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .foto {
