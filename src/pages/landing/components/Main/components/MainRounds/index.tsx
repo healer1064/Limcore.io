@@ -73,15 +73,9 @@ export const MainRounds: React.FC = () => {
         <span className={Styles.count}>{limcCount} / 80000</span>
       </div>
       <div className={Styles.wrapp}>
-        {isAuth ? (
-          <a href='https://round1.limcore.io' className={Styles.buy}>
-            {t('buyLimc')}
-          </a>
-        ) : (
-          <button className={Styles.buy} onClick={handleLoginModalOpen}>
-            {t('buyLimc')}
-          </button>
-        )}
+        <a href='https://round1.limcore.io' className={Styles.buy}>
+          {t('buyLimc')}
+        </a>
         <span>{t('lockUp')}</span>
       </div>
       {/* <div className={Styles.tempDeclaration}>
