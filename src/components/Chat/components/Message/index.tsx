@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import { useTranslation } from 'react-i18next'
 import { Support } from '@components/Chat/components/Support'
+import { Group } from '@components/Chat/components/Group'
 
 export const Message = ({ message }) => {
   const [t] = useTranslation()
   const [supportVisible, setSupportVisible] = useState(false)
+  const [groupVisible, setGroupVisible] = useState(false)
 
   const handleSupportOpen = () => {
     setSupportVisible(true)
@@ -15,9 +17,17 @@ export const Message = ({ message }) => {
     setSupportVisible(false)
   }
 
+  const handleGroupOpen = () => {
+    setGroupVisible(true)
+  }
+
+  const handleGroupClose = () => {
+    setGroupVisible(false)
+  }
+
   return (
     <>
-      <article className={styles.messageContainer} onClick={handleSupportOpen}>
+      <article className={styles.messageContainer} onClick={message.group ? handleGroupOpen : handleSupportOpen}>
         <img src={message.image} alt='image' className={styles.foto} />
         <svg
           className={message.status === 'В сети' ? styles.status : styles.status_invisible}
@@ -38,6 +48,7 @@ export const Message = ({ message }) => {
         <span className={styles.line} />
       </article>
       <Support supportVisible={supportVisible} message={message} handleSupportClose={handleSupportClose} />
+      <Group groupVisible={groupVisible} message={message} handleGroupClose={handleGroupClose} />
     </>
   )
 }

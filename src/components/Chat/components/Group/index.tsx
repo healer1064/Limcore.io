@@ -1,10 +1,17 @@
 import React, { useState } from 'react'
-import styles from './styles.module.scss'
 import { useTranslation } from 'react-i18next'
+import styles from '@components/Chat/components/Group/styles.module.scss'
 import { InputText } from '../../../../ui-kit/InputText'
-import { Text } from '@components/Chat/components/Text'
+import fotoExample from '@icons/supportFotoExample.svg'
+import grey from '@icons/raitingGrey.svg'
+import fotoPart1 from '@icons/groupPart1.svg'
+import purple from '@icons/raitingPurple.svg'
+import fotoPart2 from '@icons/groupPart2.svg'
+import orange from '@icons/raitingOrange.svg'
+import { Message } from '@components/Chat/components/Message'
+import { GroupText } from '../GroupText'
 
-export const Support = ({ supportVisible, message, handleSupportClose }) => {
+export const Group = ({ groupVisible, handleGroupClose, message }) => {
   const [t] = useTranslation()
   const [sendIconVisible, setSendIconVisible] = useState(false)
 
@@ -12,12 +19,38 @@ export const Support = ({ supportVisible, message, handleSupportClose }) => {
     setSendIconVisible(true)
   }
 
+  const participants = [
+    {
+      id: 1,
+      foto: fotoExample,
+      message:
+        'Доброго времени суток всем, не могу закончить регистрацию на сайте, так как сайт не принимает паспортные данные',
+      raitingIcon: grey,
+      score: 0,
+    },
+    {
+      id: 2,
+      foto: fotoPart1,
+      message: 'Кстати, за актуальными курсами форков можно следить на сайте https://xchforks.com',
+      raitingIcon: purple,
+      score: 49,
+    },
+    {
+      id: 3,
+      foto: fotoPart2,
+      message:
+        'Chia громко заявила о себe в самом начале, и тот кто хотел и имел возможность, уже зашёл. Дальше стоит ожидать только крупных игроков, типо нас!',
+      raitingIcon: orange,
+      score: 987,
+    },
+  ]
+
   return (
-    <section className={supportVisible ? styles.supportContainer : styles.supportContainer_invisible}>
-      <article className={styles.supportHeader}>
+    <section className={groupVisible ? styles.groupContainer : styles.groupContainer_invisible}>
+      <article className={styles.groupHeader}>
         <svg
           className={styles.arrow}
-          onClick={handleSupportClose}
+          onClick={handleGroupClose}
           width='10'
           height='17'
           viewBox='0 0 10 17'
@@ -34,14 +67,11 @@ export const Support = ({ supportVisible, message, handleSupportClose }) => {
         </svg>
         <img src={message.image} alt='' className={styles.foto} />
         <p className={styles.name}>{message.name}</p>
-        <p className={message.status === 'В сети' ? styles.status_active : styles.status}>{message.status}</p>
+        <p className={styles.status}>{`${message.numberOfParticipants} ${t('group_number')}`}</p>
       </article>
-      <article className={styles.messagesContainer}>
-        <span
-          className={styles.date}
-        >{`${new Date().getDay()}-${new Date().getMonth()}-${new Date().getFullYear()}`}</span>
-        <Text message={message} />
-      </article>
+      {participants.map((member) => (
+        <GroupText key={member.id} {...member} member={member} />
+      ))}
       <div className={styles.inputContainer}>
         <button className={styles.button} type='button'>
           <svg
@@ -87,8 +117,6 @@ export const Support = ({ supportVisible, message, handleSupportClose }) => {
           </svg>
         </button>
       </div>
-      <p className={`${styles.subtitle} ${styles.subtitle_invisible}`}>{t('support_no_messages')}</p>
-      <p className={`${styles.text} ${styles.text_invisible}`}>{t('support_start')}</p>
     </section>
   )
 }

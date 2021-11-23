@@ -5,6 +5,7 @@ import { SearchForm } from '@components/Chat/components/SearchForm'
 import { Message } from '@components/Chat/components/Message'
 import { useTranslation } from 'react-i18next'
 import fotoExample from '@icons/supportFotoExample.svg'
+import limc from '@icons/limcBig.svg'
 
 export const Chat = () => {
   const [t] = useTranslation()
@@ -18,6 +19,19 @@ export const Chat = () => {
       status: 'В сети',
       unreadMessages: 0,
       owner: false,
+      group: false,
+    },
+    {
+      id: 2,
+      name: 'Mining Data Centre Limcore',
+      message: 'Привет всем! Что думаете...',
+      date: 11.08,
+      image: limc,
+      status: 'Не в сети',
+      unreadMessages: 0,
+      owner: false,
+      group: true,
+      numberOfParticipants: 70,
     },
   ]
 

@@ -391,6 +391,7 @@ i18n.use(LanguageDetector).init({
         chat_no_results_try: 'Try again',
         support_no_messages: 'No messages yet...',
         support_start: 'Start chatting!',
+        group_number: 'participants',
       },
     },
     ru: {
@@ -777,6 +778,7 @@ i18n.use(LanguageDetector).init({
         chat_no_results_try: 'Попробуйте снова',
         support_no_messages: 'Сообщений пока нет...',
         support_start: 'Начните общение!',
+        group_number: 'участников',
       },
     },
     cn: {
