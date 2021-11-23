@@ -93,12 +93,6 @@ export const Step1: React.FC = () => {
     }
   }
 
-  useEffect(() => {
-    return () => {
-      dispatch(setIsBuyLimcClick(false))
-    }
-  }, [])
-
   return (
     <>
       <div className={Styles.content}>
