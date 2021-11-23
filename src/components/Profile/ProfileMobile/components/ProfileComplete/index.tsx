@@ -34,6 +34,9 @@ export const ProfileComplete: React.FC = () => {
   const changeView = (view) => dispatch(changeViewContent(view))
 
   const onClick2FA = () => changeView('addAuth')
+  const editEmail = () => {
+    !userData.email && changeView('editEmail')
+  }
 
   const updateAvatar = async () => {
     const data = new FormData()
@@ -112,7 +115,7 @@ export const ProfileComplete: React.FC = () => {
           <li className={Styles.item}>
             <img className={Styles.icon} src={emailIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
-              <div className={Styles.block}>
+              <div className={Styles.block} onClick={editEmail}>
                 <span className={Styles.label}>{t('profile_email')}</span>
                 <span className={Styles.content}>{userData?.email}</span>
               </div>
