@@ -24,7 +24,7 @@
   width: 100%;
   grid-template-columns: repeat(3, minmax(min-content, max-content));;
   grid-template-rows: repeat(2, minmax(min-content, max-content));
-  column-gap: 10px;
+  column-gap: 15px;
   grid-template-areas:
   'arrow foto name'
   'arrow foto status';
@@ -103,7 +103,7 @@
   display: flex;
   box-sizing: border-box;
   padding: 0;
-  margin: 20px 13px 0 0;
+  margin: 10px 13px 0 0;
   width: 20px;
   height: 22px;
   object-fit: cover;
