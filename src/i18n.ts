@@ -161,6 +161,11 @@ i18n.use(LanguageDetector).init({
         team_losev: 'Pavel Losev',
         team_losevDesc: 'Before Limcore worked in Central Bank of Russian Federation',
 
+        team_shcherbinaRank: 'Chief Product Officer',
+        team_shcherbina: 'Konstantin Shcherbina',
+        team_shcherbinaDesc:
+          'More than 5 years in project management. He worked in studios and a large consulting agency in America.',
+
         team_turkinRank: 'Sales Support Department Director',
         team_turkin: 'Kirill Turkin',
         team_turkinDesc: 'Has a proven experience of Extra strict clients Follow up departments work forming',
@@ -538,6 +543,11 @@ i18n.use(LanguageDetector).init({
         team_losev: 'Павел Лосев',
         team_losevDesc: 'Ранее работал в Центральном Банке Российской Федерации',
 
+        team_shcherbinaRank: 'Chief Product Officer',
+        team_shcherbina: 'Константин Щербина',
+        team_shcherbinaDesc:
+          'В упралении проектами больше 5 лет. Работал в студиях и в крупном консалтинговом агентстве в Америке.',
+
         team_turkinRank: 'Руководитель службы поддержки клиентов',
         team_turkin: 'Кирилл Туркин',
         team_turkinDesc: 'Имеет успешный опыт выстраивания работы отделов сопровождения особо требовательных клиентов',
@@ -831,7 +841,7 @@ i18n.use(LanguageDetector).init({
 
         landing_title: '所有Chia分叉的云端挖矿',
         landing_subtitle: '加密货币投资的最快而有利的方式',
-        landing_video: 'https://www.youtube.com/embed/5ZuYH1pEQhM',
+        landing_video: 'https://www.youtube.com/embed/PtSXJAZ03Jc',
 
         firstRound_round1: '第1轮',
         firstRound_limit: '限制',
@@ -913,6 +923,9 @@ i18n.use(LanguageDetector).init({
         team_losev: '帕维尔·洛谢夫',
         team_losevDesc: '他曾在俄罗斯联邦中央银行工作过',
 
+        team_shcherbinaRank: '首席產品官',
+        team_shcherbina: '康斯坦丁·謝爾比納',
+        team_shcherbinaDesc: '5年以上項目管理經驗。 他曾在美國的工作室和一家大型諮詢機構工作。',
         team_turkinRank: '客户服务经理',
         team_turkin: '基里尔·图尔金',
         team_turkinDesc: '在为要求特别高的客户的跟踪部门的工作安排方面有成熟经验',
