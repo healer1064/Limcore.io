@@ -21,6 +21,7 @@ import { useDispatch } from 'react-redux'
 import { getLimc, getUsdt } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
 import { useTranslation } from 'react-i18next'
 import { getSyncData } from '@components/Wallet/redux/walletSlice'
+import GrayCrossIcon from '@components/Purse/PurseMobile/images/GrayCross/GrayCrossIcon'
 
 export const Balance = () => {
   const [t] = useTranslation()
@@ -141,8 +142,12 @@ export const Balance = () => {
         <TwtIcon isSync={isSync} />
         {isSync ? (
           <div className={styles.trust_cont}>
+            {/* <button className={styles.trust_kill} onClick={() => connector.killSession()}> */}
+            {/*  {t('walletconnect_disconnect')} */}
+            {/* </button> */}
             <button className={styles.trust_kill} onClick={() => connector.killSession()}>
-              {t('walletconnect_disconnect')}
+              {/* {t('walletconnect_disconnect')} */}
+              <GrayCrossIcon />
             </button>
             <p>{t('purse_walletConnectSync')}</p>
           </div>

@@ -341,19 +341,37 @@
   color: #99A0AD;
 }
 
+//.trust_kill {
+//  margin-bottom: 10px;
+//  padding: 10px 20px;
+//  border: none;
+//  border-radius: 14px;
+//
+//  font-size: 14px;
+//  font-weight: 500;
+//  line-height: 1;
+//  color: #fff;
+//
+//  background-color: #F24949;
+//  outline: none;
+//}
+
 .trust_kill {
+  display: grid;
   margin-bottom: 10px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 14px;
-
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1;
-  color: #fff;
-
-  background-color: #F24949;
+  padding: 5px;
+  border: 1px solid #99A0AD;
+  border-radius: 50%;
+  background-color: #FFFFFF;
   outline: none;
+  object-fit: contain;
+  justify-content: center;
+  align-content: center;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
 }
 
 .trust_walletpurse {
