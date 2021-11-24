@@ -323,6 +323,21 @@
   }
 }
 
+.notion {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 140%;
+  font-feature-settings: 'tnum' on, 'lnum' on;
+  color: #4F535A;
+}
+
 @media screen and (min-width: 1139px) {
   .cardLong {
     display: none;
@@ -367,28 +382,6 @@
     border: 1px solid $color-2D-blue;
     color: $color-2D-blue;
   }
-
-  &_disconnect {
-    @include section-title();
-    color: $color-4A-blue;
-    border: none;
-    outline: none;
-    padding: 15px 0;
-    max-width: 270px;
-    width: 100%;
-    margin: 30px 0;
-    background-color: #FFFF;
-    border: 1px solid $color-4A-blue;
-    border-radius: 14px;
-    &:hover {
-      border: 1px solid $color-31-blue;
-      color: $color-31-blue;
-    }
-    &:active {
-      border: 1px solid $color-2D-blue;
-      color: $color-2D-blue;
-    }
-  }
 }
 
 .walletId {
@@ -419,8 +412,7 @@
 
 .trust_cont {
   display: flex;
-  //flex-direction: column;
-  margin-left: 10px;
+  position: relative;
 }
 
 //.trust_kill {
@@ -446,7 +438,7 @@
 
 .trust_kill {
   display: grid;
-  margin: 30px 0 30px 30px;
+  margin: 30px 0 50px 30px;
   padding: 5px;
   border: 1px solid #99A0AD;
   border-radius: 50%;

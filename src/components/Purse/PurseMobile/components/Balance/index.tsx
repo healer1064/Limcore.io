@@ -157,29 +157,21 @@ export const Balance = () => {
             <LogoTrustWallet />
           </div>
         </div>
-        <button className={buttonSincClass} onClick={sincWithWallet}>
-          {isSinc ? (
-            <>
-              <WalletPurseIcon className={styles.trust_walletpurse} />
-              {userPurse.address.substr(0, 9)}...{userPurse.address.slice(-7)}
-            </>
-          ) : (
-            t('purse_sync')
-          )}
-        </button>
         {!isSinc ? (
-          <p className={styles.trust_subtitle}>{t('purse_walletConnect')}</p>
+          <>
+            <button className={buttonSincClass} onClick={sincWithWallet}>
+              {t('purse_sync')}
+            </button>
+            <p className={styles.trust_subtitle}>{t('purse_walletConnect')}</p>
+          </>
         ) : (
           <>
             <div className={styles.trust_cont}>
-              <button className={styles.syncButton_disconnect} onClick={sincWithWallet}>
-                {t('purse_sync')}
+              <button className={buttonSincClass} onClick={sincWithWallet}>
+                <WalletPurseIcon className={styles.trust_walletpurse} />
+                {userPurse.address.substr(0, 9)}...{userPurse.address.slice(-7)}
               </button>
-              {/* <button className={styles.trust_kill} onClick={() => connector.killSession()}> */}
-              {/*  {t('walletconnect_disconnect')} */}
-              {/* </button> */}
               <button className={styles.trust_kill} onClick={() => connector.killSession()}>
-                {/* {t('walletconnect_disconnect')} */}
                 <GrayCrossIcon />
               </button>
             </div>

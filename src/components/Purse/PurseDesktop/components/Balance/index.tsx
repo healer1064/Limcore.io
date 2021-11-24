@@ -140,32 +140,19 @@ export const Balance = () => {
         <DataBaseIcon isSync={isSync} />
         <BlackCross />
         <TwtIcon isSync={isSync} />
-        {isSync ? (
-          <>
-            <div className={styles.trust_cont}>
-              <button className={styles.syncButton_disconnect} onClick={sincWithWallet}>
-                {t('purse_sync')}
-              </button>
-              {/* <button className={styles.trust_kill} onClick={() => connector.killSession()}> */}
-              {/*  {t('walletconnect_disconnect')} */}
-              {/* </button> */}
-              <button className={styles.trust_kill} onClick={() => connector.killSession()}>
-                {/* {t('walletconnect_disconnect')} */}
-                <GrayCrossIcon />
-              </button>
-            </div>
-            <p>{t('purse_walletConnectSync')}</p>
-          </>
-        ) : (
-          <p>{t('purse_walletConnect')}</p>
-        )}
       </div>
       {isSync ? (
-        <div className={styles.walletId}>
-          <ShieldIcon />
-          <p>
-            {userPurse.address.substr(0, 9)}...{userPurse.address.slice(-7)}
-          </p>
+        <div className={styles.trust_cont}>
+          <div className={styles.walletId}>
+            <ShieldIcon />
+            <p>
+              {userPurse.address.substr(0, 9)}...{userPurse.address.slice(-7)}
+            </p>
+          </div>
+          <button className={styles.trust_kill} onClick={() => connector.killSession()}>
+            <GrayCrossIcon />
+          </button>
+          <p className={styles.notion}>{t('purse_walletConnectSync')}</p>
         </div>
       ) : (
         <button className={styles.syncButton} onClick={sincWithWallet}>
