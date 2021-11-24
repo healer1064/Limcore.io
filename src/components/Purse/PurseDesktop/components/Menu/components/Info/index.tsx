@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { Modal } from '../../../Modal/index'
-import { ModalHeader } from '../../../ModalHeader'
+import { Modal } from '@components/Modal/index'
+import { ModalHeader } from '@components/Modal/ModalHeader'
 
 export const Info = ({ active, setActive, title, setNotActive, image, balance }) => {
   let type = null

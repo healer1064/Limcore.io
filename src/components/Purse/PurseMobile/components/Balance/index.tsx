@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
-import { Modal } from '../Modal'
+import { Modal } from '@components/Modal/index'
 import { Overall } from './components/Overall/index'
 import { useAppSelector } from '@app/redux/hooks'
 import WalletConnect from '@walletconnect/client'

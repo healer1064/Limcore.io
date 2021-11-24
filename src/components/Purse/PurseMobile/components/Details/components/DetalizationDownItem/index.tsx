@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import { dotsBlue } from '@components/Purse/PurseMobile/images'
-import { BottomModal } from '../../../BottomModal'
+import { BottomModal } from '@components/Modal/BottomModal'
 import { DetalizationButtons } from '../DetalizationButtons/index'
 
 export const DetalizationDownItem = ({ img, title, subtitle, number, money, flagForButton }) => {

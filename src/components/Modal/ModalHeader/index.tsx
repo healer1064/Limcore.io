@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import BlueArrow from '../../images/BlueArrow/BlueArrow'
+import BlueArrow from '../../Purse/PurseDesktop/images/BlueArrow/BlueArrow'
 
 interface IModalHeader {
   title: any

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
-import { Modal } from '../Modal'
+import { Modal } from '../../../../Modal'
 import { Overall } from './components/Overall/index'
 import { useAppSelector } from '@app/redux/hooks'
 import { TwtIcon } from '@icons/twtIcon'

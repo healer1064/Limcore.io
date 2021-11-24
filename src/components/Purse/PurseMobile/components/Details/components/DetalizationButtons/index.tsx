@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import { copyIcon, linkIcon, tradeIcon, withdrawIcon, copyIconWhite } from '@components/Purse/PurseMobile/images'
-import { Modal } from '../../../Modal'
+import { Modal } from '@components/Modal/index'
 
 export const DetalizationButtons = () => {
   const [isCopyInfoVisible, setIsCopyInfoVisible] = useState(false)
@@ -38,7 +38,7 @@ export const DetalizationButtons = () => {
           Скопировать адрес кошелька
         </button>
 
-        <Modal active={isCopyInfoVisible} style={copyModalStyles}>
+        <Modal active={isCopyInfoVisible} style={copyModalStyles} isMobile>
           <div className={styles.copyModal}>
             <button className={styles.btn} onClick={handleWithdrawClick}>
               <img src={copyIconWhite} className={styles.icon} />

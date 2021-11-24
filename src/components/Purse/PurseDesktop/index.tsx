@@ -16,8 +16,8 @@ import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
 import { PageBalanceLIMC } from '@components/Purse/PurseDesktop/components/PageBalanceLIMC'
 import { PageBalanceUSDT } from '@components/Purse/PurseDesktop/components/PageBalanceUSDT'
 import { PageCardBalance } from '@components/Purse/PurseDesktop/components/PageCardBalance'
-import { Modal } from '../PurseDesktop/components/Modal'
-import { ModalHeader } from '../PurseDesktop/components/ModalHeader'
+import { Modal } from '@components/Modal/index'
+import { ModalHeader } from '@components/Modal/ModalHeader'
 import { RoadMap } from './components/RoadMap'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { setIsAuth } from '../../../pages/auth/redux/authSlice'
@@ -61,7 +61,6 @@ export const PurseDesktop = () => {
   }
 
   const handleUntilMiningModalOpen = () => {
-    console.log('qq')
     setUntilMiningModalOpen(true)
   }
 
@@ -109,7 +108,7 @@ export const PurseDesktop = () => {
               <LogoutIcon />
             </button>
           </div>
-          <Modal active={isProfileOpen} setActive={handleProfileClose} crossFlag>
+          <Modal active={isProfileOpen} setActive={handleProfileClose} crossFlag isDesktop>
             <ModalHeader title={currentName} onClick={handleProfileClose} />
             <ProfileMobile />
           </Modal>

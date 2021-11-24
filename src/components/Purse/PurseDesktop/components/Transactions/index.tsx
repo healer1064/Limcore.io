@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useAppSelector } from '@app/redux/hooks'
 import styles from './styles.module.scss'
-import { Modal } from '../Modal'
+import { Modal } from '@components/Modal/index'
 import { TransactionsDetails } from './components/TransactionsDetails/index'
 import { useTranslation } from 'react-i18next'
 
