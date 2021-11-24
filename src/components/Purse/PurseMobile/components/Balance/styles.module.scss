@@ -295,14 +295,18 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 15px;
-  padding: 14px 65px;
+  padding: 14px;
   width: 100%;
+  max-width: 270px;
   border: 1px solid #4A70F8;
   border-radius: 14px;
 
   font-size: 16px;
   font-weight: 600;
   line-height: 1;
+  text-overflow: ellipsis;
+  overflow: auto;
+  text-align: center;
 
   color: #4A70F8;
   background-color: #ffffff;
@@ -362,7 +366,7 @@
 
 .trust_kill {
   display: grid;
-  margin: 0 0 15px 30px;
+  margin: 0 0 15px 15px;
   padding: 5px;
   border: 1px solid #99A0AD;
   border-radius: 50%;
