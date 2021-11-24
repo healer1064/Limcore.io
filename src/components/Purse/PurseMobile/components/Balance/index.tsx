@@ -171,14 +171,18 @@ export const Balance = () => {
           <p className={styles.trust_subtitle}>{t('purse_walletConnect')}</p>
         ) : (
           <>
-            {/* <button className={styles.trust_kill} onClick={() => connector.killSession()}> */}
-            {/*  {t('walletconnect_disconnect')} */}
-            {/* </button> */}
-            <button className={styles.trust_kill} onClick={() => connector.killSession()}>
-              {/* {t('walletconnect_disconnect')} */}
-              <GrayCrossIcon />
-            </button>
-            <p className={styles.trust_subtitle}>{t('purse_walletConnectSync')}</p>
+            <div className={styles.trust_cont}>
+              <button className={styles.syncButton_disconnect} onClick={sincWithWallet}>
+                {t('purse_sync')}
+              </button>
+              {/* <button className={styles.trust_kill} onClick={() => connector.killSession()}> */}
+              {/*  {t('walletconnect_disconnect')} */}
+              {/* </button> */}
+              <button className={styles.trust_kill} onClick={() => connector.killSession()}>
+                {/* {t('walletconnect_disconnect')} */}
+                <GrayCrossIcon />
+              </button>
+            </div>
           </>
         )}
       </div>

@@ -367,6 +367,28 @@
     border: 1px solid $color-2D-blue;
     color: $color-2D-blue;
   }
+
+  &_disconnect {
+    @include section-title();
+    color: $color-4A-blue;
+    border: none;
+    outline: none;
+    padding: 15px 0;
+    max-width: 270px;
+    width: 100%;
+    margin: 30px 0;
+    background-color: #FFFF;
+    border: 1px solid $color-4A-blue;
+    border-radius: 14px;
+    &:hover {
+      border: 1px solid $color-31-blue;
+      color: $color-31-blue;
+    }
+    &:active {
+      border: 1px solid $color-2D-blue;
+      color: $color-2D-blue;
+    }
+  }
 }
 
 .walletId {
@@ -397,7 +419,7 @@
 
 .trust_cont {
   display: flex;
-  flex-direction: column;
+  //flex-direction: column;
   margin-left: 10px;
 }
 
@@ -424,7 +446,7 @@
 
 .trust_kill {
   display: grid;
-  margin-bottom: 10px;
+  margin: 30px 0 30px 30px;
   padding: 5px;
   border: 1px solid #99A0AD;
   border-radius: 50%;
@@ -433,6 +455,9 @@
   object-fit: contain;
   justify-content: center;
   align-content: center;
+  align-self: center;
+  width: 35px;
+  height: 35px;
 
   &:hover {
     cursor: pointer;
