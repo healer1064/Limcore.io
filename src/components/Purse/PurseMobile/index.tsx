@@ -46,7 +46,6 @@ export const PurseMobile: FC = () => {
 
   const history = useHistory()
   const dispatch = useAppDispatch()
-  const prices = useAppSelector((state) => state.wallet.limc_price)
   const limcBalance = useAppSelector((state) => state.auth.walletConnectLimc)
 
   const handleSetValue = (event) => setValue(event.target.value)

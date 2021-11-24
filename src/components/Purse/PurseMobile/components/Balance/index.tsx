@@ -36,12 +36,9 @@ export const Balance = () => {
   const [isRegModalVisible, setIsRegModalVisible] = useState(
     useAppSelector((state) => state.auth.processType) === 'REGISTRATION',
   )
-  const walletAddress = useAppSelector((state) => state.wallet.address)
-  // const usdtWalletBalance = useAppSelector((state) => state.wallet.usdt_balance)
   const usdtWalletBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
   const limcWalletBalance = useAppSelector((state) => state.auth.walletConnectLimc)
 
-  // const limcCount = useAppSelector((state) => state.wallet.limcCount)
   // const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
   const isSinc = useAppSelector((state) => state.auth.isSincWithWallet)
 
@@ -193,26 +190,6 @@ export const Balance = () => {
           limcBalance={limcWalletBalance}
           usdtBalance={usdtWalletBalance}
         />
-      </Modal>
-      <Modal classname={styles.reg} active={isRegModalVisible} setActive={handleFirstRegModalClose} crossFlag>
-        <div className={styles.regModal}>
-          <div className={styles.regModalUp}>
-            <header className={styles.regModalHeader}>
-              <img src={logoIcon} onClick={handleFirstRegModalClose} />
-            </header>
-            <h4 className={styles.regModalTitle}>Мы создали ваш USDT кошелек</h4>
-            <p className={styles.regModalSubtitle}>Адрес кошелька</p>
-            <p className={styles.regModalPurse}>
-              {walletAddress}
-              <img className={styles.regModalPurseCopy} src={copyIcon} />
-            </p>
-          </div>
-          <div className={styles.regModalDown}>
-            <ButtonBig className={styles.regModalButton} onClick={handleFirstRegModalClose}>
-              Пополнить кошелек
-            </ButtonBig>
-          </div>
-        </div>
       </Modal>
     </div>
   )

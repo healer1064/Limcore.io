@@ -59,10 +59,8 @@ export const PurseDesktop = () => {
   const [isChatOpen, setIsChatOpen] = useState(false)
 
   const dispatch = useAppDispatch()
-  const prices = useAppSelector((state) => state.wallet.limc_price)
   const limcBalance = useAppSelector((state) => state.auth.walletConnectLimc)
   const [isProfileOpen, setIsProfileOpen] = useState(false)
-  // const usdtBalance = useAppSelector((state) => state.wallet.usdt_balance)
   const userName = useAppSelector((state) => state.user.userData?.name)
   const userPhone = useAppSelector((state) => state.user.userData?.phone)
   const currentName = userName || userPhone

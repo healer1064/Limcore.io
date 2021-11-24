@@ -6,7 +6,6 @@ import { useAppSelector } from '@app/redux/hooks'
 
 export const UsdtButtons = () => {
   // const [addInfoVisible, setAddInfoVisible] = useState(false)
-  // const walletAddress = useAppSelector((state) => state.wallet.address)
 
   // const handleAddMoneyClick = () => {
   //   setAddInfoVisible(true)

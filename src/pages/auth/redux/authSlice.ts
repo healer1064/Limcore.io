@@ -3,11 +3,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { api } from '../../../app/api'
 import { RootState } from '../../../app/redux/store'
 
-export const authorizationUserEmail: any = createAsyncThunk('auth/authorizationUserEmail', async function (data) {
-  const response = await api.post('users/registration/', data)
-  return response
-})
-
 export const registerUserEmail: any = createAsyncThunk('auth/registerUserEmail', async function (data) {
   try {
     const response = await api.post('users/registration/email/', data)
@@ -152,7 +147,6 @@ export const authSlice = createSlice({
     phoneOrEmail: '',
     codePhoneOrEmail: '',
     code2FA: '',
-    confirmationEmail: { code: '', unique_identifier: '' },
   },
   reducers: {
     setIsBuyLimcClick: (state, { payload }) => {
@@ -228,16 +222,6 @@ export const authSlice = createSlice({
     },
     [registerUserEmail.rejected]: (state, action) => {
       console.log('registerUserEmail', action)
-    },
-    [authorizationUserEmail.fulfilled]: (state, action) => {
-      console.log('authorizationUserEmail', action)
-
-      const data = { code: '', unique_identifier: '' }
-
-      data.code = action.payload.data.result.slice(35, 40)
-      data.unique_identifier = action.payload.data.result.slice(42, 78)
-
-      state.confirmationEmail = data
     },
     [registerUserEmailConfirmation.fulfilled]: (state, action) => {
       console.log('registerUserEmailConfirmation', action)

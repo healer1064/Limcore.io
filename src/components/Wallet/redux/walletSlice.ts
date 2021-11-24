@@ -17,16 +17,7 @@ export const getSyncData: any = createAsyncThunk('wallet/getSyncData', async fun
 export const walletSlice = createSlice({
   name: 'wallet',
   initialState: {
-    address: '',
     countdown_days: 80,
-    usdt_balance: '0',
-    limc_price: {
-      lock_time: 0,
-      slug: '',
-      title: '',
-      usdt_amount: '',
-    },
-    limcCount: 0,
     limcLimit: 80000,
     forks: {
       chia: 0,
