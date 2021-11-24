@@ -1,30 +1,17 @@
 import React from 'react'
 import styles from './styles.module.scss'
-// import { blueArrow } from '../../../../images'
-import { Info } from '../Info/index'
-import BlueArrow from '../../../../images/BlueArrow/BlueArrow'
 import { UnsyncIcon } from '../../../../../../../assets/icons/unsync'
 import { useAppSelector } from '@app/redux/hooks'
 
 interface MenuItemProps {
   onClick?: any
   setActive?: any
-  setNotActive?: any
-  active?: any
   image: any
   title: any
   balance: any
 }
 
-export const MenuItem: React.FC<MenuItemProps> = ({
-  onClick,
-  setActive,
-  setNotActive,
-  active,
-  image,
-  title,
-  balance,
-}) => {
+export const MenuItem: React.FC<MenuItemProps> = ({ onClick, setActive, image, title, balance }) => {
   // const menuItemClass = `${styles.menu__item} ${styles.menu__balance}`
   const isSync = useAppSelector((state) => state.auth.isSincWithWallet)
 

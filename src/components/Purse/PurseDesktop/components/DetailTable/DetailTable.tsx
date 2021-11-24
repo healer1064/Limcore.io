@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import classNames from 'classnames'
-import { WalletIcon } from '@icons/WalletIcon'
 
 import tchiaIcon from '@icons/tchia.png'
 import tflaxIcon from '@icons/tflax.png'

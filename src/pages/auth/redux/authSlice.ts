@@ -243,8 +243,6 @@ export const authSlice = createSlice({
       console.log('getNewCode', action)
     },
     [checkToken.fulfilled]: (state, action) => {
-      console.log('checkToken', action)
-
       const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
       const token = tokenObj.access
 

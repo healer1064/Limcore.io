@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react'
 import styles from './styles.module.scss'
 import { downloadIcon } from '../../../../images'
 import { SwitchToggler } from '../../../../../../../ui-kit/SwitchToggler/index'
-import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig/index'
-import { InputRadio } from '../../../../../../../ui-kit/InputRadio'
-import { Label } from '../../../../../../../ui-kit/Label'
-import { BottomModal } from '../../../BottomModal'
 import { Modal } from '../../../Modal/index'
 import { ModalHeader } from '../../../ModalHeader'
 import { Calc } from '../Calc/index'
@@ -17,11 +13,10 @@ export const Overall = ({ onClick, money, limcBalance, usdtBalance }) => {
   const [t] = useTranslation()
   const [isSwitchToggled, setIsSwitchToggled] = useState(true)
   const [disabledColor, setDisabledColor] = useState('#99A0AD')
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [dotsColor, setDotsColor] = useState('#99A0AD')
-  const [isModalVisible, setIsModalVisible] = useState(false)
   const [isCalcOpen, setIsCalcOpen] = useState(false)
   const [replenishment, setReplenishment] = useState('С майнинга')
-  // const [payInputRadioChecked, setPayInputRadioChecked] = useState(true)
   const [payOptions, setPayOptions] = useState(false)
 
   const Item = (title, sum) => (
@@ -39,25 +34,9 @@ export const Overall = ({ onClick, money, limcBalance, usdtBalance }) => {
     setIsCalcOpen(false)
   }
 
-  const handleModalOpenClick = () => {
-    setIsModalVisible(true)
-  }
-
-  const handleModalCloseClick = () => {
-    setIsModalVisible(false)
-  }
-
-  const handleApplyClick = () => {
-    console.log('handleApplyClick')
-  }
-
   const handleSwitchToggle = () => {
     setIsSwitchToggled(!isSwitchToggled)
   }
-
-  // const handlePayInputRadioChange = () => {
-  //   setPayInputRadioChecked(!payInputRadioChecked)
-  // }
 
   useEffect(() => {
     if (isSwitchToggled) {

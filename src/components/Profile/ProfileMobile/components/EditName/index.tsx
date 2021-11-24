@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useAppSelector } from '@app/redux/hooks'
 import Styles from './styles.module.scss'
 
 import { Label } from '../../../../../ui-kit/Label'
@@ -8,7 +7,6 @@ import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
 
 export const EditName: React.FC = () => {
   const [existName] = useState(false)
-  const userData = useAppSelector((state) => state.user.userData)
 
   return (
     <div className={Styles.name}>

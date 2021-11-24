@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { ModalHeader } from '../../../ModalHeader'
 import { UserHasTransactions } from '../UserHasTransactions'
 import {
   s7,
@@ -17,7 +16,7 @@ import { TypeSort } from './components/TypeSort/index'
 // import { PeriodSort } from './components/PeriodSort/index'
 import { SumSort } from './components/SumSort/index'
 
-export const TransactionsDetails = ({ onClick }) => {
+export const TransactionsDetails = () => {
   // Модалки по клику на табы
   const [isCurrencyVisible, setIsCurrencyVisible] = useState(false)
   const [isTypeVisible, setIsTypeVisible] = useState(false)
@@ -136,14 +135,6 @@ export const TransactionsDetails = ({ onClick }) => {
     setIsTypeVisible(false)
   }
 
-  // Период
-  // const handlePeriodOpenClick = () => {
-  //   setIsPeriodVisible(true)
-  // }
-  // const handlePeriodCloseClick = () => {
-  //   setIsPeriodVisible(false)
-  // }
-
   // Сумма
   const handleSumOpenClick = () => {
     setIsSumVisible(true)
@@ -151,14 +142,6 @@ export const TransactionsDetails = ({ onClick }) => {
   const handleSumCloseClick = () => {
     setIsSumVisible(false)
   }
-
-  // Свой период
-  // const handleOwnPeriodOpen = () => {
-  //   setIsOwnPeriodVisible(true)
-  // }
-  // const handleOwnPeriodClose = () => {
-  //   setIsOwnPeriodVisible(false)
-  // }
 
   // Временные данные
   const tempInfo = [

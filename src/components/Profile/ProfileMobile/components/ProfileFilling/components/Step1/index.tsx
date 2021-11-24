@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setData, setMiddleName } from '../../../../../../../app/redux/userSlice'
-import { api } from '@app/api'
 import Styles from './styles.module.scss'
 
 import { Popup } from '@components/Popup'
@@ -26,6 +25,7 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
   const data = useAppSelector((state) => state.user.data)
   const middleName = useAppSelector((state) => state.user.middleName)
   const [popup, setPopup] = useState(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [complete, setComplete] = useState(true)
   const maxLength = 200
 
@@ -46,12 +46,6 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
     const { value } = event.target
     dispatch(setData({ ...data, gender: value }))
   }
-
-  // useEffect(() => {
-  //   if (data.first_name) {
-  //     setComplete(true)
-  //   }
-  // }, [data])
 
   return (
     <>

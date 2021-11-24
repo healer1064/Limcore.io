@@ -4,7 +4,6 @@ import { api } from '../../../app/api'
 
 export const getForksPrice: any = createAsyncThunk('landing-page/xchforks', async function () {
   const response = await api.get('landing-page/xchforks')
-  console.log('getForksPrice', response)
   return response
 })
 

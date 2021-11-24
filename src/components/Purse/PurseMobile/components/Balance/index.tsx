@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
-import { copyIcon } from '../../images'
-import logoIcon from '@icons/logo.svg'
 import { Modal } from '../Modal'
 import { Overall } from './components/Overall/index'
 import { useAppSelector } from '@app/redux/hooks'
-import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
 import WalletConnect from '@walletconnect/client'
 import QRCodeModal from '@walletconnect/qrcode-modal'
 import {
@@ -32,10 +29,6 @@ export const Balance = () => {
 
   const [t] = useTranslation()
   const dispatch = useDispatch()
-  // Если человек попал в личныый кабинет через регистрацию, то тут будет true
-  const [isRegModalVisible, setIsRegModalVisible] = useState(
-    useAppSelector((state) => state.auth.processType) === 'REGISTRATION',
-  )
   const usdtWalletBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
   const limcWalletBalance = useAppSelector((state) => state.auth.walletConnectLimc)
 
@@ -114,14 +107,6 @@ export const Balance = () => {
       dispatch(getSyncData({ address: userPurse.address }))
     }
   }, [userPurse])
-
-  const handleFirstRegModalClose = () => {
-    setIsRegModalVisible(false)
-  }
-
-  // const handleOpenBalanceClick = () => {
-  //   setIsBalanceVisible(true)
-  // }
 
   const handleCloseBalanceModal = () => {
     setIsBalanceVisible(false)

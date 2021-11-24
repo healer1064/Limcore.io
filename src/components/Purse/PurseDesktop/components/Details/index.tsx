@@ -5,7 +5,6 @@ import { Modal } from '../Modal/index'
 import { DetalizationUp } from './components/DetalizationUp/index'
 import { DetalizationDownItem } from './components/DetalizationDownItem/index'
 import { ModalHeader } from '../ModalHeader'
-import BlueArrow from '../../images/BlueArrow/BlueArrow'
 import useWindowSize from '@helpers/useWindowSizeHook'
 import thddIcon from '@icons/thdd.png'
 import tsilicoinIcon from '@icons/tsilicoin.png'
@@ -31,11 +30,6 @@ export const Details = () => {
   const { width } = useWindowSize()
   const desktop = width >= 768
   const [isModalVisible, setIsModalVisible] = useState(false)
-  // let flagForDetalisation = 3
-
-  const handleDetailsOpenClick = () => {
-    setIsModalVisible(true)
-  }
 
   const handleDetailsCloseClick = () => {
     setIsModalVisible(false)

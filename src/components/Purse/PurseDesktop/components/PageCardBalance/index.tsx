@@ -1,8 +1,5 @@
-import React, { FC } from 'react'
+import React from 'react'
 import styles from './styles.module.scss'
-import buyIcon from '@icons/buy.svg'
-import sellIcon from '@icons/sellBlue.svg'
-import tradeIcon from '@icons/changeBlue.svg'
 import { TransactionsDetails } from '@components/Purse/PurseDesktop/components/Transactions/components/TransactionsDetails'
 
 type PageCardBalancePropsType = {
@@ -90,7 +87,7 @@ export const PageCardBalance: React.FC<PageCardBalancePropsType> = ({
           Перевести
         </div>
       </div>
-      <TransactionsDetails onClick={() => {}} />
+      <TransactionsDetails />
     </div>
   )
 }

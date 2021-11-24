@@ -20,7 +20,6 @@ export const ProfileMobile: React.FC = () => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const userData = useAppSelector((state) => state.user.userData)
-  const user = useAppSelector((state) => state.user.data)
   const profileComplete = useAppSelector((state) => state.cabinet.profileComplete)
   const viewContent = useAppSelector((state) => state.cabinet.viewContent)
 

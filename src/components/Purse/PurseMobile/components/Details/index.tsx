@@ -23,15 +23,11 @@ import covidIcon from '@icons/covidIcon.png'
 import senoIcon from '@icons/senoIcon.png'
 import chaingreenIcon from '@icons/chaingreen.png'
 import goji from '@icons/gojiIcon.png'
-import useWindowSize from '@helpers/useWindowSizeHook'
 import { useTranslation } from 'react-i18next'
 
 export const Details = () => {
   const [t] = useTranslation()
-  const { width } = useWindowSize()
-  const desktop = width >= 767
   const [isModalVisible, setIsModalVisible] = useState(false)
-  // let flagForDetalisation = 3
 
   const handleDetailsOpenClick = () => {
     setIsModalVisible(true)
@@ -78,30 +74,14 @@ export const Details = () => {
           <ul className={styles.detailsModal}>
             <ModalHeader title={t('purse_mainingDetails')} onClick={handleDetailsCloseClick} />
             <DetalizationUp summary='$0' xch='$0' forks='$0' />
-            {/* <p className={styles.transactions__subtitle}>
-              {t('purse_noTransactionsYet')} <br />
-              Мы предоставим вам доступ позже
-            </p> */}
             <button type='button' className={styles.transactions__profileButton} onClick={handleDetailsCloseClick}>
               {t('purse_getBack')}
             </button>
-            {/* {tempData.map((item) => (
-              <DetalizationDownItem
-                img={item.img}
-                title={item.title}
-                subtitle={item.subtitle}
-                number={item.number}
-                money={item.money}
-                key={Math.random()}
-                flagForButton
-              />
-            ))} */}
           </ul>
         </Modal>
       </header>
       <ul className={styles.detailsList}>
         {tempData.map((item) => {
-          // Такая чехарда, потому что в основном лендинге должно быть только 3 карточки, а уже в детализации все
           return (
             <DetalizationDownItem
               img={item.img}

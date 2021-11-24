@@ -1,9 +1,6 @@
-import React, { FC } from 'react'
+import React from 'react'
 import styles from './styles.module.scss'
 import buyIcon from '@icons/buy.svg'
-import sellIcon from '@icons/sellBlue.svg'
-import tradeIcon from '@icons/changeBlue.svg'
-import { TransactionsDetails } from '@components/Purse/PurseDesktop/components/Transactions/components/TransactionsDetails'
 import { Transactions } from '../Transactions'
 import { useTranslation } from 'react-i18next'
 
@@ -63,7 +60,7 @@ export const PageBalanceLIMC: React.FC<PageBalanceLIMCPropsType> = ({
         {/* </div> */}
       </div>
       {/* <TransactionsDetails onClick={() => {}} /> */}
-      <Transactions onProfileClick={openProfile} onTransactionsClick={() => {}} isUserHasTransactions />
+      <Transactions onProfileClick={openProfile} />
     </div>
   )
 }

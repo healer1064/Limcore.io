@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
-import { balance as balanceSvg, copyIcon } from '../../images'
-import logoIcon from '@icons/logo.svg'
 import { Modal } from '../Modal'
 import { Overall } from './components/Overall/index'
 import { useAppSelector } from '@app/redux/hooks'
-import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
 import { TwtIcon } from '@icons/twtIcon'
 import { DataBaseIcon } from '@icons/dataBaseIcon'
 import { ShieldIcon } from '@icons/ShieldtIcon'
@@ -25,10 +22,6 @@ import { getSyncData } from '@components/Wallet/redux/walletSlice'
 export const Balance = () => {
   const [t] = useTranslation()
   const [isBalanceVisible, setIsBalanceVisible] = useState(false)
-  // Если человек попал в личныый кабинет через регистрацию, то тут будет true
-  const [isRegModalVisible, setIsRegModalVisible] = useState(
-    useAppSelector((state) => state.auth.processType) === 'REGISTRATION',
-  )
   const usdtBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
   const limcBalance = useAppSelector((state) => state.auth.walletConnectLimc)
   // const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
@@ -42,14 +35,6 @@ export const Balance = () => {
   })
 
   const dispatch = useDispatch()
-
-  const handleFirstRegModalClose = () => {
-    setIsRegModalVisible(false)
-  }
-
-  const handleOpenBalanceClick = () => {
-    setIsBalanceVisible(true)
-  }
 
   const handleCloseBalanceModal = () => {
     setIsBalanceVisible(false)

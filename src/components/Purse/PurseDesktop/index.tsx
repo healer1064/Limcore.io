@@ -2,24 +2,17 @@ import React, { useState } from 'react'
 import { Link } from 'react-scroll'
 import styles from './styles.module.scss'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import buyIcon from '@icons/buy.svg'
-import sellIcon from '@icons/sellBlue.svg'
-import tradeIcon from '@icons/changeBlue.svg'
 import profile from '@icons/profileIcon.png'
 import { Balance } from '@components/Purse/PurseDesktop/components/Balance'
 import { Menu } from '@components/Purse/PurseDesktop/components/Menu'
-import { StartMining } from '@components/Purse/PurseMobile/components/StartMining'
-import { Statistics } from '@components/Purse/PurseDesktop/components/Statistics'
 import { Details } from '@components/Purse/PurseDesktop/components/Details'
 import { Wallet } from '@components/Purse/PurseDesktop/components/Wallet'
-import { Transactions } from '@components/Purse/PurseDesktop/components/Transactions'
 import { Wallpaper } from '@components/Purse/PurseDesktop/components/Wallpaper'
 import { Logo } from '@components/Purse/PurseDesktop/components/Logo'
 import classnames from 'classnames'
 import { DetailTable } from './components/DetailTable/DetailTable'
 
 import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
-import { TransactionsDetails } from '@components/Purse/PurseDesktop/components/Transactions/components/TransactionsDetails'
 import { PageBalanceLIMC } from '@components/Purse/PurseDesktop/components/PageBalanceLIMC'
 import { PageBalanceUSDT } from '@components/Purse/PurseDesktop/components/PageBalanceUSDT'
 import { PageCardBalance } from '@components/Purse/PurseDesktop/components/PageCardBalance'
@@ -36,27 +29,13 @@ import { LanguagePopup } from '@components/LanguagePopup'
 
 export const PurseDesktop = () => {
   const [t] = useTranslation()
-  const [isCardVisible, setIsCardVisible] = useState(true)
-  const [isWalletVisible, setIsWalletVisible] = useState(true)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
   const [isPageBalanceLIMCVisible, setIsPageBalanceLIMCVisible] = useState(false)
   const [isPageBalanceUSDTVisible, setIsPageBalanceUSDTVisible] = useState(false)
   const [isPageCardBalanceVisible, setIsPageCardBalanceVisible] = useState(false)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // const [isLimcBought, setIsLimcBought] = useState(false)
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isUserHasTransactions, setIsUserHasTransactions] = useState(true)
-
-  const [isErrorVisible, setIsErrorVisible] = useState(false)
-  const [isSuccessVisible, setIsSuccessVisible] = useState(false)
-
-  const [viewContent, setViewContent] = useState('')
-
-  const [value, setValue] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
 
   const [window, setWindow] = useState('main')
-  const [isChatOpen, setIsChatOpen] = useState(false)
 
   const dispatch = useAppDispatch()
   const limcBalance = useAppSelector((state) => state.auth.walletConnectLimc)
@@ -66,35 +45,8 @@ export const PurseDesktop = () => {
   const currentName = userName || userPhone
   const usdtBalance = useAppSelector((state) => state.auth.walletConnectUsdt) || 0
 
-  const handleSetValue = (event) => setValue(event.target.value)
   const history = useHistory()
   const [UntilMiningModalOpen, setUntilMiningModalOpen] = useState(false)
-
-  // const [displayPopup, setDisplayPopup] = useState(false)
-  const closePopup = () => setViewContent('')
-  const handleCardCloseClick = () => {
-    setIsCardVisible(false)
-  }
-
-  const handleWalletCloseClick = () => {
-    setIsWalletVisible(false)
-  }
-  const handleStartClick = () => {
-    console.log('Start mining')
-  }
-
-  const handleTransactionsClick = () => {
-    console.log('Transactions click')
-  }
-  const handleShowMoreClick = () => {
-    console.log('Показать больше')
-  }
-
-  const handleNeedToPayClick = () => {
-    setIsUsdtInfoVisible(true)
-    setIsErrorVisible(false)
-    setViewContent('')
-  }
 
   const handleProfileClose = () => {
     return setIsProfileOpen(false)
@@ -165,10 +117,7 @@ export const PurseDesktop = () => {
         <div className={styles.purseContainer}>
           <div className={styles.accounts}>
             <Menu
-              isUsdtInfoVisible={isUsdtInfoVisible}
               handleBalanceUsdtOpenClick={() => setIsUsdtInfoVisible(true)}
-              handleBalanceUsdtCloseClick={() => setIsUsdtInfoVisible(false)}
-              openPopup={() => setViewContent('balance')}
               handlePageBalanceLIMCOpenClick={() => {
                 setIsPageBalanceLIMCVisible(true)
                 setWindow('main')
@@ -177,13 +126,9 @@ export const PurseDesktop = () => {
                 setIsPageBalanceUSDTVisible(true)
                 setWindow('main')
               }}
-              handlePageCardBalanceOpenClick={() => setIsPageCardBalanceVisible(true)}
               handlePageBalanceLIMCCloseClick={() => setIsPageBalanceLIMCVisible(false)}
               handlePageBalanceUSDTCloseClick={() => setIsPageBalanceUSDTVisible(false)}
               handlePageCardBalanceCloseClick={() => setIsPageCardBalanceVisible(false)}
-              isPageBalanceLIMCVisible={isPageBalanceLIMCVisible}
-              isPageBalanceUSDTVisible={isPageBalanceUSDTVisible}
-              isPageCardBalanceVisible={isPageCardBalanceVisible}
             />
           </div>
           {window === 'broadcasts' && <BroadcastsDesktop />}

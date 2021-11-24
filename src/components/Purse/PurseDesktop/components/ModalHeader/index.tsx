@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { buttonCloseBlue } from '../../images/index'
 import BlueArrow from '../../images/BlueArrow/BlueArrow'
 
 interface IModalHeader {
@@ -18,9 +17,6 @@ export const ModalHeader = ({ title, onClick, crossFlag }: IModalHeader) => {
         </button>
       )}
       <h3 className={styles.headerTitle}>{title}</h3>
-      {/* <button type='button' className={styles.cross} onClick={onClick}>
-        <img src={buttonCloseBlue} />
-      </button> */}
     </div>
   )
 }

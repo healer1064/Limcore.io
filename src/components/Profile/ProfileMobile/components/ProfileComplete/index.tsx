@@ -4,16 +4,12 @@ import { changeViewContent } from '../../.././../../pages/cabinet/redux/cabinetS
 import { updateAvatarUser, getUser } from '../../../../../app/redux/userSlice'
 import Styles from './styles.module.scss'
 
-import { ButtonSmall } from '../../../../../ui-kit/ButtonSmall'
-
 import avatarImage from '../../../../../assets/images/noAvatar.png'
 import passportIcon from '@icons/passport.svg'
-import innIcon from '@icons/inn.svg'
 import linkIcon from '@icons/link-icon.svg'
 import authIcon from '@icons/auth.svg'
 import emailIcon from '@icons/email.svg'
 import phoneIcon from '@icons/phone.svg'
-import nameIcon from '@icons/name.svg'
 import locationIcon from '@icons/location.svg'
 import closeIcon from '@icons/close-notification.svg'
 import smartphoneImage from '../../../../../assets/images/smartphone.png'

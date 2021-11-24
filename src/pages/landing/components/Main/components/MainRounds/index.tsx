@@ -6,20 +6,12 @@ import PopupStyles from '../PopupMainPage/styles.module.scss'
 
 import limcoreIcon from '@icons/limcore.svg'
 import { InfoIcon } from '@icons/InfoIcon'
-import { useAppSelector, useAppDispatch } from '@app/redux/hooks'
-import { useHistory } from 'react-router'
+import { useAppSelector } from '@app/redux/hooks'
 import { useTranslation } from 'react-i18next'
-import { setIsBuyLimcClick } from '../../../../../auth/redux/authSlice'
-import useWindowSize from '@helpers/useWindowSizeHook'
 
 export const MainRounds: React.FC = () => {
-  const { width } = useWindowSize()
-  const desktop = width > 767
-  const dispatch = useAppDispatch()
-  const history = useHistory()
   const limcCount = useAppSelector((state) => state.auth.walletConnectSoldLimcs)
   const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
-  const isAuth = useAppSelector((state) => state.auth.isAuth)
   const [popupOpen, setPopupOpen] = useState(false)
   const [t] = useTranslation()
 
@@ -29,16 +21,6 @@ export const MainRounds: React.FC = () => {
   const openPopup = () => {
     setPopupOpen(true)
   }
-
-  const handleLoginModalOpen = () => {
-    dispatch(setIsBuyLimcClick(true))
-    if (!desktop) {
-      history.push('/auth')
-    }
-  }
-  // const handleLoginModalClose = () => {
-  //   dispatch(setIsBuyLimcClick(false))
-  // }
 
   return (
     <div className={Styles.rounds}>

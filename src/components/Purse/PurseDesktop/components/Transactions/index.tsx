@@ -1,40 +1,32 @@
 import React, { useState } from 'react'
 import { useAppSelector } from '@app/redux/hooks'
 import styles from './styles.module.scss'
-import { balanceLimc, balanceUsdt, s7 } from '../../images/index'
 import { Modal } from '../Modal'
 import { TransactionsDetails } from './components/TransactionsDetails/index'
-import { Calendar } from '@components/Purse/PurseDesktop/components/Transactions/components/Calendar'
 import { useTranslation } from 'react-i18next'
 
 interface ITransactionsProps {
   onProfileClick: () => void
-  onTransactionsClick: () => void
-  isUserHasTransactions: boolean
 }
 
-export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTransactions }: ITransactionsProps) => {
+export const Transactions = ({ onProfileClick }: ITransactionsProps) => {
   const [t] = useTranslation()
   const userData = useAppSelector((state) => state.user.userData)
   const [isTransactionsVisible, setIsTransactionsVisible] = useState(false)
   // Временные данные для прокидки в транзакции, когда будет ясен объект с бэка можно будет все в порядок привести
-  const tempDataForTransactions = [
-    { img: balanceLimc, title: 'LIMC', sum: '+120 LIMC', isSwitch: false },
-    { img: s7, title: 'S7 Airlines', sum: '−$3240', cardInfo: 'c карты *2774', isSwitch: false },
-    {
-      img: balanceLimc,
-      title: 'LIMC',
-      sum: '−$324',
-      cardInfo: '−120 LIMC',
-      isSwitch: true,
-      img2: balanceUsdt,
-      title2: 'USDT',
-    },
-  ]
-
-  const handleTransactionsOpen = () => {
-    setIsTransactionsVisible(true)
-  }
+  // const tempDataForTransactions = [
+  //   { img: balanceLimc, title: 'LIMC', sum: '+120 LIMC', isSwitch: false },
+  //   { img: s7, title: 'S7 Airlines', sum: '−$3240', cardInfo: 'c карты *2774', isSwitch: false },
+  //   {
+  //     img: balanceLimc,
+  //     title: 'LIMC',
+  //     sum: '−$324',
+  //     cardInfo: '−120 LIMC',
+  //     isSwitch: true,
+  //     img2: balanceUsdt,
+  //     title2: 'USDT',
+  //   },
+  // ]
 
   const handleTransactionsClose = () => {
     setIsTransactionsVisible(false)
@@ -44,7 +36,7 @@ export const Transactions = ({ onProfileClick, onTransactionsClick, isUserHasTra
     <div className={styles.transactions}>
       {/* <h3 className={styles.transactions__title}>Транзакции</h3> */}
       <Modal active={isTransactionsVisible} setActive={handleTransactionsClose}>
-        <TransactionsDetails onClick={handleTransactionsClose} />
+        <TransactionsDetails />
       </Modal>
       {userData?.profile === null && (
         <>
