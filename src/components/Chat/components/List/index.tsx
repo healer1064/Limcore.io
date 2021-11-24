@@ -2,10 +2,7 @@ import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import { useTranslation } from 'react-i18next'
 import close from '@icons/close.svg'
-import grey from '@icons/raitingGrey.svg'
-import purple from '@icons/raitingPurple.svg'
-import orange from '@icons/raitingOrange.svg'
-import red from '@icons/redRaiting.svg'
+import { RaitingList } from '@components/Chat/components/RaitingList'
 
 export const List = ({ handleParticipantsListClose, participantsListVisible, participants, message }) => {
   const [t] = useTranslation()
@@ -65,31 +62,7 @@ export const List = ({ handleParticipantsListClose, participantsListVisible, par
           </>
         ))}
       </div>
-      <div className={raitingListVisible ? styles.raitingList : styles.raitingList_invisible}>
-        <div className={styles.container}>
-          <button className={styles.closeRaiting} type='button' onClick={handleRaitingListClose}>
-            <img src={close} alt='' />
-          </button>
-          <ul className={styles.listContainer}>
-            <li className={styles.listItem}>
-              <img className={styles.icon} src={grey} alt='' /> 1 TB – 500 TB
-            </li>
-            <li className={styles.listItem}>
-              <img className={styles.icon} src={orange} alt='' />
-              501 TB – 5,000 TB
-            </li>
-            <li className={styles.listItem}>
-              <img className={styles.icon} src={purple} alt='' />
-              5,000 TB – 50,000 TB
-            </li>
-            <li className={styles.listItem}>
-              <img className={styles.icon} src={red} alt='' />
-              &gt; 50,000 TB
-            </li>
-          </ul>
-          <p className={styles.raitingNotice}>{t('raiting_notice')}</p>
-        </div>
-      </div>
+      <RaitingList raitingListVisible={raitingListVisible} handleRaitingListClose={handleRaitingListClose} />
     </div>
   )
 }
