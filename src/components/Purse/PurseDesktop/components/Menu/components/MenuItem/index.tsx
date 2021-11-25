@@ -12,7 +12,6 @@ interface MenuItemProps {
 }
 
 export const MenuItem: React.FC<MenuItemProps> = ({ onClick, setActive, image, title, balance }) => {
-  // const menuItemClass = `${styles.menu__item} ${styles.menu__balance}`
   const isSync = useAppSelector((state) => state.auth.isSincWithWallet)
 
   const onClickHandler = () => {
@@ -31,14 +30,6 @@ export const MenuItem: React.FC<MenuItemProps> = ({ onClick, setActive, image, t
       </p>
       <p className={styles.menu__sum}>{balance}</p>
       <img className={styles.menu__logo} src={image} width='30' height='30' />
-      {/* <Info */}
-      {/*  active={active} */}
-      {/*  setActive={setActive} */}
-      {/*  title={title} */}
-      {/*  setNotActive={setNotActive} */}
-      {/*  image={image} */}
-      {/*  balance={balance} */}
-      {/* /> */}
     </button>
   )
 }

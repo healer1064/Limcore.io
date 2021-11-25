@@ -1,15 +1,11 @@
-import React, { useState } from 'react'
-import { Link } from 'react-scroll'
+import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import profile from '@icons/profileIcon.png'
 import { Balance } from '@components/Purse/PurseDesktop/components/Balance'
 import { Menu } from '@components/Purse/PurseDesktop/components/Menu'
 import { Details } from '@components/Purse/PurseDesktop/components/Details'
 import { Wallet } from '@components/Purse/PurseDesktop/components/Wallet'
 import { Wallpaper } from '@components/Purse/PurseDesktop/components/Wallpaper'
-import { Logo } from '@components/Purse/PurseDesktop/components/Logo'
-import classnames from 'classnames'
 import { DetailTable } from './components/DetailTable/DetailTable'
 
 import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
@@ -17,121 +13,67 @@ import { PageBalanceLIMC } from '@components/Purse/PurseDesktop/components/PageB
 import { PageBalanceUSDT } from '@components/Purse/PurseDesktop/components/PageBalanceUSDT'
 import { PageCardBalance } from '@components/Purse/PurseDesktop/components/PageCardBalance'
 import { Modal } from '@components/Modal/index'
-import { ModalHeader } from '@components/Modal/ModalHeader'
 import { RoadMap } from './components/RoadMap'
-import { ProfileMobile } from '@components/Profile/ProfileMobile'
-import { setIsAuth } from '../../../pages/auth/redux/authSlice'
-import { useHistory } from 'react-router'
 import { UntilMiningStart } from './components/UntilMiningStart/UntilMiningStart'
-import { LogoutIcon } from '@icons/LogoutIcon'
 import { useTranslation } from 'react-i18next'
-import { LanguagePopup } from '@components/LanguagePopup'
+import { HeaderPurseDesktop } from './components/HeaderPurseDesktop'
+import { changeViewContent } from '../../../pages/cabinet/redux/cabinetSlice'
 
 export const PurseDesktop = () => {
   const [t] = useTranslation()
+  const dispatch = useAppDispatch()
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isUsdtInfoVisible, setIsUsdtInfoVisible] = useState(false)
   const [isPageBalanceLIMCVisible, setIsPageBalanceLIMCVisible] = useState(false)
   const [isPageBalanceUSDTVisible, setIsPageBalanceUSDTVisible] = useState(false)
   const [isPageCardBalanceVisible, setIsPageCardBalanceVisible] = useState(false)
 
-  const [window, setWindow] = useState('main')
-
-  const dispatch = useAppDispatch()
   const limcBalance = useAppSelector((state) => state.auth.walletConnectLimc)
-  const [isProfileOpen, setIsProfileOpen] = useState(false)
-  const userName = useAppSelector((state) => state.user.userData?.name)
-  const userPhone = useAppSelector((state) => state.user.userData?.phone)
-  const currentName = userName || userPhone
-  const usdtBalance = useAppSelector((state) => state.auth.walletConnectUsdt) || 0
+  const usdtBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
+  const viewContent = useAppSelector((state) => state.cabinet.viewContent)
 
-  const history = useHistory()
-  const [UntilMiningModalOpen, setUntilMiningModalOpen] = useState(false)
+  const [popup, setPopup] = useState('')
 
-  const handleProfileClose = () => {
-    return setIsProfileOpen(false)
-  }
+  const openMain = () => dispatch(changeViewContent('main'))
 
-  const handleProfileOpen = () => {
-    setIsProfileOpen(true)
-  }
+  const openProfile = () => setPopup('profile')
+  const closeProfile = () => setPopup('')
 
-  const handleUntilMiningModalClose = () => {
-    setUntilMiningModalOpen(false)
-  }
+  const handleUntilMiningModalClose = () => setPopup('')
+  const handleUntilMiningModalOpen = () => setPopup('maining')
 
-  const handleUntilMiningModalOpen = () => {
-    setUntilMiningModalOpen(true)
-  }
-
-  const onLogout = () => {
-    localStorage.clear()
-    dispatch(setIsAuth(false))
-    history.push('/')
-    location.reload()
-  }
+  useEffect(() => {
+    openMain()
+  }, [])
 
   return (
     <>
       <Wallpaper />
       <section className={styles.purse}>
-        <header className={styles.header}>
-          <Logo />
-          <nav className={styles.nav}>
-            <Link
-              className={classnames([styles.nav__link, window === 'main' && styles.nav__link_active])}
-              to='main'
-              onClick={() => setWindow('main')}
-            >
-              {t('purse_navMain')}
-            </Link>
-            <Link
-              className={classnames([styles.nav__link, window === 'broadcasts' && styles.nav__link_active])}
-              to='broadcasts'
-              onClick={() => setWindow('broadcasts')}
-            >
-              {t('purse_navStreams')}
-            </Link>
-            <LanguagePopup />
-            {/* <Link
-              className={classnames([styles.nav__link, isChatOpen && styles.nav__link_active])}
-              to='chat'
-              onClick={() => setIsChatOpen(true)}
-            >
-              Чат
-            </Link> */}
-          </nav>
-          <div className={styles.profileGroup} onClick={handleProfileOpen}>
-            <img className={styles.profileIcon} src={profile} />
-            <p className={styles.profileName}>{currentName}</p>
-            <button className={styles.logoutBtn} onClick={onLogout}>
-              <LogoutIcon />
-            </button>
-          </div>
-          <Modal active={isProfileOpen} setActive={handleProfileClose} crossFlag isDesktop>
-            <ModalHeader title={currentName} onClick={handleProfileClose} />
-            <ProfileMobile />
-          </Modal>
-        </header>
+        <HeaderPurseDesktop
+          isProfileActive={popup === 'profile'}
+          openProfile={openProfile}
+          closeProfile={closeProfile}
+        />
         <div className={styles.purseContainer}>
           <div className={styles.accounts}>
             <Menu
               handleBalanceUsdtOpenClick={() => setIsUsdtInfoVisible(true)}
               handlePageBalanceLIMCOpenClick={() => {
                 setIsPageBalanceLIMCVisible(true)
-                setWindow('main')
+                openMain()
               }}
               handlePageBalanceUSDTOpenClick={() => {
                 setIsPageBalanceUSDTVisible(true)
-                setWindow('main')
+                openMain()
               }}
               handlePageBalanceLIMCCloseClick={() => setIsPageBalanceLIMCVisible(false)}
               handlePageBalanceUSDTCloseClick={() => setIsPageBalanceUSDTVisible(false)}
               handlePageCardBalanceCloseClick={() => setIsPageCardBalanceVisible(false)}
             />
           </div>
-          {window === 'broadcasts' && <BroadcastsDesktop />}
-          {window === 'main' && (
+          {viewContent === 'broadcasts' && <BroadcastsDesktop />}
+          {viewContent === 'main' && (
             <>
               <PageCardBalance
                 usdtBalance={usdtBalance}
@@ -142,13 +84,13 @@ export const PurseDesktop = () => {
                 limcBalance={limcBalance}
                 isOpen={isPageBalanceLIMCVisible}
                 handlePageBalanceLIMCCloseClick={() => setIsPageBalanceLIMCVisible(false)}
-                openProfile={handleProfileOpen}
+                openProfile={openProfile}
               />
               <PageBalanceUSDT
                 usdtBalance={usdtBalance}
                 isOpen={isPageBalanceUSDTVisible}
                 handlePageBalanceUSDTCloseClick={() => setIsPageBalanceUSDTVisible(false)}
-                openProfile={handleProfileOpen}
+                openProfile={openProfile}
               />
               <div
                 className={`${
@@ -186,25 +128,12 @@ export const PurseDesktop = () => {
                   </div>
                   <DetailTable />
                 </div>
-                <Modal active={UntilMiningModalOpen} setActive={handleUntilMiningModalClose} crossFlag>
+                <Modal active={popup === 'maining'} setActive={handleUntilMiningModalClose} crossFlag isDesktop>
                   <UntilMiningStart popup />
                 </Modal>
               </div>
               <div className={styles.wallet_invisible}>
                 <Wallet />
-              </div>
-              <div
-                className={`${
-                  isPageBalanceLIMCVisible || isPageBalanceUSDTVisible || isPageCardBalanceVisible
-                    ? styles.transactions_invisible
-                    : styles.transactions
-                }`}
-              >
-                {/* <Transactions
-                  onProfileClick={handleProfileOpen}
-                  onTransactionsClick={handleTransactionsClick}
-                  isUserHasTransactions={isUserHasTransactions}
-                /> */}
               </div>
             </>
           )}

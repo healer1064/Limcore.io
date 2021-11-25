@@ -34,17 +34,12 @@ export const Transactions = ({ onProfileClick }: ITransactionsProps) => {
 
   return (
     <div className={styles.transactions}>
-      {/* <h3 className={styles.transactions__title}>Транзакции</h3> */}
       <Modal active={isTransactionsVisible} setActive={handleTransactionsClose}>
         <TransactionsDetails />
       </Modal>
       {userData?.profile === null && (
         <>
-          <p className={styles.transactions__subtitle}>
-            {/* У&nbsp;вас еще нет транзакций. Мы&nbsp;предоставим доступ ко&nbsp;всем функциям кошелька после заполнения */}
-            {/* профиля. */}
-            {t('purse_fillToRestore')}
-          </p>
+          <p className={styles.transactions__subtitle}>{t('purse_fillToRestore')}</p>
           <div className={styles.transactions__cont}>
             <button type='button' className={styles.transactions__profileButton} onClick={onProfileClick}>
               {t('purse_goFilling')}
@@ -52,20 +47,6 @@ export const Transactions = ({ onProfileClick }: ITransactionsProps) => {
           </div>
         </>
       )}
-
-      {/* {isUserHasTransactions ? (
-        <UserHasTransactions data={tempDataForTransactions} />
-      ) : (
-        <>
-          <p className={styles.transactions__subtitle}>
-            {t('purse_noTransactionsYet')} <br />
-            Мы предоставим доступ ко всем функциям кошелька после заполнения профиля
-          </p>
-          <button type='button' className={styles.transactions__profileButton} onClick={onProfileClick}>
-            {t('purse_goFilling')}
-          </button>
-        </>
-      )} */}
     </div>
   )
 }
