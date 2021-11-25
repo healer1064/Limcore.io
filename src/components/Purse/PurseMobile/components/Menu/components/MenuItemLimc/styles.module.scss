@@ -1,0 +1,134 @@
+@import '../../../../../../../scss/cabinet';
+
+.balanceModal > div {
+  height: 100vh;
+}
+
+.balanceBlock {
+  padding: 20px;
+  // height: 100vh;
+  // width: 100vw;
+  margin: auto;
+}
+
+.buyCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.buy {
+  margin: 0 auto 10px;
+  max-width: 500px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 140%;
+  color: #3a3b3d;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.usd {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 140%;
+  color: #4f535a;
+  margin-top: 3px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.desc {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  color: #99a0ad;
+
+  &:last-child {
+    margin-top: 20px;
+  }
+}
+
+.nextCont {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.next {
+  max-width: 500px;
+  width: 100%;
+  padding: 14px 0;
+  border: 1px solid #4a70f8;
+  border-radius: 14px;
+
+  font-family: 'Montserrat';
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  font-style: normal;
+  text-align: center;
+
+  background: none;
+  color: #4a70f8;
+
+  transition: color 0.3s ease, border 0.3s ease;
+
+  &:hover {
+    color: #3159e9 !important;
+    border: 1px solid #3159e9 !important;
+    background-color: none;
+    transition: color 0.3s ease, border 0.3s ease !important;
+  }
+}
+
+.icon {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.buyBtn {
+  margin: 20px 0;
+  width: 100%;
+}
+
+.buyLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+  color: #fff;
+}

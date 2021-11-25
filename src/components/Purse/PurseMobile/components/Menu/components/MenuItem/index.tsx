@@ -1,61 +1,48 @@
 import React from 'react'
 import styles from './styles.module.scss'
-// import { blueArrow } from '../../../../images'
-import { Info } from '../Info/index'
 import BlueArrow from '../../../../images/BlueArrow/BlueArrow'
 import { ShouldSinc } from '../../../Balance/Icons/ShouldSinc'
 import { useAppSelector } from '@app/redux/hooks'
 import lockIcon from '@icons/lock-me.svg'
+import { MenuItemLimc } from '../MenuItemLimc'
+import { changeViewContent } from '../../../../../../../pages/cabinet/redux/cabinetSlice'
+import { useDispatch } from 'react-redux'
+import { balanceLimc } from '@components/Purse/PurseDesktop/images'
+import { useTranslation } from 'react-i18next'
+import classNames from 'classnames'
 
-interface MenuItemProps {
-  onClick?: any
-  setActive?: any
-  setNotActive?: any
-  active?: any
-  image: any
-  title: any
-  balance: any
-  type?: string
-}
+export const MenuItem = ({ type }) => {
+  const [t] = useTranslation()
+  const dispatch = useDispatch()
 
-export const MenuItem: React.FC<MenuItemProps> = ({
-  onClick,
-  setActive,
-  setNotActive,
-  active,
-  image,
-  title,
-  balance,
-  type,
-}) => {
   const isSinc = useAppSelector((state) => state.auth.isSincWithWallet)
-  const menuItemClass = `${styles.menu__item} ${styles.menu__balance}`
+  const viewContent = useAppSelector((state) => state.cabinet.viewContent)
+  const limcBalance = useAppSelector((state) => state.auth.walletConnectLimc)
+  const usdtBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
 
-  const onClickHandler = () => {
-    title.includes('LIMC') ? onClick() : setActive()
+  const openLimc = () => dispatch(changeViewContent('LIMC'))
+  const openUsdt = () => dispatch(changeViewContent('USDT'))
+  const closePopup = () => dispatch(changeViewContent(''))
+
+  switch (type) {
+    case 'limc':
+      return (
+        <button className={classNames(styles.menu__item, styles.menu__balance)} onClick={isSinc ? openLimc : () => {}}>
+          <span className={styles.menu__icon}>{isSinc ? <BlueArrow /> : <ShouldSinc />}</span>
+          <img src={balanceLimc} width='40' height='40' className={styles.menu__img} />
+          <h5 className={styles.menu__title}>{t('balance')} LIMC</h5>
+
+          {isSinc ? (
+            <div className={styles.row}>
+              <span>{limcBalance} LIMC</span>
+              <img src={lockIcon} alt='Lock' />
+            </div>
+          ) : (
+            <p className={styles.menu__sum}>{t('purse_needSync')}</p>
+          )}
+
+          <MenuItemLimc balance={limcBalance} isActive={viewContent === 'LIMC'} onClose={closePopup} />
+        </button>
+      )
   }
-
-  return (
-    <button className={menuItemClass} onClick={isSinc ? onClickHandler : () => {}}>
-      <span className={styles.menu__icon}>{isSinc ? <BlueArrow /> : <ShouldSinc />}</span>
-      <img src={image} width='40' height='40' />
-      <h5 className={styles.menu__title}>{title}</h5>
-      {!isSinc && <p className={styles.menu__sum}>{balance}</p>}
-      {isSinc && type === 'limc' && (
-        <div className={styles.row}>
-          <span>{balance}</span>
-          <img src={lockIcon} alt='Lock' />
-        </div>
-      )}
-      {isSinc && type === 'usdt' && <p className={styles.menu__sum}>{balance}</p>}
-      <Info
-        active={active}
-        setActive={setActive}
-        title={title}
-        setNotActive={setNotActive}
-        image={image}
-        balance={balance}
-      />
-    </button>
-  )
 }
