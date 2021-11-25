@@ -155,9 +155,12 @@ export const Balance = () => {
           <p className={styles.notion}>{t('purse_walletConnectSync')}</p>
         </div>
       ) : (
-        <button className={styles.syncButton} onClick={sincWithWallet}>
-          {t('purse_sync')}
-        </button>
+        <>
+          <button className={styles.syncButton} onClick={sincWithWallet}>
+            {t('purse_sync')}
+          </button>
+          <p className={styles.trust_subtitle}>{t('purse_walletConnect')}</p>
+        </>
       )}
       {/* <h1 className={styles.balance__sumMain}>{`$${money}`}</h1>
       <div className={styles.balance__data}>

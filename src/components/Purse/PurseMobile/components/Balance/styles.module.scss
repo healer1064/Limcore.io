@@ -367,7 +367,9 @@
 .trust_kill {
   display: grid;
   margin: 0 0 15px 15px;
-  padding: 5px;
+  padding: 7px;
+  width: 35px;
+  height: 35px;
   border: 1px solid #99A0AD;
   border-radius: 50%;
   background-color: #FFFFFF;
@@ -376,8 +378,6 @@
   justify-content: center;
   align-content: center;
   align-self: center;
-  width: 35px;
-  height: 35px;
 
   &:hover {
     cursor: pointer;
