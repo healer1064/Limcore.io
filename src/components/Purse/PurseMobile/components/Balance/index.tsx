@@ -175,6 +175,7 @@ export const Balance = () => {
                 <GrayCrossIcon />
               </button>
             </div>
+            <p className={styles.notion}>{t('purse_walletConnectSync')}</p>
           </>
         )}
       </div>
