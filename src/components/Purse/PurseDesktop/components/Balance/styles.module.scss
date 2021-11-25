@@ -324,10 +324,9 @@
 }
 
 .notion {
+  grid-area: notion;
   padding: 0;
   margin: 0;
-  position: absolute;
-  bottom: 0;
   left: 0;
   font-family: Montserrat;
   font-style: normal;
@@ -392,11 +391,12 @@
 }
 
 .walletId {
+  grid-area: button;
   display: flex;
   align-items: center;
   max-width: 275px;
   max-height: 55px;
-  margin: 30px 0 25px;
+  margin: 30px 0;
   border: 2px solid $color-4D-green;
   border-radius: 14px;
   padding: 15px 30px;
@@ -418,8 +418,15 @@
 }
 
 .trust_cont {
-  display: flex;
-  position: relative;
+  display: grid;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  grid-template-columns: fit-content(275px) minmax(min-content, max-content);
+  grid-template-rows: repeat(2, minmax(min-content, max-content));
+  grid-template-areas:
+  'button close'
+  'notion notion';
 }
 
 //.trust_kill {
@@ -445,6 +452,7 @@
 
 .trust_kill {
   display: grid;
+  grid-area: close;
   margin: 30px 0 25px 30px;
   padding: 5px;
   border: 1px solid #99A0AD;
