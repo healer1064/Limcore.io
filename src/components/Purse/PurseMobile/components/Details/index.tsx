@@ -95,45 +95,6 @@ export const Details = () => {
           )
         })}
       </ul>
-      {/* {desktop ? (
-        <ul className={styles.detailsList}>
-          {tempData.map((item) => {
-            // Такая чехарда, потому что в основном лендинге должно быть только 3 карточки, а уже в детализации все
-            return (
-              <DetalizationDownItem
-                img={item.img}
-                title={item.title}
-                subtitle={item.subtitle}
-                number={item.number}
-                money={item.money}
-                key={Math.random()}
-                flagForButton={false}
-              />
-            )
-          })}
-        </ul>
-      ) : null} */}
-      {/* <ul className={styles.detailsList}>
-        {tempData.map((item) => {
-          // Такая чехарда, потому что в основном лендинге должно быть только 3 карточки, а уже в детализации все
-          flagForDetalisation--
-          if (flagForDetalisation === -1) {
-            return
-          }
-          return (
-            <DetalizationDownItem
-              img={item.img}
-              title={item.title}
-              subtitle={item.subtitle}
-              number={item.number}
-              money={item.money}
-              key={Math.random()}
-              flagForButton={false}
-            />
-          )
-        })}
-      </ul> */}
-      {/* TODO: 2 цикла - не хорошо, надо поправить */}
     </div>
   )
 }

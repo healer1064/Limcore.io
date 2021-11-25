@@ -3,16 +3,19 @@ import ReactDOM from 'react-dom'
 import styles from './styles.module.scss'
 import classNames from 'classnames'
 import { CloseIcon } from '@icons/CloseIcon'
+
 interface IModalProps {
   active: boolean
-  setActive?: (boolean) => void
+  setActive?: (arg0: boolean) => void
+
   children?: React.ReactNode
+  classname?: string
   style?: {
     zIndex?: number
     overflow?: string
     backgroundColor?: string
   }
-  classname?: string
+
   crossFlag?: boolean
   isMobile?: boolean
   isDesktop?: boolean
@@ -22,21 +25,25 @@ interface IModalProps {
 export const Modal = ({
   active,
   setActive,
+
   children,
   style,
   classname,
+
   crossFlag,
   isMobile,
   isDesktop,
   isAuthModal,
 }: IModalProps) => {
   const node = document.getElementById('root')
+  const bodyEl = useRef(document.querySelector('body'))
+  const htmlEl = useRef(document.querySelector('html'))
+
   const modalClass = active ? styles.modalActive : styles.modal
   const authClass = isAuthModal && styles.authModal
   const mobileClass = isMobile && styles.mobileModal
   const desktopClass = isDesktop && styles.desktopModal
-  const bodyEl = useRef(document.querySelector('body'))
-  const htmlEl = useRef(document.querySelector('html'))
+
   const [scrollPosition, setScrollPosition] = useState(0)
 
   useEffect(() => {
@@ -59,6 +66,7 @@ export const Modal = ({
       htmlEl.current.style.removeProperty('height')
       window.scrollTo(0, scrollPosition)
     }
+
     return () => {
       bodyEl.current.style.removeProperty('overflow')
       bodyEl.current.style.removeProperty('position')
@@ -67,17 +75,10 @@ export const Modal = ({
     }
   }, [active])
 
-  const handleModalOutClick = () => {
-    setActive(false)
-  }
+  const handleModalOutClick = () => setActive(false)
+  const handleClose = () => setActive(false)
 
-  const handleModalContentClick = (event: SyntheticEvent) => {
-    event.stopPropagation()
-  }
-
-  const handleClose = () => {
-    setActive(false)
-  }
+  const handleModalContentClick = (event: SyntheticEvent) => event.stopPropagation()
 
   return ReactDOM.createPortal(
     <div

@@ -21,8 +21,10 @@
   transition: 0.3s ease;
   visibility: hidden;
 }
+
 .authModal {
     background-color: rgba(0, 0, 0, 0.4);
+
     .modalContent {
       margin: auto;
       height: auto;
@@ -33,6 +35,7 @@
 
   .mobileModal {
     background-color: rgba(0, 0, 0, 0.4);
+
     .modalContent {
       width: 100%;
     }
@@ -44,16 +47,20 @@
 
 .modal {
   @include modal();
+
   &Content {
-    left: 900px;
     position: relative;
-    background-color: #fff;
+    left: 900px;
+    overflow-y: auto;
+
+    padding: 20px 0 0 0;
     // width: 470px;
     height: 100%;
-    overflow-y: auto;
+    
+    background-color: #fff;
     transition: all 0.5s ease;
-    padding: 20px 0 0 0;
   }
+
   &Active {
     @include modal();
     visibility: visible;
@@ -61,6 +68,7 @@
     display: flex;
     pointer-events: all;
   }
+
   &Active &Content {
     left: 0;
   }
@@ -86,9 +94,3 @@
     }
   }
 }
-
-// @media only screen and (min-width: 1250px) {
-//   .modalContent {
-//     width: 60vw;
-//   }
-// }

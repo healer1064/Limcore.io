@@ -8,13 +8,13 @@ import buyIcon from '@icons/buy.svg'
 import { useTranslation } from 'react-i18next'
 import { useHistory } from 'react-router'
 
-export const MenuItemLimc = ({ isActive, onClose, balance }) => {
+export const ModalLimc = ({ isActive, onClose, balance }) => {
   const [t] = useTranslation()
   const history = useHistory()
 
   return (
-    <Modal active={isActive} classname={styles.balanceModal} setActive={onClose} crossFlag>
-      <ModalHeader title='LIMC' onClick={onClose} />
+    <Modal active={isActive} classname={styles.balanceModal} setActive={onClose} isMobile>
+      <ModalHeader title='LIMC' onClick={onClose} crossFlag />
       <div className={styles.balanceBlock}>
         <div className={styles.block}>
           <div className={styles.line}>

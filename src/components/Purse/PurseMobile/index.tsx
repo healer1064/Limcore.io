@@ -17,7 +17,9 @@ import { changeViewContent } from '../../../pages/cabinet/redux/cabinetSlice'
 export const PurseMobile: FC = () => {
   const [t] = useTranslation()
   const dispatch = useDispatch()
+  const openLimc = () => dispatch(changeViewContent('LIMC'))
 
+  // на iPhone Pro Max ЛК появляется с прокруткой ~50px от верха страницы
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
@@ -28,11 +30,9 @@ export const PurseMobile: FC = () => {
       <Menu />
       <div className={styles.purse__content}>
         <RoadMap />
-        <div className={styles.buyCont}>
-          <ButtonBig className={styles.buy} onClick={() => dispatch(changeViewContent('LIMC'))}>
-            {t('buyLimc')}
-          </ButtonBig>
-        </div>
+        <ButtonBig className={styles.buy} onClick={openLimc}>
+          {t('buyLimc')}
+        </ButtonBig>
         <Statistics />
         <Details />
         <FooterMobile />
