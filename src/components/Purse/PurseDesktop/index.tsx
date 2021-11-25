@@ -30,7 +30,7 @@ export const PurseDesktop = () => {
 
   const limcBalance = useAppSelector((state) => state.auth.walletConnectLimc)
   const usdtBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
-  const viewContent = useAppSelector((state) => state.cabinet.viewContent)
+  const viewPurseContent = useAppSelector((state) => state.cabinet.viewPurseContent)
 
   const [popup, setPopup] = useState('')
 
@@ -72,8 +72,8 @@ export const PurseDesktop = () => {
               handlePageCardBalanceCloseClick={() => setIsPageCardBalanceVisible(false)}
             />
           </div>
-          {viewContent === 'broadcasts' && <BroadcastsDesktop />}
-          {viewContent === 'main' && (
+          {viewPurseContent === 'broadcasts' && <BroadcastsDesktop />}
+          {viewPurseContent === 'main' && (
             <>
               <PageCardBalance
                 usdtBalance={usdtBalance}

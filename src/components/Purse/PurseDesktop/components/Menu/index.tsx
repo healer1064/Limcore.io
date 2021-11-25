@@ -19,15 +19,19 @@ export const Menu = ({
   const usdtBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
 
   const handleLIMCBalance = () => {
-    handlePageBalanceLIMCOpenClick()
-    handlePageBalanceUSDTCloseClick()
-    handlePageCardBalanceCloseClick()
+    if (isSync) {
+      handlePageBalanceLIMCOpenClick()
+      handlePageBalanceUSDTCloseClick()
+      handlePageCardBalanceCloseClick()
+    }
   }
 
   const handleUSDTBalance = () => {
-    handlePageBalanceUSDTOpenClick()
-    handlePageBalanceLIMCCloseClick()
-    handlePageCardBalanceCloseClick()
+    if (isSync) {
+      handlePageBalanceUSDTOpenClick()
+      handlePageBalanceLIMCCloseClick()
+      handlePageCardBalanceCloseClick()
+    }
   }
 
   return (

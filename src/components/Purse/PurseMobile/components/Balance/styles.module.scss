@@ -317,6 +317,7 @@
 
 .trust_sinc_success {
   border: 1px solid #4DBE28;
+  pointer-events: none;
 }
 
 .trust_logos_cont__success {
@@ -354,6 +355,11 @@
 
   background-color: #F24949;
   outline: none;
+  transition: background-color .3s ease;
+      &:hover {
+    background-color: #ec0505;
+    
+  }
 }
 
 .trust_walletpurse {

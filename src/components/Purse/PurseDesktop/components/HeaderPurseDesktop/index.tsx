@@ -14,7 +14,7 @@ import { useHistory } from 'react-router'
 import { LogoutIcon } from '@icons/LogoutIcon'
 import { useTranslation } from 'react-i18next'
 import { LanguagePopup } from '@components/LanguagePopup'
-import { changeViewContent } from '../../../../../pages/cabinet/redux/cabinetSlice'
+import { changeViewPurseContent } from '../../../../../pages/cabinet/redux/cabinetSlice'
 
 interface IHeaderPurseDesktop {
   isProfileActive: boolean
@@ -27,10 +27,18 @@ export const HeaderPurseDesktop = ({ isProfileActive, openProfile, closeProfile 
   const dispatch = useAppDispatch()
   const history = useHistory()
 
-  const userName = useAppSelector((state) => state.user.userData?.name)
+  const firstName = useAppSelector((state) => state.user.userData?.profile.first_name)
+  const lastName = useAppSelector((state) => state.user.userData?.profile.last_name)
   const userPhone = useAppSelector((state) => state.user.userData?.phone)
-  const viewContent = useAppSelector((state) => state.cabinet.viewContent)
-  const currentName = userName || userPhone
+  const currentName = () => {
+    if (firstName && lastName) {
+      return `${firstName} ${lastName[0]}.`
+    } else {
+      return userPhone
+    }
+  }
+  const avatarUrl = useAppSelector((state) => state.user.userData?.profile.avatar)
+  const viewPurseContent = useAppSelector((state) => state.cabinet.viewPurseContent)
 
   const onLogout = () => {
     localStorage.clear()
@@ -39,22 +47,22 @@ export const HeaderPurseDesktop = ({ isProfileActive, openProfile, closeProfile 
     location.reload()
   }
 
-  const openMain = () => dispatch(changeViewContent('main'))
-  const openBroadcasts = () => dispatch(changeViewContent('broadcasts'))
+  const openMain = () => dispatch(changeViewPurseContent('main'))
+  const openBroadcasts = () => dispatch(changeViewPurseContent('broadcasts'))
 
   return (
     <header className={styles.header}>
       <Logo />
       <nav className={styles.nav}>
         <Link
-          className={classnames([styles.nav__link, viewContent === 'main' && styles.nav__link_active])}
+          className={classnames([styles.nav__link, viewPurseContent === 'main' && styles.nav__link_active])}
           to='main'
           onClick={openMain}
         >
           {t('purse_navMain')}
         </Link>
         <Link
-          className={classnames([styles.nav__link, viewContent === 'broadcasts' && styles.nav__link_active])}
+          className={classnames([styles.nav__link, viewPurseContent === 'broadcasts' && styles.nav__link_active])}
           to='broadcasts'
           onClick={openBroadcasts}
         >
@@ -64,15 +72,15 @@ export const HeaderPurseDesktop = ({ isProfileActive, openProfile, closeProfile 
       </nav>
 
       <div className={styles.profileGroup} onClick={openProfile}>
-        <img className={styles.profileIcon} src={profile} />
-        <p className={styles.profileName}>{currentName}</p>
+        <img className={styles.profileIcon} src={avatarUrl || profile} />
+        <p className={styles.profileName}>{currentName()}</p>
         <button className={styles.logoutBtn} onClick={onLogout}>
           <LogoutIcon />
         </button>
       </div>
 
       <Modal active={isProfileActive} setActive={closeProfile} crossFlag isDesktop>
-        <ModalHeader title={currentName} onClick={closeProfile} />
+        <ModalHeader title={currentName()} onClick={closeProfile} />
         <ProfileMobile />
       </Modal>
     </header>

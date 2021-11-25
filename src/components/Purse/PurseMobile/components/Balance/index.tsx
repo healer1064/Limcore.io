@@ -139,7 +139,7 @@ export const Balance = () => {
             <LogoTrustWallet />
           </div>
         </div>
-        <button className={buttonSincClass} onClick={sincWithWallet}>
+        <button className={buttonSincClass} onClick={sincWithWallet} disabled={isSinc}>
           {isSinc ? (
             <>
               <WalletPurseIcon className={styles.trust_walletpurse} />
