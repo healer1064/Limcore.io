@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import { useTranslation } from 'react-i18next'
 import closeButton from '@icons/greyClose.svg'
 
-export const SearchForm = () => {
+export const SearchForm = ({ desktop }) => {
   const [t] = useTranslation()
   const [searched, setSearched] = useState('')
   const [closeButtonVisible, setCloseButtonVisible] = useState(false)
@@ -24,7 +24,7 @@ export const SearchForm = () => {
 
   return (
     <>
-      <form className={styles.searchForm}>
+      <form className={!desktop ? styles.searchForm : styles.searchForm_desktop}>
         <input
           type='search'
           className={styles.searchInput}

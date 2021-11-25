@@ -98,3 +98,22 @@
   width: 24px;
   height: 24px;
 }
+
+@media screen and (min-width: 769px) {
+  .raitingList {
+    width: 375px;
+    height: 610px;
+    position: absolute;
+    bottom: 0;
+    right: 120px;
+    box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+    border-radius: 14px;
+  }
+
+  .container {
+    width: 375px;
+    position: absolute;
+    bottom: 0;
+    right: 120px;
+  }
+}

@@ -93,10 +93,11 @@ const App = () => {
               <Switch>
                 <Route path='/' exact component={LandingPage} />
                 <Route path='/my' exact component={Purse} />
+                <Route path='/chat' exact component={Chat} />
                 {!desktop && (
                   <>
                     <Route path='/broadcasts' exact component={BroadcastsMobile} />
-                    <Route path='/chat' exact component={Chat} />
+                    {/* <Route path='/chat' exact component={Chat} /> */}
                     <Route path='/profile' exact component={ProfileMobile} />
                   </>
                 )}

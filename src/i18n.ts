@@ -384,6 +384,7 @@ i18n.use(LanguageDetector).init({
         calculator_already: 'Marked tokens are already being mined by Limcore',
         calculator_inProcess: 'Others in the process of integration',
 
+        chat_title: 'Chat',
         chat_form_placeholder: 'Search',
         chat_reset_button_value: 'Cancel',
         chat_no_results: 'No results',
@@ -773,6 +774,7 @@ i18n.use(LanguageDetector).init({
         calculator_already: 'Отмеченные токены уже майнятся компанией Limcore',
         calculator_inProcess: 'Остальные в процессе интеграции',
 
+        chat_title: 'Чат',
         chat_form_placeholder: 'Поиск',
         chat_reset_button_value: 'Отмена',
         chat_no_results: 'Результатов нет',

@@ -6,6 +6,17 @@
   background-color: transparent;
 }
 
+.searchForm_desktop {
+  display: flex;
+  box-sizing: border-box;
+  padding: 20px;
+  margin: 0;
+  background-color: transparent;
+  position: fixed;
+  bottom: 0;
+  width: 375px;
+}
+
 .searchInput {
   background-color: transparent;
   border: 1.4px solid #B4BFD5;

@@ -6,3 +6,49 @@
   margin: 8px 20px 35px 20px;
   overflow: scroll;
 }
+
+.cont_desktop {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 375px;
+  height: 610px;
+  position: fixed;
+  bottom: 0;
+  right: 120px;
+  box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+  border-radius: 14px;
+}
+
+.header {
+  display: flex;
+  box-sizing: border-box;
+  padding: 15px 20px;
+  margin: 0;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 150%;
+  display: flex;
+  align-items: center;
+  color: #3A3B3D;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.button {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+}

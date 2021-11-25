@@ -117,6 +117,7 @@
   display: flex;
   box-sizing: border-box;
   padding: 10px 10px 10px 14px;
+  margin: 10px 0 0;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
@@ -124,6 +125,10 @@
   line-height: 1.45;
   color: #3A3B3D;
   width: 100%;
+  border: 1.4px solid #B4BFD5;
+  box-sizing: border-box;
+  border-radius: 14px;
+  height: 40px;
 
   &::placeholder {
     display: flex;
@@ -167,4 +172,30 @@
   grid-template-columns: repeat(2, minmax(min-content, max-content));
   grid-template-rows: repeat(2, minmax(min-content, max-content));
   column-gap: 5px;
+}
+
+@media screen and (min-width: 769px) {
+  .groupContainer {
+    width: 375px;
+    height: 610px;
+    position: absolute;
+    bottom: 0;
+    right: 120px;
+    box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+    border-radius: 14px;
+  }
+
+  .groupHeader {
+    width: 375px;
+    margin: 0;
+    padding: 16px;
+  }
+
+  .inputContainer {
+    width: 375px;
+    margin: 10px 0;
+    position: absolute;
+    bottom: 0;
+    right: 120px;
+  }
 }

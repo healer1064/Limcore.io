@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useHistory } from 'react-router-dom'
 import styles from './styles.module.scss'
 import { FooterMobile } from '@components/Footer/FooterMobile'
 import { SearchForm } from '@components/Chat/components/SearchForm'
@@ -11,8 +12,13 @@ import fotoPart1 from '@icons/groupPart1.svg'
 import purple from '@icons/raitingPurple.svg'
 import fotoPart2 from '@icons/groupPart2.svg'
 import orange from '@icons/raitingOrange.svg'
+import close from '@icons/greyClose.svg'
+import useWindowSize from '../../helpers/useWindowSizeHook'
 export const Chat = () => {
   const [t] = useTranslation()
+  const { width } = useWindowSize()
+  const desktop = width >= 769
+  const history = useHistory()
   const messages = [
     {
       id: 1,
@@ -75,14 +81,24 @@ export const Chat = () => {
   ]
 
   return (
-    <div className={styles.chat}>
-      <SearchForm />
-      <section className={styles.messageSection}>
-        {messages.map((message) => (
-          <Message key={message.id} {...message} message={message} participants={participants} />
-        ))}
-      </section>
-      <FooterMobile />
-    </div>
+    <section className={!desktop ? styles.cont : styles.cont_desktop}>
+      <div className={styles.chat}>
+        {desktop ? (
+          <div className={styles.header}>
+            <h1 className={styles.title}>{t('chat_title')}</h1>
+            <button className={styles.button} type='button' onClick={() => history.push('/my')}>
+              <img src={close} alt='' />
+            </button>
+          </div>
+        ) : null}
+        <SearchForm desktop={desktop} />
+        <section className={styles.messageSection}>
+          {messages.map((message) => (
+            <Message key={message.id} {...message} message={message} participants={participants} />
+          ))}
+        </section>
+        <FooterMobile />
+      </div>
+    </section>
   )
 }

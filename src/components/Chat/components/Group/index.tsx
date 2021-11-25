@@ -46,12 +46,7 @@ export const Group = ({ groupVisible, handleGroupClose, message, participants })
         <button className={styles.button} type='button'>
           <img alt='' src={clip} className={styles.clip} />
         </button>
-        <InputText
-          className={styles.inputText}
-          placeholder='Сообщение'
-          onChange={handleSendIconVisibility}
-          type='textarea'
-        />
+        <textarea className={styles.inputText} placeholder='Сообщение' onChange={handleSendIconVisibility} />
         <button className={styles.button} type='submit' onClick={(e) => handleSubmit(e)}>
           <img alt='' src={send} className={sendIconVisible ? styles.sendIcon : styles.sendIcon_invisible} />
         </button>
