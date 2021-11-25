@@ -9,6 +9,7 @@
   right: 0;
   left: 0;
   background-color: #FFFFFF;
+  justify-content: space-between;
 
   &_invisible {
     display: none;
@@ -88,10 +89,6 @@
   box-sizing: border-box;
   padding: 0;
   margin: 10px 10px 10px 14px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
   border-top: 1px solid #E5E5E5;
 }
 
@@ -113,6 +110,8 @@
   display: flex;
   box-sizing: border-box;
   padding: 10px 10px 10px 14px;
+  margin: 10px 0 0;
+  height: 40px;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
@@ -120,6 +119,9 @@
   line-height: 1.45;
   color: #3A3B3D;
   width: 100%;
+  background: #FFFFFF;
+  border: 1.4px solid #B4BFD5;
+  border-radius: 20px;
 
   &::placeholder {
     display: flex;
@@ -161,6 +163,8 @@
   box-sizing: border-box;
   padding: 0;
   margin: 20px;
+  height: 90%;
+  justify-content: end;
 }
 
 .date {

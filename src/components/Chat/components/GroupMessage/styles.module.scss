@@ -8,7 +8,7 @@
   column-gap: 8px;
   grid-template-areas:
   'foto name rank'
-  'foto status raiting'
+  'foto status .'
   '. line line';
 }
 
@@ -73,9 +73,9 @@
 }
 
 .raiting {
-  grid-area: raiting;
+  grid-area: rank;
   padding: 0;
-  margin: 0 0 10px 0;
+  margin: 0;
   text-align: right;
 
   &_invisible {
