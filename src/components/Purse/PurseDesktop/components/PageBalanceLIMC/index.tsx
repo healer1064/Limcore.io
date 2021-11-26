@@ -20,7 +20,7 @@ export const PageBalanceLIMC: React.FC<PageBalanceLIMCPropsType> = ({
   const [t] = useTranslation()
 
   return (
-    <div className={`${isOpen ? styles.pageBalanceLIMC : styles.pageBalanceLIMC_invisible}`}>
+    <div className={isOpen ? styles.pageBalanceLIMC : styles.pageBalanceLIMC_invisible}>
       <button className={styles.backButton} type='button' onClick={handlePageBalanceLIMCCloseClick}>
         <svg
           className={styles.backIcon}

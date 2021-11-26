@@ -9,7 +9,6 @@ export const getForksPrice: any = createAsyncThunk('landing-page/xchforks', asyn
 
 export const getSyncData: any = createAsyncThunk('wallet/getSyncData', async function (address) {
   const response = await api.post('walletconnect/', address)
-  console.log('getSyncData', response)
   return response.data
 })
 

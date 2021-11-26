@@ -4,51 +4,36 @@ import { balanceLimc, balanceUsdt } from '../../images'
 import { MenuItem } from './components/MenuItem/index'
 import { useAppSelector } from '@app/redux/hooks'
 import { useTranslation } from 'react-i18next'
+import { UnsyncIcon } from '@icons/unsync'
 
-export const Menu = ({
-  handleBalanceUsdtOpenClick,
-  handlePageBalanceLIMCOpenClick,
-  handlePageBalanceUSDTOpenClick,
-  handlePageBalanceLIMCCloseClick,
-  handlePageBalanceUSDTCloseClick,
-  handlePageCardBalanceCloseClick,
-}) => {
+interface IMenuProps {
+  openLimcBalance: () => any
+  openUsdtBalance: () => any
+}
+
+export const Menu = ({ openLimcBalance, openUsdtBalance }: IMenuProps) => {
   const [t] = useTranslation()
+
   const isSync = useAppSelector((state) => state.auth.isSincWithWallet)
   const limcBalance = useAppSelector((state) => state.auth.walletConnectLimc)
   const usdtBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
-
-  const handleLIMCBalance = () => {
-    if (isSync) {
-      handlePageBalanceLIMCOpenClick()
-      handlePageBalanceUSDTCloseClick()
-      handlePageCardBalanceCloseClick()
-    }
-  }
-
-  const handleUSDTBalance = () => {
-    if (isSync) {
-      handlePageBalanceUSDTOpenClick()
-      handlePageBalanceLIMCCloseClick()
-      handlePageCardBalanceCloseClick()
-    }
-  }
 
   return (
     <div className={styles.menu}>
       <h2 className={styles.name}>{t('purse_myAccounts')}</h2>
       <MenuItem
-        onClick={handleLIMCBalance}
+        openCard={openLimcBalance}
         image={balanceLimc}
+        syncIcon={isSync ? null : <UnsyncIcon />}
         title='LIMC'
         balance={isSync ? `${limcBalance} LIMC` : t('purse_notSync')}
       />
       <MenuItem
-        onClick={handleUSDTBalance}
+        openCard={openUsdtBalance}
         image={balanceUsdt}
+        syncIcon={isSync ? null : <UnsyncIcon />}
         title='USDT'
         balance={isSync ? `${usdtBalance} USDT` : t('purse_notSync')}
-        setActive={handleBalanceUsdtOpenClick}
       />
     </div>
   )

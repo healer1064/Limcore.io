@@ -44,8 +44,6 @@ export const ProfileMobile: React.FC = () => {
     // }
   }, [userData])
 
-  console.log('userData', userData)
-
   return (
     <div className={Styles.profile}>
       {profileComplete ? <ProfileComplete /> : <Profile />}

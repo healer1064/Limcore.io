@@ -1,32 +1,20 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import styles from './styles.module.scss'
-import { UnsyncIcon } from '../../../../../../../assets/icons/unsync'
-import { useAppSelector } from '@app/redux/hooks'
 
 interface MenuItemProps {
-  onClick?: any
-  setActive?: any
+  openCard: () => any
   image: any
+  syncIcon: null | ReactNode
   title: any
   balance: any
 }
 
-export const MenuItem: React.FC<MenuItemProps> = ({ onClick, setActive, image, title, balance }) => {
-  const isSync = useAppSelector((state) => state.auth.isSincWithWallet)
-
-  const onClickHandler = () => {
-    if (title.includes('LIMC') || title.includes('USDT') || title.includes('Карта')) {
-      onClick()
-    } else {
-      setActive()
-    }
-  }
-
+export const MenuItem: React.FC<MenuItemProps> = ({ openCard, image, syncIcon, title, balance }) => {
   return (
-    <button className={styles.menuItem} onClick={onClickHandler}>
+    <button className={styles.menuItem} onClick={openCard}>
       <p className={styles.menu__title}>
         {title}
-        {isSync ? null : <UnsyncIcon />}
+        {syncIcon}
       </p>
       <p className={styles.menu__sum}>{balance}</p>
       <img className={styles.menu__logo} src={image} width='30' height='30' />
