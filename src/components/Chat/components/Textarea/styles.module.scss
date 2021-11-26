@@ -35,7 +35,7 @@
   width: 100%;
   background: #FFFFFF;
   border: 1.4px solid #B4BFD5;
-  border-radius: 20px;
+  border-radius: 14px;
 
   &::placeholder {
     display: flex;
@@ -74,8 +74,8 @@
 @media screen and (min-width: 769px) {
   .inputContainer {
     width: 375px;
-    position: fixed;
+    position: relative;
     bottom: 0;
-    right: 110px;
+    right: 15px;
   }
 }

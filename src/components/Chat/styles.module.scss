@@ -9,6 +9,8 @@
 
 .cont_desktop {
   display: flex;
+  opacity: 1;
+  transition: opacity 1s linear;
   flex-direction: column;
   box-sizing: border-box;
   width: 375px;

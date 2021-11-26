@@ -10,9 +10,13 @@
   left: 0;
   background-color: #FFFFFF;
   justify-content: space-between;
+  opacity: 1;
+  transition: opacity 1s linear;
 
   &_invisible {
     display: none;
+    opacity: 0;
+    transition: opacity 1s linear;
   }
 }
 

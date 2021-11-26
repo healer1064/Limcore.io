@@ -9,9 +9,14 @@
   right: 0;
   left: 0;
   background-color: #FFFFFF;
+  justify-content: space-between;
+  opacity: 1;
+  transition: opacity 1s linear;
 
   &_invisible {
     display: none;
+    opacity: 0;
+    transition: opacity 1s linear;
   }
 }
 
@@ -95,6 +100,16 @@
   grid-template-columns: repeat(2, minmax(min-content, max-content));
   grid-template-rows: repeat(2, minmax(min-content, max-content));
   column-gap: 5px;
+}
+
+.groupMessagesContainer {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  max-height: 80%;
+  overflow: auto;
 }
 
 @media screen and (min-width: 769px) {

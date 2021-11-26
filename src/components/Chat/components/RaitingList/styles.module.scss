@@ -8,9 +8,13 @@
   left: 0;
   background: rgba(43, 40, 41, 0.5);
   z-index: 2000;
+  opacity: 1;
+  transition: opacity 1s linear;
 
   &_invisible {
     display: none;
+    opacity: 0;
+    transition: opacity 1s linear;
   }
 }
 

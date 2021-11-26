@@ -28,9 +28,11 @@ export const Group = ({ groupVisible, handleGroupClose, message, participants })
           {`${message.numberOfParticipants} ${t('group_number')}`}
         </p>
       </div>
-      {participants.map((member) => (
-        <GroupText key={member.id} {...member} member={member} />
-      ))}
+      <div className={styles.groupMessagesContainer}>
+        {participants.map((member) => (
+          <GroupText key={member.id} {...member} member={member} />
+        ))}
+      </div>
       <List
         handleParticipantsListClose={handleParticipantsListClose}
         participantsListVisible={participantsListVisible}
