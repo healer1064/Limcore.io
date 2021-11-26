@@ -12,6 +12,7 @@ import Smirnov from '../../../../assets/images/Smirnov.png'
 import Kazachenko from '../../../../assets/images/Kazachenko.png'
 import Mironov from '../../../../assets/images/Mironov.png'
 import Plotnikov from '../../../../assets/images/Plotnikov.png'
+import Shcherbina from '../../../../assets/images/Shcherbina.png'
 import { useTranslation } from 'react-i18next'
 
 export const Team: React.FC = () => {
@@ -35,6 +36,13 @@ export const Team: React.FC = () => {
     },
     {
       id: 3,
+      job: t('team_shcherbinaRank'),
+      name: t('team_shcherbina'),
+      content: t('team_shcherbinaDesc'),
+      foto: Shcherbina,
+    },
+    {
+      id: 4,
       // job: `Руководитель${'\u00A0'}службы поддержки клиентов`,
       job: t('team_turkinRank'),
       name: t('team_turkin'),
@@ -42,21 +50,21 @@ export const Team: React.FC = () => {
       foto: Turkin,
     },
     {
-      id: 4,
+      id: 5,
       job: t('team_balikinRank'),
       name: t('team_balikin'),
       content: t('team_balikinDesc'),
       foto: Balikin,
     },
     {
-      id: 5,
+      id: 6,
       job: t('team_smirnovRank'),
       name: t('team_smirnov'),
       content: t('team_smirnovDesc'),
       foto: Smirnov,
     },
     {
-      id: 6,
+      id: 7,
       // job: `Руководитель службы${'\u00A0'}безопасности`,
       job: t('team_kazachenkoRank'),
       name: t('team_kazachenko'),
@@ -64,14 +72,14 @@ export const Team: React.FC = () => {
       foto: Kazachenko,
     },
     {
-      id: 7,
+      id: 8,
       job: t('team_mironovRank'),
       name: t('team_mironov'),
       content: t('team_mironovDesc'),
       foto: Mironov,
     },
     {
-      id: 8,
+      id: 9,
       job: t('team_plotnikovRank'),
       name: t('team_plotnikov'),
       content: t('team_plotnikovDesc'),

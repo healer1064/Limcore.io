@@ -7,7 +7,7 @@
   flex-flow: column nowrap;
   align-items: center;
   // margin: 40px 0 0 0;
-  padding: 30px 0 47px 0;
+  padding: 30px 0 40px;
   width: 100%;
 
   background: radial-gradient(32.57% 95.93% at 0% 100%, #ffffff 0%, #edf1ff 100%);
@@ -295,14 +295,18 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 15px;
-  padding: 14px 65px;
+  padding: 14px;
   width: 100%;
+  max-width: 270px;
   border: 1px solid #4A70F8;
   border-radius: 14px;
 
   font-size: 16px;
   font-weight: 600;
   line-height: 1;
+  text-overflow: ellipsis;
+  overflow: auto;
+  text-align: center;
 
   color: #4A70F8;
   background-color: #ffffff;
@@ -341,21 +345,45 @@
   color: #99A0AD;
 }
 
+.trust_cont {
+  display: flex;
+  width: 100%;
+  max-width: 350px;
+}
+
 .trust_kill {
-  margin-bottom: 10px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 14px;
-
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1;
-  color: #fff;
-
-  background-color: #F24949;
+  display: grid;
+  margin: 0 0 15px 15px;
+  padding: 7px;
+  width: 35px;
+  height: 35px;
+  border: 1px solid #99A0AD;
+  border-radius: 50%;
+  background-color: #FFFFFF;
   outline: none;
+  object-fit: contain;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
 }
 
 .trust_walletpurse {
   margin-right: 10px;
+}
+
+.notion {
+  padding: 0;
+  margin: 0;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 140%;
+  font-feature-settings: 'tnum' on, 'lnum' on;
+  color: #4F535A;
 }
