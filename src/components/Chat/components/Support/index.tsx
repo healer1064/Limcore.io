@@ -1,19 +1,12 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import { useTranslation } from 'react-i18next'
-import { InputText } from '../../../../ui-kit/InputText'
 import { Text } from '@components/Chat/components/Text'
 import arrow from '@icons/arrow-left-blue.svg'
-import clip from '@icons/clip.svg'
-import send from '@icons/sendIcon.svg'
+import { Textarea } from '@components/Chat/components/Textarea'
 
 export const Support = ({ supportVisible, message, handleSupportClose }) => {
   const [t] = useTranslation()
-  const [sendIconVisible, setSendIconVisible] = useState(false)
-
-  const handleSendIconVisibility = () => {
-    setSendIconVisible(true)
-  }
 
   return (
     <section className={supportVisible ? styles.supportContainer : styles.supportContainer_invisible}>
@@ -29,15 +22,7 @@ export const Support = ({ supportVisible, message, handleSupportClose }) => {
         >{`${new Date().getDay()}-${new Date().getMonth()}-${new Date().getFullYear()}`}</span>
         <Text message={message} />
       </div>
-      <div className={styles.inputContainer}>
-        <button className={styles.button} type='button'>
-          <img alt='' src={clip} className={styles.clip} />
-        </button>
-        <textarea className={styles.inputText} placeholder='Сообщение' onChange={handleSendIconVisibility} />
-        <button className={styles.button} type='submit'>
-          <img alt='' src={send} className={sendIconVisible ? styles.sendIcon : styles.sendIcon_invisible} />
-        </button>
-      </div>
+      <Textarea />
       <p className={`${styles.subtitle} ${styles.subtitle_invisible}`}>{t('support_no_messages')}</p>
       <p className={`${styles.text} ${styles.text_invisible}`}>{t('support_start')}</p>
     </section>

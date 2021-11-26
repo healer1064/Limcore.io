@@ -87,83 +87,6 @@
   }
 }
 
-.inputContainer {
-  display: flex;
-  box-sizing: border-box;
-  padding: 0;
-  margin: 10px 10px 10px 14px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  border-top: 1px solid #E5E5E5;
-}
-
-.clip {
-  display: flex;
-  box-sizing: border-box;
-  padding: 0;
-  margin: 10px 13px 0 0;
-  width: 20px;
-  height: 22px;
-  object-fit: cover;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
-.inputText {
-  display: flex;
-  box-sizing: border-box;
-  padding: 10px 10px 10px 14px;
-  margin: 10px 0 0;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 1.45;
-  color: #3A3B3D;
-  width: 100%;
-  border: 1.4px solid #B4BFD5;
-  box-sizing: border-box;
-  border-radius: 14px;
-  height: 40px;
-
-  &::placeholder {
-    display: flex;
-    box-sizing: border-box;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 1.45;
-    color: #B4BFD5;
-  }
-}
-
-.sendIcon {
-  display: flex;
-  box-sizing: border-box;
-  margin: 10px 0 0 8px;
-  padding: 0;
-  width: 40px;
-  height: 40px;
-
-  &_invisible {
-    display: none;
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
-.button {
-  border: none;
-  background-color: transparent;
-}
-
 .member {
   display: grid;
   box-sizing: border-box;
@@ -189,13 +112,5 @@
     width: 375px;
     margin: 0;
     padding: 16px;
-  }
-
-  .inputContainer {
-    width: 375px;
-    margin: 10px 0;
-    position: absolute;
-    bottom: 0;
-    right: 120px;
   }
 }
