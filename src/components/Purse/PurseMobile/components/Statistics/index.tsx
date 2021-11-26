@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
-import { BottomModal } from '../../../../Modal/BottomModal/index'
+import { BottomModal } from '@components/Modal/BottomModal/index'
 import InfoIcon from '../../images/Info/Info'
 import { useAppSelector } from '@app/redux/hooks'
 import { useTranslation } from 'react-i18next'

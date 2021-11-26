@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
-import { Modal } from '@components/Modal/index'
-import { Overall } from './components/Overall/index'
 import { useAppSelector } from '@app/redux/hooks'
 import WalletConnect from '@walletconnect/client'
 import QRCodeModal from '@walletconnect/qrcode-modal'
@@ -21,7 +19,6 @@ import { useTranslation } from 'react-i18next'
 import { getSyncData } from '@components/Wallet/redux/walletSlice'
 
 export const Balance = () => {
-  const [isBalanceVisible, setIsBalanceVisible] = useState(false)
   const [userPurse, setUserPurse] = useState({
     address: '',
     chainId: null,
@@ -29,14 +26,8 @@ export const Balance = () => {
 
   const [t] = useTranslation()
   const dispatch = useDispatch()
-  const usdtWalletBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
-  const limcWalletBalance = useAppSelector((state) => state.auth.walletConnectLimc)
 
-  // const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
   const isSinc = useAppSelector((state) => state.auth.isSincWithWallet)
-
-  const sum: number = Number(usdtWalletBalance) + Number(limcWalletBalance)
-  const money = isNaN(sum) ? '...' : sum
 
   const buttonSincClass = isSinc ? classNames(styles.trust_sinc, styles.trust_sinc_success) : styles.trust_sinc
   const logosClass = isSinc ? classNames(styles.trust_logos, styles.trust_logos_success) : styles.trust_logos
@@ -108,25 +99,8 @@ export const Balance = () => {
     }
   }, [userPurse])
 
-  const handleCloseBalanceModal = () => {
-    setIsBalanceVisible(false)
-  }
-
   return (
     <div className={styles.balance}>
-      {/* <div className={styles.balance__header} onClick={handleOpenBalanceClick}>
-        <h3 className={styles.balance__title}>{t('commonBalance')}</h3>
-        <button className={styles.balance__button}>
-          <img src={balanceSvg} />
-        </button>
-      </div>
-      <p className={styles.balance__sumMain}>{`$${money}`}</p>
-      <div className={styles.balance__data}>
-        <p className={styles.balance__time}>24h</p>
-        <p className={styles.balance__sum}>$0</p>
-        <p className={styles.balance__percent}>0%</p>
-      </div> */}
-
       <div className={styles.trust}>
         <div className={logosClass}>
           <div className={logosContClass}>
@@ -161,22 +135,6 @@ export const Balance = () => {
           </>
         )}
       </div>
-      {/* {isSincBtnVisible ? (
-        <ButtonBig className={styles.sinc} onClick={sincWithWallet}>
-          Синхронизация с Trust Wallet
-        </ButtonBig>
-      ) : (
-        <div className={classNames(styles.timer)}>Hello</div>
-      )} */}
-
-      <Modal active={isBalanceVisible} setActive={() => {}}>
-        <Overall
-          onClick={handleCloseBalanceModal}
-          money={money}
-          limcBalance={limcWalletBalance}
-          usdtBalance={usdtWalletBalance}
-        />
-      </Modal>
     </div>
   )
 }
