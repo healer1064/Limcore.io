@@ -345,23 +345,10 @@
   color: #99A0AD;
 }
 
-//.trust_kill {
-//  margin-bottom: 10px;
-//  padding: 10px 20px;
-//  border: none;
-//  border-radius: 14px;
-//
-//  font-size: 14px;
-//  font-weight: 500;
-//  line-height: 1;
-//  color: #fff;
-//
-//  background-color: #F24949;
-//  outline: none;
-//}
-
 .trust_cont {
   display: flex;
+  width: 100%;
+  max-width: 350px;
 }
 
 .trust_kill {
