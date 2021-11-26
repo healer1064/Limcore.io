@@ -6,7 +6,7 @@ type PageBalanceUSDTPropsType = {
   usdtBalance: any
   isOpen: any
   handlePageBalanceUSDTCloseClick: () => void
-  openProfile: () => void
+  openProfile: any
 }
 
 export const PageBalanceUSDT: React.FC<PageBalanceUSDTPropsType> = ({

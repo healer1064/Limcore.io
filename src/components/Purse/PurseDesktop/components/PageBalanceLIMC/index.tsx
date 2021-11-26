@@ -8,7 +8,7 @@ type PageBalanceLIMCPropsType = {
   limcBalance: any
   isOpen: any
   handlePageBalanceLIMCCloseClick: () => void
-  openProfile: () => void
+  openProfile: any
 }
 
 export const PageBalanceLIMC: React.FC<PageBalanceLIMCPropsType> = ({

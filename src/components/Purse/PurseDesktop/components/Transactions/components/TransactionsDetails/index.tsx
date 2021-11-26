@@ -10,7 +10,7 @@ import {
   buttonCloseWhite,
 } from '@components/Purse/PurseMobile/images/index'
 import styles from './styles.module.scss'
-import { BottomModal } from '../../../BottomModal'
+import { BottomModal } from '@components/Modal/BottomModal'
 import { CurrencySort } from './components/CurrencySort/index'
 import { TypeSort } from './components/TypeSort/index'
 // import { PeriodSort } from './components/PeriodSort/index'
