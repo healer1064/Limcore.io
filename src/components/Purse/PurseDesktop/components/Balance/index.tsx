@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
-import { Modal } from '../../../../Modal'
-import { Overall } from './components/Overall/index'
 import { useAppSelector } from '@app/redux/hooks'
 import { TwtIcon } from '@icons/twtIcon'
 import { DataBaseIcon } from '@icons/dataBaseIcon'
@@ -22,24 +20,14 @@ import GrayCrossIcon from '@components/Purse/PurseMobile/images/GrayCross/GrayCr
 
 export const Balance = () => {
   const [t] = useTranslation()
-  const [isBalanceVisible, setIsBalanceVisible] = useState(false)
-  const usdtBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
-  const limcBalance = useAppSelector((state) => state.auth.walletConnectLimc)
-  // const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
-  const sum: number = Number(usdtBalance) + Number(limcBalance)
-  const money = isNaN(sum) ? '...' : sum
+  const dispatch = useDispatch()
+
   const isSync = useAppSelector((state) => state.auth.isSincWithWallet)
 
   const [userPurse, setUserPurse] = useState({
     address: '',
     chainId: null,
   })
-
-  const dispatch = useDispatch()
-
-  const handleCloseBalanceModal = () => {
-    setIsBalanceVisible(false)
-  }
 
   const connector = new WalletConnect({
     bridge: 'https://bridge.walletconnect.org', // Required
@@ -144,64 +132,6 @@ export const Balance = () => {
           <p className={styles.trust_subtitle}>{t('purse_walletConnect')}</p>
         </>
       )}
-      {/* <h1 className={styles.balance__sumMain}>{`$${money}`}</h1>
-      <div className={styles.balance__data}>
-        <p className={styles.balance__time}>24h</p>
-        <p className={styles.balance__sum}>{`$ ${usdtBalance}`}</p>
-        <p className={styles.balance__percent}>0%</p>
-      </div>
-      <div className={styles.balance__header} onClick={handleOpenBalanceClick}>
-        <h3 className={styles.balance__title}>{t('commonBalance')}</h3>
-        <button className={styles.balance__button}>
-          <img src={balanceSvg} />
-        </button>
-      </div>
-      <ul className={styles.cardsList}>
-        <li className={styles.card}>
-          <p className={styles.card__subtitle}>Получено с майнинга</p>
-          <p className={styles.card__number}>{`$ `}</p>
-          <p className={styles.card__subtitle}>Инвестировано</p>
-          <p className={styles.card__number}>{`$ `}</p>
-        </li>
-        <li className={styles.card}>
-          <p className={styles.card__subtitle}>Получено в сети XCH</p>
-          <p className={styles.card__number}>{`$ `}</p>
-          <p className={styles.card__subtitle}>Получено с форков</p>
-          <p className={styles.card__number}>{`$ `}</p>
-        </li>
-        <li className={styles.card}>
-          <p className={styles.card__subtitle}>{t('balance')} LIMC</p>
-          <p className={styles.card__number}>{`$ ${limcBalance}`}</p>
-          <p className={styles.card__subtitle}>{t('balance')} USDT</p>
-          <p className={styles.card__number}>{`$ ${usdtBalance} `}</p>
-        </li>
-        <li className={styles.cardLong}>
-          <p className={styles.card__subtitle}>Получено с майнинга</p>
-          <p className={styles.card__number}>{`$ `}</p>
-          <p className={styles.card__subtitle}>Получено в сети XCH</p>
-          <p className={styles.card__number}>{`$ `}</p>
-          <p className={styles.card__subtitle}>Получено с форков</p>
-          <p className={styles.card__number}>{`$ `}</p>
-        </li>
-        <li className={styles.cardLong}>
-          <p className={styles.card__subtitle}>Инвестировано</p>
-          <p className={styles.card__number}>{`$ `}</p>
-          <p className={styles.card__subtitle}>{t('balance')} LIMC</p>
-          <p className={styles.card__number}>{`$ ${limcBalance}`}</p>
-          <p className={styles.card__subtitle}>{t('balance')} USDT</p>
-          <p className={styles.card__number}>{`$ ${usdtBalance} `}</p>
-        </li>
-      </ul> */}
-      <div className={`${styles.modalContainer} ${styles.modalContainer_invisible}`}>
-        <Modal active={isBalanceVisible} setActive={handleCloseBalanceModal}>
-          <Overall
-            onClick={handleCloseBalanceModal}
-            money={money}
-            limcBalance={limcBalance}
-            usdtBalance={usdtBalance}
-          />
-        </Modal>
-      </div>
     </div>
   )
 }

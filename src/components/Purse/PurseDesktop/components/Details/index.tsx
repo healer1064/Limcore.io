@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './styles.module.scss'
 import { details1, details2, details3 } from '../../images'
-import { Modal } from '@components/Modal/index'
 import { DetalizationUp } from './components/DetalizationUp/index'
-import { DetalizationDownItem } from './components/DetalizationDownItem/index'
-import { ModalHeader } from '../../../../Modal/ModalHeader/index'
+import { DetalizationDownItem } from './components/DetalizationDownItem'
 import useWindowSize from '@helpers/useWindowSizeHook'
 import thddIcon from '@icons/thdd.png'
 import tsilicoinIcon from '@icons/tsilicoin.png'
@@ -23,19 +21,12 @@ import covidIcon from '@icons/covidIcon.png'
 import senoIcon from '@icons/senoIcon.png'
 import chaingreenIcon from '@icons/chaingreen.png'
 import goji from '@icons/gojiIcon.png'
-import { useTranslation } from 'react-i18next'
 
 export const Details = () => {
-  const [t] = useTranslation()
   const { width } = useWindowSize()
   const desktop = width >= 768
-  const [isModalVisible, setIsModalVisible] = useState(false)
 
-  const handleDetailsCloseClick = () => {
-    setIsModalVisible(false)
-  }
-
-  const tempData = [
+  const forks = [
     { img: details1, title: 'Chia', subtitle: 'XCH', number: 0, money: '$0' },
     { img: details2, title: 'Flax', subtitle: 'XFX', number: 0, money: '$0' },
     { img: details3, title: 'N-Chain', subtitle: 'NCH', number: 0, money: '$0' },
@@ -62,35 +53,10 @@ export const Details = () => {
     <div className={styles.details}>
       <header className={styles.details__header}>
         <DetalizationUp summary='$0' xch='$0' forks='$0' />
-        <Modal active={isModalVisible} setActive={handleDetailsCloseClick}>
-          <ul className={styles.detailsModal}>
-            <ModalHeader title={t('purse_mainingDetails')} onClick={handleDetailsCloseClick} />
-            <DetalizationUp summary='$0' xch='$0' forks='$0' />
-            <p className={styles.transactions__subtitle}>
-              {t('purse_noTransactionsYet')} <br />
-              {t('purse_accessLater')}
-            </p>
-            <button type='button' className={styles.transactions__profileButton} onClick={handleDetailsCloseClick}>
-              {t('purse_getBack')}
-            </button>
-            {/* {tempData.map((item) => (
-              <DetalizationDownItem
-                img={item.img}
-                title={item.title}
-                subtitle={item.subtitle}
-                number={item.number}
-                money={item.money}
-                key={Math.random()}
-                flagForButton
-              />
-            ))} */}
-          </ul>
-        </Modal>
       </header>
       {!desktop ? (
         <ul className={styles.detailsList}>
-          {tempData.map((item) => {
-            // Такая чехарда, потому что в основном лендинге должно быть только 3 карточки, а уже в детализации все
+          {forks.map((item) => {
             return (
               <DetalizationDownItem
                 img={item.img}
@@ -99,48 +65,11 @@ export const Details = () => {
                 number={item.number}
                 money={item.money}
                 key={Math.random()}
-                flagForButton={false}
               />
             )
           })}
         </ul>
       ) : null}
-      {/* <ul className={styles.detailsList}>
-        {tempData.map((item) => {
-          return (
-            <DetalizationDownItem
-              img={item.img}
-              title={item.title}
-              subtitle={item.subtitle}
-              number={item.number}
-              money={item.money}
-              key={Math.random()}
-              flagForButton={false}
-            />
-          )
-        })}
-      </ul> */}
-      {/* <ul className={styles.detailsList}>
-        {tempData.map((item) => {
-          // Такая чехарда, потому что в основном лендинге должно быть только 3 карточки, а уже в детализации все
-          flagForDetalisation--
-          if (flagForDetalisation === -1) {
-            return
-          }
-          return (
-            <DetalizationDownItem
-              img={item.img}
-              title={item.title}
-              subtitle={item.subtitle}
-              number={item.number}
-              money={item.money}
-              key={Math.random()}
-              flagForButton={false}
-            />
-          )
-        })}
-      </ul> */}
-      {/* TODO: 2 цикла - не хорошо, надо поправить */}
     </div>
   )
 }
