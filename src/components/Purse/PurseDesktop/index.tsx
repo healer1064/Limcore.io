@@ -33,6 +33,9 @@ import { UntilMiningStart } from './components/UntilMiningStart/UntilMiningStart
 import { LogoutIcon } from '@icons/LogoutIcon'
 import { useTranslation } from 'react-i18next'
 import { LanguagePopup } from '@components/LanguagePopup'
+import chatIcon from '@icons/chatIcon.svg'
+import closeIcon from '@icons/greyClose.svg'
+import { Chat } from '@components/Chat'
 
 export const PurseDesktop = () => {
   const [t] = useTranslation()
@@ -57,6 +60,8 @@ export const PurseDesktop = () => {
 
   const [window, setWindow] = useState('main')
   const [isChatOpen, setIsChatOpen] = useState(false)
+
+  const [chatVisible, setChatVisible] = useState(false)
 
   const dispatch = useAppDispatch()
   const prices = useAppSelector((state) => state.wallet.limc_price)
@@ -120,6 +125,14 @@ export const PurseDesktop = () => {
     dispatch(setIsAuth(false))
     history.push('/')
     location.reload()
+  }
+
+  const handleChatOpen = () => {
+    setChatVisible(true)
+  }
+
+  const handleChatClose = () => {
+    setChatVisible(false)
   }
 
   return (
@@ -267,6 +280,14 @@ export const PurseDesktop = () => {
             </>
           )}
         </div>
+        <button className={styles.chatIcon} type='button'>
+          {chatVisible ? (
+            <img alt='' src={closeIcon} onClick={handleChatClose} />
+          ) : (
+            <img alt='' src={chatIcon} onClick={handleChatOpen} />
+          )}
+        </button>
+        {chatVisible ? <Chat handleChatClose={handleChatClose} /> : null}
       </section>
     </>
   )

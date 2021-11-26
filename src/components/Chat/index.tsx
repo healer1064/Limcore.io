@@ -1,5 +1,4 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
 import styles from './styles.module.scss'
 import { FooterMobile } from '@components/Footer/FooterMobile'
 import { SearchForm } from '@components/Chat/components/SearchForm'
@@ -14,11 +13,10 @@ import fotoPart2 from '@icons/groupPart2.svg'
 import orange from '@icons/raitingOrange.svg'
 import close from '@icons/greyClose.svg'
 import useWindowSize from '../../helpers/useWindowSizeHook'
-export const Chat = () => {
+export const Chat = ({ handleChatClose }) => {
   const [t] = useTranslation()
   const { width } = useWindowSize()
   const desktop = width >= 769
-  const history = useHistory()
   const messages = [
     {
       id: 1,
@@ -86,7 +84,7 @@ export const Chat = () => {
         {desktop ? (
           <div className={styles.header}>
             <h1 className={styles.title}>{t('chat_title')}</h1>
-            <button className={styles.button} type='button' onClick={() => history.push('/my')}>
+            <button className={styles.button} type='button' onClick={handleChatClose}>
               <img src={close} alt='' />
             </button>
           </div>
