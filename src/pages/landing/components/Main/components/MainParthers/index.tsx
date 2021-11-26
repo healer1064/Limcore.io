@@ -11,6 +11,7 @@ import amdIcon from '@icons/amd-epyc.svg'
 import blockchainIcon from '@icons/blockchain-life.svg'
 import supermicrIcon from '@icons/supermicr.svg'
 import softlineIcon from '@icons/softline.svg'
+import mojoIcon from '@icons/logoMojo.svg'
 
 SwiperCore.use([Autoplay])
 
@@ -30,6 +31,7 @@ export const MainParthers: React.FC = () => {
           <img src={amdIcon} alt='Иконка' />
           <img src={softlineIcon} alt='Иконка' />
           <img src={supermicrIcon} alt='Иконка' />
+          <img src={mojoIcon} alt='Иконка' />
         </>
       ) : (
         <Swiper className={Styles.swiper} /* autoplay={{ delay: 3000 }} */ {...swiperProps}>
@@ -44,6 +46,9 @@ export const MainParthers: React.FC = () => {
           </SwiperSlide>
           <SwiperSlide className={Styles.slide}>
             <img src={supermicrIcon} alt='Иконка' />
+          </SwiperSlide>
+          <SwiperSlide className={Styles.slide}>
+            <img src={mojoIcon} alt='Иконка' />
           </SwiperSlide>
         </Swiper>
       )}
