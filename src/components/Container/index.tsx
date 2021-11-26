@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { changeViewContent, changeStep } from '../../pages/cabinet/redux/cabinetSlice'
 import Styles from './styles.module.scss'
@@ -14,6 +14,7 @@ interface ContainerProps {
 export const Container: React.FC<ContainerProps> = ({ title, onClick, onClose, onClickBack, children }) => {
   const dispatch = useAppDispatch()
   const step = useAppSelector((state) => state.cabinet.step)
+  const bodyEl = useRef(document.querySelector('body'))
 
   const previousStep = () => dispatch(changeStep(step - 1))
 
@@ -21,6 +22,14 @@ export const Container: React.FC<ContainerProps> = ({ title, onClick, onClose, o
     dispatch(changeViewContent('none'))
     dispatch(changeStep(0))
   }
+
+  useEffect(() => {
+    bodyEl.current.style.overflow = 'hidden'
+
+    return () => {
+      bodyEl.current.style.overflow = 'auto'
+    }
+  }, [])
 
   return (
     <div className={Styles.container}>

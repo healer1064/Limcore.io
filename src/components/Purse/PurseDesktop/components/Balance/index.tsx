@@ -18,6 +18,7 @@ import { useDispatch } from 'react-redux'
 import { getLimc, getUsdt } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
 import { useTranslation } from 'react-i18next'
 import { getSyncData } from '@components/Wallet/redux/walletSlice'
+import GrayCrossIcon from '@components/Purse/PurseMobile/images/GrayCross/GrayCrossIcon'
 
 export const Balance = () => {
   const [t] = useTranslation()
@@ -121,28 +122,27 @@ export const Balance = () => {
         <DataBaseIcon isSync={isSync} />
         <BlackCross />
         <TwtIcon isSync={isSync} />
-        {isSync ? (
-          <div className={styles.trust_cont}>
-            <button className={styles.trust_kill} onClick={() => connector.killSession()}>
-              {t('walletconnect_disconnect')}
-            </button>
-            <p>{t('purse_walletConnectSync')}</p>
-          </div>
-        ) : (
-          <p>{t('purse_walletConnect')}</p>
-        )}
       </div>
       {isSync ? (
-        <div className={styles.walletId}>
-          <ShieldIcon />
-          <p>
-            {userPurse.address.substr(0, 9)}...{userPurse.address.slice(-7)}
-          </p>
+        <div className={styles.trust_cont}>
+          <div className={styles.walletId}>
+            <ShieldIcon />
+            <p>
+              {userPurse.address.substr(0, 9)}...{userPurse.address.slice(-7)}
+            </p>
+          </div>
+          <button className={styles.trust_kill} onClick={() => connector.killSession()}>
+            <GrayCrossIcon />
+          </button>
+          <p className={styles.notion}>{t('purse_walletConnectSync')}</p>
         </div>
       ) : (
-        <button className={styles.syncButton} onClick={sincWithWallet}>
-          {t('purse_sync')}
-        </button>
+        <>
+          <button className={styles.syncButton} onClick={sincWithWallet}>
+            {t('purse_sync')}
+          </button>
+          <p className={styles.trust_subtitle}>{t('purse_walletConnect')}</p>
+        </>
       )}
       {/* <h1 className={styles.balance__sumMain}>{`$${money}`}</h1>
       <div className={styles.balance__data}>

@@ -323,6 +323,20 @@
   }
 }
 
+.notion {
+  grid-area: notion;
+  padding: 0;
+  margin: 0;
+  left: 0;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 140%;
+  font-feature-settings: 'tnum' on, 'lnum' on;
+  color: #4F535A;
+}
+
 @media screen and (min-width: 1139px) {
   .cardLong {
     display: none;
@@ -355,7 +369,7 @@
   outline: none;
   padding: 15px 0;
   max-width: 270px;
-  margin: 30px 0 50px;
+  margin: 30px 0;
   background-color: #FFFF;
   border: 1px solid $color-4A-blue;
   border-radius: 14px;
@@ -369,12 +383,20 @@
   }
 }
 
+.trust_subtitle {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  color: #99A0AD;
+}
+
 .walletId {
+  grid-area: button;
   display: flex;
   align-items: center;
   max-width: 275px;
   max-height: 55px;
-  margin: 30px 0 50px;
+  margin: 30px 0;
   border: 2px solid $color-4D-green;
   border-radius: 14px;
   padding: 15px 30px;
@@ -396,28 +418,56 @@
 }
 
 .trust_cont {
-  display: flex;
-  flex-direction: column;
-  margin-left: 10px;
+  display: grid;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  grid-template-columns: fit-content(275px) minmax(min-content, max-content);
+  grid-template-rows: repeat(2, minmax(min-content, max-content));
+  grid-template-areas:
+  'button close'
+  'notion notion';
 }
 
+//.trust_kill {
+//  margin-bottom: 10px;
+//  padding: 10px 20px;
+//  border: none;
+//  border-radius: 14px;
+//
+//  font-size: 14px;
+//  font-weight: 500;
+//  line-height: 1;
+//  color: #fff;
+//
+//  background-color: #F24949;
+//  outline: none;
+//  transition: background-color .3s ease;
+//
+//  &:hover {
+//    background-color: #ec0505;
+//    transition: background-color .3s ease;
+//  }
+//}
+
 .trust_kill {
-  margin-bottom: 10px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 14px;
-
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1;
-  color: #fff;
-
-  background-color: #F24949;
+  display: grid;
+  grid-area: close;
+  margin: 30px 0 25px 30px;
+  padding: 5px;
+  border: 1px solid #99A0AD;
+  border-radius: 50%;
+  background-color: #FFFFFF;
   outline: none;
-  transition: background-color .3s ease;
-  
+  object-fit: contain;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+  width: 35px;
+  height: 35px;
+
   &:hover {
-    background-color: #ec0505;
-    transition: background-color .3s ease;
+    cursor: pointer;
+    opacity: 0.5;
   }
 }
