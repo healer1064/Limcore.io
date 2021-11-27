@@ -164,7 +164,7 @@ i18n.use(LanguageDetector).init({
         team_shcherbinaRank: 'Chief Product Officer',
         team_shcherbina: 'Konstantin Shcherbina',
         team_shcherbinaDesc:
-          'More than 5 years in project management. He worked in studios and a large consulting agency in America.',
+          'An experienced project leader, with record of work of more than 5 years. He used to work in USA in a large consulting agency',
 
         team_turkinRank: 'Sales Support Department Director',
         team_turkin: 'Kirill Turkin',
@@ -546,7 +546,7 @@ i18n.use(LanguageDetector).init({
         team_shcherbinaRank: 'Chief Product Officer',
         team_shcherbina: 'Константин Щербина',
         team_shcherbinaDesc:
-          'В упралении проектами больше 5 лет. Работал в студиях и в крупном консалтинговом агентстве в Америке.',
+          'Опытный руководитель проектами со стажем более 5 лет. Ранее работал в Соединенных Штатах Америки в крупном консалтинговом агентстве',
 
         team_turkinRank: 'Руководитель службы поддержки клиентов',
         team_turkin: 'Кирилл Туркин',
@@ -925,7 +925,8 @@ i18n.use(LanguageDetector).init({
 
         team_shcherbinaRank: '首席產品官',
         team_shcherbina: '康斯坦丁·謝爾比納',
-        team_shcherbinaDesc: '5年以上項目管理經驗。 他曾在美國的工作室和一家大型諮詢機構工作。',
+        team_shcherbinaDesc: '是一个拥有5年多经验的项目经理。他曾在美国的一家大型咨询机构工作过。',
+
         team_turkinRank: '客户服务经理',
         team_turkin: '基里尔·图尔金',
         team_turkinDesc: '在为要求特别高的客户的跟踪部门的工作安排方面有成熟经验',
