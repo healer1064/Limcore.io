@@ -10,7 +10,7 @@ import Smirnov from '../../../../../../assets/images/Smirnov.png'
 import Kazachenko from '../../../../../../assets/images/Kazachenko.png'
 import Mironov from '../../../../../../assets/images/Mironov.png'
 import Plotnikov from '../../../../../../assets/images/Plotnikov.png'
-import Shcherbina from '../../../../../../assets/images/Shcherbina.png'
+import Shcherbina from '../../../../../../assets/images/MaskGroup.png'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/swiper.scss'
