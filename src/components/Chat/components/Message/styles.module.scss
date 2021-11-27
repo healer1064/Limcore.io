@@ -16,6 +16,14 @@
   &:hover {
     cursor: pointer;
   }
+
+  &:last-of-type {
+    grid-template-rows: repeat(2, minmax(min-content, max-content));
+    row-gap: 4px;
+    grid-template-areas:
+            'foto name date'
+            'foto message unread';
+  }
 }
 
 .foto {
