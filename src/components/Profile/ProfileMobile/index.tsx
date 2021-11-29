@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setProfileComplete, changeViewContent, changeStep } from '../../../pages/cabinet/redux/cabinetSlice'
+import { setProfileComplete } from '../../../pages/cabinet/redux/cabinetSlice'
 import { setData } from '../../../app/redux/userSlice'
 import Styles from './styles.module.scss'
 
@@ -8,13 +8,10 @@ import { Container } from '@components/Container'
 import { Profile } from './components/Profile'
 import { ProfileFilling } from './components/ProfileFilling'
 import { ProfileComplete } from './components/ProfileComplete'
-import { EditPhone } from './components/EditPhone'
-import { EditEmail } from './components/EditEmail'
-import { EditName } from './components/EditName'
 import { EditLocation } from './components/EditLocation'
 import { AddAuth } from './components/AddAuth'
-import { ChangePhone } from './components/AddAuth/components/ChangePhone'
 import { useTranslation } from 'react-i18next'
+import { FooterMobile } from '@components/Footer/FooterMobile'
 
 export const ProfileMobile: React.FC = () => {
   const [t] = useTranslation()
@@ -23,10 +20,10 @@ export const ProfileMobile: React.FC = () => {
   const profileComplete = useAppSelector((state) => state.cabinet.profileComplete)
   const viewContent = useAppSelector((state) => state.cabinet.viewContent)
 
-  const onBackAddAuth = () => {
-    dispatch(changeViewContent('addAuth'))
-    dispatch(changeStep(0))
-  }
+  // const onBackAddAuth = () => {
+  //   dispatch(changeViewContent('addAuth'))
+  //   dispatch(changeStep(0))
+  // }
 
   useEffect(() => {
     if (userData !== null) {
@@ -55,21 +52,6 @@ export const ProfileMobile: React.FC = () => {
                 <ProfileFilling />
               </Container>
             )}
-            {viewContent === 'editPhone' && (
-              <Container title={t('profile_phoneNumber')}>
-                <EditPhone />
-              </Container>
-            )}
-            {viewContent === 'editEmail' && (
-              <Container title='E-mail'>
-                <EditEmail />
-              </Container>
-            )}
-            {viewContent === 'editName' && (
-              <Container title='Имя в чатах'>
-                <EditName />
-              </Container>
-            )}
             {viewContent === 'editLocation' && (
               <Container title={t('profile_addresses')}>
                 <EditLocation />
@@ -80,14 +62,30 @@ export const ProfileMobile: React.FC = () => {
                 <AddAuth />
               </Container>
             )}
-            {viewContent === 'changePhone' && (
+            {/* {viewContent === 'editPhone' && (
+              <Container title={t('profile_phoneNumber')}>
+                <EditPhone />
+              </Container>
+            )} */}
+            {/* {viewContent === 'editEmail' && (
+              <Container title='E-mail'>
+                <EditEmail />
+              </Container>
+            )} */}
+            {/* {viewContent === 'editName' && (
+              <Container title='Имя в чатах'>
+                <EditName />
+              </Container>
+            )} */}
+            {/* {viewContent === 'changePhone' && (
               <Container title='Изменить номер телефона' onClickBack={onBackAddAuth}>
                 <ChangePhone />
               </Container>
-            )}
+            )} */}
           </>
         ) : null}
       </>
+      <FooterMobile />
     </div>
   )
 }
