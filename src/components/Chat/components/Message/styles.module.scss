@@ -1,0 +1,130 @@
+.messageContainer {
+  display: grid;
+  box-sizing: border-box;
+  padding: 10px 0 0;
+  margin: 0;
+  width: 100%;
+  grid-template-columns: 60px 1fr 30px;
+  column-gap: 10px;
+  grid-template-rows: repeat(3, minmax(min-content, max-content));
+  row-gap: 4px;
+  grid-template-areas:
+  'foto name date'
+  'foto message unread'
+  '.line line';
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:last-of-type {
+    grid-template-rows: repeat(2, minmax(min-content, max-content));
+    row-gap: 4px;
+    grid-template-areas:
+            'foto name date'
+            'foto message unread';
+  }
+}
+
+.foto {
+  grid-area: foto;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.name {
+  grid-area: name;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #4F535A;
+  align-self: center;
+}
+
+.message {
+  grid-area: message;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.3;
+  color: #99A0AD;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.date {
+  grid-area: date;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: right;
+}
+
+.line {
+  grid-area: line;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background-color: #E5E5E5;
+  height: 1px;
+}
+
+.status {
+  grid-area: foto;
+  display: flex;
+  position: relative;
+  left: 40px;
+  top: 50px;
+
+  &_invisible {
+    display: none;
+  }
+}
+
+.unreadMessages {
+  grid-area: unread;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background-color: #99A0AD;
+  border-radius: 50%;
+  width: 22px;
+  height: 19px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: center;
+  color: #FFFFFF;
+  justify-content: center;
+
+  &_invisible {
+    display: none;
+  }
+}

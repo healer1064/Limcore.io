@@ -1,0 +1,124 @@
+.raitingList {
+  display: flex;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(43, 40, 41, 0.5);
+  z-index: 2000;
+  opacity: 1;
+  transition: opacity 1s linear;
+
+  &_invisible {
+    display: none;
+    opacity: 0;
+    transition: opacity 1s linear;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 375px;
+  padding: 0;
+  margin: 0;
+  background-color: #FFFFFF;
+  box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+  border-top-right-radius: 14px;
+  border-top-left-radius: 14px;
+}
+
+.closeRaiting {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.raitingNotice {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 4px 20px 30px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #99A0AD;
+}
+
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 30px 20px 10px;
+  list-style: none;
+}
+
+.listItem {
+  display: flex;
+  box-sizing: border-box;
+  padding: 18px 0;
+  margin: 0;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.listNumber {
+  display: flex;
+  box-sizing: border-box;
+  padding: 5px 0;
+  margin: 0;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #4F535A;
+  text-align: center;
+}
+
+.icon {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 15px 0 0;
+  width: 24px;
+  height: 24px;
+}
+
+@media screen and (min-width: 769px) {
+  .raitingList {
+    width: 375px;
+    height: 610px;
+    position: absolute;
+    bottom: 0;
+    right: 120px;
+    box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+    border-radius: 14px;
+  }
+
+  .container {
+    width: 375px;
+    position: absolute;
+    bottom: 0;
+    right: 120px;
+  }
+}

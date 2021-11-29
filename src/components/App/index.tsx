@@ -28,6 +28,7 @@ import { HeaderMobile } from '@components/Header/HeaderMobile/index'
 import { AuthMobile } from '../../pages/auth/AuthMobile'
 
 import { Dummy } from '../../components/Dummy'
+import { Chat } from '../Chat'
 import { LandingPage } from '../../pages/landing'
 import { Purse } from '@components/Purse'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
@@ -95,7 +96,7 @@ const App = () => {
                 {!desktop && (
                   <>
                     <Route path='/broadcasts' exact component={BroadcastsMobile} />
-                    <Route path='/chat' exact component={Dummy} />
+                    <Route path='/chat' exact component={Chat} />
                     <Route path='/profile' exact component={ProfileMobile} />
                   </>
                 )}

@@ -48,6 +48,14 @@ export const PurseDesktop = () => {
   const close = () => setPopup('')
   const openProfile = () => setPopup('profile')
 
+  const handleChatOpen = () => {
+    setChatVisible(true)
+  }
+
+  const handleChatClose = () => {
+    setChatVisible(false)
+  }
+
   return (
     <>
       <Wallpaper />
@@ -64,6 +72,14 @@ export const PurseDesktop = () => {
             <Content pageCardBalance={pageCardBalance} closeCard={closeCard} openProfile={openProfile} />
           )}
         </div>
+        <button className={styles.chatIcon} type='button'>
+          {chatVisible ? (
+            <img alt='' src={closeIcon} onClick={handleChatClose} />
+          ) : (
+            <img alt='' src={chatIcon} onClick={handleChatOpen} />
+          )}
+        </button>
+        {chatVisible ? <Chat handleChatClose={handleChatClose} /> : null}
       </section>
     </>
   )
