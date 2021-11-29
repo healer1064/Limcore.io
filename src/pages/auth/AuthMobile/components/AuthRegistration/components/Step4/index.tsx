@@ -5,7 +5,6 @@ import {
   setStepRegistration,
   setCodeEmail,
   registerUserEmailConfirmation,
-  setProcessType,
   setIsAuth,
   registerUserEmail,
 } from '../../../../../redux/authSlice'

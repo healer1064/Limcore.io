@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useAppDispatch } from '@app/redux/hooks'
 import { setData2FA, get2FAUrl } from '../../../../../../../app/redux/userSlice'
 import Styles from './styles.module.scss'

@@ -26,9 +26,9 @@
   }
 
   &__title {
-    @include font-style(14px, 600, 20px, $color-gray-mouse);
+    @include font-style(14px, 600, 1, $color-gray-mouse);
     margin-top: 10px;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
   }
 
   &__sum {

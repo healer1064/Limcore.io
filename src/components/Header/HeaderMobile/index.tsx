@@ -5,11 +5,8 @@ import Styles from './styles.module.scss'
 
 import logoIcon from '@icons/logo.svg'
 import userIcon from '@icons/user.svg'
-import { ProfileHeaderIcon } from '@icons/ProfileHeaderIcon'
 import logout from '@icons/logout.svg'
 import { Container } from '@components/Container'
-import RUS from '@icons/flag-ru.svg'
-import ENG from '@icons/flag-en.svg'
 
 import { Telegram } from '@icons/Telegram'
 import { Instagram } from '@icons/Instagram'
@@ -17,18 +14,14 @@ import { Youtube } from '@icons/Youtube'
 import { useHistory, useLocation } from 'react-router'
 import { setIsAuth } from '../../../pages/auth/redux/authSlice'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import close from '@icons/close.svg'
 import { Logo } from '@components/Purse/PurseDesktop/components/Logo'
 import { useTranslation } from 'react-i18next'
-import classNames from 'classnames'
-import { VectorIcon } from '@icons/VectorIcon'
 import { LoginIcon } from '@icons/LoginIcon'
 import { LanguagePopup } from '@components/LanguagePopup'
 
 export const HeaderMobile: React.FC = () => {
   const [burgerOpen, setBurgerOpen] = useState(false)
-  const [showPopapLanguage, setShowPopapLanguage] = useState(false)
-  const [t, i18n] = useTranslation()
+  const [t] = useTranslation()
 
   const isAuth = useAppSelector((state) => state.auth.isAuth)
   const history = useHistory()
@@ -46,12 +39,6 @@ export const HeaderMobile: React.FC = () => {
     dispatch(setIsAuth(false))
     history.push('/')
     window.location.reload()
-  }
-
-  const languages = ['ru', 'en']
-  const changeLanguage = (lang) => {
-    i18n.changeLanguage(lang)
-    setShowPopapLanguage(false)
   }
 
   const iconCondition =

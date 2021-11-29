@@ -1,40 +1,11 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
-import { Table } from './Table'
-import { BottomModal } from '../BottomModal'
+import { BottomModal } from '@components/Modal/BottomModal/index'
 import InfoIcon from '../../images/Info/Info'
-import Accordion from '@material-ui/core/Accordion'
-import AccordionSummary from '@material-ui/core/AccordionSummary'
-import AccordionDetails from '@material-ui/core/AccordionDetails'
 import { useAppSelector } from '@app/redux/hooks'
 import { useTranslation } from 'react-i18next'
 
-interface IStatisticsProps {
-  onClick?: () => void
-}
-
-const AccordeonIcon = () => {
-  return (
-    <svg
-      width='24'
-      height='24'
-      viewBox='0 0 24 24'
-      style={{ transform: 'rotate(90deg)' }}
-      fill='none'
-      xmlns='http://www.w3.org/2000/svg'
-    >
-      <path
-        d='M9.14258 17.1427L14.8569 11.4284L9.14258 5.71416'
-        stroke='#4A70F8'
-        strokeWidth='1.8'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-      />
-    </svg>
-  )
-}
-
-export const Statistics = ({ onClick }: IStatisticsProps) => {
+export const Statistics = () => {
   const [t] = useTranslation()
   const balanceLimc = useAppSelector((state) => state.auth.walletConnectLimc)
   // const daysPassed = useAppSelector((state) => state.wallet.countdown_days) // понадобиться после окончания раунда 1
@@ -43,11 +14,6 @@ export const Statistics = ({ onClick }: IStatisticsProps) => {
 
   const handleTooltipClick = () => {
     setIsTooltipVisible((prev) => !prev)
-  }
-
-  const handleDisappearClick = () => {
-    console.log('handleDisappearClick')
-    onClick()
   }
 
   return (
@@ -73,15 +39,6 @@ export const Statistics = ({ onClick }: IStatisticsProps) => {
         <span className={styles.details__days}>80 {t('purse_mainingDateLast')}</span>
         <span className={styles.details__memory}>0 TB / {Number(balanceLimc).toFixed(2)} TB</span>
       </div>
-
-      {/* <Accordion>
-        <AccordionSummary expandIcon={<AccordeonIcon />}>
-          <button type='button' className={styles.more} onClick={handleDisappearClick}>
-            Показать больше
-          </button>
-        </AccordionSummary>
-        <AccordionDetails><Table /></AccordionDetails>
-      </Accordion> */}
     </div>
   )
 }

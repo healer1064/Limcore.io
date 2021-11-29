@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { changeViewContent } from '../../../../../pages/cabinet/redux/cabinetSlice'
 // import { updateAvatarUser, getUser } from '../../../../../app/redux/userSlice'
@@ -13,8 +13,12 @@ export const Profile: React.FC = () => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const userData = useAppSelector((state) => state.user.userData)
+  const bodyEl = useRef(document.querySelector('body'))
 
-  const startFilling = () => dispatch(changeViewContent('filling'))
+  const startFilling = () => {
+    dispatch(changeViewContent('filling'))
+    bodyEl.current.style.overflow = 'hidden'
+  }
 
   return (
     <>

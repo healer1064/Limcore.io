@@ -1,6 +1,5 @@
 import React from 'react'
 import { useAppSelector } from '@app/redux/hooks'
-import Styles from './styles.module.scss'
 
 import { Step1 } from './components/Step1'
 import { Step2 } from './components/Step2'

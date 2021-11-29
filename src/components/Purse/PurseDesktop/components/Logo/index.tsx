@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-scroll'
 import { useHistory } from 'react-router'
 import styles from './styles.module.scss'
 

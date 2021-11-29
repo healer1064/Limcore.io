@@ -12,7 +12,7 @@ import Smirnov from '../../../../assets/images/Smirnov.png'
 import Kazachenko from '../../../../assets/images/Kazachenko.png'
 import Mironov from '../../../../assets/images/Mironov.png'
 import Plotnikov from '../../../../assets/images/Plotnikov.png'
-import Shcherbina from '../../../../assets/images/Shcherbina.png'
+import Shcherbina from '../../../../assets/images/MaskGroup.png'
 import { useTranslation } from 'react-i18next'
 
 export const Team: React.FC = () => {

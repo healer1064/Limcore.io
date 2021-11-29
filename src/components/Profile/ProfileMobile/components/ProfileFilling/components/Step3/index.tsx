@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { getUser, updateUser, setData } from '../../../../../../../app/redux/userSlice'
 import { changeViewContent, changeStep } from '../../../../../../../pages/cabinet/redux/cabinetSlice'
@@ -14,6 +14,7 @@ export const Step3: React.FC = () => {
   const dispatch = useAppDispatch()
   const data = useAppSelector((state) => state.user.data)
   const error = useAppSelector((state) => state.user.error)
+  const bodyEl = useRef(document.querySelector('body'))
   const maxLength = 200
 
   const onChangeValue = (event) => {
@@ -38,6 +39,8 @@ export const Step3: React.FC = () => {
         dispatch(changeStep(0))
       }
     }
+
+    bodyEl.current.style.overflow = 'auto'
   }
 
   return (
@@ -112,7 +115,7 @@ export const Step3: React.FC = () => {
           <ButtonBig onClick={completeFilling}>{t('profile_complete')}</ButtonBig>
           {error && (
             <div className={Styles.error}>
-              <span>Что-то пошло не так</span>
+              <span>{t('err_smthWentWrong')}</span>
             </div>
           )}
         </form>

@@ -1,9 +1,6 @@
-import React, { FC } from 'react'
+import React from 'react'
 import styles from './styles.module.scss'
 import buyIcon from '@icons/buy.svg'
-import sellIcon from '@icons/sellBlue.svg'
-import tradeIcon from '@icons/changeBlue.svg'
-import { TransactionsDetails } from '@components/Purse/PurseDesktop/components/Transactions/components/TransactionsDetails'
 import { Transactions } from '../Transactions'
 import { useTranslation } from 'react-i18next'
 
@@ -11,7 +8,7 @@ type PageBalanceLIMCPropsType = {
   limcBalance: any
   isOpen: any
   handlePageBalanceLIMCCloseClick: () => void
-  openProfile: () => void
+  openProfile: any
 }
 
 export const PageBalanceLIMC: React.FC<PageBalanceLIMCPropsType> = ({
@@ -23,7 +20,7 @@ export const PageBalanceLIMC: React.FC<PageBalanceLIMCPropsType> = ({
   const [t] = useTranslation()
 
   return (
-    <div className={`${isOpen ? styles.pageBalanceLIMC : styles.pageBalanceLIMC_invisible}`}>
+    <div className={isOpen ? styles.pageBalanceLIMC : styles.pageBalanceLIMC_invisible}>
       <button className={styles.backButton} type='button' onClick={handlePageBalanceLIMCCloseClick}>
         <svg
           className={styles.backIcon}
@@ -44,7 +41,6 @@ export const PageBalanceLIMC: React.FC<PageBalanceLIMCPropsType> = ({
         Назад
       </button>
       <h1 className={styles.pageBalanceLIMC__title}>{`${limcBalance} LIMC`}</h1>
-      {/* <p className={styles.pageBalanceLIMC__subtitle}>{`$ ${limcBalance}`}</p> */}
       <div className={styles.items}>
         <button type='button' className={`${styles.item} ${styles.item_active}`}>
           <a className={styles.buyLink} href='https://round1.limcore.io'>
@@ -53,17 +49,8 @@ export const PageBalanceLIMC: React.FC<PageBalanceLIMCPropsType> = ({
           </a>
         </button>
         <span className={styles.lockup}>{t('lockUp')}</span>
-        {/* <div className={styles.item}> */}
-        {/*  <img className={styles.icon} src={sellIcon} alt='' /> */}
-        {/*  Продать */}
-        {/* </div> */}
-        {/* <div className={styles.item}> */}
-        {/*  <img className={styles.icon} src={tradeIcon} alt='' /> */}
-        {/*  Обменять */}
-        {/* </div> */}
       </div>
-      {/* <TransactionsDetails onClick={() => {}} /> */}
-      <Transactions onProfileClick={openProfile} onTransactionsClick={() => {}} isUserHasTransactions />
+      <Transactions onProfileClick={openProfile} />
     </div>
   )
 }

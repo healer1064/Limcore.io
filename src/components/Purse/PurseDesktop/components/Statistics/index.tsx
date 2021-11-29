@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import { Table } from './Table'
-import { BottomModal } from '../BottomModal'
+import { BottomModal } from '@components/Modal/BottomModal'
 import InfoIcon from '../../images/Info/Info'
 import Accordion from '@material-ui/core/Accordion'
 import AccordionSummary from '@material-ui/core/AccordionSummary'
