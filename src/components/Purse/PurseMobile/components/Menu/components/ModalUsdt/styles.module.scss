@@ -1,0 +1,49 @@
+@import '../../../../../../../scss/cabinet';
+
+.balanceModal > div {
+  width: 100vw;
+  height: 100vh;
+}
+
+.balanceBlock {
+  padding: 20px;
+  // height: 100vh;
+  // width: 100vw;
+  margin: auto;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 140%;
+  color: #3a3b3d;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.usd {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 140%;
+  color: #4f535a;
+  margin-top: 3px;
+}

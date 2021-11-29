@@ -1,19 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { changeViewContent } from '../../.././../../pages/cabinet/redux/cabinetSlice'
 import { updateAvatarUser, getUser } from '../../../../../app/redux/userSlice'
 import Styles from './styles.module.scss'
 
-import { ButtonSmall } from '../../../../../ui-kit/ButtonSmall'
-
 import avatarImage from '../../../../../assets/images/noAvatar.png'
 import passportIcon from '@icons/passport.svg'
-import innIcon from '@icons/inn.svg'
 import linkIcon from '@icons/link-icon.svg'
 import authIcon from '@icons/auth.svg'
 import emailIcon from '@icons/email.svg'
 import phoneIcon from '@icons/phone.svg'
-import nameIcon from '@icons/name.svg'
 import locationIcon from '@icons/location.svg'
 import closeIcon from '@icons/close-notification.svg'
 import smartphoneImage from '../../../../../assets/images/smartphone.png'
@@ -22,9 +18,12 @@ import { useTranslation } from 'react-i18next'
 export const ProfileComplete: React.FC = () => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
-  const userData = useAppSelector((state) => state.user.userData)
-  const [notificationOpen, setNotificationOpen] = useState(true)
+
   const [img, setImg] = useState(null)
+  const [notificationOpen, setNotificationOpen] = useState(true)
+  const userData = useAppSelector((state) => state.user.userData)
+
+  const bodyEl = useRef(document.querySelector('body'))
 
   const closeNotification = (event) => {
     event.stopPropagation()
@@ -33,7 +32,15 @@ export const ProfileComplete: React.FC = () => {
 
   const changeView = (view) => dispatch(changeViewContent(view))
 
-  const onClick2FA = () => changeView('addAuth')
+  const onClick2FA = () => {
+    changeView('addAuth')
+    bodyEl.current.style.overflow = 'hidden'
+  }
+
+  const onClickLocation = () => {
+    changeView('editLocation')
+    bodyEl.current.style.overflow = 'hidden'
+  }
 
   const updateAvatar = async () => {
     const data = new FormData()
@@ -128,7 +135,7 @@ export const ProfileComplete: React.FC = () => {
               <ButtonSmall onClick={() => changeView('editName')}>Изменить</ButtonSmall>
             </div>
           </li> */}
-          <li className={Styles.item} onClick={() => changeView('editLocation')}>
+          <li className={Styles.item} onClick={onClickLocation}>
             <img className={Styles.icon} src={locationIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
               <div className={Styles.block}>

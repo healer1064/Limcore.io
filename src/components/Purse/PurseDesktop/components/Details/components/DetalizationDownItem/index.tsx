@@ -1,18 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './styles.module.scss'
-import { dotsBlue } from '@components/Purse/PurseMobile/images'
-import { BottomModal } from '../../../BottomModal'
-import { DetalizationButtons } from '../DetalizationButtons/index'
 
-export const DetalizationDownItem = ({ img, title, subtitle, number, money, flagForButton }) => {
-  const [isModalVisible, setIsModalVisible] = useState(false)
-
-  const handleDotsOpenClick = () => {
-    setIsModalVisible(true)
-  }
-  const handleDotsCloseClick = () => {
-    setIsModalVisible(false)
-  }
+export const DetalizationDownItem = ({ img, title, subtitle, number, money }) => {
   return (
     <li className={styles.detailsItem}>
       <img src={img} className={styles.detailsImage} />
@@ -24,17 +13,6 @@ export const DetalizationDownItem = ({ img, title, subtitle, number, money, flag
         <p className={styles.columnData__title}>{number}</p>
         <p className={styles.columnData__text}>{money}</p>
       </span>
-      {flagForButton && (
-        <>
-          <button className={styles.dots} onClick={handleDotsOpenClick}>
-            <img src={dotsBlue} />
-          </button>
-
-          <BottomModal active={isModalVisible} setActive={handleDotsCloseClick}>
-            <DetalizationButtons />
-          </BottomModal>
-        </>
-      )}
     </li>
   )
 }
