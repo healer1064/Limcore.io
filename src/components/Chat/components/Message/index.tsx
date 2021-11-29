@@ -26,7 +26,7 @@ export const Message = ({ message, participants }) => {
     dispatch(setIsSupportVisible(false))
   }
 
-  const handleGroupOpen = () => {
+  const handleGroupOpen = (evt) => {
     // setGroupVisible(true)
     dispatch(setIsGroupVisible(true))
   }
@@ -38,7 +38,7 @@ export const Message = ({ message, participants }) => {
 
   return (
     <>
-      <div className={styles.messageContainer} onClick={message.group ? handleGroupOpen : handleSupportOpen}>
+      <div className={styles.messageContainer} onClick={!message.group ? handleSupportOpen : handleGroupOpen}>
         <img src={message.image} alt='image' className={styles.foto} />
         <img alt='' src={active} className={message.status === 'В сети' ? styles.status : styles.status_invisible} />
         <p className={styles.name}>{message.name}</p>
@@ -49,13 +49,16 @@ export const Message = ({ message, participants }) => {
         </div>
         <span className={styles.line} />
       </div>
-      <Support supportVisible={supportVisible} message={message} handleSupportClose={handleSupportClose} />
-      <Group
-        groupVisible={groupVisible}
-        message={message}
-        handleGroupClose={handleGroupClose}
-        participants={participants}
-      />
+      {message.group ? (
+        <Group
+          groupVisible={groupVisible}
+          message={message}
+          handleGroupClose={handleGroupClose}
+          participants={participants}
+        />
+      ) : (
+        <Support supportVisible={supportVisible} message={message} handleSupportClose={handleSupportClose} />
+      )}
     </>
   )
 }
