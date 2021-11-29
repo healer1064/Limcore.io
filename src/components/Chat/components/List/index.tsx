@@ -1,21 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './styles.module.scss'
 import { useTranslation } from 'react-i18next'
 import close from '@icons/close.svg'
 import arrow from '@icons/arrow-left-blue.svg'
 import { RaitingList } from '@components/Chat/components/RaitingList'
 import { GroupMessage } from '@components/Chat/components/GroupMessage'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
+import { setIsRaitingListVisible } from '../../../Chat/redux/chatSlice'
 
 export const List = ({ handleParticipantsListClose, participantsListVisible, participants, message }) => {
   const [t] = useTranslation()
-  const [raitingListVisible, setRaitingVisible] = useState(false)
+  const dispatch = useAppDispatch()
+  const raitingListVisible = useAppSelector((state) => state.chat.isRaitingListVisible)
 
   const handleRaitingListOpen = () => {
-    setRaitingVisible(true)
+    dispatch(setIsRaitingListVisible(true))
   }
 
   const handleRaitingListClose = () => {
-    setRaitingVisible(false)
+    dispatch(setIsRaitingListVisible(false))
   }
 
   return (

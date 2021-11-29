@@ -1,21 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from '@components/Chat/components/Group/styles.module.scss'
 import { GroupText } from '../GroupText'
 import { List } from '../List'
 import arrow from '@icons/arrow-left-blue.svg'
 import { Textarea } from '@components/Chat/components/Textarea'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
+import { setIsParticipantsListVisible } from '../../../Chat/redux/chatSlice'
 
 export const Group = ({ groupVisible, handleGroupClose, message, participants }) => {
   const [t] = useTranslation()
-  const [participantsListVisible, setParticipantsListVisible] = useState(false)
+  const dispatch = useAppDispatch()
+  const participantsListVisible = useAppSelector((state) => state.chat.isParticipantsListVisible)
 
   const handleParticipantsListOpen = () => {
-    setParticipantsListVisible(true)
+    dispatch(setIsParticipantsListVisible(true))
   }
 
   const handleParticipantsListClose = () => {
-    setParticipantsListVisible(false)
+    dispatch(setIsParticipantsListVisible(false))
   }
 
   return (

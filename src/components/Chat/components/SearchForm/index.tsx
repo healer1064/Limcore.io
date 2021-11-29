@@ -1,25 +1,29 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './styles.module.scss'
 import { useTranslation } from 'react-i18next'
 import closeButton from '@icons/greyClose.svg'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
+import { setIsSearched, setCloseButtonVisible, setResetButtonVisible } from '../../../Chat/redux/chatSlice'
 
 export const SearchForm = ({ desktop }) => {
   const [t] = useTranslation()
-  const [searched, setSearched] = useState('')
-  const [closeButtonVisible, setCloseButtonVisible] = useState(false)
-  const [resetButtonVisible, setResetButtonVisible] = useState(false)
+
+  const searched = useAppSelector((state) => state.chat.isSearched)
+  const closeButtonVisible = useAppSelector((state) => state.chat.closeButtonVisible)
+  const resetButtonVisible = useAppSelector((state) => state.chat.resetButtonVisible)
+  const dispatch = useAppDispatch()
 
   const handleChange = (e) => {
-    setSearched(e.target.value)
-    setCloseButtonVisible(true)
+    dispatch(setIsSearched(e.target.value))
+    dispatch(setCloseButtonVisible(true))
   }
 
   const handleResetButton = () => {
-    setResetButtonVisible(true)
+    dispatch(setResetButtonVisible(true))
   }
 
-  const handleCloseSearch = (e) => {
-    setSearched('')
+  const handleCloseSearch = () => {
+    dispatch(setIsSearched(''))
   }
 
   return (
@@ -37,7 +41,7 @@ export const SearchForm = ({ desktop }) => {
           className={closeButtonVisible ? styles.closeButton : styles.closeButton_invisible}
           alt=''
           src={closeButton}
-          onClick={(e) => handleCloseSearch(e)}
+          onClick={handleCloseSearch}
         />
         <button type='reset' className={resetButtonVisible ? styles.resetButton : styles.resetButton_invisible}>
           {t('chat_reset_button_value')}
