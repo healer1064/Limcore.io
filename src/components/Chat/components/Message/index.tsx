@@ -4,26 +4,36 @@ import { useTranslation } from 'react-i18next'
 import { Support } from '@components/Chat/components/Support'
 import { Group } from '@components/Chat/components/Group'
 import active from '@icons/activeStatus.svg'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
+import { setIsSupportVisible, setIsGroupVisible } from '../../../Chat/redux/chatSlice'
 
 export const Message = ({ message, participants }) => {
   const [t] = useTranslation()
-  const [supportVisible, setSupportVisible] = useState(false)
-  const [groupVisible, setGroupVisible] = useState(false)
+  const dispatch = useAppDispatch()
+  // const [supportVisible, setSupportVisible] = useState(false)
+  // const [groupVisible, setGroupVisible] = useState(false)
+
+  const groupVisible = useAppSelector((state) => state.chat.isGroupVisible)
+  const supportVisible = useAppSelector((state) => state.chat.isSupportVisible)
 
   const handleSupportOpen = () => {
-    setSupportVisible(true)
+    // setSupportVisible(true)
+    dispatch(setIsSupportVisible(true))
   }
 
   const handleSupportClose = () => {
-    setSupportVisible(false)
+    // setSupportVisible(false)
+    dispatch(setIsSupportVisible(false))
   }
 
   const handleGroupOpen = () => {
-    setGroupVisible(true)
+    // setGroupVisible(true)
+    dispatch(setIsGroupVisible(true))
   }
 
   const handleGroupClose = () => {
-    setGroupVisible(false)
+    // setGroupVisible(false)
+    dispatch(setIsGroupVisible(false))
   }
 
   return (

@@ -8,6 +8,9 @@ import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
 import { HeaderPurseDesktop } from './components/HeaderPurseDesktop'
 import { changeViewContent } from '../../../pages/cabinet/redux/cabinetSlice'
 import { Content } from './components/Content'
+import { Chat } from '@components/Chat'
+import chatIcon from '@icons/chatIcon.svg'
+import closeIcon from '@icons/greyClose.svg'
 
 export const PurseDesktop = () => {
   const dispatch = useAppDispatch()
@@ -45,6 +48,7 @@ export const PurseDesktop = () => {
 
   // Модалки профиля и дней майнинга
   const [popup, setPopup] = useState('')
+  const [chatVisible, setChatVisible] = useState(false)
   const close = () => setPopup('')
   const openProfile = () => setPopup('profile')
 
@@ -60,7 +64,7 @@ export const PurseDesktop = () => {
     <>
       <Wallpaper />
       <section className={styles.purse}>
-        <HeaderPurseDesktop isProfileActive={popup === 'profile'} openProfile={openProfile} closeProfile={close} />
+        {/* <HeaderPurseDesktop isProfileActive={popup === 'profile'} openProfile={openProfile} closeProfile={close} /> */}
 
         <div className={styles.purseContainer}>
           <div className={styles.accounts}>
