@@ -43,7 +43,6 @@ export const Team: React.FC = () => {
     },
     {
       id: 4,
-      // job: `Руководитель${'\u00A0'}службы поддержки клиентов`,
       job: t('team_turkinRank'),
       name: t('team_turkin'),
       content: t('team_turkinDesc'),
@@ -65,7 +64,6 @@ export const Team: React.FC = () => {
     },
     {
       id: 7,
-      // job: `Руководитель службы${'\u00A0'}безопасности`,
       job: t('team_kazachenkoRank'),
       name: t('team_kazachenko'),
       content: t('team_kazachenkoDesc'),
@@ -91,11 +89,11 @@ export const Team: React.FC = () => {
     <section id='team' className={Styles.team}>
       <div className={Styles.wrapper}>
         <h2 className={Styles.title}>{t('team_title')}</h2>
-        <div className={Styles.container}>
+        <ul className={Styles.container}>
           {team.map((person) => (
             <TeamCard key={person.id} {...person} person={person} />
           ))}
-        </div>
+        </ul>
         <Slider />
       </div>
     </section>

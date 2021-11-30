@@ -24,7 +24,7 @@ export const MediaMobile = () => {
         <div className={Styles.container}>
           <Swiper spaceBetween={10} slidesPerView={1} pagination={{ clickable: true }}>
             <SwiperSlide className={Styles.slide}>
-              <div className={Styles.block}>
+              <article className={Styles.block}>
                 <div className={Styles.image}>
                   <a
                     className={Styles.image}
@@ -32,33 +32,32 @@ export const MediaMobile = () => {
                     target='blank'
                     rel='noopener noreferrer'
                   >
-                    <img src={mediaImage} alt='Изображение' />
+                    <img src={mediaImage} alt='Cover' />
                   </a>
                 </div>
-                <span className={Styles.title}>{t('mm1_title')}</span>
+                <h4 className={Styles.title}>{t('mm1_title')}</h4>
                 <p className={Styles.description}>{t('mm1_subtitle')}</p>
                 <div className={Styles.row}>
                   <a className={Styles.link} href='/'>
                     Blockchain Life
                   </a>
-                  <span className={Styles.date}>24.09.2021</span>
+                  <time className={Styles.date}>24.09.2021</time>
                 </div>
-              </div>
+              </article>
             </SwiperSlide>
             <SwiperSlide className={Styles.slide}>
-              <div className={Styles.block}>
+              <article className={Styles.block}>
                 <div className={Styles.image}>
-                  {/* <img src={limcInterview} alt='Изображение' /> */}
                   <a
                     className={Styles.image}
                     href='https://coinpost.ru/p/interview-limcore'
                     target='blank'
                     rel='noopener noreferrer'
                   >
-                    <img src={limcInterview} alt='Изображение' />
+                    <img src={limcInterview} alt='Cover' />
                   </a>
                 </div>
-                <span className={Styles.title}>{t('mm2_title')}</span>
+                <h4 className={Styles.title}>{t('mm2_title')}</h4>
                 <p className={Styles.description}>{t('mm2_subtitle')}</p>
                 <div className={Styles.row}>
                   <a
@@ -69,10 +68,9 @@ export const MediaMobile = () => {
                   >
                     coinpost.ru
                   </a>
-                  <span className={Styles.date}>01.11.2021</span>
+                  <time className={Styles.date}>01.11.2021</time>
                 </div>
-                {/*  <div className={Styles.empty}>Совсем скоро здесь появятся еще новости о Limcore</div> */}
-              </div>
+              </article>
             </SwiperSlide>
           </Swiper>
         </div>

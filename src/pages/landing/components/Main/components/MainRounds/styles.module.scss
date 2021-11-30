@@ -1,22 +1,7 @@
-// $barProportion: calc(0 / 80000 * 100%);
-
 .rounds {
   display: flex;
   flex-direction: column;
   margin-bottom: 60px;
-}
-
-.etherscan {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 13px;
-  color: #4a70f8;
-}
-
-.etherscanIcon {
-  margin-top: 0 !important;
-  margin-right: 6px;
 }
 
 .block {
@@ -33,7 +18,6 @@
   padding-bottom: 14px;
   width: 100%;
   max-width: 611px;
-  //margin-bottom: 10px;
 }
 
 .name {
@@ -59,7 +43,6 @@
 .item {
   display: flex;
   align-items: center;
-  //gap: 8px;
   margin-right: 20px;
 
   &:last-child {
@@ -105,7 +88,6 @@
   left: 0;
   background: #4a70f8;
   border-radius: 6px 0 0 6px;
-  // width: $barProportion;
   height: 100%;
 }
 
@@ -116,7 +98,6 @@
   font-size: 14px;
   line-height: 150%;
   color: #868da7;
-  // z-index: 3;
 }
 
 .buttons {
@@ -207,18 +188,11 @@
   &:not(:first-child) {
     margin-left: 8px;
   }
-
-  //span {
-  //  font-family: Montserrat;
-  //  font-style: normal;
-  //  font-weight: 600;
-  //  font-size: 16px;
-  //  line-height: 150%;
-  //  color: #4f535a;
-  //}
 }
 
 .subtitle {
+  padding: 0;
+  margin: 0;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 600;
@@ -300,7 +274,6 @@
 
 .info {
   display: flex;
-  //gap: 42px;
   border: 1px solid #dcdfee;
   border-radius: 6px;
   padding: 20px 30px;
@@ -339,8 +312,7 @@
 .etherscanLink {
   display: flex;
   box-sizing: border-box;
-  margin: 0;
-  margin-top: 10px;
+  margin: 10px 0 0;
   padding: 0;
   text-decoration: none;
   align-items: center;
@@ -384,7 +356,6 @@
     flex-wrap: wrap;
     width: 100%;
     padding: 0 0 15px 0;
-    //gap: 6px;
     border-bottom: 1px solid #dbdfee;
   }
 
@@ -437,13 +408,8 @@
     grid-area: value;
   }
 
-  // .progress {
-  //   max-width: 335px;
-  // }
-
   .info {
     flex-wrap: wrap;
-    //gap: 10px;
     padding: 14px;
   }
 
@@ -608,6 +574,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  border: none;
+  background-color: transparent;
 
   span {
     font-style: normal;

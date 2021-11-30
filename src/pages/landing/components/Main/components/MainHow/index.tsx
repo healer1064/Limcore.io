@@ -22,20 +22,12 @@ export const MainHow: React.FC = () => {
       </div>
       {width > 768 ? (
         <div className={Styles.container}>
-          <span className={Styles.title}>{t('limcoreDescription_howWorks')}</span>
+          <h3 className={Styles.title}>{t('limcoreDescription_howWorks')}</h3>
           <ul className={Styles.list}>
-            <li className={Styles.item}>
-              <span>{t('limcoreDescription_howSubtitle1')}</span>
-            </li>
-            <li className={Styles.item}>
-              <span>{t('limcoreDescription_howSubtitle2')}</span>
-            </li>
-            <li className={Styles.item}>
-              <span>{t('limcoreDescription_howSubtitle3')}</span>
-            </li>
-            <li className={Styles.item}>
-              <span>{t('limcoreDescription_howSubtitle4')}</span>
-            </li>
+            <li className={Styles.item}>{t('limcoreDescription_howSubtitle1')}</li>
+            <li className={Styles.item}>{t('limcoreDescription_howSubtitle2')}</li>
+            <li className={Styles.item}>{t('limcoreDescription_howSubtitle3')}</li>
+            <li className={Styles.item}>{t('limcoreDescription_howSubtitle4')}</li>
           </ul>
         </div>
       ) : (
@@ -50,14 +42,14 @@ export const MainHow: React.FC = () => {
           >
             <SwiperSlide>
               <div className={Styles.item}>
-                <span>{t('limcoreDescription_howSubtitle1')}</span>
-                <span>{t('limcoreDescription_howSubtitle2')}</span>
+                <p>{t('limcoreDescription_howSubtitle1')}</p>
+                <p>{t('limcoreDescription_howSubtitle2')}</p>
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div className={Styles.item}>
-                <span>{t('limcoreDescription_howSubtitle3')}</span>
-                <span>{t('limcoreDescription_howSubtitle4')}</span>
+                <p>{t('limcoreDescription_howSubtitle3')}</p>
+                <p>{t('limcoreDescription_howSubtitle4')}</p>
               </div>
             </SwiperSlide>
           </Swiper>

@@ -1,17 +1,10 @@
 import React from 'react'
 import Styles from './styles.module.scss'
 
-// import logo from '../../assets/icons/LimLogo.png'
-// import logo from '../../assets/icons/FooterLogo.svg'
-// import twitter from '../../assets/icons/twitter-icon.png'
-// import linkedIn from '../../assets/icons/linkedIn-icon.png'
-// import vk from '../../assets/icons/vk-icon.png'
 import insta from '@icons/instagram-logo.svg'
 import tg from '@icons/telegram-logo.svg'
-// import facebook from '../../assets/icons/facebook-icon.png'
 import youTube from '../../assets/icons/SF Symbol/play.fill.svg'
 import { FooterLogo } from '@components/Footer/components/FooterLogo'
-// import booklet from '../../assets/files/booklet.pdf'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { LanguagePopup } from '@components/LanguagePopup'
@@ -25,7 +18,6 @@ export const Footer: React.FC = () => {
         <div className={Styles.footer__container}>
           <FooterLogo />
           <LanguagePopup position={{ top: '-30px', left: '90px', background: '#1e1f22' }} footerStyles />
-
           <ul className={`${Styles.footer__etc} ${Styles.footer__list}`}>
             <h3 className={`${Styles.footer_listTitle} ${Styles.footer__listTitle_etcTitle}`}>{t('other')}</h3>
             <div className={Styles.footer__listItemContainer_etc}>
@@ -103,20 +95,7 @@ export const Footer: React.FC = () => {
             <a href='mailto:info@limcore.io'>info@limcore.io</a>
           </p>
           <ul className={Styles.footer__social}>
-            {/* <li>
-              <a href='https://twitter.com' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
-                <img src={twitter} className={Styles.footer__socialIcon} />
-              </a>
-            </li> */}
             <li>
-              {/* <a */}
-              {/*  href='https://www.linkedin.com' */}
-              {/*  target='blank' */}
-              {/*  rel='noopener noreferrer' */}
-              {/*  className={Styles.footer__link} */}
-              {/* > */}
-              {/*  <img src={linkedIn} className={Styles.footer__socialIcon} /> */}
-              {/* </a> */}
               <a
                 href='https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg'
                 target='blank'
@@ -126,11 +105,6 @@ export const Footer: React.FC = () => {
                 <img src={youTube} className={Styles.footer__YouTubeIcon} />
               </a>
             </li>
-            {/* <li>
-              <a href='https://vk.com/' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
-                <img src={vk} className={Styles.footer__socialIcon} />
-              </a>
-            </li> */}
             <li>
               <a
                 href='https://instagram.com/limcore.io?utm_medium=copy_link'
@@ -146,16 +120,6 @@ export const Footer: React.FC = () => {
                 <img src={tg} className={Styles.footer__socialIcon} />
               </a>
             </li>
-            {/* <li>
-              <a
-                href='https://ru-ru.facebook.com/'
-                target='blank'
-                rel='noopener noreferrer'
-                className={Styles.footer__link}
-              >
-                <img src={facebook} className={Styles.footer__socialIcon} />
-              </a>
-            </li> */}
           </ul>
           <p className={Styles.footer__copyright}>
             &copy;

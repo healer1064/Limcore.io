@@ -75,20 +75,20 @@
 }
 
 .item {
-  color: #4a70f8;
-
-  span {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 170%;
-    color: #67686c;
-  }
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 170%;
+  color: #67686c;
 
   &:not(:last-child) {
     margin-bottom: 10px;
   }
+}
+
+li::marker {
+  color: #4a70f8;
 }
 
 @media all and (max-width: 768px) {

@@ -3,7 +3,7 @@ import Styles from './styles.module.scss'
 
 export const TeamCard = ({ person }) => {
   return (
-    <div className={Styles.card}>
+    <li className={Styles.card}>
       <div className={Styles.fotoContainer}>
         <img src={person.foto} className={Styles.card__foto} />
       </div>
@@ -12,6 +12,6 @@ export const TeamCard = ({ person }) => {
         <p className={Styles.card__name}>{person.name}</p>
       </div>
       <p className={Styles.card__paragraph}>{person.content}</p>
-    </div>
+    </li>
   )
 }

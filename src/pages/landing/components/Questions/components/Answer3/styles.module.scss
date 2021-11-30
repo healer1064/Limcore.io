@@ -7,16 +7,14 @@
   padding: 0;
 
   li {
-    color: #4a70f8;
+    &::marker {
+      color: #4a70f8;
+    }
 
     &:not(:last-child) {
       margin-bottom: 12px;
     }
   }
-}
-
-.list_mod {
-  // padding-left: 20px;
 }
 
 .text {

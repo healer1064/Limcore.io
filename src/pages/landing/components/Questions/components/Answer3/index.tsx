@@ -10,28 +10,16 @@ export const Answer3: React.FC<Answer3Props> = ({ list }) => {
   const [t] = useTranslation()
 
   return (
-    <>
+    <li>
       <ul className={list === 'mobile' ? `${Styles.list} ${Styles.list_mod}` : `${Styles.list}`}>
-        <li>
-          <p className={Styles.text}>{t('qa_card3_subtitle1')}</p>
-        </li>
-        <li>
-          <p className={Styles.text}>{t('qa_card3_subtitle2')}</p>
-        </li>
-        <li>
-          <p className={Styles.text}>{t('qa_card3_subtitle3')}</p>
-        </li>
-        <li>
-          <p className={Styles.text}>{t('qa_card3_subtitle4')}</p>
-        </li>
-        <li>
-          <p className={Styles.text}>{t('qa_card3_subtitle5')}</p>
-        </li>
-        <li>
-          <p className={Styles.text}>{t('qa_card3_subtitle6')}</p>
-        </li>
+        <li className={Styles.text}>{t('qa_card3_subtitle1')}</li>
+        <li className={Styles.text}>{t('qa_card3_subtitle2')}</li>
+        <li className={Styles.text}>{t('qa_card3_subtitle3')}</li>
+        <li className={Styles.text}>{t('qa_card3_subtitle4')}</li>
+        <li className={Styles.text}>{t('qa_card3_subtitle5')}</li>
+        <li className={Styles.text}>{t('qa_card3_subtitle6')}</li>
       </ul>
       <p className={Styles.text}>{t('qa_card3_subtitle7')}</p>
-    </>
+    </li>
   )
 }

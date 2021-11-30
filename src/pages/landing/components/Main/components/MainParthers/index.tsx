@@ -23,33 +23,45 @@ const swiperProps = {
 
 export const MainParthers: React.FC = () => {
   const { width } = useWindowSize()
+  const parthers = [
+    {
+      id: 1,
+      src: blockchainIcon,
+      alt: 'Icon',
+    },
+    {
+      id: 2,
+      src: amdIcon,
+      alt: 'Icon',
+    },
+    {
+      id: 3,
+      src: softlineIcon,
+      alt: 'Icon',
+    },
+    {
+      id: 4,
+      src: supermicrIcon,
+      alt: 'Icon',
+    },
+    {
+      id: 5,
+      src: mojoIcon,
+      alt: 'Icon',
+    },
+  ]
+
   return (
     <div className={Styles.parthers}>
       {width >= 768 ? (
-        <>
-          <img src={blockchainIcon} alt='Иконка' />
-          <img src={amdIcon} alt='Иконка' />
-          <img src={softlineIcon} alt='Иконка' />
-          <img src={supermicrIcon} alt='Иконка' />
-          <img src={mojoIcon} alt='Иконка' />
-        </>
+        parthers.map((parther) => <img key={parther.id} src={parther.src} alt={parther.alt} />)
       ) : (
         <Swiper className={Styles.swiper} /* autoplay={{ delay: 3000 }} */ {...swiperProps}>
-          <SwiperSlide className={Styles.slide}>
-            <img src={blockchainIcon} alt='Иконка' />
-          </SwiperSlide>
-          <SwiperSlide className={Styles.slide}>
-            <img src={amdIcon} alt='Иконка' />
-          </SwiperSlide>
-          <SwiperSlide className={Styles.slide}>
-            <img src={softlineIcon} alt='Иконка' />
-          </SwiperSlide>
-          <SwiperSlide className={Styles.slide}>
-            <img src={supermicrIcon} alt='Иконка' />
-          </SwiperSlide>
-          <SwiperSlide className={Styles.slide}>
-            <img src={mojoIcon} alt='Иконка' />
-          </SwiperSlide>
+          {parthers.map((parther) => (
+            <SwiperSlide key={parther.id} className={Styles.slide}>
+              <img src={parther.src} alt={parther.alt} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       )}
     </div>

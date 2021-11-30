@@ -12,44 +12,46 @@ export const Media: React.FC = () => {
 
   return (
     <>
-      <div className={`${Styles.media} ${Styles.media_desktop}`}>
+      <section className={`${Styles.media} ${Styles.media_desktop}`}>
         <div className={Styles.wrapper}>
-          <h4 className={Styles.caption}>{t('mm_main')}</h4>
+          <h3 className={Styles.caption}>{t('mm_main')}</h3>
           <div className={Styles.container}>
-            <div className={Styles.news}>
+            <article className={Styles.news}>
               <a
                 className={Styles.image}
                 href='https://blockchain-life.com/europe/ru/news/kak-dobyvaetsya-kriptovalyuta-v-rossii/'
                 target='blank'
                 rel='noopener noreferrer'
               >
-                <img src={mediaImage} alt='Изображение' />
+                <img src={mediaImage} alt='Cover' />
               </a>
               <div className={Styles.newsTextWrapper}>
-                <span className={Styles.title}>{t('mm1_title')}</span>
+                <h4 className={Styles.title}>{t('mm1_title')}</h4>
                 <p className={Styles.description}>{t('mm1_subtitle')}</p>
                 <div className={Styles.row}>
                   <a
                     className={Styles.link}
+                    target='blank'
+                    rel='noopener noreferrer'
                     href='https://blockchain-life.com/europe/ru/news/kak-dobyvaetsya-kriptovalyuta-v-rossii/'
                   >
                     Blockchain Life
                   </a>
-                  <span className={Styles.date}>24.09.2021</span>
+                  <time className={Styles.date}>24.09.2021</time>
                 </div>
               </div>
-            </div>
-            <div className={Styles.news}>
+            </article>
+            <article className={Styles.news}>
               <a
                 className={Styles.image}
                 href='https://coinpost.ru/p/interview-limcore'
                 target='blank'
                 rel='noopener noreferrer'
               >
-                <img src={limcInterview} alt='Изображение' />
+                <img src={limcInterview} alt='Cover' />
               </a>
               <div className={Styles.newsTextWrapper}>
-                <span className={Styles.title}>{t('mm2_title')}</span>
+                <h4 className={Styles.title}>{t('mm2_title')}</h4>
                 <p className={Styles.description}>{t('mm2_subtitle')}</p>
                 <div className={Styles.row}>
                   <a
@@ -60,17 +62,16 @@ export const Media: React.FC = () => {
                   >
                     coinpost.ru
                   </a>
-                  <span className={Styles.date}>01.11.2021</span>
+                  <time className={Styles.date}>01.11.2021</time>
                 </div>
               </div>
-            </div>
-            {/* <div className={Styles.empty}>Совсем скоро здесь появятся еще новости о Limcore</div> */}
+            </article>
           </div>
         </div>
-      </div>
-      <div className={`${Styles.media} ${Styles.media_mobile}`}>
+      </section>
+      <section className={`${Styles.media} ${Styles.media_mobile}`}>
         <MediaMobile />
-      </div>
+      </section>
     </>
   )
 }

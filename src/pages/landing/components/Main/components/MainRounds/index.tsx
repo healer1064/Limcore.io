@@ -30,22 +30,20 @@ export const MainRounds: React.FC = () => {
   return (
     <div className={Styles.rounds}>
       <div className={Styles.block}>
-        <div className={Styles.wrap}>
-          <span className={Styles.name}>{t('firstRound_round1')}</span>
-        </div>
+        <h2 className={`${Styles.wrap} ${Styles.name}`}>{t('firstRound_round1')}</h2>
         <ul className={Styles.list}>
           <li className={Styles.item}>
-            <span className={Styles.designation}>{t('firstRound_limit')}</span>
-            <span className={Styles.value}>{limcLimit} LIMC</span>
+            <p className={Styles.designation}>{t('firstRound_limit')}</p>
+            <p className={Styles.value}>{limcLimit} LIMC</p>
             <img className={Styles.icon} src={limcoreIcon} alt='Иконка' />
           </li>
           <li className={Styles.item}>
-            <span className={Styles.designation}>{t('firstRound_limcPrice')}</span>
-            <span className={Styles.value}>$95</span>
+            <p className={Styles.designation}>{t('firstRound_limcPrice')}</p>
+            <p className={Styles.value}>$95</p>
           </li>
           <li className={Styles.item}>
-            <span className={Styles.designation}>{t('firstRound_terms')}</span>
-            <span className={Styles.value}>{t('firstRound_firstRoundTerms')}</span>
+            <p className={Styles.designation}>{t('firstRound_terms')}</p>
+            <p className={Styles.value}>{t('firstRound_firstRoundTerms')}</p>
             <InfoIcon className={Styles.icon} onClick={openPopup} />
           </li>
         </ul>
@@ -60,17 +58,15 @@ export const MainRounds: React.FC = () => {
         </PopupMainPage>
       )}
       <div className={Styles.progress}>
-        <span className={Styles.bar} style={{ width: `calc(${limcCount} / 80000 * 100%)` }}>
-          {}
-        </span>
-        <span className={Styles.count}>{limcCount} / 80000</span>
+        <span className={Styles.bar} style={{ width: `calc(${limcCount} / 80000 * 100%)` }} />
+        <p className={Styles.count}>{limcCount} / 80000</p>
       </div>
-      <div className={Styles.wrapp}>
-        <a href='https://round1.limcore.io' className={Styles.buy}>
+      <button type='button' className={Styles.wrapp}>
+        <a href='https://round1.limcore.io' className={Styles.buy} target='blank' rel='noopener noreferrer'>
           {t('buyLimc')}
         </a>
         <span>{t('lockUp')}</span>
-      </div>
+      </button>
       <div className={Styles.roadContainer}>
         <div className={Styles.emptyContainers}>
           <div className={Styles.emptyContainer_first} />
@@ -79,39 +75,39 @@ export const MainRounds: React.FC = () => {
         <div className={Styles.road}>
           <div className={Styles.cover}>
             <div className={Styles.round}>
-              <span className={Styles.date__mobile}>10.01.2022</span>
-              <span className={Styles.subtitle}>{t('roundsRoadmap_round2')}</span>
+              <time className={Styles.date__mobile}>10.01.2022</time>
+              <h3 className={Styles.subtitle}>{t('roundsRoadmap_round2')}</h3>
               <div className={Styles.row}>
-                <span>{t('roundsRoadmap_limcMin')}</span>
-                <span>120,000</span>
+                <p>{t('roundsRoadmap_limcMin')}</p>
+                <p>120,000</p>
               </div>
             </div>
             <div className={Styles.round}>
-              <span className={Styles.date__mobile}>25.02.2022</span>
-              <span className={Styles.subtitle}>{t('roundsRoadmap_round3')}</span>
+              <time className={Styles.date__mobile}>25.02.2022</time>
+              <h3 className={Styles.subtitle}>{t('roundsRoadmap_round3')}</h3>
               <div className={Styles.row}>
-                <span>{t('roundsRoadmap_priceLater')}</span>
+                <p>{t('roundsRoadmap_priceLater')}</p>
               </div>
             </div>
             <div className={Styles.round}>
-              <span className={Styles.subtitle}>{t('roundsRoadmap_round4')}</span>
+              <h3 className={Styles.subtitle}>{t('roundsRoadmap_round4')}</h3>
               <div className={Styles.row}>
-                <span>{t('roundsRoadmap_priceLater')}</span>
+                <p>{t('roundsRoadmap_priceLater')}</p>
               </div>
             </div>
             <div className={Styles.round}>
-              <span className={Styles.subtitle}>{t('roundsRoadmap_round5')}</span>
+              <h3 className={Styles.subtitle}>{t('roundsRoadmap_round5')}</h3>
               <div className={Styles.row}>
-                <span>{t('roundsRoadmap_priceLater')}</span>
+                <p>{t('roundsRoadmap_priceLater')}</p>
               </div>
             </div>
-            <span className={Styles.date__mobile}>{t('roundsRoadmap_endSelling')}</span>
+            <time className={Styles.date__mobile}>{t('roundsRoadmap_endSelling')}</time>
           </div>
         </div>
         <div className={Styles.shell}>
           <div className={Styles.lines}>
-            <div className={Styles.line}>{}</div>
-            <div className={Styles.line}>{}</div>
+            <div className={Styles.line} />
+            <div className={Styles.line} />
           </div>
           <div className={Styles.dates}>
             <div className={Styles.date}>

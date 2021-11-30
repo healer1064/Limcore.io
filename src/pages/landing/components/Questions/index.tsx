@@ -42,9 +42,9 @@ export const Questions: React.FC = () => {
 
   return (
     <>
-      <div id='questions' className={`${Styles.questions} ${Styles.questions_desktop}`}>
+      <section id='questions' className={`${Styles.questions} ${Styles.questions_desktop}`}>
         <div className={Styles.wrapper}>
-          <h4 className={Styles.caption}>{t('qa_title')}</h4>
+          <h3 className={Styles.caption}>{t('qa_title')}</h3>
           <div className={Styles.container}>
             <ul className={Styles.question}>
               {array &&
@@ -54,25 +54,25 @@ export const Questions: React.FC = () => {
                     className={activeItem.id === item.id ? `${Styles.item} ${Styles.item_active}` : `${Styles.item}`}
                     onClick={() => setActiveItem(item)}
                   >
-                    <span>
+                    <p>
                       {item.title} <VectorIcon />
-                    </span>
+                    </p>
                   </li>
                 ))}
             </ul>
-            <div className={Styles.info}>
+            <ul className={Styles.info}>
               <h5 className={Styles.title}>{activeItem.title}</h5>
               {activeItem.id === 1 && <Answer1 />}
               {activeItem.id === 2 && <Answer2 />}
               {activeItem.id === 3 && <Answer3 />}
               {activeItem.id === 4 && <Answer4 />}
-            </div>
+            </ul>
           </div>
         </div>
-      </div>
-      <div className={`${Styles.questions} ${Styles.questions_mobile}`}>
+      </section>
+      <section className={`${Styles.questions} ${Styles.questions_mobile}`}>
         <QuestionsMobile />
-      </div>
+      </section>
     </>
   )
 }
