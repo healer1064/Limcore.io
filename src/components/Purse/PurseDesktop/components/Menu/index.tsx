@@ -19,7 +19,7 @@ export const Menu = ({ openLimcBalance, openUsdtBalance }: IMenuProps) => {
   const usdtBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
 
   return (
-    <div className={styles.menu}>
+    <ul className={styles.menu}>
       <h2 className={styles.name}>{t('purse_myAccounts')}</h2>
       <MenuItem
         openCard={openLimcBalance}
@@ -35,6 +35,6 @@ export const Menu = ({ openLimcBalance, openUsdtBalance }: IMenuProps) => {
         title='USDT'
         balance={isSync ? `${usdtBalance} USDT` : t('purse_notSync')}
       />
-    </div>
+    </ul>
   )
 }

@@ -36,8 +36,7 @@ export const PageBalanceUSDT: React.FC<PageBalanceUSDTPropsType> = ({
         </svg>
         Назад
       </button>
-      <h1 className={styles.pageBalanceUSDT__title}>{`${usdtBalance} USDT`}</h1>
-      {/* <p className={styles.pageBalanceUSDT__subtitle}>{`$ ${usdtBalance}`}</p> */}
+      <h2 className={styles.pageBalanceUSDT__title}>{`${usdtBalance} USDT`}</h2>
       <div className={styles.items}>
         {/* <div className={`${styles.item} ${styles.item_active}`}>
           <svg
@@ -90,7 +89,6 @@ export const PageBalanceUSDT: React.FC<PageBalanceUSDTPropsType> = ({
           Вывести
         </div> */}
       </div>
-      {/* <TransactionsDetails onClick={() => {}} /> */}
       <Transactions onProfileClick={openProfile} />
     </div>
   )

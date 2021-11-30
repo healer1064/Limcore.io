@@ -119,14 +119,14 @@ export const Balance = () => {
               {userPurse.address.substr(0, 9)}...{userPurse.address.slice(-7)}
             </p>
           </div>
-          <button className={styles.trust_kill} onClick={() => connector.killSession()}>
+          <button className={styles.trust_kill} onClick={() => connector.killSession()} type='button'>
             <GrayCrossIcon />
           </button>
           <p className={styles.notion}>{t('purse_walletConnectSync')}</p>
         </div>
       ) : (
         <>
-          <button className={styles.syncButton} onClick={sincWithWallet}>
+          <button className={styles.syncButton} onClick={sincWithWallet} type='button'>
             {t('purse_sync')}
           </button>
           <p className={styles.trust_subtitle}>{t('purse_walletConnect')}</p>

@@ -11,13 +11,13 @@ interface MenuItemProps {
 
 export const MenuItem: React.FC<MenuItemProps> = ({ openCard, image, syncIcon, title, balance }) => {
   return (
-    <button className={styles.menuItem} onClick={openCard}>
+    <li className={styles.menuItem} onClick={openCard}>
       <p className={styles.menu__title}>
         {title}
         {syncIcon}
       </p>
       <p className={styles.menu__sum}>{balance}</p>
-      <img className={styles.menu__logo} src={image} width='30' height='30' />
-    </button>
+      <img className={styles.menu__logo} src={image} width='30' height='30' alt='logo' />
+    </li>
   )
 }

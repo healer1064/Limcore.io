@@ -40,7 +40,6 @@ export const UntilMiningStart = ({ onClick, tooltip, popup, className }: UntilMi
           </button>
         )}
       </div>
-      {/* <span className={styles.visualization} style={visualizationStyle((80 - daysPassed) / 80)} /> */}
       <span className={styles.visualization} style={visualizationStyle(0)} />
       <div className={styles.descWrapper}>
         <p className={styles.untilMiningDesc}>80 {t('purse_mainingDateLast')}</p>
@@ -48,7 +47,7 @@ export const UntilMiningStart = ({ onClick, tooltip, popup, className }: UntilMi
       </div>
       {isPopup && (
         <div className={styles.popupContainer}>
-          <button className={styles.closePopupButton} onClick={() => setIsPopup(false)}>
+          <button className={styles.closePopupButton} onClick={() => setIsPopup(false)} type='button'>
             <CloseIcon />
           </button>
           <h4 className={styles.popupTitle}>{t('purse_whyWait')}</h4>

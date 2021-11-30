@@ -28,7 +28,7 @@ export const RoadMap = () => {
             {soldLimcs}/80,000
           </div>
           <span className={styles.roundLine} />
-          <p className={styles.roundDate}>10.01.2022</p>
+          <time className={styles.roundDate}>10.01.2022</time>
         </div>
         <div className={styles.roadMapRound}>
           <div className={styles.roundText}>
@@ -39,7 +39,7 @@ export const RoadMap = () => {
             120,000
           </div>
           <span className={styles.roundLine} />
-          <p className={styles.roundDate}>25.02.2022</p>
+          <time className={styles.roundDate}>25.02.2022</time>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import styles from './styles.module.scss'
 export const DetalizationDownItem = ({ img, title, subtitle, number, money }) => {
   return (
     <li className={styles.detailsItem}>
-      <img src={img} className={styles.detailsImage} />
+      <img src={img} className={styles.detailsImage} alt='icon' />
       <span className={styles.columnText}>
         <p className={styles.columnText__title}>{title}</p>
         <p className={styles.columnText__text}>{subtitle}</p>

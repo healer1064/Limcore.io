@@ -44,7 +44,7 @@ export const Content = ({ pageCardBalance, closeCard, openProfile }: IContentPro
       </div>
       <div className={`${pageCardBalance !== '' ? styles.roadMap_invisible : styles.roadMap}`}>
         <RoadMap />
-        <a className={styles.buyLimcBtn} href='https://round1.limcore.io'>
+        <a className={styles.buyLimcBtn} href='https://round1.limcore.io' target='blank' rel='noopener noreferrer'>
           {t('buyLimc')}
         </a>
       </div>
