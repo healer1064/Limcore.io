@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './styles.module.scss'
 import clip from '@icons/clip.svg'
 import send from '@icons/sendIcon.svg'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
+import { setSendIconVisible } from '../../../Chat/redux/chatSlice'
 
 export const Textarea = () => {
-  const [sendIconVisible, setSendIconVisible] = useState(false)
+  const sendIconVisible = useAppSelector((state) => state.chat.sendIconVisible)
+  const dispatch = useAppDispatch()
 
   const handleSendIconVisibility = () => {
-    setSendIconVisible(true)
+    dispatch(setSendIconVisible(true))
   }
 
   const handleInputHeight = (e) => {

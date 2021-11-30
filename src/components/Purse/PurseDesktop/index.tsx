@@ -49,6 +49,7 @@ export const PurseDesktop = () => {
 
   // Модалки профиля и дней майнинга
   const [popup, setPopup] = useState('')
+  const [chatVisible, setChatVisible] = useState(false)
   const close = () => setPopup('')
   const openProfile = () => setPopup('profile')
 
