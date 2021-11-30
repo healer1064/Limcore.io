@@ -40,16 +40,18 @@ export const Message = ({ message, participants }) => {
         </div>
         <span className={styles.line} />
       </div>
-      {message.group ? (
-        <Group
-          groupVisible={groupVisible}
-          message={message}
-          handleGroupClose={handleGroupClose}
-          participants={participants}
-        />
-      ) : (
-        <Support supportVisible={supportVisible} message={message} handleSupportClose={handleSupportClose} />
-      )}
+      <div>
+        {message.group ? (
+          <Group
+            groupVisible={groupVisible}
+            message={message}
+            handleGroupClose={handleGroupClose}
+            participants={participants}
+          />
+        ) : (
+          <Support supportVisible={supportVisible} message={message} handleSupportClose={handleSupportClose} />
+        )}
+      </div>
     </>
   )
 }
