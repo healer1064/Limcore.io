@@ -5,11 +5,11 @@ import { Text } from '@components/Chat/components/Text'
 import arrow from '@icons/arrow-left-blue.svg'
 import { Textarea } from '@components/Chat/components/Textarea'
 
-export const Support = ({ supportVisible, message, handleSupportClose }) => {
+export const Support = ({ contentVisible, message, handleSupportClose }) => {
   const [t] = useTranslation()
 
   return (
-    supportVisible && (
+    contentVisible === 'support' && (
       <section className={styles.supportContainer}>
         <div className={styles.supportHeader}>
           <img alt='' src={arrow} className={styles.arrow} onClick={handleSupportClose} />

@@ -6,23 +6,23 @@ import { List } from '../List'
 import arrow from '@icons/arrow-left-blue.svg'
 import { Textarea } from '@components/Chat/components/Textarea'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setIsParticipantsListVisible } from '../../../Chat/redux/chatSlice'
+import { setIsListVisible } from '../../../Chat/redux/chatSlice'
 
-export const Group = ({ groupVisible, handleGroupClose, message, participants }) => {
+export const Group = ({ contentVisible, handleGroupClose, message, participants }) => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
-  const participantsListVisible = useAppSelector((state) => state.chat.isParticipantsListVisible)
+  const listVisible = useAppSelector((state) => state.chat.isListVisible)
 
   const handleParticipantsListOpen = () => {
-    dispatch(setIsParticipantsListVisible(true))
+    dispatch(setIsListVisible('list'))
   }
 
   const handleParticipantsListClose = () => {
-    dispatch(setIsParticipantsListVisible(false))
+    dispatch(setIsListVisible('group'))
   }
 
   return (
-    groupVisible && (
+    contentVisible === 'group' && (
       <section className={styles.groupContainer}>
         <div className={styles.groupHeader}>
           <img alt='' src={arrow} className={styles.arrow} onClick={handleGroupClose} />
@@ -38,8 +38,8 @@ export const Group = ({ groupVisible, handleGroupClose, message, participants })
           ))}
         </div>
         <List
+          listVisible={listVisible}
           handleParticipantsListClose={handleParticipantsListClose}
-          participantsListVisible={participantsListVisible}
           participants={participants}
           message={message}
         />

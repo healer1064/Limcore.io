@@ -11,12 +11,14 @@ import { Content } from './components/Content'
 import { Chat } from '@components/Chat'
 import chatIcon from '@icons/chatIcon.svg'
 import closeIcon from '@icons/greyClose.svg'
+import { setIsChatVisible } from '../../Chat/redux/chatSlice'
 
 export const PurseDesktop = () => {
   const dispatch = useAppDispatch()
 
   const isSync = useAppSelector((state) => state.auth.isSincWithWallet)
   const viewPurseContent = useAppSelector((state) => state.cabinet.viewPurseContent)
+  const chatVisible = useAppSelector((state) => state.chat.isChatVisible)
 
   const openMain = () => dispatch(changeViewContent('main'))
   useEffect(() => {
@@ -48,16 +50,15 @@ export const PurseDesktop = () => {
 
   // Модалки профиля и дней майнинга
   const [popup, setPopup] = useState('')
-  const [chatVisible, setChatVisible] = useState(false)
   const close = () => setPopup('')
   const openProfile = () => setPopup('profile')
 
   const handleChatOpen = () => {
-    setChatVisible(true)
+    dispatch(setIsChatVisible('chat'))
   }
 
   const handleChatClose = () => {
-    setChatVisible(false)
+    dispatch(setIsChatVisible(''))
   }
 
   return (
@@ -83,7 +84,7 @@ export const PurseDesktop = () => {
             <img alt='' src={chatIcon} onClick={handleChatOpen} />
           )}
         </button>
-        {chatVisible ? <Chat handleChatClose={handleChatClose} /> : null}
+        {chatVisible === 'chat' ? <Chat handleChatClose={handleChatClose} /> : null}
       </section>
     </>
   )

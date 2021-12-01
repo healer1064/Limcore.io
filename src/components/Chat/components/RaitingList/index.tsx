@@ -7,10 +7,10 @@ import orange from '@icons/raitingOrange.svg'
 import purple from '@icons/raitingPurple.svg'
 import red from '@icons/redRaiting.svg'
 
-export const RaitingList = ({ raitingListVisible, handleRaitingListClose }) => {
+export const RaitingList = ({ raitingVisible, handleRaitingListClose }) => {
   const [t] = useTranslation()
   return (
-    raitingListVisible && (
+    raitingVisible === 'raiting' && (
       <div className={styles.raitingList}>
         <div className={styles.container}>
           <button className={styles.closeRaiting} type='button' onClick={handleRaitingListClose}>

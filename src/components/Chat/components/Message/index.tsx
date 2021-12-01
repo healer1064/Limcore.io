@@ -4,27 +4,26 @@ import { Support } from '@components/Chat/components/Support'
 import { Group } from '@components/Chat/components/Group'
 import active from '@icons/activeStatus.svg'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setIsSupportVisible, setIsGroupVisible } from '../../../Chat/redux/chatSlice'
+import { setIsContentVisible } from '../../../Chat/redux/chatSlice'
 
 export const Message = ({ message, participants }) => {
   const dispatch = useAppDispatch()
-  const groupVisible = useAppSelector((state) => state.chat.isGroupVisible)
-  const supportVisible = useAppSelector((state) => state.chat.isSupportVisible)
+  const contentVisible = useAppSelector((state) => state.chat.isContentVisible)
 
   const handleSupportOpen = () => {
-    dispatch(setIsSupportVisible(true))
+    dispatch(setIsContentVisible('support'))
   }
 
   const handleSupportClose = () => {
-    dispatch(setIsSupportVisible(false))
+    dispatch(setIsContentVisible(''))
   }
 
   const handleGroupOpen = () => {
-    dispatch(setIsGroupVisible(true))
+    dispatch(setIsContentVisible('group'))
   }
 
   const handleGroupClose = () => {
-    dispatch(setIsGroupVisible(false))
+    dispatch(setIsContentVisible(''))
   }
 
   return (
@@ -43,13 +42,13 @@ export const Message = ({ message, participants }) => {
       <div>
         {message.group ? (
           <Group
-            groupVisible={groupVisible}
+            contentVisible={contentVisible}
             message={message}
             handleGroupClose={handleGroupClose}
             participants={participants}
           />
         ) : (
-          <Support supportVisible={supportVisible} message={message} handleSupportClose={handleSupportClose} />
+          <Support contentVisible={contentVisible} message={message} handleSupportClose={handleSupportClose} />
         )}
       </div>
     </>

@@ -6,23 +6,23 @@ import arrow from '@icons/arrow-left-blue.svg'
 import { RaitingList } from '@components/Chat/components/RaitingList'
 import { GroupMessage } from '@components/Chat/components/GroupMessage'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setIsRaitingListVisible } from '../../../Chat/redux/chatSlice'
+import { setIsRaitingVisible } from '../../../Chat/redux/chatSlice'
 
-export const List = ({ handleParticipantsListClose, participantsListVisible, participants, message }) => {
+export const List = ({ handleParticipantsListClose, participants, message, listVisible }) => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
-  const raitingListVisible = useAppSelector((state) => state.chat.isRaitingListVisible)
+  const raitingVisible = useAppSelector((state) => state.chat.isRaitingVisible)
 
   const handleRaitingListOpen = () => {
-    dispatch(setIsRaitingListVisible(true))
+    dispatch(setIsRaitingVisible('raiting'))
   }
 
   const handleRaitingListClose = () => {
-    dispatch(setIsRaitingListVisible(false))
+    dispatch(setIsRaitingVisible(''))
   }
 
   return (
-    participantsListVisible && (
+    listVisible === 'list' && (
       <section className={styles.list}>
         <div className={styles.listHeader}>
           <button className={styles.button}>
@@ -41,7 +41,7 @@ export const List = ({ handleParticipantsListClose, participantsListVisible, par
             <GroupMessage key={member.id} {...member} member={member} handleRaitingListOpen={handleRaitingListOpen} />
           ))}
         </div>
-        <RaitingList raitingListVisible={raitingListVisible} handleRaitingListClose={handleRaitingListClose} />
+        <RaitingList raitingVisible={raitingVisible} handleRaitingListClose={handleRaitingListClose} />
       </section>
     )
   )
