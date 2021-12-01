@@ -9,8 +9,7 @@ export const chatSlice = createSlice({
     isListVisible: '',
     isRaitingVisible: '',
     isSearched: '',
-    closeButtonVisible: false,
-    resetButtonVisible: false,
+    isButtonVisible: '',
     sendIconVisible: false,
   },
   reducers: {
@@ -29,14 +28,8 @@ export const chatSlice = createSlice({
     setIsSearched: (state, { payload }) => {
       state.isSearched = payload
     },
-    setCloseButtonVisible: (state, { payload }) => {
-      state.closeButtonVisible = payload
-    },
-    setResetButtonVisible: (state, { payload }) => {
-      state.resetButtonVisible = payload
-    },
-    setSendIconVisible: (state, { payload }) => {
-      state.sendIconVisible = payload
+    setIsButtonVisible: (state, { payload }) => {
+      state.isButtonVisible = payload
     },
   },
 })
@@ -48,9 +41,7 @@ export const {
   setIsListVisible,
   setIsRaitingVisible,
   setIsSearched,
-  setCloseButtonVisible,
-  setResetButtonVisible,
-  setSendIconVisible,
+  setIsButtonVisible,
 } = actions
 
 export const chatSelector = (state: RootState) => state.chat
