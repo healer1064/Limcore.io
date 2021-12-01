@@ -13,6 +13,7 @@ import fotoPart2 from '@icons/groupPart2.svg'
 import orange from '@icons/raitingOrange.svg'
 import close from '@icons/greyClose.svg'
 import useWindowSize from '../../helpers/useWindowSizeHook'
+
 export const Chat = ({ handleChatClose }) => {
   const [t] = useTranslation()
   const { width } = useWindowSize()
@@ -78,25 +79,33 @@ export const Chat = ({ handleChatClose }) => {
     },
   ]
 
-  return (
-    <section className={!desktop ? styles.cont : styles.cont_desktop}>
+  return desktop ? (
+    <section className={styles.desktop}>
       <div className={styles.chat}>
-        {desktop ? (
-          <div className={styles.header}>
-            <h1 className={styles.title}>{t('chat_title')}</h1>
-            <button className={styles.button} type='button' onClick={handleChatClose}>
-              <img src={close} alt='' />
-            </button>
-          </div>
-        ) : null}
+        <div className={styles.header}>
+          <h1 className={styles.title}>{t('chat_title')}</h1>
+          <button className={styles.button} type='button' onClick={handleChatClose}>
+            <img src={close} alt='' />
+          </button>
+        </div>
         <SearchForm desktop={desktop} />
-        <section className={styles.messageSection}>
+        <article className={styles.messageSection}>
           {messages.map((message) => (
             <Message key={message.id} {...message} message={message} participants={participants} />
           ))}
-        </section>
+        </article>
         <FooterMobile />
       </div>
     </section>
+  ) : (
+    <div className={styles.chat}>
+      <SearchForm desktop={desktop} />
+      <article className={styles.messageSection}>
+        {messages.map((message) => (
+          <Message key={message.id} {...message} message={message} participants={participants} />
+        ))}
+      </article>
+      <FooterMobile />
+    </div>
   )
 }
