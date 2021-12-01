@@ -8,13 +8,6 @@
   left: 0;
   background: rgba(43, 40, 41, 0.5);
   z-index: 2000;
-  transform: scale(1);
-  transition: transform 200ms linear;
-
-  &_invisible {
-    transform: scale(0);
-    transition: transform 200ms linear;
-  }
 }
 
 .container {

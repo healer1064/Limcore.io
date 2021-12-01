@@ -27,7 +27,7 @@ export const Chat = ({ handleChatClose }) => {
       image: fotoExample,
       status: 'В сети',
       unreadMessages: 0,
-      owner: false,
+      owner: true,
       group: false,
     },
     {

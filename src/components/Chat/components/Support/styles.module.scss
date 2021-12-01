@@ -10,14 +10,6 @@
   left: 0;
   background-color: #FFFFFF;
   justify-content: space-between;
-  transform: scale(1);
-  transition: transform 200ms linear;
-
-  &_invisible {
-    display: none;
-    transform: scale(0);
-    transition: transform 200ms linear;
-  }
 }
 
 .supportHeader {

@@ -10,13 +10,6 @@
   right: 0;
   left: 0;
   background-color: #FFFFFF;
-  transform: scale(1);
-  transition: transform 200ms linear;
-
-  &_invisible {
-    transform: scale(0);
-    transition: transform 200ms linear;
-  }
 }
 
 .listHeader {

@@ -22,27 +22,29 @@ export const Group = ({ groupVisible, handleGroupClose, message, participants })
   }
 
   return (
-    <section className={groupVisible ? styles.groupContainer : styles.groupContainer_invisible}>
-      <div className={styles.groupHeader}>
-        <img alt='' src={arrow} className={styles.arrow} onClick={handleGroupClose} />
-        <img src={message.image} alt='' className={styles.foto} />
-        <p className={styles.name}>{message.name}</p>
-        <p className={styles.status} onClick={handleParticipantsListOpen}>
-          {`${message.numberOfParticipants} ${t('group_number')}`}
-        </p>
-      </div>
-      <div className={styles.groupMessagesContainer}>
-        {participants.map((member) => (
-          <GroupText key={member.id} {...member} member={member} />
-        ))}
-      </div>
-      <List
-        handleParticipantsListClose={handleParticipantsListClose}
-        participantsListVisible={participantsListVisible}
-        participants={participants}
-        message={message}
-      />
-      <Textarea />
-    </section>
+    groupVisible && (
+      <section className={styles.groupContainer}>
+        <div className={styles.groupHeader}>
+          <img alt='' src={arrow} className={styles.arrow} onClick={handleGroupClose} />
+          <img src={message.image} alt='' className={styles.foto} />
+          <p className={styles.name}>{message.name}</p>
+          <p className={styles.status} onClick={handleParticipantsListOpen}>
+            {`${message.numberOfParticipants} ${t('group_number')}`}
+          </p>
+        </div>
+        <div className={styles.groupMessagesContainer}>
+          {participants.map((member) => (
+            <GroupText key={member.id} {...member} member={member} />
+          ))}
+        </div>
+        <List
+          handleParticipantsListClose={handleParticipantsListClose}
+          participantsListVisible={participantsListVisible}
+          participants={participants}
+          message={message}
+        />
+        <Textarea />
+      </section>
+    )
   )
 }
