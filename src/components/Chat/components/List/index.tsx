@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './styles.module.scss'
+import raitingStyles from '../RaitingList/styles.module.scss'
 import { useTranslation } from 'react-i18next'
 import close from '@icons/close.svg'
 import arrow from '@icons/arrow-left-blue.svg'
@@ -10,15 +11,18 @@ import { setIsRaitingVisible } from '../../../Chat/redux/chatSlice'
 
 export const List = ({ handleParticipantsListClose, participants, message, listVisible }) => {
   const [t] = useTranslation()
+  const [raitingClassName, setRaitingClassName] = useState(raitingStyles.raitingList_invisible)
   const dispatch = useAppDispatch()
   const raitingVisible = useAppSelector((state) => state.chat.isRaitingVisible)
 
   const handleRaitingListOpen = () => {
     dispatch(setIsRaitingVisible('raiting'))
+    setRaitingClassName(raitingStyles.raitingList)
   }
 
   const handleRaitingListClose = () => {
     dispatch(setIsRaitingVisible(''))
+    setRaitingClassName(raitingStyles.raitingList_invisible)
   }
 
   return (
@@ -41,7 +45,11 @@ export const List = ({ handleParticipantsListClose, participants, message, listV
             <GroupMessage key={member.id} {...member} member={member} handleRaitingListOpen={handleRaitingListOpen} />
           ))}
         </div>
-        <RaitingList raitingVisible={raitingVisible} handleRaitingListClose={handleRaitingListClose} />
+        <RaitingList
+          raitingVisible={raitingVisible}
+          handleRaitingListClose={handleRaitingListClose}
+          raitingClassName={raitingClassName}
+        />
       </section>
     )
   )

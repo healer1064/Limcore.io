@@ -1,14 +1,6 @@
-@keyframes transition {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 .raitingList {
-  display: flex;
+  visibility: visible;
+  opacity: 1;
   box-sizing: border-box;
   position: fixed;
   top: 0;
@@ -17,7 +9,13 @@
   left: 0;
   background: rgba(43, 40, 41, 0.5);
   z-index: 2000;
-  animation: transition 500ms ease;
+  transition: visibility 500ms ease, opacity 500ms ease;
+
+  &_invisible {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 500ms ease, opacity 500ms ease;
+  }
 }
 
 .container {
