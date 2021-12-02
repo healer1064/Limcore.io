@@ -23,7 +23,7 @@ import Styles from './style.module.scss'
 import { Spinner } from '@components/Spinner'
 // import { OrderCatalog } from '../../pages/catalog'
 import { Header } from '@components/Header'
-import { HeaderMobile } from '@components/Header/HeaderMobile/index'
+import { HeaderMobile } from '@components/Header/HeaderMobile'
 // import { CabinetPage } from '../../pages/cabinet'
 import { AuthMobile } from '../../pages/auth/AuthMobile'
 
