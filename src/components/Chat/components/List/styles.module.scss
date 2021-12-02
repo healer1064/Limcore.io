@@ -1,14 +1,6 @@
-@keyframes transition {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 .list {
-  display: flex;
+  visibility: visible;
+  opacity: 1;
   flex-direction: column;
   box-sizing: border-box;
   padding: 0;
@@ -19,7 +11,14 @@
   right: 0;
   left: 0;
   background-color: #FFFFFF;
-  animation: transition 500ms ease;
+  transition: opacity 200ms ease, visibility 200ms ease;
+
+  &_invisible {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 200ms ease, visibility 200ms ease;
+    position: absolute;
+  }
 }
 
 .listHeader {
@@ -61,7 +60,7 @@
   box-sizing: border-box;
   padding: 5px 0;
   margin: 0;
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -75,7 +74,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0 0 0 8px;
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -100,7 +99,7 @@
     position: absolute;
     bottom: 0;
     right: 120px;
-    box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+    box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
     border-radius: 14px;
   }
   .arrow {

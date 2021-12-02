@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import { Support } from '@components/Chat/components/Support'
 import { Group } from '@components/Chat/components/Group'
@@ -8,6 +8,7 @@ import { setIsContentVisible } from '../../../Chat/redux/chatSlice'
 
 export const Message = ({ message, participants }) => {
   const dispatch = useAppDispatch()
+
   const contentVisible = useAppSelector((state) => state.chat.isContentVisible)
 
   const handleSupportOpen = () => {

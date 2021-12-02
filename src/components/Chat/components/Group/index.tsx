@@ -1,24 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from '@components/Chat/components/Group/styles.module.scss'
+import listStyles from '@components/Chat/components/List/styles.module.scss'
 import { GroupText } from '../GroupText'
 import { List } from '../List'
 import arrow from '@icons/arrow-left-blue.svg'
 import { Textarea } from '@components/Chat/components/Textarea'
-import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
+import { useAppDispatch } from '@app/redux/hooks'
 import { setIsListVisible } from '../../../Chat/redux/chatSlice'
 
 export const Group = ({ contentVisible, handleGroupClose, message, participants }) => {
   const [t] = useTranslation()
+  const [listClassName, setListClassName] = useState(listStyles.list_invisible)
   const dispatch = useAppDispatch()
-  const listVisible = useAppSelector((state) => state.chat.isListVisible)
 
   const handleParticipantsListOpen = () => {
     dispatch(setIsListVisible('list'))
+    setListClassName(listStyles.list)
   }
 
   const handleParticipantsListClose = () => {
     dispatch(setIsListVisible('group'))
+    setListClassName(listStyles.list_invisible)
   }
 
   return (
@@ -38,7 +41,7 @@ export const Group = ({ contentVisible, handleGroupClose, message, participants 
           ))}
         </div>
         <List
-          listVisible={listVisible}
+          listClassName={listClassName}
           handleParticipantsListClose={handleParticipantsListClose}
           participants={participants}
           message={message}
