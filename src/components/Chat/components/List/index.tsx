@@ -45,11 +45,7 @@ export const List = ({ handleParticipantsListClose, participants, message, listV
             <GroupMessage key={member.id} {...member} member={member} handleRaitingListOpen={handleRaitingListOpen} />
           ))}
         </div>
-        <RaitingList
-          raitingVisible={raitingVisible}
-          handleRaitingListClose={handleRaitingListClose}
-          raitingClassName={raitingClassName}
-        />
+        <RaitingList handleRaitingListClose={handleRaitingListClose} raitingClassName={raitingClassName} />
       </section>
     )
   )

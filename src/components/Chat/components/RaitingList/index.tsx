@@ -7,7 +7,7 @@ import orange from '@icons/raitingOrange.svg'
 import purple from '@icons/raitingPurple.svg'
 import red from '@icons/redRaiting.svg'
 
-export const RaitingList = ({ raitingVisible, handleRaitingListClose, raitingClassName }) => {
+export const RaitingList = ({ handleRaitingListClose, raitingClassName }) => {
   const [t] = useTranslation()
 
   return (
