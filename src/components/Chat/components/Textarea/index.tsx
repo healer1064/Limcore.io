@@ -18,7 +18,11 @@ export const Textarea = () => {
   }
 
   const handleInputHeight = (e) => {
-    e.target.style.height = e.target.scrollHeight + 'px'
+    if (e.target.value.length !== 0) {
+      e.target.style.height = e.target.scrollHeight + 'px'
+    } else {
+      e.target.style.height = '40px'
+    }
     handleSendIconVisibility(e)
   }
   return (
@@ -26,7 +30,14 @@ export const Textarea = () => {
       <button className={styles.button} type='button'>
         <img alt='' src={clip} className={styles.clip} />
       </button>
-      <textarea className={styles.inputText} placeholder='Сообщение' onChange={handleInputHeight} />
+      <textarea
+        className={styles.inputText}
+        placeholder='Сообщение'
+        onChange={handleInputHeight}
+        onCut={handleInputHeight}
+        onPaste={handleInputHeight}
+        onInput={handleInputHeight}
+      />
       <button className={styles.button} type='submit'>
         {buttonVisible === 'send' && <img alt='' src={send} className={styles.sendIcon} />}
       </button>
