@@ -5,13 +5,12 @@ import Styles from './styles.module.scss'
 
 interface ContainerProps {
   title: string
-  onClick?: () => void
   onClose?: () => void
   onClickBack?: () => void
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const Container: React.FC<ContainerProps> = ({ title, onClick, onClose, onClickBack, children }) => {
+export const Container: React.FC<ContainerProps> = ({ title, onClose, onClickBack, children }) => {
   const dispatch = useAppDispatch()
   const step = useAppSelector((state) => state.cabinet.step)
   const bodyEl = useRef(document.querySelector('body'))

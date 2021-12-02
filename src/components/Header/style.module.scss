@@ -35,7 +35,7 @@
 }
 
 .link {
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -104,7 +104,7 @@
   }
 
   .langTitle {
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
@@ -149,7 +149,6 @@
     & > .profileBtn_link {
       color: #2D4EC5;
       transition: color .3s ease;
-      // transition: color .3s ease, border .3s ease;
   
       & > svg > path,
       & > svg > ellipse {
@@ -219,15 +218,6 @@ input[type='radio'] {
   display: none;
 }
 
-// .enter {
-//   font-family: 'Montserrat';
-//   font-style: normal;
-//   font-weight: 600;
-//   font-size: 16px;
-//   line-height: 22px;
-//   color: #4a70f8;
-// }
-
 .logoLink {
   margin-right: 10px;
 }
@@ -254,9 +244,5 @@ input[type='radio'] {
   .lang {
     margin-right: 0;
     transform: translateX(5px);
-  }
-
-  .list {
-    //gap: 12px;
   }
 }

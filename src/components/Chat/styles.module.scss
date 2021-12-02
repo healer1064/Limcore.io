@@ -19,7 +19,7 @@
   position: fixed;
   bottom: 0;
   right: 120px;
-  box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+  box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
   border-radius: 14px;
   background-color: #FFFFFF;
 }
@@ -34,7 +34,7 @@
 }
 
 .title {
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -42,7 +42,6 @@
   display: flex;
   align-items: center;
   color: #3A3B3D;
-  display: flex;
   box-sizing: border-box;
   padding: 0;
   margin: 0;

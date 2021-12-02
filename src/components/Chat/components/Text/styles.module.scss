@@ -23,7 +23,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
@@ -35,7 +35,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 13px;
@@ -50,7 +50,7 @@
   justify-content: flex-end;
   padding: 0;
   margin: 0;
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 13px;
@@ -61,12 +61,10 @@
   bottom: 18px;
 
   &_owner {
-    display: flex;
-    box-sizing: border-box;
     justify-content: flex-end;
     padding: 0;
     margin: 0;
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 13px;
