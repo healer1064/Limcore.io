@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import { FooterMobile } from '@components/Footer/FooterMobile'
 import { SearchForm } from '@components/Chat/components/SearchForm'
 import { Message } from '@components/Chat/components/Message'
 import { useTranslation } from 'react-i18next'
 import fotoExample from '@icons/supportFotoExample.svg'
-import limc from '@icons/limcBig.svg'
 import grey from '@icons/raitingGrey.svg'
 import fotoPart1 from '@icons/groupPart1.svg'
 import purple from '@icons/raitingPurple.svg'
@@ -13,35 +12,56 @@ import fotoPart2 from '@icons/groupPart2.svg'
 import orange from '@icons/raitingOrange.svg'
 import close from '@icons/greyClose.svg'
 import useWindowSize from '../../helpers/useWindowSizeHook'
+import { Spinner } from '@components/Spinner'
+import { nanoid } from '@reduxjs/toolkit'
+import RUS from '../../assets/icons/flag-ru.svg'
+import { IGroupInterface } from './utils/types'
+
+export let socket = null
+
 export const Chat = ({ handleChatClose }) => {
   const [t] = useTranslation()
   const { width } = useWindowSize()
+
+  const [groups, setGroups] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
+  const token = tokenObj.access
   const desktop = width >= 769
-  const messages = [
-    {
-      id: 1,
-      name: 'Поддержка',
-      message: 'Привет! Здесь вы можете задать вопросы по операциям и услугам нашего сервиса.',
-      date: 11.08,
-      image: fotoExample,
-      status: 'В сети',
-      unreadMessages: 0,
-      owner: false,
-      group: false,
-    },
-    {
-      id: 2,
-      name: 'Mining Data Centre Limcore',
-      message: 'Привет всем! Что думаете...',
-      date: 11.08,
-      image: limc,
-      status: 'Не в сети',
-      unreadMessages: 0,
-      owner: false,
-      group: true,
-      numberOfParticipants: 70,
-    },
-  ]
+
+  socket = new WebSocket(`ws://217.28.228.152:9005/ws/chat/?token=${token}`)
+  socket.onopen = () => {
+    console.log('ON OPEN')
+  }
+
+  useEffect(() => {
+    socket.onmessage = (event: MessageEvent) => {
+      const data = JSON.parse(event.data)
+      console.log(data.groups)
+
+      const arr = []
+
+      data.groups.map((group: any) => {
+        const msgDate = new Date(group.last_message.created_at)
+
+        const obj: IGroupInterface = {
+          id: nanoid(), // maybe TODO
+          image: RUS, // TODO
+          name: group.name,
+          message: group.last_message.message,
+          date: `${msgDate.getHours()}:${msgDate.getMinutes()}`,
+          unreadMessages: group.unread_count,
+          owner: false,
+          group: false,
+        }
+        arr.push(obj)
+      })
+
+      setGroups(arr)
+      setIsLoading(false)
+    }
+  }, [])
 
   const participants = [
     {
@@ -91,7 +111,12 @@ export const Chat = ({ handleChatClose }) => {
         ) : null}
         <SearchForm desktop={desktop} />
         <section className={styles.messageSection}>
-          {messages.map((message) => (
+          {isLoading && (
+            <div className={styles.spinnerContainer}>
+              <Spinner />
+            </div>
+          )}
+          {groups.map((message) => (
             <Message key={message.id} {...message} message={message} participants={participants} />
           ))}
         </section>
