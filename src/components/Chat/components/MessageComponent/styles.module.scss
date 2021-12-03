@@ -62,32 +62,54 @@
 }
 
 .message {
+  position: relative;
+
+  box-sizing: border-box;
   grid-area: message;
   display: flex;
-  position: relative;
-  // top: -10px;
-  // z-index: -1;
   width: 75%;
-  box-sizing: border-box;
-  padding: 12px 14px;
   margin: 0;
-  background: #F0F5FD;
+  padding: 12px 50px 12px 14px;
   border-radius: 14px;
+  
   font-family: Montserrat;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 13px;
   line-height: 1.45;
   color: #4F535A;
   
-  .time {
-    position: absolute;
-    bottom: 13px;
-    right: 13px;
+  background: #F0F5FD;
+}
 
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 18px;
-    color: #99A0AD;
-  }
+.myMessage {
+  position: relative;
+
+  box-sizing: border-box;
+  grid-area: message;
+  display: flex;
+  width: 75%;
+  margin: 0 0 0 auto;
+  padding: 12px 50px 12px 14px;
+  border-radius: 14px;
+  
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #fff;
+  
+  background: #4A70F8;
+}
+
+.time {
+  position: absolute;
+  bottom: 13px;
+  right: 13px;
+
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  color: #99A0AD;
 }
