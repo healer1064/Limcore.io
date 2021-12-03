@@ -23,16 +23,12 @@ export const Profile: React.FC = () => {
   return (
     <>
       <div className={Styles.info}>
-        <div className={Styles.avatar}>
-          <div className={Styles.image}>
-            <img src={avatarImage} alt='Аватар' />
-          </div>
-        </div>
-        <span className={Styles.phone}>{formatPhoneNumber(userData?.phone)}</span>
+        <img className={`${Styles.image} ${Styles.avatar}`} src={avatarImage} alt='Аватар' />
+        <p className={Styles.phone}>{formatPhoneNumber(userData?.phone)}</p>
       </div>
       <div className={Styles.block}>
-        <span className={Styles.title}>{t('profile_fillIn')}</span>
-        <span className={Styles.info}>{t('profile_willGrant')}</span>
+        <h2 className={Styles.title}>{t('profile_fillIn')}</h2>
+        <p className={Styles.info}>{t('profile_willGrant')}</p>
         <ButtonBig onClick={startFilling}>{t('purse_goFilling')}</ButtonBig>
       </div>
       <p className={Styles.text}>{t('profile_subtitle')}</p>

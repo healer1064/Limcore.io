@@ -67,14 +67,7 @@ export const PaginationComponent = (props) => {
             ) : (
               <div className='button-container row-count_select'>
                 <span key={10}>
-                  <input
-                    type='radio'
-                    id={`${10}`}
-                    name='pageSize'
-                    value={10}
-                    checked
-                    // onChange={}
-                  />
+                  <input type='radio' id={`${10}`} name='pageSize' value={10} checked />
                   <label className='button-container__button active_count' htmlFor={`${10}`}>
                     {10}
                   </label>

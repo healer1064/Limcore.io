@@ -66,37 +66,32 @@ export const ProfileComplete: React.FC = () => {
       <div className={Styles.info}>
         {userData?.profile?.avatar === null ? (
           <div className={Styles.avatar}>
-            <div className={Styles.image}>
-              <img src={avatarImage} alt='Аватар' />
-            </div>
+            <img className={Styles.image} src={avatarImage} alt='Avatar' />
             <label className={Styles.edit}>
               <input type='file' onChange={(event) => setImg(event.target.files[0])} />
             </label>
           </div>
         ) : (
           <div className={Styles.avatar}>
-            <div className={Styles.image}>
-              <img src={userData?.profile?.avatar} alt='Аватар' />
-            </div>
+            <img className={Styles.image} src={userData?.profile?.avatar} alt='Avatar' />
             <label className={Styles.edit}>
               <input type='file' onChange={(event) => setImg(event.target.files[0])} />
             </label>
           </div>
         )}
-        <span className={Styles.name}>
+        <p className={Styles.name}>
           {userData?.profile?.first_name} {userData?.profile?.last_name}
-        </span>
+        </p>
       </div>
       <div className={Styles.container}>
-        <span className={Styles.caption}>{t('profile_documents')}</span>
+        <h3 className={Styles.caption}>{t('profile_documents')}</h3>
         <div className={Styles.documents}>
           <div className={Styles.document}>
             <img className={Styles.icon} src={passportIcon} alt='Иконка' />
-            <span className={Styles.title}>{t('profile_rusPasport')}</span>
-            <span className={Styles.subtitle}>
+            <p className={Styles.title}>{t('profile_rusPasport')}</p>
+            <p className={Styles.subtitle}>
               {userData?.profile?.passport_series} {userData?.profile?.passport_number}
-            </span>
-            {/* <img className={Styles.link} src={linkIcon} alt='Иконка' /> */}
+            </p>
           </div>
           {/* <div className={Styles.document}>
             <img className={Styles.icon} src={innIcon} alt='Иконка' />
@@ -110,8 +105,8 @@ export const ProfileComplete: React.FC = () => {
             <img className={Styles.icon} src={phoneIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
-                <span className={Styles.label}>{t('profile_phoneNumber')}</span>
-                <span className={Styles.content}>{userData?.phone}</span>
+                <p className={Styles.label}>{t('profile_phoneNumber')}</p>
+                <p className={Styles.content}>{userData?.phone}</p>
               </div>
               {/* <ButtonSmall onClick={() => changeView('editPhone')}>Изменить</ButtonSmall> */}
             </div>
@@ -120,8 +115,8 @@ export const ProfileComplete: React.FC = () => {
             <img className={Styles.icon} src={emailIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
-                <span className={Styles.label}>{t('profile_email')}</span>
-                <span className={Styles.content}>{userData?.email}</span>
+                <p className={Styles.label}>{t('profile_email')}</p>
+                <p className={Styles.content}>{userData?.email}</p>
               </div>
               {/* <ButtonSmall onClick={() => changeView('editEmail')}>Изменить</ButtonSmall> */}
             </div>
@@ -139,18 +134,22 @@ export const ProfileComplete: React.FC = () => {
             <img className={Styles.icon} src={locationIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
-                <span className={Styles.content}>{t('profile_addresses')}</span>
+                <p className={Styles.content}>{t('profile_addresses')}</p>
               </div>
-              <img className={Styles.arrow} src={linkIcon} alt='Иконка' />
+              <button type='button'>
+                <img className={Styles.arrow} src={linkIcon} alt='Иконка' />
+              </button>
             </div>
           </li>
           <li className={Styles.item} onClick={onClick2FA}>
             <img className={Styles.icon} src={authIcon} alt='Иконка' />
             <div className={`${Styles.wrapper} ${Styles.wrapper_edit}`}>
               <div className={Styles.block}>
-                <span className={Styles.content}>{t('profile_2fa')}</span>
+                <p className={Styles.content}>{t('profile_2fa')}</p>
               </div>
-              <img className={Styles.arrow} src={linkIcon} alt='Иконка' />
+              <button type='button'>
+                <img className={Styles.arrow} src={linkIcon} alt='Иконка' />
+              </button>
             </div>
           </li>
         </ul>
@@ -158,7 +157,9 @@ export const ProfileComplete: React.FC = () => {
           <div className={Styles.notification} onClick={onClick2FA}>
             <span className={Styles.text}>{t('profile_2fa_connect')}</span>
             <img className={Styles.smartphone} src={smartphoneImage} alt='Иконка' />
-            <img className={Styles.close} src={closeIcon} alt='Иконка' onClick={closeNotification} />
+            <button className={Styles.close} type='button'>
+              <img src={closeIcon} alt='Иконка' onClick={closeNotification} />
+            </button>
           </div>
         )}
       </div>

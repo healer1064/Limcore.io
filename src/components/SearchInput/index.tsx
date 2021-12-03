@@ -11,10 +11,8 @@ interface SearchInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, '
 
 export const SearchInput: React.FC<SearchInputProps> = ({ text, onChange, onReset }) => {
   return (
-    <div className={Styles.input_container}>
-      <div className={Styles.input_iconContainer}>
-        <img className={Styles.search_icon} src={search} alt='search' />
-      </div>
+    <form className={Styles.input_container}>
+      <img className={`${Styles.search_icon} ${Styles.input_iconContainer}`} src={search} alt='search' />
       <input
         className={Styles.search_input}
         type='text'
@@ -22,10 +20,10 @@ export const SearchInput: React.FC<SearchInputProps> = ({ text, onChange, onRese
         onChange={(e) => (onChange ? onChange(e?.target?.value) : undefined)}
       />
       {text && (
-        <div className={Styles.cancelIconContainer} onClick={onReset}>
+        <button className={Styles.cancelIconContainer} onClick={onReset} type='reset'>
           <img className={Styles.cancel__icon} src={cancel} alt='cancel' />
-        </div>
+        </button>
       )}
-    </div>
+    </form>
   )
 }

@@ -160,20 +160,20 @@ export const Calendar: React.FC<CalendarProps> = ({ closePopup, dataType }) => {
       {view === 'years' && (
         <>
           <div className={Styles.select}>
-            <button onClick={backwardYears}>
+            <button onClick={backwardYears} type='button'>
               <img className={Styles.leftIcon} src={leftIcon} alt='Иконка' />
             </button>
-            <span className={Styles.title}>{title}</span>
-            <button onClick={forwardYears}>
+            <h3 className={Styles.title}>{title}</h3>
+            <button onClick={forwardYears} type='button'>
               <img className={Styles.rightIcon} src={rightIcon} alt='Иконка' />
             </button>
           </div>
           <div className={Styles.grid}>
             {years &&
               years.map((year) => (
-                <span key={year} className={Styles.item} onClick={() => selectYear(year)}>
+                <time key={year} className={Styles.item} onClick={() => selectYear(year)}>
                   {year}
-                </span>
+                </time>
               ))}
           </div>
         </>
@@ -181,20 +181,20 @@ export const Calendar: React.FC<CalendarProps> = ({ closePopup, dataType }) => {
       {view === 'months' && (
         <>
           <div className={Styles.select}>
-            <button onClick={() => backwardYear(year - 1)}>
+            <button onClick={() => backwardYear(year - 1)} type='button'>
               <img className={Styles.leftIcon} src={leftIcon} alt='Иконка' />
             </button>
-            <span className={Styles.title}>{title}</span>
-            <button onClick={() => forwardYear(year + 1)}>
+            <h3 className={Styles.title}>{title}</h3>
+            <button onClick={() => forwardYear(year + 1)} type='button'>
               <img className={Styles.rightIcon} src={rightIcon} alt='Иконка' />
             </button>
           </div>
           <div className={Styles.grid}>
             {months &&
               months.map((month) => (
-                <span key={month.id} className={Styles.item} onClick={() => selectMonth(month)}>
+                <time key={month.id} className={Styles.item} onClick={() => selectMonth(month)}>
                   {month.name}
-                </span>
+                </time>
               ))}
           </div>
         </>
@@ -202,36 +202,36 @@ export const Calendar: React.FC<CalendarProps> = ({ closePopup, dataType }) => {
       {view === 'days' && (
         <>
           <div className={Styles.select}>
-            <button onClick={() => backwardMonth()}>
+            <button onClick={() => backwardMonth()} type='button'>
               <img className={Styles.leftIcon} src={leftIcon} alt='Иконка' />
             </button>
-            <span className={Styles.title}>{title}</span>
-            <button onClick={() => forwardMonth()}>
+            <h3 className={Styles.title}>{title}</h3>
+            <button onClick={() => forwardMonth()} type='button'>
               <img className={Styles.rightIcon} src={rightIcon} alt='Иконка' />
             </button>
           </div>
           <div className={Styles.container}>
             <div className={Styles.head}>
-              <span className={Styles.daytime}>Пн</span>
-              <span className={Styles.daytime}>Вт</span>
-              <span className={Styles.daytime}>Ср</span>
-              <span className={Styles.daytime}>Чт</span>
-              <span className={Styles.daytime}>Пт</span>
-              <span className={Styles.daytime}>Сб</span>
-              <span className={Styles.daytime}>Вс</span>
+              <time className={Styles.daytime}>Пн</time>
+              <time className={Styles.daytime}>Вт</time>
+              <time className={Styles.daytime}>Ср</time>
+              <time className={Styles.daytime}>Чт</time>
+              <time className={Styles.daytime}>Пт</time>
+              <time className={Styles.daytime}>Сб</time>
+              <time className={Styles.daytime}>Вс</time>
             </div>
             <div className={Styles.body}>
               {days &&
                 days.map((obj, index) => (
                   <>
                     {obj.month !== month ? (
-                      <span key={index} className={`${Styles.day} ${Styles.day_disable}`}>
+                      <time key={index} className={`${Styles.day} ${Styles.day_disable}`}>
                         {obj.day}
-                      </span>
+                      </time>
                     ) : (
-                      <span key={index} className={Styles.day} onClick={() => selectDay(obj.day)}>
+                      <time key={index} className={Styles.day} onClick={() => selectDay(obj.day)}>
                         {obj.day}
-                      </span>
+                      </time>
                     )}
                   </>
                 ))}

@@ -47,25 +47,19 @@ export const Step3: React.FC = () => {
     <>
       <div className={Styles.progress}>
         <div className={Styles.step}>
-          <div className={`${Styles.number} ${Styles.number_active}`}>
-            <span>1</span>
-          </div>
+          <div className={`${Styles.number} ${Styles.number_active}`}>1</div>
           <span className={`${Styles.line} ${Styles.line_active}`}>{}</span>
         </div>
         <div className={Styles.step}>
-          <div className={`${Styles.number} ${Styles.number_active}`}>
-            <span>2</span>
-          </div>
+          <div className={`${Styles.number} ${Styles.number_active}`}>2</div>
         </div>
         <div className={Styles.step}>
           <span className={`${Styles.line} ${Styles.line_active}`}>{}</span>
-          <div className={`${Styles.number} ${Styles.number_active}`}>
-            <span>3</span>
-          </div>
+          <div className={`${Styles.number} ${Styles.number_active}`}>3</div>
         </div>
       </div>
       <div className={Styles.container}>
-        <span className={Styles.caption}>{t('profile_title3')}</span>
+        <h2 className={Styles.caption}>{t('profile_title3')}</h2>
         {/* <span className={Styles.subcaption}>Введите адрес прописки</span> */}
         <form className={Styles.form}>
           <Label className={Styles.label} titleText={t('profile_city')}>
@@ -80,7 +74,7 @@ export const Step3: React.FC = () => {
               maxLength={maxLength}
             />
           </Label>
-          <div className={Styles.wrapper}>
+          <fieldset className={Styles.wrapper}>
             <Label titleText={t('profile_house')}>
               <InputText
                 className={Styles.input}
@@ -111,7 +105,7 @@ export const Step3: React.FC = () => {
                 maxLength={maxLength}
               />
             </Label>
-          </div>
+          </fieldset>
           <ButtonBig onClick={completeFilling}>{t('profile_complete')}</ButtonBig>
           {error && (
             <div className={Styles.error}>

@@ -54,12 +54,12 @@ export const AddAuth: React.FC = () => {
             {userData?.is_connected_2fa ? (
               <>
                 <div className={Styles.block}>
-                  <span className={Styles.caption}>{t('profile_2fa_on')}</span>
-                  <span className={Styles.subcaption}>{t('profile_2fa_subtitle')}</span>
+                  <h2 className={Styles.caption}>{t('profile_2fa_on')}</h2>
+                  <p className={Styles.subcaption}>{t('profile_2fa_subtitle')}</p>
                   <div className={Styles.wrapper}>
                     <div className={Styles.container}>
-                      <span className={Styles.title}>{t('profile_2fa_linked')}</span>
-                      <span className={Styles.subtitle}>{userData.phone}</span>
+                      <h3 className={Styles.title}>{t('profile_2fa_linked')}</h3>
+                      <p className={Styles.subtitle}>{userData.phone}</p>
                     </div>
                     <ToggleButton onChange={changeOffAuth} checked={checkedToggle} />
                   </div>
@@ -75,8 +75,8 @@ export const AddAuth: React.FC = () => {
             ) : (
               <>
                 <div className={Styles.block}>
-                  <span className={Styles.caption}>{t('profile_2fa_add')}</span>
-                  <span className={Styles.subcaption}>{t('profile_2fa_subtitle')}</span>
+                  <h2 className={Styles.caption}>{t('profile_2fa_add')}</h2>
+                  <p className={Styles.subcaption}>{t('profile_2fa_subtitle')}</p>
                 </div>
                 <ButtonBig onClick={() => nextStep(1)}>{t('profile_connect')}</ButtonBig>
               </>
@@ -91,7 +91,7 @@ export const AddAuth: React.FC = () => {
       </>
       {offAuth && (
         <Popup closePopup={closePopup}>
-          <span className={Styles.designation}>{t('profile_2fa_doWantToOff')}</span>
+          <p className={Styles.designation}>{t('profile_2fa_doWantToOff')}</p>
           <div className={Styles.buttons}>
             <ButtonBig onClick={off2FA}>{t('profile_2fa_wantToOff')}</ButtonBig>
             <ButtonBig className={Styles.button} onClick={closePopup}>
