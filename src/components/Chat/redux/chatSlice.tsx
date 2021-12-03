@@ -4,53 +4,44 @@ import { RootState } from '../../../app/redux/store'
 export const chatSlice = createSlice({
   name: 'chat',
   initialState: {
-    isSupportVisible: false,
-    isGroupVisible: false,
-    isParticipantsListVisible: false,
-    isRaitingListVisible: false,
+    isChatVisible: '',
+    isContentVisible: '',
+    isListVisible: '',
+    isRaitingVisible: '',
     isSearched: '',
-    closeButtonVisible: false,
-    resetButtonVisible: false,
+    isButtonVisible: '',
     sendIconVisible: false,
   },
   reducers: {
-    setIsSupportVisible: (state, { payload }) => {
-      state.isSupportVisible = payload
+    setIsChatVisible: (state, { payload }) => {
+      state.isChatVisible = payload
     },
-    setIsGroupVisible: (state, { payload }) => {
-      state.isGroupVisible = payload
+    setIsContentVisible: (state, { payload }) => {
+      state.isContentVisible = payload
     },
-    setIsParticipantsListVisible: (state, { payload }) => {
-      state.isParticipantsListVisible = payload
+    setIsListVisible: (state, { payload }) => {
+      state.isListVisible = payload
     },
-    setIsRaitingListVisible: (state, { payload }) => {
-      state.isRaitingListVisible = payload
+    setIsRaitingVisible: (state, { payload }) => {
+      state.isRaitingVisible = payload
     },
     setIsSearched: (state, { payload }) => {
       state.isSearched = payload
     },
-    setCloseButtonVisible: (state, { payload }) => {
-      state.closeButtonVisible = payload
-    },
-    setResetButtonVisible: (state, { payload }) => {
-      state.resetButtonVisible = payload
-    },
-    setSendIconVisible: (state, { payload }) => {
-      state.sendIconVisible = payload
+    setIsButtonVisible: (state, { payload }) => {
+      state.isButtonVisible = payload
     },
   },
 })
 
 const { actions, reducer } = chatSlice
 export const {
-  setIsSupportVisible,
-  setIsGroupVisible,
-  setIsParticipantsListVisible,
-  setIsRaitingListVisible,
+  setIsChatVisible,
+  setIsContentVisible,
+  setIsListVisible,
+  setIsRaitingVisible,
   setIsSearched,
-  setCloseButtonVisible,
-  setResetButtonVisible,
-  setSendIconVisible,
+  setIsButtonVisible,
 } = actions
 
 export const chatSelector = (state: RootState) => state.chat

@@ -26,7 +26,7 @@
   padding: 10px 10px 10px 14px;
   margin: 10px 0 0;
   height: 40px;
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
@@ -36,11 +36,12 @@
   background: #FFFFFF;
   border: 1.4px solid #B4BFD5;
   border-radius: 14px;
+  overflow: hidden;
 
   &::placeholder {
     display: flex;
     box-sizing: border-box;
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 13px;
@@ -56,10 +57,6 @@
   padding: 0;
   width: 40px;
   height: 40px;
-
-  &_invisible {
-    display: none;
-  }
 
   &:hover {
     cursor: pointer;

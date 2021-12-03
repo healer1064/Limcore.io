@@ -1,14 +1,14 @@
 import React from 'react'
 import styles from './styles.module.scss'
 import profileIcon from '@icons/profileicon.svg'
-import { getHoursAndMinutes } from '@components/Chat/utils/chat'
 
 interface IGroupText {
   member: any // TODO
-  message: any // TODO
+  message: string
+  time: string
 }
 
-export const GroupText = ({ member, message }: IGroupText) => {
+export const MyMessage = ({ member, message, time = '12:00' }: IGroupText) => {
   if (!member.foto) {
     member.foto = profileIcon
   }
@@ -21,8 +21,8 @@ export const GroupText = ({ member, message }: IGroupText) => {
         <span>{`${member.score} ТВ`}</span>
       </span> */}
       <p className={styles.message}>
-        {message.message}
-        <span className={styles.time}>{getHoursAndMinutes(message.created_at)}</span>
+        {message}
+        <span className={styles.time}>{time}</span>
       </p>
     </div>
   )

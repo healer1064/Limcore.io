@@ -101,3 +101,10 @@
   line-height: 130%;
   color: #99A0AD;
 }
+
+@media screen and (min-width: 769px) {
+  .message {
+    grid-template-columns: 45px 1fr minmax(min-content, max-content);
+  }
+
+}
