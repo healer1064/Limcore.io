@@ -8,12 +8,9 @@ import { setIsContentVisible } from '../../redux/chatSlice'
 import { getMonthAndDay } from '@components/Chat/utils/chat'
 import limcoreIcon from '@icons/limcore.svg'
 
-export const Dialogue = ({ data }) => {
+export const Dialogue = ({ data, socket }) => {
   const dispatch = useAppDispatch()
   const contentVisible = useAppSelector((state) => state.chat.isContentVisible)
-  console.log(data)
-
-  const title = data.name === 'General chat' ? 'Общий чат' : data.name
 
   const handleGroupOpen = () => {
     dispatch(setIsContentVisible('group'))
@@ -24,7 +21,7 @@ export const Dialogue = ({ data }) => {
       <div className={styles.messageContainer} onClick={handleGroupOpen}>
         <img src={limcoreIcon} alt='image' className={styles.foto} />
         {/* <img alt='' src={active} className={data.status === 'В сети' ? styles.status : styles.status_invisible} /> */}
-        <p className={styles.name}>{title}</p>
+        <p className={styles.name}>{data.name}</p>
         <p className={styles.message}>{data.last_message.message}</p>
         <data className={styles.date}>{getMonthAndDay(data.last_message.created_at)}</data>
         <div className={data.unreadMessages > 0 ? styles.unreadMessages : styles.unreadMessages_invisible}>
@@ -33,7 +30,7 @@ export const Dialogue = ({ data }) => {
         <span className={styles.line} />
       </div>
       <div>
-        <DialogueContent contentVisible={contentVisible === 'group'} slug={data.slug} />
+        <DialogueContent contentVisible={contentVisible === 'group'} slug={data.slug} socket={socket} />
       </div>
     </>
   )

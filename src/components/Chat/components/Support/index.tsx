@@ -6,7 +6,7 @@ import arrow from '@icons/arrow-left-blue.svg'
 import { Textarea } from '@components/Chat/components/Textarea'
 import { IGroupInterface } from '@components/Chat/utils/types'
 import { getGroupMessages } from '@components/Chat/utils/chat'
-import { socket } from '../../index'
+// import { socket } from '../../index'
 
 interface ISupportProps {
   contentVisible: string
@@ -18,14 +18,14 @@ export const Support = ({ contentVisible, message, handleSupportClose }: ISuppor
   const [t] = useTranslation()
   const [messages, setMessages] = useState([])
 
-  socket.onmessage = (event: MessageEvent) => {
-    const data = JSON.parse(event.data)
-    console.log(data)
+  // socket.onmessage = (event: MessageEvent) => {
+  //   const data = JSON.parse(event.data)
+  //   console.log(data)
 
-    if (data.command === 4) {
-      setMessages(data.result)
-    }
-  }
+  //   if (data.command === 4) {
+  //     setMessages(data.result)
+  //   }
+  // }
 
   useEffect(() => {
     console.log('messages', messages)

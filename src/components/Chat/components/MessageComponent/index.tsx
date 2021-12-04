@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import profileIcon from '@icons/profileicon.svg'
+// import profileIcon from '@icons/profileicon.svg'
 import { getHoursAndMinutes } from '@components/Chat/utils/chat'
 
 interface IGroupText {
@@ -10,9 +10,9 @@ interface IGroupText {
 }
 
 export const MessageComponent = ({ user, message, isMyMsg }: IGroupText) => {
-  if (!user.avatar) {
-    user.avatar = profileIcon
-  }
+  // if (!user.avatar) {
+  //   user.avatar = profileIcon
+  // }
 
   return (
     <div className={styles.member}>

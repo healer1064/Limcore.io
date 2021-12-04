@@ -9,34 +9,32 @@ import { Textarea } from '@components/Chat/components/Textarea'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setIsContentVisible, setIsListVisible } from '../../redux/chatSlice'
 import limcoreIcon from '@icons/limcore.svg'
-import { socket } from '../../index'
+// import { socket } from '../../index'
 import { getGroupMessages } from '@components/Chat/utils/chat'
-import { nanoid } from '@reduxjs/toolkit'
 
-export const DialogueContent = ({ contentVisible, slug }) => {
+export const DialogueContent = ({ contentVisible, slug, socket }) => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const messagesEndRef = useRef(null)
 
-  const userMail = useAppSelector((state) => state.user.userData?.email)
+  const userId = useAppSelector((state) => state.user.userData?.id)
   // const [listClassName, setListClassName] = useState(listStyles.list_invisible)
   const [messages, setMessages] = useState([])
 
-  socket.onmessage = (event) => {
-    const data = JSON.parse(event.data)
-    console.log(data.result)
-    // setMessages(data.result)
+  useEffect(() => {
+    if (contentVisible) {
+      getGroupMessages(slug, 1)
 
-    if (data.result && data.result.length !== 0) {
-      setMessages([...messages, ...data.result])
+      socket.current.onmessage = (event: MessageEvent) => {
+        const data = JSON.parse(event.data)
+
+        if (data.result && data.result?.length !== 0) {
+          // setMessages([...messages, ...data.result])
+          setMessages(data.result)
+        }
+      }
     }
-
-    // if (data.result) {
-    //   console.log(data.result)
-    //   setMessages(data.result)
-    // }
-    // setMessages([...messages, ...data.result])
-  }
+  }, [contentVisible])
 
   const handleParticipantsListOpen = () => {
     dispatch(setIsListVisible('list'))
@@ -50,18 +48,11 @@ export const DialogueContent = ({ contentVisible, slug }) => {
 
   // Скролл блока с сообщениями вниз
   useEffect(() => {
-    if (messagesEndRef.current) {
+    if (messages?.length !== 0) {
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight
     }
   }, [messages])
 
-  useEffect(() => {
-    if (contentVisible) {
-      getGroupMessages(slug, 1)
-    }
-  }, [contentVisible])
-
-  // TODO: рендерится несколько раз
   return (
     contentVisible && (
       <section className={styles.groupContainer}>
@@ -79,11 +70,11 @@ export const DialogueContent = ({ contentVisible, slug }) => {
             messages.length !== 0 &&
             messages.map((msg) => {
               let isMyMsg = false
-              if (userMail === msg.user.email) {
+              if (userId === msg.user) {
                 isMyMsg = true
               }
 
-              return <MessageComponent key={nanoid()} message={msg} user={msg.user} isMyMsg={isMyMsg} />
+              return <MessageComponent key={msg.id} message={msg} user={msg.user} isMyMsg={isMyMsg} />
             })}
         </div>
         {/* <List

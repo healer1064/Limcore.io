@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './styles.module.scss'
 import { FooterMobile } from '@components/Footer/FooterMobile'
 import { SearchForm } from '@components/Chat/components/SearchForm'
@@ -14,6 +14,7 @@ export let socket: WebSocket = null
 export const Chat = ({ handleChatClose }) => {
   const [t] = useTranslation()
   const { width } = useWindowSize()
+  const WS = useRef(null)
 
   const [dialogues, setDialogues] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -22,19 +23,21 @@ export const Chat = ({ handleChatClose }) => {
   const token = tokenObj.access
   const desktop = width >= 769
 
-  socket = new WebSocket(`ws://217.28.228.152:9005/ws/chat/?token=${token}`)
-
   useEffect(() => {
     if (dialogues.length === 0) {
-      socket.onmessage = (event: MessageEvent) => {
+      WS.current = new WebSocket(`ws://217.28.228.152:9005/ws/chat/?token=${token}`)
+      socket = WS.current
+
+      WS.current.onmessage = (event: MessageEvent) => {
         const data = JSON.parse(event.data)
-        console.log(data.groups)
+        console.log(data)
 
         setDialogues(data.groups)
-        setIsLoading(false)
       }
+    } else {
+      setIsLoading(false)
     }
-  }, [])
+  }, [dialogues])
 
   return desktop ? (
     <section className={styles.desktop}>
@@ -53,7 +56,7 @@ export const Chat = ({ handleChatClose }) => {
             </div>
           )}
           {dialogues.map((dialogue) => (
-            <Dialogue key={nanoid()} data={dialogue} />
+            <Dialogue key={nanoid()} data={dialogue} socket={WS} />
           ))}
         </section>
         <FooterMobile />
@@ -64,7 +67,7 @@ export const Chat = ({ handleChatClose }) => {
       <SearchForm desktop={desktop} />
       <article className={styles.messageSection}>
         {dialogues.map((dialogue) => (
-          <Dialogue key={nanoid()} data={dialogue} />
+          <Dialogue key={nanoid()} data={dialogue} socket={WS} />
         ))}
       </article>
       <FooterMobile />
