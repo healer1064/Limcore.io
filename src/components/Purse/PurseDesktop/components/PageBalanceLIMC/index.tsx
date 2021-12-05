@@ -48,7 +48,7 @@ export const PageBalanceLIMC: React.FC<PageBalanceLIMCPropsType> = ({
             {t('buy')}
           </a>
         </button>
-        <span className={styles.lockup}>{t('lockUp')}</span>
+        <p className={styles.lockup}>{t('lockUp')}</p>
       </div>
       <Transactions onProfileClick={openProfile} />
     </div>

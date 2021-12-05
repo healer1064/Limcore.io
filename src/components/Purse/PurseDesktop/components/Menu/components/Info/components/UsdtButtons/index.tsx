@@ -1,15 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './styles.module.scss'
 import classNames from 'classnames'
 import { addMoneyIcon, withdrawIcon } from '../../../../../../images/index'
-import { useAppSelector } from '@app/redux/hooks'
 
 export const UsdtButtons = () => {
-  // const [addInfoVisible, setAddInfoVisible] = useState(false)
-
-  // const handleAddMoneyClick = () => {
-  //   setAddInfoVisible(true)
-  // }
   const handleWithdrawClick = () => {
     console.log('handleWithdrawClick')
   }
@@ -17,10 +11,9 @@ export const UsdtButtons = () => {
     <>
       <ul className={styles.buttons}>
         <li className={styles.buttonsItem}>
-          {/* <button type='button' className={classNames(styles.btn, styles.btn__active)} onClick={handleAddMoneyClick}> */}
           <button type='button' className={classNames(styles.btn, styles.btn__active)}>
             <span className={styles.btnIcon}>
-              <img src={addMoneyIcon} />
+              <img src={addMoneyIcon} alt='icon' />
             </span>
             Пополнить
           </button>
@@ -28,7 +21,7 @@ export const UsdtButtons = () => {
         <li className={styles.buttonsItem}>
           <button type='button' className={styles.btn} onClick={handleWithdrawClick}>
             <span className={styles.btnIcon}>
-              <img src={withdrawIcon} />
+              <img src={withdrawIcon} alt='icon' />
             </span>
             Вывести
           </button>

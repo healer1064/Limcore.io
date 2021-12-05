@@ -18,22 +18,22 @@ export const ModalLimc = ({ isActive, onClose, balance }) => {
       <div className={styles.balanceBlock}>
         <div className={styles.block}>
           <div className={styles.line}>
-            <img src={limcoreIcon} alt='' />
-            <span className={styles.title}>{balance} LIMC</span>
+            <img src={limcoreIcon} alt='icon' />
+            <h3 className={styles.title}>{balance} LIMC</h3>
           </div>
-          <span className={styles.usd}>{}</span>
+          <p className={styles.usd} />
           <ButtonBig className={styles.buyBtn}>
             <a href='https://round1.limcore.io' className={styles.buyLink}>
-              <img className={styles.icon} src={buyIcon} alt='' />
+              <img className={styles.icon} src={buyIcon} alt='icon' />
               {t('buy')}
             </a>
           </ButtonBig>
           <div className={styles.container}>
-            <span className={styles.desc}>{t('purse_fillToRestore')}</span>
-            <span className={styles.desc}>{t('lockUp')}</span>
+            <p className={styles.desc}>{t('purse_fillToRestore')}</p>
+            <p className={styles.desc}>{t('lockUp')}</p>
           </div>
           <div className={styles.nextCont}>
-            <button className={styles.next} onClick={() => history.push('/profile')}>
+            <button className={styles.next} onClick={() => history.push('/profile')} type='button'>
               {t('purse_goFilling')}
             </button>
           </div>

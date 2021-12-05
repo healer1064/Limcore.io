@@ -51,9 +51,9 @@
   &Modal {
     padding: 0 20px;
     width: 100vw;
-    // height: 100vh;
 
     // DetalizationDown
+
     & > ul {
       padding: 0;
 
@@ -70,7 +70,7 @@
 
       & > ul {
         padding: 20px;
-        box-shadow: 0px 4px 25px 0px #7070701A;
+        box-shadow: 0 4px 25px 0 #7070701A;
         border-radius: 14px;
       }
     }
@@ -120,10 +120,6 @@
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-
-  & + & {
-    //border-top: 1px solid rgba(0, 0, 0, 0.1);
-  }
 
   &:first-of-type {
     padding-top: 22px;

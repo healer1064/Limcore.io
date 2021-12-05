@@ -29,9 +29,13 @@ export const MenuItem = ({ type }) => {
   switch (type) {
     case 'limc':
       return (
-        <button className={classNames(styles.menu__item, styles.menu__balance)} onClick={isSinc ? openLimc : () => {}}>
+        <button
+          type='button'
+          className={classNames(styles.menu__item, styles.menu__balance)}
+          onClick={isSinc ? openLimc : () => {}}
+        >
           <span className={styles.menu__icon}>{isSinc ? <BlueArrow /> : <ShouldSinc />}</span>
-          <img src={balanceLimc} width='40' height='40' className={styles.menu__img} />
+          <img src={balanceLimc} width='40' height='40' className={styles.menu__img} alt='icon' />
           <h5 className={styles.menu__title}>{t('balance')} LIMC</h5>
 
           {isSinc ? (
@@ -48,9 +52,13 @@ export const MenuItem = ({ type }) => {
       )
     case 'usdt':
       return (
-        <button className={classNames(styles.menu__item, styles.menu__balance)} onClick={isSinc ? openUsdt : () => {}}>
+        <button
+          type='button'
+          className={classNames(styles.menu__item, styles.menu__balance)}
+          onClick={isSinc ? openUsdt : () => {}}
+        >
           <span className={styles.menu__icon}>{isSinc ? <BlueArrow /> : <ShouldSinc />}</span>
-          <img src={balanceUsdt} width='40' height='40' className={styles.menu__img} />
+          <img src={balanceUsdt} width='40' height='40' className={styles.menu__img} alt='icon' />
           <h5 className={styles.menu__title}>{t('balance')} USDT</h5>
 
           {isSinc ? (

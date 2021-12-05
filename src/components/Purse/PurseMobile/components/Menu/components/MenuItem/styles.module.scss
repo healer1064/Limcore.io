@@ -33,7 +33,6 @@
 
   &__sum {
     @include font-style(14px, 600, 20px, $color-gray-black);
-    // word-wrap: break-word;
     text-align: start;
     text-overflow: ellipsis;
     overflow: hidden;

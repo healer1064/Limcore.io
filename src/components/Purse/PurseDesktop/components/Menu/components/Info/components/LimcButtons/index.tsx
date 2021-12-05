@@ -18,7 +18,7 @@ export const LimcButtons = () => {
       <li className={styles.buttonsItem}>
         <button type='button' className={classNames(styles.btn, styles.btn__active)} onClick={handleBuyClick}>
           <span className={styles.btnIcon}>
-            <img src={downloadIconWhite} />
+            <img src={downloadIconWhite} alt='icon' />
           </span>
           Купить
         </button>
@@ -26,7 +26,7 @@ export const LimcButtons = () => {
       <li className={styles.buttonsItem}>
         <button type='button' className={styles.btn} onClick={handleSellClick}>
           <span className={styles.btnIcon}>
-            <img src={sellIcon} />
+            <img src={sellIcon} alt='icon' />
           </span>
           Продать
         </button>
@@ -34,7 +34,7 @@ export const LimcButtons = () => {
       <li className={styles.buttonsItem}>
         <button type='button' className={styles.btn} onClick={handleTradeClick}>
           <span className={styles.btnIcon}>
-            <img src={tradeIcon} />
+            <img src={tradeIcon} alt='icon' />
           </span>
           Обменять
         </button>

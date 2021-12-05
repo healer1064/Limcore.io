@@ -167,28 +167,13 @@
     }
 
     .count {
-      font-family: Montserrat;
+      font-family: 'Montserrat', sans-serif;
       font-style: normal;
       font-weight: 600;
       font-size: 14px;
       line-height: 150%;
       color: #868da7;
       z-index: 3;
-    }
-
-    .etherscan {
-      font-family: Montserrat;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 13px;
-      color: #4A70F8;
-      text-decoration: none;
-    }
-
-    .etherscanIcon {
-      transform: translateY(6px);
-      margin-top: 0 !important;
-      margin-right: 6px;
     }
   }
 
@@ -276,7 +261,6 @@
   align-items: center;
   width: calc(100% - 40px);
   margin: 0 auto 15px;
-  // margin: 0 20px 15px;
 
   text-align: center;
 }
@@ -380,7 +364,7 @@
 .notion {
   padding: 0;
   margin: 0;
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 13px;

@@ -5,14 +5,14 @@ export const DetalizationDownItem = ({ img, title, subtitle, number, money }) =>
   return (
     <li className={styles.detailsItem}>
       <img src={img} className={styles.detailsImage} alt='icon' />
-      <span className={styles.columnText}>
+      <h3 className={styles.columnText}>
         <p className={styles.columnText__title}>{title}</p>
         <p className={styles.columnText__text}>{subtitle}</p>
-      </span>
-      <span className={styles.columnData}>
-        <p className={styles.columnData__title}>{number}</p>
-        <p className={styles.columnData__text}>{money}</p>
-      </span>
+      </h3>
+      <h3 className={styles.columnData}>
+        <data className={styles.columnData__title}>{number}</data>
+        <data className={styles.columnData__text}>{money}</data>
+      </h3>
     </li>
   )
 }

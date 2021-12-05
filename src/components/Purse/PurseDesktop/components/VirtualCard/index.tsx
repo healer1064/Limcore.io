@@ -13,9 +13,9 @@ export const VirtualCard: FC<CardPropsType> = (props) => {
       <p className={styles.card__title}>
         Скоро вы сможете <br /> выпустить виртуальную карту
       </p>
-      <img src={cardVirtual} className={styles.card__image} />
+      <img src={cardVirtual} className={styles.card__image} alt='virtualCard' />
 
-      <button className={styles.card__closeBtn} onClick={props.onCloseClick}>
+      <button className={styles.card__closeBtn} onClick={props.onCloseClick} type='button'>
         <GrayCrossIcon />
       </button>
     </div>

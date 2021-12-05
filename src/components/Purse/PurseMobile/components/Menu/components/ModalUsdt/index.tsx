@@ -17,10 +17,10 @@ export const ModalUsdt = ({ isActive, onClose, balance }: IModalUsdtProps) => {
       <div className={styles.balanceBlock}>
         <div className={styles.block}>
           <div className={styles.line}>
-            <img src={balanceUsdt} alt='' />
-            <span className={styles.title}>{balance} USDT</span>
+            <img src={balanceUsdt} alt='icon' />
+            <h3 className={styles.title}>{balance} USDT</h3>
           </div>
-          <span className={styles.usd}>{}</span>
+          <p className={styles.usd} />
         </div>
       </div>
     </Modal>

@@ -19,10 +19,9 @@
 
   &__title {
     @include section-title();
-    color: $color-3A-black;
     transition: opacity .3s ease;
     cursor: pointer;
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
@@ -165,7 +164,7 @@
     }
     
     .count {
-      font-family: Montserrat;
+      font-family: 'Montserrat', sans-serif;
       font-style: normal;
       font-weight: 600;
       font-size: 14px;
@@ -175,7 +174,7 @@
     }
   
     .etherscan {
-      font-family: Montserrat;
+      font-family: 'Montserrat', sans-serif;
       font-style: normal;
       font-weight: 500;
       font-size: 13px;
@@ -234,7 +233,7 @@
   }
 
   &__subtitle {
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 13px;
@@ -244,7 +243,7 @@
   }
 
   &__number {
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -328,7 +327,7 @@
   padding: 0;
   margin: 0;
   left: 0;
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
@@ -365,7 +364,6 @@
 .syncButton {
   @include section-title();
   color: $color-4A-blue;
-  border: none;
   outline: none;
   padding: 15px 0;
   max-width: 270px;
@@ -428,27 +426,6 @@
   'button close'
   'notion notion';
 }
-
-//.trust_kill {
-//  margin-bottom: 10px;
-//  padding: 10px 20px;
-//  border: none;
-//  border-radius: 14px;
-//
-//  font-size: 14px;
-//  font-weight: 500;
-//  line-height: 1;
-//  color: #fff;
-//
-//  background-color: #F24949;
-//  outline: none;
-//  transition: background-color .3s ease;
-//
-//  &:hover {
-//    background-color: #ec0505;
-//    transition: background-color .3s ease;
-//  }
-//}
 
 .trust_kill {
   display: grid;

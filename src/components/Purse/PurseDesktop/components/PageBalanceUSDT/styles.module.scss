@@ -12,7 +12,7 @@
    }
 
   &__title {
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 46px;
@@ -25,7 +25,7 @@
   }
 
   &__subtitle {
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
@@ -53,7 +53,7 @@
   padding: 0;
   flex-direction: row;
   background-color: transparent;
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -90,7 +90,7 @@
   background: #F9FAFF;
   border-radius: 14px;
   color: #4A70F8;
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
@@ -98,7 +98,6 @@
 
   &:hover {
     transition: background 0.3s ease;
-    // border: 1px solid #3159E9;
     cursor: pointer;
     color: #3159E9;
   }

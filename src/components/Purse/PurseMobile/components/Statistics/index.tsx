@@ -36,8 +36,8 @@ export const Statistics = () => {
         <span className={styles.progressbar__track} />
       </div>
       <div className={styles.details}>
-        <span className={styles.details__days}>80 {t('purse_mainingDateLast')}</span>
-        <span className={styles.details__memory}>0 TB / {Number(balanceLimc).toFixed(2)} TB</span>
+        <data className={styles.details__days}>80 {t('purse_mainingDateLast')}</data>
+        <data className={styles.details__memory}>0 TB / {Number(balanceLimc).toFixed(2)} TB</data>
       </div>
     </div>
   )
