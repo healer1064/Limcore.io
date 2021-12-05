@@ -22,6 +22,7 @@ export const userSlice = createSlice({
   initialState: {
     userId: null,
     dealerId: null,
+
     userData: null,
     email: null,
     middleName: false,
