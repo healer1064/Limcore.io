@@ -27,8 +27,8 @@ export const HeaderPurseDesktop = ({ isProfileActive, openProfile, closeProfile 
   const dispatch = useAppDispatch()
   const history = useHistory()
 
-  const firstName = useAppSelector((state) => state.user.userData?.profile.first_name)
-  const lastName = useAppSelector((state) => state.user.userData?.profile.last_name)
+  const firstName = useAppSelector((state) => state.user.data.first_name)
+  const lastName = useAppSelector((state) => state.user.data.last_name)
   const userPhone = useAppSelector((state) => state.user.userData?.phone)
   const currentName = () => {
     if (firstName && lastName) {
@@ -37,7 +37,7 @@ export const HeaderPurseDesktop = ({ isProfileActive, openProfile, closeProfile 
       return userPhone
     }
   }
-  const avatarUrl = useAppSelector((state) => state.user.userData?.profile.avatar)
+  const avatarUrl = useAppSelector((state) => state.user.data.avatar)
   const viewPurseContent = useAppSelector((state) => state.cabinet.viewPurseContent)
 
   const onLogout = () => {
@@ -72,9 +72,9 @@ export const HeaderPurseDesktop = ({ isProfileActive, openProfile, closeProfile 
       </nav>
 
       <div className={styles.profileGroup} onClick={openProfile}>
-        <img className={styles.profileIcon} src={avatarUrl || profile} />
+        <img className={styles.profileIcon} src={avatarUrl || profile} alt='profile icon' />
         <p className={styles.profileName}>{currentName()}</p>
-        <button className={styles.logoutBtn} onClick={onLogout}>
+        <button className={styles.logoutBtn} onClick={onLogout} type='button'>
           <LogoutIcon />
         </button>
       </div>

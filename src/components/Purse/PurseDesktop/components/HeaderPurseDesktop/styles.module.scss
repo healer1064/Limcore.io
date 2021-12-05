@@ -15,7 +15,6 @@
   max-width: 1280px;
   height: 100%;
   background-color: transparent;
-  // overflow: auto;
 }
 
 .header {
@@ -37,7 +36,7 @@
 
   &__link {
     list-style: none;
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -107,7 +106,7 @@
 }
 
 .profileName {
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -126,11 +125,7 @@
   display: grid;
   box-sizing: border-box;
   margin: 30px 20px 0;
-  // max-width: 1280px;
-  // padding: 0;
-  // grid-template-columns: 350px 65%;
   grid-template-columns: 300px;
-  // grid-template-rows: repeat(3, minmax(min-content, max-content));
   column-gap: 40px;
   grid-template-areas:
     'accounts broadcasts'
@@ -148,7 +143,7 @@
   height: 657px;
   width: 308px;
   background-color: #ffffff;
-  box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+  box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
   border-radius: 14px;
 }
 
@@ -227,7 +222,7 @@
 }
 
 .detailsTitle {
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
@@ -270,7 +265,7 @@
   background: #f9faff;
   border-radius: 14px;
   color: #4a70f8;
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
@@ -304,30 +299,6 @@
   width: 24px;
   height: 24px;
 }
-
-// @media screen and (max-width: 1650px) {
-//   .purseContainer {
-//     margin: 25px 15% 0 6%;
-//   }
-// }
-
-// @media screen and (max-width: 1380px) {
-//   .purseContainer {
-//     margin: 25px 10% 0 6%;
-//   }
-// }
-
-// @media screen and (max-width: 1280px) {
-//   .purseContainer {
-//     margin: 25px 6% 0;
-//   }
-// }
-
-// @media screen and (max-width: 1040px) {
-//   .purseContainer {
-//     column-gap: 40px;
-//   }
-// }
 
 @media screen and (max-width: 920px) {
   .miningDetails {

@@ -9,9 +9,10 @@ import { UnsyncIcon } from '@icons/unsync'
 interface IMenuProps {
   openLimcBalance: () => any
   openUsdtBalance: () => any
+  className: string
 }
 
-export const Menu = ({ openLimcBalance, openUsdtBalance }: IMenuProps) => {
+export const Menu = ({ openLimcBalance, openUsdtBalance, className }: IMenuProps) => {
   const [t] = useTranslation()
 
   const isSync = useAppSelector((state) => state.auth.isSincWithWallet)
@@ -19,7 +20,7 @@ export const Menu = ({ openLimcBalance, openUsdtBalance }: IMenuProps) => {
   const usdtBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
 
   return (
-    <ul className={styles.menu}>
+    <ul className={className}>
       <h2 className={styles.name}>{t('purse_myAccounts')}</h2>
       <MenuItem
         openCard={openLimcBalance}

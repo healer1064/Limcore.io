@@ -15,7 +15,6 @@ import { setChatVisible } from '../../Chat/redux/chatSlice'
 
 export const PurseDesktop = () => {
   const dispatch = useAppDispatch()
-
   const isSync = useAppSelector((state) => state.auth.isSincWithWallet)
   const viewPurseContent = useAppSelector((state) => state.cabinet.viewPurseContent)
   const chatVisible = useAppSelector((state) => state.chat.chatVisible)
@@ -65,11 +64,9 @@ export const PurseDesktop = () => {
     <>
       <Wallpaper />
       <section className={styles.purse}>
-        {/* <HeaderPurseDesktop isProfileActive={popup === 'profile'} openProfile={openProfile} closeProfile={close} /> */}
+        <HeaderPurseDesktop isProfileActive={popup === 'profile'} openProfile={openProfile} closeProfile={close} />
         <div className={styles.purseContainer}>
-          <div className={styles.accounts}>
-            <Menu openLimcBalance={openLimcBalance} openUsdtBalance={openUsdtBalance} />
-          </div>
+          <Menu className={styles.accounts} openLimcBalance={openLimcBalance} openUsdtBalance={openUsdtBalance} />
           {viewPurseContent === 'broadcasts' && <BroadcastsDesktop />}
           {viewPurseContent === 'main' && (
             <Content pageCardBalance={pageCardBalance} closeCard={closeCard} openProfile={openProfile} />
@@ -77,9 +74,9 @@ export const PurseDesktop = () => {
         </div>
         <button className={styles.chatIcon} type='button'>
           {chatVisible ? (
-            <img alt='' src={closeIcon} onClick={handleChatClose} />
+            <img alt='chatClose' src={closeIcon} onClick={handleChatClose} />
           ) : (
-            <img alt='' src={chatIcon} onClick={handleChatOpen} />
+            <img alt='chatOpen' src={chatIcon} onClick={handleChatOpen} />
           )}
         </button>
         {chatVisible ? <Chat handleChatClose={handleChatClose} /> : null}
