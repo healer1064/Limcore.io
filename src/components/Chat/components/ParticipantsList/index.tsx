@@ -5,19 +5,20 @@ import { useTranslation } from 'react-i18next'
 import close from '@icons/close.svg'
 import arrow from '@icons/arrow-left-blue.svg'
 import { RaitingList } from '@components/Chat/components/RaitingList'
-import { GroupMessage } from '@components/Chat/components/GroupMessage'
+import { Participant } from '@components/Chat/components/Participant'
 import { useAppDispatch } from '@app/redux/hooks'
-import { setIsRaitingVisible } from '../../../Chat/redux/chatSlice'
+import { setIsRaitingVisible } from '../../redux/chatSlice'
+import { IMemberInterface } from '@components/Chat/utils/types'
 
-export const List = ({ handleParticipantsListClose, participants, listClassName }) => {
+export const ParticipantsList = ({ handleParticipantsListClose, participants, listClassName }) => {
   const [t] = useTranslation()
   const [raitingClassName, setRaitingClassName] = useState(raitingStyles.raitingList_invisible)
   const dispatch = useAppDispatch()
 
-  const handleRaitingListOpen = () => {
-    dispatch(setIsRaitingVisible('raiting'))
-    setRaitingClassName(raitingStyles.raitingList)
-  }
+  // const handleRaitingListOpen = () => {
+  //   dispatch(setIsRaitingVisible('raiting'))
+  //   setRaitingClassName(raitingStyles.raitingList)
+  // }
 
   const handleRaitingListClose = () => {
     dispatch(setIsRaitingVisible(''))
@@ -32,16 +33,22 @@ export const List = ({ handleParticipantsListClose, participants, listClassName 
         </button>
         <p className={styles.title}>
           {t('group_title')}
-          {/* <span className={styles.number}>{message.numberOfParticipants}</span> */}
+          <span className={styles.number}>{participants.length}</span>
         </p>
         <button className={styles.button} onClick={handleParticipantsListClose}>
           <img className={styles.close} src={close} alt='' />
         </button>
       </div>
       <div className={styles.messagesContainer}>
-        {participants.map((member) => (
-          <GroupMessage key={member.id} {...member} member={member} handleRaitingListOpen={handleRaitingListOpen} />
-        ))}
+        {participants.map((member: IMemberInterface) => {
+          return (
+            <Participant
+              key={member.user.id}
+              member={member}
+              // handleRaitingListOpen={handleRaitingListOpen}
+            />
+          )
+        })}
       </div>
       <RaitingList handleRaitingListClose={handleRaitingListClose} raitingClassName={raitingClassName} />
     </section>

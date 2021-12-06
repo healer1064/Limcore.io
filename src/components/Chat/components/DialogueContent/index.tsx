@@ -1,50 +1,52 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from '@components/Chat/components/DialogueContent/styles.module.scss'
-// import listStyles from '@components/Chat/components/List/styles.module.scss'
+import listStyles from '@components/Chat/components/ParticipantsList/styles.module.scss'
 import { MessageComponent } from '../MessageComponent'
-// import { List } from '../List'
+import { ParticipantsList } from '../ParticipantsList'
 import arrow from '@icons/arrow-left-blue.svg'
 import { Textarea } from '@components/Chat/components/Textarea'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setIsContentVisible, setIsListVisible } from '../../redux/chatSlice'
 import limcoreIcon from '@icons/limcore.svg'
-// import { socket } from '../../index'
-import { getGroupMessages } from '@components/Chat/utils/chat'
+import { getGroupMessages, getMonthAndDay } from '@components/Chat/utils/chat'
 
-export const DialogueContent = ({ contentVisible, slug, socket }) => {
+export const DialogueContent = ({ contentVisible, data, socket }) => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const messagesEndRef = useRef(null)
+  let dateBuffer = null
 
   const userId = useAppSelector((state) => state.user.userData?.id)
-  // const [listClassName, setListClassName] = useState(listStyles.list_invisible)
+  const [listClassName, setListClassName] = useState(listStyles.list_invisible)
   const [messages, setMessages] = useState([])
+  const [participants, setParticipants] = useState([])
 
   useEffect(() => {
     if (contentVisible) {
-      getGroupMessages(slug, 1)
-
-      socket.current.onmessage = (event: MessageEvent) => {
-        const data = JSON.parse(event.data)
-
-        if (data.result && data.result?.length !== 0) {
-          // setMessages([...messages, ...data.result])
-          setMessages(data.result)
-        }
-      }
+      setParticipants(data.members)
+      getGroupMessages(data.slug, 1)
     }
-  }, [contentVisible])
+  }, [])
+
+  socket.current.onmessage = (event: MessageEvent) => {
+    const data = JSON.parse(event.data)
+
+    if (data.result && data.result?.length !== 0) {
+      // setMessages([...messages, ...data.result])
+      setMessages(data.result)
+    }
+  }
 
   const handleParticipantsListOpen = () => {
     dispatch(setIsListVisible('list'))
-    // setListClassName(listStyles.list)
+    setListClassName(listStyles.list)
   }
 
-  // const handleParticipantsListClose = () => {
-  //   dispatch(setIsListVisible('group'))
-  //   setListClassName(listStyles.list_invisible)
-  // }
+  const handleParticipantsListClose = () => {
+    dispatch(setIsListVisible('group'))
+    setListClassName(listStyles.list_invisible)
+  }
 
   // Скролл блока с сообщениями вниз
   useEffect(() => {
@@ -61,28 +63,39 @@ export const DialogueContent = ({ contentVisible, slug, socket }) => {
           <img src={limcoreIcon} alt='' className={styles.foto} />
           <p className={styles.name}>Общий чат</p>
           <p className={styles.status} onClick={handleParticipantsListOpen}>
-            {/* {`${participants.length} ${t('group_number')}`} */}
-            {`2 ${t('group_number')}`}
+            {`${data.members.length} ${t('group_number')}`}
           </p>
         </div>
         <div className={styles.groupMessagesContainer} ref={messagesEndRef}>
-          {messages &&
-            messages.length !== 0 &&
+          {messages?.length !== 0 &&
             messages.map((msg) => {
-              let isMyMsg = false
-              if (userId === msg.user) {
-                isMyMsg = true
+              const msgDate = getMonthAndDay(msg.created_at)
+              let buffer = dateBuffer
+
+              if (dateBuffer !== msgDate) {
+                dateBuffer = msgDate
+                buffer = msgDate
+              } else {
+                buffer = ''
               }
 
-              return <MessageComponent key={msg.id} message={msg} user={msg.user} isMyMsg={isMyMsg} />
+              return (
+                <MessageComponent
+                  key={msg.id}
+                  message={msg}
+                  user={msg.user}
+                  isMyMsg={userId === msg.user}
+                  date={buffer}
+                />
+              )
             })}
         </div>
-        {/* <List
+        <ParticipantsList
           listClassName={listClassName}
           handleParticipantsListClose={handleParticipantsListClose}
           participants={participants}
-        /> */}
-        <Textarea slug={slug} />
+        />
+        <Textarea slug={data.slug} />
       </section>
     )
   )

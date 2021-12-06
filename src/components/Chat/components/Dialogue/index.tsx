@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { RefObject } from 'react'
 import styles from './styles.module.scss'
 // import { Support } from '@components/Chat/components/Support'
 import { DialogueContent } from '@components/Chat/components/DialogueContent'
@@ -7,8 +7,14 @@ import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setIsContentVisible } from '../../redux/chatSlice'
 import { getMonthAndDay } from '@components/Chat/utils/chat'
 import limcoreIcon from '@icons/limcore.svg'
+import { IDialogueInterface } from '@components/Chat/utils/types'
 
-export const Dialogue = ({ data, socket }) => {
+interface IDialogueProps {
+  data: IDialogueInterface
+  socket: RefObject<WebSocket>
+}
+
+export const Dialogue = ({ data, socket }: IDialogueProps) => {
   const dispatch = useAppDispatch()
   const contentVisible = useAppSelector((state) => state.chat.isContentVisible)
 
@@ -24,13 +30,13 @@ export const Dialogue = ({ data, socket }) => {
         <p className={styles.name}>{data.name}</p>
         <p className={styles.message}>{data.last_message.message}</p>
         <data className={styles.date}>{getMonthAndDay(data.last_message.created_at)}</data>
-        <div className={data.unreadMessages > 0 ? styles.unreadMessages : styles.unreadMessages_invisible}>
-          {data.unreadMessages}
+        <div className={data.unread_count > 0 ? styles.unreadMessages : styles.unreadMessages_invisible}>
+          {data.unread_count}
         </div>
         <span className={styles.line} />
       </div>
       <div>
-        <DialogueContent contentVisible={contentVisible === 'group'} slug={data.slug} socket={socket} />
+        <DialogueContent contentVisible={contentVisible === 'group'} data={data} socket={socket} />
       </div>
     </>
   )

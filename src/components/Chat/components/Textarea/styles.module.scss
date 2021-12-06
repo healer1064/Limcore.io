@@ -2,6 +2,7 @@
   display: flex;
   box-sizing: border-box;
   padding: 0;
+  // max-height: 51px;
   margin: 10px 10px 10px 14px;
   border-top: 1px solid #E5E5E5;
 }
@@ -10,7 +11,7 @@
   display: flex;
   box-sizing: border-box;
   padding: 0;
-  margin: 20px 13px 0 0;
+  margin: 10px 10px 0 0;
   width: 20px;
   height: 22px;
   object-fit: cover;
@@ -37,6 +38,7 @@
   border: 1.4px solid #B4BFD5;
   border-radius: 14px;
   overflow: hidden;
+  resize: none;
 
   &::placeholder {
     display: flex;
@@ -74,5 +76,15 @@
     position: relative;
     bottom: 0;
     right: 15px;
+  }
+
+  .button {
+    margin-left: 10px;
+  }
+
+  .sendIcon {
+    margin-left: 0;
+    margin-right: 10px;
+    padding: 0;
   }
 }

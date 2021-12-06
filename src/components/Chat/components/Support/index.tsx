@@ -5,8 +5,6 @@ import { Text } from '@components/Chat/components/Text'
 import arrow from '@icons/arrow-left-blue.svg'
 import { Textarea } from '@components/Chat/components/Textarea'
 import { IGroupInterface } from '@components/Chat/utils/types'
-import { getGroupMessages } from '@components/Chat/utils/chat'
-// import { socket } from '../../index'
 
 interface ISupportProps {
   contentVisible: string

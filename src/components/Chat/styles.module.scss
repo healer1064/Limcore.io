@@ -4,7 +4,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 8px 20px 35px 20px;
-  overflow: scroll;
+  overflow: hidden;
   border-bottom: 1px solid #E5E5E5;
 }
 
@@ -79,4 +79,21 @@
   margin: 0;
   background-color: transparent;
   border: none;
+}
+
+.joinChat {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+
+  text-align: center;
+
+  &_title {
+    margin: 0 0 10px 0;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    color: #99A0AD;
+  }
 }

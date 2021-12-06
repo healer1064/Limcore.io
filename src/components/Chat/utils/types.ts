@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+// TODO: удалить этот интерфейс, он неверный
 export interface IGroupInterface {
   id: string | number
   name: string
@@ -11,7 +12,6 @@ export interface IGroupInterface {
 
   image: any // TODO
   status?: string // TODO: boolean
-  numberOfParticipants?: number
 }
 
 export interface ISendInterface {
@@ -26,14 +26,31 @@ export interface IMemberInterface {
   role: number
 
   user: {
-    avatar: any
-    chat_name: string | null
     email: string
-    first_name: string
-    gender: string | null
     id: number
-    last_name: string
-    middle_name: string
     phone: string
   }
+}
+
+export interface IMessageInterface {
+  created_at: string
+  group: number
+  id: number
+  is_edited: boolean
+  message: string
+  msg_type: number
+  update_at: string
+  user: number
+}
+
+export interface IDialogueInterface {
+  created_at: string
+  description: string
+  group_type: number
+  last_message: IMessageInterface
+  members: IMemberInterface[]
+  name: string
+  owner: number
+  slug: string
+  unread_count: number
 }

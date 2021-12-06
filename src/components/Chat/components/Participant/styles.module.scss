@@ -1,5 +1,6 @@
 .message {
   display: grid;
+  align-items: center;
   box-sizing: border-box;
   padding: 0;
   margin: 10px 0;
@@ -14,13 +15,14 @@
 
 .foto {
   grid-area: foto;
-  display: flex;
   box-sizing: border-box;
+  display: flex;
+  margin: 0 10px 0 0;
   padding: 0;
-  margin: 0;
-  border-radius: 50%;
   width: 37px;
   height: 37px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .name {
@@ -100,6 +102,13 @@
   font-size: 13px;
   line-height: 130%;
   color: #99A0AD;
+}
+
+.me {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4A70F8;
+  text-align: end;
 }
 
 @media screen and (min-width: 769px) {

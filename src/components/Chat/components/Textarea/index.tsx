@@ -25,7 +25,7 @@ export const Textarea = ({ slug }) => {
   }
 
   const handleInputChange = (e) => {
-    handleInputHeight(e)
+    // handleInputHeight(e)
     setInputValue(e.target.value)
   }
 
