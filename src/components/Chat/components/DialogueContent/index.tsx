@@ -26,17 +26,17 @@ export const DialogueContent = ({ contentVisible, data, socket }) => {
     if (contentVisible) {
       setParticipants(data.members)
       getGroupMessages(data.slug, 1)
-    }
-  }, [])
 
-  socket.current.onmessage = (event: MessageEvent) => {
-    const data = JSON.parse(event.data)
+      socket.current.onmessage = (event: MessageEvent) => {
+        const data = JSON.parse(event.data)
 
-    if (data.result && data.result?.length !== 0) {
-      // setMessages([...messages, ...data.result])
-      setMessages(data.result)
+        if (data.result && data.result?.length !== 0) {
+          // setMessages([...messages, ...data.result])
+          setMessages(data.result)
+        }
+      }
     }
-  }
+  }, [contentVisible])
 
   const handleParticipantsListOpen = () => {
     dispatch(setIsListVisible('list'))
@@ -54,6 +54,10 @@ export const DialogueContent = ({ contentVisible, data, socket }) => {
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight
     }
   }, [messages])
+
+  useEffect(() => {
+    console.log('Dialogue content render')
+  }, [])
 
   return (
     contentVisible && (
