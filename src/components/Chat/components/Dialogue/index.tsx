@@ -1,4 +1,4 @@
-import React, { RefObject } from 'react'
+import React from 'react'
 import styles from './styles.module.scss'
 // import { Support } from '@components/Chat/components/Support'
 import { DialogueContent } from '@components/Chat/components/DialogueContent'
@@ -11,10 +11,9 @@ import { IDialogueInterface } from '@components/Chat/utils/types'
 
 interface IDialogueProps {
   data: IDialogueInterface
-  socket: RefObject<WebSocket>
 }
 
-export const Dialogue = ({ data, socket }: IDialogueProps) => {
+export const Dialogue = ({ data }: IDialogueProps) => {
   const dispatch = useAppDispatch()
   const contentVisible = useAppSelector((state) => state.chat.isContentVisible)
 
@@ -36,9 +35,7 @@ export const Dialogue = ({ data, socket }: IDialogueProps) => {
         <span className={styles.line} />
       </div>
       <div>
-        {contentVisible === 'group' && (
-          <DialogueContent contentVisible={contentVisible === 'group'} data={data} socket={socket} />
-        )}
+        {contentVisible === 'group' && <DialogueContent contentVisible={contentVisible === 'group'} data={data} />}
       </div>
     </>
   )

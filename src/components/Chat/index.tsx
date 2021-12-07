@@ -10,16 +10,20 @@ import { Spinner } from '@components/Spinner'
 import { nanoid } from '@reduxjs/toolkit'
 import { ButtonBig } from '../../ui-kit/ButtonBig'
 import { joinGroup } from './utils/chat'
+import { useDispatch } from 'react-redux'
+import { setMessages } from './redux/chatSlice'
 
 export let socket: WebSocket = null
 
 export const Chat = ({ handleChatClose }) => {
   const [t] = useTranslation()
   const { width } = useWindowSize()
+  const dispatch = useDispatch()
   const WS = useRef(null)
 
   const [dialogues, setDialogues] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  // const [dialogueContent, setDialogueContent] = useState([])
 
   const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
   const token = tokenObj.access
@@ -31,25 +35,32 @@ export const Chat = ({ handleChatClose }) => {
   }
 
   useEffect(() => {
-    if (dialogues.length === 0) {
-      WS.current = new WebSocket(`ws://217.28.228.152:9005/ws/chat/?token=${token}`)
+    WS.current = new WebSocket(`ws://217.28.228.152:9005/ws/chat/?token=${token}`)
 
-      WS.current.onopen = () => {
-        socket = WS.current
-      }
-
-      WS.current.onmessage = (event: MessageEvent) => {
-        const data = JSON.parse(event.data)
-        console.log(data)
-
-        setDialogues(data.groups)
-        setIsLoading(false)
-      }
-
-      WS.current.onclose = (event: MessageEvent) => {
-        console.log(event)
-      }
+    WS.current.onopen = () => {
+      socket = WS.current
     }
+
+    WS.current.onmessage = (event: MessageEvent) => {
+      const data = JSON.parse(event.data)
+      console.log(data)
+
+      if (data.groups) {
+        setDialogues(data.groups)
+      }
+
+      if (data.command === 4) {
+        // setDialogueContent(data.result)
+        dispatch(setMessages(data.result))
+      }
+
+      setIsLoading(false)
+    }
+
+    WS.current.onclose = (event: MessageEvent) => {
+      console.log(event)
+    }
+
     return () => WS.current.close(1000)
   }, [])
 
@@ -75,10 +86,9 @@ export const Chat = ({ handleChatClose }) => {
               <ButtonBig onClick={onJoin}>Вступить в чат</ButtonBig>
             </div>
           ) : (
-            dialogues.map((dialogue) => <Dialogue key={nanoid()} data={dialogue} socket={WS} />)
+            dialogues.map((dialogue) => <Dialogue key={nanoid()} data={dialogue} />)
           )}
         </section>
-        {/* <FooterMobile /> */}
       </div>
     </section>
   ) : (
@@ -97,7 +107,7 @@ export const Chat = ({ handleChatClose }) => {
             <ButtonBig onClick={onJoin}>Вступить в чат</ButtonBig>
           </div>
         ) : (
-          dialogues.map((dialogue) => <Dialogue key={nanoid()} data={dialogue} socket={WS} />)
+          dialogues.map((dialogue) => <Dialogue key={nanoid()} data={dialogue} />)
         )}
       </article>
       <FooterMobile />

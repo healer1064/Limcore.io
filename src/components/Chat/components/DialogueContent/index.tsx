@@ -11,7 +11,7 @@ import { setIsContentVisible, setIsListVisible } from '../../redux/chatSlice'
 import limcoreIcon from '@icons/limcore.svg'
 import { getGroupMessages, getMonthAndDay } from '@components/Chat/utils/chat'
 
-export const DialogueContent = ({ contentVisible, data, socket }) => {
+export const DialogueContent = ({ contentVisible, data }) => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const messagesEndRef = useRef(null)
@@ -19,22 +19,13 @@ export const DialogueContent = ({ contentVisible, data, socket }) => {
 
   const userId = useAppSelector((state) => state.user.userData?.id)
   const [listClassName, setListClassName] = useState(listStyles.list_invisible)
-  const [messages, setMessages] = useState([])
   const [participants, setParticipants] = useState([])
+  const messages = useAppSelector((state) => state.chat.messages)
 
   useEffect(() => {
     if (contentVisible) {
       setParticipants(data.members)
       getGroupMessages(data.slug, 1)
-
-      socket.current.onmessage = (event: MessageEvent) => {
-        const data = JSON.parse(event.data)
-
-        if (data.result && data.result?.length !== 0) {
-          // setMessages([...messages, ...data.result])
-          setMessages(data.result)
-        }
-      }
     }
   }, [contentVisible])
 
@@ -88,7 +79,7 @@ export const DialogueContent = ({ contentVisible, data, socket }) => {
                   key={msg.id}
                   message={msg}
                   user={msg.user}
-                  isMyMsg={userId === msg.user}
+                  isMyMsg={userId === msg.user.id}
                   date={buffer}
                 />
               )
