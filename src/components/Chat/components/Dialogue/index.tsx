@@ -36,7 +36,9 @@ export const Dialogue = ({ data, socket }: IDialogueProps) => {
         <span className={styles.line} />
       </div>
       <div>
-        <DialogueContent contentVisible={contentVisible === 'group'} data={data} socket={socket} />
+        {contentVisible === 'group' && (
+          <DialogueContent contentVisible={contentVisible === 'group'} data={data} socket={socket} />
+        )}
       </div>
     </>
   )

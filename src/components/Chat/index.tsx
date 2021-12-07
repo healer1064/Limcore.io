@@ -45,8 +45,13 @@ export const Chat = ({ handleChatClose }) => {
         setDialogues(data.groups)
         setIsLoading(false)
       }
+
+      WS.current.onclose = (event: MessageEvent) => {
+        console.log(event)
+      }
     }
-  }, [dialogues])
+    return () => WS.current.close(1000)
+  }, [])
 
   return desktop ? (
     <section className={styles.desktop}>
