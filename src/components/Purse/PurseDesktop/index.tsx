@@ -8,6 +8,9 @@ import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
 import { HeaderPurseDesktop } from './components/HeaderPurseDesktop'
 import { changeViewContent } from '../../../pages/cabinet/redux/cabinetSlice'
 import { Content } from './components/Content'
+import { Chat } from '../../Chat'
+import closeIcon from '@icons/greyClose.svg'
+import chatIcon from '@icons/chatIcon.svg'
 
 export const PurseDesktop = () => {
   const dispatch = useAppDispatch()
@@ -42,6 +45,8 @@ export const PurseDesktop = () => {
       noop()
     }
   }
+
+  const [chatVisible, setChatVisible] = useState(false)
 
   // Модалки профиля и дней майнинга
   const [popup, setPopup] = useState('')

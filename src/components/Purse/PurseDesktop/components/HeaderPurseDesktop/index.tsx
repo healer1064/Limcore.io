@@ -27,9 +27,9 @@ export const HeaderPurseDesktop = ({ isProfileActive, openProfile, closeProfile 
   const dispatch = useAppDispatch()
   const history = useHistory()
 
-  const firstName = useAppSelector((state) => state.user.userData?.profile.first_name)
-  const lastName = useAppSelector((state) => state.user.userData?.profile.last_name)
-  const userPhone = useAppSelector((state) => state.user.userData?.phone)
+  const firstName = useAppSelector((state) => state.user.data.first_name)
+  const lastName = useAppSelector((state) => state.user.data.last_name)
+  const userPhone = useAppSelector((state) => state.profile.phone)
   const currentName = () => {
     if (firstName && lastName) {
       return `${firstName} ${lastName[0]}.`
@@ -37,7 +37,7 @@ export const HeaderPurseDesktop = ({ isProfileActive, openProfile, closeProfile 
       return userPhone
     }
   }
-  const avatarUrl = useAppSelector((state) => state.user.userData?.profile.avatar)
+  const avatarUrl = useAppSelector((state) => state.user.data.avatar)
   const viewPurseContent = useAppSelector((state) => state.cabinet.viewPurseContent)
 
   const onLogout = () => {
