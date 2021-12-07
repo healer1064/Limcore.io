@@ -9,14 +9,13 @@ import useWindowSize from '../../helpers/useWindowSizeHook'
 import { Spinner } from '@components/Spinner'
 import { nanoid } from '@reduxjs/toolkit'
 import { ButtonBig } from '../../ui-kit/ButtonBig'
-import { joinGroup } from './utils/chat'
 import { useAppSelector } from '@app/redux/hooks'
 import { useChat } from './utils/useChat'
 
 export const Chat = ({ handleChatClose }) => {
   const [t] = useTranslation()
   const { width } = useWindowSize()
-  useChat()
+  const { joinGroup } = useChat()
 
   const desktop = width >= 769
 

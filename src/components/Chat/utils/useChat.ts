@@ -9,6 +9,7 @@ const commands = {
   sendDialogueMessage: 3, // чаты 1 на 1
   getGroupMessages: 4, // пока что только группы
   getGroupsList: 5, // пока что только группы
+  // еще есть IS_TYPING, MESSAGE_READ
 }
 
 let socket: WebSocket = null
@@ -36,27 +37,15 @@ export const useChat = () => {
       console.log(data)
 
       if (data.groups) {
-        dispatch(setDialogues(data.groups))
+        dispatch(setDialogues([...data.groups, ...data.dialogs]))
       }
 
       if (data.command === 4) {
         dispatch(setMessages(data.result))
       }
+
       dispatch(setIsLoading(false))
     }
-    // socket.onmessage = (event: MessageEvent) => {
-    //   const data = JSON.parse(event.data)
-    //   console.log(data)
-
-    //   if (data.groups) {
-    //     dispatch(setDialogues(data.groups))
-    //   }
-
-    //   if (data.command === 4) {
-    //     dispatch(setMessages(data.result))
-    //   }
-    //   dispatch(setIsLoading(false))
-    // }
   }
 
   const send = (data: ISendInterface) => {

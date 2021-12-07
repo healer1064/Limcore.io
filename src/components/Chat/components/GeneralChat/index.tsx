@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import styles from '@components/Chat/components/DialogueContent/styles.module.scss'
+import styles from '@components/Chat/components/GeneralChat/styles.module.scss'
 import listStyles from '@components/Chat/components/ParticipantsList/styles.module.scss'
 import { MessageComponent } from '../MessageComponent'
 import { ParticipantsList } from '../ParticipantsList'
@@ -11,18 +11,24 @@ import { setIsContentVisible, setIsListVisible } from '../../redux/chatSlice'
 import limcoreIcon from '@icons/limcore.svg'
 import { getMonthAndDay } from '@components/Chat/utils/chat'
 import { useChat } from '@components/Chat/utils/useChat'
+import { IDialogueInterface } from '@components/Chat/utils/types'
 
-export const DialogueContent = ({ contentVisible, data }) => {
+interface IDialogueContent {
+  contentVisible: boolean
+  data: IDialogueInterface
+}
+
+export const GeneralChat = ({ contentVisible, data }: IDialogueContent) => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const messagesEndRef = useRef(null)
+  const { getGroupMessages } = useChat()
   let dateBuffer = null
 
   const userId = useAppSelector((state) => state.user.userData?.id)
   const [listClassName, setListClassName] = useState(listStyles.list_invisible)
   const [participants, setParticipants] = useState([])
   const messages = useAppSelector((state) => state.chat.messages)
-  const { getGroupMessages } = useChat()
 
   useEffect(() => {
     if (contentVisible) {
@@ -43,14 +49,10 @@ export const DialogueContent = ({ contentVisible, data }) => {
 
   // Скролл блока с сообщениями вниз
   useEffect(() => {
-    if (messages?.length !== 0) {
+    if (messages?.length !== 0 || messagesEndRef.current) {
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight
     }
-  }, [messages])
-
-  useEffect(() => {
-    console.log('Dialogue content render')
-  }, [])
+  }, [messages, messagesEndRef.current])
 
   return (
     contentVisible && (
@@ -60,6 +62,7 @@ export const DialogueContent = ({ contentVisible, data }) => {
           <img src={limcoreIcon} alt='' className={styles.foto} />
           <p className={styles.name}>Общий чат</p>
           <p className={styles.status} onClick={handleParticipantsListOpen}>
+            {/* {`${data.members.length} ${t('group_number')}`} */}
             {`${data.members.length} ${t('group_number')}`}
           </p>
         </div>

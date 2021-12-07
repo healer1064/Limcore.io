@@ -1,13 +1,13 @@
 import React from 'react'
 import styles from './styles.module.scss'
-// import { Support } from '@components/Chat/components/Support'
-import { DialogueContent } from '@components/Chat/components/DialogueContent'
-// import active from '@icons/activeStatus.svg'
+import { GeneralChat } from '@components/Chat/components/GeneralChat'
+import active from '@icons/activeStatus.svg'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setIsContentVisible } from '../../redux/chatSlice'
 import { getMonthAndDay } from '@components/Chat/utils/chat'
 import limcoreIcon from '@icons/limcore.svg'
 import { IDialogueInterface } from '@components/Chat/utils/types'
+import { PersonsChat } from '../PersonsChat'
 
 interface IDialogueProps {
   data: IDialogueInterface
@@ -17,14 +17,21 @@ export const Dialogue = ({ data }: IDialogueProps) => {
   const dispatch = useAppDispatch()
   const contentVisible = useAppSelector((state) => state.chat.isContentVisible)
 
-  const handleGroupOpen = () => {
+  const isGeneralChat = data.slug === 'general_chat'
+
+  const handleGeneralChatOpen = () => {
     dispatch(setIsContentVisible('group'))
+  }
+
+  const handlePersonsChatOpen = () => {
+    dispatch(setIsContentVisible('persons'))
   }
 
   return (
     <>
-      <div className={styles.messageContainer} onClick={handleGroupOpen}>
+      <div className={styles.messageContainer} onClick={isGeneralChat ? handleGeneralChatOpen : handlePersonsChatOpen}>
         <img src={limcoreIcon} alt='image' className={styles.foto} />
+        {!isGeneralChat && <img alt='' src={active} className={styles.status} />}
         {/* <img alt='' src={active} className={data.status === 'В сети' ? styles.status : styles.status_invisible} /> */}
         <p className={styles.name}>{data.name}</p>
         <p className={styles.message}>{data.last_message.message}</p>
@@ -35,7 +42,11 @@ export const Dialogue = ({ data }: IDialogueProps) => {
         <span className={styles.line} />
       </div>
       <div>
-        {contentVisible === 'group' && <DialogueContent contentVisible={contentVisible === 'group'} data={data} />}
+        {isGeneralChat ? (
+          <GeneralChat contentVisible={contentVisible === 'group'} data={data} />
+        ) : (
+          <PersonsChat contentVisible={contentVisible === 'persons'} data={data} />
+        )}
       </div>
     </>
   )

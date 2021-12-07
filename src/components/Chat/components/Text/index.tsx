@@ -1,17 +1,17 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { IGroupInterface } from '@components/Chat/utils/types'
+import { IDialogueInterface } from '@components/Chat/utils/types'
 
 interface ITextProps {
-  message: IGroupInterface
+  message: IDialogueInterface
 }
 
 export const Text = ({ message }: ITextProps) => {
   return (
     <div className={styles.textContainer}>
-      <p className={styles.text}>{message.message}</p>
+      <p className={styles.text}>{message.last_message}</p>
       <span className={styles.time}>
-        {message.time}
+        {message.created_at}
         <svg
           className={styles.checkIcon_invisible}
           width='18'
