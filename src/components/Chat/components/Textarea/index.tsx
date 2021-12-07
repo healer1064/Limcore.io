@@ -4,11 +4,12 @@ import clip from '@icons/clip.svg'
 import send from '@icons/sendIcon.svg'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setIsButtonVisible } from '../../../Chat/redux/chatSlice'
-import { getGroupMessages, sendGroupMessage } from '@components/Chat/utils/chat'
+import { useChat } from '@components/Chat/utils/useChat'
 
 export const Textarea = ({ slug }) => {
   const buttonVisible = useAppSelector((state) => state.chat.isButtonVisible)
   const dispatch = useAppDispatch()
+  const { sendGroupMessage, getGroupMessages } = useChat()
 
   const [inputValue, setInputValue] = useState('')
 

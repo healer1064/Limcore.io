@@ -1,4 +1,4 @@
-import { socket } from '../index'
+// import { socket } from '../index'
 import { ISendInterface } from './types'
 
 const commands = {
@@ -11,7 +11,7 @@ const commands = {
 
 export const send = (data: ISendInterface) => {
   console.log(data)
-  socket.send(JSON.stringify(data))
+  // socket.send(JSON.stringify(data))
 }
 
 export const sendGroupMessage = (groupName: string, message: string) => {

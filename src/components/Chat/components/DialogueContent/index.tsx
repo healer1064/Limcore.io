@@ -9,7 +9,8 @@ import { Textarea } from '@components/Chat/components/Textarea'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setIsContentVisible, setIsListVisible } from '../../redux/chatSlice'
 import limcoreIcon from '@icons/limcore.svg'
-import { getGroupMessages, getMonthAndDay } from '@components/Chat/utils/chat'
+import { getMonthAndDay } from '@components/Chat/utils/chat'
+import { useChat } from '@components/Chat/utils/useChat'
 
 export const DialogueContent = ({ contentVisible, data }) => {
   const [t] = useTranslation()
@@ -21,6 +22,7 @@ export const DialogueContent = ({ contentVisible, data }) => {
   const [listClassName, setListClassName] = useState(listStyles.list_invisible)
   const [participants, setParticipants] = useState([])
   const messages = useAppSelector((state) => state.chat.messages)
+  const { getGroupMessages } = useChat()
 
   useEffect(() => {
     if (contentVisible) {

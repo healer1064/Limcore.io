@@ -12,6 +12,8 @@ export const chatSlice = createSlice({
     isButtonVisible: '',
     sendIconVisible: false,
     messages: [],
+    dialogues: [],
+    isLoading: true,
   },
   reducers: {
     setIsChatVisible: (state, { payload }) => {
@@ -35,6 +37,12 @@ export const chatSlice = createSlice({
     setMessages: (state, { payload }) => {
       state.messages = payload
     },
+    setDialogues: (state, { payload }) => {
+      state.dialogues = payload
+    },
+    setIsLoading: (state, { payload }) => {
+      state.isLoading = payload
+    },
   },
 })
 
@@ -47,6 +55,8 @@ export const {
   setIsSearched,
   setIsButtonVisible,
   setMessages,
+  setDialogues,
+  setIsLoading,
 } = actions
 
 export const chatSelector = (state: RootState) => state.chat
