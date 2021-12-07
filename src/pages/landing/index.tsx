@@ -10,7 +10,6 @@ import { Team } from './components/Team'
 import { Questions } from './components/Questions'
 import { Media } from './components/Media'
 import { Footer } from '@components/Footer'
-import { ButtonBig } from '../../ui-kit/ButtonBig'
 
 export const LandingPage: React.FC = () => {
   return (

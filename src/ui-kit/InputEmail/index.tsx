@@ -10,15 +10,12 @@ interface InputEmailProps {
 
 export const InputEmail: React.FC<InputEmailProps> = ({ onChange, value, validValue, placeholder }) => {
   return (
-    <>
-      <input
-        className={!validValue ? `${Styles.input} ${Styles.input_error}` : `${Styles.input}`}
-        onChange={onChange}
-        type='email'
-        value={value}
-        placeholder={placeholder}
-      />
-      {/* {!validValue && <span className={Styles.error}>Неверный формат e-mail</span>} */}
-    </>
+    <input
+      className={!validValue ? `${Styles.input} ${Styles.input_error}` : `${Styles.input}`}
+      onChange={onChange}
+      type='email'
+      value={value}
+      placeholder={placeholder}
+    />
   )
 }

@@ -1,3 +1,6 @@
+@import '../../scss/typography.scss';
+@import '../../scss/vars.scss';
+
 .toggle {
   position: relative;
   display: inline-block;
@@ -9,16 +12,16 @@
     position: absolute;
 
     &:checked + .slider {
-      background: #f0f5fd;
+      background: $third-white;
 
       &::before {
         transform: translateX(19px);
-        background: #4a70f8;
+        background: $primary-color;
       }
     }
 
     &:disabled + .slider {
-      opacity: 0.5;
+      opacity: .5;
     }
   }
 }
@@ -30,7 +33,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: #f0f5fd;
+  background: $third-white;
   border-radius: 50px;
 
   &::before {
@@ -40,9 +43,8 @@
     width: 19px;
     left: 4px;
     bottom: 3px;
-    background: #ffffff;
-    box-shadow: 0px 1px 4px rgba(51, 51, 51, 0.2);
+    background: $white;
+    box-shadow: 0 1px 4px rgba(51, 51, 51, 0.2);
     border-radius: 50%;
-    // transition: 0.4s;
   }
 }

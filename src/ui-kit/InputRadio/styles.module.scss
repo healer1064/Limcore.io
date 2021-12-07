@@ -1,6 +1,7 @@
 .block {
   display: flex;
   align-items: center;
+  border: none;
 }
 
 .input {
@@ -19,5 +20,6 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-right: 10px;
+  margin: 0 10px 0 0;
+  padding: 0;
 }

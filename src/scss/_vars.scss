@@ -4,7 +4,10 @@ $primary-color-hover: #3257dd;
 $secondary-color: #edf4ff !default;
 $black: #393c42 !default;
 $white: #fff;
+$middle-white:  #ccc;
+$third-white: #F0F5FD;
 $grey: #67686c !default;
+$middle-grey: #4f535a;
 $light-grey: #b4bfd4;
 $red: #ff6a6a;
 
@@ -13,8 +16,7 @@ $main-font: 'Montserrat', 'Arial', 'Helvetica', sans-serif !default;
 
 // Big Button ui-kit
 $border-radius: 14px;
-$big-button-padding: 14px 0;
-$big-button-border: 1px solid #4a70f8;
+$big-button-border: 1px solid $primary-color;
 
 // Breakpoints
 $breakpoints: (
