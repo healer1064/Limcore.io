@@ -1,3 +1,6 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/_vars.scss';
+
 .raitingList {
   display: flex;
   box-sizing: border-box;
@@ -29,8 +32,8 @@
   height: 375px;
   padding: 0;
   margin: 0;
-  background-color: #FFFFFF;
-  box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+  background-color: $white;
+  box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
   border-top-right-radius: 14px;
   border-top-left-radius: 14px;
 }
@@ -56,12 +59,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 4px 20px 30px;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #99A0AD;
+  @include mediumP3($other-grey);
 }
 
 .listContainer {
@@ -78,7 +76,7 @@
   box-sizing: border-box;
   padding: 18px 0;
   margin: 0;
-  border-bottom: 1px solid #E5E5E5;
+  border-bottom: 1px solid $very-light-grey;
 }
 
 .listNumber {
@@ -86,12 +84,11 @@
   box-sizing: border-box;
   padding: 5px 0;
   margin: 0;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($middle-grey);
+  font-weight: $fontWeightSemiBold;
   font-size: 14px;
   line-height: 1.4;
-  color: #4F535A;
   text-align: center;
 }
 
@@ -111,7 +108,7 @@
     position: absolute;
     bottom: 0;
     right: 120px;
-    box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+    box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
     border-radius: 14px;
   }
 

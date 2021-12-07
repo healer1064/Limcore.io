@@ -35,7 +35,7 @@ export const SearchForm = ({ desktop }) => {
         />
         <img
           className={closeButtonVisible ? styles.closeButton : styles.closeButton_invisible}
-          alt=''
+          alt='closeIcon'
           src={closeButton}
           onClick={(e) => handleCloseSearch(e)}
         />

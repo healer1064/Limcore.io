@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './styles.module.scss'
 import { useTranslation } from 'react-i18next'
 
@@ -8,7 +8,7 @@ export const Text = ({ message }) => {
   return (
     <div className={`${message.owner ? styles.textContainer_owner : styles.textContainer}`}>
       <p className={`${message.owner ? styles.text_owner : styles.text}`}>{message.message}</p>
-      <span className={`${message.owner ? styles.time_owner : styles.time}`}>
+      <time className={`${message.owner ? styles.time_owner : styles.time}`}>
         {`${new Date().getHours()}:${new Date().getMinutes()}`}
         <svg
           className={message.owner ? styles.checkIcon : styles.checkIcon_invisible}
@@ -33,7 +33,7 @@ export const Text = ({ message }) => {
             strokeLinejoin='round'
           />
         </svg>
-      </span>
+      </time>
     </div>
   )
 }

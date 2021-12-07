@@ -30,7 +30,11 @@ export const Message = ({ message, participants }) => {
     <>
       <div className={styles.messageContainer} onClick={message.group ? handleGroupOpen : handleSupportOpen}>
         <img src={message.image} alt='image' className={styles.foto} />
-        <img alt='' src={active} className={message.status === 'В сети' ? styles.status : styles.status_invisible} />
+        <img
+          alt='status'
+          src={active}
+          className={message.status === 'В сети' ? styles.status : styles.status_invisible}
+        />
         <p className={styles.name}>{message.name}</p>
         <p className={styles.message}>{message.message}</p>
         <data className={styles.date}>{message.date}</data>

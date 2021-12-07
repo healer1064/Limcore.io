@@ -11,15 +11,15 @@ export const Support = ({ supportVisible, message, handleSupportClose }) => {
   return (
     <section className={supportVisible ? styles.supportContainer : styles.supportContainer_invisible}>
       <div className={styles.supportHeader}>
-        <img alt='' src={arrow} className={styles.arrow} onClick={handleSupportClose} />
-        <img src={message.image} alt='' className={styles.foto} />
+        <img alt='icon' src={arrow} className={styles.arrow} onClick={handleSupportClose} />
+        <img src={message.image} alt={message.name} className={styles.foto} />
         <p className={styles.name}>{message.name}</p>
         <p className={message.status === 'В сети' ? styles.status_active : styles.status}>{message.status}</p>
       </div>
       <div className={styles.messagesContainer}>
-        <span
+        <time
           className={styles.date}
-        >{`${new Date().getDay()}-${new Date().getMonth()}-${new Date().getFullYear()}`}</span>
+        >{`${new Date().getDay()}-${new Date().getMonth()}-${new Date().getFullYear()}`}</time>
         <Text message={message} />
       </div>
       <Textarea />

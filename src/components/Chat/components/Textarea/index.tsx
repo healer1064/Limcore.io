@@ -17,11 +17,11 @@ export const Textarea = () => {
   return (
     <div className={styles.inputContainer}>
       <button className={styles.button} type='button'>
-        <img alt='' src={clip} className={styles.clip} />
+        <img alt='clip' src={clip} className={styles.clip} />
       </button>
       <textarea className={styles.inputText} placeholder='Сообщение' onChange={handleInputHeight} />
       <button className={styles.button} type='submit'>
-        <img alt='' src={send} className={sendIconVisible ? styles.sendIcon : styles.sendIcon_invisible} />
+        <img alt='sendIcon' src={send} className={sendIconVisible ? styles.sendIcon : styles.sendIcon_invisible} />
       </button>
     </div>
   )

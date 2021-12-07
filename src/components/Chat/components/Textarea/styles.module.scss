@@ -1,9 +1,12 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/_vars.scss';
+
 .inputContainer {
   display: flex;
   box-sizing: border-box;
   padding: 0;
   margin: 10px 10px 10px 14px;
-  border-top: 1px solid #E5E5E5;
+  border-top: 1px solid $very-light-grey;
 }
 
 .clip {
@@ -26,26 +29,23 @@
   padding: 10px 10px 10px 14px;
   margin: 10px 0 0;
   height: 40px;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
+  font-family: $main-font;
+  @include main($dark-grey);
+  font-weight: $fontWeightMedium;
   font-size: 13px;
   line-height: 1.45;
-  color: #3A3B3D;
   width: 100%;
-  background: #FFFFFF;
-  border: 1.4px solid #B4BFD5;
-  border-radius: 14px;
+  border: 1.4px solid $light-grey;
+  border-radius: $border-radius;
 
   &::placeholder {
     display: flex;
     box-sizing: border-box;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 500;
+    font-family: $main-font;
+    @include main($light-grey);
+    font-weight: $fontWeightMedium;
     font-size: 13px;
     line-height: 1.45;
-    color: #B4BFD5;
   }
 }
 

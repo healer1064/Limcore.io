@@ -21,8 +21,8 @@ export const Group = ({ groupVisible, handleGroupClose, message, participants })
   return (
     <section className={groupVisible ? styles.groupContainer : styles.groupContainer_invisible}>
       <div className={styles.groupHeader}>
-        <img alt='' src={arrow} className={styles.arrow} onClick={handleGroupClose} />
-        <img src={message.image} alt='' className={styles.foto} />
+        <img alt='arrowIcon' src={arrow} className={styles.arrow} onClick={handleGroupClose} />
+        <img src={message.image} alt={message.name} className={styles.foto} />
         <p className={styles.name}>{message.name}</p>
         <p className={styles.status} onClick={handleParticipantsListOpen}>
           {`${message.numberOfParticipants} ${t('group_number')}`}

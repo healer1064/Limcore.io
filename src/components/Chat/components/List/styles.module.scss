@@ -1,3 +1,6 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/_vars.scss';
+
 .list {
   display: flex;
   flex-direction: column;
@@ -9,7 +12,7 @@
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: #FFFFFF;
+  background-color: $white;
   opacity: 1;
   transition: opacity 1s linear;
 
@@ -28,7 +31,7 @@
   min-height: 70px;
   width: 100%;
   justify-content: space-between;
-  border-bottom: 1px solid #E5E5E5;
+  border-bottom: 1px solid $very-light-grey;
 }
 
 .button {
@@ -59,13 +62,12 @@
   box-sizing: border-box;
   padding: 5px 0;
   margin: 0;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  font-weight: $fontWeightSemiBold;
+  @include main($black);
   font-size: 14px;
   line-height: 1.4;
   text-align: center;
-  color: #393C42;
 }
 
 .number {
@@ -73,13 +75,11 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0 0 0 8px;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  font-weight: $fontWeightSemiBold;
+  @include main($other-grey);
   font-size: 14px;
   line-height: 1.4;
-  letter-spacing: 0.01em;
-  color: #99A0AD;
 }
 
 .messagesContainer {
@@ -98,8 +98,8 @@
     position: absolute;
     bottom: 0;
     right: 120px;
-    box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
-    border-radius: 14px;
+    box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
+    border-radius: $border-radius;
   }
   .arrow {
     margin: 0 30px 0 0;
