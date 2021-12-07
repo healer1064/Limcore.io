@@ -18,6 +18,7 @@ export const Dialogue = ({ data }: IDialogueProps) => {
   const contentVisible = useAppSelector((state) => state.chat.isContentVisible)
 
   const isGeneralChat = data.slug === 'general_chat'
+  console.log(isGeneralChat)
 
   const handleGeneralChatOpen = () => {
     dispatch(setIsContentVisible('group'))
