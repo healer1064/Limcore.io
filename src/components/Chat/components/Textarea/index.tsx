@@ -5,13 +5,14 @@ import send from '@icons/sendIcon.svg'
 import { useChat } from '@components/Chat/utils/useChat'
 
 export const Textarea = ({ slug }) => {
-  const [buttonVisible, setButtonVisible] = useState('')
-  const { sendGroupMessage, getGroupMessages } = useChat()
+  // const { sendGroupMessage, getGroupMessages } = useChat()
+  const { sendGroupMessage } = useChat()
 
+  const [isButtonVisible, setIsButtonVisible] = useState(false)
   const [inputValue, setInputValue] = useState('')
 
   const handleSendIconVisibility = (e) => {
-    e.target.value.length < 1 ? setButtonVisible('') : setButtonVisible('send')
+    e.target.value.length < 1 ? setIsButtonVisible(false) : setIsButtonVisible(true)
   }
 
   const handleInputHeight = (e) => {
@@ -23,14 +24,14 @@ export const Textarea = ({ slug }) => {
   }
 
   const handleInputChange = (e) => {
-    // handleInputHeight(e)
+    handleInputHeight(e)
     setInputValue(e.target.value)
   }
 
   const handleSubmit = () => {
     setInputValue('')
     sendGroupMessage(slug, inputValue)
-    getGroupMessages(slug, 1)
+    // getGroupMessages(slug, 1)
   }
 
   return (
@@ -48,7 +49,7 @@ export const Textarea = ({ slug }) => {
         onInput={handleInputHeight}
       />
       <button className={styles.button} type='button' onClick={handleSubmit}>
-        {buttonVisible === 'send' && <img alt='' src={send} className={styles.sendIcon} />}
+        {isButtonVisible && <img alt='' src={send} className={styles.sendIcon} />}
       </button>
     </div>
   )

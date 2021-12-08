@@ -1,18 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../../../app/redux/store'
-import { IDialogueInterface } from '../utils/types'
-
-const personsChatMessages = {} as IDialogueInterface
+import { IDialogueInterface, IMemberInterface, IMessageInterface } from '../utils/types'
 
 export const chatSlice = createSlice({
   name: 'chat',
   initialState: {
     visibleContent: '',
     searchedValue: '',
-    genChatMessages: [],
-    personsChatMessages,
-    dialogues: [],
     isLoading: true,
+
+    genChatMessages: [] as IMessageInterface[],
+    genChatMembers: [] as IMemberInterface[],
+    personsChatMessages: {} as IDialogueInterface,
+    dialogues: [] as IDialogueInterface[],
   },
   reducers: {
     setIsSearched: (state, { payload }) => {
@@ -20,6 +20,9 @@ export const chatSlice = createSlice({
     },
     setGenChatMessages: (state, { payload }) => {
       state.genChatMessages = payload
+    },
+    setGenChatMembers: (state, { payload }) => {
+      state.genChatMembers = payload
     },
     setPersonsChatMessages: (state, { payload }) => {
       state.personsChatMessages = payload
@@ -37,8 +40,15 @@ export const chatSlice = createSlice({
 })
 
 const { actions, reducer } = chatSlice
-export const { setIsSearched, setGenChatMessages, setDialogues, setIsLoading, setContent, setPersonsChatMessages } =
-  actions
+export const {
+  setIsSearched,
+  setGenChatMessages,
+  setDialogues,
+  setIsLoading,
+  setContent,
+  setPersonsChatMessages,
+  setGenChatMembers,
+} = actions
 
 export const chatSelector = (state: RootState) => state.chat
 export default reducer

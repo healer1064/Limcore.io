@@ -82,7 +82,7 @@ export const Chat = ({ handleChatClose }) => {
         </div>
       )
     case 'group':
-      return <GeneralChat data={dialogues[0]} />
+      return <GeneralChat />
     case 'persons':
       return <PersonsChat />
   }

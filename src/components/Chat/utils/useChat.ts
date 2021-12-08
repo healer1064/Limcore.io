@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { setGenChatMessages, setIsLoading, setDialogues } from '../redux/chatSlice'
+import { setGenChatMessages, setIsLoading, setDialogues, setGenChatMembers } from '../redux/chatSlice'
 import { ISendInterface } from './types'
+import { useAppSelector } from './../../../app/redux/hooks'
 
 const commands = {
   sendGroupMessage: 1, // пока что только в общий чат
@@ -20,6 +21,8 @@ export const useChat = () => {
   const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
   const token = tokenObj.access
 
+  const genChatMessages = useAppSelector((state) => state.chat.genChatMessages)
+
   useEffect(() => {
     if (!socket) {
       socket = new WebSocket(`ws://217.28.228.152:9005/ws/chat/?token=${token}`)
@@ -34,10 +37,17 @@ export const useChat = () => {
   if (socket) {
     socket.onmessage = (event: MessageEvent) => {
       const data = JSON.parse(event.data)
-      console.log(data)
+      console.log('comming data', data)
 
       if (data.groups) {
+        dispatch(setGenChatMembers(data.groups[0].members))
         dispatch(setDialogues([...data.groups, ...data.dialogs]))
+      }
+
+      if (data.command === 1) {
+        const arr = []
+        arr.push(data.message)
+        dispatch(setGenChatMessages([...genChatMessages, ...arr]))
       }
 
       if (data.command === 4) {
@@ -49,7 +59,7 @@ export const useChat = () => {
   }
 
   const send = (data: ISendInterface) => {
-    console.log(data)
+    // console.log('sent', data)
     socket.send(JSON.stringify(data))
   }
 
