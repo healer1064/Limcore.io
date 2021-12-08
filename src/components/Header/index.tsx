@@ -65,10 +65,9 @@ export const Header: React.FC = () => {
   return (
     <header className={Styles.header}>
       <div className={Styles.wrapper}>
-        <a href='/' className={Styles.logoLink}>
+        <a href='/' className={Styles.logoLink} target='blank' rel='noopener noreferrer'>
           <img src={logoIcon} alt='Лого' />
         </a>
-
         <ul className={Styles.list}>
           {tempLink?.map((item) => {
             return (
@@ -78,7 +77,6 @@ export const Header: React.FC = () => {
             )
           })}
         </ul>
-
         <div className={Styles.container}>
           {/* {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null} */}
           {/* {isAuth ? (
@@ -91,14 +89,14 @@ export const Header: React.FC = () => {
           ) : null} */}
           <LanguagePopup />
           {isAuth ? (
-            <button className={Styles.profileBtn}>
+            <button className={Styles.profileBtn} type='button'>
               <LinkDom to='/my' className={Styles.profileBtn_link}>
                 <LoginIcon />
                 <span className={Styles.enter}>{t('profile')}</span>
               </LinkDom>
             </button>
           ) : (
-            <button className={Styles.loginBtn} onClick={handleLoginModalOpen}>
+            <button className={Styles.loginBtn} onClick={handleLoginModalOpen} type='button'>
               <LoginIcon />
               <span className={Styles.enter}>{t('login')}</span>
             </button>

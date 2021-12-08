@@ -69,22 +69,22 @@ export const HeaderMobile: React.FC = () => {
       )}
       <div className={Styles.wrap}>
         {!isAuth && location.pathname !== '/auth' && (
-          <a onClick={() => history.push('/auth')} className={Styles.logoLink}>
+          <a onClick={() => history.push('/auth')} className={Styles.logoLink} target='blank' rel='noopener noreferrer'>
             <img src={userIcon} alt='Иконка' />
           </a>
         )}
         {isAuth && window.location.pathname === '/' ? (
           <>
-            <button className={Styles.profileBtn}>
+            <button className={Styles.profileBtn} type='button'>
               <LinkDom to='/my' className={Styles.profileBtn_link}>
                 <LoginIcon />
                 <span className={Styles.enter}>{t('profile')}</span>
               </LinkDom>
             </button>
             <div className={Styles.burger} onClick={openBurger}>
-              <span className={Styles.row}>{}</span>
-              <span className={Styles.row}>{}</span>
-              <span className={Styles.row}>{}</span>
+              <span className={Styles.row} />
+              <span className={Styles.row} />
+              <span className={Styles.row} />
             </div>
           </>
         ) : (
@@ -138,7 +138,9 @@ export const HeaderMobile: React.FC = () => {
             </ul>
             <div className={Styles.group}>
               <p className={Styles.email}>
-                <a href='mailto:info@limcore.io'>info@limcore.io</a>
+                <a href='mailto:info@limcore.io' target='blank' rel='noopener noreferrer'>
+                  info@limcore.io
+                </a>
               </p>
               <LanguagePopup position={{ top: '-105px', left: '-25px', background: '#4a70f8' }} />
             </div>
