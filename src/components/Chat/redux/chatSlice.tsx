@@ -1,41 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../../../app/redux/store'
+import { IDialogueInterface } from '../utils/types'
+
+const personsChatMessages = {} as IDialogueInterface
 
 export const chatSlice = createSlice({
   name: 'chat',
   initialState: {
-    isChatVisible: '',
-    isContentVisible: '',
-    isListVisible: '',
-    isRaitingVisible: '',
-    isSearched: '',
-    isButtonVisible: '',
-    sendIconVisible: false,
-    messages: [],
+    visibleContent: '',
+    searchedValue: '',
+    genChatMessages: [],
+    personsChatMessages,
     dialogues: [],
     isLoading: true,
   },
   reducers: {
-    setIsChatVisible: (state, { payload }) => {
-      state.isChatVisible = payload
-    },
-    setIsContentVisible: (state, { payload }) => {
-      state.isContentVisible = payload
-    },
-    setIsListVisible: (state, { payload }) => {
-      state.isListVisible = payload
-    },
-    setIsRaitingVisible: (state, { payload }) => {
-      state.isRaitingVisible = payload
-    },
     setIsSearched: (state, { payload }) => {
-      state.isSearched = payload
+      state.searchedValue = payload
     },
-    setIsButtonVisible: (state, { payload }) => {
-      state.isButtonVisible = payload
+    setGenChatMessages: (state, { payload }) => {
+      state.genChatMessages = payload
     },
-    setMessages: (state, { payload }) => {
-      state.messages = payload
+    setPersonsChatMessages: (state, { payload }) => {
+      state.personsChatMessages = payload
     },
     setDialogues: (state, { payload }) => {
       state.dialogues = payload
@@ -43,21 +30,15 @@ export const chatSlice = createSlice({
     setIsLoading: (state, { payload }) => {
       state.isLoading = payload
     },
+    setContent: (state, { payload }) => {
+      state.visibleContent = payload
+    },
   },
 })
 
 const { actions, reducer } = chatSlice
-export const {
-  setIsChatVisible,
-  setIsContentVisible,
-  setIsListVisible,
-  setIsRaitingVisible,
-  setIsSearched,
-  setIsButtonVisible,
-  setMessages,
-  setDialogues,
-  setIsLoading,
-} = actions
+export const { setIsSearched, setGenChatMessages, setDialogues, setIsLoading, setContent, setPersonsChatMessages } =
+  actions
 
 export const chatSelector = (state: RootState) => state.chat
 export default reducer

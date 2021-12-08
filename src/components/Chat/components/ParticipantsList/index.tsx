@@ -1,32 +1,31 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './styles.module.scss'
-import raitingStyles from '../RaitingList/styles.module.scss'
+// import raitingStyles from '../RaitingList/styles.module.scss'
 import { useTranslation } from 'react-i18next'
 import close from '@icons/close.svg'
 import arrow from '@icons/arrow-left-blue.svg'
-import { RaitingList } from '@components/Chat/components/RaitingList'
+// import { RaitingList } from '@components/Chat/components/RaitingList'
 import { Participant } from '@components/Chat/components/Participant'
-import { useAppDispatch } from '@app/redux/hooks'
-import { setIsRaitingVisible } from '../../redux/chatSlice'
+// import { useAppDispatch } from '@app/redux/hooks'
 import { IMemberInterface } from '@components/Chat/utils/types'
 
-export const ParticipantsList = ({ handleParticipantsListClose, participants, listClassName }) => {
+export const ParticipantsList = ({ handleParticipantsListClose, participants, openListClassname }) => {
   const [t] = useTranslation()
-  const [raitingClassName, setRaitingClassName] = useState(raitingStyles.raitingList_invisible)
-  const dispatch = useAppDispatch()
+  // const [raitingClassName, setRaitingClassName] = useState(raitingStyles.raitingList_invisible)
+  // const dispatch = useAppDispatch()
 
   // const handleRaitingListOpen = () => {
   //   dispatch(setIsRaitingVisible('raiting'))
   //   setRaitingClassName(raitingStyles.raitingList)
   // }
 
-  const handleRaitingListClose = () => {
-    dispatch(setIsRaitingVisible(''))
-    setRaitingClassName(raitingStyles.raitingList_invisible)
-  }
+  // const handleRaitingListClose = () => {
+  //   dispatch(setIsRaitingVisible(''))
+  //   setRaitingClassName(raitingStyles.raitingList_invisible)
+  // }
 
   return (
-    <section className={listClassName}>
+    <section className={openListClassname}>
       <div className={styles.listHeader}>
         <button className={styles.button}>
           <img src={arrow} alt='' className={styles.arrow} onClick={handleParticipantsListClose} />
@@ -50,7 +49,7 @@ export const ParticipantsList = ({ handleParticipantsListClose, participants, li
           )
         })}
       </div>
-      <RaitingList handleRaitingListClose={handleRaitingListClose} raitingClassName={raitingClassName} />
+      {/* <RaitingList handleRaitingListClose={handleRaitingListClose} raitingClassName={raitingClassName} /> */}
     </section>
   )
 }

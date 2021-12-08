@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { setMessages, setIsLoading, setDialogues } from '../redux/chatSlice'
+import { setGenChatMessages, setIsLoading, setDialogues } from '../redux/chatSlice'
 import { ISendInterface } from './types'
 
 const commands = {
@@ -41,7 +41,7 @@ export const useChat = () => {
       }
 
       if (data.command === 4) {
-        dispatch(setMessages(data.result))
+        dispatch(setGenChatMessages(data.result))
       }
 
       dispatch(setIsLoading(false))

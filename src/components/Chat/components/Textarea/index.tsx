@@ -2,19 +2,16 @@ import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import clip from '@icons/clip.svg'
 import send from '@icons/sendIcon.svg'
-import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setIsButtonVisible } from '../../../Chat/redux/chatSlice'
 import { useChat } from '@components/Chat/utils/useChat'
 
 export const Textarea = ({ slug }) => {
-  const buttonVisible = useAppSelector((state) => state.chat.isButtonVisible)
-  const dispatch = useAppDispatch()
+  const [buttonVisible, setButtonVisible] = useState('')
   const { sendGroupMessage, getGroupMessages } = useChat()
 
   const [inputValue, setInputValue] = useState('')
 
   const handleSendIconVisibility = (e) => {
-    e.target.value.length < 1 ? dispatch(setIsButtonVisible('')) : dispatch(setIsButtonVisible('send'))
+    e.target.value.length < 1 ? setButtonVisible('') : setButtonVisible('send')
   }
 
   const handleInputHeight = (e) => {
