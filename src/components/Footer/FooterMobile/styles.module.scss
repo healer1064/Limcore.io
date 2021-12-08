@@ -1,19 +1,18 @@
+@import '../../../scss/typography.scss';
+@import '../../../scss/vars.scss';
+
 .footer {
   position: fixed;
   bottom: 0;
   left: 0;
   z-index: 101;
   height: 91px;
-
   display: flex;
   align-items: center;
-  // padding: 9px 23px;
-  padding: 19px 23px 9px 23px;
-  padding-bottom: 30px;
+  padding: 19px 23px 30px 23px;
   width: 100%;
-  border-top: 1px solid #e5e5e5;
-  
-  background-color: #fff;
+  border-top: 1px solid $very-light-grey;
+  background-color: $white;
 }
 
 .list {
@@ -40,40 +39,38 @@
   }
 
   span {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 10px;
-    line-height: 12px;
+    @include main($other-grey);
+    font-weight: $fontWeightSemiBold;
+    @include p5;
     text-align: center;
-    color: #99a0ad;
     margin-top: 3px;
   }
 }
 
 .link_active {
   span {
-    color: #4a70f8;
+    color: $primary-color;
   }
 
   svg {
     path {
-      stroke: #4a70f8;
+      stroke: $primary-color;
     }
 
     circle {
-      stroke: #4a70f8;
+      stroke: $primary-color;
     }
   }
 }
 
 .broadcasts {
   span {
-    color: #4a70f8;
+    color: $primary-color;
   }
 
   svg {
     path {
-      fill: #4a70f8;
+      fill: $primary-color;
     }
   }
 }
