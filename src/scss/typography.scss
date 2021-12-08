@@ -56,6 +56,11 @@ $fontWeightUltraWide: 900;
   line-height: 12px;
 }
 
+@mixin p6 {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
 @mixin ultraWideH1($color) {
   font-weight: $fontWeightUltraWide;
 

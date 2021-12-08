@@ -1,3 +1,6 @@
+@import '../../../../../scss/typography.scss';
+@import '../../../../../scss/vars.scss';
+
 .phone {
   display: flex;
   flex-direction: column;
@@ -12,32 +15,25 @@
 }
 
 .caption {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 130%;
-  color: #3a3b3d;
+  font-family: $main-font;
+  @include main($dark-grey);
+  font-weight: $fontWeightSemiBold;
+  @include h4;
   margin-bottom: 6px;
 }
 
 .subcaption {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 150%;
-  color: #99a0ad;
+  font-family: $main-font;
+  @include mediumP3($other-grey);
   margin-bottom: 20px;
 }
 
 .info {
-  font-family: 'Montserrat';
-  font-style: normal;
+  font-family: $main-font;
+  @include main($middle-grey);
   font-weight: normal;
   font-size: 14px;
-  line-height: 160%;
-  color: #4f535a;
+  line-height: 1.6;
   max-width: 220px;
 }
 
@@ -55,11 +51,7 @@
 }
 
 .timer {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 150%;
-  color: #4f535a;
+  font-family: $main-font;
+  @include mediumP3($middle-grey);
   margin-top: 8px;
 }

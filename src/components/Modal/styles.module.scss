@@ -1,4 +1,6 @@
 @import '../Purse/vars&mixins.scss';
+@import '../../scss/typography.scss';
+@import '../../scss/vars.scss';
 
 .isMomentumScrollable {
    -webkit-overflow-scrolling: touch;
@@ -57,7 +59,7 @@
     width: 470px;
     height: 100%;
     
-    background-color: #fff;
+    background-color: $white;
     transition: all 0.5s ease;
   }
 

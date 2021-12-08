@@ -1,3 +1,6 @@
+@import '../../../../../../../scss/typography.scss';
+@import '../../../../../../../scss/vars.scss';
+
 .progress {
   display: flex;
   align-items: center;
@@ -36,36 +39,32 @@
   width: 35px;
   height: 36px;
   border-radius: 50%;
-  background: #eff0f0;
+  background: $step-white;
 
   span {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 150%;
-    color: #99a0ad;
+    font-family: $main-font;
+    @include mediumP2($other-grey);
   }
 }
 
 .number_active {
-  background: #4a70f8;
+  background: $primary-color;
 
   span {
-    color: #f0f5fd;
-    opacity: 0.8;
+    color: $step-white;
+    opacity: .8;
   }
 }
 
 .line {
   height: 3px;
-  background: #e5e5e5;
+  background: $very-light-grey;
   flex: 1;
   border-radius: 10px;
 }
 
 .line_active {
-  background: #4a70f8;
+  background: $primary-color;
 }
 
 .container {
@@ -74,22 +73,14 @@
 }
 
 .caption {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 130%;
-  color: #3a3b3d;
+  font-family: $main-font;
+  @include semiBoldH4($dark-grey);
   margin-bottom: 6px;
 }
 
 .subcaption {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 150%;
-  color: #99a0ad;
+  font-family: $main-font;
+  @include mediumP3($other-grey);
   margin-bottom: 20px;
 }
 
@@ -122,9 +113,8 @@
 
   span {
     font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 150%;
-    color: #ff6a6a;
+    font-weight: $fontWeightMedium;
+    @include p3;
+    color: $red;
   }
 }

@@ -1,13 +1,16 @@
+@import '../../scss/typography.scss';
+@import '../../scss/vars.scss';
+
 .MuiPaginationItem-page + .Mui-selected {
-  background-color: #ffffff !important;
+  background-color: $white !important;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.08);
   border-radius: 6px;
 }
 
 .MuiPaginationItem-page {
-  color: #1d2023 !important;
+  color: $notification-black !important;
   font-style: normal !important;
-  font-weight: 500 !important;
+  font-weight: $fontWeightMedium !important;
   font-size: 17px !important;
 }
 
@@ -19,10 +22,7 @@
   padding: 24px 47px 0;
 
   &__item-count {
-    color: #969fa8;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
+    @include mediumP3($count-grey);
   }
 }
 
@@ -32,10 +32,7 @@
   align-items: center;
 
   &__text {
-    color: #969fa8;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
+    @include mediumP3($count-grey);
   }
 }
 
@@ -46,24 +43,24 @@
   margin-left: 8px;
 
   &__button {
-    background: #ffffff;
+    background: $white;
     border-radius: 6px;
-    color: #969fa8;
+    @include mediumP3($count-grey);
     width: 32px;
     height: 32px;
     margin-right: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
 .active_count {
-  color: #1d2023;
+  color: $notification-black;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 

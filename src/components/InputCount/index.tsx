@@ -16,28 +16,28 @@ interface InputCountProps {
 
 export const InputCount: React.FC<InputCountProps> = (props) => {
   return (
-    <div className={styles.count}>
-      <div
+    <fieldset className={styles.count}>
+      <button
         onClick={() => props.changeCount(props.itemId, CountType.decrement)}
-        className={classNames(styles.count__minus_container, styles.count__image)}
+        type='button'
+        className={classNames(styles.count__image)}
       >
         <img src={minus} alt='i' />
-      </div>
-      <div className={styles.count__input_container}>
-        <input
-          onChange={(e) => props.onItemCountChange(props?.itemId, Number(e.target.value))}
-          className={styles.count__number_input}
-          type='number'
-          id={String(props?.itemId)}
-          value={props?.inputValue || 1}
-        />
-      </div>
-      <div
+      </button>
+      <input
+        onChange={(e) => props.onItemCountChange(props?.itemId, Number(e.target.value))}
+        className={styles.count__number_input}
+        type='number'
+        id={String(props?.itemId)}
+        value={props?.inputValue || 1}
+      />
+      <button
         onClick={() => props.changeCount(props.itemId, CountType.increment)}
-        className={classNames(styles.count__plus_container, styles.count__image)}
+        type='button'
+        className={classNames(styles.count__image)}
       >
         <img src={plus} alt='i' />
-      </div>
-    </div>
+      </button>
+    </fieldset>
   )
 }

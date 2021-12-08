@@ -1,3 +1,6 @@
+@import '../../scss/typography.scss';
+@import '../../scss/vars.scss';
+
 .popup {
   position: absolute;
   right: 0;
@@ -14,8 +17,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background: #ffffff;
-  box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+  background: $white;
+  box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
   border-radius: 14px 14px 0 0;
   padding: 30px 20px;
   width: 100%;
