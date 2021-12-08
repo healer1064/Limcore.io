@@ -28,16 +28,12 @@ export const Container: React.FC<ContainerProps> = ({ title, onClick, onClose, o
     <div className={Styles.container}>
       <div className={Styles.header}>
         {step === 0 ? (
-          <button className={`${Styles.back} ${Styles.back_hide}`}>{}</button>
+          <button className={`${Styles.back} ${Styles.back_hide}`} type='button' />
         ) : (
-          <button className={Styles.back} onClick={!onClickBack ? previousStep : onClickBack}>
-            {}
-          </button>
+          <button className={Styles.back} onClick={!onClickBack ? previousStep : onClickBack} type='button' />
         )}
-        <span className={Styles.caption}>{title}</span>
-        <button className={Styles.close} onClick={!onClose ? closeContainer : onClose}>
-          {}
-        </button>
+        <h2 className={Styles.caption}>{title}</h2>
+        <button className={Styles.close} onClick={!onClose ? closeContainer : onClose} type='button' />
       </div>
       <div className={Styles.body}>{children}</div>
     </div>
