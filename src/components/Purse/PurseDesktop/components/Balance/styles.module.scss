@@ -1,4 +1,7 @@
 @import '../../../vars&mixins.scss';
+@import '../../../../../scss/cabinet';
+@import '../../../../../scss/_vars';
+@import '../../../../../scss/typography';
 
 .balance {
   display: flex;
@@ -18,23 +21,20 @@
   }
 
   &__title {
-    @include section-title();
-    color: $color-3A-black;
     transition: opacity .3s ease;
-    cursor: pointer;
-    font-family: Montserrat;
-    font-style: normal;
+    font-family: $main-font;
+    @include main($dark-grey);
     font-weight: 600;
     font-size: 24px;
     line-height: 1.5;
-    color: #3A3B3D;
 
     &:hover {
-      opacity: 0.5;
+      opacity: .5;
+      cursor: pointer;
 
       & + button {
         transition: opacity .3s ease;
-        opacity: 0.5;
+        opacity: .5;
       }
     }
   }
@@ -42,15 +42,14 @@
   &__button {
     margin-left: 14px;
     border: none;
-
     background-color: transparent;
-    outline: none;
+    //outline: none;
     box-shadow: none;
     transition: opacity .3s ease;
     
     &:hover {
       transition: opacity .3s ease;
-      opacity: 0.5;
+      opacity: .5;
       cursor: pointer;
     }
   }
@@ -70,11 +69,7 @@
     display: flex;
     flex-flow: row nowrap;
     margin-bottom: 10px;
-
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
-    color: $color-4F-black;
+    @include subtitle-14px($color-4F-black);
   }
 
   &__time {
@@ -91,12 +86,10 @@
 
   &__percent::before {
     content: '';
-
     display: inline-block;
     margin-right: 1px;
     width: 14px;
     height: 14px;
-
     background-image: url(../../images/chevron-up.svg);
   }
   .addressContainer {
@@ -107,7 +100,6 @@
     margin: 0 auto;
     max-width: 90%;
     height: 40px;
-
     overflow-x: auto;
     overflow-y: hidden;
 
@@ -121,10 +113,9 @@
   }
   .addressValue {
     width: 100%;
-
     white-space: normal;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: $fontWeightSemiBold;
     line-height: 21px;
     letter-spacing: -0.2px;
     color: $color-4F-black;
@@ -145,7 +136,7 @@
       position: relative;
       display: flex;
       justify-content: flex-end;
-      background: #dbe0ee;
+      background: $purse-white;
       border-radius: 6px;
       padding: 5px 10px;
       margin-top: 30px;
@@ -158,35 +149,17 @@
       position: absolute;
       top: 0;
       left: 0;
-      background: #4a70f8;
+      background: $primary-color;
       border-radius: 6px 0 0 6px;
       width: $barProportion;
       height: 100%;
     }
     
     .count {
-      font-family: Montserrat;
+      font-family: $main-font;
       font-style: normal;
-      font-weight: 600;
-      font-size: 14px;
-      line-height: 150%;
-      color: #868da7;
+      @include subtitle-14px($purse-violet);
       z-index: 3;
-    }
-  
-    .etherscan {
-      font-family: Montserrat;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 13px;
-      color: #4A70F8;
-      text-decoration: none;
-    }
-    
-    .etherscanIcon {
-      transform: translateY(6px);
-      margin-top: 0 !important;
-      margin-right: 6px;
     }
   }
 
@@ -221,8 +194,8 @@
   box-sizing: border-box;
   margin: 0 10px 0 0;
   padding: 10px 26px 22px;
-  background: #F9FAFE;
-  border-radius: 14px;
+  background: $purse-other-white;
+  border-radius: $border-radius;
   width: 100%;
 
   &:nth-child(3) {
@@ -234,22 +207,17 @@
   }
 
   &__subtitle {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 1.4;
-    color: #99A0AD;
+    font-family: $main-font;
+    @include subtitle-13px($other-grey);
     padding: 12px 0 0;
   }
 
   &__number {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 600;
+    font-family: $main-font;
+    @include main($color-4F-black);
+    font-weight: $fontWeightSemiBold;
     font-size: 14px;
     line-height: 1.4;
-    color: #4F535A;
     padding: 4px 0 0;
   }
 }
@@ -267,7 +235,6 @@
   &Modal {
     &Subtitle {
       margin: 0 0 6px 0;
-
       font-size: 13px;
       font-weight: 500;
       line-height: 18px;
