@@ -19,7 +19,7 @@ export const MessageComponent = ({ user, message, isMyMsg, date }: IGroupText) =
         {isMyMsg ? (
           <p className={styles.myMessage}>
             {message.message}
-            <span className={styles.time}>{getHoursAndMinutes(message.created_at)}</span>
+            <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
           </p>
         ) : (
           <>
