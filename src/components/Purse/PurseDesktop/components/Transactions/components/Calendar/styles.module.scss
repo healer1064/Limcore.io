@@ -1,3 +1,8 @@
+@import '../../../../../vars&mixins.scss';
+@import '../../../../../../../scss/cabinet';
+@import '../../../../../../../scss/_vars';
+@import '../../../../../../../scss/typography';
+
 .inputs {
   display: flex;
   justify-content: space-between;
@@ -13,7 +18,7 @@
     margin: 0 16px;
     min-width: 23px;
     height: 1px;
-    background-color: #B4BFD4;
+    background-color: $color-B4-violet;
   }
 }
 
@@ -29,11 +34,10 @@
   }
   
   .title {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
+    font-family: $main-font;
+    @include main($color-4F-black);
+    font-weight: $fontWeightSemiBold;
     font-size: 14px;
     line-height: 17px;
-    color: #4f535a;
   }
 }

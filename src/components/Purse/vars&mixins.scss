@@ -4,6 +4,7 @@
 
 $color-58-green: #58CD32;
 $color-4D-green: #4DBE28;
+$color-47-green: #47AF25;
 $color-E5-green: #E5FBDE;
 $color-39-black: #393C42;
 $color-4F-black: #4F535A;
@@ -13,10 +14,20 @@ $color-99-gray: #99A0AD;
 $color-4A-blue: #4A70F8;
 $color-31-blue: #3159E9;
 $color-2D-blue: #2D4EC5;
+$color-DC-white: #DCDCDC;
+$color-F9-white: #F9FAFE;
+$color-70-grey: #7070701A;
+$color-8C-violet: #8ca4f2;
+$color-ED-white: #EDF4FF;
+$color-E5-white: #E5FBDE;
+$color-7C-violet: #7c97f1;
+$color-B4-violet: #B4BFD4;
+$color-F2-red: #F24949;
+$color-FO-white: #F0F5FD;
 
 @mixin section-title() {
   font-family: $main-font;
-  @include semiBoldH($color-gray-dark);
+  @include semiBoldH4($color-gray-dark);
 }
 
 @mixin subtitle-14px($color) {
@@ -32,5 +43,13 @@ $color-2D-blue: #2D4EC5;
   font-size: 13px;
   font-weight: $fontWeightMedium;
   line-height: 20px;
+  color: $color;
+}
+
+@mixin second-subtitle-13px($color) {
+  font-family: $main-font;
+  font-size: 13px;
+  font-weight: $fontWeightMedium;
+  line-height: 18px;
   color: $color;
 }

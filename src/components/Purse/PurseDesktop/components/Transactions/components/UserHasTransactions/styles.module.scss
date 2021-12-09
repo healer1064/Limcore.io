@@ -1,5 +1,7 @@
-@import '../../../../../../../scss/cabinet';
 @import '../../../../../vars&mixins.scss';
+@import '../../../../../../../scss/cabinet';
+@import '../../../../../../../scss/_vars';
+@import '../../../../../../../scss/typography';
 
 .list {
   margin: 0;
@@ -25,27 +27,23 @@
   }
 
   &__minus > span > p:first-child {
-    @include subtitle-14px(#F24949);
+    @include subtitle-14px($color-F2-red);
   }
 }
 
 .switch {
   position: relative;
-
   display: flex;
   flex-direction: column;
   margin-right: auto !important;
 
   &::after {
     content: '';
-
     position: absolute;
     top: 0;
     right: -25px;
-
     width: 20px;
     height: 100%;
-
     background-image: url(../../../../images/switch-arrow.svg);
     background-repeat: no-repeat;
     background-position: center;
@@ -70,7 +68,6 @@
 
 .title {
   margin: 0 auto 2px 0 !important;
-
   @include subtitle-14px($color-gray-black);
   text-align: left;  
 }
@@ -78,11 +75,10 @@
 .data {
   display: block;
   flex: none;
-
   &__title {
     margin: 0;
     padding: 0;
-    @include subtitle-14px(#4DBE28);
+    @include subtitle-14px($color-4D-green);
     text-align: right;
   }
 

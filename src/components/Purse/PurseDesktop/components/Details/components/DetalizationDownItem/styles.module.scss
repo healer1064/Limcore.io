@@ -1,14 +1,13 @@
-@import '../../../../../../../scss/cabinet';
 @import '../../../../../vars&mixins.scss';
+@import '../../../../../../../scss/cabinet';
+@import '../../../../../../../scss/_vars';
+@import '../../../../../../../scss/typography';
 
 .details {
   position: relative;
   padding: 24px 0;
-  margin: 0;
-  margin-top: 25px;
-  margin-bottom: 30px;
-
-  background-color: #FFF;
+  margin: 25px 0 30px;
+  background-color: $white;
   box-shadow: $box-shadow2;
   border-radius: $border-radius;
   transition: 0.5s ease-in-out;

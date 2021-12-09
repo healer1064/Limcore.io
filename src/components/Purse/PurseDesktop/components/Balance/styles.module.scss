@@ -236,9 +236,9 @@
     &Subtitle {
       margin: 0 0 6px 0;
       font-size: 13px;
-      font-weight: 500;
+      font-weight: $fontWeightMedium;
       line-height: 18px;
-      color: #99A0AD;
+      color: $other-grey;
     }
 
     &Up {
@@ -254,21 +254,19 @@
     
         &Title {
           margin: 0 0 20px 0;
-    
           font-size: 18px;
-          font-weight: 600;
+          font-weight: $fontWeightSemiBold;
           line-height: 27px;
-          color: #393C42;
+          color: $color-39-black;
         }
   
     
         &Purse {
           margin: 0;
-    
           font-size: 14px;
-          font-weight: 500;
+          font-weight: $fontWeightMedium;
           line-height: 19px;
-          color: #4F535A;
+          color: $color-4F-black;
           word-wrap: break-word;
 
           &Copy {
@@ -295,13 +293,8 @@
   padding: 0;
   margin: 0;
   left: 0;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 140%;
+  @include second-subtitle-13px($color-4F-black);
   font-feature-settings: 'tnum' on, 'lnum' on;
-  color: #4F535A;
 }
 
 @media screen and (min-width: 1139px) {
@@ -332,14 +325,13 @@
 .syncButton {
   @include section-title();
   color: $color-4A-blue;
-  border: none;
-  outline: none;
+  //outline: none;
   padding: 15px 0;
   max-width: 270px;
   margin: 30px 0;
-  background-color: #FFFF;
+  background-color: $white;
   border: 1px solid $color-4A-blue;
-  border-radius: 14px;
+  border-radius: $border-radius;
   &:hover {
     border: 1px solid $color-31-blue;
     color: $color-31-blue;
@@ -351,10 +343,7 @@
 }
 
 .trust_subtitle {
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 18px;
-  color: #99A0AD;
+  @include second-subtitle-13px($other-grey);
 }
 
 .walletId {
@@ -365,9 +354,9 @@
   max-height: 55px;
   margin: 30px 0;
   border: 2px solid $color-4D-green;
-  border-radius: 14px;
+  border-radius: $border-radius;
   padding: 15px 30px;
-  background-color: #fff;
+  background-color: $white;
   svg {
     min-width: 24px;
     min-height: 24px;
@@ -378,9 +367,7 @@
     margin: 0;
     padding: 0;
     color: $color-4A-blue;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    @include ellipsisText();
   }
 }
 
@@ -396,36 +383,15 @@
   'notion notion';
 }
 
-//.trust_kill {
-//  margin-bottom: 10px;
-//  padding: 10px 20px;
-//  border: none;
-//  border-radius: 14px;
-//
-//  font-size: 14px;
-//  font-weight: 500;
-//  line-height: 1;
-//  color: #fff;
-//
-//  background-color: #F24949;
-//  outline: none;
-//  transition: background-color .3s ease;
-//
-//  &:hover {
-//    background-color: #ec0505;
-//    transition: background-color .3s ease;
-//  }
-//}
-
 .trust_kill {
   display: grid;
   grid-area: close;
   margin: 30px 0 25px 30px;
   padding: 5px;
-  border: 1px solid #99A0AD;
+  border: 1px solid $other-grey;
   border-radius: 50%;
-  background-color: #FFFFFF;
-  outline: none;
+  background-color: $white;
+  //outline: none;
   object-fit: contain;
   justify-content: center;
   align-content: center;
@@ -435,6 +401,6 @@
 
   &:hover {
     cursor: pointer;
-    opacity: 0.5;
+    opacity: .5;
   }
 }

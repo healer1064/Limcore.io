@@ -1,3 +1,8 @@
+@import '../../../../../vars&mixins.scss';
+@import '../../../../../../../scss/cabinet';
+@import '../../../../../../../scss/_vars';
+@import '../../../../../../../scss/typography';
+
 .menuItem {
   display: grid;
   box-sizing: border-box;
@@ -21,12 +26,7 @@
   display: flex;
   gap: 10px;
   grid-area: title;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 1.4;
-  color: #99A0AD;
+  @include second-subtitle-13px($other-grey);
   padding: 0;
   margin: 0;
   text-align: left;
@@ -34,12 +34,11 @@
 
 .menu__sum {
   grid-area: balance;
-  font-family: Montserrat;
+  font-family: $main-font;
+  @include main($color-4F-black);
   font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 1.4;
-  color: #4F535A;
+  font-weight: $fontWeightSemiBold;
+  @include p3;
   padding: 6px 0 0;
   margin: 0;
   text-align: left;

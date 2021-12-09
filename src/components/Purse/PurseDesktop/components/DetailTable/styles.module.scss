@@ -1,11 +1,14 @@
 @import '../../../vars&mixins.scss';
+@import '../../../../../scss/cabinet';
+@import '../../../../../scss/_vars';
+@import '../../../../../scss/typography';
 
 .table {
   width: 100%;
   .tableRow {
     height: 80px;
     &:not(:last-child) {
-       border-bottom: 1px solid #E5E5E5;
+       border-bottom: 1px solid $very-light-grey;
     }
     .tableHeader {
       @include section-title();
@@ -63,8 +66,8 @@
   margin: 20px auto;
   padding: 14px 75px;
   border: 1px solid $color-4A-blue;
-  border-radius: 14px;
-  outline: none;
+  border-radius: $border-radius;
+  //outline: none;
   background-color: transparent;
   &:hover {
     color: $color-31-blue;

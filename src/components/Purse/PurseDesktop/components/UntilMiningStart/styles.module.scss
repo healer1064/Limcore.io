@@ -1,4 +1,7 @@
 @import '../../../vars&mixins.scss';
+@import '../../../../../scss/cabinet';
+@import '../../../../../scss/_vars';
+@import '../../../../../scss/typography';
 
 .untilMiningContainer {
   display: flex;
@@ -49,8 +52,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    background-color: #F0F5FD;
-    border-radius: 14px;
+    background-color: $color-FO-white;
+    border-radius: $border-radius;
     padding: 20px;
     margin: 30px 0 0 0;
     .closePopupButton {
