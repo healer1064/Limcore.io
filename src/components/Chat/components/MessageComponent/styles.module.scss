@@ -43,7 +43,8 @@
   border-radius: 50%;
   width: 37px;
   height: 37px;
-  object-fit: scale-down;
+  object-fit: cover;
+  object-position: center;
 }
 
 .raiting {
@@ -86,14 +87,14 @@
 }
 
 .message {
-  position: relative;
-
-  box-sizing: border-box;
   grid-area: message;
   display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
   width: 75%;
   margin: 0;
-  padding: 12px 50px 12px 14px;
+  padding: 12px 14px;
   border-radius: 14px;
   
   font-family: Montserrat;
@@ -107,14 +108,14 @@
 }
 
 .myMessage {
-  position: relative;
-
-  box-sizing: border-box;
   grid-area: message;
   display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
   width: 75%;
   margin: 0 0 0 auto;
-  padding: 12px 50px 12px 14px;
+  padding: 12px 14px;
   border-radius: 14px;
   
   font-family: Montserrat;
@@ -128,10 +129,7 @@
 }
 
 .time {
-  position: absolute;
-  bottom: 13px;
-  right: 13px;
-
+  align-self: end;
   font-size: 13px;
   font-weight: 400;
   line-height: 18px;
