@@ -29,9 +29,31 @@
   max-width: 225px;
 }
 
+.notification_edit {
+  max-width: none;
+}
+
 .wrap {
+  position: relative;
+
   display: flex;
-  margin-top: 8px;
+  margin-bottom: 16px;
+  padding-left: 5px;
+  // height: 20px;
+
+  .error {
+    position: absolute;
+    left: 5px;
+    bottom: -16px;
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #ff6a6a;
+  }
 }
 
 .time {
@@ -41,6 +63,10 @@
   font-size: 14px;
   line-height: 150%;
   color: #4f535a;
+  display: flex;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 8px 0 0;
 }
 
 .buttons {

@@ -14,12 +14,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
   width: 100%;
+
+  &:nth-child(1) {
+    div {
+      margin-right: 14px;
+    }
+  }
 
   &:nth-child(2) {
     width: inherit;
     margin: 0 14px;
+  }
+
+  &:nth-child(3) {
+    div {
+      margin-left: 14px;
+    }
   }
 }
 
@@ -73,6 +84,24 @@
   line-height: 130%;
   color: #3a3b3d;
   margin-bottom: 30px;
+}
+
+.label {
+  span {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 140%;
+    color: #393c42;
+  }
+}
+
+.qrcode {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .link {

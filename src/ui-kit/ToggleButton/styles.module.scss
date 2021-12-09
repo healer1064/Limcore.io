@@ -16,6 +16,10 @@
         background: #4a70f8;
       }
     }
+
+    &:disabled + .slider {
+      opacity: 0.5;
+    }
   }
 }
 

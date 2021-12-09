@@ -6,26 +6,29 @@ import { PurseIcon } from '@icons/PurseIcon'
 import { ChatIcon } from '@icons/ChatIcon'
 import { BroadcastsIcon } from '@icons/BroadcastsIcon'
 import { ProfileIcon } from '@icons/ProfileIcon'
+import { useTranslation } from 'react-i18next'
 
 export const FooterMobile: React.FC = () => {
+  const [t] = useTranslation()
+
   return (
     <footer className={Styles.footer}>
       <ul className={Styles.list}>
-        <NavLink to='/' exact className={Styles.link} activeClassName={`${Styles.link_active}`}>
+        <NavLink to='/my' exact className={Styles.link} activeClassName={`${Styles.link_active}`}>
           <PurseIcon />
-          <span>Кошелек</span>
+          <span>{t('footer_mobNavPurse')}</span>
         </NavLink>
-        <NavLink to='/broadcasts' exact className={Styles.link} activeClassName={`${Styles.link_active}`}>
+        <NavLink to='/broadcasts' exact className={Styles.link} activeClassName={Styles.broadcasts}>
           <BroadcastsIcon />
-          <span>Трансляции</span>
+          <span>{t('footer_mobNavStreams')}</span>
         </NavLink>
         <NavLink to='/chat' exact className={Styles.link} activeClassName={`${Styles.link_active}`}>
           <ChatIcon />
-          <span>Чат</span>
+          <span>{t('footer_mobNavChat')}</span>
         </NavLink>
         <NavLink to='/profile' exact className={Styles.link} activeClassName={`${Styles.link_active}`}>
           <ProfileIcon />
-          <span>Профиль</span>
+          <span>{t('footer_mobNavProfile')}</span>
         </NavLink>
       </ul>
     </footer>

@@ -6,27 +6,28 @@ import Styles from './styles.module.scss'
 import logoIcon from '@icons/logo.svg'
 import userIcon from '@icons/user.svg'
 import logout from '@icons/logout.svg'
-import { Container } from '../../../components/Container'
-import twitter from '@icons/twitter-icon.png'
-import youTube from '@icons/SF Symbol/play.fill.svg'
-import vk from '@icons/vk-icon.png'
-import insta from '@icons/insta-icon.png'
-import tg from '@icons/telegram-icon.png'
-import facebook from '@icons/facebook-icon.png'
-// import RU from '../../../assets/images/flag-ru.svg'
-import RUS from '../../../assets/images/russia-flag.png'
-import ENG from '../../../assets/images/en-flag.png'
+import { Container } from '@components/Container'
+
+import { Telegram } from '@icons/Telegram'
+import { Instagram } from '@icons/Instagram'
+import { Youtube } from '@icons/Youtube'
 import { useHistory, useLocation } from 'react-router'
-import { setIsAuth } from '../../../pages/auth/redux/auth.slice'
+import { setIsAuth } from '../../../pages/auth/redux/authSlice'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import close from '@icons/close.svg'
+import { Logo } from '@components/Purse/PurseDesktop/components/Logo'
+import { useTranslation } from 'react-i18next'
+import { LoginIcon } from '@icons/LoginIcon'
+import { LanguagePopup } from '@components/LanguagePopup'
 
 export const HeaderMobile: React.FC = () => {
   const [burgerOpen, setBurgerOpen] = useState(false)
+  const [t] = useTranslation()
+
   const isAuth = useAppSelector((state) => state.auth.isAuth)
   const history = useHistory()
   const location = useLocation()
   const dispatch = useAppDispatch()
+
   const closeBurger = () => {
     setBurgerOpen(false)
   }
@@ -40,40 +41,62 @@ export const HeaderMobile: React.FC = () => {
     window.location.reload()
   }
 
+  const iconCondition =
+    (isAuth && window.location.pathname.includes('my')) ||
+    (isAuth && window.location.pathname.includes('chat')) ||
+    (isAuth && window.location.pathname.includes('broadcasts')) ||
+    (isAuth && window.location.pathname.includes('profile'))
+
   const burgerStyles = `${burgerOpen ? Styles.burgerMenuOpened : Styles.burgerMenuClosed}`
   const tempLink = [
-    { id: 1, value: 'Что такое Limcore?', link: 'main', spy: true, smooth: true },
-    { id: 2, value: 'Roadmap', link: 'roadmap', spy: true, smooth: true },
-    { id: 3, value: 'Команда', link: 'team', spy: true, smooth: true },
+    { id: 1, value: t('nav_about'), link: 'limcore', spy: true, smooth: true },
+    { id: 2, value: t('nav_roadmap'), link: 'roadmap', spy: true, smooth: true },
+    { id: 3, value: t('nav_team'), link: 'team', spy: true, smooth: true },
     // { id: 4, value: 'Экосистема', link: 'ecosystem', spy: true, smooth: true },
-    { id: 5, value: 'Вопрос-ответ', link: 'questionsMobile', spy: true, smooth: true },
+    { id: 5, value: t('nav_qa'), link: 'questionsMobile', spy: true, smooth: true },
   ]
+
   return (
     <header className={Styles.header}>
-      <img className={Styles.logo} src={logoIcon} alt='Лого' />
+      {isAuth ? (
+        <LinkDom to='/my' className={Styles.logoIcon}>
+          {iconCondition ? <Logo /> : <img className={Styles.logo} src={logoIcon} alt='Лого' />}
+        </LinkDom>
+      ) : (
+        <LinkDom to='/' className={Styles.logoIcon}>
+          {iconCondition ? <Logo /> : <img className={Styles.logo} src={logoIcon} alt='Лого' />}
+        </LinkDom>
+      )}
       <div className={Styles.wrap}>
         {!isAuth && location.pathname !== '/auth' && (
-          <a onClick={() => history.push('/auth')}>
+          <a onClick={() => history.push('/auth')} className={Styles.logoLink}>
             <img src={userIcon} alt='Иконка' />
           </a>
         )}
-        {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null}
-        {
-          location.pathname === '/auth' ? (
-            <LinkDom to='/'>
-              <img src={close} alt='close' />
-            </LinkDom>
-          ) : null
-          // <div className={Styles.burger} onClick={openBurger}>
-          //   <span className={Styles.row}>{}</span>
-          //   <span className={Styles.row}>{}</span>
-          //   <span className={Styles.row}>{}</span>
-          // </div>
-        }
+        {isAuth && window.location.pathname === '/' ? (
+          <>
+            <button className={Styles.profileBtn}>
+              <LinkDom to='/my' className={Styles.profileBtn_link}>
+                <LoginIcon />
+                <span className={Styles.enter}>{t('profile')}</span>
+              </LinkDom>
+            </button>
+            <div className={Styles.burger} onClick={openBurger}>
+              <span className={Styles.row}>{}</span>
+              <span className={Styles.row}>{}</span>
+              <span className={Styles.row}>{}</span>
+            </div>
+          </>
+        ) : (
+          <>
+            <LanguagePopup />
+            {isAuth ? <img className={Styles.logout} onClick={onLogout} src={logout} alt='Иконка' /> : null}
+          </>
+        )}
         <div className={burgerStyles}>
           <Container title='' onClose={closeBurger}>
             <img className={Styles.logoInOpenBurger} src={logoIcon} alt='Лого' />
-            {!isAuth ? (
+            {window.location.pathname === '/' ? (
               <ul className={Styles.list}>
                 {tempLink?.map((item) => {
                   return (
@@ -91,54 +114,33 @@ export const HeaderMobile: React.FC = () => {
                 })}
               </ul>
             ) : null}
-            {/* <ul className={Styles.social}>
-              <li>
-                <a href='https://twitter.com' target='blank' rel='noopener noreferrer'>
-                  <img src={twitter} className={Styles.socialIcon} />
+
+            <ul className={Styles.social}>
+              <li className={Styles.content_item}>
+                <a href='https://t.me/limc_russ' target='blank' rel='noopener noreferrer'>
+                  <Telegram className={Styles.content_icon} />
                 </a>
               </li>
-              <li>
-                <a
-                  href='https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg'
-                  target='blank'
-                  rel='noopener noreferrer'
-                  className={Styles.YouTubeLink}
-                >
-                  <img src={youTube} className={Styles.YouTubeIcon} />
-                </a>
-              </li>
-              <li>
-                <a href='https://vk.com/' target='blank' rel='noopener noreferrer'>
-                  <img src={vk} className={Styles.socialIcon} />
-                </a>
-              </li>
-              <li>
+              <li className={Styles.content_item}>
                 <a
                   href='https://instagram.com/limcore.io?utm_medium=copy_link'
                   target='blank'
                   rel='noopener noreferrer'
                 >
-                  <img src={insta} className={Styles.socialIcon} />
+                  <Instagram className={Styles.content_icon} />
                 </a>
               </li>
-              <li>
-                <a href='https://t.me/limc_russ' target='blank' rel='noopener noreferrer'>
-                  <img src={tg} className={Styles.socialIcon} />
+              <li className={Styles.content_item}>
+                <a href='https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg' target='blank' rel='noopener noreferrer'>
+                  <Youtube className={Styles.content_icon} />
                 </a>
               </li>
-              <li>
-                <a href='https://ru-ru.facebook.com/' target='blank' rel='noopener noreferrer'>
-                  <img src={facebook} className={Styles.socialIcon} />
-                </a>
-              </li>
-            </ul> */}
+            </ul>
             <div className={Styles.group}>
-              <p className={Styles.email}>info@limcore.com</p>
-              <div className={Styles.languageGroup}>
-                <img className={Styles.languageIcon} src={RUS} alt='RU' />
-                <p className={Styles.language}>RU</p>
-                {/* <img className={Styles.footer__languageArrow} src={arrow} alt='Arrow-button' /> */}
-              </div>
+              <p className={Styles.email}>
+                <a href='mailto:info@limcore.io'>info@limcore.io</a>
+              </p>
+              <LanguagePopup position={{ top: '-105px', left: '-25px', background: '#4a70f8' }} />
             </div>
           </Container>
         </div>

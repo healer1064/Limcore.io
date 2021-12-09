@@ -1,0 +1,154 @@
+@import '../../../../../scss/cabinet';
+
+.wallet {
+  padding: 0 60px;
+  margin: 60px 0;
+  background-color: $color-cyan-pale;
+  border-radius: 14px;
+  max-height: 137px;
+
+  &_violet {
+    background-color: #F0F5FD;;
+  }
+
+  & * {
+    padding: 0;
+    margin: 0;
+  }
+
+  &__title {
+    display: inline-block;
+    margin-top: 18px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+    color: $color-gray-medium;
+  }
+
+  &__subtitle {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #4F535A;
+    padding: 6px 0 0;
+    margin: 0;
+  }
+
+  &__image {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 10%;
+    width: 140px;
+  }
+}
+
+.moreButton {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #4A70F8;
+  display: flex;
+  border: none;
+  background-color: transparent;
+  padding: 14px 0 26px;
+  margin: 0;
+}
+
+.scrollIcon {
+  display: flex;
+  box-sizing: border-box;
+  width: 7px;
+  height: 14px;
+  margin: 24px auto;
+  padding: 0;
+  transform: translateY(-2px);
+  z-index: 10;
+}
+
+.arrowHidden {
+  display: none;
+}
+
+.swiperWrapper {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  :global(.swiper-button-prev), :global(.swiper-button-next) {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 2px solid #fff;
+    width: 49px;
+    height: 49px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.05);
+    transition: border .3s ease;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: 30% 30%;
+    background-position: center center;
+    &::after {
+      content: '';
+    }
+    &:hover {
+      cursor: pointer;
+      border: 2px solid #4A70F8;
+      transition: border .3s ease;
+    }
+  }
+  :global(.swiper-button-prev) {
+    background-image: url(../../../../../assets/icons/arrow-left-blue.svg);
+    transform: translate(-15%, -50%);
+  }
+  :global(.swiper-button-next) {
+    background-image: url(../../../../../assets/icons/arrow-right-blue.svg);
+    transform: translate(15%, -50%);
+  }
+  :global(.swiper-button-disabled) {
+      display: none;
+    }
+}
+
+.swiper {
+  // display: flex;
+  // position: relative;
+  // box-sizing: border-box;
+  // margin: 60px 0 0;
+  // padding: 0;
+  // max-width: 60vw;
+  // overflow: visible;
+}
+
+.slide {
+  // display: flex;
+  // box-sizing: border-box;
+  // margin: 0;
+  // padding: 0;
+  // max-width: 70%;
+}
+
+@media screen and (max-width: 1230px) {
+  .wallet__image {
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .wallet {
+    margin: 25px 0;
+    max-height: 100%;
+  }
+
+  .wallet__subtitle {
+    max-width: 50%;
+  }
+}

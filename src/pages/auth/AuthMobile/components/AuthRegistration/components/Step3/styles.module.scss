@@ -81,4 +81,20 @@
 .buttons {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
+}
+
+.label {
+  position: relative;
+
+  .error {
+    position: absolute;
+    left: 5px;
+    bottom: -33px;
+  
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #FF6A6A;
+  }
 }

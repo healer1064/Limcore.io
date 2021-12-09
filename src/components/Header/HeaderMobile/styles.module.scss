@@ -4,28 +4,57 @@
   justify-content: space-between;
   padding: 22px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  min-height: 70px;
-  max-height: 70px;
+  height: 70px;
+  z-index: 1;
 }
 
 .wrap {
+  // position: relative;
   display: flex;
   align-items: center;
-  gap: 22px;
 }
 
-.logout:hover {
-  cursor: pointer;
-  opacity: 0.7;
+.logout {
+  margin-right: 8px;
+  margin-left: 25px;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
 }
 
 .burger {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 18px;
 
   &:hover {
     cursor: pointer;
   }
+}
+
+.logo {
+  max-width: 150px;
+  transform: translateY(42px);
+}
+
+.profileLogo {
+  margin-right: 8px;
+  transform: translateY(2px);
+}
+
+.logoLink {
+  margin-right: 24px;
+
+  & > img {
+    transform: translateY(1px);
+  }
+}
+
+.logoIcon {
+  transform: translateY(-42px);
 }
 
 .row {
@@ -123,15 +152,19 @@
 }
 
 .email {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #4A70F8;
+  
+  & > a {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #4A70F8;
+    text-decoration: none;
+  }
 }
 
 .socialIcon {
@@ -176,4 +209,66 @@
 
 .burgerMenuClosed {
   display: none;
+}
+
+.content {
+  margin-bottom: auto;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  &_item:not(:last-child) {
+    margin-bottom: 15px;
+  }
+  
+  &_link {
+    display: flex;
+    align-items: center;
+
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+    color: #4A70F8;
+    text-decoration: none;
+
+    & > svg > path,
+    & > svg > circle {
+      stroke: #4A70F8;
+    }
+  }
+
+  &_icon {
+    height: 30px;
+  }
+
+  &_title {
+    margin-left: 15px;
+  }
+}
+
+.social {
+  display: flex;
+  // margin: 0 auto;
+  max-width: 200px;
+  width: 100%;
+}
+
+.profileBtn {
+  padding: 5px 15px;
+  margin: 0 25px 0 0;
+  border: 1px solid #4a70f8;
+  border-radius: 14px;
+
+  outline: none;
+  background-color: #fff;
+  
+  &_link {
+    display: flex;
+    align-items: center;
+    
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+    color: #4a70f8;
+    text-decoration: none;
+  }
 }

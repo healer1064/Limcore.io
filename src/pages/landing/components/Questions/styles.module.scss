@@ -9,7 +9,7 @@
 
 .questions_mobile {
   display: none;
-  padding: 60px 20px;
+  padding: 20px;
 }
 
 .wrapper {
@@ -71,6 +71,7 @@
 
 .item_active {
   span {
+    margin-left: 10px;
     font-weight: 600;
 
     svg {

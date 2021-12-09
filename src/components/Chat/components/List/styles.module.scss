@@ -1,0 +1,107 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #FFFFFF;
+  opacity: 1;
+  transition: opacity 1s linear;
+
+  &_invisible {
+    display: none;
+    opacity: 0;
+    transition: opacity 1s linear;
+  }
+}
+
+.listHeader {
+  display: flex;
+  box-sizing: border-box;
+  padding: 25px;
+  margin: 0;
+  min-height: 70px;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+}
+
+.arrow {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 90px 0 0;
+  align-self: center;
+}
+
+.close {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  width: 26px;
+  height: 26px;
+  object-fit: cover;
+}
+
+.title {
+  display: flex;
+  box-sizing: border-box;
+  padding: 5px 0;
+  margin: 0;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+  color: #393C42;
+}
+
+.number {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 0 0 8px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: #99A0AD;
+}
+
+.messagesContainer {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 20px 20px 0;
+  overflow: scroll;
+}
+
+@media screen and (min-width: 769px) {
+  .list {
+    width: 375px;
+    height: 610px;
+    position: absolute;
+    bottom: 0;
+    right: 120px;
+    box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+    border-radius: 14px;
+  }
+  .arrow {
+    margin: 0 30px 0 0;
+  }
+}

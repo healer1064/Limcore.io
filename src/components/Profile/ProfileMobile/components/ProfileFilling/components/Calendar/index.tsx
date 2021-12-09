@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import moment from 'moment'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setData } from '../../../../../../../app/redux/userSlice'
 import Styles from './styles.module.scss'
@@ -7,7 +6,7 @@ import Styles from './styles.module.scss'
 import leftIcon from '@icons/arrow-left.svg'
 import rightIcon from '@icons/arrow-right.svg'
 
-import { getMonth } from '../../../../../../../helpers/getMonth'
+import { getMonth, prevMonth, nextMonth } from '../../../../../../../helpers/getMonth'
 
 interface CalendarProps {
   closePopup?: any
@@ -20,7 +19,7 @@ export const Calendar: React.FC<CalendarProps> = ({ closePopup, dataType }) => {
 
   const date = new Date()
 
-  const startYears = 1980
+  const startYears = 1940
   const endYears = date.getFullYear()
 
   const months = [
@@ -50,6 +49,8 @@ export const Calendar: React.FC<CalendarProps> = ({ closePopup, dataType }) => {
   const [month, setMonth] = useState(null)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [day, setDay] = useState(null)
+
+  // const [monthObject, setMonthObject] = useState({ id: null, name: '' })
 
   const backwardYears = () => {
     if (years[0] === startYears) {
@@ -85,6 +86,26 @@ export const Calendar: React.FC<CalendarProps> = ({ closePopup, dataType }) => {
     setYear(year)
   }
 
+  const backwardMonth = () => {
+    const currentYear = month === 1 ? year - 1 : year
+    const monthPrev = prevMonth({ year: currentYear, month })
+
+    setYear(currentYear)
+    setTitle(`${monthPrev[0].name} ${currentYear}`)
+    setDays(monthPrev[0].days)
+    setMonth(monthPrev[0].number)
+  }
+
+  const forwardMonth = () => {
+    const currentYear = month === 12 ? year + 1 : year
+    const monthNext = nextMonth({ year: currentYear, month })
+
+    setYear(currentYear)
+    setTitle(`${monthNext[0].name} ${currentYear}`)
+    setDays(monthNext[0].days)
+    setMonth(monthNext[0].number)
+  }
+
   const selectYear = (year) => {
     setTitle(year)
     setYear(year)
@@ -96,7 +117,7 @@ export const Calendar: React.FC<CalendarProps> = ({ closePopup, dataType }) => {
 
     setTitle(`${month[0].name} ${year}`)
     setDays(month[0].days)
-    setMonth(monthObj.id)
+    setMonth(month[0].number)
     setView('days')
   }
 
@@ -139,9 +160,13 @@ export const Calendar: React.FC<CalendarProps> = ({ closePopup, dataType }) => {
       {view === 'years' && (
         <>
           <div className={Styles.select}>
-            <img className={Styles.leftIcon} src={leftIcon} alt='Иконка' onClick={backwardYears} />
+            <button onClick={backwardYears}>
+              <img className={Styles.leftIcon} src={leftIcon} alt='Иконка' />
+            </button>
             <span className={Styles.title}>{title}</span>
-            <img className={Styles.rightIcon} src={rightIcon} alt='Иконка' onClick={forwardYears} />
+            <button onClick={forwardYears}>
+              <img className={Styles.rightIcon} src={rightIcon} alt='Иконка' />
+            </button>
           </div>
           <div className={Styles.grid}>
             {years &&
@@ -156,9 +181,13 @@ export const Calendar: React.FC<CalendarProps> = ({ closePopup, dataType }) => {
       {view === 'months' && (
         <>
           <div className={Styles.select}>
-            <img className={Styles.leftIcon} src={leftIcon} alt='Иконка' onClick={() => backwardYear(year - 1)} />
+            <button onClick={() => backwardYear(year - 1)}>
+              <img className={Styles.leftIcon} src={leftIcon} alt='Иконка' />
+            </button>
             <span className={Styles.title}>{title}</span>
-            <img className={Styles.rightIcon} src={rightIcon} alt='Иконка' onClick={() => forwardYear(year + 1)} />
+            <button onClick={() => forwardYear(year + 1)}>
+              <img className={Styles.rightIcon} src={rightIcon} alt='Иконка' />
+            </button>
           </div>
           <div className={Styles.grid}>
             {months &&
@@ -173,9 +202,13 @@ export const Calendar: React.FC<CalendarProps> = ({ closePopup, dataType }) => {
       {view === 'days' && (
         <>
           <div className={Styles.select}>
-            <img className={Styles.leftIcon} src={leftIcon} alt='Иконка' />
+            <button onClick={() => backwardMonth()}>
+              <img className={Styles.leftIcon} src={leftIcon} alt='Иконка' />
+            </button>
             <span className={Styles.title}>{title}</span>
-            <img className={Styles.rightIcon} src={rightIcon} alt='Иконка' />
+            <button onClick={() => forwardMonth()}>
+              <img className={Styles.rightIcon} src={rightIcon} alt='Иконка' />
+            </button>
           </div>
           <div className={Styles.container}>
             <div className={Styles.head}>

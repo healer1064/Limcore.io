@@ -7,7 +7,7 @@ interface ButtonProps {
   disabled?: boolean
 }
 
-export const ButtonBig: React.FC<ButtonProps> = ({ className, onClick, disabled, children }) => {
+export const ButtonBig: React.FC<ButtonProps> = ({ className, onClick, disabled, children, ...props }) => {
   const cls = [`${Styles.button}`]
 
   if (className) {
@@ -15,7 +15,7 @@ export const ButtonBig: React.FC<ButtonProps> = ({ className, onClick, disabled,
   }
 
   return (
-    <button className={cls.join(' ')} onClick={onClick} disabled={disabled}>
+    <button {...props} className={cls.join(' ')} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   )

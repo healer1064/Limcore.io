@@ -6,6 +6,7 @@
   background-color: #1e1f22;
 
   &__container {
+    position: relative;
     display: grid;
     padding: 0;
     box-sizing: border-box;
@@ -161,6 +162,7 @@
 
   &__etc {
     grid-area: etc;
+    margin-top: 20px;
   }
 
   &__information {
@@ -213,6 +215,16 @@
     padding: 0;
     box-sizing: border-box;
     text-align: end;
+
+    & > a {
+      color: #b4bfd5;
+      text-decoration: none;
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.25;
+    }
   }
 
   &__copyright {
@@ -259,6 +271,10 @@
     height: 32px;
     margin: 0 10px 0 0;
     padding: 0;
+    &:hover {
+      cursor: pointer;
+      opacity: .8;
+    }
   }
 
   &__link {
@@ -279,15 +295,6 @@
   width: 100%;
   max-width: 1024px;
 }
-
-//.logo {
-//  grid-area: logo;
-//  display: flex;
-//  margin: 0 0 44px 0;
-//  padding: 0;
-//  box-sizing: border-box;
-//  max-width: 201px;
-//}
 
 @media screen and (max-width: 1080px) {
   .footer {
@@ -310,8 +317,9 @@
 .footer__YouTubeLink {
   display: flex;
   box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
   margin: 0 10px 0 0;
-  padding: 9px 10px;
   border-radius: 50%;
   background-color: #36373A;
   width: 32px;
@@ -319,11 +327,14 @@
 
   &:hover {
     cursor: pointer;
+    opacity: .8;
   }
 }
 
 .footer__YouTubeIcon {
   opacity: .3;
+  width: 12px;
+  height: 12px;
 }
 
 @media screen and (max-width: 800px) {
@@ -332,11 +343,12 @@
   }
 
   .footer__container {
-    grid-template-columns: repeat(2, minmax(min-content, max-content));;
-    grid-template-rows: repeat(10, minmax(min-content, max-content));
+    grid-template-columns: repeat(1, minmax(min-content, max-content));;
+    grid-template-rows: repeat(11, minmax(min-content, max-content));
     grid-template-areas:
     'logo logo'
     'social social'
+    'translation translation'
     'email language'
     'address address'
     'issuer issuer'
@@ -347,6 +359,10 @@
     'copyright .';
   }
 
+  .footer__langoptions {
+    top: 90px;
+  }
+
   .logo {
     margin: 0 auto 26px;
     max-width: 238px;
@@ -355,7 +371,7 @@
 
   .footer__social {
     justify-self: center;
-    margin: 0 auto 18px;
+    margin: 0 auto 30px;
   }
 
   .footer__socialIcon {

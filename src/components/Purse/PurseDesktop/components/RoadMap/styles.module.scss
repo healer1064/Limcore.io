@@ -1,0 +1,116 @@
+@import '../../../vars&mixins.scss';
+
+.roadMapContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px 0 0 0;
+  // width: 100%;
+  h3,
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .emptyContainer {
+    display: none;
+    box-sizing: border-box;
+    flex-direction: column;
+    margin: 10px 10px 0 0;
+    padding: 0;
+    width: 20px;
+    height: 100%;
+    border-left: 4px solid #4a70f8;
+
+    span {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 110px;
+      border-top: 2px solid #4a70f8;
+
+      &:last-child {
+        height: 85px;
+      }
+    }
+  }
+  .roadMapRoundWrapper {
+    width: 100%;
+    display: flex;
+  }
+  .roadMapRound {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+  }
+
+  .roundText {
+    order: 1;
+    display: flex;
+    gap: 12px;
+    h3 {
+      @include section-title();
+    }
+    p {
+      @include subtitle-14px(#868da7);
+    }
+  }
+
+  .roundVisualization {
+    @include subtitle-14px(#868da7);
+    order: 2;
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 10px 10px 0;
+    padding: 5px 10px;
+    border-radius: 6px;
+  }
+
+  .roundLine {
+    order: 3;
+    width: 100%;
+    height: 28px;
+    border-top: 4px solid $color-4A-blue;
+    border-left: 2px solid $color-4A-blue;
+  }
+
+  .roundDate {
+    @include subtitle-13px($color-4F-black);
+    order: 4;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .roadMapContainer {
+    flex-wrap: nowrap;
+    .emptyContainer {
+      display: flex;
+    }
+    .roadMapRoundWrapper {
+      width: 100%;
+      flex-direction: column;
+    }
+    .roundLine {
+      display: none;
+    }
+    .roadMapContainer {
+      .roundDate {
+        order: 1;
+      }
+      .roundText {
+        order: 2;
+      }
+      .roundVisualization {
+        order: 3;
+      }
+    }
+
+    .roadMapRound {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      &:not(:first-child) {
+        margin: 17px 0 0 0;
+      }
+    }
+  }
+}

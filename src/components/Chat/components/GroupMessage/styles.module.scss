@@ -1,0 +1,103 @@
+.message {
+  display: grid;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 10px 0;
+  grid-template-columns: 45px 1fr 1fr;
+  grid-template-rows: repeat(3, minmax(min-content, max-content));
+  column-gap: 8px;
+  grid-template-areas:
+  'foto name rank'
+  'foto status .'
+  '. line line';
+}
+
+.foto {
+  grid-area: foto;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+}
+
+.name {
+  grid-area: name;
+  padding: 0;
+  margin: 0;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #393C42;
+}
+
+.status {
+  grid-area: status;
+  padding: 0;
+  margin: 0 0 10px 0;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.3;
+  color: #99A0AD;
+}
+
+.status_active {
+  grid-area: status;
+  padding: 0;
+  margin: 0 0 10px 0;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.3;
+  color: #4A70F8;
+}
+
+.rank {
+  grid-area: rank;
+  padding: 0;
+  margin: 0;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.3;
+  text-align: right;
+  color: #99A0AD;
+}
+
+.raiting {
+  grid-area: rank;
+  padding: 0;
+  margin: 0;
+  text-align: right;
+
+  &_invisible {
+    display: none;
+  }
+}
+
+.raitingIcon {
+  margin: 0 3px 0 0;
+}
+
+.line {
+  grid-area: line;
+  height: 1px;
+  background-color: #E5E5E5;
+}
+
+.score {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 130%;
+  color: #99A0AD;
+}

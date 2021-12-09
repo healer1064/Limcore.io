@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
-// import { setIsAuth, checkToken } from '../../pages/auth/redux/auth.slice'
-import { checkToken, getTransactions } from '../../pages/auth/redux/auth.slice'
+// import { getTransactions } from '../../pages/auth/redux/auth.slice'
+import { checkToken, refreshToken, setIsAuth, setWalletConnectSoldLimcs } from '../../pages/auth/redux/authSlice'
 
 // import { Footer } from '../Footer'
 import { FooterMobile } from '../Footer/FooterMobile'
@@ -10,10 +10,9 @@ import { FooterMobile } from '../Footer/FooterMobile'
 // import { Wrapper } from '../Wrapper'
 
 // import { OrdersPage } from '../../pages/orders'
-import { PageNotFount } from '../../pages/not-found'
+// import { PageNotFount } from '../../pages/not-found'
 // import { DevelopingPage } from '../../pages/developing'
 // import { AccessDeniedPage } from '../../pages/access-denied'
-import { BuyPage } from '../../pages/buy'
 
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 
@@ -24,79 +23,91 @@ import Styles from './style.module.scss'
 import { Spinner } from '@components/Spinner'
 // import { OrderCatalog } from '../../pages/catalog'
 import { Header } from '@components/Header'
-import { HeaderMobile } from '@components/Header/HeaderMobile'
+import { HeaderMobile } from '@components/Header/HeaderMobile/index'
 // import { CabinetPage } from '../../pages/cabinet'
-import { AuthPage } from '../../pages/auth'
-// import { AuthMobile } from '../../pages/auth/AuthMobile'
+import { AuthMobile } from '../../pages/auth/AuthMobile'
 
 import { Dummy } from '../../components/Dummy'
+import { Chat } from '../Chat'
 import { LandingPage } from '../../pages/landing'
-import { PurseMobile } from '@components/Purse/PurseMobile'
+import { Purse } from '@components/Purse'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
-import { getWalletAdress, getWalletBalance, getLimcPrice, getLimcAmount } from '../Wallet/redux/walletSlice'
 import { getUser } from '@app/redux/userSlice'
-// import { api } from '@app/api'
+// import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
+import { getSoldLimcs } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
+import { getForksPrice } from '@components/Wallet/redux/walletSlice'
 
 const App = () => {
   const dispatch = useAppDispatch()
-  // const { width, height } = useWindowSize()
   const { width } = useWindowSize()
+  const desktop = width >= 769
+  const [isLoading, setIsLoading] = useState(true)
   // const userRole = useAppSelector((state) => state.user?.userData?.roles[0])
-  const user = useAppSelector((state) => state.user.userData)
+  // const user = useAppSelector((state) => state.user.userData)
   const isAuth = useAppSelector((state) => state.auth.isAuth)
-  console.log(user)
-  const desktop = width >= 768
 
   useEffect(() => {
     const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
+    getSoldLimcs().then((res) => dispatch(setWalletConnectSoldLimcs(res)))
+    dispatch(getForksPrice())
 
     if (tokenObj.access) {
       dispatch(checkToken({ token: tokenObj.access }))
         .then(() => {
-          dispatch(getWalletAdress())
-          dispatch(getWalletBalance())
-          dispatch(getLimcPrice())
-          dispatch(getLimcAmount())
+          dispatch(setIsAuth(true))
           dispatch(getUser())
-          dispatch(getTransactions())
+          // dispatch(getTransactions())
+          setIsLoading(false)
         })
-        .catch((err) => console.log('ERROR ===========+>>>>>>', err))
+        .catch(() => {
+          dispatch(refreshToken({ refresh: tokenObj.refresh }))
+        })
+    } else {
+      setIsLoading(false)
     }
   }, [isAuth])
+
   return (
     <Router>
       <div className={Styles.app_container}>
-        {desktop ? <Header /> : <HeaderMobile />}
+        {isLoading && (
+          <div className={Styles.spinnerContainer}>
+            <Spinner />
+          </div>
+        )}
+        {desktop && !isLoading ? <Header /> : <HeaderMobile />}
         <>
           <main className={desktop ? `${Styles.main}` : `${Styles.main} ${Styles.main_mobile}`}>
-            {!isAuth && (
+            {!isAuth && !isLoading && (
               <Switch>
                 <Route path='/' exact component={LandingPage} />
-                <Route path='/auth' exact component={AuthPage} />
-                <Route path='/profile' exact component={ProfileMobile} />
-                {/* <Route path='/auth' exact component={AuthMobile} /> */}
-                <Route path='/not-found' exact component={PageNotFount} />
+                {!desktop && <Route path='/auth' exact component={AuthMobile} />}
                 <Route path='*'>
-                  <Redirect to='/not-found' />
+                  <Redirect to='/' />
                 </Route>
-
-                {/* <Route path='/' exact component={USER_ROlES.user === userRole?.name ? HomePage : HomePage} />
-                <ProtectedRoute allowedUsersTypes={[USER_ROlES.user]} path='/orders' exact component={OrdersPage} /> */}
               </Switch>
             )}
-            {isAuth && (
+
+            {isAuth && !isLoading && (
               <Switch>
-                <Route path='/' exact component={PurseMobile} />
-                <Route path='/chat' exact component={Dummy} />
-                <Route path='/broadcasts' exact component={BroadcastsMobile} />
-                <Route path='/profile' exact component={ProfileMobile} />
-                <Route path='/buy' exact component={BuyPage} />
+                <Route path='/' exact component={LandingPage} />
+                <Route path='/my' exact component={Purse} />
+                {!desktop && (
+                  <>
+                    <Route path='/broadcasts' exact component={BroadcastsMobile} />
+                    <Route path='/chat' exact component={Chat} />
+                    <Route path='/profile' exact component={ProfileMobile} />
+                  </>
+                )}
+                <Route path='*'>
+                  <Redirect to='/my' />
+                </Route>
               </Switch>
             )}
           </main>
+          {isAuth && !desktop && window.location.pathname === '/my' && <FooterMobile />}
         </>
-        {isAuth && <FooterMobile />}
       </div>
     </Router>
   )

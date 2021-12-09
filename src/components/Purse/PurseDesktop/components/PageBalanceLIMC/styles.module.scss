@@ -1,0 +1,166 @@
+@import '../../../vars&mixins.scss';
+
+.pageBalanceLIMC {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  grid-area: balance;
+
+  &_invisible {
+    visibility: hidden;
+    position: absolute;
+  }
+
+  &__title {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 46px;
+    line-height: 1.4;
+    color: #3a3b3d;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 0 6px 0;
+  }
+
+  &__subtitle {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 150%;
+    color: #4f535a;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 0 35px 0;
+  }
+}
+
+.backIcon {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 12px 0 0;
+  padding: 0;
+}
+
+.backButton {
+  display: flex;
+  box-sizing: border-box;
+  border: none;
+  margin: 0 0 23px 0;
+  padding: 0;
+  flex-direction: row;
+  background-color: transparent;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #3a3b3d;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+    color: $color-4A-blue;
+    path {
+      stroke: $color-4A-blue;
+    }
+  }
+}
+
+.items {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 0 10px 0;
+  align-items: center;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  max-width: 140px;
+  padding: 15px;
+  margin: 0 10px 0 0;
+  background: #f9faff;
+  border-radius: 14px;
+  color: #4a70f8;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.5;
+  border: none;
+
+  &:hover {
+    transition: background 0.3s ease;
+    // border: 1px solid #3159E9;
+    cursor: pointer;
+    color: #3159e9;
+  }
+
+  &:active {
+    border: 1px solid #2d4ec5;
+    color: #2d4ec5;
+  }
+
+  &:last-child {
+    margin: 0;
+  }
+}
+
+.item_active {
+  background-color: #4a70f8;
+  transition: background 0.3s ease;
+  color: #ffffff;
+
+  &:hover {
+    transition: background 0.3s ease;
+    cursor: pointer;
+    background-color: #3159e9;
+    color: #ffffff;
+  }
+
+  &:active {
+    background-color: #2d4ec5;
+    color: #ffffff;
+  }
+}
+
+.icon {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 6px 0 0;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.buyLink {
+  text-decoration: none;
+  display: flex;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #ffffff;
+  align-items: center;
+}
+
+.lockup {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 160%;
+  color: #67686c;
+  margin-top: 6px;
+}

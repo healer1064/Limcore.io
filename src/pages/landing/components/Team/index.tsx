@@ -12,70 +12,77 @@ import Smirnov from '../../../../assets/images/Smirnov.png'
 import Kazachenko from '../../../../assets/images/Kazachenko.png'
 import Mironov from '../../../../assets/images/Mironov.png'
 import Plotnikov from '../../../../assets/images/Plotnikov.png'
+import Shcherbina from '../../../../assets/images/MaskGroup.png'
+import { useTranslation } from 'react-i18next'
 
 export const Team: React.FC = () => {
+  const [t] = useTranslation()
+
   const team = [
     {
       id: 1,
-      job: 'CEO / Owner',
-      name: 'Дмитрий Шумаев',
-      content:
-        'В юношестве работал в нескольких гос. учреждениях РФ в качестве сотрудника по ИТ безопасности. Руководил гос.\n' +
-        '        предприятием «БайконурСвязьИнформ»',
+      job: t('team_shumaevRank'),
+      name: t('team_shumaev'),
+      content: t('team_shumaevDesc'),
       foto: Shumaev,
     },
     {
       id: 2,
-      job: `Co-Owner / Chief${'\u00A0'}Financial${'\u00A0'}Officer`,
-      name: 'Павел Лосев',
-      content: 'Ранее работал в Центральном Банке Российской Федерации',
+      job: t('team_losevRank'),
+      name: t('team_losev'),
+      content: t('team_losevDesc'),
       foto: Losev,
       jobTitle: 'long',
     },
     {
       id: 3,
-      job: `Руководитель${'\u00A0'}службы поддержки клиентов`,
-      name: 'Кирилл Туркин',
-      content: 'Имеет успешный опыт выстраивания работы отделов сопровождения особо требовательных клиентов',
-      foto: Turkin,
+      job: t('team_shcherbinaRank'),
+      name: t('team_shcherbina'),
+      content: t('team_shcherbinaDesc'),
+      foto: Shcherbina,
     },
     {
       id: 4,
-      job: 'Ведущий системный администратор',
-      name: 'Александр Балыкин',
-      content:
-        'До начала работы в Limcore руководил собственной организацией по сопровождению сетевой и серверной архитектурой более чем у 20 юридических лиц',
-      foto: Balikin,
+      // job: `Руководитель${'\u00A0'}службы поддержки клиентов`,
+      job: t('team_turkinRank'),
+      name: t('team_turkin'),
+      content: t('team_turkinDesc'),
+      foto: Turkin,
     },
     {
       id: 5,
-      job: 'Системный администратор',
-      name: 'Дмитрий Смирнов',
-      content:
-        'Дерзкий специалист. Ранее строил карьеру в качестве системного администратора в администрации г. Оренбург',
-      foto: Smirnov,
+      job: t('team_balikinRank'),
+      name: t('team_balikin'),
+      content: t('team_balikinDesc'),
+      foto: Balikin,
     },
     {
       id: 6,
-      job: `Руководитель службы${'\u00A0'}безопасности`,
-      name: 'Александр Казаченко',
-      content:
-        'Служил в силовых структурах Российской Федерации в роте специального назначения. \n' +
-        'Обладатель Крапового берета',
-      foto: Kazachenko,
+      job: t('team_smirnovRank'),
+      name: t('team_smirnov'),
+      content: t('team_smirnovDesc'),
+      foto: Smirnov,
     },
     {
       id: 7,
-      job: 'Юрист',
-      name: 'Тарас Миронов',
-      content: 'Формирует технические задания для ведущих юридических компаний в рамках задач Limcore',
-      foto: Mironov,
+      // job: `Руководитель службы${'\u00A0'}безопасности`,
+      job: t('team_kazachenkoRank'),
+      name: t('team_kazachenko'),
+      content: t('team_kazachenkoDesc'),
+      foto: Kazachenko,
     },
     {
       id: 8,
-      job: 'Руководитель строительства',
-      name: 'Олег Плотников',
-      content: 'Лично реализовал 68 государственных контрактов и выполнил более тысячи коммерческих подрядов в России',
+      job: t('team_mironovRank'),
+      name: t('team_mironov'),
+      content: t('team_mironovDesc'),
+      foto: Mironov,
+    },
+    {
+      id: 9,
+      job: t('team_plotnikovRank'),
+      name: t('team_plotnikov'),
+      content: t('team_plotnikovDesc'),
       foto: Plotnikov,
     },
   ]
@@ -83,7 +90,7 @@ export const Team: React.FC = () => {
   return (
     <section id='team' className={Styles.team}>
       <div className={Styles.wrapper}>
-        <h2 className={Styles.title}>Команда проекта</h2>
+        <h2 className={Styles.title}>{t('team_title')}</h2>
         <div className={Styles.container}>
           {team.map((person) => (
             <TeamCard key={person.id} {...person} person={person} />

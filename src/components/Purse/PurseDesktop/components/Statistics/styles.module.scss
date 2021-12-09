@@ -1,0 +1,159 @@
+@import '../../../vars&mixins.scss';
+
+.statistics {
+  border: 1px solid #DCDCDC;
+  background-color: #F9FAFE;
+  width: 60%;
+  padding: 17px 30px;
+  border-radius: 14px;
+
+  .title {
+    position: relative;
+    margin-right: 5px;
+    width: fit-content;
+    @include section-title();
+  }
+
+  .header {
+    display: flex;
+  }
+
+  .tooltip {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    transform: translateY(1px);
+    path {
+      stroke: $color-4F-black;
+    }
+    &:hover {
+          path {
+      stroke: $color-4A-blue;
+    }
+    }
+  }
+
+  .progressbar { 
+    position: relative;
+
+    margin-bottom: 6px;
+    height: 10px;
+    border-radius: 6px;
+
+    background: #E5FBDE;
+
+    &__track {
+      position: relative;
+      overflow: hidden;
+    
+      display: block;
+      width: 0;
+      height: 100%;
+
+      background-color: #58CD32;
+    } 
+  }
+
+  .details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    &__days {
+      @include subtitle-14px($color-99-gray);
+    }
+
+    &__memory {
+      @include subtitle-13px($color-4F-black);
+    }
+
+    // Accordeon
+    & + div {
+      margin: 0;
+      box-shadow: none;
+      border: none;
+
+      &::before {
+        display: none;
+      }
+
+      & > div {
+        padding: 0;
+
+        & > div > span  > svg > path {
+          transition: stroke .3s ease;
+        }
+
+        // Ховер кнопки и иконки
+        &:hover {
+          & > div > button {
+            color: #7c97f1;
+            transition: color .3s ease;
+          }
+
+          & > div > span  > svg > path {
+            stroke: #7c97f1;
+            transition: stroke .3s ease;
+          }
+        }
+
+        & > div {
+          margin: 0;
+          padding: 0;
+
+          & > div {
+            & > div {
+              & > div {
+                padding: 0;
+              }
+            }
+          }
+
+          & > button {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .more {
+    // position: relative;
+    
+    margin-bottom: 20px;
+    padding: 0;
+    border: none;
+
+    @include subtitle-14px($color-4A-blue);
+
+    outline: none;
+    background-color: transparent;
+    transition: color .3s ease;
+
+    // &::after {
+    //   content: '';
+
+    //   position: absolute;
+    //   top: 0;
+    //   right: -20px;
+
+    //   width: 12px;
+    //   height: 15px;
+
+    //   background-image: url(../../images/blue-arrow.svg);
+    //   background-repeat: no-repeat;
+    //   background-position: center;
+
+    //   transform: rotate(-90deg);
+    // }
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .statistics {
+    width: 100%;
+  }
+  .details {
+    width: 100%;
+  }
+}

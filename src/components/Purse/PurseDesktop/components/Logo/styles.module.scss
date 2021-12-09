@@ -1,0 +1,21 @@
+.logo {
+  display: flex;
+  box-sizing: border-box;
+  width: 159px;
+  height: 41px;
+  position: absolute;
+  top: 25px;
+  left: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .logo {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+}

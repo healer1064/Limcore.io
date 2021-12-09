@@ -8,38 +8,43 @@ import { Answer4 } from './components/Answer4'
 import { QuestionsMobile } from './QuestionsMobile'
 
 import { VectorIcon } from '@icons/VectorIcon'
+import { useTranslation } from 'react-i18next'
 
 export const Questions: React.FC = () => {
+  const [t] = useTranslation()
+
   const array = [
     {
       id: 1,
-      title: 'Чем отличается фарминг от майнинга?',
+      title: t('qa_card1_title'),
     },
     {
       id: 2,
-      title: 'Как распределяется вознаграждение с майнинга среди холдеров LIMC?',
+      title: t('qa_card2_title'),
     },
     {
       id: 3,
-      title: 'Какие преимущества платформы Limcore?',
+      title: t('qa_card3_title'),
     },
     {
       id: 4,
-      title: 'Почему именно Chia?',
+      title: t('qa_card4_title'),
     },
   ]
 
   const [activeItem, setActiveItem] = useState({ id: null, title: '' })
 
   useEffect(() => {
-    setActiveItem(array[0])
-  }, [])
+    setActiveItem(() => {
+      return activeItem.id ? array[activeItem.id - 1] : array[0]
+    })
+  }, [t])
 
   return (
     <>
       <div id='questions' className={`${Styles.questions} ${Styles.questions_desktop}`}>
         <div className={Styles.wrapper}>
-          <h4 className={Styles.caption}>Вопросы и ответы</h4>
+          <h4 className={Styles.caption}>{t('qa_title')}</h4>
           <div className={Styles.container}>
             <ul className={Styles.question}>
               {array &&

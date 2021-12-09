@@ -11,15 +11,18 @@ import { InputText } from '../../../../../../../ui-kit/InputText'
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
 
 import calendarIcon from '@icons/calendar-icon.svg'
+import { useTranslation } from 'react-i18next'
 
 interface Step2Props {
   nextStep: any
 }
 
 export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
+  const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const data = useAppSelector((state) => state.user.data)
   const [popup, setPopup] = useState(false)
+  const maxLength = 200
 
   const openPopup = () => setPopup(true)
   const closePopup = () => setPopup(false)
@@ -51,55 +54,62 @@ export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
         </div>
       </div>
       <div className={Styles.container}>
-        <span className={Styles.caption}>Укажите паспортные данные</span>
+        <span className={Styles.caption}>{t('profile_title2')}</span>
         <form className={Styles.form}>
           <div className={Styles.wrapper}>
-            <Label titleText='Серия*'>
+            <Label titleText={t('profile_pasSer')}>
               <InputText
                 className={Styles.input}
                 onChange={onChangeValue}
+                // type='number'
                 name='passport_series'
                 value={data.passport_series}
+                maxLength={maxLength}
               />
             </Label>
-            <Label titleText='Номер*'>
+            <Label titleText={t('profile_pasNumber')}>
               <InputText
                 className={Styles.input}
                 onChange={onChangeValue}
+                // type='number'
                 name='passport_number'
                 value={data.passport_number}
+                maxLength={maxLength}
               />
             </Label>
           </div>
-          <Label className={Styles.label} titleText='Код подразделения*'>
+          <Label className={Styles.label} titleText={t('profile_authorityCode')}>
             <InputText
               onChange={onChangeValue}
+              type='number'
               name='passport_division_code'
               value={data.passport_division_code}
-              placeholder='Введите код'
+              placeholder={t('enterCode')}
+              maxLength={maxLength}
             />
           </Label>
-          <Label className={Styles.label} titleText='Дата выдачи*'>
+          <Label className={Styles.label} titleText={t('profile_issueDate')}>
             <div className={Styles.block} onClick={openPopup}>
               <input
                 className={Styles.date}
                 onChange={() => {}}
                 type='text'
                 value={data.passport_was_issued}
-                placeholder='01.01.21'
+                placeholder='2021-01-01'
               />
               <img src={calendarIcon} alt='Иконка' />
             </div>
           </Label>
-          <Label className={Styles.edit} titleText='Паспорт выдан*'>
+          <Label titleText={t('profile_pasIssued')}>
             <InputText
               onChange={onChangeValue}
               name='passport_division_name'
               value={data.passport_division_name}
-              placeholder='Введите учреждения'
+              placeholder={t('profile_pasAuthority')}
+              maxLength={maxLength}
             />
           </Label>
-          <ButtonBig onClick={(event) => nextStep(event, 2)}>Продолжить</ButtonBig>
+          <ButtonBig onClick={(event) => nextStep(event, 2)}>{t('profile_continue')}</ButtonBig>
         </form>
       </div>
       {popup && (

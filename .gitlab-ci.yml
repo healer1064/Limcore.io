@@ -35,10 +35,10 @@ dev deploy:
     - echo $CI_REGISTRY_USER
     - echo $CI_REGISTRY_PASSWORD
     - docker info
-    - if docker ps | grep -q limcore-frontend; then docker rm -f limcore-frontend; fi
+    - docker rm -f limcore-frontend
     - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
     - docker pull registry.gitlab.com/auditor2/production/frontend/limcore.io/dev
-    - docker run -d -p 8084:8080  --network backend_default --name limcore-frontend --rm registry.gitlab.com/auditor2/production/frontend/limcore.io/dev:latest
+    - docker run -d -p 8084:8080  --network backend_default --hostname limcore-frontend --name limcore-frontend --rm registry.gitlab.com/auditor2/production/frontend/limcore.io/dev:latest
     - echo 'y' | docker system prune
   when: manual
   tags:
@@ -54,6 +54,7 @@ prod build:
     entrypoint: [""]
   when: manual
   script:
+    - mkdir -p /kaniko/.docker
     - echo $CI_REGISTRY
     - echo $CI_REGISTRY_USER
     - echo $CI_REGISTRY_PASSWORD
@@ -74,10 +75,11 @@ prod deploy:
     - echo $CI_REGISTRY_USER
     - echo $CI_REGISTRY_PASSWORD
     - docker info
-    - if docker ps | grep -q limcore-frontend; then docker rm -f limcore-frontend; fi 
+    - docker rm -f limcore-frontend
     - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
-    - docker pull registry.gitlab.com/auditor2/production/frontend/limcore.io/dev
-    - docker run -d -p 8080:8080 --name limcore-frontend --rm registry.gitlab.com/auditor2/production/frontend/limcore.io/prod:latest
+
+    - docker pull registry.gitlab.com/auditor2/production/frontend/limcore.io/prod
+    - docker run -d  --network backend_backend --hostname limcore-frontend --name limcore-frontend --rm registry.gitlab.com/auditor2/production/frontend/limcore.io/prod:latest
     - echo 'y' | docker system prune
   when: manual
   tags:

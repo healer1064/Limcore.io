@@ -1,81 +1,132 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { changeViewContent } from '../../.././../../pages/cabinet/redux/cabinetSlice'
+import { updateAvatarUser, getUser } from '../../../../../app/redux/userSlice'
 import Styles from './styles.module.scss'
-
-import { ButtonSmall } from '../../../../../ui-kit/ButtonSmall'
 
 import avatarImage from '../../../../../assets/images/noAvatar.png'
 import passportIcon from '@icons/passport.svg'
-import innIcon from '@icons/inn.svg'
 import linkIcon from '@icons/link-icon.svg'
 import authIcon from '@icons/auth.svg'
 import emailIcon from '@icons/email.svg'
 import phoneIcon from '@icons/phone.svg'
-import nameIcon from '@icons/name.svg'
 import locationIcon from '@icons/location.svg'
 import closeIcon from '@icons/close-notification.svg'
 import smartphoneImage from '../../../../../assets/images/smartphone.png'
+import { useTranslation } from 'react-i18next'
 
 export const ProfileComplete: React.FC = () => {
+  const [t] = useTranslation()
   const dispatch = useAppDispatch()
-  const userData = useAppSelector((state) => state.user.userData)
-  const [notificationOpen, setNotificationOpen] = useState(true)
 
-  const closeNotification = () => setNotificationOpen(false)
+  const [img, setImg] = useState(null)
+  const [notificationOpen, setNotificationOpen] = useState(true)
+  const userData = useAppSelector((state) => state.user.userData)
+
+  const bodyEl = useRef(document.querySelector('body'))
+
+  const closeNotification = (event) => {
+    event.stopPropagation()
+    setNotificationOpen(false)
+  }
+
   const changeView = (view) => dispatch(changeViewContent(view))
+
+  const onClick2FA = () => {
+    changeView('addAuth')
+    bodyEl.current.style.overflow = 'hidden'
+  }
+
+  const onClickLocation = () => {
+    changeView('editLocation')
+    bodyEl.current.style.overflow = 'hidden'
+  }
+
+  const updateAvatar = async () => {
+    const data = new FormData()
+    data.append('avatar', img)
+
+    const response = await dispatch(updateAvatarUser(data))
+
+    if (response.error) {
+      console.log('error updateAvatarUser')
+    } else {
+      dispatch(getUser())
+    }
+  }
+
+  useEffect(() => {
+    if (img) {
+      updateAvatar()
+    }
+  }, [img])
 
   return (
     <>
-      <div className={Styles.avatar}>
-        <div className={Styles.image}>
-          <img src={avatarImage} alt='Аватар' />
-          <i className={Styles.edit}>{}</i>
-        </div>
+      <div className={Styles.info}>
+        {userData?.profile?.avatar === null ? (
+          <div className={Styles.avatar}>
+            <div className={Styles.image}>
+              <img src={avatarImage} alt='Аватар' />
+            </div>
+            <label className={Styles.edit}>
+              <input type='file' onChange={(event) => setImg(event.target.files[0])} />
+            </label>
+          </div>
+        ) : (
+          <div className={Styles.avatar}>
+            <div className={Styles.image}>
+              <img src={userData?.profile?.avatar} alt='Аватар' />
+            </div>
+            <label className={Styles.edit}>
+              <input type='file' onChange={(event) => setImg(event.target.files[0])} />
+            </label>
+          </div>
+        )}
         <span className={Styles.name}>
           {userData?.profile?.first_name} {userData?.profile?.last_name}
         </span>
       </div>
       <div className={Styles.container}>
-        <span className={Styles.caption}>Документы</span>
+        <span className={Styles.caption}>{t('profile_documents')}</span>
         <div className={Styles.documents}>
           <div className={Styles.document}>
             <img className={Styles.icon} src={passportIcon} alt='Иконка' />
-            <span className={Styles.title}>Паспорт РФ</span>
+            <span className={Styles.title}>{t('profile_rusPasport')}</span>
             <span className={Styles.subtitle}>
               {userData?.profile?.passport_series} {userData?.profile?.passport_number}
             </span>
-            <img className={Styles.link} src={linkIcon} alt='Иконка' />
+            {/* <img className={Styles.link} src={linkIcon} alt='Иконка' /> */}
           </div>
-          <div className={Styles.document}>
+          {/* <div className={Styles.document}>
             <img className={Styles.icon} src={innIcon} alt='Иконка' />
             <span className={Styles.title}>ИНН</span>
             <span className={Styles.subtitle}>{userData?.profile?.inn}</span>
             <img className={Styles.link} src={linkIcon} alt='Иконка' />
-          </div>
+          </div> */}
         </div>
         <ul className={Styles.list}>
           <li className={Styles.item}>
             <img className={Styles.icon} src={phoneIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
-                <span className={Styles.label}>Телефон</span>
+                <span className={Styles.label}>{t('profile_phoneNumber')}</span>
                 <span className={Styles.content}>{userData?.phone}</span>
               </div>
-              <ButtonSmall onClick={() => changeView('editPhone')}>Изменить</ButtonSmall>
+              {/* <ButtonSmall onClick={() => changeView('editPhone')}>Изменить</ButtonSmall> */}
             </div>
           </li>
           <li className={Styles.item}>
             <img className={Styles.icon} src={emailIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
-                <span className={Styles.label}>E-mail</span>
+                <span className={Styles.label}>{t('profile_email')}</span>
                 <span className={Styles.content}>{userData?.email}</span>
               </div>
-              <ButtonSmall onClick={() => changeView('editEmail')}>Изменить</ButtonSmall>
+              {/* <ButtonSmall onClick={() => changeView('editEmail')}>Изменить</ButtonSmall> */}
             </div>
           </li>
-          <li className={Styles.item}>
+          {/* <li className={Styles.item}>
             <img className={Styles.icon} src={nameIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
@@ -83,31 +134,33 @@ export const ProfileComplete: React.FC = () => {
               </div>
               <ButtonSmall onClick={() => changeView('editName')}>Изменить</ButtonSmall>
             </div>
-          </li>
-          <li className={Styles.item}>
+          </li> */}
+          <li className={Styles.item} onClick={onClickLocation}>
             <img className={Styles.icon} src={locationIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
-                <span className={Styles.content}>Мои адреса</span>
+                <span className={Styles.content}>{t('profile_addresses')}</span>
               </div>
-              <img className={Styles.arrow} src={linkIcon} alt='Иконка' onClick={() => changeView('editLocation')} />
+              <img className={Styles.arrow} src={linkIcon} alt='Иконка' />
             </div>
           </li>
-          <li className={Styles.item}>
+          <li className={Styles.item} onClick={onClick2FA}>
             <img className={Styles.icon} src={authIcon} alt='Иконка' />
             <div className={`${Styles.wrapper} ${Styles.wrapper_edit}`}>
               <div className={Styles.block}>
-                <span className={Styles.content}>Двухфакторная аутентификация</span>
+                <span className={Styles.content}>{t('profile_2fa')}</span>
               </div>
-              <img className={Styles.arrow} src={linkIcon} alt='Иконка' onClick={() => changeView('addAuth')} />
+              <img className={Styles.arrow} src={linkIcon} alt='Иконка' />
             </div>
           </li>
         </ul>
-        <div className={`${notificationOpen ? Styles.notification : Styles.notification_invisible}`}>
-          <span className={Styles.text}>Подключите двухфакторную аутентификацию</span>
-          <img className={Styles.smartphone} src={smartphoneImage} alt='Иконка' />
-          <img className={Styles.close} src={closeIcon} alt='Иконка' onClick={closeNotification} />
-        </div>
+        {!userData?.is_connected_2fa && notificationOpen && (
+          <div className={Styles.notification} onClick={onClick2FA}>
+            <span className={Styles.text}>{t('profile_2fa_connect')}</span>
+            <img className={Styles.smartphone} src={smartphoneImage} alt='Иконка' />
+            <img className={Styles.close} src={closeIcon} alt='Иконка' onClick={closeNotification} />
+          </div>
+        )}
       </div>
     </>
   )

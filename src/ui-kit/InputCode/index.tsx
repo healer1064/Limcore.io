@@ -6,9 +6,11 @@ interface InputCodeProps {
   name?: string
   value: string
   validValue: boolean
+  placeholder?: string
+  maxLength?: number
 }
 
-export const InputCode: React.FC<InputCodeProps> = ({ onChange, name, value, validValue }) => {
+export const InputCode: React.FC<InputCodeProps> = ({ onChange, name, value, validValue, placeholder, maxLength }) => {
   return (
     <>
       <input
@@ -17,10 +19,12 @@ export const InputCode: React.FC<InputCodeProps> = ({ onChange, name, value, val
         type='text'
         name={name}
         value={value}
-        placeholder='_ _ _ _'
-        maxLength={4}
+        placeholder={!placeholder ? '_ _ _ _' : placeholder}
+        maxLength={!maxLength ? 4 : maxLength}
+        autoComplete='off'
+        inputMode='numeric'
       />
-      {!validValue && <span className={Styles.error}>Неверный код. Попробуйте еще раз</span>}
+      {/* {!validValue && <span className={Styles.error}>Неверный код. Попробуйте еще раз</span>} */}
     </>
   )
 }

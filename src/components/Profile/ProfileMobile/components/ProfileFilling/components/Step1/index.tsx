@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setData, setMiddleName } from '../../../../../../../app/redux/userSlice'
-import { api } from '@app/api'
 import Styles from './styles.module.scss'
 
 import { Popup } from '@components/Popup'
@@ -14,16 +13,21 @@ import { InputRadio } from '../../../../../../../ui-kit/InputRadio'
 import { ButtonBig } from '../../../../../../../ui-kit/ButtonBig'
 
 import calendarIcon from '@icons/calendar-icon.svg'
+import { useTranslation } from 'react-i18next'
 
 interface Step1Props {
   nextStep: any
 }
 
 export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
+  const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const data = useAppSelector((state) => state.user.data)
   const middleName = useAppSelector((state) => state.user.middleName)
   const [popup, setPopup] = useState(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [complete, setComplete] = useState(true)
+  const maxLength = 200
 
   const openPopup = () => setPopup(true)
   const closePopup = () => setPopup(false)
@@ -65,31 +69,34 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
         </div>
       </div>
       <div className={Styles.container}>
-        <span className={Styles.caption}>Укажите ФИО, дату рождения и пол</span>
+        <span className={Styles.caption}>{t('profile_title1')}</span>
         <form className={Styles.form}>
-          <Label className={Styles.label} titleText='Имя*'>
+          <Label className={Styles.label} titleText={`${t('profile_firstName')}*`}>
             <InputText
               onChange={onChangeValue}
               name='first_name'
               value={data.first_name}
-              placeholder='Введите ваше имя'
+              placeholder={t('profile_firstNameEnter')}
+              maxLength={maxLength}
             />
           </Label>
-          <Label className={Styles.label} titleText='Фамилия*'>
+          <Label className={Styles.label} titleText={`${t('profile_lastName')}*`}>
             <InputText
               onChange={onChangeValue}
               name='last_name'
               value={data.last_name}
-              placeholder='Введите вашу фамилию'
+              placeholder={t('profile_lastNameEnter')}
+              maxLength={maxLength}
             />
           </Label>
-          <Label className={Styles.label} titleText='Отчество*'>
+          <Label className={Styles.label} titleText={`${t('profile_paternityName')}*`}>
             <InputText
               onChange={onChangeValue}
               name='middle_name'
               value={data.middle_name}
-              placeholder='Введите ваше отчество'
+              placeholder={t('profile_paternityEnter')}
               disabled={middleName}
+              maxLength={maxLength}
             />
           </Label>
           <Label className={Styles.label}>
@@ -97,29 +104,29 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
               onChange={onChangeMiddleName}
               value=''
               checked={middleName}
-              titleCheckbox='У меня нет отчества'
+              titleCheckbox={t('profile_noPaternity')}
             />
           </Label>
-          <Label className={Styles.label} titleText='Дата рождения*'>
+          <Label className={Styles.label} titleText={`${t('profile_birth')}*`}>
             <div className={Styles.block} onClick={openPopup}>
               <input
                 className={Styles.date}
                 onChange={() => {}}
                 type='text'
                 value={data.birth_date}
-                placeholder='01.01.2021'
+                placeholder='2021-01-01'
               />
               <img src={calendarIcon} alt='Иконка' />
             </div>
           </Label>
-          <Label className={Styles.edit} titleText='Пол*'>
+          <Label className={Styles.label} titleText={`${t('profile_sex')}*`}>
             <div className={Styles.radios}>
               <Label>
                 <InputRadio
                   onChange={onChangeGender}
                   value='male'
                   checked={data.gender === 'male'}
-                  titleRadio='Мужской'
+                  titleRadio={t('profile_male')}
                 />
               </Label>
               <Label>
@@ -127,12 +134,14 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
                   onChange={onChangeGender}
                   value='female'
                   checked={data.gender === 'female'}
-                  titleRadio='Женский'
+                  titleRadio={t('profile_female')}
                 />
               </Label>
             </div>
           </Label>
-          <ButtonBig onClick={(event) => nextStep(event, 1)}>Продолжить</ButtonBig>
+          <ButtonBig onClick={(event) => nextStep(event, 1)} disabled={!complete}>
+            {t('profile_continue')}
+          </ButtonBig>
         </form>
       </div>
       {popup && (
