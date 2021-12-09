@@ -5,7 +5,6 @@ import send from '@icons/sendIcon.svg'
 import { useChat } from '@components/Chat/utils/useChat'
 
 export const Textarea = ({ slug }) => {
-  // const { sendGroupMessage, getGroupMessages } = useChat()
   const { sendGroupMessage } = useChat()
 
   const [isButtonVisible, setIsButtonVisible] = useState(false)

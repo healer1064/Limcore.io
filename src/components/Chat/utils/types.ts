@@ -37,7 +37,13 @@ export interface IDialogueInterface {
 }
 
 export interface IUserInterface {
+  avatar?: string
+  chat_name?: string
   email: string
+  first_name?: string
+  gender?: any // TODO
   id: number
+  last_name?: string
+  middle_name?: string
   phone: string
 }

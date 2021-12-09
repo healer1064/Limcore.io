@@ -16,19 +16,20 @@ export const Dialogue = ({ data }: IDialogueProps) => {
   const dispatch = useAppDispatch()
   const { getGroupMessages } = useChat()
   const isGeneralChat = data.slug === 'general_chat'
+  console.log('Dialogue', data)
 
   const handleGeneralChatOpen = () => {
     dispatch(setContent('group'))
     getGroupMessages('general_chat', 1)
   }
 
-  // TODO: вытянуть последнее сообщение и вывести его
   const handlePersonsChatOpen = () => {
     dispatch(setContent('persons'))
     dispatch(setPersonsChatMessages(data))
   }
 
-  // TODO: внутри каждого диалога ведь уже свои данные, нужно просто по ним сделать запрос
+  // TODO: для вывода последнего сообщения для каждого диалога 1 на 1 надо будет из даты брать последнее сообщение (из массива, а не из поля)
+
   return (
     <div className={styles.messageContainer} onClick={isGeneralChat ? handleGeneralChatOpen : handlePersonsChatOpen}>
       <img src={limcoreIcon} alt='image' className={styles.foto} />

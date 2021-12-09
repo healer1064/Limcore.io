@@ -8,6 +8,8 @@ export const chatSlice = createSlice({
     visibleContent: '',
     searchedValue: '',
     isLoading: true,
+    currentGenMessagesPage: 1,
+    wholeGenMessagesPages: 1,
 
     genChatMessages: [] as IMessageInterface[],
     genChatMembers: [] as IMemberInterface[],
@@ -36,6 +38,12 @@ export const chatSlice = createSlice({
     setContent: (state, { payload }) => {
       state.visibleContent = payload
     },
+    setGeneralMessagesPage: (state, { payload }) => {
+      state.currentGenMessagesPage = payload
+    },
+    setWholeGenMessagesPages: (state, { payload }) => {
+      state.wholeGenMessagesPages = payload
+    },
   },
 })
 
@@ -48,6 +56,8 @@ export const {
   setContent,
   setPersonsChatMessages,
   setGenChatMembers,
+  setGeneralMessagesPage,
+  setWholeGenMessagesPages,
 } = actions
 
 export const chatSelector = (state: RootState) => state.chat
