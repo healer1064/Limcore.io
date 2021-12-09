@@ -1,6 +1,12 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { setGenChatMessages, setIsLoading, setDialogues, setGenChatMembers } from '../redux/chatSlice'
+import {
+  setGenChatMessages,
+  setIsLoading,
+  setDialogues,
+  setGenChatMembers,
+  setGeneralMessagesPage,
+} from '../redux/chatSlice'
 import { ISendInterface } from './types'
 import { useAppSelector } from './../../../app/redux/hooks'
 
@@ -22,6 +28,7 @@ export const useChat = () => {
   const token = tokenObj.access
 
   const genChatMessages = useAppSelector((state) => state.chat.genChatMessages)
+  // const generalMessagesPage = useAppSelector((state) => state.chat.generalMessagesPage)
 
   useEffect(() => {
     if (!socket) {
@@ -39,7 +46,7 @@ export const useChat = () => {
       const data = JSON.parse(event.data)
       console.log('comming data', data)
 
-      if (data.groups) {
+      if (data.groups && data.groups.length !== 0) {
         dispatch(setGenChatMembers(data.groups[0].members))
         dispatch(setDialogues([...data.groups, ...data.dialogs]))
       }
@@ -51,7 +58,21 @@ export const useChat = () => {
       }
 
       if (data.command === 4) {
-        dispatch(setGenChatMessages(data.result))
+        // { page: 3, num_pages: 3, result: [..18..] }
+        dispatch(setGenChatMessages([...data.result, ...genChatMessages]))
+        dispatch(setGeneralMessagesPage(data.page))
+
+        // if (data.has_next && generalMessagesPage === data.page) {
+        // if (data.has_next) {
+        //   // const arr = [...data.result, ...genChatMessages]
+        //   const arr = [...genChatMessages, ...data.result]
+        //   console.log(arr)
+        //   dispatch(setGenChatMessages(arr))
+
+        //   const currentPage = data.page + 1
+        //   getGroupMessages('general_chat', currentPage)
+        //   dispatch(setGeneralMessagesPage(currentPage))
+        // }
       }
 
       dispatch(setIsLoading(false))

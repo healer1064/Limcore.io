@@ -11,22 +11,30 @@ import { setContent } from '../../redux/chatSlice'
 import limcoreIcon from '@icons/limcore.svg'
 import { getMonthAndDay } from '@components/Chat/utils/chat'
 import { IMessageInterface } from '@components/Chat/utils/types'
-// import useWindowSize from '@helpers/useWindowSizeHook'
+import { useChat } from '@components/Chat/utils/useChat'
 
 export const GeneralChat = () => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const messagesEndRef = useRef(null)
-  // const { height } = useWindowSize()
+  const { getGroupMessages } = useChat()
   let dateBuffer: string = null
 
   const userId = useAppSelector((state) => state.user.userData?.id)
   const genChatMessages = useAppSelector((state) => state.chat.genChatMessages)
   const participants = useAppSelector((state) => state.chat.genChatMembers)
+  const generalMessagesPage = useAppSelector((state) => state.chat.generalMessagesPage)
 
   const [openListClassname, setOpenListClassname] = useState(listStyles.list_invisible)
   const handleParticipantsListOpen = () => setOpenListClassname(listStyles.list)
   const handleParticipantsListClose = () => setOpenListClassname(listStyles.list_invisible)
+
+  const onGetAnswers = () => {
+    if (messagesEndRef.current.scrollTop === 0 && generalMessagesPage !== 1) {
+      console.log('onGetAnswers')
+      getGroupMessages('general_chat', generalMessagesPage - 1)
+    }
+  }
 
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -44,7 +52,7 @@ export const GeneralChat = () => {
           {`${participants.length} ${t('group_number')}`}
         </p>
       </div>
-      <div className={styles.groupMessagesContainer} ref={messagesEndRef}>
+      <div className={styles.groupMessagesContainer} ref={messagesEndRef} onScroll={onGetAnswers}>
         {genChatMessages.map((msg: IMessageInterface) => {
           const msgDate = getMonthAndDay(msg.created_at)
           let buffer = dateBuffer

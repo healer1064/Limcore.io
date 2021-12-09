@@ -10,6 +10,8 @@
 
 .member {
   // display: grid;
+  position: relative;
+
   display: flex;
   box-sizing: border-box;
   padding: 0;
@@ -20,6 +22,17 @@
   grid-template-areas:
   'foto raiting'
   'foto message';
+
+  &_name {
+    position: absolute;
+    top: -20px;
+    left: 61px;
+    z-index: 1;
+
+    font-size: 13px;
+    color: #99A0AD;
+    line-height: 20px;
+  }
 }
 
 .foto {
