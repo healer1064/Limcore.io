@@ -7,7 +7,7 @@ import { ParticipantsList } from '../ParticipantsList'
 import arrow from '@icons/arrow-left-blue.svg'
 import { Textarea } from '@components/Chat/components/Textarea'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setContent } from '../../redux/chatSlice'
+import { setContent, setGenChatMessages } from '../../redux/chatSlice'
 import limcoreIcon from '@icons/limcore.svg'
 import { getMonthAndDay } from '@components/Chat/utils/chat'
 import { IMessageInterface } from '@components/Chat/utils/types'
@@ -23,16 +23,21 @@ export const GeneralChat = () => {
   const userId = useAppSelector((state) => state.user.userData?.id)
   const genChatMessages = useAppSelector((state) => state.chat.genChatMessages)
   const participants = useAppSelector((state) => state.chat.genChatMembers)
-  const generalMessagesPage = useAppSelector((state) => state.chat.generalMessagesPage)
+  const currentGenMessagesPage = useAppSelector((state) => state.chat.currentGenMessagesPage)
+  const wholeGenMessagesPages = useAppSelector((state) => state.chat.wholeGenMessagesPages)
 
   const [openListClassname, setOpenListClassname] = useState(listStyles.list_invisible)
   const handleParticipantsListOpen = () => setOpenListClassname(listStyles.list)
   const handleParticipantsListClose = () => setOpenListClassname(listStyles.list_invisible)
 
+  const onClose = () => {
+    dispatch(setGenChatMessages([]))
+    dispatch(setContent(''))
+  }
+
   const onGetAnswers = () => {
-    if (messagesEndRef.current.scrollTop === 0 && generalMessagesPage !== 1) {
-      console.log('onGetAnswers')
-      getGroupMessages('general_chat', generalMessagesPage - 1)
+    if (messagesEndRef.current.scrollTop === 0 && currentGenMessagesPage !== wholeGenMessagesPages) {
+      getGroupMessages('general_chat', currentGenMessagesPage + 1)
     }
   }
 
@@ -45,7 +50,7 @@ export const GeneralChat = () => {
   return (
     <section className={styles.groupContainer}>
       <div className={styles.groupHeader}>
-        <img alt='' src={arrow} className={styles.arrow} onClick={() => dispatch(setContent(''))} />
+        <img alt='' src={arrow} className={styles.arrow} onClick={onClose} />
         <img src={limcoreIcon} alt='' className={styles.foto} />
         <p className={styles.name}>Общий чат</p>
         <p className={styles.status} onClick={handleParticipantsListOpen}>
