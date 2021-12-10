@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import {
-  setGenChatMessages,
+  setCurrentMessages,
   setDialogues,
   setGenChatMembers,
   setGeneralMessagesPage,
@@ -28,13 +28,13 @@ export const useChat = () => {
   const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
   const token = tokenObj.access
 
-  const genChatMessages = useAppSelector((state) => state.chat.genChatMessages)
+  const currentMessages = useAppSelector((state) => state.chat.currentMessages)
   // const currentGenMessagesPage = useAppSelector((state) => state.chat.currentGenMessagesPage)
 
   useEffect(() => {
     if (!socket) {
-      // socket = new WebSocket(`ws://217.28.228.152:9005/ws/chat/?token=${token}`)
-      socket = new WebSocket(`ws://87c4-37-52-131-48.ngrok.io/ws/chat/?token=${token}`)
+      socket = new WebSocket(`ws://217.28.228.152:9005/ws/chat/?token=${token}`)
+      // socket = new WebSocket(`ws://87c4-37-52-131-48.ngrok.io/ws/chat/?token=${token}`)
       console.log(socket)
 
       socket.onopen = () => {
@@ -75,11 +75,11 @@ export const useChat = () => {
       if (data.command === 1) {
         const arr = []
         arr.push(data.message)
-        dispatch(setGenChatMessages([...genChatMessages, ...arr]))
+        dispatch(setCurrentMessages([...currentMessages, ...arr]))
       }
 
       if (data.command === 4) {
-        dispatch(setGenChatMessages([...data.result.reverse(), ...genChatMessages]))
+        dispatch(setCurrentMessages([...data.result.reverse(), ...currentMessages]))
         dispatch(setGeneralMessagesPage(data.page))
         dispatch(setWholeGenMessagesPages(data.num_pages))
       }

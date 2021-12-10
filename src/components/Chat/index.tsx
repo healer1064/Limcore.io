@@ -10,8 +10,7 @@ import { Spinner } from '@components/Spinner'
 import { ButtonBig } from '../../ui-kit/ButtonBig'
 import { useAppSelector } from '@app/redux/hooks'
 import { useChat } from './utils/useChat'
-import { GeneralChat } from './components/GeneralChat'
-// import { PersonsChat } from './components/PersonsChat'
+import { ChatContent } from './components/ChatContent'
 import { IDialogueInterface } from './utils/types'
 
 export const Chat = ({ handleChatClose }) => {
@@ -85,9 +84,7 @@ export const Chat = ({ handleChatClose }) => {
           <FooterMobile />
         </div>
       )
-    // case 'persons':
-    //   return <PersonsChat />
-    case 'group':
-      return <GeneralChat />
+    case 'content':
+      return <ChatContent />
   }
 }

@@ -5,28 +5,25 @@ import { IDialogueInterface, IMemberInterface, IMessageInterface } from '../util
 export const chatSlice = createSlice({
   name: 'chat',
   initialState: {
-    visibleContent: 'loading', // '' | 'loading' | 'error' | 'group' | 'persons' | 'no-content'
+    visibleContent: 'loading', // '' | 'loading' | 'error' | 'content' | 'no-content'
     searchedValue: '',
     currentGenMessagesPage: 1,
     wholeGenMessagesPages: 1,
+    currentSlug: '',
 
-    genChatMessages: [] as IMessageInterface[],
+    currentMessages: [] as IMessageInterface[],
     genChatMembers: [] as IMemberInterface[],
-    personsChatMessages: {} as IDialogueInterface,
     dialogues: [] as IDialogueInterface[],
   },
   reducers: {
     setIsSearched: (state, { payload }) => {
       state.searchedValue = payload
     },
-    setGenChatMessages: (state, { payload }) => {
-      state.genChatMessages = payload
+    setCurrentMessages: (state, { payload }) => {
+      state.currentMessages = payload
     },
     setGenChatMembers: (state, { payload }) => {
       state.genChatMembers = payload
-    },
-    setPersonsChatMessages: (state, { payload }) => {
-      state.personsChatMessages = payload
     },
     setDialogues: (state, { payload }) => {
       state.dialogues = payload
@@ -40,19 +37,22 @@ export const chatSlice = createSlice({
     setWholeGenMessagesPages: (state, { payload }) => {
       state.wholeGenMessagesPages = payload
     },
+    setCurrentSlug: (state, { payload }) => {
+      state.currentSlug = payload
+    },
   },
 })
 
 const { actions, reducer } = chatSlice
 export const {
   setIsSearched,
-  setGenChatMessages,
+  setCurrentMessages,
   setDialogues,
   setContent,
-  setPersonsChatMessages,
   setGenChatMembers,
   setGeneralMessagesPage,
   setWholeGenMessagesPages,
+  setCurrentSlug,
 } = actions
 
 export const chatSelector = (state: RootState) => state.chat
