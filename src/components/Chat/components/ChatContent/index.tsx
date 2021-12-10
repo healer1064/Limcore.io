@@ -30,6 +30,9 @@ export const ChatContent = () => {
   let dateBuffer: string = null
   const IS_GENERAL_CHAT = slug === 'general_chat'
 
+  const [currentPosition, setCurrentPosition] = useState(null)
+  const [autoScroll, setAutoScroll] = useState(true)
+
   const [openListClassname, setOpenListClassname] = useState(listStyles.list_invisible)
   const handleParticipantsListOpen = () => setOpenListClassname(listStyles.list)
   const handleParticipantsListClose = () => setOpenListClassname(listStyles.list_invisible)
@@ -40,13 +43,26 @@ export const ChatContent = () => {
   }
 
   const onGetAnswers = () => {
+    if (
+      messagesEndRef.current.scrollTop <
+      messagesEndRef.current.scrollHeight - messagesEndRef.current.clientHeight - 100
+    ) {
+      setAutoScroll(false)
+    } else {
+      setAutoScroll(true)
+    }
+
     if (messagesEndRef.current.scrollTop === 0 && currentGenMessagesPage !== wholeGenMessagesPages) {
+      setCurrentPosition(messagesEndRef.current.scrollHeight)
       getGroupMessages(slug, currentGenMessagesPage + 1)
     }
   }
 
   useEffect(() => {
-    if (messagesEndRef.current) {
+    if (currentPosition && !autoScroll) {
+      messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight - currentPosition
+      setCurrentPosition(null)
+    } else if (messagesEndRef.current && autoScroll) {
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight - messagesEndRef.current.clientHeight
     }
   }, [currentMessages])
