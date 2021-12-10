@@ -1,3 +1,12 @@
+@keyframes transition {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .groupContainer {
   display: flex;
   flex-direction: column;
@@ -10,22 +19,13 @@
   left: 0;
   background-color: #FFFFFF;
   justify-content: space-between;
-  opacity: 1;
-  transition: opacity 1s linear;
-
-  &_invisible {
-    display: none;
-    opacity: 0;
-    transition: opacity 1s linear;
-  }
+  animation: transition 500ms ease;
 }
 
 .groupHeader {
   display: grid;
   box-sizing: border-box;
-  padding: 0;
-  margin: 16px 32px;
-  height: 70px;
+  padding: 16px 32px;
   width: 100%;
   grid-template-columns: repeat(3, minmax(min-content, max-content));;
   grid-template-rows: repeat(2, minmax(min-content, max-content));
@@ -40,6 +40,7 @@
 .arrow {
   grid-area: arrow;
   align-self: center;
+  cursor: pointer;
 }
 
 .foto {
@@ -105,21 +106,25 @@
 .groupMessagesContainer {
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  max-height: 80%;
-  overflow: auto;
+  height: 80%;
+
+  & > :first-child {
+    margin-top: auto;
+  }
 }
 
 @media screen and (min-width: 769px) {
   .groupContainer {
     width: 375px;
     height: 610px;
-    position: absolute;
-    bottom: 0;
-    right: 120px;
-    box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+    position: relative;
+    bottom: 14px;
+    left: calc(100% - 495px);
+    box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
     border-radius: 14px;
   }
 
