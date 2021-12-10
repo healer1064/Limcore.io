@@ -18,6 +18,7 @@ const commands = {
   getGroupMessages: 4, // пока что только группы
   getGroupsList: 5, // пока что только группы
   // еще есть IS_TYPING, MESSAGE_READ
+  sendLastReadedMessage: 9,
 }
 
 let socket: WebSocket = null
@@ -65,7 +66,6 @@ export const useChat = () => {
       if (data.groups && data.groups?.length === 0) {
         dispatch(setContent('no-content'))
       } else {
-        console.log(data)
         if (data.groups) {
           dispatch(setGenChatMembers(data.groups[0].members))
           dispatch(setDialogues(data.groups))
@@ -76,6 +76,12 @@ export const useChat = () => {
         const arr = []
         arr.push(data.message)
         dispatch(setCurrentMessages([...currentMessages, ...arr]))
+        // TODO захардкодил страницу с группами нужно поправить
+        getGroupsList(1)
+      }
+
+      if (data.command === 5) {
+        dispatch(setDialogues(data.result))
       }
 
       if (data.command === 4) {
@@ -120,6 +126,16 @@ export const useChat = () => {
     send(dataToSend)
   }
 
+  const sendLastReadedMessage = (messageId: number, groupName: string) => {
+    const dataToSend = {
+      command: commands.sendLastReadedMessage,
+      message_pk: messageId,
+      group: groupName,
+    }
+
+    send(dataToSend)
+  }
+
   const getGroupMessages = (groupName: string, page: number) => {
     const dataToSend = {
       command: commands.getGroupMessages,
@@ -141,5 +157,5 @@ export const useChat = () => {
     send(dataToSend)
   }
 
-  return { sendGroupMessage, joinGroup, sendDialogueMessage, getGroupMessages, getGroupsList }
+  return { sendGroupMessage, joinGroup, sendDialogueMessage, sendLastReadedMessage, getGroupMessages, getGroupsList }
 }

@@ -18,7 +18,7 @@ export const ChatContent = () => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const messagesEndRef = useRef(null)
-  const { getGroupMessages } = useChat()
+  const { getGroupMessages, sendLastReadedMessage } = useChat()
 
   const slug = useAppSelector((state) => state.chat.currentSlug)
   const userId = useAppSelector((state) => state.user.userData?.id)
@@ -63,7 +63,12 @@ export const ChatContent = () => {
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight - currentPosition
       setCurrentPosition(null)
     } else if (messagesEndRef.current && autoScroll) {
+      console.log(currentMessages)
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight - messagesEndRef.current.clientHeight
+
+      if (currentMessages[currentMessages.length - 1]?.id) {
+        sendLastReadedMessage(currentMessages[currentMessages.length - 1].id, slug)
+      }
     }
   }, [currentMessages])
 
