@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
 import profileIcon from '@icons/profileicon.svg'
-import { getHoursAndMinutes } from '@components/Chat/utils/chat'
+import { getHoursAndMinutes } from '@components/Chat/utils/funcs'
 import { IMessageInterface, IUserInterface } from '@components/Chat/utils/types'
 
 interface IGroupText {

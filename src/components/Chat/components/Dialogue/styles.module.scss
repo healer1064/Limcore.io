@@ -17,12 +17,12 @@
     cursor: pointer;
   }
 
-  &:last-of-type {
-    grid-template-rows: repeat(2, minmax(min-content, max-content));
-    grid-template-areas:
-            'foto name date'
-            'foto message unread';
-  }
+  // &:last-of-type {
+  //   grid-template-rows: repeat(2, minmax(min-content, max-content));
+  //   grid-template-areas:
+  //           'foto name date'
+  //           'foto message unread';
+  // }
 }
 
 .foto {

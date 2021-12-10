@@ -9,7 +9,7 @@ import { Textarea } from '@components/Chat/components/Textarea'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setContent, setGenChatMessages } from '../../redux/chatSlice'
 import limcoreIcon from '@icons/limcore.svg'
-import { getMonthAndDay } from '@components/Chat/utils/chat'
+import { getMonthNameWithDate } from '@components/Chat/utils/funcs'
 import { IMessageInterface } from '@components/Chat/utils/types'
 import { useChat } from '@components/Chat/utils/useChat'
 
@@ -18,7 +18,9 @@ export const GeneralChat = () => {
   const dispatch = useAppDispatch()
   const messagesEndRef = useRef(null)
   const { getGroupMessages } = useChat()
+
   let dateBuffer: string = null
+  const SLUG = 'general_chat'
 
   const userId = useAppSelector((state) => state.user.userData?.id)
   const genChatMessages = useAppSelector((state) => state.chat.genChatMessages)
@@ -37,7 +39,7 @@ export const GeneralChat = () => {
 
   const onGetAnswers = () => {
     if (messagesEndRef.current.scrollTop === 0 && currentGenMessagesPage !== wholeGenMessagesPages) {
-      getGroupMessages('general_chat', currentGenMessagesPage + 1)
+      getGroupMessages(SLUG, currentGenMessagesPage + 1)
     }
   }
 
@@ -52,14 +54,14 @@ export const GeneralChat = () => {
       <div className={styles.groupHeader}>
         <img alt='' src={arrow} className={styles.arrow} onClick={onClose} />
         <img src={limcoreIcon} alt='' className={styles.foto} />
-        <p className={styles.name}>Общий чат</p>
+        <p className={styles.name}>Mining Data Centre Limcore</p>
         <p className={styles.status} onClick={handleParticipantsListOpen}>
           {`${participants.length} ${t('group_number')}`}
         </p>
       </div>
       <div className={styles.groupMessagesContainer} ref={messagesEndRef} onScroll={onGetAnswers}>
         {genChatMessages.map((msg: IMessageInterface) => {
-          const msgDate = getMonthAndDay(msg.created_at)
+          const msgDate = getMonthNameWithDate(msg.created_at)
           let buffer = dateBuffer
 
           if (dateBuffer !== msgDate) {
@@ -85,7 +87,7 @@ export const GeneralChat = () => {
         handleParticipantsListClose={handleParticipantsListClose}
         participants={participants}
       />
-      <Textarea slug='general_chat' />
+      <Textarea slug={SLUG} />
     </section>
   )
 }
