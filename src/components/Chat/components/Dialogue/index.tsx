@@ -16,7 +16,6 @@ export const Dialogue = ({ data }: IDialogueProps) => {
   const dispatch = useAppDispatch()
   const { getGroupMessages } = useChat()
   const isGeneralChat = data.slug === 'general_chat'
-  console.log('Dialogue', data)
 
   const handleGeneralChatOpen = () => {
     dispatch(setContent('group'))

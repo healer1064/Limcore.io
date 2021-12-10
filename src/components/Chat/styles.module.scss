@@ -24,6 +24,23 @@
   background-color: #fff;
 }
 
+.errorContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100% - 91px);
+
+  font-size: 15px;
+  font-weight: 500;
+  color: #F24949;
+
+  .errorInner > p {
+    padding: 0;
+    margin: 0;
+  }
+}
+
 @keyframes transition {
   from {
     opacity: 0;

@@ -2,11 +2,11 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import {
   setGenChatMessages,
-  setIsLoading,
   setDialogues,
   setGenChatMembers,
   setGeneralMessagesPage,
   setWholeGenMessagesPages,
+  setContent,
 } from '../redux/chatSlice'
 import { ISendInterface } from './types'
 import { useAppSelector } from './../../../app/redux/hooks'
@@ -33,11 +33,16 @@ export const useChat = () => {
 
   useEffect(() => {
     if (!socket) {
-      socket = new WebSocket(`ws://217.28.228.152:9005/ws/chat/?token=${token}`)
+      // socket = new WebSocket(`ws://217.28.228.152:9005/ws/chat/?token=${token}`)
+      socket = new WebSocket(`ws://87c4-37-52-131-48.ngrok.io/ws/chat/?token=${token}`)
       console.log(socket)
 
       socket.onopen = () => {
-        dispatch(setIsLoading(false))
+        dispatch(setContent(''))
+      }
+
+      socket.onerror = () => {
+        dispatch(setContent('error'))
       }
     }
   }, [])
@@ -47,9 +52,24 @@ export const useChat = () => {
       const data = JSON.parse(event.data)
       console.log('comming data', data)
 
-      if (data.groups && data.groups.length !== 0) {
-        dispatch(setGenChatMembers(data.groups[0].members))
-        dispatch(setDialogues([...data.groups, ...data.dialogs]))
+      // TODO: очень странное, но рабочее условие, надо бы переделать
+      if (data.groups?.length === 0) {
+        dispatch(setContent('no-content'))
+      } else {
+        if (data.groups) {
+          dispatch(setGenChatMembers(data.groups[0].members))
+          dispatch(setDialogues(data.groups))
+        }
+      }
+
+      if (data.groups && data.groups?.length === 0) {
+        dispatch(setContent('no-content'))
+      } else {
+        console.log(data)
+        if (data.groups) {
+          dispatch(setGenChatMembers(data.groups[0].members))
+          dispatch(setDialogues(data.groups))
+        }
       }
 
       if (data.command === 1) {
@@ -63,8 +83,6 @@ export const useChat = () => {
         dispatch(setGeneralMessagesPage(data.page))
         dispatch(setWholeGenMessagesPages(data.num_pages))
       }
-
-      dispatch(setIsLoading(false))
     }
   }
 

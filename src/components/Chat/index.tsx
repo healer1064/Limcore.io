@@ -11,7 +11,7 @@ import { ButtonBig } from '../../ui-kit/ButtonBig'
 import { useAppSelector } from '@app/redux/hooks'
 import { useChat } from './utils/useChat'
 import { GeneralChat } from './components/GeneralChat'
-import { PersonsChat } from './components/PersonsChat'
+// import { PersonsChat } from './components/PersonsChat'
 import { IDialogueInterface } from './utils/types'
 
 export const Chat = ({ handleChatClose }) => {
@@ -22,7 +22,6 @@ export const Chat = ({ handleChatClose }) => {
   const desktop = width >= 769
 
   const dialogues = useAppSelector((state) => state.chat.dialogues)
-  const isLoading = useAppSelector((state) => state.chat.isLoading)
   const content = useAppSelector((state) => state.chat.visibleContent)
 
   const onJoin = () => {
@@ -31,6 +30,32 @@ export const Chat = ({ handleChatClose }) => {
   }
 
   switch (content) {
+    case 'loading':
+      return (
+        <div className={styles.spinnerContainer}>
+          <Spinner />
+        </div>
+      )
+    case 'error':
+      return (
+        <div className={styles.errorContainer}>
+          <div className={styles.errorInner}>
+            <p>Chat is not available now.</p>
+            <p>Please try again later.</p>
+          </div>
+          <FooterMobile />
+        </div>
+      )
+    case 'no-content':
+      return (
+        <div className={styles.errorContainer}>
+          <div className={styles.joinChat}>
+            <p className={styles.joinChat_title}>Вас еще нет в общем чате? Присоединяйтесь!</p>
+            <ButtonBig onClick={onJoin}>Вступить в чат</ButtonBig>
+          </div>
+          <FooterMobile />
+        </div>
+      )
     case '':
       return desktop ? (
         <section className={styles.desktop}>
@@ -43,19 +68,9 @@ export const Chat = ({ handleChatClose }) => {
             </div>
             <SearchForm desktop={desktop} />
             <section className={styles.messageSection}>
-              {isLoading && (
-                <div className={styles.spinnerContainer}>
-                  <Spinner />
-                </div>
-              )}
-              {dialogues.length === 0 ? (
-                <div className={styles.joinChat}>
-                  <p className={styles.joinChat_title}>Вас еще нет в общем чате? Присоединяйтесь!</p>
-                  <ButtonBig onClick={onJoin}>Вступить в чат</ButtonBig>
-                </div>
-              ) : (
-                dialogues.map((dialogue: IDialogueInterface, i) => <Dialogue key={i} data={dialogue} />)
-              )}
+              {dialogues?.map((dialogue: IDialogueInterface, i) => (
+                <Dialogue key={i} data={dialogue} />
+              ))}
             </section>
           </div>
         </section>
@@ -63,27 +78,16 @@ export const Chat = ({ handleChatClose }) => {
         <div className={styles.chat}>
           <SearchForm desktop={desktop} />
           <article className={styles.messageSection}>
-            {isLoading && (
-              <div className={styles.spinnerContainer}>
-                <Spinner />
-              </div>
-            )}
-
-            {dialogues.length === 0 ? (
-              <div className={styles.joinChat}>
-                <p className={styles.joinChat_title}>Вас еще нет в общем чате? Присоединяйтесь!</p>
-                <ButtonBig onClick={onJoin}>Вступить в чат</ButtonBig>
-              </div>
-            ) : (
-              dialogues.map((dialogue: IDialogueInterface, i) => <Dialogue key={i} data={dialogue} />)
-            )}
+            {dialogues?.map((dialogue: IDialogueInterface, i) => (
+              <Dialogue key={i} data={dialogue} />
+            ))}
           </article>
           <FooterMobile />
         </div>
       )
+    // case 'persons':
+    //   return <PersonsChat />
     case 'group':
       return <GeneralChat />
-    case 'persons':
-      return <PersonsChat />
   }
 }

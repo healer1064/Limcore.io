@@ -5,9 +5,8 @@ import { IDialogueInterface, IMemberInterface, IMessageInterface } from '../util
 export const chatSlice = createSlice({
   name: 'chat',
   initialState: {
-    visibleContent: '',
+    visibleContent: 'loading', // '' | 'loading' | 'error' | 'group' | 'persons' | 'no-content'
     searchedValue: '',
-    isLoading: true,
     currentGenMessagesPage: 1,
     wholeGenMessagesPages: 1,
 
@@ -32,9 +31,6 @@ export const chatSlice = createSlice({
     setDialogues: (state, { payload }) => {
       state.dialogues = payload
     },
-    setIsLoading: (state, { payload }) => {
-      state.isLoading = payload
-    },
     setContent: (state, { payload }) => {
       state.visibleContent = payload
     },
@@ -52,7 +48,6 @@ export const {
   setIsSearched,
   setGenChatMessages,
   setDialogues,
-  setIsLoading,
   setContent,
   setPersonsChatMessages,
   setGenChatMembers,
