@@ -5,9 +5,12 @@ import { Menu } from '@components/Purse/PurseDesktop/components/Menu'
 import { Wallpaper } from '@components/Purse/PurseDesktop/components/Wallpaper'
 
 import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
-import { HeaderPurseDesktop } from './components/HeaderPurseDesktop'
 import { changeViewContent } from '../../../pages/cabinet/redux/cabinetSlice'
 import { Content } from './components/Content'
+import { Chat } from '@components/Chat'
+import chatIcon from '@icons/chatIcon.svg'
+import closeIcon from '@icons/greyClose.svg'
+import { HeaderPurseDesktop } from './components/HeaderPurseDesktop'
 
 export const PurseDesktop = () => {
   const dispatch = useAppDispatch()
@@ -48,13 +51,10 @@ export const PurseDesktop = () => {
   const close = () => setPopup('')
   const openProfile = () => setPopup('profile')
 
-  const handleChatOpen = () => {
-    setChatVisible(true)
-  }
-
-  const handleChatClose = () => {
-    setChatVisible(false)
-  }
+  // Чат
+  const [isChatVisible, setIsChatVisible] = useState(false)
+  const handleChatOpen = () => setIsChatVisible(true)
+  const handleChatClose = () => setIsChatVisible(false)
 
   return (
     <>
@@ -73,13 +73,13 @@ export const PurseDesktop = () => {
           )}
         </div>
         <button className={styles.chatIcon} type='button'>
-          {chatVisible ? (
+          {isChatVisible ? (
             <img alt='' src={closeIcon} onClick={handleChatClose} />
           ) : (
             <img alt='' src={chatIcon} onClick={handleChatOpen} />
           )}
         </button>
-        {chatVisible ? <Chat handleChatClose={handleChatClose} /> : null}
+        {isChatVisible ? <Chat handleChatClose={handleChatClose} /> : null}
       </section>
     </>
   )

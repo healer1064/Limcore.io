@@ -2,6 +2,8 @@
   display: flex;
   box-sizing: border-box;
   padding: 0;
+  // max-height: 51px;
+  // height: 51px;
   margin: 10px 10px 10px 14px;
   border-top: 1px solid #E5E5E5;
 }
@@ -10,7 +12,7 @@
   display: flex;
   box-sizing: border-box;
   padding: 0;
-  margin: 20px 13px 0 0;
+  margin: 0 10px;
   width: 20px;
   height: 22px;
   object-fit: cover;
@@ -26,7 +28,7 @@
   padding: 10px 10px 10px 14px;
   margin: 10px 0 0;
   height: 40px;
-  font-family: Montserrat;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
@@ -36,11 +38,13 @@
   background: #FFFFFF;
   border: 1.4px solid #B4BFD5;
   border-radius: 14px;
+  overflow: hidden;
+  resize: none;
 
   &::placeholder {
     display: flex;
     box-sizing: border-box;
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 13px;
@@ -52,14 +56,10 @@
 .sendIcon {
   display: flex;
   box-sizing: border-box;
-  margin: 10px 0 0 8px;
+  margin: 0;
   padding: 0;
   width: 40px;
   height: 40px;
-
-  &_invisible {
-    display: none;
-  }
 
   &:hover {
     cursor: pointer;
@@ -69,6 +69,14 @@
 .button {
   border: none;
   background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 10px;
+
+  &:focus, &:active {
+    border-radius: 50%;
+  }
 }
 
 @media screen and (min-width: 769px) {
@@ -77,5 +85,13 @@
     position: relative;
     bottom: 0;
     right: 15px;
+  }
+
+  .button {
+    margin-left: 10px;
+  }
+
+  .sendIcon {
+    padding: 0;
   }
 }
