@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styles from './styles.module.scss'
 import { useTranslation } from 'react-i18next'
 import close from '@icons/close.svg'

@@ -38,6 +38,7 @@
   border: 1.4px solid #B4BFD5;
   border-radius: 14px;
   overflow: hidden;
+  resize: none;
 
   &::placeholder {
     display: flex;
@@ -83,5 +84,13 @@
     position: relative;
     bottom: 0;
     right: 15px;
+  }
+
+  .button {
+    margin-left: 10px;
+  }
+
+  .sendIcon {
+    padding: 0;
   }
 }

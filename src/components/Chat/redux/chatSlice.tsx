@@ -1,47 +1,58 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../../../app/redux/store'
+import { IDialogueInterface, IMemberInterface, IMessageInterface } from '../utils/types'
 
 export const chatSlice = createSlice({
   name: 'chat',
   initialState: {
-    isChatVisible: '',
-    isContentVisible: '',
-    isListVisible: '',
-    isRaitingVisible: '',
-    isSearched: '',
-    isButtonVisible: '',
-    sendIconVisible: false,
+    visibleContent: 'loading', // '' | 'loading' | 'error' | 'content' | 'no-content'
+    searchedValue: '',
+    currentGenMessagesPage: 1,
+    wholeGenMessagesPages: 1,
+    currentSlug: '',
+
+    currentMessages: [] as IMessageInterface[],
+    genChatMembers: [] as IMemberInterface[],
+    dialogues: [] as IDialogueInterface[],
   },
   reducers: {
-    setIsChatVisible: (state, { payload }) => {
-      state.isChatVisible = payload
-    },
-    setIsContentVisible: (state, { payload }) => {
-      state.isContentVisible = payload
-    },
-    setIsListVisible: (state, { payload }) => {
-      state.isListVisible = payload
-    },
-    setIsRaitingVisible: (state, { payload }) => {
-      state.isRaitingVisible = payload
-    },
     setIsSearched: (state, { payload }) => {
-      state.isSearched = payload
+      state.searchedValue = payload
     },
-    setIsButtonVisible: (state, { payload }) => {
-      state.isButtonVisible = payload
+    setCurrentMessages: (state, { payload }) => {
+      state.currentMessages = payload
+    },
+    setGenChatMembers: (state, { payload }) => {
+      state.genChatMembers = payload
+    },
+    setDialogues: (state, { payload }) => {
+      state.dialogues = payload
+    },
+    setContent: (state, { payload }) => {
+      state.visibleContent = payload
+    },
+    setGeneralMessagesPage: (state, { payload }) => {
+      state.currentGenMessagesPage = payload
+    },
+    setWholeGenMessagesPages: (state, { payload }) => {
+      state.wholeGenMessagesPages = payload
+    },
+    setCurrentSlug: (state, { payload }) => {
+      state.currentSlug = payload
     },
   },
 })
 
 const { actions, reducer } = chatSlice
 export const {
-  setIsChatVisible,
-  setIsContentVisible,
-  setIsListVisible,
-  setIsRaitingVisible,
   setIsSearched,
-  setIsButtonVisible,
+  setCurrentMessages,
+  setDialogues,
+  setContent,
+  setGenChatMembers,
+  setGeneralMessagesPage,
+  setWholeGenMessagesPages,
+  setCurrentSlug,
 } = actions
 
 export const chatSelector = (state: RootState) => state.chat

@@ -4,8 +4,41 @@
   box-sizing: border-box;
   padding: 0;
   margin: 8px 20px 35px 20px;
-  overflow: scroll;
+  overflow: hidden;
   border-bottom: 1px solid #E5E5E5;
+}
+
+.spinnerContainer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+}
+
+.errorContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100% - 91px);
+
+  font-size: 15px;
+  font-weight: 500;
+  color: #F24949;
+
+  .errorInner > p {
+    padding: 0;
+    margin: 0;
+  }
 }
 
 @keyframes transition {
@@ -26,7 +59,7 @@
   position: fixed;
   bottom: 0;
   right: 120px;
-  box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+  box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
   border-radius: 14px;
   background-color: #FFFFFF;
   animation: transition 500ms ease;
@@ -63,4 +96,21 @@
   margin: 0;
   background-color: transparent;
   border: none;
+}
+
+.joinChat {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+
+  text-align: center;
+
+  &_title {
+    margin: 0 0 10px 0;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    color: #99A0AD;
+  }
 }
