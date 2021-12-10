@@ -1,27 +1,57 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import styles from './styles.module.scss'
 import clip from '@icons/clip.svg'
 import send from '@icons/sendIcon.svg'
+import { useChat } from '@components/Chat/utils/useChat'
 
-export const Textarea = () => {
-  const [sendIconVisible, setSendIconVisible] = useState(false)
+export const Textarea = ({ slug }) => {
+  const { sendGroupMessage } = useChat()
 
-  const handleSendIconVisibility = () => {
-    setSendIconVisible(true)
+  const [isButtonVisible, setIsButtonVisible] = useState(false)
+  const [inputValue, setInputValue] = useState('')
+  const inputRef = useRef(null)
+
+  const handleSendIconVisibility = (e) => {
+    e.target.value.length < 1 ? setIsButtonVisible(false) : setIsButtonVisible(true)
   }
 
   const handleInputHeight = (e) => {
-    e.target.style.height = e.target.scrollHeight + 'px'
-    handleSendIconVisibility()
+    e.target.value.length !== 0
+      ? (inputRef.current.style.height = e.target.scrollHeight + 'px')
+      : (inputRef.current.style.height = '40px')
+
+    handleSendIconVisibility(e)
   }
+
+  const handleInputChange = (e) => {
+    handleInputHeight(e)
+    setInputValue(e.target.value)
+  }
+
+  const handleSubmit = () => {
+    setInputValue('')
+    sendGroupMessage(slug, inputValue)
+    // getGroupMessages(slug, 1)
+    inputRef.current.style.height = '40px'
+  }
+
   return (
     <div className={styles.inputContainer}>
       <button className={styles.button} type='button'>
         <img alt='clip' src={clip} className={styles.clip} />
       </button>
-      <textarea className={styles.inputText} placeholder='Сообщение' onChange={handleInputHeight} />
-      <button className={styles.button} type='submit'>
-        <img alt='sendIcon' src={send} className={sendIconVisible ? styles.sendIcon : styles.sendIcon_invisible} />
+      <textarea
+        ref={inputRef}
+        value={inputValue}
+        className={styles.inputText}
+        placeholder='Сообщение'
+        onChange={handleInputChange}
+        onCut={handleInputHeight}
+        onPaste={handleInputHeight}
+        onInput={handleInputHeight}
+      />
+      <button className={styles.button} type='button' onClick={handleSubmit}>
+        {isButtonVisible && <img alt='' src={send} className={styles.sendIcon} />}
       </button>
     </div>
   )

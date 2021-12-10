@@ -9,6 +9,7 @@ import cabinetSlice from '../../pages/cabinet/redux/cabinetSlice'
 import authSlice from '../../pages/auth/redux/authSlice'
 // import authNewSlice from '../../pages/auth/redux/authSlice'
 import walletSlice from '../../components/Wallet/redux/walletSlice'
+import chatSlice from '@components/Chat/redux/chatSlice'
 
 export const store = configureStore({
   reducer: {
@@ -21,6 +22,7 @@ export const store = configureStore({
     cabinet: cabinetSlice,
     auth: authSlice,
     wallet: walletSlice,
+    chat: chatSlice,
   },
   devTools: process.env.NODE_ENV !== 'production',
   middleware: (getDefaultMiddleware) =>

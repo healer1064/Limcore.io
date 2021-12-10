@@ -2,7 +2,8 @@
 @import '../../../../scss/_vars.scss';
 
 .list {
-  display: flex;
+  visibility: visible;
+  opacity: 1;
   flex-direction: column;
   box-sizing: border-box;
   padding: 0;
@@ -12,21 +13,23 @@
   bottom: 0;
   right: 0;
   left: 0;
+  z-index: 2;
   background-color: $white;
-  opacity: 1;
-  transition: opacity 1s linear;
+  transition: opacity 200ms ease, visibility 200ms ease;
 
   &_invisible {
-    display: none;
+    visibility: hidden;
     opacity: 0;
-    transition: opacity 1s linear;
+    transition: opacity 200ms ease, visibility 200ms ease;
+    position: absolute;
   }
 }
 
 .listHeader {
   display: flex;
+  align-items: center;
   box-sizing: border-box;
-  padding: 25px;
+  padding: 16px 32px;
   margin: 0;
   min-height: 70px;
   width: 100%;
@@ -35,6 +38,7 @@
 }
 
 .button {
+  padding: 0;
   border: none;
   background-color: transparent;
 }
@@ -43,7 +47,6 @@
   display: flex;
   box-sizing: border-box;
   padding: 0;
-  margin: 0 90px 0 0;
   align-self: center;
 }
 
@@ -88,7 +91,8 @@
   box-sizing: border-box;
   padding: 0;
   margin: 20px 20px 0;
-  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 @media screen and (min-width: 769px) {

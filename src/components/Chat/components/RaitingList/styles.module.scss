@@ -2,7 +2,8 @@
 @import '../../../../scss/_vars.scss';
 
 .raitingList {
-  display: flex;
+  visibility: visible;
+  opacity: 1;
   box-sizing: border-box;
   position: fixed;
   top: 0;
@@ -11,13 +12,12 @@
   left: 0;
   background: rgba(43, 40, 41, 0.5);
   z-index: 2000;
-  opacity: 1;
-  transition: opacity 1s linear;
+  transition: visibility 500ms ease, opacity 500ms ease;
 
   &_invisible {
-    display: none;
+    visibility: hidden;
     opacity: 0;
-    transition: opacity 1s linear;
+    transition: visibility 500ms ease, opacity 500ms ease;
   }
 }
 

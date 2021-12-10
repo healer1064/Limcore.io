@@ -1,4 +1,7 @@
+@import '../../../vars&mixins.scss';
 @import '../../../../../scss/cabinet';
+@import '../../../../../scss/_vars';
+@import '../../../../../scss/typography';
 
 .wallet {
   position: relative;
@@ -8,7 +11,7 @@
   margin: 0;
 
   background-color: $color-cyan-pale;
-  border-radius: 14px;  
+  border-radius: $border-radius;
 
   & * {
     padding: 0;
@@ -20,11 +23,8 @@
     width: 148px;
     margin-top: 18px;
     margin-left: 24px;
-
-    font-weight: 600;
-    font-size: 13px;
-    line-height: 1.5;
-    color: $color-gray-medium;
+    @include subtitle-13px($color-gray-medium);
+    font-weight: $fontWeightSemiBold;
   }
 
   &__image {
@@ -40,7 +40,7 @@
 
     width: 20px;
     height: 20px;
-    outline: none;
+    //outline: none;
     border: none;
     box-shadow: none;
     transition: 0.5s ease-in-out;

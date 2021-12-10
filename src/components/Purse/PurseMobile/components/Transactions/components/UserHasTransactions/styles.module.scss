@@ -1,5 +1,7 @@
-@import '../../../../../../../scss/cabinet';
 @import '../../../../../vars&mixins.scss';
+@import '../../../../../../../scss/cabinet';
+@import '../../../../../../../scss/_vars';
+@import '../../../../../../../scss/typography';
 
 .list {
   margin: 0;
@@ -25,7 +27,7 @@
   }
 
   &__minus > span > p:first-child {
-    @include subtitle-14px(#F24949);
+    @include subtitle-14px($color-F2-red);
   }
 }
 
@@ -82,7 +84,7 @@
   &__title {
     margin: 0;
     padding: 0;
-    @include subtitle-14px(#4DBE28);
+    @include subtitle-14px($color-4D-green);
     text-align: right;
   }
 

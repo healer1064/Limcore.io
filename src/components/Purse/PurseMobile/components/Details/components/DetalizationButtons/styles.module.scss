@@ -1,4 +1,7 @@
 @import '../../../../../vars&mixins.scss';
+@import '../../../../../../../scss/cabinet';
+@import '../../../../../../../scss/_vars';
+@import '../../../../../../../scss/typography';
 
 .list {
   margin: 0;
@@ -40,12 +43,12 @@
   padding: 17px 20px;
   width: calc(100vw - 20px);
   height: 100%;
-  border-radius: 14px;
+  border-radius: $border-radius;
 
   transform: translateY(calc(-45vh + 12px));
   background-color: $color-99-gray;
 
   & > button {
-    color: #fff;
+    color: $white;
   }
 }

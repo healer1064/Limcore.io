@@ -2,29 +2,33 @@ import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import { useTranslation } from 'react-i18next'
 import closeButton from '@icons/greyClose.svg'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
+import { setIsSearched } from '../../../Chat/redux/chatSlice'
 
 export const SearchForm = ({ desktop }) => {
   const [t] = useTranslation()
-  const [searched, setSearched] = useState('')
-  const [closeButtonVisible, setCloseButtonVisible] = useState(false)
-  const [resetButtonVisible, setResetButtonVisible] = useState(false)
+
+  const searched = useAppSelector((state) => state.chat.searchedValue)
+  const [isButtonVisible, setIsButtonVisible] = useState('') // '' | 'close' | 'reset'
+  const dispatch = useAppDispatch()
 
   const handleChange = (e) => {
-    setSearched(e.target.value)
-    setCloseButtonVisible(true)
+    dispatch(setIsSearched(e.target.value))
+    setIsButtonVisible('close')
   }
 
   const handleResetButton = () => {
-    setResetButtonVisible(true)
+    setIsButtonVisible('reset')
   }
 
   const handleCloseSearch = () => {
-    setSearched('')
+    dispatch(setIsSearched(''))
+    setIsButtonVisible('')
   }
 
   return (
     <>
-      <form className={!desktop ? styles.searchForm : styles.searchForm_desktop}>
+      <form className={desktop ? styles.searchForm_desktop : styles.searchForm}>
         <input
           type='search'
           className={styles.searchInput}
@@ -33,19 +37,15 @@ export const SearchForm = ({ desktop }) => {
           onFocus={handleResetButton}
           value={searched}
         />
-        <img
-          className={closeButtonVisible ? styles.closeButton : styles.closeButton_invisible}
-          alt='closeIcon'
-          src={closeButton}
-          onClick={handleCloseSearch}
-        />
-        <button type='reset' className={resetButtonVisible ? styles.resetButton : styles.resetButton_invisible}>
-          {t('chat_reset_button_value')}
-        </button>
+        {(isButtonVisible === 'close' || isButtonVisible === 'reset') && (
+          <img className={styles.closeButton} alt='' src={closeButton} onClick={handleCloseSearch} />
+        )}
+        {isButtonVisible === 'reset' && (
+          <button type='reset' className={styles.resetButton}>
+            {t('chat_reset_button_value')}
+          </button>
+        )}
       </form>
-      <p className={`${styles.subtitle} ${styles.subtitle_invisible}`}>{t('chat_no_results')}</p>
-      <p className={`${styles.text} ${styles.text_invisible}`}>{`${t('chat_no_results_text')} '${searched}'`}</p>
-      <p className={`${styles.text} ${styles.text_invisible}`}>{t('chat_no_results_try')}</p>
     </>
   )
 }

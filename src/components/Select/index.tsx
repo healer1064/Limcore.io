@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import './select.css'
+import './select.scss'
 import arrowUpSorted from '@icons/arrowUpSorted.svg'
 import checkIcon from '@icons/checkIcon.svg'
 
