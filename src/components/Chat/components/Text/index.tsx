@@ -1,10 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { useTranslation } from 'react-i18next'
 
 export const Text = ({ message }) => {
-  const [t] = useTranslation()
-
   return (
     <div className={`${message.owner ? styles.textContainer_owner : styles.textContainer}`}>
       <p className={`${message.owner ? styles.text_owner : styles.text}`}>{message.message}</p>

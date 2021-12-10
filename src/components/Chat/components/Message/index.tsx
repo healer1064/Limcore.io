@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
-import { useTranslation } from 'react-i18next'
 import { Support } from '@components/Chat/components/Support'
 import { Group } from '@components/Chat/components/Group'
 import active from '@icons/activeStatus.svg'
 
 export const Message = ({ message, participants }) => {
-  const [t] = useTranslation()
   const [supportVisible, setSupportVisible] = useState(false)
   const [groupVisible, setGroupVisible] = useState(false)
 

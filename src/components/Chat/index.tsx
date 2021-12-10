@@ -76,6 +76,38 @@ export const Chat = ({ handleChatClose }) => {
       rank: 'CEO Limcore.io',
       name: 'Дмитрий Шумаев',
     },
+    {
+      id: 111,
+      foto: fotoExample,
+      message:
+        'Доброго времени суток всем, не могу закончить регистрацию на сайте, так как сайт не принимает паспортные данные',
+      raitingIcon: grey,
+      score: 0,
+      status: 'В сети',
+      rank: 'Admin',
+      name: 'Поддержка',
+    },
+    {
+      id: 222,
+      foto: fotoPart1,
+      message: 'Кстати, за актуальными курсами форков можно следить на сайте https://xchforks.com',
+      raitingIcon: purple,
+      score: 49,
+      status: 'Не в сети',
+      rank: '',
+      name: 'Анастасия Иванова',
+    },
+    {
+      id: 333,
+      foto: fotoPart2,
+      message:
+        'Chia громко заявила о себe в самом начале, и тот кто хотел и имел возможность, уже зашёл. Дальше стоит ожидать только крупных игроков, типо нас!',
+      raitingIcon: orange,
+      score: 987,
+      status: 'Была в сети',
+      rank: 'CEO Limcore.io',
+      name: 'Дмитрий Шумаев',
+    },
   ]
 
   return (

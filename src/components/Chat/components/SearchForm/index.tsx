@@ -18,7 +18,7 @@ export const SearchForm = ({ desktop }) => {
     setResetButtonVisible(true)
   }
 
-  const handleCloseSearch = (e) => {
+  const handleCloseSearch = () => {
     setSearched('')
   }
 
@@ -37,7 +37,7 @@ export const SearchForm = ({ desktop }) => {
           className={closeButtonVisible ? styles.closeButton : styles.closeButton_invisible}
           alt='closeIcon'
           src={closeButton}
-          onClick={(e) => handleCloseSearch(e)}
+          onClick={handleCloseSearch}
         />
         <button type='reset' className={resetButtonVisible ? styles.resetButton : styles.resetButton_invisible}>
           {t('chat_reset_button_value')}
