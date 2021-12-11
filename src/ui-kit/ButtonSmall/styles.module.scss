@@ -17,4 +17,8 @@
     opacity: .5;
     cursor: default;
   }
+
+  &:active, &:focus {
+    outline: $outline;
+  }
 }

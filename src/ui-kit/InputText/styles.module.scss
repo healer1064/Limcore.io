@@ -9,13 +9,13 @@ fieldset {
 
 .input {
   background: $white;
-  border: 1.4px solid $light-grey;
+  border: 1.4px solid $color-B4-violet;
   border-radius: $border-radius;
   padding: 16px 10px;
   margin: 10px 0 0;
   height: 45px;
   font-family: $main-font;
-  @include mediumP3($black);
+  @include mediumP3($color-39-black);
 
   &:disabled {
     opacity: .5;
@@ -23,17 +23,17 @@ fieldset {
 
   &::placeholder {
     font-family: $main-font;
-    @include mediumP3($light-grey);
+    @include mediumP3($color-B4-violet);
   }
 }
 
 .input_error {
-  border: 1.4px solid $red;
+  border: 1.4px solid $color-FF-red;
 }
 
 .error {
   font-family: $main-font;
-  @include mediumP3($red);
+  @include mediumP3($color-FF-red);
   margin: 8px 0 0;
   padding: 0;
 }

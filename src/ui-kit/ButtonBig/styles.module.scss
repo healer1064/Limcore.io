@@ -7,13 +7,13 @@
   border: $big-button-border;
   border-radius: $border-radius;
   font-family: $main-font;
-  @include semiBoldH4(#ffffff);
+  @include semiBoldH4($white);
   text-align: center;
   background: $primary-color;
   transition: background .2s ease;
 
   &:hover {
-    background: $primary-color-hover;
+    background: $color-32-blue;
     transition: background .2s ease;
     cursor: pointer;
   }
@@ -22,4 +22,9 @@
     opacity: .5;
     cursor: default;
   }
+
+  &:active, &:focus {
+    outline: $outline;
+  }
+
 }

@@ -12,7 +12,7 @@
     position: absolute;
 
     &:checked + .slider {
-      background: $third-white;
+      background: $color-FO-white;
 
       &::before {
         transform: translateX(19px);
@@ -33,7 +33,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: $third-white;
+  background: $color-FO-white;
   border-radius: 50px;
 
   &::before {

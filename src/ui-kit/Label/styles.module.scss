@@ -5,5 +5,5 @@
   display: flex;
   flex-direction: column;
   font-family: $main-font;
-  @include regularP3($middle-grey)
+  @include regularP3($color-4F-black);
 }

@@ -6,7 +6,7 @@
   border: none;
   border-radius: $border-radius;
   font-family: $main-font;
-  @include semiBoldH4(#ffffff);
+  @include semiBoldH4($white);
   text-align: center;
   color: $primary-color;
   padding: 14px 0;
@@ -20,4 +20,8 @@
     opacity: .5;
     cursor: default;
   }
+
+  &:active, &:focus {
+    outline: $outline;
+  };
 }
