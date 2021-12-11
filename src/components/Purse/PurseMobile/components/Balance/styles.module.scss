@@ -24,8 +24,7 @@
 
   &__title {
     margin-bottom: 4px;
-    @include section-title();
-    color: $color-3A-black;
+    @include section-title($color-3A-black);
     transition: opacity .3s ease;
 
     &:hover {

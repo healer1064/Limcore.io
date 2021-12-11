@@ -11,7 +11,7 @@
        border-bottom: 1px solid $very-light-grey;
     }
     .tableHeader {
-      @include section-title();
+      @include section-title($color-99-gray);
       color: $color-99-gray;
       text-align: left;
       &:not(:first-child) {
@@ -61,7 +61,7 @@
 }
 
 .tableBtn {
-  @include section-title();
+  @include section-title($color-4A-blue);
   color: $color-4A-blue;
   margin: 20px auto;
   padding: 14px 75px;

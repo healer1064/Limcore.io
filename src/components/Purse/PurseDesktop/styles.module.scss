@@ -55,7 +55,7 @@
   background-color: transparent;
   width: 70px;
   height: 50px;
-  box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
+  box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
   border-radius: 14px;
   justify-content: center;
   align-content: center;
@@ -63,5 +63,9 @@
   &:hover {
     cursor: pointer;
     opacity: .5;
+  }
+
+  &:active, &:focus {
+    outline: $outline;
   }
 }

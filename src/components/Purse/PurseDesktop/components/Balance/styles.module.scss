@@ -323,9 +323,8 @@
   }  
 }
 .syncButton {
-  @include section-title();
-  color: $color-4A-blue;
-  //outline: none;
+  @include section-title($color-4A-blue);
+  outline: $outline;
   padding: 15px 0;
   max-width: 270px;
   margin: 30px 0;
@@ -363,10 +362,9 @@
     margin: 0 10px 0 0;
     }
   p {
-    @include section-title();
+    @include section-title($color-4A-blue);
     margin: 0;
     padding: 0;
-    color: $color-4A-blue;
     @include ellipsisText();
   }
 }

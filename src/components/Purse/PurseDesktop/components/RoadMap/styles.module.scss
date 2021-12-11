@@ -50,7 +50,7 @@
     display: flex;
     gap: 12px;
     h3 {
-      @include section-title();
+      @include section-title($color-4F-black);
     }
     p {
       @include subtitle-14px($purse-violet);

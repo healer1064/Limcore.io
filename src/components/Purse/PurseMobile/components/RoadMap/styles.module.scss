@@ -47,7 +47,7 @@
     box-sizing: border-box;
     margin: 12px 0 0 0;
     h3{
-      @include section-title()
+      @include section-title($color-4F-black)
     }
     p {
       @include subtitle-14px($color-86-grey)

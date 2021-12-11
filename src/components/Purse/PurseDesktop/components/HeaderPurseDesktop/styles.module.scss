@@ -157,7 +157,7 @@
     display: none;
   }
   .byLimcBtn {
-    @include section-title();
+    @include section-title($white);
     display: inline-block;
     font-size: 18px;
     border: none;
