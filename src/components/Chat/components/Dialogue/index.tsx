@@ -19,9 +19,10 @@ export const Dialogue = ({ data }: IDialogueProps) => {
 
   const IS_GENERAL_CHAT = data.slug === 'general_chat'
 
-  const name = data.other_user?.first_name
-    ? `${data.other_user.first_name} ${data.other_user.last_name}`
-    : `User #${data.other_user?.id}`
+  const firstName = data.other_user?.first_name ? data.other_user.first_name : ''
+  const lastName = data.other_user?.last_name ? data.other_user.last_name : ''
+  const name = `${firstName} ${lastName}`
+
   const title = IS_GENERAL_CHAT ? 'Mining Data Centre Limcore' : name
 
   const handleChatOpen = () => {

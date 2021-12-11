@@ -12,10 +12,10 @@ export const getUser: any = createAsyncThunk('user/getUser', async () => {
   return response.data
 })
 
-export const updateUser: any = createAsyncThunk('user/updateUser', async (data: any) => {
-  const response = await api.post('users/profile/', data)
-  return response.data
-})
+// export const updateUser: any = createAsyncThunk('user/updateUser', async (data: any) => {
+//   const response = await api.post('users/profile/', data)
+//   return response.data
+// })
 
 export const updateProfileUser: any = createAsyncThunk('user/updateProfileUser', async (data: any) => {
   const response = await api.patch('users/profile/', data)
@@ -119,14 +119,14 @@ export const userSlice = createSlice({
     builder.addCase(getUser.rejected, (state, { payload }) => {
       console.log('getUser', payload)
     })
-    builder.addCase(updateUser.fulfilled, (state, { payload }) => {
-      state.error = false
-      console.log('updateUser', payload)
-    })
-    builder.addCase(updateUser.rejected, (state, { payload }) => {
-      state.error = true
-      console.log('updateUser', payload)
-    })
+    // builder.addCase(updateUser.fulfilled, (state, { payload }) => {
+    //   state.error = false
+    //   console.log('updateUser', payload)
+    // })
+    // builder.addCase(updateUser.rejected, (state, { payload }) => {
+    //   state.error = true
+    //   console.log('updateUser', payload)
+    // })
     builder.addCase(updateProfileUser.fulfilled, (state, { payload }) => {
       console.log('updateProfileUser', payload)
     })

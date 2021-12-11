@@ -29,12 +29,10 @@ export const useChat = () => {
   const token = tokenObj.access
 
   const currentMessages = useAppSelector((state) => state.chat.currentMessages)
-  // const currentGenMessagesPage = useAppSelector((state) => state.chat.currentGenMessagesPage)
 
   useEffect(() => {
     if (!socket) {
       socket = new WebSocket(`ws://217.28.228.152:9005/ws/chat/?token=${token}`)
-      // socket = new WebSocket(`ws://87c4-37-52-131-48.ngrok.io/ws/chat/?token=${token}`)
       console.log(socket)
 
       socket.onopen = () => {
