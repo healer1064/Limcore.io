@@ -35,7 +35,7 @@ export const useChat = () => {
 
   useEffect(() => {
     if (!socket) {
-      socket = new WebSocket(`ws://217.28.228.152:9005/ws/chat/?token=${token}`)
+      socket = new WebSocket(`wss://217.28.228.152:9005/ws/chat/?token=${token}`)
       console.log(socket)
 
       socket.onopen = () => {
