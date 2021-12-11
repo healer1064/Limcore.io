@@ -41,6 +41,10 @@
     &:active {
       opacity: .7;
     }
+
+    &:focus {
+      outline: $outline;
+    }
   }
 }
 
@@ -138,7 +142,7 @@
 
 .dots {
   margin-left: 20px;
-  //outline: none;
+  outline: $outline;
   background-color: transparent;
   border: none;
 }

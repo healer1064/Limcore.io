@@ -18,17 +18,15 @@
   .tooltip {
     border: none;
     background-color: transparent;
-    outline: none;
+    outline: $outline;
     transform: translateY(1px);
   }
 
   .progressbar { 
     position: relative;
-
     margin-bottom: 6px;
     height: 10px;
     border-radius: 6px;
-
     background: $color-E5-white;
 
     &__track {
@@ -110,10 +108,8 @@
     margin-bottom: 20px;
     padding: 0;
     border: none;
-
     @include subtitle-14px($color-4A-blue);
-
-    //outline: none;
+    outline: $outline;
     background-color: transparent;
     transition: color .3s ease;
   }
