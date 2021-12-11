@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { getUser, updateUser, setData } from '../../../../../../../app/redux/userSlice'
+import { getUser, updateProfileUser, setData } from '../../../../../../../app/redux/userSlice'
 import { changeViewContent, changeStep } from '../../../../../../../pages/cabinet/redux/cabinetSlice'
 import Styles from './styles.module.scss'
 
@@ -25,10 +25,13 @@ export const Step3: React.FC = () => {
   const completeFilling = async (event) => {
     event.preventDefault()
 
-    const response = await dispatch(updateUser(data))
+    const dataClone = JSON.parse(JSON.stringify(data))
+    delete dataClone.avatar
+
+    const response = await dispatch(updateProfileUser(dataClone))
 
     if (response.error) {
-      console.log('error updateUser!!!')
+      console.log('error updateProfileUser!!!')
     } else {
       const res = await dispatch(getUser())
 

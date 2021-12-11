@@ -5,12 +5,13 @@ import { useAppSelector } from '@app/redux/hooks'
 
 export const Participant = ({ member }) => {
   const userId = useAppSelector((state) => state.user.userData?.id)
-  // let me: string = null
-  const me = member.user.id === userId ? 'Вы' : ''
 
-  const name = member.user.first_name ? `${member.user.first_name} ${member.user.last_name}` : 'Пользователь'
+  const me = member.user.id === userId ? 'Вы' : ''
   const avatar = member.user.avatar ? member.user.avatar : profileIcon
-  // const isMe = member.user.id === userId ? (me = 'Вы') : (me = '')
+
+  const firstName = member.user?.first_name ? member.user.first_name : ''
+  const lastName = member.user?.last_name ? member.user.last_name : ''
+  const name = firstName + lastName === '' ? 'User' : `${firstName} ${lastName}`
 
   return (
     <div className={styles.message}>
