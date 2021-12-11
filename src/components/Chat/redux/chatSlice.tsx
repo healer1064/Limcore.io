@@ -28,6 +28,10 @@ export const chatSlice = createSlice({
     setDialogues: (state, { payload }) => {
       state.dialogues = payload
     },
+    setDialogueUnreadedCount: (state, { payload }) => {
+      const dialogueIndex = state.dialogues.findIndex((dialogue) => dialogue.slug === payload.group)
+      state.dialogues[dialogueIndex].unread_count = payload.unread_count
+    },
     setContent: (state, { payload }) => {
       state.visibleContent = payload
     },
@@ -48,6 +52,7 @@ export const {
   setIsSearched,
   setCurrentMessages,
   setDialogues,
+  setDialogueUnreadedCount,
   setContent,
   setGenChatMembers,
   setGeneralMessagesPage,

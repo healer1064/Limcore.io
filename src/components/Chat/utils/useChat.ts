@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import {
   setCurrentMessages,
   setDialogues,
+  setDialogueUnreadedCount,
   setGenChatMembers,
   setGeneralMessagesPage,
   setWholeGenMessagesPages,
@@ -19,6 +20,7 @@ const commands = {
   getGroupsList: 5, // пока что только группы
   // еще есть IS_TYPING, MESSAGE_READ
   sendLastReadedMessage: 9,
+  getUnreadedCount: 10,
 }
 
 let socket: WebSocket = null
@@ -80,14 +82,18 @@ export const useChat = () => {
         getGroupsList(1)
       }
 
-      if (data.command === 5) {
-        dispatch(setDialogues(data.result))
-      }
-
       if (data.command === 4) {
         dispatch(setCurrentMessages([...data.result.reverse(), ...currentMessages]))
         dispatch(setGeneralMessagesPage(data.page))
         dispatch(setWholeGenMessagesPages(data.num_pages))
+      }
+
+      if (data.command === 5) {
+        dispatch(setDialogues(data.result))
+      }
+
+      if (data.command === 10) {
+        dispatch(setDialogueUnreadedCount(data))
       }
     }
   }
