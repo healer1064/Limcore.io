@@ -76,7 +76,7 @@
   display: flex;
   align-items: center;
   border: none;
-  outline: none;
+  outline: $outline;
   background-color: transparent;
   width: 28px;
   margin: 0 0 0 10px;
@@ -161,11 +161,10 @@
     display: inline-block;
     font-size: 18px;
     border: none;
-    outline: none;
+    outline: $outline;
     text-decoration: none;
     border-radius: $border-radius;
     padding: 15px 75px;
-    color: $white;
     background-color: $color-4A-blue;
     margin: 30px 0;
     &:hover {

@@ -38,5 +38,9 @@
     &:active {
       opacity: .7;
     }
+
+    &:focus {
+      outline: $outline;
+    }
   }
 }

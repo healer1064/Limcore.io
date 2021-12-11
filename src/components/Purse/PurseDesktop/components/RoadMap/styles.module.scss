@@ -53,12 +53,12 @@
       @include section-title($color-4F-black);
     }
     p {
-      @include subtitle-14px($purse-violet);
+      @include subtitle-14px($color-86-grey);
     }
   }
 
   .roundVisualization {
-    @include subtitle-14px($purse-violet);
+    @include subtitle-14px($color-86-grey);
     order: 2;
     display: flex;
     justify-content: flex-end;

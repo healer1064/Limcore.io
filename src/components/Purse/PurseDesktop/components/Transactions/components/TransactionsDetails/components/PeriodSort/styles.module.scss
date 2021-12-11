@@ -26,9 +26,9 @@
   margin: 0;
   border: none;
   @include subtitle-14px($color-4F-black);
-  font-weight: 600;
+  font-weight: $fontWeightSemiBold;
   background-color: transparent;
-  //outline: none;
+  outline: $outline;
 }
 
 .block {

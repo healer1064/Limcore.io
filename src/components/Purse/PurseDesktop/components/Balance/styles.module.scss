@@ -43,7 +43,7 @@
     margin-left: 14px;
     border: none;
     background-color: transparent;
-    //outline: none;
+    outline: $outline;
     box-shadow: none;
     transition: opacity .3s ease;
     
@@ -389,7 +389,7 @@
   border: 1px solid $other-grey;
   border-radius: 50%;
   background-color: $white;
-  //outline: none;
+  outline: $outline;
   object-fit: contain;
   justify-content: center;
   align-content: center;

@@ -63,6 +63,10 @@
   &:hover {
     cursor: pointer;
   }
+
+  &:focus {
+    outline: $outline;
+  }
 }
 
 .items {
@@ -94,7 +98,7 @@
     color: $color-39-black;
   }
 
-  &:active {
+  &:active, &:focus {
     border: 1px solid $color-2D-blue;
     color: $color-2D-blue;
   }

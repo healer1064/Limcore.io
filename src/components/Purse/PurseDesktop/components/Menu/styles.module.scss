@@ -10,7 +10,7 @@
 
 .name {
   font-family: $main-font;
-  @include semiBoldH4($dark-grey);
+  @include semiBoldH4($color-3A-black);
   display: flex;
   box-sizing: border-box;
   margin: 0;
@@ -55,5 +55,9 @@
 
   &:hover {
     cursor: pointer;
+  }
+
+  &:focus {
+    outline: $outline;
   }
 }

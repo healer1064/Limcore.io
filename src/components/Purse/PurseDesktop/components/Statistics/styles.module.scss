@@ -24,7 +24,7 @@
   .tooltip {
     border: none;
     background-color: transparent;
-    outline: none;
+    outline: $outline;
     transform: translateY(1px);
     path {
       stroke: $color-4F-black;
@@ -121,7 +121,7 @@
     padding: 0;
     border: none;
     @include subtitle-14px($color-4A-blue);
-    //outline: none;
+    outline: $outline;
     background-color: transparent;
     transition: color .3s ease;
   }

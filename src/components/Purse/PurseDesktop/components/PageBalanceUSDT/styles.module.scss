@@ -68,6 +68,10 @@
       stroke: $color-4A-blue;
     }
   }
+
+  &:focus {
+    outline: $outline;
+  }
 }
 
 .items {
@@ -98,7 +102,7 @@
     color: $color-31-blue;
   }
 
-  &:active {
+  &:active, &:focus {
     border: 1px solid $color-2D-blue;
     color: $color-2D-blue;
   }

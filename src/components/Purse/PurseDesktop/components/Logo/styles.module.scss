@@ -1,3 +1,8 @@
+@import '../../../vars&mixins.scss';
+@import '../../../../../scss/cabinet';
+@import '../../../../../scss/_vars';
+@import '../../../../../scss/typography';
+
 .logo {
   display: flex;
   box-sizing: border-box;
@@ -9,6 +14,10 @@
 
   &:hover {
     cursor: pointer;
+  }
+
+  &:focus {
+    outline: $outline;
   }
 }
 

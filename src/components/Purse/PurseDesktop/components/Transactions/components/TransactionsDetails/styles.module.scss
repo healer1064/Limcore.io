@@ -78,7 +78,7 @@
   @include subtitle-13px($color-39-black);
   font-weight: $fontWeightSemiBold;
   white-space: nowrap;
-  //outline: none;
+  outline: $outline;
   background-color: $step-white;
 
   &Span {
@@ -124,7 +124,7 @@
   @include subtitle-14px($color-4F-black);
   font-weight: $fontWeightSemiBold;
   background-color: transparent;
-  //outline: none;
+  outline: $outline;
 }
 
 .inputs {
@@ -184,7 +184,7 @@
   justify-content: space-between;
   @mixin sumBtn() {
     border: none;
-    outline: none;
+    outline: $outline;
     background-color: transparent;
     @include subtitle-13px($color-4F-black);
   }

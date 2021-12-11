@@ -61,9 +61,8 @@
 
   @mixin sumBtn() {
     border: none;
-    outline: none;
+    outline: $outline;
     background-color: transparent;
-
     @include subtitle-13px($color-4F-black);
   }
 

@@ -68,6 +68,10 @@
       stroke: $color-4A-blue;
     }
   }
+
+  &:focus {
+    outline: $outline;
+  }
 }
 
 .items {
@@ -95,12 +99,11 @@
 
   &:hover {
     transition: background 0.3s ease;
-    // border: 1px solid #3159E9;
     cursor: pointer;
     color: $color-31-blue;
   }
 
-  &:active {
+  &:active, &:focus {
     border: 1px solid $color-2D-blue;
     color: $color-2D-blue;
   }
@@ -149,10 +152,9 @@
 }
 
 .lockup {
-  font-style: normal;
-  font-weight: 500;
+  @include main($color-67-black);
+  font-weight: $fontWeightMedium;
   font-size: 14px;
   line-height: 1.6;
-  color: $color-67-black;
   margin-top: 6px;
 }

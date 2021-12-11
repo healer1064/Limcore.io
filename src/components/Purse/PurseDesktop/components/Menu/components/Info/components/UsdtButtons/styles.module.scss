@@ -27,7 +27,7 @@
       border: none;
       border-radius: $border-radius;
       background: $color-ED-white;
-      //outline: none;
+      outline: $outline;
       @include subtitle-13px($color-4A-blue);
       font-weight: $fontWeightSemiBold;
 

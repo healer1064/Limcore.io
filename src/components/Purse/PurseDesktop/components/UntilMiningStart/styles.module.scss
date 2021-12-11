@@ -20,7 +20,7 @@
     align-items: center;
     border: none;
     background-color: transparent;
-    outline: none;
+    outline: $outline;
     transform: translateY(1px);
     path {
       stroke: $color-4F-black;
@@ -62,7 +62,7 @@
       right: 0;
       display: flex;
       border: none;
-      outline: none;
+      outline: $outline;
       background-color: transparent;
       margin: 15px;
       padding: 5px;

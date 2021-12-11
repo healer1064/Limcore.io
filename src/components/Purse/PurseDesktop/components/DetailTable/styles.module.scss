@@ -8,7 +8,7 @@
   .tableRow {
     height: 80px;
     &:not(:last-child) {
-       border-bottom: 1px solid $very-light-grey;
+       border-bottom: 1px solid $color-E5-white;
     }
     .tableHeader {
       @include section-title($color-99-gray);
@@ -62,12 +62,11 @@
 
 .tableBtn {
   @include section-title($color-4A-blue);
-  color: $color-4A-blue;
   margin: 20px auto;
   padding: 14px 75px;
   border: 1px solid $color-4A-blue;
   border-radius: $border-radius;
-  //outline: none;
+  outline: $outline;
   background-color: transparent;
   &:hover {
     color: $color-31-blue;
