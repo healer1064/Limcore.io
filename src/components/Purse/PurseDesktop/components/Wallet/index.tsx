@@ -21,7 +21,7 @@ export const Wallet = () => {
           <div className={styles.wallet}>
             <p className={styles.wallet__title}>Привяжите внешние кошельки</p>
             <p className={styles.wallet__subtitle}>Добавляйте свои внешние кошельки к форкам </p>
-            <img src={walletSvg} className={styles.wallet__image} />
+            <img src={walletSvg} className={styles.wallet__image} alt='wallet' />
             <button className={styles.moreButton} type='button'>
               Подробнее
             </button>
@@ -31,7 +31,7 @@ export const Wallet = () => {
           <div className={`${styles.wallet} ${styles.wallet_violet}`}>
             <p className={styles.wallet__title}>Выпустите виртуальную карту</p>
             <p className={styles.wallet__subtitle}>Оплачивайте покупки заработанными средствами</p>
-            <img src={walletViolet} className={styles.wallet__image} />
+            <img src={walletViolet} className={styles.wallet__image} alt='wallet' />
             <button className={styles.moreButton} type='button'>
               Перейти
             </button>

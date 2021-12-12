@@ -15,7 +15,7 @@ export const CardButtons = () => {
       <li className={styles.buttonsItem}>
         <button type='button' className={classNames(styles.btn, styles.btn__active)} onClick={handleAddMoneyClick}>
           <span className={styles.btnIcon}>
-            <img src={addMoneyIcon} />
+            <img src={addMoneyIcon} alt='icon' />
           </span>
           Пополнить
         </button>
@@ -23,7 +23,7 @@ export const CardButtons = () => {
       <li className={styles.buttonsItem}>
         <button type='button' className={styles.btn} onClick={handleTransferClick}>
           <span className={styles.btnIcon}>
-            <img src={transferIcon} />
+            <img src={transferIcon} alt='icon' />
           </span>
           Перевести
         </button>

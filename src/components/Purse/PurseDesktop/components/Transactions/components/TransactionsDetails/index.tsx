@@ -213,18 +213,18 @@ export const TransactionsDetails = () => {
       <h2 className={styles.title}>Транзакции</h2>
       <ul className={styles.list}>
         <li className={styles.item}>
-          <button className={styles.btn} onClick={handleCurrencyOpenClick}>
+          <button className={styles.btn} onClick={handleCurrencyOpenClick} type='button'>
             Валюта
-            <img src={chevronDown} />
+            <img src={chevronDown} alt='icon' />
           </button>
           <BottomModal title='Валюта' active={isCurrencyVisible} setActive={handleCurrencyCloseClick}>
             <CurrencySort onChange={handleCurrencyChange} />
           </BottomModal>
         </li>
         <li className={styles.item}>
-          <button className={styles.btn} onClick={handleTypeOpenClick}>
+          <button className={styles.btn} onClick={handleTypeOpenClick} type='button'>
             Тип операции
-            <img src={chevronDown} />
+            <img src={chevronDown} alt='icon' />
           </button>
           <BottomModal title='Тип операции' active={isTypeVisible} setActive={handleTypeCloseClick}>
             <TypeSort onChange={handleTypeChange} />
@@ -245,9 +245,9 @@ export const TransactionsDetails = () => {
           </BottomModal>
         </li> */}
         <li className={styles.item}>
-          <button className={styles.btn} onClick={handleSumOpenClick}>
+          <button className={styles.btn} onClick={handleSumOpenClick} type='button'>
             Сумма
-            <img src={chevronDown} />
+            <img src={chevronDown} alt='icon' />
           </button>
 
           <BottomModal title='Сумма' active={isSumVisible} setActive={handleSumCloseClick}>
@@ -263,9 +263,9 @@ export const TransactionsDetails = () => {
         </li>
         {isResetTabVisible && (
           <li className={styles.item}>
-            <button className={styles.btn} style={{ backgroundColor: '#67686C', color: '#fff' }}>
+            <button className={styles.btn} style={{ backgroundColor: '#67686C', color: '#fff' }} type='button'>
               От {fromSum} до {toSum}
-              <img src={buttonCloseWhite} className={styles.cross} onClick={handleResetSumSort} />
+              <img src={buttonCloseWhite} className={styles.cross} onClick={handleResetSumSort} alt='icon' />
             </button>
           </li>
         )}
@@ -273,13 +273,14 @@ export const TransactionsDetails = () => {
           <li className={styles.item}>
             <button className={styles.btn} style={{ backgroundColor: '#67686C', color: '#fff' }}>
               {currencySort}
-              <img src={buttonCloseWhite} className={styles.cross} onClick={handleResetCurrencySort} />
+              <img src={buttonCloseWhite} className={styles.cross} onClick={handleResetCurrencySort} alt='icon' />
             </button>
           </li>
         )}
         {isTypeTabVisible && (
           <li className={styles.item}>
             <button
+              type='button'
               className={styles.btn}
               style={{
                 backgroundColor: '#67686C',
@@ -287,7 +288,7 @@ export const TransactionsDetails = () => {
               }}
             >
               <span className={styles.btnSpan}>{typeSort}</span>
-              <img src={buttonCloseWhite} className={styles.cross} onClick={handleResetTypeSort} />
+              <img src={buttonCloseWhite} className={styles.cross} onClick={handleResetTypeSort} alt='icon' />
             </button>
           </li>
         )}
@@ -297,7 +298,12 @@ export const TransactionsDetails = () => {
           isCurrentTabVisible ||
           (isTypeTabVisible && (
             <li className={styles.item}>
-              <button className={styles.btn} style={{ backgroundColor: 'transparent' }} onClick={handleAllSortsReset}>
+              <button
+                type='reset'
+                className={styles.btn}
+                style={{ backgroundColor: 'transparent' }}
+                onClick={handleAllSortsReset}
+              >
                 Сбросить
               </button>
             </li>

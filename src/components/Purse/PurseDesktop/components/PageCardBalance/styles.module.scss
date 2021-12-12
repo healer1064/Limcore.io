@@ -15,7 +15,7 @@
 
   &__title {
     font-family: $main-font;
-    @include main($dark-grey);
+    @include main($color-3A-black);
     font-weight: bold;
     font-size: 46px;
     line-height: 1.4;
@@ -54,7 +54,7 @@
   flex-direction: row;
   background-color: transparent;
   font-family: $main-font;
-  @include main($dark-grey);
+  @include main($color-3A-black);
   font-weight: $fontWeightSemiBold;
   font-size: 16px;
   line-height: 1.25;
@@ -90,6 +90,7 @@
   border-radius: $border-radius;
   @include subtitle-13px($primary-color);
   font-weight: $fontWeightSemiBold;
+  border: none;
 
   &:hover {
     transition: background 0.3s ease;
