@@ -16,7 +16,7 @@
       font-weight: 600;
       font-size: 32px;
       line-height: 1.6;
-      color: $dark-grey;
+      color: $color-3A-black;
       margin: 0;
     }
 
@@ -75,7 +75,7 @@
       height: 100%;
       z-index: 101;
       border-radius: 0;
-      background-color: $dark-grey;
+      background-color: $color-3A-black;
       border: none;
     }
   }
@@ -90,12 +90,12 @@
   }
 
   .item__title {
-    @include mediumP3($middle-grey);
+    @include mediumP3($color-4F-black);
     margin: 0;
   }
 
   .item__number {
-    @include regularP4($middle-grey);
+    @include regularP4($color-4F-black);
     margin: 0;
   }
 

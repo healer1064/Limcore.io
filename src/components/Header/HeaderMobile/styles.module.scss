@@ -100,7 +100,7 @@
   margin: 0;
   padding: 0 0 20px 0;
   font-family: $main-font;
-  @include mediumP1($black);
+  @include mediumP1($color-39-black);
   font-weight: $fontWeightSemiBold;
 
   &:hover {
@@ -134,7 +134,7 @@
 }
 
 .language {
-  color: $light-grey;
+  color: $color-B4-violet;
   display: flex;
   box-sizing: border-box;
   margin: 0;
@@ -188,7 +188,7 @@
   margin: 0;
   padding: 10px 12px;
   border-radius: 50%;
-  background-color: $youtube-white;
+  background-color: $color-D3-white;
   width: 40px;
   height: 40px;
 

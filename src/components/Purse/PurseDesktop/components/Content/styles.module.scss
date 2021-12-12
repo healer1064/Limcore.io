@@ -24,7 +24,7 @@
     display: inline-block;
     font-size: 18px;
     border: none;
-    outline: $outline;
+    outline: none;
     text-decoration: none;
     border-radius: $border-radius;
     padding: 15px 75px;
@@ -36,6 +36,9 @@
     }
     &:active {
       background-color: $color-2D-blue;
+    }
+    &:focus {
+      outline: $outline;
     }
   }
 }
@@ -67,7 +70,7 @@
 
 .detailsTitle {
   font-family: $main-font;
-  @include main($dark-grey);
+  @include main($color-3A-black);
   font-weight: $fontWeightSemiBold;
   font-size: 24px;
   line-height: 1.5;

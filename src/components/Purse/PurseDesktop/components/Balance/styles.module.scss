@@ -23,7 +23,7 @@
   &__title {
     transition: opacity .3s ease;
     font-family: $main-font;
-    @include main($dark-grey);
+    @include main($color-3A-black);
     font-weight: 600;
     font-size: 24px;
     line-height: 1.5;
@@ -136,7 +136,7 @@
       position: relative;
       display: flex;
       justify-content: flex-end;
-      background: $purse-white;
+      background: $color-DB-white;
       border-radius: 6px;
       padding: 5px 10px;
       margin-top: 30px;
@@ -158,7 +158,7 @@
     .count {
       font-family: $main-font;
       font-style: normal;
-      @include subtitle-14px($purse-violet);
+      @include subtitle-14px($color-86-grey);
       z-index: 3;
     }
   }
@@ -194,7 +194,7 @@
   box-sizing: border-box;
   margin: 0 10px 0 0;
   padding: 10px 26px 22px;
-  background: $purse-other-white;
+  background: $color-F9-white;
   border-radius: $border-radius;
   width: 100%;
 
@@ -208,7 +208,7 @@
 
   &__subtitle {
     font-family: $main-font;
-    @include subtitle-13px($other-grey);
+    @include subtitle-13px($color-99-gray);
     padding: 12px 0 0;
   }
 
@@ -238,7 +238,7 @@
       font-size: 13px;
       font-weight: $fontWeightMedium;
       line-height: 18px;
-      color: $other-grey;
+      color: $color-99-gray;
     }
 
     &Up {
@@ -324,7 +324,7 @@
 }
 .syncButton {
   @include section-title($color-4A-blue);
-  outline: $outline;
+  outline: none;
   padding: 15px 0;
   max-width: 270px;
   margin: 30px 0;
@@ -339,10 +339,13 @@
     border: 1px solid $color-2D-blue;
     color: $color-2D-blue;
   }
+  &:focus {
+    outline: $outline;
+  }
 }
 
 .trust_subtitle {
-  @include second-subtitle-13px($other-grey);
+  @include second-subtitle-13px($color-99-gray);
 }
 
 .walletId {
@@ -386,7 +389,7 @@
   grid-area: close;
   margin: 30px 0 25px 30px;
   padding: 5px;
-  border: 1px solid $other-grey;
+  border: 1px solid $color-99-gray;
   border-radius: 50%;
   background-color: $white;
   outline: $outline;

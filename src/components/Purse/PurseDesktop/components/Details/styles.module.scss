@@ -94,12 +94,12 @@
 
   &__text {
     flex: 1 1 0;
-  @include second-subtitle-13px($color-gray-mouse);
+  @include second-subtitle-13px($color-99-gray);
   }
 
   &__data {
     flex: none;
-    @include subtitle-14px($color-gray-medium);
+    @include subtitle-14px($color-4F-black);
     text-align: right;
   }
 }
@@ -136,13 +136,13 @@
   flex: 1 1 0;
 
   &__title {
-    @include subtitle-14px($color-gray-black);
+    @include subtitle-14px($color-3A-black);
     margin-bottom: 2px;
     text-align: left;  
   }
 
   &__text {
-    @include subtitle-13px($color-gray-mouse);
+    @include subtitle-13px($color-99-gray);
     text-align: left;
   }
 }
@@ -152,12 +152,12 @@
   flex: none;
 
   &__title {
-    @include subtitle-14px($color-gray-medium);
+    @include subtitle-14px($color-4F-black);
     text-align: right;
   }
 
   &__text {
-    @include subtitle-13px($color-gray-mouse);
+    @include subtitle-13px($color-99-gray);
     text-align: right;
   }
 }
@@ -169,7 +169,7 @@
     font-size: 14px;
     font-weight: $fontWeightMedium;
     line-height: 21px;
-    color: $color-gray-mouse;
+    color: $color-99-gray;
   }
 
   &__profileButton {
@@ -177,9 +177,9 @@
     width: 100%;
     height: 50px;
     background-color: $white;
-    border: 1px solid $color-blue;    
+    border: 1px solid $primary-color;
     border-radius: $border-radius;
-    @include semiBoldH4($color-blue);
+    @include semiBoldH4($primary-color);
     text-align: center;
 
     &:active {

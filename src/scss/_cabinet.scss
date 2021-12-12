@@ -1,36 +1,36 @@
 // ------------------------------------------------------
 // CABINET COLOURS
 
-$color-gray-light: #bccbff;
-$color-gray-mouse: #99a0ad;
-$color-gray-medium: #4f535a;
-$color-gray-black: #3a3b3d;
-$color-gray-dark: #393c42;
-
-$color-green-light: #abf294;
-
-$color-cyan-pale: #f0fbfd;
-$color-blue-pale: #f0f5fd;
-$color-blue: #4a70f8;
-
+//$color-gray-light: #bccbff;
+//$color-gray-mouse: #99a0ad;
+//$color-gray-medium: #4f535a;
+//$color-gray-black: #3a3b3d;
+//$color-gray-dark: #393c42;
+//
+//$color-green-light: #abf294;
+//
+//$color-cyan-pale: #f0fbfd;
+//$color-blue-pale: #f0f5fd;
+//$color-blue: #4a70f8;
+//
 // ------------------------------------------------------
-
-$border-radius: 14px;
-$box-shadow2: 0 4px 25px rgba(112, 112, 112, 0.1);
-
+//
+//$border-radius: 14px;
+//$box-shadow2: 0 4px 25px rgba(112, 112, 112, 0.1);
+//
 // ------------------------------------------------------
-@mixin button-style() {
-  display: block;
-  background: none;
-  border: none;
-  outline: 1px solid $color-blue;
-  box-shadow: none;
-  transition: 0.5s ease-in-out;
-}
-
-@mixin font-style($size, $weight, $line-height, $color) {
-  font-size: $size;
-  font-weight: $weight;
-  line-height: $line-height;
-  color: $color;
-}
+//@mixin button-style() {
+//  display: block;
+//  background: none;
+//  border: none;
+//  outline: none;
+//  box-shadow: none;
+//  transition: 0.5s ease-in-out;
+//}
+//
+//@mixin font-style($size, $weight, $line-height, $color) {
+//  font-size: $size;
+//  font-weight: $weight;
+//  line-height: $line-height;
+//  color: $color;
+//}

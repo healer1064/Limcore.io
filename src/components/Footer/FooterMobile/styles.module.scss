@@ -11,7 +11,7 @@
   align-items: center;
   padding: 19px 23px 30px 23px;
   width: 100%;
-  border-top: 1px solid $very-light-grey;
+  border-top: 1px solid $color-B4-violet;
   background-color: $white;
 }
 
@@ -39,7 +39,7 @@
   }
 
   span {
-    @include main($other-grey);
+    @include main($color-99-gray);
     font-weight: $fontWeightSemiBold;
     @include p5;
     text-align: center;

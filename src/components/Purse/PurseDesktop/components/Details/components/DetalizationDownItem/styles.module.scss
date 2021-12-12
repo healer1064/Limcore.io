@@ -58,7 +58,7 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 20px;
-    color: $color-gray-mouse;    
+    color: $color-99-gray;
   }
 
   &__data {
@@ -68,7 +68,7 @@
     line-height: 20px;
 
     text-align: right;
-    color: $color-gray-medium;    
+    color: $color-4F-black;
   }
 }
 
@@ -108,7 +108,7 @@
   flex: 1 1 0;
 
   &__title {
-    @include subtitle-14px($color-gray-black);
+    @include subtitle-14px($color-3A-black);
     margin: 0 0 2px 0;
     padding: 0;
     text-align: left;  
@@ -117,7 +117,7 @@
   &__text {
     padding: 0;
     margin: 0;
-    @include subtitle-13px($color-gray-mouse);
+    @include subtitle-13px($color-99-gray);
     text-align: left;
   }
 }
@@ -129,14 +129,14 @@
   &__title {
     padding: 0;
     margin: 0;
-    @include subtitle-14px($color-gray-medium);
+    @include subtitle-14px($color-4F-black);
     text-align: right;
   }
 
   &__text {
     padding: 0;
     margin: 0;
-    @include subtitle-13px($color-gray-mouse);
+    @include subtitle-13px($color-99-gray);
     text-align: right;
   }
 }

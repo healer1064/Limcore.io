@@ -47,7 +47,7 @@ input[type='file'] {
 
 .name {
   font-family: $main-font;
-  @include main($black);
+  @include main($color-39-black);
   font-weight: $fontWeightSemiBold;
   font-size: 14px;
   line-height: 1.4;
@@ -61,7 +61,7 @@ input[type='file'] {
 
 .caption {
   font-family: $main-font;
-  @include semiBoldH4($black);
+  @include semiBoldH4($color-39-black);
   margin-bottom: 12px;
 }
 
@@ -91,7 +91,7 @@ input[type='file'] {
 
 .title {
   font-family: $main-font;
-  @include main($dark-grey);
+  @include main($color-3A-black);
   font-weight: $fontWeightSemiBold;
   @include p3;
   margin-top: 10px;
@@ -99,7 +99,7 @@ input[type='file'] {
 
 .subtitle {
   font-family: $main-font;
-  @include main($other-grey);
+  @include main($color-99-gray);
   font-weight: $fontWeightSemiBold;
   @include p3;
   margin-top: 2px;
@@ -142,7 +142,7 @@ input[type='file'] {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  border-bottom: 1px solid $very-light-grey;
+  border-bottom: 1px solid $color-E5-white;
   padding: 14px 0;
   height: 100%;
 }
@@ -158,13 +158,13 @@ input[type='file'] {
 
 .label {
   font-family: $main-font;
-  @include mediumP3($other-grey);
+  @include mediumP3($color-99-gray);
   margin-bottom: 4px;
 }
 
 .content {
   font-family: $main-font;
-  @include main($black);
+  @include main($color-39-black);
   font-weight: $fontWeightSemiBold;
   @include p3;
 }
@@ -186,7 +186,7 @@ input[type='file'] {
   display: flex;
   align-items: center;
   padding: 18px 24px;
-  background: $third-white;
+  background: $color-FO-white;
   border-radius: 14px;
   height: 76px;
   margin-top: 15px;
@@ -198,7 +198,7 @@ input[type='file'] {
 
 .text {
   font-family: $main-font;
-  @include main($middle-grey);
+  @include main($color-4F-black);
   font-weight: $fontWeightSemiBold;
   @include p6;
   max-width: 250px;

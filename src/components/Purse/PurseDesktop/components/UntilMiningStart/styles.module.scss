@@ -20,15 +20,18 @@
     align-items: center;
     border: none;
     background-color: transparent;
-    outline: $outline;
+    outline: none;
     transform: translateY(1px);
     path {
       stroke: $color-4F-black;
     }
     &:hover {
-          path {
-      stroke: $color-4A-blue;
+      path {
+        stroke: $color-4A-blue;
+      }
     }
+    &:focus {
+      outline: $outline;
     }
   }
   .visualization {

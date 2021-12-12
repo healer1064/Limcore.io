@@ -29,13 +29,13 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
-  color: $color-gray-mouse;    
+  color: $color-99-gray;
 }
 
 .balanceString__data {
   margin: 0;
   flex: none;
-  @include mediumP3($color-gray-medium);
+  @include mediumP3($color-4F-black);
   font-weight: $fontWeightSemiBold;
   text-align: right;
 }

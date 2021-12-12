@@ -39,10 +39,10 @@
   width: 35px;
   height: 36px;
   border-radius: 50%;
-  background: $step-white;
+  background: $color-EF-white;
 
   span {
-    @include mediumP2($other-grey);
+    @include mediumP2($color-99-gray);
   }
 }
 
@@ -50,14 +50,14 @@
   background: $primary-color;
 
   span {
-    color: $third-white;
+    color: $color-FO-white;
     opacity: .8;
   }
 }
 
 .line {
   height: 3px;
-  background: $very-light-grey;
+  background: $color-E5-white;
   flex: 1;
   border-radius: 10px;
 }
@@ -73,7 +73,7 @@
 
 .caption {
   font-family: $main-font;
-  @include semiBoldH4($dark-grey);
+  @include semiBoldH4($color-3A-black);
   margin-bottom: 20px;
 }
 
@@ -100,7 +100,7 @@
 .block {
   display: flex;
   align-items: center;
-  border: 1.4px solid $light-grey;
+  border: 1.4px solid $color-B4-violet;
   border-radius: $border-radius;
   padding: 16px 10px;
   margin-top: 10px;
@@ -111,11 +111,11 @@
     border: none;
     width: 100%;
     padding: 0;
-    outline: none;
+    outline: $outline;
 
     &::placeholder {
       font-family: $main-font;
-     @include mediumP2($light-grey);
+     @include mediumP2($color-B4-violet);
     }
   }
 

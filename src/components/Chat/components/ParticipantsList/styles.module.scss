@@ -34,7 +34,7 @@
   min-height: 70px;
   width: 100%;
   justify-content: space-between;
-  border-bottom: 1px solid $very-light-grey;
+  border-bottom: 1px solid $color-E5-white;
 }
 
 .button {
@@ -67,7 +67,7 @@
   margin: 0;
   font-family: $main-font;
   font-weight: $fontWeightSemiBold;
-  @include main($black);
+  @include main($color-39-black);
   font-size: 14px;
   line-height: 1.4;
   text-align: center;
@@ -80,7 +80,7 @@
   margin: 0 0 0 8px;
   font-family: $main-font;
   font-weight: $fontWeightSemiBold;
-  @include main($other-grey);
+  @include main($color-99-gray);
   font-size: 14px;
   line-height: 1.4;
 }

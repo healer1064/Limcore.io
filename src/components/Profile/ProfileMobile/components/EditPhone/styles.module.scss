@@ -16,7 +16,7 @@
 
 .caption {
   font-family: $main-font;
-  @include main($dark-grey);
+  @include main($color-4F-black);
   font-weight: $fontWeightSemiBold;
   @include h4;
   margin-bottom: 6px;
@@ -24,13 +24,13 @@
 
 .subcaption {
   font-family: $main-font;
-  @include mediumP3($other-grey);
+  @include mediumP3($color-99-gray);
   margin-bottom: 20px;
 }
 
 .info {
   font-family: $main-font;
-  @include main($middle-grey);
+  @include main($color-4F-black);
   font-weight: normal;
   font-size: 14px;
   line-height: 1.6;
@@ -52,6 +52,6 @@
 
 .timer {
   font-family: $main-font;
-  @include mediumP3($middle-grey);
+  @include mediumP3($color-4F-black);
   margin-top: 8px;
 }

@@ -59,13 +59,13 @@
 
   &__text {
     flex: 1 1 0;
-    @include mediumP3($color-gray-mouse);
+    @include mediumP3($color-99-gray);
     font-weight: $fontWeightSemiBold;
   }
 
   &__data {
     flex: none;
-    @include mediumP3($color-gray-medium);
+    @include mediumP3($color-4F-black);
     font-weight: $fontWeightSemiBold;
     text-align: right;
   }
@@ -107,7 +107,7 @@
   flex: 1 1 0;
 
   &__title {
-    @include subtitle-14px($color-gray-black);
+    @include subtitle-14px($color-3A-black);
     margin: 0 0 2px 0;
     padding: 0;
     text-align: left;  
@@ -116,7 +116,7 @@
   &__text {
     padding: 0;
     margin: 0;
-    @include subtitle-13px($color-gray-mouse);
+    @include subtitle-13px($color-99-gray);
     text-align: left;
   }
 }
@@ -128,14 +128,14 @@
   &__title {
     padding: 0;
     margin: 0;
-    @include subtitle-14px($color-gray-medium);
+    @include subtitle-14px($color-4F-black);
     text-align: right;
   }
 
   &__text {
     padding: 0;
     margin: 0;
-    @include subtitle-13px($color-gray-mouse);
+    @include subtitle-13px($color-99-gray);
     text-align: right;
   }
 }

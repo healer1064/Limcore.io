@@ -64,11 +64,11 @@
     margin: 0 0 0 20px;
     gap: 5px;
     h3 {
-      @include mediumP3($middle-grey);
+      @include mediumP3($color-4F-black);
       margin: 0;
     }
     p {
-      @include regularP4($middle-grey);
+      @include regularP4($color-4F-black);
       margin: 0;
     }
   }
@@ -107,11 +107,11 @@
     }
   }
   h3 {
-    @include mediumP3($middle-grey);
+    @include mediumP3($color-4F-black);
     margin: 15px 0 0 10px;
   }
   p {
-    @include regularP4($middle-grey);
+    @include regularP4($color-4F-black);
     margin: 5px 0 0 10px;
   }
 }

@@ -22,13 +22,13 @@
 
 .searchInput {
   background-color: transparent;
-  border: 1.4px solid $light-grey;
+  border: 1.4px solid $color-B4-violet;
   border-radius: $border-radius;
   width: 100%;
   height: 45px;
   padding: 0 0 0 18px;
   font-family: $main-font;
-  @include main($dark-grey);
+  @include main($color-3A-black);
   font-weight: $fontWeightMedium;
   @include h4;
 
@@ -38,14 +38,14 @@
     padding: 0;
     margin: 0;
     font-family: $main-font;
-    @include main($light-grey);
+    @include main($color-B4-violet);
     font-weight: $fontWeightMedium;
     @include h4;
   }
 
   &:active {
-    outline: 1.4px solid $grey;
-    border: 1.4px solid $grey;
+    outline: 1.4px solid $color-67-black;
+    border: 1.4px solid $color-67-black;
   }
 }
 
@@ -66,6 +66,10 @@
   &:hover {
     cursor: pointer;
   }
+
+  &:focus {
+    outline: $outline;
+  }
 }
 
 .closeButton {
@@ -82,6 +86,10 @@
   &:hover {
     cursor: pointer;
   }
+
+  &:focus {
+    outline: $outline;
+  }
 }
 
 .subtitle {
@@ -91,7 +99,7 @@
   margin: 0 auto;
   width: 90%;
   font-family: $main-font;
-  @include main($middle-grey);
+  @include main($color-4F-black);
   font-weight: $fontWeightSemiBold;
   font-size: 14px;
   line-height: 1.45;
@@ -109,7 +117,7 @@
   margin: 0 auto;
   width: 90%;
   font-family: $main-font;
-  @include main($middle-grey);
+  @include main($color-4F-black);
   font-weight: $fontWeightMedium;
   font-size: 13px;
   line-height: 1.45;

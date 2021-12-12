@@ -19,14 +19,14 @@
 
 .caption {
   font-family: $main-font;
-  @include semiBoldH4($dark-grey);
+  @include semiBoldH4($color-3A-black);
   text-align: center;
   margin-bottom: 10px;
 }
 
 .subcaption {
   font-family: $main-font;
-  @include main($other-grey);
+  @include main($color-99-gray);
   font-weight: $fontWeightMedium;
   @include p6;
 }
@@ -46,13 +46,13 @@
 
 .title {
   font-family: $main-font;
-  @include mediumP3($other-grey);
+  @include mediumP3($color-99-gray);
   margin-bottom: 4px;
 }
 
 .subtitle {
   font-family: $main-font;
-  @include main($black);
+  @include main($color-39-black);
   font-weight: $fontWeightSemiBold;
   @include p3;
 }
@@ -60,14 +60,14 @@
 .text {
   margin: 4px 0 0;
   font-family: $main-font;
-  @include main($other-grey);
+  @include main($color-99-gray);
   font-weight: $fontWeightMedium;
   @include p6;
 }
 
 .designation {
   font-family: $main-font;
-  @include semiBoldH4($black);
+  @include semiBoldH4($color-39-black);
   text-align: center;
   margin-bottom: 20px;
 }
@@ -84,5 +84,9 @@
 
   &:hover {
     color: $white;
+  }
+
+  &:focus {
+    outline: $outline;
   }
 }

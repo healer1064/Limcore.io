@@ -25,7 +25,7 @@
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 
-    background-color: #fff;
+    background-color: $white;
     bottom: -200px;
     transition: all 0.5s ease;
   }
@@ -46,7 +46,8 @@
 .title {
   margin: 0 0 15px 0;
   padding: 0;
-  @include section-title();
+  font-family: $main-font;
+  @include semiBoldH4($color-39-black);
 }
 
 .subtitle {
@@ -70,7 +71,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-color: transparent;
-  outline: none;
+  outline: $outline;
 }
 
 @media only screen and (min-width: 1250px) {

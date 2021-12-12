@@ -11,7 +11,7 @@
 
 .title {
   font-family: $main-font;
-  @include main($dark-grey);
+  @include main($color-3A-black);
   font-weight: $fontWeightSemiBold;
   font-size: 24px;
   line-height: 1.5;
@@ -79,7 +79,7 @@
   font-weight: $fontWeightSemiBold;
   white-space: nowrap;
   outline: $outline;
-  background-color: $step-white;
+  background-color: $color-EF-white;
 
   &Span {
     width: 100%;

@@ -24,12 +24,12 @@
 
 .title {
   font-family: $main-font;
-  @include mediumP3($other-grey)
+  @include mediumP3($color-99-gray)
 }
 
 .subtitle {
   font-family: $main-font;
-  @include main($dark-grey);
+  @include main($color-3A-black);
   font-weight: $fontWeightSemiBold;
   font-size: 14px;
   line-height: 1.4;
@@ -43,7 +43,7 @@
 
 .caption {
   font-family: $main-font;
-  @include main($dark-grey);
+  @include main($color-3A-black);
   font-weight: $fontWeightSemiBold;
   @include h4;
   margin-bottom: 6px;
@@ -51,7 +51,7 @@
 
 .subcaption {
   font-family: $main-font;
-  @include mediumP3($other-grey);
+  @include mediumP3($color-99-gray);
 }
 
 .form {

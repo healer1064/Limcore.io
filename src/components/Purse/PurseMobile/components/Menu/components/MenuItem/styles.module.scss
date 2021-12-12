@@ -29,13 +29,13 @@
   }
 
   &__title {
-    @include font-style(14px, 600, 1, $color-gray-mouse);
+    @include font-style(14px, 600, 1, $color-99-gray);
     margin-top: 10px;
     margin-bottom: 5px;
   }
 
   &__sum {
-    @include font-style(14px, 600, 20px, $color-gray-black);
+    @include font-style(14px, 600, 20px, $color-3A-black);
    @include ellipsisText();
   }
 

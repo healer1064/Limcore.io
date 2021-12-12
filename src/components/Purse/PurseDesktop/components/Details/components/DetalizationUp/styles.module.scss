@@ -27,7 +27,7 @@
   flex: 1 1 0;
   @include p3;
   font-weight: $fontWeightSemiBold;
-  color: $color-gray-mouse;    
+  color: $color-99-gray;
 }
 
 .balanceString__data {
@@ -36,5 +36,5 @@
   @include p3;
   font-weight: $fontWeightSemiBold;
   text-align: right;
-  color: $color-gray-medium;    
+  color: $color-4F-black;
 }

@@ -38,7 +38,7 @@ button {
 
   &__number_input:focus {
     border: none;
-    //outline: none;
+    outline: $outline;
   }
 
   /* Chrome, Safari, Edge, Opera */

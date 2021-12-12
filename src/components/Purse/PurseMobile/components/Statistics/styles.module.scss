@@ -18,8 +18,12 @@
   .tooltip {
     border: none;
     background-color: transparent;
-    outline: $outline;
+    outline: none;
     transform: translateY(1px);
+
+    &:focus {
+      outline: $outline;
+    }
   }
 
   .progressbar { 

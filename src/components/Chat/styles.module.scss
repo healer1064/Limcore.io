@@ -8,7 +8,7 @@
   padding: 0;
   margin: 8px 20px 35px 20px;
   overflow: hidden;
-  border-bottom: 1px solid $very-light-grey;
+  border-bottom: 1px solid $color-E5-white;
 }
 
 .spinnerContainer {
@@ -24,7 +24,7 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: #fff;
+  background-color: $white;
 }
 
 .errorContainer {
@@ -36,7 +36,7 @@
 
   font-size: 15px;
   font-weight: 500;
-  color: #F24949;
+  color: $color-F2-red;
 
   .errorInner > p {
     padding: 0;
@@ -79,7 +79,7 @@
 
 .title {
   font-family: $main-font;
-  @include semiBoldH4($dark-grey);
+  @include semiBoldH4($color-3A-black);
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -105,10 +105,7 @@
 
   &_title {
     margin: 0 0 10px 0;
-
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 22px;
-    color: #99A0AD;
+    @include subtitle-14px($color-99-gray);
+    font-weight: $fontWeightMedium;
   }
 }

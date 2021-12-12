@@ -31,7 +31,7 @@
       margin: auto;
       height: auto;
       width: 454px;
-      border-radius: 14px;
+      border-radius: $border-radius;
     }
   }
 
@@ -87,7 +87,7 @@
   cursor: pointer;
   padding: 0;
   background-color: transparent;
-  outline: none;
+  outline: $outline;
   display: flex;
   align-items: center;
   &:hover {

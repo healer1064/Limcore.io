@@ -8,7 +8,7 @@
 }
 
 .MuiPaginationItem-page {
-  color: $notification-black !important;
+  color: $color-1D-black !important;
   font-style: normal !important;
   font-weight: $fontWeightMedium !important;
   font-size: 17px !important;
@@ -22,7 +22,7 @@
   padding: 24px 47px 0;
 
   &__item-count {
-    @include mediumP3($count-grey);
+    @include mediumP3($color-96-grey);
   }
 }
 
@@ -32,7 +32,7 @@
   align-items: center;
 
   &__text {
-    @include mediumP3($count-grey);
+    @include mediumP3($color-96-grey);
   }
 }
 
@@ -45,7 +45,7 @@
   &__button {
     background: $white;
     border-radius: 6px;
-    @include mediumP3($count-grey);
+    @include mediumP3($color-96-grey);
     width: 32px;
     height: 32px;
     margin-right: 4px;
@@ -60,7 +60,7 @@
 }
 
 .active_count {
-  color: $notification-black;
+  color: $color-1D-black;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 

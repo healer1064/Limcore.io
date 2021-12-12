@@ -59,7 +59,7 @@
   padding: 0;
   margin: 0;
   font-family: $main-font;
-  @include main($black);
+  @include main($color-39-black);
   font-weight: $fontWeightSemiBold;
   font-size: 14px;
   line-height: 1.3;
@@ -71,7 +71,7 @@
   padding: 0;
   margin: 0;
   font-family: $main-font;
-  @include main($other-grey);
+  @include main($color-B4-violet);
   font-weight: $fontWeightMedium;
   font-size: 13px;
   line-height: 1.3;

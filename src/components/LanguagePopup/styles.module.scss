@@ -43,7 +43,7 @@
 
   span {
     font-family: $main-font;
-    @include mediumP3($grey);
+    @include mediumP3($color-67-black);
     text-transform: uppercase;
     transition: color 0.3s ease;
   }
@@ -84,7 +84,7 @@
   height: 120px;
   border-radius: $border-radius;
   box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
-  background: $lang-white;
+  background: $color-F9-white;
   list-style: none;
   transition: opacity 0.3s ease;
   opacity: 0;
@@ -115,7 +115,7 @@
 
 .langoption__text {
   font-family: $main-font;
-  @include mediumP3($middle-grey);
+  @include mediumP3($color-4F-black);
   
   &:hover,
   &:focus {
@@ -127,7 +127,7 @@
 
 .langoption__text_checked {
   font-weight: 600;
-  color: $dark-grey;
+  color: $color-3A-black;
 }
 
 input[type='radio'] {

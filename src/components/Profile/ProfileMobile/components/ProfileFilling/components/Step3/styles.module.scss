@@ -39,11 +39,11 @@
   width: 35px;
   height: 36px;
   border-radius: 50%;
-  background: $step-white;
+  background: $color-EF-white;
 
   span {
     font-family: $main-font;
-    @include mediumP2($other-grey);
+    @include mediumP2($color-99-gray);
   }
 }
 
@@ -51,14 +51,14 @@
   background: $primary-color;
 
   span {
-    color: $step-white;
+    color: $color-EF-white;
     opacity: .8;
   }
 }
 
 .line {
   height: 3px;
-  background: $very-light-grey;
+  background: $color-B4-violet;
   flex: 1;
   border-radius: 10px;
 }
@@ -74,13 +74,13 @@
 
 .caption {
   font-family: $main-font;
-  @include semiBoldH4($dark-grey);
+  @include semiBoldH4($color-3A-black);
   margin-bottom: 6px;
 }
 
 .subcaption {
   font-family: $main-font;
-  @include mediumP3($other-grey);
+  @include mediumP3($color-99-gray);
   margin-bottom: 20px;
 }
 
@@ -115,6 +115,6 @@
     font-style: normal;
     font-weight: $fontWeightMedium;
     @include p3;
-    color: $red;
+    color: $color-FF-red;
   }
 }
