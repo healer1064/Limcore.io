@@ -60,7 +60,7 @@
 
 .line {
   height: 3px;
-  background: $color-E5-white;
+  background: $color-E5-grey;
   flex: 1;
   border-radius: 10px;
 }
@@ -101,11 +101,15 @@
     border: none;
     width: 100%;
     padding: 0;
-    outline: $outline;
+    outline: none;
 
     &::placeholder {
       font-family: $main-font;
       @include mediumP2($color-B4-violet);
+    }
+
+    &:focus {
+      outline: $outline;
     }
   }
 
