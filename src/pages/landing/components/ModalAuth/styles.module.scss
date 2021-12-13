@@ -1,7 +1,10 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/vars.scss';
+
 .modalAuth {
   & > div {
     width: 454px;
-    background-color: #fff;
+    background-color: $white;
     position: relative;
   }
 
@@ -9,8 +12,8 @@
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    border-radius: 14px;
-    background-color: #fff;
+    border-radius: $border-radius;
+    background-color: $white;
     width: 80%;
   }
 
@@ -32,7 +35,7 @@
 
     &:hover {
       & > svg > path {
-        stroke: #4a70f8;
+        stroke: $primary-color;
         transition: stroke 0.3s ease;
       }
     }

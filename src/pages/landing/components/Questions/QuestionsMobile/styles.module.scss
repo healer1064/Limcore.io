@@ -1,3 +1,6 @@
+@import '../../../../../scss/typography.scss';
+@import '../../../../../scss/vars.scss';
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -5,12 +8,11 @@
 }
 
 .caption {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightSemiBold;
   font-size: 22px;
-  line-height: 160%;
-  color: #3a3b3d;
+  line-height: 1.6;
   margin: 0;
 }
 
@@ -18,8 +20,7 @@
   display: flex;
   flex-direction: column;
   list-style: none;
-  margin: 0;
-  margin-top: 20px;
+  margin: 20px 0 0;
   padding: 0;
 }
 
@@ -27,19 +28,18 @@
   display: flex;
   flex-direction: column;
   padding: 16px 0;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid $color-E5-grey;
 
   &:first-child {
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid $color-E5-grey;
   }
 
   span {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
+    font-family: $main-font;
+    @include main($color-4F-black);
+    font-weight: $fontWeightMedium;
     font-size: 14px;
-    line-height: 160%;
-    color: #4f535a;
+    line-height: 1.6;
   }
 
   svg {
@@ -90,22 +90,20 @@
 }
 
 .text {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
+  font-family: $main-font;
+  @include main($color-67-black);
+  font-weight: $fontWeightMedium;
   font-size: 13px;
-  line-height: 170%;
-  color: #67686c;
+  line-height: 1.7;
   margin: 0;
 }
 
 .description {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-4F-black);
+  font-weight: $fontWeightSemiBold;
   font-size: 13px;
-  line-height: 170%;
-  color: #4f535a;
+  line-height: 1.7;
   margin-top: 12px;
   margin-bottom: 4px;
 }
@@ -116,19 +114,18 @@
   margin: 10px 0;
 
   li {
-    color: #4a70f8;
+    color: $primary-color;
 
     &:not(:last-child) {
       margin-bottom: 10px;
     }
 
     span {
-      font-family: 'Montserrat';
-      font-style: normal;
-      font-weight: 500;
+      font-family: $main-font;
+      @include main($color-67-black);
+      font-weight: $fontWeightMedium;
       font-size: 13px;
-      line-height: 170%;
-      color: #67686c;
+      line-height: 1.7;
     }
   }
 }

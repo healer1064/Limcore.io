@@ -7,13 +7,6 @@
   margin-bottom: 60px;
 }
 
-.etherscan {
-  font-family: $main-font;
-  @include main($color-4A-blue);
-  font-weight: $fontWeightMedium;
-  font-size: 13px;
-}
-
 .block {
   display: flex;
   flex-direction: column;
@@ -273,7 +266,7 @@
 }
 
 .description {
-  color: #4c4c4c;
+  color: $color-4C-white;
   width: 100%;
   max-width: 450px;
   margin-right: 42px;
@@ -297,6 +290,10 @@
 .infoIcon {
   &:hover {
     cursor: pointer;
+  }
+
+  &:focus {
+    outline: $outline;
   }
 }
 

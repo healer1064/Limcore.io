@@ -1,3 +1,6 @@
+@import '../../../../../scss/typography.scss';
+@import '../../../../../scss/vars.scss';
+
 .item {
   display: grid;
   box-sizing: border-box;
@@ -11,10 +14,9 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  //border-bottom: 6px solid #4A70F8;
   align-content: flex-end;
   position: relative;
-  bottom: 0px;
+  bottom: 0;
   justify-items: center;
   height: 205px;
 }
@@ -32,7 +34,6 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  //border-top: 6px solid #4A70F8;
   align-content: flex-start;
   position: relative;
   top: 199px;
@@ -42,12 +43,11 @@
 
 .itemTitle {
   grid-area: title;
-  font-family: Montserrat;
-  font-style: normal;
+  font-family: $main-font;
+  @include main($color-39-black);
   font-size: 16px;
   line-height: 1.5;
-  font-weight: 600;
-  color: #393c42;
+  font-weight: $fontWeightSemiBold;
   box-sizing: border-box;
   margin: 6px 0 0;
   padding: 0;
@@ -56,12 +56,11 @@
 
 .itemLongTitle {
   grid-area: title;
-  font-family: Montserrat;
-  font-style: normal;
+  font-family: $main-font;
+  @include main($color-39-black);
   font-size: 16px;
   line-height: 1.5;
-  font-weight: 600;
-  color: #393c42;
+  font-weight: $fontWeightSemiBold;
   box-sizing: border-box;
   margin: 6px 0 0;
   padding: 0;
@@ -71,12 +70,11 @@
 
 .itemDate {
   grid-area: date;
-  font-family: Montserrat;
-  font-style: normal;
+  font-family: $main-font;
+  @include main($color-39-black);
   font-size: 16px;
   line-height: 1.2;
-  font-weight: 400;
-  color: #393c42;
+  font-weight: $fontWeightRegular;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -119,7 +117,7 @@
   padding: 0;
   width: 4px;
   height: 30px;
-  background: #4a70f8;
+  background: $primary-color;
   border-radius: 6px;
 }
 
@@ -131,7 +129,7 @@
   padding: 0;
   width: 4px;
   height: 60px;
-  background: #4a70f8;
+  background: $primary-color;
   border-radius: 6px;
 }
 

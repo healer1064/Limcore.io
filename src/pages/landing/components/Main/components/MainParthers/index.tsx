@@ -24,7 +24,7 @@ const swiperProps = {
 export const MainParthers: React.FC = () => {
   const { width } = useWindowSize()
   return (
-    <div className={Styles.parthers}>
+    <ul className={Styles.parthers}>
       {width >= 768 ? (
         <>
           <img src={blockchainIcon} alt='Иконка' />
@@ -52,6 +52,6 @@ export const MainParthers: React.FC = () => {
           </SwiperSlide>
         </Swiper>
       )}
-    </div>
+    </ul>
   )
 }
