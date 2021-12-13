@@ -71,7 +71,11 @@
   background-position: center;
   background-repeat: no-repeat;
   background-color: transparent;
-  outline: $outline;
+  outline: none;
+
+  &:focus {
+    outline: $outline;
+  }
 }
 
 @media only screen and (min-width: 1250px) {

@@ -57,6 +57,10 @@
   & > img {
     transform: translateY(1px);
   }
+
+  img:focus {
+    outline: $outline;
+  }
 }
 
 .logoIcon {

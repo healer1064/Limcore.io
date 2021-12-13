@@ -40,7 +40,6 @@ export const UntilMiningStart = ({ onClick, tooltip, popup, className }: UntilMi
           </button>
         )}
       </div>
-      {/* <span className={styles.visualization} style={visualizationStyle((80 - daysPassed) / 80)} /> */}
       <span className={styles.visualization} style={visualizationStyle(0)} />
       <div className={styles.descWrapper}>
         <p className={styles.untilMiningDesc}>80 {t('purse_mainingDateLast')}</p>

@@ -102,6 +102,9 @@
   &:hover {
     border: 1px solid $color-4A-blue;
   }
+  &:focus {
+    outline: $outline;
+  }
 }
 
 .profileName {
