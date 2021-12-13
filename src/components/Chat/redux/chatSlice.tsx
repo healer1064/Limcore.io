@@ -1,24 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../../../app/redux/store'
-import { IDialogueInterface, IMemberInterface, IMessageInterface } from '../utils/types'
+import { IDialogueInterface, IMemberInterface, IMessageInterface, IUserInterface } from '../utils/types'
 
 export const chatSlice = createSlice({
   name: 'chat',
   initialState: {
-    visibleContent: 'loading', // '' | 'loading' | 'error' | 'content' | 'no-content'
-    searchedValue: '',
-    currentGenMessagesPage: 1,
-    wholeGenMessagesPages: 1,
-    currentSlug: '',
+    visibleContent: 'loading', // '' | 'loading' | 'error' | 'content' | 'no-content' TODO type
 
+    currentSlug: '',
+    currentDialogueMember: {} as IUserInterface,
     currentMessages: [] as IMessageInterface[],
+    currentPage: 0,
+    wholePages: 0,
+
     genChatMembers: [] as IMemberInterface[],
     dialogues: [] as IDialogueInterface[],
   },
   reducers: {
-    setIsSearched: (state, { payload }) => {
-      state.searchedValue = payload
-    },
     setCurrentMessages: (state, { payload }) => {
       state.currentMessages = payload
     },
@@ -35,29 +33,32 @@ export const chatSlice = createSlice({
     setContent: (state, { payload }) => {
       state.visibleContent = payload
     },
-    setGeneralMessagesPage: (state, { payload }) => {
-      state.currentGenMessagesPage = payload
+    setCurrentPage: (state, { payload }) => {
+      state.currentPage = payload
     },
-    setWholeGenMessagesPages: (state, { payload }) => {
-      state.wholeGenMessagesPages = payload
+    setWholePages: (state, { payload }) => {
+      state.wholePages = payload
     },
     setCurrentSlug: (state, { payload }) => {
       state.currentSlug = payload
+    },
+    setCurrentDialogueMember: (state, { payload }) => {
+      state.currentDialogueMember = payload
     },
   },
 })
 
 const { actions, reducer } = chatSlice
 export const {
-  setIsSearched,
   setCurrentMessages,
   setDialogues,
   setDialogueUnreadedCount,
   setContent,
   setGenChatMembers,
-  setGeneralMessagesPage,
-  setWholeGenMessagesPages,
+  setCurrentPage,
+  setWholePages,
   setCurrentSlug,
+  setCurrentDialogueMember,
 } = actions
 
 export const chatSelector = (state: RootState) => state.chat

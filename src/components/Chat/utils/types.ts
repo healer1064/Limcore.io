@@ -41,7 +41,7 @@ export interface IUserInterface {
   chat_name?: string
   email: string
   first_name?: string
-  gender?: any // TODO
+  gender?: string
   id: number
   last_name?: string
   middle_name?: string

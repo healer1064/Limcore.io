@@ -5,12 +5,12 @@ import listStyles from '@components/Chat/components/ParticipantsList/styles.modu
 import { MessageComponent } from '../MessageComponent'
 import { ParticipantsList } from '../ParticipantsList'
 import arrow from '@icons/arrow-left-blue.svg'
-import { Textarea } from '@components/Chat/components/Textarea'
+import { Textarea } from '../../../../components/Chat/components/Textarea'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setContent, setCurrentMessages } from '../../redux/chatSlice'
+import { setContent, setCurrentDialogueMember, setCurrentMessages } from '../../redux/chatSlice'
 import limcoreIcon from '@icons/limcore.svg'
 import { getMonthNameWithDate } from '@components/Chat/utils/funcs'
-import { IMessageInterface } from '@components/Chat/utils/types'
+import { IDialogueInterface, IMessageInterface } from '@components/Chat/utils/types'
 import { useChat } from '@components/Chat/utils/useChat'
 import profileIcon from '@icons/profileicon.svg'
 
@@ -18,29 +18,37 @@ export const ChatContent = () => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const messagesEndRef = useRef(null)
-  const { getGroupMessages, sendLastReadedMessage } = useChat()
+  const { getGroupMessages, sendLastReadedMessage, getGroupsList } = useChat()
 
   const slug = useAppSelector((state) => state.chat.currentSlug)
   const userId = useAppSelector((state) => state.user.userData?.id)
   const currentMessages = useAppSelector((state) => state.chat.currentMessages)
+
   const participants = useAppSelector((state) => state.chat.genChatMembers)
-  const currentGenMessagesPage = useAppSelector((state) => state.chat.currentGenMessagesPage)
-  const wholeGenMessagesPages = useAppSelector((state) => state.chat.wholeGenMessagesPages)
+  const currentPage = useAppSelector((state) => state.chat.currentPage)
+  const wholePages = useAppSelector((state) => state.chat.wholePages)
+  const dialogues = useAppSelector((state) => state.chat.dialogues)
+  const currentDialogueMember = useAppSelector((state) => state.chat.currentDialogueMember)
 
   let dateBuffer: string = null
   const IS_GENERAL_CHAT = slug === 'general_chat'
 
-  const [currentPosition, setCurrentPosition] = useState(null)
-  const [autoScroll, setAutoScroll] = useState(true)
-
+  // Открытие списка участников общего чата
   const [openListClassname, setOpenListClassname] = useState(listStyles.list_invisible)
   const handleParticipantsListOpen = () => setOpenListClassname(listStyles.list)
   const handleParticipantsListClose = () => setOpenListClassname(listStyles.list_invisible)
 
+  // Закрыть чат
   const onClose = () => {
+    dispatch(setCurrentDialogueMember({}))
     dispatch(setCurrentMessages([]))
     dispatch(setContent(''))
+    getGroupsList(1)
   }
+
+  // Подгрузка сообщений по скроллу
+  const [currentPosition, setCurrentPosition] = useState(null)
+  const [autoScroll, setAutoScroll] = useState(true)
 
   const onGetAnswers = () => {
     if (
@@ -52,18 +60,28 @@ export const ChatContent = () => {
       setAutoScroll(true)
     }
 
-    if (messagesEndRef.current.scrollTop === 0 && currentGenMessagesPage !== wholeGenMessagesPages) {
+    if (messagesEndRef.current.scrollTop === 0 && currentPage !== wholePages) {
       setCurrentPosition(messagesEndRef.current.scrollHeight)
-      getGroupMessages(slug, currentGenMessagesPage + 1)
+      getGroupMessages(slug, currentPage + 1)
     }
   }
 
+  // Если чат 1 на 1, то вписываю в стейт инфу о собеседнике
+  if (!IS_GENERAL_CHAT) {
+    const dialogue = dialogues.find((dialogue: IDialogueInterface) => dialogue.slug === slug)
+
+    if (dialogue) {
+      dispatch(setCurrentDialogueMember(dialogue.other_user))
+      // dispatch(setMessageRecipient(dialogue.other_user.id))
+    }
+  }
+
+  // Логика скролла
   useEffect(() => {
     if (currentPosition && !autoScroll) {
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight - currentPosition
       setCurrentPosition(null)
     } else if (messagesEndRef.current && autoScroll) {
-      console.log(currentMessages)
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight - messagesEndRef.current.clientHeight
 
       if (currentMessages[currentMessages.length - 1]?.id) {
@@ -86,12 +104,13 @@ export const ChatContent = () => {
           </>
         ) : (
           <>
-            <img src={profileIcon} alt='Avatar' className={styles.foto} />
-            <p className={styles.name}>TODO: name</p>
-            <p className={styles.status} onClick={() => {}}>
-              В сети
-              {/* TODO */}
+            <img src={currentDialogueMember.avatar || profileIcon} alt='Avatar' className={styles.foto} />
+            <p className={styles.name}>
+              {currentDialogueMember.first_name || 'User'} {currentDialogueMember.last_name || ''}
             </p>
+            {/* <p className={styles.status} onClick={() => {}}>
+              В сети
+            </p> */}
           </>
         )}
       </div>
@@ -125,7 +144,7 @@ export const ChatContent = () => {
           participants={participants}
         />
       )}
-      <Textarea slug={slug} />
+      <Textarea />
     </section>
   )
 }
