@@ -1,9 +1,9 @@
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useState, useEffect } from 'react'
 import styles from './styles.module.scss'
 import { useTranslation } from 'react-i18next'
 import closeButton from '@icons/greyClose.svg'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setDialogues } from '../../../Chat/redux/chatSlice'
+import { setFilteredDialogues } from '../../../Chat/redux/chatSlice'
 
 export const SearchForm = ({ desktop }) => {
   const [t] = useTranslation()
@@ -27,16 +27,27 @@ export const SearchForm = ({ desktop }) => {
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setIsButtonVisible('close')
     setSearched(event.target.value)
-
-    const filtered = dialogues.filter((dialogue) => {
-      return (
-        dialogue.other_user?.first_name.toLowerCase().includes(event.target.value) ||
-        dialogue.other_user?.last_name.toLowerCase().includes(event.target.value) ||
-        dialogue.name?.toLowerCase().includes(event.target.value)
-      )
-    })
-    console.log(filtered)
   }
+
+  useEffect(() => {
+    if (searched === '') {
+      dispatch(setFilteredDialogues(dialogues))
+    }
+    const filtered = dialogues.filter((dialogue) => {
+      if (dialogue.other_user) {
+        if (dialogue.other_user.first_name) {
+          return dialogue.other_user.first_name.toLowerCase().includes(searched)
+        } else if (dialogue.other_user.last_name) {
+          return dialogue.other_user.last_name.toLowerCase().includes(searched)
+        }
+      } else {
+        if (dialogue.name) {
+          return dialogue.name.toLowerCase().includes(searched)
+        }
+      }
+    })
+    dispatch(setFilteredDialogues(filtered))
+  }, [dialogues, searched])
 
   return (
     <>

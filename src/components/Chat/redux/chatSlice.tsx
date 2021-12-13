@@ -21,6 +21,7 @@ export const chatSlice = createSlice({
 
     genChatMembers: [] as IMemberInterface[],
     dialogues: [] as IDialogueInterface[],
+    filteredDialogues: [] as IDialogueInterface[],
   },
   reducers: {
     setCurrentMessages: (state, { payload }) => {
@@ -31,6 +32,9 @@ export const chatSlice = createSlice({
     },
     setDialogues: (state, { payload }) => {
       state.dialogues = payload
+    },
+    setFilteredDialogues: (state, { payload }) => {
+      state.filteredDialogues = payload
     },
     setDialogueUnreadedCount: (state, { payload }) => {
       const dialogueIndex = state.dialogues.findIndex((dialogue) => dialogue.slug === payload.group)
@@ -58,6 +62,7 @@ const { actions, reducer } = chatSlice
 export const {
   setCurrentMessages,
   setDialogues,
+  setFilteredDialogues,
   setDialogueUnreadedCount,
   setContent,
   setGenChatMembers,

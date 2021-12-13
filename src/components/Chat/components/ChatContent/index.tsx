@@ -49,6 +49,7 @@ export const ChatContent = () => {
   // Подгрузка сообщений по скроллу
   const [currentPosition, setCurrentPosition] = useState(null)
   const [autoScroll, setAutoScroll] = useState(true)
+  const currentDialogue = dialogues.find((dialogue: IDialogueInterface) => dialogue.slug === slug)
 
   const onGetAnswers = () => {
     if (
@@ -68,10 +69,8 @@ export const ChatContent = () => {
 
   // Если чат 1 на 1, то вписываю в стейт инфу о собеседнике
   if (!IS_GENERAL_CHAT) {
-    const dialogue = dialogues.find((dialogue: IDialogueInterface) => dialogue.slug === slug)
-
-    if (dialogue) {
-      dispatch(setCurrentDialogueMember(dialogue.other_user))
+    if (currentDialogue) {
+      dispatch(setCurrentDialogueMember(currentDialogue.other_user))
       // dispatch(setMessageRecipient(dialogue.other_user.id))
     }
   }
@@ -84,7 +83,7 @@ export const ChatContent = () => {
     } else if (messagesEndRef.current && autoScroll) {
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight - messagesEndRef.current.clientHeight
 
-      if (currentMessages[currentMessages.length - 1]?.id) {
+      if (currentMessages[currentMessages.length - 1]?.id && currentDialogue.unread_count > 0) {
         sendLastReadedMessage(currentMessages[currentMessages.length - 1].id, slug)
       }
     }
