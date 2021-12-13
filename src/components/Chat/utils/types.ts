@@ -1,4 +1,6 @@
 /* eslint-disable camelcase */
+export type TVisibleContent = '' | 'loading' | 'error' | 'content' | 'no-content'
+
 export interface ISendInterface {
   command: number
   group?: string

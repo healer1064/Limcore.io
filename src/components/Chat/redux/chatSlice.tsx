@@ -1,11 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../../../app/redux/store'
-import { IDialogueInterface, IMemberInterface, IMessageInterface, IUserInterface } from '../utils/types'
+import {
+  IDialogueInterface,
+  IMemberInterface,
+  IMessageInterface,
+  IUserInterface,
+  TVisibleContent,
+} from '../utils/types'
 
 export const chatSlice = createSlice({
   name: 'chat',
   initialState: {
-    visibleContent: 'loading', // '' | 'loading' | 'error' | 'content' | 'no-content' TODO type
+    visibleContent: 'loading' as TVisibleContent,
 
     currentSlug: '',
     currentDialogueMember: {} as IUserInterface,

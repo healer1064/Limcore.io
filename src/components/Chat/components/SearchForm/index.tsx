@@ -28,15 +28,14 @@ export const SearchForm = ({ desktop }) => {
     setIsButtonVisible('close')
     setSearched(event.target.value)
 
-    // const filtered = dialogues.filter((dialogue) => {
-    //   if (dialogue.other_user) {
-    //     return dialogue.other_user.first_name.includes(searched) || dialogue.other_user.last_name.includes(searched)
-    //   } else {
-    //     return dialogue.name.includes(searched)
-    //   }
-    // })
-    // console.log(filtered)
-    // dispatch(setDialogues())
+    const filtered = dialogues.filter((dialogue) => {
+      return (
+        dialogue.other_user?.first_name.toLowerCase().includes(event.target.value) ||
+        dialogue.other_user?.last_name.toLowerCase().includes(event.target.value) ||
+        dialogue.name?.toLowerCase().includes(event.target.value)
+      )
+    })
+    console.log(filtered)
   }
 
   return (
