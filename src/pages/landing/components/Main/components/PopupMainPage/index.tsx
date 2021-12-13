@@ -15,7 +15,9 @@ export const PopupMainPage: React.FC<PopupMainPageProps> = ({ closePopup, childr
       <div className={`${!popupOpen ? Styles.popup_invisible : className}`}>
         <div className={Styles.content}>
           {children}
-          <img className={Styles.close} src={closeIcon} alt='Иконка' onClick={closePopup} />
+          <button className={Styles.close}>
+            <img src={closeIcon} alt='Иконка' onClick={closePopup} />
+          </button>
         </div>
       </div>
     </div>

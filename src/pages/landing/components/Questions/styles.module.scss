@@ -1,3 +1,18 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/vars.scss';
+
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+
+  &:focus {
+    outline: $outline;
+  }
+}
+
 .questions {
   display: flex;
   padding: 80px 20px;

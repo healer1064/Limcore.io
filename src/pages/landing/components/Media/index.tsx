@@ -35,7 +35,7 @@ export const Media: React.FC = () => {
                   >
                     Blockchain Life
                   </a>
-                  <span className={Styles.date}>24.09.2021</span>
+                  <time className={Styles.date}>24.09.2021</time>
                 </div>
               </div>
             </div>
@@ -60,11 +60,10 @@ export const Media: React.FC = () => {
                   >
                     coinpost.ru
                   </a>
-                  <span className={Styles.date}>01.11.2021</span>
+                  <time className={Styles.date}>01.11.2021</time>
                 </div>
               </div>
             </div>
-            {/* <div className={Styles.empty}>Совсем скоро здесь появятся еще новости о Limcore</div> */}
           </div>
         </div>
       </div>

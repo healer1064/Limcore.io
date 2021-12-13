@@ -55,7 +55,10 @@ export const Questions: React.FC = () => {
                     onClick={() => setActiveItem(item)}
                   >
                     <span>
-                      {item.title} <VectorIcon />
+                      {item.title}{' '}
+                      <button>
+                        <VectorIcon />
+                      </button>
                     </span>
                   </li>
                 ))}

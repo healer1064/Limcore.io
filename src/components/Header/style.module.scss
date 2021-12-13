@@ -31,6 +31,10 @@
   align-items: center;
   padding: 0;
   margin: 0;
+
+  &:focus {
+    outline: $outline;
+  }
 }
 
 .link {
@@ -51,6 +55,10 @@
     color: $primary-color;
     transition: color 0.3s ease;
     cursor: pointer;
+  }
+
+  &:focus {
+    outline: $outline;
   }
 }
 
@@ -204,6 +212,10 @@ input[type='radio'] {
 
 .logoLink {
   margin-right: 10px;
+
+  &:focus {
+    outline: $outline;
+  }
 }
 
 .profileLogo {

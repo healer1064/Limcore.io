@@ -26,6 +26,7 @@
   &:hover,
   &:focus {
     cursor: pointer;
+    outline: $outline;
     .langTitle,
     path {
       color: $primary-color;

@@ -1,3 +1,6 @@
+@import '../../../../../../scss/typography.scss';
+@import '../../../../../../scss/vars.scss';
+
 .parthers {
   display: flex;
   align-items: center;
@@ -8,5 +11,9 @@
 .swiper {
   img {
     display: block;
+  }
+
+  &:focus {
+    outline: $outline;
   }
 }
