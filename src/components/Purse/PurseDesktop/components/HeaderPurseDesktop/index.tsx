@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-scroll'
 import styles from './styles.module.scss'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import profile from '@icons/profileIcon.png'
@@ -54,20 +53,18 @@ export const HeaderPurseDesktop = ({ isProfileActive, openProfile, closeProfile 
     <header className={styles.header}>
       <Logo />
       <nav className={styles.nav}>
-        <Link
+        <a
           className={classnames([styles.nav__link, viewPurseContent === 'main' && styles.nav__link_active])}
-          to='main'
           onClick={openMain}
         >
           {t('purse_navMain')}
-        </Link>
-        <Link
+        </a>
+        <a
           className={classnames([styles.nav__link, viewPurseContent === 'broadcasts' && styles.nav__link_active])}
-          to='broadcasts'
           onClick={openBroadcasts}
         >
           {t('purse_navStreams')}
-        </Link>
+        </a>
         <LanguagePopup />
       </nav>
 
