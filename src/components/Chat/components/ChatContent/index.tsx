@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from '@components/Chat/components/ChatContent/styles.module.scss'
-import listStyles from '@components/Chat/components/ParticipantsList/styles.module.scss'
 import { MessageComponent } from '../MessageComponent'
 import { ParticipantsList } from '../ParticipantsList'
 import arrow from '@icons/arrow-left-blue.svg'
@@ -13,6 +12,8 @@ import { getMonthNameWithDate } from '@components/Chat/utils/funcs'
 import { IDialogueInterface, IMessageInterface } from '@components/Chat/utils/types'
 import { useChat } from '@components/Chat/utils/useChat'
 import profileIcon from '@icons/profileicon.svg'
+import { RaitingList } from '../RaitingList'
+import raitingStyles from '../RaitingList/styles.module.scss'
 
 export const ChatContent = () => {
   const [t] = useTranslation()
@@ -34,16 +35,21 @@ export const ChatContent = () => {
   const IS_GENERAL_CHAT = slug === 'general_chat'
 
   // Открытие списка участников общего чата
-  const [openListClassname, setOpenListClassname] = useState(listStyles.list_invisible)
-  const handleParticipantsListOpen = () => setOpenListClassname(listStyles.list)
-  const handleParticipantsListClose = () => setOpenListClassname(listStyles.list_invisible)
+  const [isListOpened, setIsListOpened] = useState(false)
+  const openList = () => setIsListOpened(true)
+  const closeList = () => setIsListOpened(false)
+
+  // Открытие рейтинга по лимкам
+  const [raitingClassName, setRaitingClassName] = useState(raitingStyles.raitingList_invisible)
+  const openRating = () => setRaitingClassName(raitingStyles.raitingList)
+  const closeRating = () => setRaitingClassName(raitingStyles.raitingList_invisible)
 
   // Закрыть чат
   const onClose = () => {
     dispatch(setCurrentDialogueMember({}))
     dispatch(setCurrentMessages([]))
     dispatch(setContent(''))
-    getGroupsList(1)
+    getGroupsList(1) // TODO - если групп будет больше 50 будет пагинация
   }
 
   // Подгрузка сообщений по скроллу
@@ -68,11 +74,8 @@ export const ChatContent = () => {
   }
 
   // Если чат 1 на 1, то вписываю в стейт инфу о собеседнике
-  if (!IS_GENERAL_CHAT) {
-    if (currentDialogue) {
-      dispatch(setCurrentDialogueMember(currentDialogue.other_user))
-      // dispatch(setMessageRecipient(dialogue.other_user.id))
-    }
+  if (!IS_GENERAL_CHAT && currentDialogue) {
+    dispatch(setCurrentDialogueMember(currentDialogue.other_user))
   }
 
   // Логика скролла
@@ -97,7 +100,7 @@ export const ChatContent = () => {
           <>
             <img src={limcoreIcon} alt='Limcore' className={styles.foto} />
             <p className={styles.name}>Mining Data Centre Limcore</p>
-            <p className={styles.status} onClick={handleParticipantsListOpen}>
+            <p className={styles.status} onClick={openList}>
               {`${participants.length} ${t('group_number')}`}
             </p>
           </>
@@ -132,16 +135,16 @@ export const ChatContent = () => {
               user={msg.user}
               isMyMsg={userId === msg.user.id}
               date={buffer}
+              openRating={openRating}
             />
           )
         })}
       </div>
       {IS_GENERAL_CHAT && (
-        <ParticipantsList
-          openListClassname={openListClassname}
-          handleParticipantsListClose={handleParticipantsListClose}
-          participants={participants}
-        />
+        <>
+          <ParticipantsList isActive={isListOpened} onClose={closeList} participants={participants} />
+          <RaitingList handleRaitingListClose={closeRating} raitingClassName={raitingClassName} />
+        </>
       )}
       <Textarea />
     </section>
