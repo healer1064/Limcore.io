@@ -1,3 +1,6 @@
+@import '../../../../../../../scss/typography.scss';
+@import '../../../../../../../scss/vars.scss';
+
 .component {
   display: flex;
   flex-direction: column;
@@ -41,35 +44,34 @@
   width: 35px;
   height: 36px;
   border-radius: 50%;
-  background: #eff0f0;
+  background: $color-EF-white;
 
   span {
-    font-style: normal;
-    font-weight: 500;
+    @include main($color-99-gray);
+    font-weight: $fontWeightMedium;
     font-size: 16px;
-    line-height: 150%;
-    color: #99a0ad;
+    line-height: 1.5;
   }
 }
 
 .number_active {
-  background: #4a70f8;
+  background: $primary-color;
 
   span {
-    color: #f0f5fd;
-    opacity: 0.8;
+    color: $color-FO-white;
+    opacity: .8;
   }
 }
 
 .line {
   height: 3px;
-  background: #e5e5e5;
+  background: $color-E5-white;
   flex: 1;
   border-radius: 10px;
 }
 
 .line_active {
-  background: #4a70f8;
+  background: $primary-color;
 }
 
 .container {
@@ -78,11 +80,7 @@
 }
 
 .caption {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 130%;
-  color: #3a3b3d;
+  @include semiBoldH4($color-3A-black);
   margin-bottom: 30px;
 }
 
@@ -90,11 +88,9 @@
   span {
     margin-top: 10px;
     margin-bottom: 20px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 140%;
-    color: #393c42;
+    @include main($color-39-black);
+    font-weight: $fontWeightSemiBold;
+    @include p3;
   }
 }
 
@@ -107,14 +103,10 @@
 .link {
   padding: 12px 0;
   border: none;
-  background: #edf4ff;
-  border-radius: 14px;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 22px;
+  background: $color-ED-white;
+  border-radius: $border-radius;
+  @include semiBoldH4($primary-color);
   text-align: center;
-  color: #4a70f8;
   margin-bottom: 20px;
 }
 

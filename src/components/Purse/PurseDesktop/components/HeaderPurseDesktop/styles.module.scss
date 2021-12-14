@@ -1,5 +1,7 @@
-@import '../../../../../scss/cabinet';
 @import '../../../vars&mixins.scss';
+@import '../../../../../scss/cabinet';
+@import '../../../../../scss/_vars';
+@import '../../../../../scss/typography';
 
 .purse {
   z-index: 102;
@@ -15,7 +17,6 @@
   max-width: 1280px;
   height: 100%;
   background-color: transparent;
-  // overflow: auto;
 }
 
 .header {
@@ -34,15 +35,14 @@
   display: flex;
   flex-direction: row;
 
+  &:focus {
+    outline: $outline;
+  }
 
   &__link {
     list-style: none;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.4;
-    color: #67686c;
+    font-family: $main-font;
+    @include mediumP3($color-67-black);
     display: flex;
     box-sizing: border-box;
     margin: 0;
@@ -53,13 +53,16 @@
     }
     &:hover {
       cursor: pointer;
-      color: #4a70f8;
+      color: $primary-color;
     }
 
     &_active, &:active {
-      color: #2D4EC5
+      color: $color-2D-blue;
     }
 
+    &.focus {
+      outline: $outline;
+    }
   }
 }
 
@@ -89,7 +92,10 @@
   &:hover {
       path {
     fill: $color-4A-blue;
+      }
   }
+  &:focus {
+    outline: $outline;
   }
 }
 .profileIcon {
@@ -104,15 +110,14 @@
   &:hover {
     border: 1px solid $color-4A-blue;
   }
+  &:focus {
+    outline: $outline;
+  }
 }
 
 .profileName {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.4;
-  color: #3a3b3d;
+  font-family: $main-font;
+  @include semiBoldH4($color-3A-black);
   display: flex;
   box-sizing: border-box;
   padding: 0;
@@ -126,11 +131,7 @@
   display: grid;
   box-sizing: border-box;
   margin: 30px 20px 0;
-  // max-width: 1280px;
-  // padding: 0;
-  // grid-template-columns: 350px 65%;
   grid-template-columns: 300px;
-  // grid-template-rows: repeat(3, minmax(min-content, max-content));
   column-gap: 40px;
   grid-template-areas:
     'accounts broadcasts'
@@ -147,9 +148,9 @@
   padding: 40px 30px 0;
   height: 657px;
   width: 308px;
-  background-color: #ffffff;
-  box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
-  border-radius: 14px;
+  background-color: $white;
+  box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
+  border-radius: $border-radius;
 }
 
 .balance {
@@ -168,15 +169,14 @@
     display: none;
   }
   .byLimcBtn {
-    @include section-title();
+    @include section-title($white);
     display: inline-block;
     font-size: 18px;
     border: none;
-    outline: none;
+    outline: $outline;
     text-decoration: none;
-    border-radius: 14px;
+    border-radius: $border-radius;
     padding: 15px 75px;
-    color: #ffffff;
     background-color: $color-4A-blue;
     margin: 30px 0;
     &:hover {
@@ -218,21 +218,20 @@
     display: flex;
   }
   .statistics {
-    border: 1px solid #DCDCDC;
-    background-color: #F9FAFE;
+    border: 1px solid $color-DC-white;
+    background-color: $color-F9-white;
     width: 60%;
     padding: 17px 30px;
-    border-radius: 14px;
+    border-radius: $border-radius;
   }
 }
 
 .detailsTitle {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightSemiBold;
   font-size: 24px;
   line-height: 1.5;
-  color: #3a3b3d;
   padding: 60px 0 20px 0;
   margin: 0;
 }
@@ -267,30 +266,26 @@
   width: 100%;
   max-width: 140px;
   padding: 15px;
-  background: #f9faff;
-  border-radius: 14px;
-  color: #4a70f8;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 1.5;
+  background: $color-F9-white;
+  border-radius: $border-radius;
+  @include subtitle-13px($primary-color);
+  font-weight: $fontWeightSemiBold;
 
   &:hover {
     transition: background 0.3s ease;
-    background: #8ca4f2;
+    background: $color-8C-violet;
     cursor: pointer;
-    color: #ffffff;
+    color: $white;
   }
 }
 
 .item_active {
-  background: #4a70f8;
+  background: $primary-color;
   transition: background 0.3s ease;
-  color: #ffffff;
+  color: $white;
 
   &:hover {
-    background: #8ca4f2;
+    background: $color-8C-violet;
     transition: background 0.3s ease;
     cursor: pointer;
   }
@@ -305,30 +300,6 @@
   height: 24px;
 }
 
-// @media screen and (max-width: 1650px) {
-//   .purseContainer {
-//     margin: 25px 15% 0 6%;
-//   }
-// }
-
-// @media screen and (max-width: 1380px) {
-//   .purseContainer {
-//     margin: 25px 10% 0 6%;
-//   }
-// }
-
-// @media screen and (max-width: 1280px) {
-//   .purseContainer {
-//     margin: 25px 6% 0;
-//   }
-// }
-
-// @media screen and (max-width: 1040px) {
-//   .purseContainer {
-//     column-gap: 40px;
-//   }
-// }
-
 @media screen and (max-width: 920px) {
   .miningDetails {
     flex-direction: column;
@@ -342,5 +313,5 @@
   }
   .nav__link {
     padding: 0 20px 0 0;
-}
+  }
 }

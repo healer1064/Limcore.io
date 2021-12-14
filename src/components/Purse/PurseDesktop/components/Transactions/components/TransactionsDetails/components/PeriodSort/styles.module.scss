@@ -25,12 +25,10 @@
   padding: 0;
   margin: 0;
   border: none;
-  
-  @include subtitle-14px(#4F535A);
-  font-weight: 600;
-
+  @include subtitle-14px($color-4F-black);
+  font-weight: $fontWeightSemiBold;
   background-color: transparent;
-  outline: none;
+  outline: $outline;
 }
 
 .block {

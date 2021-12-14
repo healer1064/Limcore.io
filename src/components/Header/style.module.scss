@@ -14,7 +14,7 @@
 
 .logout:hover {
   cursor: pointer;
-  opacity: 0.7;
+  opacity: .7;
 }
 
 .wrapper {
@@ -29,33 +29,33 @@
 .list {
   display: flex;
   align-items: center;
-  //gap: 24px;
   padding: 0;
   margin: 0;
 }
 
 .link {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 140%;
-  color: #67686c;
+  font-family: $main-font;
+  @include mediumP3($color-67-black);
   text-decoration: none;
-  cursor: pointer;
   transition: color 0.3s ease;
   display: flex;
   box-sizing: border-box;
   padding: 0;
   margin: 0 24px 0 0;
+  scroll-behavior: smooth;
 
   &:last-child {
     margin: 0;
   }
 
   &:hover {
-    color: #4a70f8;
+    color: $primary-color;
     transition: color 0.3s ease;
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: $outline;
   }
 }
 
@@ -63,7 +63,6 @@
   display: flex;
   align-items: center;
   margin-right: 5px;
-  //gap: 20px;
 }
 
 .login {
@@ -72,8 +71,8 @@
   justify-content: center;
   gap: 4px;
   padding: 9px 0;
-  border: 2px solid #4a70f8;
-  border-radius: 14px;
+  border: 2px solid $primary-color;
+  border-radius: $border-radius;
   width: 131px;
   background: none;
   transition: background 0.3s ease;
@@ -86,30 +85,26 @@
   }
 
   &:hover {
-    background: #4a70f8;
+    background: $primary-color;
     transition: background 0.3s ease;
 
     & > span {
-      color: #fff;
+      color: $white;
       transition: color 0.3s ease;
     }
 
     & > svg {
       & > path,
       & > ellipse {
-        stroke: #fff;
+        stroke: $white;
         transition: stroke 0.3s ease;
       }
     }
   }
 
   .langTitle {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 22px;
-    color: #4a70f8;
+    font-family: $main-font;
+    @include semiBoldH4($primary-color);
     transition: color 0.3s ease;
   }
 }
@@ -117,46 +112,42 @@
 .profileBtn {
   padding: 8px 18px;
   margin: 0 0 0 20px;
-  border: 1px solid #4a70f8;
-  border-radius: 14px;
-
-  outline: none;
-  background-color: #fff;
+  border: 1px solid $primary-color;
+  border-radius: $border-radius;
+  background-color: transparent;
   transition: color .3s ease, border .3s ease;
+  outline: none;
   
   &_link {
     display: flex;
     align-items: center;
-    
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 22px;
-    color: #4a70f8;
+    @include semiBoldH4($primary-color);
     text-decoration: none;
     transition: color .3s ease;
+    outline: none;
     
     & > svg > path,
     & > svg > ellipse {
       transition: stroke .3s ease;
     }
   }
-  
 
   &:hover {
-    border: 1px solid #2D4EC5;
+    border: 1px solid $color-2D-blue;
     transition: border .3s ease;
 
     & > .profileBtn_link {
-      color: #2D4EC5;
+      color: $color-2D-blue;
       transition: color .3s ease;
-      // transition: color .3s ease, border .3s ease;
-  
       & > svg > path,
       & > svg > ellipse {
-        stroke: #2D4EC5;
+        stroke: $color-2D-blue;
         transition: stroke .3s ease;
       }
     }
+  }
+  &:focus {
+    outline: $outline;
   }
 }
 
@@ -165,17 +156,12 @@
   align-items: center;
   padding: 8px 18px;
   margin: 0 0 0 20px;
-  border: 1px solid #4a70f8;
-  border-radius: 14px;
-
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 22px;
-  color: #4a70f8;
+  border: 1px solid $primary-color;
+  border-radius: $border-radius;
+  @include semiBoldH4($primary-color);
   text-decoration: none;
-
   outline: none;
-  background-color: #fff;
+  background-color: $white;
   transition: color .3s ease, border .3s ease;
     
   & > svg > path,
@@ -184,15 +170,19 @@
   }  
 
   &:hover {
-    border: 1px solid #2D4EC5;
-    color: #2D4EC5;
+    border: 1px solid $color-2D-blue;
+    color: $color-2D-blue;
     transition: color .3s ease, border .3s ease;
 
     & > svg > path,
     & > svg > ellipse {
-      stroke: #2D4EC5;
+      stroke: $color-2D-blue;
       transition: stroke .3s ease;
     }
+  }
+
+  &:focus {
+    outline: $outline;
   }
 }
 
@@ -205,9 +195,8 @@
   &Inner {
     margin: 0 auto;
     padding: 40px 20px;
-    border-radius: 14px;
-
-    background-color: #fff;
+    border-radius: $border-radius;
+    background-color: $white;
   }
 }
 
@@ -219,17 +208,12 @@ input[type='radio'] {
   display: none;
 }
 
-// .enter {
-//   font-family: 'Montserrat';
-//   font-style: normal;
-//   font-weight: 600;
-//   font-size: 16px;
-//   line-height: 22px;
-//   color: #4a70f8;
-// }
-
 .logoLink {
   margin-right: 10px;
+
+  &:focus {
+    outline: $outline;
+  }
 }
 
 .profileLogo {
@@ -239,7 +223,7 @@ input[type='radio'] {
 
   &:hover {
     path {
-      opacity: 0.7;
+      opacity: .7;
       transition: opacity 0.3s ease;
     }
   }
@@ -254,9 +238,5 @@ input[type='radio'] {
   .lang {
     margin-right: 0;
     transform: translateX(5px);
-  }
-
-  .list {
-    //gap: 12px;
   }
 }

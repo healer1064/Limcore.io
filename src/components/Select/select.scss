@@ -1,3 +1,7 @@
+@import '../../scss/_cabinet.scss';
+@import '../../scss/_vars.scss';
+@import '../../scss/typography.scss';
+
 .select {
     margin-left: 16px;
     cursor: pointer;
@@ -7,7 +11,7 @@
 .select-btn {
     width: 171px;
     height: 32px;
-    background: #FFFFFF;
+    background: $white;
     border-radius: 6px;
     white-space: nowrap;
 }
@@ -24,18 +28,14 @@
 }
 
 .select-btn-text {
-    color: #1D2023;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
+    @include mediumP3($color-1D-black);
     margin-right: 6px;
 }
 
 .options-select {
     position: absolute;
     width: 171px;
-    background: #FFFFFF;
+    background: $white;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12), 0 12px 20px rgba(0, 0, 0, 0.14);
     border-radius: 16px;
     margin-top: 4px;
@@ -62,10 +62,6 @@
 
 .option-select__text {
     white-space: nowrap;
-    color: #1D2023;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 20px;
+    @include mediumP3($color-1D-black);
     min-width: 114px;
 }

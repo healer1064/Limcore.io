@@ -70,7 +70,7 @@ export const BroadcastsDesktop = () => {
           <SwiperSlide className={styles.thumbsSlide} key={broadcast.number} tag='li'>
             <div className={styles.thumbFrameWrapper}>
               <iframe src={broadcast.src} frameBorder='0' />
-              <div className={styles.frameToggler} />
+              <button className={styles.frameToggler} type='button' />
             </div>
             <h3>{broadcast.title}</h3>
             <p>

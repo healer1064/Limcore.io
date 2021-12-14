@@ -60,13 +60,11 @@ export const MainRounds: React.FC = () => {
         </PopupMainPage>
       )}
       <div className={Styles.progress}>
-        <span className={Styles.bar} style={{ width: `calc(${limcCount} / 80000 * 100%)` }}>
-          {}
-        </span>
+        <span className={Styles.bar} style={{ width: `calc(${limcCount} / 80000 * 100%)` }} />
         <span className={Styles.count}>{limcCount} / 80000</span>
       </div>
       <div className={Styles.wrapp}>
-        <a href='https://round1.limcore.io' className={Styles.buy}>
+        <a href='https://round1.limcore.io' className={Styles.buy} target='_blank' rel='noreferrer noreopener'>
           {t('buyLimc')}
         </a>
         <span>{t('lockUp')}</span>
@@ -79,7 +77,7 @@ export const MainRounds: React.FC = () => {
         <div className={Styles.road}>
           <div className={Styles.cover}>
             <div className={Styles.round}>
-              <span className={Styles.date__mobile}>10.01.2022</span>
+              <time className={Styles.date__mobile}>10.01.2022</time>
               <span className={Styles.subtitle}>{t('roundsRoadmap_round2')}</span>
               <div className={Styles.row}>
                 <span>{t('roundsRoadmap_limcMin')}</span>
@@ -87,7 +85,7 @@ export const MainRounds: React.FC = () => {
               </div>
             </div>
             <div className={Styles.round}>
-              <span className={Styles.date__mobile}>25.02.2022</span>
+              <time className={Styles.date__mobile}>25.02.2022</time>
               <span className={Styles.subtitle}>{t('roundsRoadmap_round3')}</span>
               <div className={Styles.row}>
                 <span>{t('roundsRoadmap_priceLater')}</span>
@@ -105,21 +103,21 @@ export const MainRounds: React.FC = () => {
                 <span>{t('roundsRoadmap_priceLater')}</span>
               </div>
             </div>
-            <span className={Styles.date__mobile}>{t('roundsRoadmap_endSelling')}</span>
+            <time className={Styles.date__mobile}>{t('roundsRoadmap_endSelling')}</time>
           </div>
         </div>
         <div className={Styles.shell}>
           <div className={Styles.lines}>
-            <div className={Styles.line}>{}</div>
-            <div className={Styles.line}>{}</div>
+            <div className={Styles.line} />
+            <div className={Styles.line} />
           </div>
           <div className={Styles.dates}>
             <div className={Styles.date}>
-              <span className={Styles.date__span}>10.01.2022</span>
+              <time className={Styles.date__span}>10.01.2022</time>
             </div>
             <div className={Styles.date}>
-              <span className={Styles.date__span}>25.02.2022</span>
-              <span className={Styles.date__lastSpan}>{t('roundsRoadmap_endSelling')}</span>
+              <time className={Styles.date__span}>25.02.2022</time>
+              <time className={Styles.date__lastSpan}>{t('roundsRoadmap_endSelling')}</time>
             </div>
           </div>
         </div>

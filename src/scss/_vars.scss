@@ -1,14 +1,101 @@
 // Colors
+
+//$primary-color-hover: #3257dd;
+//$primary-color-second-hover: #2D4EC5;
+//$secondary-color: #edf4ff !default;
+//$black: #393c42 !default;
+
+//$middle-white: #ccc;
+//$third-white: #F0F5FD;
+//$grey: #67686c !default;
+//$middle-grey: #4f535a;
+//$dark-grey: #3a3b3d;
+//$light-grey: #b4bfd4;
+//$very-light-grey: #E5E5E5;
+//$other-grey: #99A0AD;
+//$red: #ff6a6a;
+//$violet: #88A0FA;
+//$dark: #1e1f22;
+//$footer-grey: #717a8d;
+//$footer-line-black: #13151b;
+//$link-grey: #36373A;
+//$list-title: #647BA8;
+//$youtube-white: #D3D8DF;
+//$lang-white: #f9f9f7;
+//$notification-black: #1d2023;
+//$count-grey:  #969fa8;
+//$calendar-black: #262626;
+//$disable: #96afc7;
+//$step-white: #eff0f0;
+//$purse-white: #dbe0ee;
+//$purse-violet: #868da7;
+//$purse-other-white: #F9FAFE;
+//$color-gray-light: #bccbff;
+//$color-gray-mouse: #99a0ad;
+//$color-gray-medium: #4f535a;
+//$color-gray-black: #3a3b3d;
+//$color-gray-dark: #393c42;
+//$color-green-light: #abf294;
+//$color-cyan-pale: #f0fbfd;
+//$color-blue-pale: #f0f5fd;
+//$color-blue: #4a70f8;
 $primary-color: #4a70f8 !default;
-$secondary-color: #edf4ff !default;
-$black: #393c42 !default;
 $white: #fff;
-$grey: #67686c !default;
-$light-grey: #b4bfd4;
-$red: #ff6a6a;
+$color-1D-black: #1D2023;
+$color-F2-red: #F24949;
+$color-58-green: #58CD32;
+$color-4D-green: #4DBE28;
+$color-47-green: #47AF25;
+$color-E5-green: #E5FBDE;
+$color-39-black: #393C42;
+$color-4F-black: #4F535A;
+$color-3A-black: #3A3B3D;
+$color-67-black: #67686C;
+$color-99-gray: #99A0AD;
+$color-4A-blue: #4A70F8;
+$color-31-blue: #3159E9;
+$color-2D-blue: #2D4EC5;
+$color-DC-white: #DCDCDC;
+$color-F9-white: #F9FAFE;
+$color-70-grey: #7070701A;
+$color-8C-violet: #8ca4f2;
+$color-ED-white: #EDF4FF;
+$color-E5-white: #E5FBDE;
+$color-7C-violet: #7c97f1;
+$color-B4-violet: #B4BFD4;
+$color-F2-red: #F24949;
+$color-FO-white: #F0F5FD;
+$color-DB-white: #dbe0ee;
+$color-86-grey: #868da7;
+$color-32-blue: #3257dd;
+$color-FF-red: #ff6a6a;
+$color-ED-white: #edf1ff;
+$color-EF-white: #eff0f0;
+$color-26-black: #262626;
+$color-96-blue: #96afc7;
+$color-96-grey: #969fa8;
+$color-D3-white: #D3D8DF;
+$color-1E-black: #1e1f22;
+$color-71-grey: #717a8d;
+$color-13-black: #13151b;
+$color-36-grey: #36373A;
+$color-64-grey: #647BA8;
+$color-88-violet: #88A0FA;
+$color-F7-white: #f7f9ff;
+$color-F3-white: #f3f6fe;
+$color-E8-white: #e8f1ff;
+$color-4C-white: #4c4c4c;
+$color-E5-grey: #e5e5e5;
 
 // Typography
 $main-font: 'Montserrat', 'Arial', 'Helvetica', sans-serif !default;
+
+// Big Button ui-kit
+$border-radius: 14px;
+$big-button-border: 1px solid $primary-color;
+
+// Outline
+$outline: 3px solid $color-88-violet;
 
 // Breakpoints
 $breakpoints: (
@@ -18,3 +105,25 @@ $breakpoints: (
 
 // Others
 $transition: all 0.3s ease-in-out;
+$box-shadow2: 0 4px 25px rgba(112, 112, 112, 0.1);
+
+// ------------------------------------------------------
+@mixin button-style() {
+  display: block;
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  transition: 0.5s ease-in-out;
+  &:focus {
+    outline: 3px solid $color-88-violet;
+  }
+}
+
+@mixin font-style($size, $weight, $line-height, $color) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+  color: $color;
+}
+

@@ -1,4 +1,7 @@
 @import '../../../../../../../vars&mixins.scss';
+@import '../../../../../../../../../scss/cabinet';
+@import '../../../../../../../../../scss/_vars';
+@import '../../../../../../../../../scss/typography';
 
 .modalList {
   margin: 0;
@@ -30,7 +33,7 @@
   font-weight: 600;
 
   background-color: transparent;
-  outline: none;
+  //outline: none;
 }
 
 .block {

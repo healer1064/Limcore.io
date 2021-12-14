@@ -1,17 +1,18 @@
+@import '../../../../../../../scss/typography.scss';
+@import '../../../../../../../scss/_vars.scss';
+
 .content {
   display: flex;
   flex-direction: column;
 }
 
 .caption {
-  margin: 0;
-  margin-bottom: 20px;
-  font-family: 'Montserrat';
+  margin: 0 0 20px;
+  font-family: $main-font;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: $fontWeightSemiBold;
   line-height: 36px;
-  font-style: normal;
-  color: #393c42;
+  @include main($color-39-black);
 }
 
 .buttons {
@@ -30,7 +31,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 1.2;
-  color: #4f535a;
+  color: $color-4F-black;
   cursor: pointer;
 
   & > div {
@@ -60,8 +61,6 @@
   position: absolute;
   left: 5px;
   bottom: -37px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
-  color: #ff6a6a;
+  @include subtitle-14px($color-FF-red);
+  font-weight: $fontWeightMedium;
 }

@@ -10,7 +10,7 @@ import { Content } from './components/Content'
 import { Chat } from '@components/Chat'
 import chatIcon from '@icons/chatIcon.svg'
 import closeIcon from '@icons/greyClose.svg'
-import { HeaderPurseDesktop } from './components/HeaderPurseDesktop'
+import { HeaderPurseDesktop } from '@components/Purse/PurseDesktop/components/HeaderPurseDesktop'
 
 export const PurseDesktop = () => {
   const dispatch = useAppDispatch()

@@ -1,11 +1,13 @@
 @import '../../../../vars&mixins.scss';
+@import '../../../../../../scss/cabinet';
+@import '../../../../../../scss/_vars';
+@import '../../../../../../scss/typography';
 
 .table {
   margin-bottom: 25px;
   width: 100%;
   border-radius: 20px;
   border-collapse: collapse;
-  
   font-size: 14px;
   text-align: left;
 
@@ -16,9 +18,7 @@
 
 .th {
   padding-bottom: 9px;
-
   @include subtitle-14px($color-99-gray);
-
   background: white;
 }
 
@@ -38,21 +38,17 @@
 
 .progressbar { 
   position: relative;
-
   width: 83px;
   height: 4px;
   border-radius: 6px;
-
-  background: #E5FBDE;
+  background: $color-E5-white;
 
   &__track {
     position: relative;
     overflow: hidden;
-  
     display: block;
     width: 85%;
     height: 100%;
-
-    background-color: #47AF25;
+    background-color: $color-47-green;
   } 
 }

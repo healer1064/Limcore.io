@@ -1,3 +1,6 @@
+@import '../../../../../scss/typography.scss';
+@import '../../../../../scss/vars.scss';
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -5,12 +8,11 @@
 }
 
 .caption {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightSemiBold;
   font-size: 22px;
-  line-height: 160%;
-  color: #3a3b3d;
+  line-height: 1.6;
   margin: 0;
 }
 
@@ -31,11 +33,15 @@
 }
 
 .image {
-  background: #c4c4c4;
+  background: $color-4C-white;
   border-radius: 14px;
   width: 100%;
   margin-bottom: 10px;
   overflow: hidden;
+
+  &:focus {
+    outline: $outline;
+  }
 
   img {
     display: block;
@@ -45,22 +51,20 @@
 }
 
 .title {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightSemiBold;
   font-size: 14px;
-  line-height: 140%;
-  color: #3a3b3d;
+  line-height: 1.4;
   margin-bottom: 4px;
 }
 
 .description {
-  font-family: 'Montserrat';
-  font-style: normal;
+  font-family: $main-font;
+  @include main($color-4F-black);
   font-weight: normal;
   font-size: 13px;
-  line-height: 150%;
-  color: #4f535a;
+  line-height: 1.5;
   margin-bottom: 8px;
 }
 
@@ -71,22 +75,24 @@
 }
 
 .link {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
+  font-family: $main-font;
+  @include main($color-4A-blue);
+  font-weight: $fontWeightMedium;
   font-size: 12px;
-  line-height: 140%;
-  color: #4a70f8;
+  line-height: 1.4;
   text-decoration: none;
+
+  &:focus {
+    outline: $outline;
+  }
 }
 
 .date {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
+  font-family: $main-font;
+  @include main($color-99-gray);
+  font-weight: $fontWeightMedium;
   font-size: 12px;
-  line-height: 140%;
-  color: #99a0ad;
+  line-height: 1.4;
 }
 
 .empty {
@@ -94,14 +100,13 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightMedium;
   font-size: 18px;
-  line-height: 150%;
+  line-height: 1.5;
   text-align: center;
-  color: #3a3b3d;
-  background: #ffffff;
-  box-shadow: 0px 4px 25px rgba(74, 112, 248, 0.08);
-  border-radius: 14px;
+  background: $white;
+  box-shadow: 0 4px 25px rgba(74, 112, 248, 0.08);
+  border-radius: $border-radius;
 }

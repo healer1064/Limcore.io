@@ -1,3 +1,8 @@
+@import '../../../vars&mixins.scss';
+@import '../../../../../scss/cabinet';
+@import '../../../../../scss/_vars';
+@import '../../../../../scss/typography';
+
 .logo {
   display: flex;
   box-sizing: border-box;
@@ -10,6 +15,9 @@
   &:hover {
     cursor: pointer;
   }
+  &:focus {
+    outline: $outline;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -17,5 +25,9 @@
     position: relative;
     top: 0;
     left: 0;
+
+    &:focus {
+      outline: $outline;
+    }
   }
 }

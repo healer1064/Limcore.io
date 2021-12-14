@@ -1,3 +1,18 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/vars.scss';
+
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+
+  &:focus {
+    outline: $outline;
+  }
+}
+
 .questions {
   display: flex;
   padding: 80px 20px;
@@ -20,12 +35,11 @@
 }
 
 .caption {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightSemiBold;
   font-size: 32px;
   line-height: 100%;
-  color: #3a3b3d;
   margin: 0;
 }
 
@@ -52,16 +66,15 @@
   cursor: pointer;
 
   &:not(:last-child) {
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid $color-E5-white;
   }
 
   span {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
+    font-family: $main-font;
+    @include main($color-4F-black);
+    font-weight: $fontWeightMedium;
     font-size: 16px;
-    line-height: 160%;
-    color: #4f535a;
+    line-height: 1.6;
 
     svg {
       margin-left: 6px;
@@ -76,7 +89,7 @@
 
     svg {
       path {
-        stroke: #4a70f8;
+        stroke: $primary-color;
       }
     }
   }
@@ -85,41 +98,37 @@
 .info {
   display: flex;
   flex-direction: column;
-  background: #f9fafe;
-  border-radius: 14px;
+  background: $color-F9-white;
+  border-radius: $border-radius;
   width: 100%;
   max-width: 539px;
   padding: 40px 63px;
 }
 
 .title {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightSemiBold;
   font-size: 24px;
-  line-height: 160%;
-  color: #3a3b3d;
-  margin: 0;
-  margin-bottom: 18px;
+  line-height: 1.6;
+  margin: 0 0 18px;
 }
 
 .text {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
+  font-family: $main-font;
+  @include main($color-67-black);
+  font-weight: $fontWeightMedium;
   font-size: 14px;
-  line-height: 170%;
-  color: #67686c;
+  line-height: 1.7;
   margin: 0;
 }
 
 .description {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-4F-black);
+  font-weight: $fontWeightSemiBold;
   font-size: 14px;
-  line-height: 170%;
-  color: #4f535a;
+  line-height: 1.7;
   margin-top: 14px;
   margin-bottom: 4px;
 }
@@ -131,7 +140,7 @@
   padding: 0;
 
   li {
-    color: #4a70f8;
+    color: $primary-color;
 
     &:not(:last-child) {
       margin-bottom: 12px;

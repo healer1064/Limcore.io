@@ -1,3 +1,6 @@
+@import '../../../../../scss/typography.scss';
+@import '../../../../../scss/vars.scss';
+
 .location {
   display: flex;
   flex-direction: column;
@@ -20,21 +23,16 @@
 }
 
 .title {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 150%;
-  color: #99a0ad;
+  font-family: $main-font;
+  @include mediumP3($color-99-gray)
 }
 
 .subtitle {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightSemiBold;
   font-size: 14px;
-  line-height: 140%;
-  color: #3a3b3d;
+  line-height: 1.4;
   margin-top: 8px;
   max-width: 270px;
 }
@@ -44,22 +42,16 @@
 }
 
 .caption {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 130%;
-  color: #3a3b3d;
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightSemiBold;
+  @include h4;
   margin-bottom: 6px;
 }
 
 .subcaption {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 150%;
-  color: #99a0ad;
+  font-family: $main-font;
+  @include mediumP3($color-99-gray);
 }
 
 .form {

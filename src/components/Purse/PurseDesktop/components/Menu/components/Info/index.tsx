@@ -20,7 +20,7 @@ export const Info = ({ active, setActive, title, setNotActive, image, balance })
         <div className={styles.header}>
           <div className={styles.headerInner}>
             <span className={styles.headerLogo}>
-              <img src={image} />
+              <img src={image} alt='info' />
             </span>
             <h2 className={styles.headerTitle}>{balance}</h2>
           </div>

@@ -1,18 +1,21 @@
-// .list {
-//   visibility: visible;
-//   opacity: 1;
-//   flex-direction: column;
-//   box-sizing: border-box;
-//   padding: 0;
-//   margin: 0;
-//   position: fixed;
-//   top: 0;
-//   bottom: 0;
-//   right: 0;
-//   left: 0;
-//   z-index: 2;
-//   background-color: #FFFFFF;
-//   transition: opacity 200ms ease, visibility 200ms ease;
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/_vars.scss';
+
+.list {
+  visibility: visible;
+  opacity: 1;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  background-color: $white;
+  transition: opacity 200ms ease, visibility 200ms ease;
 
 //   &_invisible {
 //     visibility: hidden;
@@ -40,8 +43,7 @@
   min-height: 70px;
   width: 100%;
   justify-content: space-between;
-  border-bottom: 1px solid #e5e5e5;
-  background-color: #fff;
+  border-bottom: 1px solid $color-E5-white;
 }
 
 .button {
@@ -72,13 +74,12 @@
   box-sizing: border-box;
   padding: 5px 0;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  font-weight: $fontWeightSemiBold;
+  @include main($color-39-black);
   font-size: 14px;
   line-height: 1.4;
   text-align: center;
-  color: #393c42;
 }
 
 .number {
@@ -86,13 +87,11 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0 0 0 8px;
-  font-family: 'Montserrat', sans-serif;
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  font-weight: $fontWeightSemiBold;
+  @include main($color-99-gray);
   font-size: 14px;
   line-height: 1.4;
-  letter-spacing: 0.01em;
-  color: #99a0ad;
 }
 
 .messagesContainer {
@@ -113,7 +112,7 @@
     bottom: 0;
     right: 120px;
     box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
-    border-radius: 14px;
+    border-radius: $border-radius;
   }
   .arrow {
     margin: 0 30px 0 0;

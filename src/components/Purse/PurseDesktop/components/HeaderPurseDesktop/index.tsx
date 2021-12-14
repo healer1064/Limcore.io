@@ -72,9 +72,9 @@ export const HeaderPurseDesktop = ({ isProfileActive, openProfile, closeProfile 
       </nav>
 
       <div className={styles.profileGroup} onClick={openProfile}>
-        <img className={styles.profileIcon} src={avatarUrl || profile} />
+        <img className={styles.profileIcon} src={avatarUrl || profile} alt='icon' />
         <p className={styles.profileName}>{currentName()}</p>
-        <button className={styles.logoutBtn} onClick={onLogout}>
+        <button className={styles.logoutBtn} onClick={onLogout} type='button'>
           <LogoutIcon />
         </button>
       </div>

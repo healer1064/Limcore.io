@@ -1,42 +1,34 @@
+@import '../../scss/typography.scss';
+@import '../../scss/vars.scss';
+
 .input {
-  background: #ffffff;
-  border: 1.4px solid #b4bfd5;
-  border-radius: 14px;
+  background: $white;
+  border: 1.4px solid $color-B4-violet;
+  border-radius: $border-radius;
   padding: 16px 10px;
-  margin-top: 10px;
+  margin: 10px 0 0;
   height: 45px;
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 150%;
-  color: #393c42;
+  font-family: $main-font;
+  @include mediumP3($color-39-black);
 
   &::placeholder {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 150%;
-    color: #b4bfd5;
+    font-family: $main-font;
+    @include mediumP3($color-B4-violet);
   }
 
   &:focus {
-    outline: none;
-    border: 1.4px solid #67686C;
+    outline: $outline;
+    border: 1.4px solid $color-67-black;
   }
 }
 
 .input_error {
-  border: 1.4px solid #ff6a6a;
+  border: 1.4px solid $color-FF-red;
 }
 
 .error {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 150%;
-  color: #ff6a6a;
-  margin-top: 8px;
+  font-family: $main-font;
+  @include mediumP3($color-FF-red);
+  margin: 8px 0 0;
+  padding: 0;
 }

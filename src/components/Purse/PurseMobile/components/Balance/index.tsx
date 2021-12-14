@@ -115,7 +115,7 @@ export const Balance = () => {
         </div>
         {!isSinc ? (
           <>
-            <button className={buttonSincClass} onClick={sincWithWallet}>
+            <button className={buttonSincClass} onClick={sincWithWallet} type='button'>
               {t('purse_sync')}
             </button>
             <p className={styles.trust_subtitle}>{t('purse_walletConnect')}</p>
@@ -123,11 +123,11 @@ export const Balance = () => {
         ) : (
           <>
             <div className={styles.trust_cont}>
-              <button className={buttonSincClass} onClick={sincWithWallet}>
+              <button className={buttonSincClass} onClick={sincWithWallet} type='button'>
                 <WalletPurseIcon className={styles.trust_walletpurse} />
                 {userPurse.address.substr(0, 9)}...{userPurse.address.slice(-7)}
               </button>
-              <button className={styles.trust_kill} onClick={() => connector.killSession()}>
+              <button className={styles.trust_kill} onClick={() => connector.killSession()} type='button'>
                 <GrayCrossIcon />
               </button>
             </div>

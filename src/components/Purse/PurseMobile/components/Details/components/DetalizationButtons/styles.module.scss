@@ -1,4 +1,7 @@
 @import '../../../../../vars&mixins.scss';
+@import '../../../../../../../scss/cabinet';
+@import '../../../../../../../scss/_vars';
+@import '../../../../../../../scss/typography';
 
 .list {
   margin: 0;
@@ -24,10 +27,8 @@
   align-items: center;
   margin: 0;
   border: none;
-
   @include subtitle-14px($color-4F-black);
-  
-  outline: none;
+  outline: $outline;
   background-color: transparent;
 
   .icon {
@@ -40,12 +41,11 @@
   padding: 17px 20px;
   width: calc(100vw - 20px);
   height: 100%;
-  border-radius: 14px;
-
+  border-radius: $border-radius;
   transform: translateY(calc(-45vh + 12px));
   background-color: $color-99-gray;
 
   & > button {
-    color: #fff;
+    color: $white;
   }
 }

@@ -1,4 +1,7 @@
 @import '../../../../../../../vars&mixins.scss';
+@import '../../../../../../../../../scss/cabinet';
+@import '../../../../../../../../../scss/_vars';
+@import '../../../../../../../../../scss/typography';
 
 .buttons {
   display: flex;
@@ -22,16 +25,14 @@
       padding: 12px 0;
       width: 100%;
       border: none;
-      border-radius: 14px;
-      
-      background: #EDF4FF;
-      outline: none;
-  
+      border-radius: $border-radius;
+      background: $color-ED-white;
+      outline: $outline;
       @include subtitle-13px($color-4A-blue);
-      font-weight: 600;
+      font-weight: $fontWeightSemiBold;
 
       &__active {
-        color: #fff;
+        color: $white;
         background-color: $color-4A-blue;
       }
     }
@@ -40,9 +41,8 @@
 
 .addInfoCont {
   padding: 10px;
-  border-radius: 14px;
-
-  background-color: #EDF4FF;
+  border-radius: $border-radius;
+  background-color: $color-ED-white;
 
   .addInfo {
     font-size: 16px;
@@ -56,7 +56,6 @@
   
     .addressName {
       margin: 0 0 5px 0;
-    
       font-size: 16px;
       font-weight: 500;
       text-align: center;
@@ -64,7 +63,6 @@
     
     .addressValue {
       margin: 0 0 10px 0;
-      
       word-wrap: break-word;
       font-size: 16px;
       font-weight: 500;

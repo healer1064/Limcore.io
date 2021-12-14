@@ -1,26 +1,30 @@
-.button {
-  padding: 14px 0;
-  border: 1px solid #4a70f8;
-  border-radius: 14px;
+@import '../../scss/typography.scss';
+@import '../../scss/vars.scss';
 
-  font-family: 'Montserrat';
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: 600;
-  font-style: normal;
+.button {
+  margin: 0;
+  padding: 14px 0;
+  border: $big-button-border;
+  border-radius: $border-radius;
+  font-family: $main-font;
+  @include semiBoldH4($white);
   text-align: center;
-  color: #ffffff;
-  
-  background: #4a70f8;
+  background: $primary-color;
   transition: background .2s ease;
 
   &:hover {
-    background: #3257dd;
+    background: $color-32-blue;
     transition: background .2s ease;
     cursor: pointer;
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: .5;
+    cursor: default;
   }
+
+  &:active, &:focus {
+    outline: $outline;
+  }
+
 }

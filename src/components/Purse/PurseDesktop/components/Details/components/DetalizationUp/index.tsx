@@ -5,7 +5,7 @@ import styles from './styles.module.scss'
 const BalanceString = (text, data) => (
   <li className={styles.balanceString}>
     <p className={styles.balanceString__text}>{text}</p>
-    <p className={styles.balanceString__data}>{data}</p>
+    <data className={styles.balanceString__data}>{data}</data>
   </li>
 )
 

@@ -19,22 +19,22 @@ export const RoadMap = () => {
         <span />
       </div>
       <div className={styles.roadMapRound}>
-        <p className={styles.roundDate}>10.01.2022</p>
+        <time className={styles.roundDate}>10.01.2022</time>
         <div className={styles.roundText}>
           <h3 className={styles.round}>{t('firstRound_round1')}</h3>
-          <p>LIMC ($95)</p>
+          <data>LIMC ($95)</data>
         </div>
-        <div className={styles.roundVisualization} style={visualizationStyle(soldLimcs / 80000)}>
+        <data className={styles.roundVisualization} style={visualizationStyle(soldLimcs / 80000)}>
           {soldLimcs}/80,000
-        </div>
-        <p className={styles.roundDate}>25.02.2022</p>
+        </data>
+        <time className={styles.roundDate}>25.02.2022</time>
         <div className={styles.roundText}>
           <h3 className={styles.round}>{t('roundsRoadmap_round2')}</h3>
-          <p>LIMC (min $110)</p>
+          <data>LIMC (min $110)</data>
         </div>
-        <div className={styles.roundVisualization} style={visualizationStyle(0 / 120000)}>
+        <data className={styles.roundVisualization} style={visualizationStyle(0 / 120000)}>
           120,000
-        </div>
+        </data>
       </div>
     </div>
   )

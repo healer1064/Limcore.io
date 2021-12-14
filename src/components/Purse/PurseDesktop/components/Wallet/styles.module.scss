@@ -1,14 +1,17 @@
+@import '../../../vars&mixins.scss';
 @import '../../../../../scss/cabinet';
+@import '../../../../../scss/_vars';
+@import '../../../../../scss/typography';
 
 .wallet {
   padding: 0 60px;
   margin: 60px 0;
   background-color: $color-cyan-pale;
-  border-radius: 14px;
+  border-radius: $border-radius;
   max-height: 137px;
 
   &_violet {
-    background-color: #F0F5FD;;
+    background-color: $color-FO-white;
   }
 
   & * {
@@ -19,19 +22,16 @@
   &__title {
     display: inline-block;
     margin-top: 18px;
-    font-weight: 600;
+    font-weight: $fontWeightSemiBold;
     font-size: 16px;
     line-height: 1.5;
     color: $color-gray-medium;
   }
 
   &__subtitle {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #4F535A;
+    font-family: $main-font;
+    @include subtitle-14px($color-4F-black);
+    font-weight: $fontWeightMedium;
     padding: 6px 0 0;
     margin: 0;
   }
@@ -46,12 +46,11 @@
 }
 
 .moreButton {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($primary-color);
+  font-weight: $fontWeightSemiBold;
   font-size: 16px;
   line-height: 20px;
-  color: #4A70F8;
   display: flex;
   border: none;
   background-color: transparent;
@@ -82,17 +81,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    border: 2px solid #fff;
+    border: 2px solid $white;
     width: 49px;
     height: 49px;
-    background-color: #FFFFFF;
+    background-color: $white;
     border-radius: 50%;
     position: absolute;
     top: 50%;
     z-index: 5;
-    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.05);
     transition: border .3s ease;
-    border-radius: 50%;
     background-repeat: no-repeat;
     background-size: 30% 30%;
     background-position: center center;
@@ -101,7 +99,7 @@
     }
     &:hover {
       cursor: pointer;
-      border: 2px solid #4A70F8;
+      border: 2px solid $primary-color;
       transition: border .3s ease;
     }
   }
@@ -116,24 +114,6 @@
   :global(.swiper-button-disabled) {
       display: none;
     }
-}
-
-.swiper {
-  // display: flex;
-  // position: relative;
-  // box-sizing: border-box;
-  // margin: 60px 0 0;
-  // padding: 0;
-  // max-width: 60vw;
-  // overflow: visible;
-}
-
-.slide {
-  // display: flex;
-  // box-sizing: border-box;
-  // margin: 0;
-  // padding: 0;
-  // max-width: 70%;
 }
 
 @media screen and (max-width: 1230px) {

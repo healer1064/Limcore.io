@@ -1,6 +1,10 @@
+@import '../../scss/typography.scss';
+@import '../../scss/vars.scss';
+
 .block {
   display: flex;
   align-items: center;
+  border: none;
 }
 
 .input {
@@ -9,6 +13,10 @@
 
   &:checked + .radio {
     background-image: url('../../assets/icons/input-radio-check.svg');
+  }
+
+  &:focus {
+    outline: $outline;
   }
 }
 
@@ -19,5 +27,6 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-right: 10px;
+  margin: 0 10px 0 0;
+  padding: 0;
 }
