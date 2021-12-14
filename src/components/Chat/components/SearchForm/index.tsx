@@ -5,27 +5,28 @@ import closeButton from '@icons/greyClose.svg'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setFilteredDialogues } from '../../../Chat/redux/chatSlice'
 
+type TButtonsVisibility = '' | 'close' | 'reset'
+
 export const SearchForm = ({ desktop }) => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
 
-  // const searched = useAppSelector((state) => state.chat.searchedValue)
   const dialogues = useAppSelector((state) => state.chat.dialogues)
 
-  const [isButtonVisible, setIsButtonVisible] = useState('') // '' | 'close' | 'reset'
+  const [buttonsVisibility, setButtonsVisibility] = useState<TButtonsVisibility>('')
   const [searched, setSearched] = useState('')
 
   const handleResetButton = () => {
-    setIsButtonVisible('reset')
+    setButtonsVisibility('reset')
   }
 
   const handleCloseSearch = () => {
     setSearched('')
-    setIsButtonVisible('')
+    setButtonsVisibility('')
   }
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setIsButtonVisible('close')
+    setButtonsVisibility('close')
     setSearched(event.target.value)
   }
 
@@ -60,10 +61,10 @@ export const SearchForm = ({ desktop }) => {
           onFocus={handleResetButton}
           value={searched}
         />
-        {(isButtonVisible === 'close' || isButtonVisible === 'reset') && (
+        {(buttonsVisibility === 'close' || buttonsVisibility === 'reset') && (
           <img className={styles.closeButton} alt='' src={closeButton} onClick={handleCloseSearch} />
         )}
-        {isButtonVisible === 'reset' && (
+        {buttonsVisibility === 'reset' && (
           <button type='reset' className={styles.resetButton}>
             {t('chat_reset_button_value')}
           </button>

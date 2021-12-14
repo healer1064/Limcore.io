@@ -13,6 +13,8 @@ import { getMonthNameWithDate } from '@components/Chat/utils/funcs'
 import { IDialogueInterface, IMessageInterface } from '@components/Chat/utils/types'
 import { useChat } from '@components/Chat/utils/useChat'
 import profileIcon from '@icons/profileicon.svg'
+import { RaitingList } from '../RaitingList'
+import raitingStyles from '../RaitingList/styles.module.scss'
 
 export const ChatContent = () => {
   const [t] = useTranslation()
@@ -37,6 +39,14 @@ export const ChatContent = () => {
   const [openListClassname, setOpenListClassname] = useState(listStyles.list_invisible)
   const handleParticipantsListOpen = () => setOpenListClassname(listStyles.list)
   const handleParticipantsListClose = () => setOpenListClassname(listStyles.list_invisible)
+
+  // Открытие рейтинга по лимкам
+  // const [isPopupOpened, setIsPopupOpened] = useState(false)
+  // const openRating = () => setIsPopupOpened(true)
+  // const closeRating = () => setIsPopupOpened(false)
+  const [raitingClassName, setRaitingClassName] = useState(raitingStyles.raitingList_invisible)
+  const openRating = () => setRaitingClassName(raitingStyles.raitingList)
+  const closeRating = () => setRaitingClassName(raitingStyles.raitingList_invisible)
 
   // Закрыть чат
   const onClose = () => {
@@ -68,11 +78,8 @@ export const ChatContent = () => {
   }
 
   // Если чат 1 на 1, то вписываю в стейт инфу о собеседнике
-  if (!IS_GENERAL_CHAT) {
-    if (currentDialogue) {
-      dispatch(setCurrentDialogueMember(currentDialogue.other_user))
-      // dispatch(setMessageRecipient(dialogue.other_user.id))
-    }
+  if (!IS_GENERAL_CHAT && currentDialogue) {
+    dispatch(setCurrentDialogueMember(currentDialogue.other_user))
   }
 
   // Логика скролла
@@ -132,16 +139,20 @@ export const ChatContent = () => {
               user={msg.user}
               isMyMsg={userId === msg.user.id}
               date={buffer}
+              openRating={openRating}
             />
           )
         })}
       </div>
       {IS_GENERAL_CHAT && (
-        <ParticipantsList
-          openListClassname={openListClassname}
-          handleParticipantsListClose={handleParticipantsListClose}
-          participants={participants}
-        />
+        <>
+          <ParticipantsList
+            openListClassname={openListClassname}
+            handleParticipantsListClose={handleParticipantsListClose}
+            participants={participants}
+          />
+          <RaitingList handleRaitingListClose={closeRating} raitingClassName={raitingClassName} />
+        </>
       )}
       <Textarea />
     </section>
