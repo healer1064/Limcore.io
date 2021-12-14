@@ -86,7 +86,7 @@ export const ChatContent = () => {
     } else if (messagesEndRef.current && autoScroll) {
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight - messagesEndRef.current.clientHeight
 
-      if (currentMessages[currentMessages.length - 1]?.id && currentDialogue.unread_count > 0) {
+      if (currentMessages && currentMessages[currentMessages.length - 1]?.id && currentDialogue?.unread_count > 0) {
         sendLastReadedMessage(currentMessages[currentMessages.length - 1].id, slug)
       }
     }
@@ -110,9 +110,7 @@ export const ChatContent = () => {
             <p className={styles.name}>
               {currentDialogueMember.first_name || 'User'} {currentDialogueMember.last_name || ''}
             </p>
-            {/* <p className={styles.status} onClick={() => {}}>
-              В сети
-            </p> */}
+            <p className={styles.status}>{currentDialogueMember.status === '1' ? 'В сети' : 'Не в сети'} </p>
           </>
         )}
       </div>
@@ -132,7 +130,7 @@ export const ChatContent = () => {
             <MessageComponent
               key={msg.id}
               message={msg}
-              user={msg.user}
+              userId={msg.user.id}
               isMyMsg={userId === msg.user.id}
               date={buffer}
               openRating={openRating}

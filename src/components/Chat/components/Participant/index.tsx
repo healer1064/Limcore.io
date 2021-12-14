@@ -53,7 +53,9 @@ export const Participant = ({ member }: IParticipantProps) => {
         {member.user?.first_name || 'User'} {member.user?.last_name || ''}
       </p>
       {/* <p className={isMe ? styles.status_active : styles.status}>{isMe ? 'В сети' : 'Не в сети'}</p> */}
-      {/* <p className={member.status === 'В сети' ? styles.status_active : styles.status}>{member.status}</p> */}
+      <p className={member.user?.status === '1' || me ? styles.status_active : styles.status}>
+        {member.user?.status === '1' || me ? 'В сети' : 'Не в сети'}
+      </p>
       {/* <p className={styles.rank}>{member.rank}</p> */}
       {/* <span className={member.rank !== '' ? styles.raiting_invisible : styles.raiting}>
         <img src={member.raitingIcon} alt='' className={styles.raitingIcon} onClick={handleRaitingListOpen} />

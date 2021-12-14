@@ -33,17 +33,19 @@ export const SearchForm = ({ desktop }) => {
   useEffect(() => {
     if (searched === '') {
       dispatch(setFilteredDialogues(dialogues))
+      return
     }
+    const searchString = searched.toLowerCase()
     const filtered = dialogues.filter((dialogue) => {
       if (dialogue.other_user) {
         if (dialogue.other_user.first_name) {
-          return dialogue.other_user.first_name.toLowerCase().includes(searched)
+          return dialogue.other_user.first_name.toLowerCase().includes(searchString.toLowerCase())
         } else if (dialogue.other_user.last_name) {
-          return dialogue.other_user.last_name.toLowerCase().includes(searched)
+          return dialogue.other_user.last_name.toLowerCase().includes(searchString.toLowerCase())
         }
       } else {
         if (dialogue.name) {
-          return dialogue.name.toLowerCase().includes(searched)
+          return dialogue.name.toLowerCase().includes(searchString.toLowerCase())
         }
       }
     })

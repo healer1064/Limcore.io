@@ -5,6 +5,8 @@ import {
   setDialogues,
   setDialogueUnreadedCount,
   setGenChatMembers,
+  setGenChatMembersStatus,
+  setDialogueStatus,
   setCurrentPage,
   setWholePages,
   setContent,
@@ -21,6 +23,8 @@ const commands = {
   sendLastReadedMessage: 9,
   getUnreadedCount: 10,
   checkDialogueExistence: 11,
+  userCame: 12,
+  userLeft: 13,
   // еще есть IS_TYPING
 }
 
@@ -100,6 +104,18 @@ export const useChat = () => {
 
       if (data.command === 11) {
         data.result.length === 0 ? dispatch(setCurrentMessages([])) : dispatch(setCurrentMessages(data.result))
+      }
+
+      if (data.command === 12) {
+        const dataToDispatch = { id: data.user_pk, status: '1' }
+        dispatch(setDialogueStatus(dataToDispatch))
+        dispatch(setGenChatMembersStatus(dataToDispatch))
+      }
+
+      if (data.command === 13) {
+        const dataToDispatch = { id: data.user_pk, status: '0' }
+        dispatch(setDialogueStatus(dataToDispatch))
+        dispatch(setGenChatMembersStatus(dataToDispatch))
       }
     }
   }
