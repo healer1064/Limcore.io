@@ -87,12 +87,15 @@
   cursor: pointer;
   padding: 0;
   background-color: transparent;
-  outline: $outline;
+  outline: none;
   display: flex;
   align-items: center;
   &:hover {
     path {
       stroke: $color-4A-blue;
     }
+  }
+  &:focus {
+    outline: $outline;
   }
 }

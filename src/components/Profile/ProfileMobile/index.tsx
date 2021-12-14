@@ -19,7 +19,6 @@ export const ProfileMobile: React.FC = () => {
   const userData = useAppSelector((state) => state.user.userData)
   const profileComplete = useAppSelector((state) => state.cabinet.profileComplete)
   const viewContent = useAppSelector((state) => state.cabinet.viewContent)
-  console.log(userData)
 
   // const onBackAddAuth = () => {
   //   dispatch(changeViewContent('addAuth'))

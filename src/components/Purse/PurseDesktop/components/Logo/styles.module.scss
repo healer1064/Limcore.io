@@ -15,7 +15,7 @@
   &:hover {
     cursor: pointer;
   }
-  &focus {
+  &:focus {
     outline: $outline;
   }
 }
@@ -25,5 +25,9 @@
     position: relative;
     top: 0;
     left: 0;
+
+    &:focus {
+      outline: $outline;
+    }
   }
 }

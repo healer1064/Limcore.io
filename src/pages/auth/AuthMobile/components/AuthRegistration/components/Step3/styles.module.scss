@@ -1,3 +1,6 @@
+@import '../../../../../../../scss/typography.scss';
+@import '../../../../../../../scss/_vars.scss';
+
 .content {
   display: flex;
   flex-direction: column;
@@ -30,36 +33,35 @@
   width: 35px;
   height: 36px;
   border-radius: 50%;
-  background: #eff0f0;
+  background: $color-E5-grey;
 
   span {
-    font-family: 'Montserrat';
-    font-style: normal;
+    font-family: $main-font;
+    @include main($color-99-gray);
     font-weight: 500;
     font-size: 16px;
-    line-height: 150%;
-    color: #99a0ad;
+    line-height: 1.5;
   }
 }
 
 .number_active {
-  background: #4a70f8;
+  background: $primary-color;
 
   span {
-    color: #f0f5fd;
-    opacity: 0.8;
+    color: $color-FO-white;
+    opacity: .8;
   }
 }
 
 .line {
   height: 3px;
-  background: #e5e5e5;
+  background: $color-E5-grey;
   flex: 1;
   border-radius: 10px;
 }
 
 .line_active {
-  background: #4a70f8;
+  background: $primary-color;
 }
 
 .block {
@@ -68,14 +70,12 @@
 }
 
 .title {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-39-black);
+  font-weight: $fontWeightSemiBold;
   font-size: 18px;
-  line-height: 150%;
-  color: #393c42;
-  margin: 0;
-  margin-bottom: 20px;
+  line-height: 1.5;
+  margin: 0 0 20px;
 }
 
 .buttons {
@@ -91,10 +91,7 @@
     position: absolute;
     left: 5px;
     bottom: -33px;
-  
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-    color: #FF6A6A;
+    @include subtitle-14px($color-FF-red);
+    font-weight: $fontWeightMedium;
   }
 }

@@ -256,6 +256,10 @@
       text-decoration: underline;
     }
   }
+
+  &__round {
+    border-radius: 50%;
+  }
 }
 
 .wrapper {

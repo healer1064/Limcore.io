@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-scroll'
+// import { Link } from 'react-scroll'
 import Styles from './style.module.scss'
 import { Link as LinkDom } from 'react-router-dom'
 
@@ -15,6 +15,7 @@ import { useTranslation } from 'react-i18next'
 // import { ButtonBig } from '../../ui-kit/ButtonBig'
 // import { styled } from '@material-ui/core'
 import { LanguagePopup } from '../LanguagePopup/index'
+// import { doc } from 'prettier'
 
 export const Header: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -26,12 +27,19 @@ export const Header: React.FC = () => {
   const isAuth = useAppSelector((state) => state.auth.isAuth)
   const isBuyLimcClick = useAppSelector((state) => state.auth.isBuyLimcClick)
 
-  const tempLink = [
-    { id: 1, value: t('nav_about'), link: 'limcore', spy: true, smooth: true },
-    { id: 2, value: t('nav_roadmap'), link: 'roadmap', spy: true, smooth: true },
-    { id: 3, value: t('nav_team'), link: 'team', spy: true, smooth: true },
-    // { id: 4, value: 'Экосистема', link: 'ecosystem', spy: true, smooth: true },
-    { id: 5, value: t('nav_qa'), link: 'questions', spy: true, smooth: true },
+  // const tempLink = [
+  //   { id: 1, value: t('nav_about'), link: 'limcore', spy: true, smooth: true },
+  //   { id: 2, value: t('nav_roadmap'), link: 'roadmap', spy: true, smooth: true },
+  //   { id: 3, value: t('nav_team'), link: 'team', spy: true, smooth: true },
+  //   { id: 4, value: 'Экосистема', link: 'ecosystem', spy: true, smooth: true },
+  // { id: 5, value: t('nav_qa'), link: 'questions', spy: true, smooth: true },
+  // ]
+
+  const links = [
+    { id: 1, value: t('nav_about'), link: 'limcore' },
+    { id: 2, value: t('nav_roadmap'), link: 'roadmap' },
+    { id: 3, value: t('nav_team'), link: 'team' },
+    { id: 5, value: t('nav_qa'), link: 'questions' },
   ]
 
   useEffect(() => {
@@ -62,18 +70,26 @@ export const Header: React.FC = () => {
       setIsLoginModalVisible(false)
     }
   }, [isAuth])
+
+  function handleClick(e) {
+    e.preventDefault()
+    const link = e.target.getAttribute('href').slice(1)
+    const destination = document.getElementById(`${link}`)
+    destination.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <header className={Styles.header}>
-      <div className={Styles.wrapper}>
+      <nav className={Styles.wrapper}>
         <a href='/' className={Styles.logoLink} target='blank' rel='noopener noreferrer'>
           <img src={logoIcon} alt='Лого' />
         </a>
         <ul className={Styles.list}>
-          {tempLink?.map((item) => {
+          {links.map((item) => {
             return (
-              <Link className={Styles.link} key={item.id} to={item.link} spy={item.spy} smooth={item.smooth}>
+              <a className={Styles.link} key={item.id} href={`#${item.link}`} onClick={(e) => handleClick(e)}>
                 {item.value}
-              </Link>
+              </a>
             )
           })}
         </ul>
@@ -92,13 +108,13 @@ export const Header: React.FC = () => {
             <button className={Styles.profileBtn} type='button'>
               <LinkDom to='/my' className={Styles.profileBtn_link}>
                 <LoginIcon />
-                <span className={Styles.enter}>{t('profile')}</span>
+                {t('profile')}
               </LinkDom>
             </button>
           ) : (
             <button className={Styles.loginBtn} onClick={handleLoginModalOpen} type='button'>
               <LoginIcon />
-              <span className={Styles.enter}>{t('login')}</span>
+              {t('login')}
             </button>
           )}
           {/* {!isAuth && (
@@ -110,7 +126,7 @@ export const Header: React.FC = () => {
 
           <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />
         </div>
-      </div>
+      </nav>
     </header>
   )
 }

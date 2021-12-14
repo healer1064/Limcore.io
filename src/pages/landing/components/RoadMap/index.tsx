@@ -160,7 +160,7 @@ export const RoadMap: React.FC = () => {
           <h3 className={Styles.title}>Roadmap</h3>
           <p className={Styles.text}>
             {t('roadmap_tg')}{' '}
-            <a className={Styles.link} target='blank' href='https://t.me/limc_russ'>
+            <a className={Styles.link} target='blank' href='https://t.me/limc_russ' rel='noreferrer noopener'>
               <TelegramIcon className={Styles.icon} /> {t('roadmap_tg_channel')}
             </a>
           </p>

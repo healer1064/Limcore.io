@@ -16,19 +16,19 @@ export const FooterMobile: React.FC = () => {
       <ul className={Styles.list}>
         <NavLink to='/my' exact className={Styles.link} activeClassName={`${Styles.link_active}`}>
           <PurseIcon />
-          <span>{t('footer_mobNavPurse')}</span>
+          {t('footer_mobNavPurse')}
         </NavLink>
         <NavLink to='/broadcasts' exact className={Styles.link} activeClassName={Styles.broadcasts}>
           <BroadcastsIcon />
-          <span>{t('footer_mobNavStreams')}</span>
+          {t('footer_mobNavStreams')}
         </NavLink>
         <NavLink to='/chat' exact className={Styles.link} activeClassName={`${Styles.link_active}`}>
           <ChatIcon />
-          <span>{t('footer_mobNavChat')}</span>
+          {t('footer_mobNavChat')}
         </NavLink>
         <NavLink to='/profile' exact className={Styles.link} activeClassName={`${Styles.link_active}`}>
           <ProfileIcon />
-          <span>{t('footer_mobNavProfile')}</span>
+          {t('footer_mobNavProfile')}
         </NavLink>
       </ul>
     </footer>

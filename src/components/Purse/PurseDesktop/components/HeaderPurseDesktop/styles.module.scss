@@ -35,6 +35,10 @@
   display: flex;
   flex-direction: row;
 
+  &:focus {
+    outline: $outline;
+  }
+
   &__link {
     list-style: none;
     font-family: $main-font;
@@ -54,6 +58,10 @@
 
     &_active, &:active {
       color: $color-2D-blue;
+    }
+
+    &.focus {
+      outline: $outline;
     }
   }
 }
@@ -101,6 +109,9 @@
   border-radius: 50%;
   &:hover {
     border: 1px solid $color-4A-blue;
+  }
+  &:focus {
+    outline: $outline;
   }
 }
 

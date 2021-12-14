@@ -65,7 +65,7 @@
       right: 0;
       display: flex;
       border: none;
-      outline: $outline;
+      outline: none;
       background-color: transparent;
       margin: 15px;
       padding: 5px;
@@ -77,6 +77,9 @@
         path {
           stroke: $color-4A-blue;
         }
+      }
+      &:focus {
+        outline: $outline;
       }
     }
     .popupTitle {

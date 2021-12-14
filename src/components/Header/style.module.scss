@@ -42,6 +42,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0 24px 0 0;
+  scroll-behavior: smooth;
 
   &:last-child {
     margin: 0;
@@ -51,6 +52,10 @@
     color: $primary-color;
     transition: color 0.3s ease;
     cursor: pointer;
+  }
+
+  &:focus {
+    outline: $outline;
   }
 }
 
@@ -119,6 +124,7 @@
     @include semiBoldH4($primary-color);
     text-decoration: none;
     transition: color .3s ease;
+    outline: none;
     
     & > svg > path,
     & > svg > ellipse {
@@ -204,6 +210,10 @@ input[type='radio'] {
 
 .logoLink {
   margin-right: 10px;
+
+  &:focus {
+    outline: $outline;
+  }
 }
 
 .profileLogo {

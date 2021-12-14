@@ -25,6 +25,10 @@ fieldset {
     font-family: $main-font;
     @include mediumP3($color-B4-violet);
   }
+
+  &:focus {
+    outline: $outline;
+  }
 }
 
 .input_error {

@@ -116,20 +116,7 @@ export const Footer: React.FC = () => {
             <a href='mailto:info@limcore.io'>info@limcore.io</a>
           </p>
           <ul className={Styles.footer__social}>
-            {/* <li>
-              <a href='https://twitter.com' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
-                <img src={twitter} className={Styles.footer__socialIcon} />
-              </a>
-            </li> */}
             <li>
-              {/* <a */}
-              {/*  href='https://www.linkedin.com' */}
-              {/*  target='blank' */}
-              {/*  rel='noopener noreferrer' */}
-              {/*  className={Styles.footer__link} */}
-              {/* > */}
-              {/*  <img src={linkedIn} className={Styles.footer__socialIcon} /> */}
-              {/* </a> */}
               <a
                 href='https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg'
                 target='blank'
@@ -139,36 +126,26 @@ export const Footer: React.FC = () => {
                 <img src={youTube} className={Styles.footer__YouTubeIcon} alt='icon' />
               </a>
             </li>
-            {/* <li>
-              <a href='https://vk.com/' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
-                <img src={vk} className={Styles.footer__socialIcon} />
-              </a>
-            </li> */}
             <li>
               <a
                 href='https://instagram.com/limcore.io?utm_medium=copy_link'
                 target='blank'
                 rel='noopener noreferrer'
-                className={Styles.footer__link}
+                className={`${Styles.footer__link} ${Styles.footer__round}`}
               >
                 <img src={insta} className={Styles.footer__socialIcon} alt='icon' />
               </a>
             </li>
             <li>
-              <a href='https://t.me/limc_russ' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
+              <a
+                href='https://t.me/limc_russ'
+                target='blank'
+                rel='noopener noreferrer'
+                className={`${Styles.footer__link} ${Styles.footer__round}`}
+              >
                 <img src={tg} className={Styles.footer__socialIcon} alt='icon' />
               </a>
             </li>
-            {/* <li>
-              <a
-                href='https://ru-ru.facebook.com/'
-                target='blank'
-                rel='noopener noreferrer'
-                className={Styles.footer__link}
-              >
-                <img src={facebook} className={Styles.footer__socialIcon} />
-              </a>
-            </li> */}
           </ul>
           <p className={Styles.footer__copyright}>
             &copy;

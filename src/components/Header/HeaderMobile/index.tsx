@@ -67,7 +67,7 @@ export const HeaderMobile: React.FC = () => {
           {iconCondition ? <Logo /> : <img className={Styles.logo} src={logoIcon} alt='Лого' />}
         </LinkDom>
       )}
-      <div className={Styles.wrap}>
+      <nav className={Styles.wrap}>
         {!isAuth && location.pathname !== '/auth' && (
           <a onClick={() => history.push('/auth')} className={Styles.logoLink} target='blank' rel='noopener noreferrer'>
             <img src={userIcon} alt='Иконка' />
@@ -78,14 +78,14 @@ export const HeaderMobile: React.FC = () => {
             <button className={Styles.profileBtn} type='button'>
               <LinkDom to='/my' className={Styles.profileBtn_link}>
                 <LoginIcon />
-                <span className={Styles.enter}>{t('profile')}</span>
+                {t('profile')}
               </LinkDom>
             </button>
-            <div className={Styles.burger} onClick={openBurger}>
+            <button type='button' className={Styles.burger} onClick={openBurger}>
               <span className={Styles.row} />
               <span className={Styles.row} />
               <span className={Styles.row} />
-            </div>
+            </button>
           </>
         ) : (
           <>
@@ -117,7 +117,7 @@ export const HeaderMobile: React.FC = () => {
 
             <ul className={Styles.social}>
               <li className={Styles.content_item}>
-                <a href='https://t.me/limc_russ' target='blank' rel='noopener noreferrer'>
+                <a href='https://t.me/limc_russ' target='blank' rel='noopener noreferrer' className={Styles.socialLink}>
                   <Telegram className={Styles.content_icon} />
                 </a>
               </li>
@@ -126,19 +126,25 @@ export const HeaderMobile: React.FC = () => {
                   href='https://instagram.com/limcore.io?utm_medium=copy_link'
                   target='blank'
                   rel='noopener noreferrer'
+                  className={Styles.socialLink}
                 >
                   <Instagram className={Styles.content_icon} />
                 </a>
               </li>
               <li className={Styles.content_item}>
-                <a href='https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg' target='blank' rel='noopener noreferrer'>
+                <a
+                  href='https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg'
+                  target='blank'
+                  rel='noopener noreferrer'
+                  className={Styles.socialLink}
+                >
                   <Youtube className={Styles.content_icon} />
                 </a>
               </li>
             </ul>
             <div className={Styles.group}>
               <p className={Styles.email}>
-                <a href='mailto:info@limcore.io' target='blank' rel='noopener noreferrer'>
+                <a href='mailto:info@limcore.io' target='blank' rel='noopener noreferrer' className={Styles.emailLink}>
                   info@limcore.io
                 </a>
               </p>
@@ -146,7 +152,7 @@ export const HeaderMobile: React.FC = () => {
             </div>
           </Container>
         </div>
-      </div>
+      </nav>
     </header>
   )
 }

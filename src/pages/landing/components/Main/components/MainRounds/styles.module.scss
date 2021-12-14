@@ -1,22 +1,10 @@
-// $barProportion: calc(0 / 80000 * 100%);
+@import '../../../../../../scss/typography.scss';
+@import '../../../../../../scss/vars.scss';
 
 .rounds {
   display: flex;
   flex-direction: column;
   margin-bottom: 60px;
-}
-
-.etherscan {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 13px;
-  color: #4a70f8;
-}
-
-.etherscanIcon {
-  margin-top: 0 !important;
-  margin-right: 6px;
 }
 
 .block {
@@ -29,20 +17,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-bottom: 1px solid #dbdfee;
+  border-bottom: 1px solid $color-DB-white;
   padding-bottom: 14px;
   width: 100%;
   max-width: 611px;
-  //margin-bottom: 10px;
 }
 
 .name {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightSemiBold;
   font-size: 32px;
-  line-height: 150%;
-  color: #3a3b3d;
+  line-height: 1.5;
 }
 
 .list {
@@ -59,7 +45,6 @@
 .item {
   display: flex;
   align-items: center;
-  //gap: 8px;
   margin-right: 20px;
 
   &:last-child {
@@ -68,23 +53,21 @@
 }
 
 .designation {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
+  font-family: $main-font;
+  @include main($color-99-gray);
+  font-weight: $fontWeightMedium;
   font-size: 16px;
-  line-height: 160%;
-  color: #99a0ad;
+  line-height: 1.6;
   margin-right: 5px;
   white-space: nowrap;
 }
 
 .value {
-  font-family: Montserrat;
-  font-style: normal;
+  font-family: $main-font;
+  @include main($color-3A-black);
   font-weight: 600;
   font-size: 16px;
-  line-height: 160%;
-  color: #3a3b3d;
+  line-height: 1.6;
   white-space: nowrap;
 }
 
@@ -105,18 +88,15 @@
   left: 0;
   background: #4a70f8;
   border-radius: 6px 0 0 6px;
-  // width: $barProportion;
   height: 100%;
 }
 
 .count {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-86-grey);
+  font-weight: $fontWeightSemiBold;
   font-size: 14px;
-  line-height: 150%;
-  color: #868da7;
-  // z-index: 3;
+  line-height: 1.5;
 }
 
 .buttons {
@@ -131,12 +111,11 @@
   align-items: center;
 
   span {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 500;
+    font-family: $main-font;
+    @include main($color-67-black);
+    font-weight: $fontWeightMedium;
     font-size: 14px;
-    line-height: 160%;
-    color: #67686c;
+    line-height: 1.6;
     margin-top: 6px;
   }
 }
@@ -144,43 +123,35 @@
 .second {
   background: none;
   border-radius: 14px;
-  border: 1px solid #4a70f8;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 22px;
+  border: 1px solid $primary-color;
+  font-family: $main-font;
+  @include semiBoldH4($color-4A-blue);
   text-align: center;
-  color: #4a70f8;
   padding: 14px 0;
   width: 285px;
   cursor: pointer;
   transition: background 0.3s ease;
 
   &:hover {
-    background: #e8f1ff;
+    background: $color-E8-white;
     transition: background 0.3s ease;
   }
 }
 
 .secondLink {
-  background: #4a70f8;
-  border-radius: 14px;
-  border: 1px solid #4a70f8;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 22px;
+  background: $primary-color;
+  border-radius: $border-radius;
+  border: 1px solid $primary-color;
+  font-family: $main-font;
+  @include semiBoldH4(white);
   text-align: center;
-  color: white;
   padding: 14px 0;
   width: 285px;
   cursor: pointer;
   transition: background 0.3s ease;
 
   &:hover {
-    background: #3159e9;
+    background: $color-31-blue;
     transition: background 0.3s ease;
   }
 }
@@ -207,42 +178,31 @@
   &:not(:first-child) {
     margin-left: 8px;
   }
-
-  //span {
-  //  font-family: Montserrat;
-  //  font-style: normal;
-  //  font-weight: 600;
-  //  font-size: 16px;
-  //  line-height: 150%;
-  //  color: #4f535a;
-  //}
 }
 
 .subtitle {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-4F-black);
+  font-weight: $fontWeightSemiBold;
   font-size: 16px;
-  line-height: 150%;
-  color: #4f535a;
+  line-height: 1.5;
 }
 
 .row {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  background: #dcdfee;
+  background: $color-DC-white;
   border-radius: 6px;
   padding: 4px 10px;
   margin-top: 10px;
 
   span {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 600;
+    font-family: $main-font;
+    @include main($color-86-grey);
+    font-weight: $fontWeightSemiBold;
     font-size: 14px;
-    line-height: 150%;
-    color: #868da7;
+    line-height: 1.5;
   }
 }
 
@@ -261,9 +221,9 @@
   display: flex;
   flex: 1;
   height: 30px;
-  border-top: 4px solid #4a70f8;
-  border-left: 2px solid #4a70f8;
-  border-right: 2px solid #4a70f8;
+  border-top: 4px solid $primary-color;
+  border-left: 2px solid $primary-color;
+  border-right: 2px solid $primary-color;
 
   &:last-child {
     flex: 3;
@@ -285,12 +245,11 @@
   }
 
   span {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 500;
+    font-family: $main-font;
+    @include main($color-4F-black);
+    font-weight: $fontWeightMedium;
     font-size: 14px;
-    line-height: 150%;
-    color: #4f535a;
+    line-height: 1.5;
   }
 }
 
@@ -300,15 +259,14 @@
 
 .info {
   display: flex;
-  //gap: 42px;
-  border: 1px solid #dcdfee;
+  border: 1px solid $color-DC-white;
   border-radius: 6px;
   padding: 20px 30px;
   margin-top: 30px;
 }
 
 .description {
-  color: #4c4c4c;
+  color: $color-4C-white;
   width: 100%;
   max-width: 450px;
   margin-right: 42px;
@@ -318,12 +276,11 @@
   }
 }
 .temporarily {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
+  font-family: $main-font;
+  @include main($color-F2-red);
+  font-weight: $fontWeightMedium;
   font-size: 20px;
-  line-height: 150%;
-  color: #f24949;
+  line-height: 1.5;
 }
 
 .emptyContainers {
@@ -334,25 +291,14 @@
   &:hover {
     cursor: pointer;
   }
-}
 
-.etherscanLink {
-  display: flex;
-  box-sizing: border-box;
-  margin: 0;
-  margin-top: 10px;
-  padding: 0;
-  text-decoration: none;
-  align-items: center;
-
-  &:hover {
-    cursor: pointer;
-    opacity: 0.7;
+  &:focus {
+    outline: $outline;
   }
 }
 
 .buyLimc {
-  color: #fff;
+  color: $white;
   text-decoration: none;
 }
 
@@ -361,6 +307,10 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0 0 0 8px;
+
+  &:focus {
+    outline: $outline;
+  }
 }
 
 @media all and (max-width: 768px) {
@@ -384,8 +334,7 @@
     flex-wrap: wrap;
     width: 100%;
     padding: 0 0 15px 0;
-    //gap: 6px;
-    border-bottom: 1px solid #dbdfee;
+    border-bottom: 1px solid $color-DC-white;
   }
 
   .item {
@@ -437,13 +386,8 @@
     grid-area: value;
   }
 
-  // .progress {
-  //   max-width: 335px;
-  // }
-
   .info {
     flex-wrap: wrap;
-    //gap: 10px;
     padding: 14px;
   }
 
@@ -479,7 +423,7 @@
 
   .cover {
     flex-direction: column;
-    gap: 0px;
+    gap: 0;
   }
 
   .shell {
@@ -488,12 +432,11 @@
 
   .date__mobile {
     display: flex;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 500;
+    font-family: $main-font;
+    @include main($color-4F-black);
+    font-weight: $fontWeightMedium;
     font-size: 14px;
     line-height: 1.5;
-    color: #4f535a;
     box-sizing: border-box;
     margin: 0 0 10px 10px;
     padding: 0;
@@ -529,8 +472,8 @@
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    border-left: 4px solid #4a70f8;
-    border-bottom: 2px solid #4a70f8;
+    border-left: 4px solid $primary-color;
+    border-bottom: 2px solid $primary-color;
 
     &_first {
       display: flex;
@@ -539,17 +482,17 @@
       box-sizing: border-box;
       width: 100%;
       height: 185px;
-      border-top: 2px solid #4a70f8;
-      border-left: 4px solid #4a70f8;
-      border-bottom: 2px solid #4a70f8;
+      border-top: 2px solid $primary-color;
+      border-left: 4px solid $primary-color;
+      border-bottom: 2px solid $primary-color;
     }
   }
 }
 
 .tempDeclaration {
-  background: #ffffff;
-  box-shadow: 0px 4px 25px rgba(74, 112, 248, 0.08);
-  border-radius: 14px;
+  background: $white;
+  box-shadow: 0 4px 25px rgba(74, 112, 248, 0.08);
+  border-radius: $border-radius;
   padding: 29px;
   display: flex;
   flex-direction: column;
@@ -564,23 +507,20 @@
     }
   }
   &__title {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 600;
+    font-family: $main-font;
+    @include main($color-3A-black);
+    font-weight: $fontWeightSemiBold;
     font-size: 18px;
-    line-height: 150%;
-    color: #3a3b3d;
-    margin: 0;
-    margin-bottom: 5px;
+    line-height: 1.5;
+    margin: 0 0 5px;
   }
   &__paragraph {
     margin: 0;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 500;
+    font-family: $main-font;
+    @include main($color-4C-white);
+    font-weight: $fontWeightMedium;
     font-size: 16px;
-    line-height: 150%;
-    color: #4c4c4c;
+    line-height: 1.5;
     margin-right: 11px;
   }
   &__icon {
@@ -589,16 +529,15 @@
     margin-right: 4px;
   }
   &__link {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 500;
+    font-family: $main-font;
+    @include main($primary-color);
+    font-weight: $fontWeightMedium;
     font-size: 14px;
     line-height: 100%;
-    color: #4a70f8;
     text-decoration: none;
     &:hover {
       cursor: pointer;
-      opacity: 0.8;
+      opacity: .8;
     }
   }
 }
@@ -610,39 +549,37 @@
   flex-direction: column;
 
   span {
-    font-style: normal;
-    font-weight: 500;
+    @include main($color-67-black);
+    font-weight: $fontWeightMedium;
     font-size: 14px;
-    line-height: 160%;
-    color: #67686c;
+    line-height: 1.6;
     margin-top: 6px;
   }
 }
 
 .buy {
   padding: 14px 0;
-  border: 1px solid #4a70f8;
-  border-radius: 14px;
-  font-family: 'Montserrat';
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: 600;
-  font-style: normal;
+  border: 1px solid $primary-color;
+  border-radius: $border-radius;
+  @include semiBoldH4($white);
   text-align: center;
-  color: #ffffff;
   width: 100%;
   max-width: 285px;
-  background: #4a70f8;
+  background: $primary-color;
   transition: background 0.2s ease;
   text-decoration: none;
 
   &:hover {
-    background: #3257dd;
+    background: $color-32-blue;
     transition: background 0.2s ease;
     cursor: pointer;
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: .5;
+  }
+
+  &:focus {
+    outline: $outline;
   }
 }
