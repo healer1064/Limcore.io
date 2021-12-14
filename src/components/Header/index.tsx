@@ -26,12 +26,19 @@ export const Header: React.FC = () => {
   const isAuth = useAppSelector((state) => state.auth.isAuth)
   const isBuyLimcClick = useAppSelector((state) => state.auth.isBuyLimcClick)
 
-  const tempLink = [
-    { id: 1, value: t('nav_about'), link: 'limcore', spy: true, smooth: true },
-    { id: 2, value: t('nav_roadmap'), link: 'roadmap', spy: true, smooth: true },
-    { id: 3, value: t('nav_team'), link: 'team', spy: true, smooth: true },
-    // { id: 4, value: 'Экосистема', link: 'ecosystem', spy: true, smooth: true },
-    { id: 5, value: t('nav_qa'), link: 'questions', spy: true, smooth: true },
+  // const tempLink = [
+  //   { id: 1, value: t('nav_about'), link: 'limcore', spy: true, smooth: true },
+  //   { id: 2, value: t('nav_roadmap'), link: 'roadmap', spy: true, smooth: true },
+  //   { id: 3, value: t('nav_team'), link: 'team', spy: true, smooth: true },
+  //   { id: 4, value: 'Экосистема', link: 'ecosystem', spy: true, smooth: true },
+  // { id: 5, value: t('nav_qa'), link: 'questions', spy: true, smooth: true },
+  // ]
+
+  const links = [
+    { id: 1, value: t('nav_about'), link: 'limcore' },
+    { id: 2, value: t('nav_roadmap'), link: 'roadmap' },
+    { id: 3, value: t('nav_team'), link: 'team' },
+    { id: 5, value: t('nav_qa'), link: 'questions' },
   ]
 
   useEffect(() => {
@@ -62,6 +69,7 @@ export const Header: React.FC = () => {
       setIsLoginModalVisible(false)
     }
   }, [isAuth])
+
   return (
     <header className={Styles.header}>
       <nav className={Styles.wrapper}>
@@ -69,11 +77,11 @@ export const Header: React.FC = () => {
           <img src={logoIcon} alt='Лого' />
         </a>
         <ul className={Styles.list}>
-          {tempLink?.map((item) => {
+          {links.map((item) => {
             return (
-              <Link className={Styles.link} key={item.id} to={item.link} spy={item.spy} smooth={item.smooth}>
+              <a className={Styles.link} key={item.id} href={`#${item.link}`}>
                 {item.value}
-              </Link>
+              </a>
             )
           })}
         </ul>
