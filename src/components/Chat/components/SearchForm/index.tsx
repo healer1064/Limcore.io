@@ -1,30 +1,53 @@
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState, useEffect } from 'react'
 import styles from './styles.module.scss'
 import { useTranslation } from 'react-i18next'
 import closeButton from '@icons/greyClose.svg'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setIsSearched } from '../../../Chat/redux/chatSlice'
+import { setFilteredDialogues } from '../../../Chat/redux/chatSlice'
 
 export const SearchForm = ({ desktop }) => {
   const [t] = useTranslation()
-
-  const searched = useAppSelector((state) => state.chat.searchedValue)
-  const [isButtonVisible, setIsButtonVisible] = useState('') // '' | 'close' | 'reset'
   const dispatch = useAppDispatch()
 
-  const handleChange = (e) => {
-    dispatch(setIsSearched(e.target.value))
-    setIsButtonVisible('close')
-  }
+  // const searched = useAppSelector((state) => state.chat.searchedValue)
+  const dialogues = useAppSelector((state) => state.chat.dialogues)
+
+  const [isButtonVisible, setIsButtonVisible] = useState('') // '' | 'close' | 'reset'
+  const [searched, setSearched] = useState('')
 
   const handleResetButton = () => {
     setIsButtonVisible('reset')
   }
 
   const handleCloseSearch = () => {
-    dispatch(setIsSearched(''))
+    setSearched('')
     setIsButtonVisible('')
   }
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setIsButtonVisible('close')
+    setSearched(event.target.value)
+  }
+
+  useEffect(() => {
+    if (searched === '') {
+      dispatch(setFilteredDialogues(dialogues))
+    }
+    const filtered = dialogues.filter((dialogue) => {
+      if (dialogue.other_user) {
+        if (dialogue.other_user.first_name) {
+          return dialogue.other_user.first_name.toLowerCase().includes(searched)
+        } else if (dialogue.other_user.last_name) {
+          return dialogue.other_user.last_name.toLowerCase().includes(searched)
+        }
+      } else {
+        if (dialogue.name) {
+          return dialogue.name.toLowerCase().includes(searched)
+        }
+      }
+    })
+    dispatch(setFilteredDialogues(filtered))
+  }, [dialogues, searched])
 
   return (
     <>
@@ -33,7 +56,7 @@ export const SearchForm = ({ desktop }) => {
           type='search'
           className={styles.searchInput}
           placeholder={t('chat_form_placeholder')}
-          onChange={(e) => handleChange(e)}
+          onChange={handleInputChange}
           onFocus={handleResetButton}
           value={searched}
         />
