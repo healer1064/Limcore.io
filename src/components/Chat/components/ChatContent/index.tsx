@@ -41,9 +41,6 @@ export const ChatContent = () => {
   const handleParticipantsListClose = () => setOpenListClassname(listStyles.list_invisible)
 
   // Открытие рейтинга по лимкам
-  // const [isPopupOpened, setIsPopupOpened] = useState(false)
-  // const openRating = () => setIsPopupOpened(true)
-  // const closeRating = () => setIsPopupOpened(false)
   const [raitingClassName, setRaitingClassName] = useState(raitingStyles.raitingList_invisible)
   const openRating = () => setRaitingClassName(raitingStyles.raitingList)
   const closeRating = () => setRaitingClassName(raitingStyles.raitingList_invisible)
@@ -53,7 +50,7 @@ export const ChatContent = () => {
     dispatch(setCurrentDialogueMember({}))
     dispatch(setCurrentMessages([]))
     dispatch(setContent(''))
-    getGroupsList(1)
+    getGroupsList(1) // TODO - если групп будет больше 50 будет пагинация
   }
 
   // Подгрузка сообщений по скроллу
