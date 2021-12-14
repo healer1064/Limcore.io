@@ -11,7 +11,6 @@ export interface ISendInterface {
 export interface IMemberInterface {
   join: string
   role: number
-  isOnline: boolean
   user: IUserInterface
 }
 
