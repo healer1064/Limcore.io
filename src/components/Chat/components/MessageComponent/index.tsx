@@ -27,7 +27,7 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, openRating }:
 
   return (
     <>
-      <div className={styles.date}>{date}</div>
+      {date && <div className={styles.date}>{date}</div>}
       <div className={styles.member}>
         <span className={styles.member_name}>{isMyMsg ? '' : userName}</span>
         {isMyMsg ? (

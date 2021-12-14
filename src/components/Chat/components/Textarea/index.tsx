@@ -51,6 +51,12 @@ export const Textarea = () => {
   }
 
   useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus()
+    }
+  }, [inputRef])
+
+  useEffect(() => {
     if (file) {
       console.log(file)
     }
