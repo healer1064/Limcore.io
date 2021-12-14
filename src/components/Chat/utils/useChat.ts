@@ -37,6 +37,7 @@ export const useChat = () => {
   const token = tokenObj.access
 
   const currentMessages = useAppSelector((state) => state.chat.currentMessages)
+  const currentSlug = useAppSelector((state) => state.chat.currentSlug)
 
   useEffect(() => {
     if (!socket) {
@@ -73,23 +74,26 @@ export const useChat = () => {
       }
 
       if (data.command === 1) {
-        const arr = []
-        arr.push(data.message)
-        dispatch(setCurrentMessages([...currentMessages, ...arr]))
-
+        if (currentSlug === 'general_chat') {
+          const arr = []
+          arr.push(data.message)
+          dispatch(setCurrentMessages([...currentMessages, ...arr]))
+        }
         // TODO захардкодил страницу с группами нужно поправить
         getGroupsList(1)
       }
 
       if (data.command === 3) {
-        const arr = []
-        arr.push(data.message)
-
-        dispatch(setCurrentMessages([...currentMessages, ...arr]))
+        if (currentSlug === data.group.slug) {
+          const arr = []
+          arr.push(data.message)
+          dispatch(setCurrentMessages([...currentMessages, ...arr]))
+        }
+        getGroupsList(1)
       }
 
       if (data.command === 4) {
-        dispatch(setCurrentMessages([...data.result.reverse(), ...currentMessages]))
+        dispatch(setCurrentMessages([...data.result.reverse()]))
         dispatch(setCurrentPage(data.page))
         dispatch(setWholePages(data.num_pages))
       }

@@ -79,6 +79,7 @@
     @include main($color-B4-violet);
     font-weight: $fontWeightMedium;
   }
+  &:focus {font-size: 16px;}
 }
 
 .sendIcon {

@@ -6,7 +6,7 @@ import { ParticipantsList } from '../ParticipantsList'
 import arrow from '@icons/arrow-left-blue.svg'
 import { Textarea } from '../../../../components/Chat/components/Textarea'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setContent, setCurrentDialogueMember, setCurrentMessages } from '../../redux/chatSlice'
+import { setContent, setCurrentDialogueMember, setCurrentMessages, setCurrentSlug } from '../../redux/chatSlice'
 import limcoreIcon from '@icons/limcore.svg'
 import { getMonthNameWithDate } from '@components/Chat/utils/funcs'
 import { IDialogueInterface, IMessageInterface } from '@components/Chat/utils/types'
@@ -49,6 +49,7 @@ export const ChatContent = () => {
     dispatch(setCurrentDialogueMember({}))
     dispatch(setCurrentMessages([]))
     dispatch(setContent(''))
+    dispatch(setCurrentSlug(''))
     getGroupsList(1) // TODO - если групп будет больше 50 будет пагинация
   }
 
@@ -85,8 +86,7 @@ export const ChatContent = () => {
       setCurrentPosition(null)
     } else if (messagesEndRef.current && autoScroll) {
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight - messagesEndRef.current.clientHeight
-
-      if (currentMessages && currentMessages[currentMessages.length - 1]?.id && currentDialogue?.unread_count > 0) {
+      if (currentMessages && currentMessages[currentMessages.length - 1]?.id) {
         sendLastReadedMessage(currentMessages[currentMessages.length - 1].id, slug)
       }
     }
