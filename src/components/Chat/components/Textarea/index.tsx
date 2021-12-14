@@ -3,13 +3,23 @@ import styles from './styles.module.scss'
 import clip from '@icons/clip.svg'
 import send from '@icons/sendIcon.svg'
 import { useChat } from '@components/Chat/utils/useChat'
+import { useAppSelector } from '@app/redux/hooks'
 
-export const Textarea = ({ slug }) => {
-  const { sendGroupMessage } = useChat()
+export const Textarea = () => {
+  const { sendGroupMessage, sendDialogueMessage } = useChat()
 
   const [isButtonVisible, setIsButtonVisible] = useState(false)
   const [inputValue, setInputValue] = useState('')
   const inputRef = useRef(null)
+
+  const _slug = useAppSelector((state) => state.chat.currentSlug)
+  let slug = _slug
+  const IS_GENERAL_CHAT = slug === 'general_chat'
+
+  const currentDialogueMember = useAppSelector((state) => state.chat.currentDialogueMember)
+  if (currentDialogueMember.id) {
+    slug = String(currentDialogueMember.id)
+  }
 
   const handleSendIconVisibility = (e) => {
     e.target.value.length < 1 ? setIsButtonVisible(false) : setIsButtonVisible(true)
@@ -29,9 +39,8 @@ export const Textarea = ({ slug }) => {
   }
 
   const handleSubmit = () => {
+    IS_GENERAL_CHAT ? sendGroupMessage(slug, inputValue) : sendDialogueMessage(slug, inputValue)
     setInputValue('')
-    sendGroupMessage(slug, inputValue)
-    // getGroupMessages(slug, 1)
     inputRef.current.style.height = '40px'
   }
 

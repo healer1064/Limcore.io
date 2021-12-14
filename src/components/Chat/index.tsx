@@ -20,7 +20,7 @@ export const Chat = ({ handleChatClose }) => {
 
   const desktop = width >= 769
 
-  const dialogues = useAppSelector((state) => state.chat.dialogues)
+  const filteredDialogues = useAppSelector((state) => state.chat.filteredDialogues)
   const content = useAppSelector((state) => state.chat.visibleContent)
 
   const onJoin = () => {
@@ -67,7 +67,7 @@ export const Chat = ({ handleChatClose }) => {
             </div>
             <SearchForm desktop={desktop} />
             <section className={styles.messageSection}>
-              {dialogues?.map((dialogue: IDialogueInterface, i) => (
+              {filteredDialogues?.map((dialogue: IDialogueInterface, i) => (
                 <Dialogue key={i} data={dialogue} />
               ))}
             </section>
@@ -77,7 +77,7 @@ export const Chat = ({ handleChatClose }) => {
         <div className={styles.chat}>
           <SearchForm desktop={desktop} />
           <article className={styles.messageSection}>
-            {dialogues?.map((dialogue: IDialogueInterface, i) => (
+            {filteredDialogues?.map((dialogue: IDialogueInterface, i) => (
               <Dialogue key={i} data={dialogue} />
             ))}
           </article>

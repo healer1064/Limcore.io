@@ -1,4 +1,6 @@
 /* eslint-disable camelcase */
+export type TVisibleContent = '' | 'loading' | 'error' | 'content' | 'no-content'
+
 export interface ISendInterface {
   command: number
   group?: string
@@ -41,7 +43,7 @@ export interface IUserInterface {
   chat_name?: string
   email: string
   first_name?: string
-  gender?: any // TODO
+  gender?: string
   id: number
   last_name?: string
   middle_name?: string
