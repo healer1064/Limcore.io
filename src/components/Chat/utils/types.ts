@@ -48,4 +48,5 @@ export interface IUserInterface {
   last_name?: string
   middle_name?: string
   phone: string
+  status: string
 }

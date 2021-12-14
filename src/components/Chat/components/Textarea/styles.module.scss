@@ -11,6 +11,37 @@
   width: 100%;
 }
 
+.file {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 50%;
+  max-height: 35px;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  background-color: #F0F5FD;
+
+  &_clip {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+  }
+
+  &_title {
+    margin-right: auto;
+
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;  
+  }
+
+  &_delete {
+    width: 20px;
+    height: 20px;
+  }
+}
+
 .clip {
   display: flex;
   box-sizing: border-box;

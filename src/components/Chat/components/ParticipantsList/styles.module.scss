@@ -17,15 +17,24 @@
   background-color: $white;
   transition: opacity 200ms ease, visibility 200ms ease;
 
-  &_invisible {
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 200ms ease, visibility 200ms ease;
-    position: absolute;
-  }
+//   &_invisible {
+//     visibility: hidden;
+//     opacity: 0;
+//     transition: opacity 200ms ease, visibility 200ms ease;
+//     position: absolute;
+//   }
+// }
+
+.list {
+  margin-top: -20px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .listHeader {
+  position: fixed;
+  z-index: 1;
+
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -89,8 +98,8 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 0;
-  margin: 20px 20px 0;
+  padding: 80px 0 20px;
+  margin: 0 20px;
   overflow-y: auto;
   overflow-x: hidden;
 }

@@ -30,8 +30,20 @@ export const chatSlice = createSlice({
     setGenChatMembers: (state, { payload }) => {
       state.genChatMembers = payload
     },
+    setGenChatMembersStatus: (state, { payload }) => {
+      const userIndex = state.genChatMembers.findIndex((user) => {
+        return user.user.id === payload.id
+      })
+      state.genChatMembers[userIndex].user.status = payload.status
+    },
     setDialogues: (state, { payload }) => {
       state.dialogues = payload
+    },
+    setDialogueStatus: (state, { payload }) => {
+      const currentDialogue = state.dialogues.findIndex((dialogue) => {
+        return dialogue.slug !== 'general_chat' && dialogue.other_user.id === payload.id
+      })
+      state.dialogues[currentDialogue].other_user.status = payload.status
     },
     setFilteredDialogues: (state, { payload }) => {
       state.filteredDialogues = payload
@@ -66,6 +78,8 @@ export const {
   setDialogueUnreadedCount,
   setContent,
   setGenChatMembers,
+  setGenChatMembersStatus,
+  setDialogueStatus,
   setCurrentPage,
   setWholePages,
   setCurrentSlug,

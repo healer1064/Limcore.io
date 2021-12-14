@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styles from './styles.module.scss'
 import clip from '@icons/clip.svg'
 import send from '@icons/sendIcon.svg'
+import close from '@icons/close.svg'
 import { useChat } from '@components/Chat/utils/useChat'
 import { useAppSelector } from '@app/redux/hooks'
 
@@ -11,6 +12,7 @@ export const Textarea = () => {
   const [isButtonVisible, setIsButtonVisible] = useState(false)
   const [inputValue, setInputValue] = useState('')
   const inputRef = useRef(null)
+  const [file, setFile] = useState(null)
 
   const _slug = useAppSelector((state) => state.chat.currentSlug)
   let slug = _slug
@@ -43,6 +45,16 @@ export const Textarea = () => {
     setInputValue('')
     inputRef.current.style.height = '40px'
   }
+
+  const onFileClick = () => {
+    console.log('onFileClick')
+  }
+
+  useEffect(() => {
+    if (file) {
+      console.log(file)
+    }
+  }, [file])
 
   return (
     <div className={styles.inputContainer}>

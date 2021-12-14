@@ -5,6 +5,8 @@ import {
   setDialogues,
   setDialogueUnreadedCount,
   setGenChatMembers,
+  setGenChatMembersStatus,
+  setDialogueStatus,
   setCurrentPage,
   setWholePages,
   setContent,
@@ -21,6 +23,8 @@ const commands = {
   sendLastReadedMessage: 9,
   getUnreadedCount: 10,
   checkDialogueExistence: 11,
+  userCame: 12,
+  userLeft: 13,
   // еще есть IS_TYPING
 }
 
@@ -37,7 +41,6 @@ export const useChat = () => {
   useEffect(() => {
     if (!socket) {
       socket = new WebSocket(`ws://217.28.228.152:9005/ws/chat/?token=${token}`)
-      console.log(socket)
 
       socket.onopen = () => {
         dispatch(setContent(''))
@@ -47,7 +50,7 @@ export const useChat = () => {
         dispatch(setContent('error'))
       }
 
-      socket.onerror = () => {
+      socket.onclose = () => {
         console.log('...websocket is closing')
       }
     }
@@ -64,7 +67,7 @@ export const useChat = () => {
       } else {
         if (data.groups) {
           const generalChat = data.groups.find((group: IDialogueInterface) => group.slug === 'general_chat')
-          dispatch(setGenChatMembers(generalChat.members))
+          dispatch(setGenChatMembers(generalChat?.members))
           dispatch(setDialogues(data.groups))
         }
       }
@@ -101,6 +104,18 @@ export const useChat = () => {
 
       if (data.command === 11) {
         data.result.length === 0 ? dispatch(setCurrentMessages([])) : dispatch(setCurrentMessages(data.result))
+      }
+
+      if (data.command === 12) {
+        const dataToDispatch = { id: data.user_pk, status: '1' }
+        dispatch(setDialogueStatus(dataToDispatch))
+        dispatch(setGenChatMembersStatus(dataToDispatch))
+      }
+
+      if (data.command === 13) {
+        const dataToDispatch = { id: data.user_pk, status: '0' }
+        dispatch(setDialogueStatus(dataToDispatch))
+        dispatch(setGenChatMembersStatus(dataToDispatch))
       }
     }
   }

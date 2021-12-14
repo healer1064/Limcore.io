@@ -10,23 +10,16 @@
 }
 
 .member {
-  // display: grid;
   position: relative;
   display: flex;
   box-sizing: border-box;
   padding: 0;
   margin: 20px;
-  grid-template-columns: repeat(2, minmax(min-content, max-content));
-  grid-template-rows: repeat(2, minmax(min-content, max-content));
-  column-gap: 5px;
-  grid-template-areas:
-  'foto raiting'
-  'foto message';
 
   &_name {
     position: absolute;
     top: -20px;
-    left: 61px;
+    left: 141px;
     z-index: 1;
     @include subtitle-13px($color-99-gray);
   }
@@ -44,13 +37,25 @@
   object-position: center;
 }
 
+.status {
+  position: absolute;
+  left: 24px;
+  top: 27px;
+}
+
 .raiting {
+  position: absolute;
+  top: -24px;
+  left: 47px;
+  z-index: 1;
+
   grid-area: raiting;
   display: flex;
   flex-direction: row;
+  align-items: center;
   box-sizing: border-box;
-  padding: 9px;
   margin: 0;
+  padding: 6px;
   max-width: 70px;
   background-color: $white;
   border-radius: $border-radius;
