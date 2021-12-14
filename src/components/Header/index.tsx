@@ -64,7 +64,7 @@ export const Header: React.FC = () => {
   }, [isAuth])
   return (
     <header className={Styles.header}>
-      <div className={Styles.wrapper}>
+      <nav className={Styles.wrapper}>
         <a href='/' className={Styles.logoLink} target='blank' rel='noopener noreferrer'>
           <img src={logoIcon} alt='Лого' />
         </a>
@@ -92,13 +92,13 @@ export const Header: React.FC = () => {
             <button className={Styles.profileBtn} type='button'>
               <LinkDom to='/my' className={Styles.profileBtn_link}>
                 <LoginIcon />
-                <span className={Styles.enter}>{t('profile')}</span>
+                {t('profile')}
               </LinkDom>
             </button>
           ) : (
             <button className={Styles.loginBtn} onClick={handleLoginModalOpen} type='button'>
               <LoginIcon />
-              <span className={Styles.enter}>{t('login')}</span>
+              {t('login')}
             </button>
           )}
           {/* {!isAuth && (
@@ -110,7 +110,7 @@ export const Header: React.FC = () => {
 
           <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />
         </div>
-      </div>
+      </nav>
     </header>
   )
 }

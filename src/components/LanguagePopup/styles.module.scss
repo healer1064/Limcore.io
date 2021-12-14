@@ -23,15 +23,17 @@
   height: 100%;
   transition: all 0.3s ease;
   
-  &:hover,
-  &:focus {
+  &:hover {
     cursor: pointer;
-    outline: $outline;
     .langTitle,
     path {
       color: $primary-color;
       stroke: $primary-color;
     }
+  }
+
+  &:focus {
+    outline: $outline;
   }
   
   &.active {

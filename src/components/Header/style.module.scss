@@ -31,10 +31,6 @@
   align-items: center;
   padding: 0;
   margin: 0;
-
-  &:focus {
-    outline: $outline;
-  }
 }
 
 .link {
@@ -127,6 +123,7 @@
     @include semiBoldH4($primary-color);
     text-decoration: none;
     transition: color .3s ease;
+    outline: none;
     
     & > svg > path,
     & > svg > ellipse {

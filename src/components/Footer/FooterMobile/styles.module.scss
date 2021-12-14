@@ -32,25 +32,24 @@
   align-items: center;
   text-decoration: none;
   height: 45px;
+  @include main($color-99-gray);
+  font-weight: $fontWeightSemiBold;
+  @include p5;
+  text-align: center;
+  margin-top: 3px;
 
   img {
     width: 30px;
     height: 30px;
   }
 
-  span {
-    @include main($color-99-gray);
-    font-weight: $fontWeightSemiBold;
-    @include p5;
-    text-align: center;
-    margin-top: 3px;
+  &:focus {
+    outline: $outline;
   }
 }
 
 .link_active {
-  span {
-    color: $primary-color;
-  }
+  color: $primary-color;
 
   svg {
     path {
