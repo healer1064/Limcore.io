@@ -1,46 +1,61 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from '@components/Chat/components/ChatContent/styles.module.scss'
-import listStyles from '@components/Chat/components/ParticipantsList/styles.module.scss'
 import { MessageComponent } from '../MessageComponent'
 import { ParticipantsList } from '../ParticipantsList'
 import arrow from '@icons/arrow-left-blue.svg'
-import { Textarea } from '@components/Chat/components/Textarea'
+import { Textarea } from '../../../../components/Chat/components/Textarea'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setContent, setCurrentMessages } from '../../redux/chatSlice'
+import { setContent, setCurrentDialogueMember, setCurrentMessages } from '../../redux/chatSlice'
 import limcoreIcon from '@icons/limcore.svg'
 import { getMonthNameWithDate } from '@components/Chat/utils/funcs'
-import { IMessageInterface } from '@components/Chat/utils/types'
+import { IDialogueInterface, IMessageInterface } from '@components/Chat/utils/types'
 import { useChat } from '@components/Chat/utils/useChat'
 import profileIcon from '@icons/profileicon.svg'
+import { RaitingList } from '../RaitingList'
+import raitingStyles from '../RaitingList/styles.module.scss'
 
 export const ChatContent = () => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const messagesEndRef = useRef(null)
-  const { getGroupMessages, sendLastReadedMessage } = useChat()
+  const { getGroupMessages, sendLastReadedMessage, getGroupsList } = useChat()
 
   const slug = useAppSelector((state) => state.chat.currentSlug)
   const userId = useAppSelector((state) => state.user.userData?.id)
   const currentMessages = useAppSelector((state) => state.chat.currentMessages)
+
   const participants = useAppSelector((state) => state.chat.genChatMembers)
-  const currentGenMessagesPage = useAppSelector((state) => state.chat.currentGenMessagesPage)
-  const wholeGenMessagesPages = useAppSelector((state) => state.chat.wholeGenMessagesPages)
+  const currentPage = useAppSelector((state) => state.chat.currentPage)
+  const wholePages = useAppSelector((state) => state.chat.wholePages)
+  const dialogues = useAppSelector((state) => state.chat.dialogues)
+  const currentDialogueMember = useAppSelector((state) => state.chat.currentDialogueMember)
 
   let dateBuffer: string = null
   const IS_GENERAL_CHAT = slug === 'general_chat'
 
-  const [currentPosition, setCurrentPosition] = useState(null)
-  const [autoScroll, setAutoScroll] = useState(true)
+  // Открытие списка участников общего чата
+  const [isListOpened, setIsListOpened] = useState(false)
+  const openList = () => setIsListOpened(true)
+  const closeList = () => setIsListOpened(false)
 
-  const [openListClassname, setOpenListClassname] = useState(listStyles.list_invisible)
-  const handleParticipantsListOpen = () => setOpenListClassname(listStyles.list)
-  const handleParticipantsListClose = () => setOpenListClassname(listStyles.list_invisible)
+  // Открытие рейтинга по лимкам
+  const [raitingClassName, setRaitingClassName] = useState(raitingStyles.raitingList_invisible)
+  const openRating = () => setRaitingClassName(raitingStyles.raitingList)
+  const closeRating = () => setRaitingClassName(raitingStyles.raitingList_invisible)
 
+  // Закрыть чат
   const onClose = () => {
+    dispatch(setCurrentDialogueMember({}))
     dispatch(setCurrentMessages([]))
     dispatch(setContent(''))
+    getGroupsList(1) // TODO - если групп будет больше 50 будет пагинация
   }
+
+  // Подгрузка сообщений по скроллу
+  const [currentPosition, setCurrentPosition] = useState(null)
+  const [autoScroll, setAutoScroll] = useState(true)
+  const currentDialogue = dialogues.find((dialogue: IDialogueInterface) => dialogue.slug === slug)
 
   const onGetAnswers = () => {
     if (
@@ -52,21 +67,26 @@ export const ChatContent = () => {
       setAutoScroll(true)
     }
 
-    if (messagesEndRef.current.scrollTop === 0 && currentGenMessagesPage !== wholeGenMessagesPages) {
+    if (messagesEndRef.current.scrollTop === 0 && currentPage !== wholePages) {
       setCurrentPosition(messagesEndRef.current.scrollHeight)
-      getGroupMessages(slug, currentGenMessagesPage + 1)
+      getGroupMessages(slug, currentPage + 1)
     }
   }
 
+  // Если чат 1 на 1, то вписываю в стейт инфу о собеседнике
+  if (!IS_GENERAL_CHAT && currentDialogue) {
+    dispatch(setCurrentDialogueMember(currentDialogue.other_user))
+  }
+
+  // Логика скролла
   useEffect(() => {
     if (currentPosition && !autoScroll) {
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight - currentPosition
       setCurrentPosition(null)
     } else if (messagesEndRef.current && autoScroll) {
-      console.log(currentMessages)
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight - messagesEndRef.current.clientHeight
 
-      if (currentMessages[currentMessages.length - 1]?.id) {
+      if (currentMessages && currentMessages[currentMessages.length - 1]?.id && currentDialogue?.unread_count > 0) {
         sendLastReadedMessage(currentMessages[currentMessages.length - 1].id, slug)
       }
     }
@@ -80,18 +100,17 @@ export const ChatContent = () => {
           <>
             <img src={limcoreIcon} alt='Limcore' className={styles.foto} />
             <p className={styles.name}>Mining Data Centre Limcore</p>
-            <p className={styles.status} onClick={handleParticipantsListOpen}>
+            <p className={styles.status} onClick={openList}>
               {`${participants.length} ${t('group_number')}`}
             </p>
           </>
         ) : (
           <>
-            <img src={profileIcon} alt='Avatar' className={styles.foto} />
-            <p className={styles.name}>TODO: name</p>
-            <p className={styles.status} onClick={() => {}}>
-              В сети
-              {/* TODO */}
+            <img src={currentDialogueMember.avatar || profileIcon} alt='Avatar' className={styles.foto} />
+            <p className={styles.name}>
+              {currentDialogueMember.first_name || 'User'} {currentDialogueMember.last_name || ''}
             </p>
+            <p className={styles.status}>{currentDialogueMember.status === '1' ? 'В сети' : 'Не в сети'} </p>
           </>
         )}
       </div>
@@ -111,21 +130,21 @@ export const ChatContent = () => {
             <MessageComponent
               key={msg.id}
               message={msg}
-              user={msg.user}
+              userId={msg.user.id}
               isMyMsg={userId === msg.user.id}
               date={buffer}
+              openRating={openRating}
             />
           )
         })}
       </div>
       {IS_GENERAL_CHAT && (
-        <ParticipantsList
-          openListClassname={openListClassname}
-          handleParticipantsListClose={handleParticipantsListClose}
-          participants={participants}
-        />
+        <>
+          <ParticipantsList isActive={isListOpened} onClose={closeList} participants={participants} />
+          <RaitingList handleRaitingListClose={closeRating} raitingClassName={raitingClassName} />
+        </>
       )}
-      <Textarea slug={slug} />
+      <Textarea />
     </section>
   )
 }

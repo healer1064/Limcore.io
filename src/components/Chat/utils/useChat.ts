@@ -5,22 +5,27 @@ import {
   setDialogues,
   setDialogueUnreadedCount,
   setGenChatMembers,
-  setGeneralMessagesPage,
-  setWholeGenMessagesPages,
+  setGenChatMembersStatus,
+  setDialogueStatus,
+  setCurrentPage,
+  setWholePages,
   setContent,
 } from '../redux/chatSlice'
-import { ISendInterface } from './types'
+import { IDialogueInterface, ISendInterface } from './types'
 import { useAppSelector } from './../../../app/redux/hooks'
 
 const commands = {
-  sendGroupMessage: 1, // пока что только в общий чат
+  sendGroupMessage: 1,
   joinGroup: 2,
-  sendDialogueMessage: 3, // чаты 1 на 1
-  getGroupMessages: 4, // пока что только группы
-  getGroupsList: 5, // пока что только группы
-  // еще есть IS_TYPING, MESSAGE_READ
+  sendDialogueMessage: 3,
+  getGroupMessages: 4,
+  getGroupsList: 5,
   sendLastReadedMessage: 9,
   getUnreadedCount: 10,
+  checkDialogueExistence: 11,
+  userCame: 12,
+  userLeft: 13,
+  // еще есть IS_TYPING
 }
 
 let socket: WebSocket = null
@@ -35,8 +40,7 @@ export const useChat = () => {
 
   useEffect(() => {
     if (!socket) {
-      socket = new WebSocket(`wss://217.28.228.152:9005/ws/chat/?token=${token}`)
-      console.log(socket)
+      socket = new WebSocket(`ws://217.28.228.152:9005/ws/chat/?token=${token}`)
 
       socket.onopen = () => {
         dispatch(setContent(''))
@@ -44,6 +48,10 @@ export const useChat = () => {
 
       socket.onerror = () => {
         dispatch(setContent('error'))
+      }
+
+      socket.onclose = () => {
+        console.log('...websocket is closing')
       }
     }
   }, [])
@@ -58,16 +66,8 @@ export const useChat = () => {
         dispatch(setContent('no-content'))
       } else {
         if (data.groups) {
-          dispatch(setGenChatMembers(data.groups[0].members))
-          dispatch(setDialogues(data.groups))
-        }
-      }
-
-      if (data.groups && data.groups?.length === 0) {
-        dispatch(setContent('no-content'))
-      } else {
-        if (data.groups) {
-          dispatch(setGenChatMembers(data.groups[0].members))
+          const generalChat = data.groups.find((group: IDialogueInterface) => group.slug === 'general_chat')
+          dispatch(setGenChatMembers(generalChat?.members))
           dispatch(setDialogues(data.groups))
         }
       }
@@ -76,14 +76,22 @@ export const useChat = () => {
         const arr = []
         arr.push(data.message)
         dispatch(setCurrentMessages([...currentMessages, ...arr]))
+
         // TODO захардкодил страницу с группами нужно поправить
         getGroupsList(1)
       }
 
+      if (data.command === 3) {
+        const arr = []
+        arr.push(data.message)
+
+        dispatch(setCurrentMessages([...currentMessages, ...arr]))
+      }
+
       if (data.command === 4) {
         dispatch(setCurrentMessages([...data.result.reverse(), ...currentMessages]))
-        dispatch(setGeneralMessagesPage(data.page))
-        dispatch(setWholeGenMessagesPages(data.num_pages))
+        dispatch(setCurrentPage(data.page))
+        dispatch(setWholePages(data.num_pages))
       }
 
       if (data.command === 5) {
@@ -93,11 +101,27 @@ export const useChat = () => {
       if (data.command === 10) {
         dispatch(setDialogueUnreadedCount(data))
       }
+
+      if (data.command === 11) {
+        data.result.length === 0 ? dispatch(setCurrentMessages([])) : dispatch(setCurrentMessages(data.result))
+      }
+
+      if (data.command === 12) {
+        const dataToDispatch = { id: data.user_pk, status: '1' }
+        dispatch(setDialogueStatus(dataToDispatch))
+        dispatch(setGenChatMembersStatus(dataToDispatch))
+      }
+
+      if (data.command === 13) {
+        const dataToDispatch = { id: data.user_pk, status: '0' }
+        dispatch(setDialogueStatus(dataToDispatch))
+        dispatch(setGenChatMembersStatus(dataToDispatch))
+      }
     }
   }
 
   const send = (data: ISendInterface) => {
-    // console.log('sent', data)
+    console.log('sent', data)
     socket.send(JSON.stringify(data))
   }
 
@@ -121,6 +145,7 @@ export const useChat = () => {
   }
 
   const sendDialogueMessage = (recipient: string, message: string) => {
+    console.log('sendDialogueMessage')
     const dataToSend = {
       command: commands.sendDialogueMessage,
       recipient,
@@ -161,5 +186,22 @@ export const useChat = () => {
     send(dataToSend)
   }
 
-  return { sendGroupMessage, joinGroup, sendDialogueMessage, sendLastReadedMessage, getGroupMessages, getGroupsList }
+  const checkDialogueExistence = (userId: number) => {
+    const dataToSend = {
+      command: commands.checkDialogueExistence,
+      user_pk: userId,
+    }
+
+    send(dataToSend)
+  }
+
+  return {
+    sendGroupMessage,
+    joinGroup,
+    sendDialogueMessage,
+    sendLastReadedMessage,
+    getGroupMessages,
+    getGroupsList,
+    checkDialogueExistence,
+  }
 }
