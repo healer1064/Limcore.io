@@ -20,7 +20,7 @@ export const BroadcastItem = ({ broadcast }) => {
           frameBorder='0'
           allowFullScreen
         />
-        <div className={styles.fullScreenToggler} onClick={() => setFullScreen((prev) => !prev)} />
+        <button className={styles.fullScreenToggler} onClick={() => setFullScreen((prev) => !prev)} type='button' />
       </div>
       <div className={styles.item__text}>
         <h3 className={styles.item__title} style={fontFamily}>

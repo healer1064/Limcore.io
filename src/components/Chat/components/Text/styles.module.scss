@@ -1,11 +1,14 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/_vars.scss';
+
 .textContainer {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   margin: 20px 30px 0 0;
   padding: 12px 14px 0;
-  background-color: #F0F5FD;
-  border-radius: 14px;
+  background-color: $color-FO-white;
+  border-radius: $border-radius;
 
   &_owner {
     display: flex;
@@ -13,8 +16,8 @@
     box-sizing: border-box;
     margin: 20px 0 0 30px;
     padding: 12px 14px 0;
-    background-color: #4A70F8;
-    border-radius: 14px;
+    background-color: $primary-color;
+    border-radius: $border-radius;
   }
 }
 
@@ -23,40 +26,34 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
+  font-family: $main-font;
+  @include main($color-4F-black);
+  font-weight: $fontWeightMedium;
   font-size: 13px;
   line-height: 1.45;
-  color: #4F535A;
 
   &_owner {
     display: flex;
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 500;
+    font-family: $main-font;
+    @include main($white);
+    font-weight: $fontWeightMedium;
     font-size: 13px;
     line-height: 1.45;
-    color: #FFFFFF;
   }
 }
 
 .time {
-  display: flex;
-  box-sizing: border-box;
-  justify-content: flex-end;
   padding: 0;
   margin: 0;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: normal;
+  font-family: $main-font;
+  @include main($color-99-gray);
+  font-weight: $fontWeightRegular;
   font-size: 13px;
   line-height: 1.4;
   text-align: right;
-  color: #99A0AD;
   position: relative;
   bottom: 18px;
 
@@ -66,13 +63,12 @@
     justify-content: flex-end;
     padding: 0;
     margin: 0;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: normal;
+    font-family: $main-font;
+    @include main($color-88-violet);
+    font-weight: $fontWeightRegular;
     font-size: 13px;
     line-height: 1.4;
     text-align: right;
-    color: #88A0FA;
     position: relative;
     bottom: 18px;
   }

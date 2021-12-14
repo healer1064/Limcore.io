@@ -1,30 +1,56 @@
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState, useEffect } from 'react'
 import styles from './styles.module.scss'
 import { useTranslation } from 'react-i18next'
 import closeButton from '@icons/greyClose.svg'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setIsSearched } from '../../../Chat/redux/chatSlice'
+import { setFilteredDialogues } from '../../../Chat/redux/chatSlice'
+
+type TButtonsVisibility = '' | 'close' | 'reset'
 
 export const SearchForm = ({ desktop }) => {
   const [t] = useTranslation()
-
-  const searched = useAppSelector((state) => state.chat.searchedValue)
-  const [isButtonVisible, setIsButtonVisible] = useState('') // '' | 'close' | 'reset'
   const dispatch = useAppDispatch()
 
-  const handleChange = (e) => {
-    dispatch(setIsSearched(e.target.value))
-    setIsButtonVisible('close')
-  }
+  const dialogues = useAppSelector((state) => state.chat.dialogues)
+
+  const [buttonsVisibility, setButtonsVisibility] = useState<TButtonsVisibility>('')
+  const [searched, setSearched] = useState('')
 
   const handleResetButton = () => {
-    setIsButtonVisible('reset')
+    setButtonsVisibility('reset')
   }
 
   const handleCloseSearch = () => {
-    dispatch(setIsSearched(''))
-    setIsButtonVisible('')
+    setSearched('')
+    setButtonsVisibility('')
   }
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setButtonsVisibility('close')
+    setSearched(event.target.value)
+  }
+
+  useEffect(() => {
+    if (searched === '') {
+      dispatch(setFilteredDialogues(dialogues))
+      return
+    }
+    const searchString = searched.toLowerCase()
+    const filtered = dialogues.filter((dialogue) => {
+      if (dialogue.other_user) {
+        if (dialogue.other_user.first_name) {
+          return dialogue.other_user.first_name.toLowerCase().includes(searchString.toLowerCase())
+        } else if (dialogue.other_user.last_name) {
+          return dialogue.other_user.last_name.toLowerCase().includes(searchString.toLowerCase())
+        }
+      } else {
+        if (dialogue.name) {
+          return dialogue.name.toLowerCase().includes(searchString.toLowerCase())
+        }
+      }
+    })
+    dispatch(setFilteredDialogues(filtered))
+  }, [dialogues, searched])
 
   return (
     <>
@@ -33,14 +59,14 @@ export const SearchForm = ({ desktop }) => {
           type='search'
           className={styles.searchInput}
           placeholder={t('chat_form_placeholder')}
-          onChange={(e) => handleChange(e)}
+          onChange={handleInputChange}
           onFocus={handleResetButton}
           value={searched}
         />
-        {(isButtonVisible === 'close' || isButtonVisible === 'reset') && (
+        {(buttonsVisibility === 'close' || buttonsVisibility === 'reset') && (
           <img className={styles.closeButton} alt='' src={closeButton} onClick={handleCloseSearch} />
         )}
-        {isButtonVisible === 'reset' && (
+        {buttonsVisibility === 'reset' && (
           <button type='reset' className={styles.resetButton}>
             {t('chat_reset_button_value')}
           </button>

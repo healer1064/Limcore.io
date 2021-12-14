@@ -67,25 +67,25 @@ export const HeaderMobile: React.FC = () => {
           {iconCondition ? <Logo /> : <img className={Styles.logo} src={logoIcon} alt='Лого' />}
         </LinkDom>
       )}
-      <div className={Styles.wrap}>
+      <nav className={Styles.wrap}>
         {!isAuth && location.pathname !== '/auth' && (
-          <a onClick={() => history.push('/auth')} className={Styles.logoLink}>
+          <a onClick={() => history.push('/auth')} className={Styles.logoLink} target='blank' rel='noopener noreferrer'>
             <img src={userIcon} alt='Иконка' />
           </a>
         )}
         {isAuth && window.location.pathname === '/' ? (
           <>
-            <button className={Styles.profileBtn}>
+            <button className={Styles.profileBtn} type='button'>
               <LinkDom to='/my' className={Styles.profileBtn_link}>
                 <LoginIcon />
-                <span className={Styles.enter}>{t('profile')}</span>
+                {t('profile')}
               </LinkDom>
             </button>
-            <div className={Styles.burger} onClick={openBurger}>
-              <span className={Styles.row}>{}</span>
-              <span className={Styles.row}>{}</span>
-              <span className={Styles.row}>{}</span>
-            </div>
+            <button type='button' className={Styles.burger} onClick={openBurger}>
+              <span className={Styles.row} />
+              <span className={Styles.row} />
+              <span className={Styles.row} />
+            </button>
           </>
         ) : (
           <>
@@ -117,7 +117,7 @@ export const HeaderMobile: React.FC = () => {
 
             <ul className={Styles.social}>
               <li className={Styles.content_item}>
-                <a href='https://t.me/limc_russ' target='blank' rel='noopener noreferrer'>
+                <a href='https://t.me/limc_russ' target='blank' rel='noopener noreferrer' className={Styles.socialLink}>
                   <Telegram className={Styles.content_icon} />
                 </a>
               </li>
@@ -126,25 +126,33 @@ export const HeaderMobile: React.FC = () => {
                   href='https://instagram.com/limcore.io?utm_medium=copy_link'
                   target='blank'
                   rel='noopener noreferrer'
+                  className={Styles.socialLink}
                 >
                   <Instagram className={Styles.content_icon} />
                 </a>
               </li>
               <li className={Styles.content_item}>
-                <a href='https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg' target='blank' rel='noopener noreferrer'>
+                <a
+                  href='https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg'
+                  target='blank'
+                  rel='noopener noreferrer'
+                  className={Styles.socialLink}
+                >
                   <Youtube className={Styles.content_icon} />
                 </a>
               </li>
             </ul>
             <div className={Styles.group}>
               <p className={Styles.email}>
-                <a href='mailto:info@limcore.io'>info@limcore.io</a>
+                <a href='mailto:info@limcore.io' target='blank' rel='noopener noreferrer' className={Styles.emailLink}>
+                  info@limcore.io
+                </a>
               </p>
               <LanguagePopup position={{ top: '-105px', left: '-25px', background: '#4a70f8' }} />
             </div>
           </Container>
         </div>
-      </div>
+      </nav>
     </header>
   )
 }

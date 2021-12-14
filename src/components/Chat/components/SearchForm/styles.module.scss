@@ -1,3 +1,6 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/_vars.scss';
+
 .searchForm {
   display: flex;
   box-sizing: border-box;
@@ -19,34 +22,30 @@
 
 .searchInput {
   background-color: transparent;
-  border: 1.4px solid #B4BFD5;
-  border-radius: 14px;
+  border: 1.4px solid $color-B4-violet;
+  border-radius: $border-radius;
   width: 100%;
   height: 45px;
   padding: 0 0 0 18px;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #3A3B3D;
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightMedium;
+  @include h4;
 
   &::placeholder {
     display: flex;
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #B4BFD5;
+    font-family: $main-font;
+    @include main($color-B4-violet);
+    font-weight: $fontWeightMedium;
+    @include h4;
   }
 
   &:active {
-    outline: 1.4px solid #67686C;
-    border: 1.4px solid #67686C;
+    outline: 1.4px solid $color-67-black;
+    border: 1.4px solid $color-67-black;
   }
 }
 
@@ -57,16 +56,19 @@
   padding: 0 0 0 14px;
   border: none;
   background-color: transparent;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
+  font-family: $main-font;
+  @include main($primary-color);
+  font-weight: $fontWeightMedium;
   font-size: 13px;
   line-height: 1.4;
-  color: #4A70F8;
   align-self: center;
 
   &:hover {
     cursor: pointer;
+  }
+
+  &:focus {
+    outline: $outline;
   }
 }
 
@@ -84,6 +86,10 @@
   &:hover {
     cursor: pointer;
   }
+
+  &:focus {
+    outline: $outline;
+  }
 }
 
 .subtitle {
@@ -92,12 +98,11 @@
   padding: 50% 0 8px 0;
   margin: 0 auto;
   width: 90%;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-4F-black);
+  font-weight: $fontWeightSemiBold;
   font-size: 14px;
   line-height: 1.45;
-  color: #4F535A;
   justify-content: center;
 
   &_invisible {
@@ -111,13 +116,12 @@
   padding: 0;
   margin: 0 auto;
   width: 90%;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
+  font-family: $main-font;
+  @include main($color-4F-black);
+  font-weight: $fontWeightMedium;
   font-size: 13px;
   line-height: 1.45;
   text-align: center;
-  color: #4F535A;
   justify-content: center;
 
   &_invisible {

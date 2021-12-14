@@ -23,17 +23,16 @@
 
     &Title {
       margin: 0 0 0 16px;
-      
       font-size: 28px;
       font-weight: 700;
       line-height: 39px;
-      color: #3A3B3D;
+      color: $color-3A-black;
     }
 
     &Subtitle {
       margin: 0;
       padding: 0;
-      @include subtitle-14px(#4F535A);
+      @include subtitle-14px($color-4F-black);
     }
   }
 

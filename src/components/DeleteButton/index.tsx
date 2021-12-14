@@ -1,13 +1,11 @@
 import React from 'react'
-import styles from './style.module.scss'
-import closeBlack from '@icons/closeBlack.svg'
+// import styles from './style.module.scss'
+// import closeBlack from '@icons/closeBlack.svg'
 
-export const DeleteButton = () => {
-  return (
-    <div className={styles.clear_btn}>
-      <div className={styles.clear_btn__clear_btn_content}>
-        <img src={closeBlack} alt='cancel' />
-      </div>
-    </div>
-  )
-}
+// export const DeleteButton = () => {
+//   return (
+//     <button className={styles.clear_btn}>
+//       <img className={styles.clear_btn__image} src={closeBlack} alt='cancel' />
+//     </button>
+//   )
+// }

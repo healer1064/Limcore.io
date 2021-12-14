@@ -4,9 +4,11 @@ import Styles from './styles.module.scss'
 interface ButtonProps {
   className?: string
   onClick?: any
+  disabled?: boolean
+  type?: 'button' | 'reset' | 'submit'
 }
 
-export const ButtonSmall: React.FC<ButtonProps> = ({ className, onClick, children }) => {
+export const ButtonSmall: React.FC<ButtonProps> = ({ className, onClick, disabled, type, children }) => {
   const cls = [`${Styles.button}`]
 
   if (className) {
@@ -14,7 +16,7 @@ export const ButtonSmall: React.FC<ButtonProps> = ({ className, onClick, childre
   }
 
   return (
-    <button className={cls.join(' ')} onClick={onClick}>
+    <button className={cls.join(' ')} onClick={onClick} disabled={disabled} type={type}>
       {children}
     </button>
   )

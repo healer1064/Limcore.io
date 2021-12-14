@@ -1,4 +1,7 @@
+@import '../../../vars&mixins.scss';
 @import '../../../../../scss/cabinet';
+@import '../../../../../scss/_vars';
+@import '../../../../../scss/typography';
 
 .card {
   position: relative;
@@ -6,10 +9,8 @@
   height: 76px;  
   padding: 0;
   margin: 0;
-  // margin-top: 30px;
-
   background-color: $color-blue-pale;
-  border-radius: 14px;  
+  border-radius: $border-radius;
 
   & * {
     padding: 0;
@@ -43,12 +44,10 @@
 
     width: 20px;
     height: 20px;
-    outline: none;
+    outline: $outline;
     border: none;
     box-shadow: none;
     transition: 0.5s ease-in-out;
-
-    outline: none;
     background-color: transparent;
     cursor: pointer;
   }

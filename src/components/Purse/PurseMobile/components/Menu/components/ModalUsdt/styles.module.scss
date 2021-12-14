@@ -1,4 +1,7 @@
+@import '../../../../../vars&mixins.scss';
 @import '../../../../../../../scss/cabinet';
+@import '../../../../../../../scss/_vars';
+@import '../../../../../../../scss/typography';
 
 .balanceModal > div {
   width: 100vw;
@@ -7,8 +10,6 @@
 
 .balanceBlock {
   padding: 20px;
-  // height: 100vh;
-  // width: 100vw;
   margin: auto;
 }
 
@@ -19,12 +20,11 @@
 }
 
 .title {
-  font-family: 'Montserrat';
-  font-style: normal;
+  font-family: $main-font;
+  @include main($color-3A-black);
   font-weight: bold;
   font-size: 28px;
-  line-height: 140%;
-  color: #3a3b3d;
+  line-height: 1.4;
 }
 
 .line {
@@ -39,11 +39,9 @@
 }
 
 .usd {
-  font-family: 'Montserrat';
+  font-family: $main-font;
   font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 140%;
-  color: #4f535a;
+  @include mediumP3($color-4F-black);
+  font-weight: $fontWeightSemiBold;
   margin-top: 3px;
 }

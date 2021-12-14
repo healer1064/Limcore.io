@@ -10,7 +10,7 @@ export const Text = ({ message }: ITextProps) => {
   return (
     <div className={styles.textContainer}>
       <p className={styles.text}>{message.last_message}</p>
-      <span className={styles.time}>
+      <time className={styles.time}>
         {message.created_at}
         <svg
           className={styles.checkIcon_invisible}
@@ -35,7 +35,7 @@ export const Text = ({ message }: ITextProps) => {
             strokeLinejoin='round'
           />
         </svg>
-      </span>
+      </time>
     </div>
   )
   // return message.owner ? (

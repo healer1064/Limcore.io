@@ -35,7 +35,7 @@ export const InputText: React.FC<InputTextProps> = ({
   }
 
   return (
-    <>
+    <fieldset>
       <input
         className={cls.join(' ')}
         onChange={onChange}
@@ -47,6 +47,6 @@ export const InputText: React.FC<InputTextProps> = ({
         maxLength={maxLength}
       />
       {error && <span className={Styles.error}>{error}</span>}
-    </>
+    </fieldset>
   )
 }

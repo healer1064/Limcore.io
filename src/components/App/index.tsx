@@ -27,7 +27,7 @@ import { HeaderMobile } from '@components/Header/HeaderMobile/index'
 // import { CabinetPage } from '../../pages/cabinet'
 import { AuthMobile } from '../../pages/auth/AuthMobile'
 
-import { Chat } from '../Chat'
+import { Chat } from '@components/Chat'
 import { LandingPage } from '../../pages/landing'
 import { Purse } from '@components/Purse'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'

@@ -25,19 +25,16 @@
 .balanceString__text {
   margin: 0;
   flex: 1 1 0;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  color: $color-gray-mouse;    
+  @include p3;
+  font-weight: $fontWeightSemiBold;
+  color: $color-99-gray;
 }
 
 .balanceString__data {
   margin: 0;
   flex: none;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-
+  @include p3;
+  font-weight: $fontWeightSemiBold;
   text-align: right;
-  color: $color-gray-medium;    
+  color: $color-4F-black;
 }

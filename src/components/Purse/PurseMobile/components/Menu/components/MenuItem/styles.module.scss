@@ -1,4 +1,7 @@
+@import '../../../../../vars&mixins.scss';
 @import '../../../../../../../scss/cabinet';
+@import '../../../../../../../scss/_vars';
+@import '../../../../../../../scss/typography';
 
 .menu {
   &__item {
@@ -6,7 +9,7 @@
     height: 132px;
     margin-right: 10px;
     margin-bottom: 30px;
-    background-color: #fff;
+    background-color: $white;
     border-radius: $border-radius;
     box-shadow: $box-shadow2;
   }
@@ -20,23 +23,20 @@
     padding: 20px;
     &:hover {
       path {
-        stroke: #8ca4f2;
+        stroke: $color-8C-violet;
       }
     }
   }
 
   &__title {
-    @include font-style(14px, 600, 1, $color-gray-mouse);
+    @include font-style(14px, 600, 1, $color-99-gray);
     margin-top: 10px;
     margin-bottom: 5px;
   }
 
   &__sum {
-    @include font-style(14px, 600, 20px, $color-gray-black);
-    // word-wrap: break-word;
-    text-align: start;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    @include font-style(14px, 600, 20px, $color-3A-black);
+   @include ellipsisText();
   }
 
   &__icon {
@@ -55,11 +55,7 @@
 
   span {
     white-space: nowrap;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 140%;
-    color: #3a3b3d;
+    @include mediumP3($color-3A-black);
   }
 
   img {
@@ -68,10 +64,9 @@
 }
 
 .lockup {
-  font-style: normal;
-  font-weight: 600;
+  @include main($color-99-gray);
+  font-weight: $fontWeightSemiBold;
   font-size: 10px;
-  line-height: 140%;
-  color: #99a0ad;
+  line-height: 1.4;
   margin-top: 3px;
 }

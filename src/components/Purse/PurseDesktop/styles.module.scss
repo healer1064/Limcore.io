@@ -38,9 +38,9 @@
   padding: 40px 30px 0;
   height: 657px;
   width: 308px;
-  background-color: #ffffff;
-  box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
-  border-radius: 14px;
+  background-color: $white;
+  box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
+  border-radius: $border-radius;
 }
 
 .chatIcon {
@@ -55,13 +55,17 @@
   background-color: transparent;
   width: 70px;
   height: 50px;
-  box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
-  border-radius: 14px;
+  box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
+  border-radius: $border-radius;
   justify-content: center;
   align-content: center;
 
   &:hover {
     cursor: pointer;
     opacity: .5;
+  }
+
+  &:active, &:focus {
+    outline: $outline;
   }
 }

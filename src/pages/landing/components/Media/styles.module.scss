@@ -1,7 +1,10 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/vars.scss';
+
 .media {
   display: flex;
   padding: 80px 20px;
-  background: #f7f9ff;
+  background: $color-F9-white;
 }
 
 .media_desktop {
@@ -10,8 +13,7 @@
 
 .media_mobile {
   display: none;
-  padding: 60px 0;
-  padding-left: 20px;
+  padding: 60px 0 20px;
 }
 
 .wrapper {
@@ -22,12 +24,11 @@
 }
 
 .caption {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightSemiBold;
   font-size: 32px;
   line-height: 100%;
-  color: #3a3b3d;
   margin: 0;
 }
 
@@ -49,10 +50,14 @@
   box-sizing: border-box;
   margin: 16px 0 20px;
   padding: 0;
-  background: #c4c4c4;
-  border-radius: 14px;
+  background: $color-4C-white;
+  border-radius: $border-radius;
   width: 100%;
   overflow: hidden;
+
+  &:focus {
+    outline: $outline;
+  }
 
   img {
     display: flex;
@@ -72,22 +77,20 @@
 
 .title {
   display: block;
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightSemiBold;
   font-size: 18px;
   line-height: 140%;
-  color: #3a3b3d;
   margin-bottom: 8px;
 }
 
 .description {
-  font-family: 'Montserrat';
-  font-style: normal;
+  font-family: $main-font;
+  @include main($color-4F-black);
   font-weight: normal;
   font-size: 16px;
-  line-height: 150%;
-  color: #4f535a;
+  line-height: 1.5;
   margin: 0;
 }
 
@@ -99,63 +102,37 @@
 }
 
 .link {
-  font-family: 'Montserrat';
-  font-style: normal;
+  font-family: $main-font;
+  @include main($color-4A-blue);
   font-weight: 500;
   font-size: 13px;
-  line-height: 140%;
-  color: #4a70f8;
+  line-height: 1.4;
   text-decoration: none;
+
+  &:focus {
+    outline: $outline;
+  }
 }
 
 .date {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
+  font-family: $main-font;
+  @include main($color-99-gray);
+  font-weight: $fontWeightMedium;
   font-size: 13px;
-  line-height: 140%;
-  color: #99a0ad;
+  line-height: 1.4;
 }
 
 .empty {
   width: 282px;
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightMedium;
   font-size: 18px;
-  line-height: 150%;
+  line-height: 1.5;
   text-align: center;
-  color: #3a3b3d;
-}
-
-//.limcInterviewPic {
-//  display: flex;
-//  box-sizing: border-box;
-//  margin: 0;
-//  padding: 0;
-//  max-width: 518px;
-//  max-height: 288px;
-//  object-fit: contain;
-//  object-position: center;
-//}
-
-@media screen and (max-width: 1280px) {
-  /*  .container {
-    gap: 60px;
-  } */
-}
-
-@media screen and (max-width: 1160px) {
-  /*   .container {
-    gap: 30px;
-  } */
 }
 
 @media screen and (max-width: 1100px) {
-  /*   .container {
-    gap: 10px;
-  } */
-
   .news {
     width: 50%;
   }

@@ -1,9 +1,12 @@
+@import '../../scss/typography.scss';
+@import '../../scss/vars.scss';
+
 .slide_notification {
   border-radius: 8px;
   min-width: 300px;
   height: 44px;
-  background-color: #1d2023;
-  color: #fff;
+  background-color: $color-1D-black;
+  color: $white;
   align-items: center;
   display: flex;
   cursor: pointer;

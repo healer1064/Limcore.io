@@ -1,4 +1,7 @@
 @import '../../../vars&mixins.scss';
+@import '../../../../../scss/cabinet';
+@import '../../../../../scss/_vars';
+@import '../../../../../scss/typography';
 
 .pageBalanceUSDT {
   display: flex;
@@ -12,12 +15,11 @@
    }
 
   &__title {
-    font-family: Montserrat;
-    font-style: normal;
+    font-family: $main-font;
+    @include main($color-3A-black);
     font-weight: bold;
     font-size: 46px;
     line-height: 1.4;
-    color: #3A3B3D;
     display: flex;
     box-sizing: border-box;
     padding: 0;
@@ -25,12 +27,11 @@
   }
 
   &__subtitle {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 600;
+    font-family: $main-font;
+    @include main($color-4F-black);
+    font-weight: $fontWeightSemiBold;
     font-size: 20px;
-    line-height: 150%;
-    color: #4F535A;
+    line-height: 1.5;
     display: flex;
     box-sizing: border-box;
     padding: 0;
@@ -53,12 +54,11 @@
   padding: 0;
   flex-direction: row;
   background-color: transparent;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightSemiBold;
   font-size: 16px;
   line-height: 1.25;
-  color: #3A3B3D;
   align-items: center;
 
   &:hover {
@@ -67,6 +67,10 @@
     path {
       stroke: $color-4A-blue;
     }
+  }
+
+  &:focus {
+    outline: $outline;
   }
 }
 
@@ -87,25 +91,20 @@
   max-width: 140px;
   padding: 15px;
   margin: 0 10px 0 0;
-  background: #F9FAFF;
-  border-radius: 14px;
-  color: #4A70F8;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 1.5;
+  background: $color-F9-white;
+  border-radius: $border-radius;
+  @include subtitle-13px($primary-color);
+  font-weight: $fontWeightSemiBold;
 
   &:hover {
     transition: background 0.3s ease;
-    // border: 1px solid #3159E9;
     cursor: pointer;
-    color: #3159E9;
+    color: $color-31-blue;
   }
 
-  &:active {
-    border: 1px solid #2D4EC5;
-    color: #2D4EC5;
+  &:active, &:focus {
+    border: 1px solid $color-2D-blue;
+    color: $color-2D-blue;
   }
 
   &:last-child {
@@ -114,20 +113,20 @@
 }
 
 .item_active {
-  background-color: #4A70F8;
+  background-color: $primary-color;
   transition: background 0.3s ease;
-  color: #FFFFFF;
+  color: $white;
 
   &:hover {
     transition: background 0.3s ease;
     cursor: pointer;
-    background-color: #3159E9;
-    color: #FFFFFF;
+    background-color: $color-31-blue;
+    color: $white;
   }
 
   &:active {
-    background-color: #2D4EC5;
-    color: #FFFFFF;
+    background-color: $color-2D-blue;
+    color: $white;
   }
 }
 

@@ -1,4 +1,5 @@
-$fontProject: 'Raleway', sans-serif;
+@import './vars';
+
 $fontWeightRegular: 400;
 $fontWeightMedium: 500;
 $fontWeightSemiBold: 600;
@@ -6,7 +7,6 @@ $fontWeightBold: 700;
 $fontWeightUltraWide: 900;
 
 @mixin main($color) {
-  font-family: $fontProject;
   color: $color;
   font-style: normal;
   font-stretch: normal;
@@ -51,6 +51,16 @@ $fontWeightUltraWide: 900;
 @mixin p4 {
   font-size: 12px;
   line-height: 16px;
+}
+
+@mixin p5 {
+  font-size: 10px;
+  line-height: 12px;
+}
+
+@mixin p6 {
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 @mixin ultraWideH1($color) {
@@ -172,9 +182,37 @@ $fontWeightUltraWide: 900;
   @include p4();
 }
 
+@mixin section-title($color) {
+  font-family: $main-font;
+  @include semiBoldH4($color);
+}
+
+@mixin subtitle-14px($color) {
+  font-family: $main-font;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $color;
+}
+
+@mixin subtitle-13px($color) {
+  font-family: $main-font;
+  font-size: 13px;
+  font-weight: $fontWeightMedium;
+  line-height: 20px;
+  color: $color;
+}
+
+@mixin second-subtitle-13px($color) {
+  font-family: $main-font;
+  font-size: 13px;
+  font-weight: $fontWeightMedium;
+  line-height: 18px;
+  color: $color;
+}
+
 @mixin ellipsisText() {
   overflow: hidden;
-
   white-space: nowrap;
   text-overflow: ellipsis;
 }

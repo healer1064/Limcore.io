@@ -1,4 +1,7 @@
+@import '../../../../../vars&mixins.scss';
 @import '../../../../../../../scss/cabinet';
+@import '../../../../../../../scss/_vars';
+@import '../../../../../../../scss/typography';
 
 .balanceModal > div {
   height: 100vh;
@@ -17,10 +20,9 @@
 }
 
 .buy {
-  margin: 0 auto 10px;
+  margin: 10px auto;
   max-width: 500px;
   width: 100%;
-  margin-top: 10px;
 }
 
 .block {
@@ -30,12 +32,11 @@
 }
 
 .title {
-  font-family: 'Montserrat';
-  font-style: normal;
+  font-family: $main-font;
+  @include main($color-3A-black);
   font-weight: bold;
   font-size: 28px;
-  line-height: 140%;
-  color: #3a3b3d;
+  line-height: 1.4;
 }
 
 .line {
@@ -50,12 +51,9 @@
 }
 
 .usd {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 140%;
-  color: #4f535a;
+  font-family: $main-font;
+  @include mediumP3($color-4F-black);
+  font-weight: $fontWeightSemiBold;
   margin-top: 3px;
 }
 
@@ -66,12 +64,8 @@
 }
 
 .desc {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 150%;
-  color: #99a0ad;
+  font-family: $main-font;
+  @include subtitle-14px($color-99-gray);
 
   &:last-child {
     margin-top: 20px;
@@ -88,25 +82,17 @@
   max-width: 500px;
   width: 100%;
   padding: 14px 0;
-  border: 1px solid #4a70f8;
-  border-radius: 14px;
-
-  font-family: 'Montserrat';
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: 600;
-  font-style: normal;
+  border: 1px solid $primary-color;
+  border-radius: $border-radius;
+  font-family: $main-font;
+  @include semiBoldH4($primary-color);
   text-align: center;
-
   background: none;
-  color: #4a70f8;
-
   transition: color 0.3s ease, border 0.3s ease;
 
   &:hover {
-    color: #3159e9 !important;
-    border: 1px solid #3159e9 !important;
-    background-color: none;
+    color: $color-31-blue !important;
+    border: 1px solid $color-31-blue !important;
     transition: color 0.3s ease, border 0.3s ease !important;
   }
 }
@@ -126,7 +112,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   text-decoration: none;
-  color: #fff;
+  color: $white;
 }

@@ -1,3 +1,5 @@
+@import '../../scss/vars.scss';
+
 .app_container {
   display: flex;
   flex-direction: column;
@@ -33,13 +35,5 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: #fff;
+  background-color: $white;
 }
-
-// .spinner_container {
-//   width: 100%;
-//   justify-content: center;
-//   display: flex;
-//   align-items: center;
-//   height: calc(100vh - 100px);
-// }

@@ -2,23 +2,25 @@
 @import '../../scss/vars.scss';
 
 .button {
-    position: relative;
     display: flex;
     flex-wrap: nowrap;
+    position: relative;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
     height: 44px;
     padding: 12px 32px;
     font-weight: $fontWeightMedium;
-    font-size: 14px;
-    line-height: 20px;
+    @include p3;
     font-family: 'Raleway', Arial, sans-serif;
     border: none;
     border-radius: 8px;
-    outline: none;
-    cursor: pointer;
+    //outline: none;
     user-select: none;
+
+    &:hover {
+        cursor: pointer;
+    }
 
     .button-spinner {
         width: 20px;
@@ -30,9 +32,9 @@
     }
 
     &-primary-red {
-        color: $whiteColor;
-        background: $primaryColor;
-        border: 2px solid $primaryColor;
+        color: $white;
+        background: $primary-color;
+        border: 2px solid $primary-color;
 
         &:hover {
             background: $buttonHoverColor;
@@ -41,7 +43,7 @@
     }
 
     &-primary-blue {
-        color: $whiteColor;
+        color: $white;
         background: $normalBlackberryColor;
         border: 2px solid $normalBlackberryColor;
 
@@ -52,28 +54,28 @@
     }
 
     &-secondary-red {
-        color: $primaryColor;
-        background: $whiteColor;
+        color: $primary-color;
+        background: $white;
         border: 2px solid $linkWaterColor;
 
         &:hover {
-            color: $whiteColor;
+            color: $white;
             background: $buttonHoverColor;
             border-color: $buttonHoverColor;
         }
 
         .button-spinner {
-            border-color: $primaryColor;
+            border-color: $primary-color;
         }
     }
 
     &-secondary-blue {
         color: $pitchBlackColor;
-        background: $whiteColor;
+        background: $white;
         border: 2px solid $linkWaterColor;
 
         &:hover {
-            color: $whiteColor;
+            color: $white;
             background: $deepBlueColor;
             border-color: $deepBlueColor;
         }
@@ -85,13 +87,13 @@
 
     &-naked {
         color: $deepBlueColor;
-        background: $whiteColor;
-        border: 2px solid $whiteColor;
+        background: $white;
+        border: 2px solid $white;
 
         &:hover {
             color: $pitchBlackColor;
-            background: $whiteColor;
-            border-color: $whiteColor;
+            background: $white;
+            border-color: $white;
         }
 
         .button-spinner {
@@ -101,13 +103,13 @@
 
     &-invisible {
         color: $pitchBlackColor;
-        background: $whiteColor;
-        border: 2px solid $whiteColor;
+        background: $white;
+        border: 2px solid $white;
 
         &:hover {
             color: $primaryColor;
-            background: $whiteColor;
-            border-color: $whiteColor;
+            background: $white;
+            border-color: $white;
         }
 
         .button-spinner {
@@ -131,9 +133,9 @@
         height: 32px;
 
         &:hover {
-            color: $whiteColor;
-            background: $primaryColor;
-            border-color: $whiteColor;
+            color: $white;
+            background: $primary-color;
+            border-color: $white;
         }
 
         .button-spinner {
@@ -165,7 +167,7 @@
 
     &Spinner {
         display: block;
-        border: 3px solid $whiteColor;
+        border: 3px solid $white;
         border-top-color: transparent !important;
         border-radius: 100%;
         animation: spin 1s infinite linear;
