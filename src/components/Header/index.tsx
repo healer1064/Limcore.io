@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-scroll'
+// import { Link } from 'react-scroll'
 import Styles from './style.module.scss'
 import { Link as LinkDom } from 'react-router-dom'
 
@@ -15,6 +15,7 @@ import { useTranslation } from 'react-i18next'
 // import { ButtonBig } from '../../ui-kit/ButtonBig'
 // import { styled } from '@material-ui/core'
 import { LanguagePopup } from '../LanguagePopup/index'
+// import { doc } from 'prettier'
 
 export const Header: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -70,6 +71,13 @@ export const Header: React.FC = () => {
     }
   }, [isAuth])
 
+  function handleClick(e) {
+    e.preventDefault()
+    const link = e.target.getAttribute('href').slice(1)
+    const destination = document.getElementById(`${link}`)
+    destination.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <header className={Styles.header}>
       <nav className={Styles.wrapper}>
@@ -79,7 +87,7 @@ export const Header: React.FC = () => {
         <ul className={Styles.list}>
           {links.map((item) => {
             return (
-              <a className={Styles.link} key={item.id} href={`#${item.link}`}>
+              <a className={Styles.link} key={item.id} href={`#${item.link}`} onClick={(e) => handleClick(e)}>
                 {item.value}
               </a>
             )
