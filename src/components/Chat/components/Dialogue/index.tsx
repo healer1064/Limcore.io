@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
-// import active from '@icons/activeStatus.svg'
+import active from '@icons/activeStatus.svg'
 import { useAppDispatch } from '@app/redux/hooks'
 import { setContent, setCurrentSlug } from '../../redux/chatSlice'
 import { getMonthAndDay } from '@components/Chat/utils/funcs'
@@ -40,8 +40,7 @@ export const Dialogue = ({ data }: IDialogueProps) => {
         alt='image'
         className={styles.foto}
       />
-      {/* {!IS_GENERAL_CHAT && <img alt='' src={active} className={styles.status} />} */}
-      {/* <img alt='' src={active} className={data.status === 'В сети' ? styles.status : styles.status_invisible} /> */}
+      {!IS_GENERAL_CHAT && data.other_user.status === '1' && <img alt='' src={active} className={styles.status} />}
       <p className={styles.name}>{title}</p>
       <p className={styles.message}>{data.last_message?.message}</p>
       <data className={styles.date}>{data.last_message ? getMonthAndDay(data.last_message.created_at) : ''}</data>
