@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styles from './styles.module.scss'
 import clip from '@icons/clip.svg'
 import send from '@icons/sendIcon.svg'
+import close from '@icons/close.svg'
 import { useChat } from '@components/Chat/utils/useChat'
 import { useAppSelector } from '@app/redux/hooks'
 
@@ -11,6 +12,7 @@ export const Textarea = () => {
   const [isButtonVisible, setIsButtonVisible] = useState(false)
   const [inputValue, setInputValue] = useState('')
   const inputRef = useRef(null)
+  const [file, setFile] = useState(null)
 
   const _slug = useAppSelector((state) => state.chat.currentSlug)
   let slug = _slug
@@ -44,24 +46,45 @@ export const Textarea = () => {
     inputRef.current.style.height = '40px'
   }
 
+  const onFileClick = () => {
+    console.log('onFileClick')
+  }
+
+  useEffect(() => {
+    if (file) {
+      console.log(file)
+    }
+  }, [file])
+
   return (
-    <div className={styles.inputContainer}>
-      <button className={styles.button} type='button'>
-        <img alt='' src={clip} className={styles.clip} />
-      </button>
-      <textarea
-        ref={inputRef}
-        value={inputValue}
-        className={styles.inputText}
-        placeholder='Сообщение'
-        onChange={handleInputChange}
-        onCut={handleInputHeight}
-        onPaste={handleInputHeight}
-        onInput={handleInputHeight}
-      />
-      <button className={styles.button} type='button' onClick={handleSubmit}>
-        {isButtonVisible && <img alt='' src={send} className={styles.sendIcon} />}
-      </button>
-    </div>
+    <>
+      {file && (
+        <div className={styles.file}>
+          <img src={clip} alt='clip' className={styles.file_clip} />
+          <p className={styles.file_title}>{file.name}</p>
+          <img src={close} alt='delete file' className={styles.file_delete} onClick={() => setFile(null)} />
+        </div>
+      )}
+
+      <div className={styles.inputContainer}>
+        <label className={styles.button} onClick={onFileClick}>
+          <img alt='Clip' src={clip} className={styles.clip} />
+          <input type='file' onChange={(event) => setFile(event.target.files[0])} />
+        </label>
+        <textarea
+          ref={inputRef}
+          value={inputValue}
+          className={styles.inputText}
+          placeholder='Сообщение'
+          onChange={handleInputChange}
+          onCut={handleInputHeight}
+          onPaste={handleInputHeight}
+          onInput={handleInputHeight}
+        />
+        <button className={styles.button} type='button' onClick={handleSubmit}>
+          {isButtonVisible && <img alt='Send icon' src={send} className={styles.sendIcon} />}
+        </button>
+      </div>
+    </>
   )
 }
