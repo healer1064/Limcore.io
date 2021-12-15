@@ -47,6 +47,10 @@
     outline: 1.4px solid $color-67-black;
     border: 1.4px solid $color-67-black;
   }
+
+  &:focus {
+    outline: $outline;
+  }
 }
 
 .resetButton {

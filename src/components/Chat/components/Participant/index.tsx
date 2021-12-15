@@ -47,20 +47,14 @@ export const Participant = ({ member }: IParticipantProps) => {
 
   return (
     <div className={styles.message} onClick={onOpen}>
-      <img src={avatar} alt='' className={styles.foto} />
+      <img src={avatar} alt='avatar' className={styles.foto} />
       {/* <p className={styles.name}>{name}</p> */}
       <p className={styles.name}>
         {member.user?.first_name || 'User'} {member.user?.last_name || ''}
       </p>
-      {/* <p className={isMe ? styles.status_active : styles.status}>{isMe ? 'В сети' : 'Не в сети'}</p> */}
       <p className={member.user?.status === '1' || me ? styles.status_active : styles.status}>
         {member.user?.status === '1' || me ? 'В сети' : 'Не в сети'}
       </p>
-      {/* <p className={styles.rank}>{member.rank}</p> */}
-      {/* <span className={member.rank !== '' ? styles.raiting_invisible : styles.raiting}>
-        <img src={member.raitingIcon} alt='' className={styles.raitingIcon} onClick={handleRaitingListOpen} />
-        <span className={styles.score}>{`${member.score} ТВ`}</span>
-      </span> */}
       <span className={styles.me}>{me}</span>
       <span className={styles.line} />
 

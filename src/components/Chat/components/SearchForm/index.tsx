@@ -16,16 +16,19 @@ export const SearchForm = ({ desktop }) => {
   const [buttonsVisibility, setButtonsVisibility] = useState<TButtonsVisibility>('')
   const [searched, setSearched] = useState('')
 
-  const handleResetButton = () => {
+  const handleResetButton = (e) => {
+    e.preventDefault()
     setButtonsVisibility('reset')
   }
 
-  const handleCloseSearch = () => {
+  const handleCloseSearch = (e) => {
+    e.preventDefault()
     setSearched('')
     setButtonsVisibility('')
   }
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault()
     setButtonsVisibility('close')
     setSearched(event.target.value)
   }
@@ -60,14 +63,14 @@ export const SearchForm = ({ desktop }) => {
           className={styles.searchInput}
           placeholder={t('chat_form_placeholder')}
           onChange={handleInputChange}
-          onFocus={handleResetButton}
+          // onFocus={handleResetButton}
           value={searched}
         />
         {(buttonsVisibility === 'close' || buttonsVisibility === 'reset') && (
-          <img className={styles.closeButton} alt='' src={closeButton} onClick={handleCloseSearch} />
+          <img className={styles.closeButton} alt='button' src={closeButton} onClick={(e) => handleCloseSearch(e)} />
         )}
         {buttonsVisibility === 'reset' && (
-          <button type='reset' className={styles.resetButton}>
+          <button type='reset' className={styles.resetButton} onClick={(e) => handleResetButton(e)}>
             {t('chat_reset_button_value')}
           </button>
         )}

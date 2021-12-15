@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './styles.module.scss'
 import { useTranslation } from 'react-i18next'
 import close from '@icons/close.svg'
@@ -10,8 +10,20 @@ import red from '@icons/redRaiting.svg'
 export const RaitingList = ({ handleRaitingListClose, raitingClassName }) => {
   const [t] = useTranslation()
 
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.keyCode === 27) {
+        handleRaitingListClose()
+      }
+    }
+    window.addEventListener('keydown', handleEsc)
+    return () => {
+      window.removeEventListener('keydown', handleEsc)
+    }
+  }, [raitingClassName])
+
   return (
-    <div className={raitingClassName}>
+    <div className={raitingClassName} onClick={handleRaitingListClose}>
       <div className={styles.container}>
         <button className={styles.closeRaiting} type='button' onClick={handleRaitingListClose}>
           <img src={close} alt='closeIcon' />

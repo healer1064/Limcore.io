@@ -40,13 +40,16 @@
   }
 
   &__link {
-    list-style: none;
     font-family: $main-font;
     @include mediumP3($color-67-black);
     display: flex;
     box-sizing: border-box;
     margin: 0;
     padding: 0 50px 0 0;
+
+    &:focus {
+      outline: $outline;
+    }
 
     &:last-child {
       padding: 0;
@@ -58,10 +61,6 @@
 
     &_active, &:active {
       color: $color-2D-blue;
-    }
-
-    &.focus {
-      outline: $outline;
     }
   }
 }
@@ -82,7 +81,7 @@
   display: flex;
   align-items: center;
   border: none;
-  //outline: none;
+  outline: none;
   background-color: transparent;
   width: 28px;
   margin: 0 0 0 10px;
@@ -117,7 +116,7 @@
 
 .profileName {
   font-family: $main-font;
-  @include semiBoldH4($color-3A-black);
+  @include mediumP3($color-3A-black);
   display: flex;
   box-sizing: border-box;
   padding: 0;
