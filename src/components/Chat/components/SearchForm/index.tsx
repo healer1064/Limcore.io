@@ -21,7 +21,8 @@ export const SearchForm = ({ desktop }) => {
     setButtonsVisibility('reset')
   }
 
-  const handleCloseSearch = () => {
+  const handleCloseSearch = (e) => {
+    e.preventDefault()
     setSearched('')
     setButtonsVisibility('')
   }
@@ -66,7 +67,7 @@ export const SearchForm = ({ desktop }) => {
           value={searched}
         />
         {(buttonsVisibility === 'close' || buttonsVisibility === 'reset') && (
-          <img className={styles.closeButton} alt='' src={closeButton} onClick={handleCloseSearch} />
+          <img className={styles.closeButton} alt='button' src={closeButton} onClick={(e) => handleCloseSearch(e)} />
         )}
         {buttonsVisibility === 'reset' && (
           <button type='reset' className={styles.resetButton} onClick={(e) => handleResetButton(e)}>

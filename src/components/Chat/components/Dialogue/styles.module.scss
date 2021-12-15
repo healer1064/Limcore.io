@@ -19,6 +19,13 @@
   &:hover {
     cursor: pointer;
   }
+
+  &:last-of-type {
+    grid-template-rows: repeat(2, minmax(min-content, max-content));
+    grid-template-areas:
+  'foto name date'
+  'foto message unread';
+  }
 }
 
 .foto {
@@ -80,7 +87,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  background-color: $color-E5-white;
+  background-color: $color-E5-grey;
   height: 1px;
 }
 
