@@ -114,7 +114,7 @@ export const ChatContent = () => {
             <p className={styles.name}>
               {currentDialogueMember.first_name || 'User'} {currentDialogueMember.last_name || ''}
             </p>
-            <p className={styles.status}>{currentDialogueMember.status === '1' ? 'В сети' : 'Не в сети'} </p>
+            <p className={styles.status}>{currentDialogueMember.status === 1 ? 'В сети' : 'Не в сети'} </p>
           </>
         )}
       </div>

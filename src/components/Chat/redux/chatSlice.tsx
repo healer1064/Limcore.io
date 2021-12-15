@@ -44,12 +44,6 @@ export const chatSlice = createSlice({
       state.genChatMembers[userIndex].user.status = payload.status
     },
     setDialogues: (state, { payload }) => {
-      // TODO когда сортировка будет реализована на бэке - убрать
-      payload.sort((a, b) => {
-        const aTime = new Date(a.last_message.updated_at).getTime()
-        const bTime = new Date(b.last_message.updated_at).getTime()
-        return bTime - aTime
-      })
       state.dialogues = payload
     },
     setDialogueStatus: (state, { payload }) => {

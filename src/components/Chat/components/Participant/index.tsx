@@ -52,8 +52,8 @@ export const Participant = ({ member }: IParticipantProps) => {
       <p className={styles.name}>
         {member.user?.first_name || 'User'} {member.user?.last_name || ''}
       </p>
-      <p className={member.user?.status === '1' || me ? styles.status_active : styles.status}>
-        {member.user?.status === '1' || me ? 'В сети' : 'Не в сети'}
+      <p className={member.user?.status === 1 || me ? styles.status_active : styles.status}>
+        {member.user?.status === 1 || me ? 'В сети' : 'Не в сети'}
       </p>
       <span className={styles.me}>{me}</span>
       <span className={styles.line} />

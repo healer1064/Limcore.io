@@ -41,7 +41,7 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, openRating }:
         ) : (
           <>
             <img src={currentUser.avatar ? currentUser.avatar : profileIcon} alt='' className={styles.foto} />
-            {currentUser.status === '1' && <img alt='' src={active} className={styles.status} />}
+            {currentUser.status === 1 && <img alt='' src={active} className={styles.status} />}
             {currentSlug === 'general_chat' && (
               <span className={styles.raiting} onClick={openRating}>
                 <img src={red} alt='Rating' className={styles.raitingIcon} />

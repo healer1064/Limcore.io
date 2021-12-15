@@ -20,8 +20,14 @@ export const Chat = ({ handleChatClose }) => {
 
   const desktop = width >= 769
 
-  const filteredDialogues = useAppSelector((state) => state.chat.filteredDialogues)
   const content = useAppSelector((state) => state.chat.visibleContent)
+  const filteredDialogues = useAppSelector((state) => state.chat.filteredDialogues)
+  // TODO когда сортировка будет реализована на бэке - убрать
+  const sortedDialogues = [...filteredDialogues].sort((a, b) => {
+    const aTime = new Date(a.last_message.updated_at).getTime()
+    const bTime = new Date(b.last_message.updated_at).getTime()
+    return bTime - aTime
+  })
 
   const onJoin = () => {
     joinGroup('general_chat')
@@ -67,7 +73,7 @@ export const Chat = ({ handleChatClose }) => {
             </div>
             <SearchForm desktop={desktop} />
             <section className={styles.messageSection}>
-              {filteredDialogues?.map((dialogue: IDialogueInterface, i) => (
+              {sortedDialogues?.map((dialogue: IDialogueInterface, i) => (
                 <Dialogue key={i} data={dialogue} />
               ))}
             </section>
@@ -77,7 +83,7 @@ export const Chat = ({ handleChatClose }) => {
         <div className={styles.chat}>
           <SearchForm desktop={desktop} />
           <article className={styles.messageSection}>
-            {filteredDialogues?.map((dialogue: IDialogueInterface, i) => (
+            {sortedDialogues?.map((dialogue: IDialogueInterface, i) => (
               <Dialogue key={i} data={dialogue} />
             ))}
           </article>

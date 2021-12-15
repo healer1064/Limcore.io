@@ -117,7 +117,7 @@ export const useChat = () => {
       }
 
       if (data.command === 12 || data.command === 13) {
-        const dataToDispatch = { id: data.user_pk, status: data.command === 12 ? '1' : '0' }
+        const dataToDispatch = { id: data.user_pk, status: data.command === 12 ? 1 : 0 }
         const isExistingDialogue = currentDialogues.some((dialogue) => {
           if (dialogue.other_user) {
             return dialogue.other_user.id === data.user_pk
