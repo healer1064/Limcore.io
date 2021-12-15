@@ -125,7 +125,7 @@
     bottom: 14px;
     left: calc(100% - 495px);
     box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
-    border-radius: 14px;
+    border-radius: $border-radius;
   }
 
   .groupHeader {
