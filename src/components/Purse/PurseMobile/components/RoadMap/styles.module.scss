@@ -49,7 +49,7 @@
     h3{
       @include section-title($color-4F-black)
     }
-    p {
+    data {
       @include subtitle-14px($color-86-grey)
     }
   }

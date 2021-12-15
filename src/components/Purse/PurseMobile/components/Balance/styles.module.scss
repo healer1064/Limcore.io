@@ -309,7 +309,7 @@
   border: 1px solid $color-99-gray;
   border-radius: 50%;
   background-color: $white;
-  outline: $outline;
+  outline: none;
   object-fit: contain;
   justify-content: center;
   align-content: center;
@@ -318,6 +318,10 @@
   &:hover {
     cursor: pointer;
     opacity: .5;
+  }
+
+  &:focus {
+    outline: $outline;
   }
 }
 
