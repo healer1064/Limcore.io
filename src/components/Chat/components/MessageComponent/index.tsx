@@ -24,7 +24,6 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, openRating }:
     currentUser.first_name && currentUser.last_name
       ? `${currentUser.first_name} ${currentUser.last_name}`
       : `User #${currentUser.id}`
-
   return (
     <>
       {date && <div className={styles.date}>{date}</div>}

@@ -74,20 +74,24 @@ export const ChatContent = () => {
     }
   }
 
-  // Если чат 1 на 1, то вписываю в стейт инфу о собеседнике
-  if (!IS_GENERAL_CHAT && currentDialogue) {
-    dispatch(setCurrentDialogueMember(currentDialogue.other_user))
-  }
+  useEffect(() => {
+    // Если чат 1 на 1, то вписываю в стейт инфу о собеседнике
+    if (!IS_GENERAL_CHAT && currentDialogue) {
+      dispatch(setCurrentDialogueMember(currentDialogue.other_user))
+    }
+  }, [])
 
   // Логика скролла
   useEffect(() => {
-    if (currentPosition && !autoScroll) {
-      messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight - currentPosition
-      setCurrentPosition(null)
-    } else if (messagesEndRef.current && autoScroll) {
-      messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight - messagesEndRef.current.clientHeight
-      if (currentMessages && currentMessages[currentMessages.length - 1]?.id) {
-        sendLastReadedMessage(currentMessages[currentMessages.length - 1].id, slug)
+    if (currentMessages.length) {
+      if (currentPosition && !autoScroll) {
+        messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight - currentPosition
+        setCurrentPosition(null)
+      } else if (messagesEndRef.current && autoScroll) {
+        messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight - messagesEndRef.current.clientHeight
+        if (currentMessages[currentMessages.length - 1]?.id) {
+          sendLastReadedMessage(currentMessages[currentMessages.length - 1].id, slug)
+        }
       }
     }
   }, [currentMessages])
