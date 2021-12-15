@@ -29,14 +29,13 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, openRating }:
     <>
       {date && <div className={styles.date}>{date}</div>}
       <div className={styles.member}>
-        <span className={styles.member_name}>{isMyMsg ? '' : userName}</span>
         {isMyMsg ? (
           <div className={styles.myMessageCont}>
+            {message.file.length !== 0 && <File file={message.file} />}
             <p className={styles.myMessage}>
               {message.message}
               <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
             </p>
-            {message.file.length !== 0 && <File file={message.file} />}
           </div>
         ) : (
           <>
@@ -50,11 +49,11 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, openRating }:
             )}
 
             <div className={styles.messageCont}>
+              {message.file.length !== 0 && <File file={message.file} />}
               <p className={styles.message}>
                 {message.message}
                 <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
               </p>
-              {message.file.length !== 0 && <File file={message.file} />}
             </div>
           </>
         )}

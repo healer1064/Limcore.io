@@ -16,7 +16,11 @@ export const File = ({ file }: IFile) => {
     case 'webp':
     case 'svg':
     case 'gif':
-      return <img src={file[0].file} className={styles.file} />
+      return (
+        <div className={styles.imgContainer}>
+          <img src={file[0].file} className={styles.file} />
+        </div>
+      )
 
     case 'mp3':
     case 'mp4':

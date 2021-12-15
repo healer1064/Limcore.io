@@ -50,7 +50,6 @@ export const ChatContent = () => {
     dispatch(setCurrentMessages([]))
     dispatch(setContent(''))
     dispatch(setCurrentSlug(''))
-    getGroupsList(1) // TODO - если групп будет больше 50 будет пагинация
   }
 
   // Подгрузка сообщений по скроллу

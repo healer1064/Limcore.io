@@ -46,6 +46,13 @@ export const chatSlice = createSlice({
     setDialogues: (state, { payload }) => {
       state.dialogues = payload
     },
+    setDialoguesLastMessage: (state, { payload }) => {
+      // TODO поменять, когда бэк по  коиманде 3 будет присылать собеседника в other_user
+      const slug = payload?.group ? payload.group.slug : 'general_chat'
+      const dialogueIndex = state.dialogues.findIndex((dialogue) => dialogue.slug === slug)
+      state.dialogues[dialogueIndex].last_message = payload.message
+      state.dialogues[dialogueIndex].unread_count += 1
+    },
     setDialogueStatus: (state, { payload }) => {
       const currentDialogue = state.dialogues.findIndex((dialogue) => {
         return dialogue.slug !== 'general_chat' && dialogue.other_user.id === payload.id
@@ -95,6 +102,7 @@ export const {
   setGenChatMembers,
   setGenChatMembersStatus,
   setDialogueStatus,
+  setDialoguesLastMessage,
   setCurrentPage,
   setWholePages,
   setCurrentSlug,
