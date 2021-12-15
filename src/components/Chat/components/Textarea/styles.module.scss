@@ -33,6 +33,9 @@
     font-size: 13px;
     font-weight: 500;
     line-height: 1;  
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &_delete {
@@ -107,6 +110,17 @@
 
   &:focus, &:active {
     border-radius: 25%;
+  }
+
+  // Spinner
+  & > div {
+    width: 100%;
+    height: 100%;
+
+    & > div {
+      width: 100%;
+      height: 100%;
+    }  
   }
 }
 

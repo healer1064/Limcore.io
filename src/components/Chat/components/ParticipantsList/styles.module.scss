@@ -7,15 +7,18 @@
   flex-direction: column;
   box-sizing: border-box;
   padding: 0;
-  margin: 0;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
+  margin-top: -20px;
   z-index: 2;
   background-color: $white;
   transition: opacity 200ms ease, visibility 200ms ease;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  // position: fixed;
+  // top: 0;
+  // bottom: 0;
+  // right: 0;
+  // left: 0;
 
 //   &_invisible {
 //     visibility: hidden;
@@ -23,12 +26,7 @@
 //     transition: opacity 200ms ease, visibility 200ms ease;
 //     position: absolute;
 //   }
-}
-
-.list {
-  margin-top: -20px;
-  overflow-x: hidden;
-  overflow-y: auto;
+// }
 }
 
 .listHeader {
@@ -43,7 +41,8 @@
   min-height: 70px;
   width: 100%;
   justify-content: space-between;
-  border-bottom: 1px solid $color-E5-grey;
+  border-bottom: 1px solid $color-E5-white;
+  background-color: $white;
 }
 
 .button {
