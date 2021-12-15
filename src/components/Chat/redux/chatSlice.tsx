@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { api } from '@app/api'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../../../app/redux/store'
 import {
   IDialogueInterface,
@@ -7,6 +8,11 @@ import {
   IUserInterface,
   TVisibleContent,
 } from '../utils/types'
+
+export const uploadFile: any = createAsyncThunk('chat/upload', async function (file) {
+  const response = await api.post('chat/upload/', file)
+  return response.data
+})
 
 export const chatSlice = createSlice({
   name: 'chat',
@@ -18,6 +24,7 @@ export const chatSlice = createSlice({
     currentMessages: [] as IMessageInterface[],
     currentPage: 0,
     wholePages: 0,
+    uploadedFile: [],
 
     genChatMembers: [] as IMemberInterface[],
     dialogues: [] as IDialogueInterface[],
@@ -73,6 +80,14 @@ export const chatSlice = createSlice({
     setCurrentDialogueMember: (state, { payload }) => {
       state.currentDialogueMember = payload
     },
+    setUploadedFile: (state, { payload }) => {
+      state.uploadedFile = payload
+    },
+  },
+  extraReducers: {
+    [uploadFile.fulfilled]: (state, action) => {
+      console.log('uploadFile', action.payload)
+    },
   },
 })
 
@@ -90,6 +105,7 @@ export const {
   setWholePages,
   setCurrentSlug,
   setCurrentDialogueMember,
+  setUploadedFile,
 } = actions
 
 export const chatSelector = (state: RootState) => state.chat

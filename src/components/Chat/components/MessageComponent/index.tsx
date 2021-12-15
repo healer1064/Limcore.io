@@ -6,6 +6,7 @@ import { IMessageInterface } from '@components/Chat/utils/types'
 import red from '@icons/redRaiting.svg'
 import active from '@icons/activeStatus.svg'
 import { useAppSelector } from '@app/redux/hooks'
+import { File } from '../File'
 
 interface IMessageComponent {
   userId: number
@@ -30,10 +31,13 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, openRating }:
       <div className={styles.member}>
         <span className={styles.member_name}>{isMyMsg ? '' : userName}</span>
         {isMyMsg ? (
-          <p className={styles.myMessage}>
-            {message.message}
-            <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
-          </p>
+          <div className={styles.myMessageCont}>
+            <p className={styles.myMessage}>
+              {message.message}
+              <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
+            </p>
+            {message.file.length !== 0 && <File file={message.file} />}
+          </div>
         ) : (
           <>
             <img src={currentUser.avatar ? currentUser.avatar : profileIcon} alt='' className={styles.foto} />
@@ -45,10 +49,13 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, openRating }:
               </span>
             )}
 
-            <p className={styles.message}>
-              {message.message}
-              <span className={styles.time}>{getHoursAndMinutes(message.created_at)}</span>
-            </p>
+            <div className={styles.messageCont}>
+              <p className={styles.message}>
+                {message.message}
+                <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
+              </p>
+              {message.file.length !== 0 && <File file={message.file} />}
+            </div>
           </>
         )}
       </div>

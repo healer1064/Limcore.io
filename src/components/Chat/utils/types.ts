@@ -23,6 +23,7 @@ export interface IMessageInterface {
   msg_type: number
   update_at: string
   user: IUserInterface
+  file?: any[]
 }
 
 export interface IDialogueInterface {
@@ -49,4 +50,14 @@ export interface IUserInterface {
   middle_name?: string
   phone: string
   status: string
+}
+
+export interface IFileInterface {
+  created_at: string
+  duration: number
+  file: string
+  filename: string
+  id: number
+  size: number
+  type: number
 }
