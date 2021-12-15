@@ -1,18 +1,23 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, ChangeEvent } from 'react'
 import styles from './styles.module.scss'
 import clip from '@icons/clip.svg'
 import send from '@icons/sendIcon.svg'
 import close from '@icons/close.svg'
 import { useChat } from '@components/Chat/utils/useChat'
 import { useAppSelector } from '@app/redux/hooks'
+import { setUploadedFile, uploadFile } from '@components/Chat/redux/chatSlice'
+import { useDispatch } from 'react-redux'
+import { Spinner } from '@components/Spinner'
 
 export const Textarea = () => {
+  const dispatch = useDispatch()
   const { sendGroupMessage, sendDialogueMessage } = useChat()
 
   const [isButtonVisible, setIsButtonVisible] = useState(false)
   const [inputValue, setInputValue] = useState('')
   const inputRef = useRef(null)
   const [file, setFile] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   const _slug = useAppSelector((state) => state.chat.currentSlug)
   let slug = _slug
@@ -43,12 +48,37 @@ export const Textarea = () => {
   const handleSubmit = () => {
     IS_GENERAL_CHAT ? sendGroupMessage(slug, inputValue) : sendDialogueMessage(slug, inputValue)
     setInputValue('')
+    setFile(null)
+    dispatch(setUploadedFile([]))
+    setIsButtonVisible(false)
+
     inputRef.current.style.height = '40px'
   }
 
-  const onFileClick = () => {
-    console.log('onFileClick')
+  const handleSetFile = (event: ChangeEvent<HTMLInputElement>) => {
+    setFile(event.target.files[0])
   }
+
+  const upload = async () => {
+    const data = new FormData()
+    data.append('file', file)
+
+    const response = await dispatch(uploadFile(data))
+
+    if (!response.error) {
+      dispatch(setUploadedFile([response.payload.id]))
+      setIsLoading(false)
+    } else {
+      console.log('uploadError')
+    }
+  }
+
+  useEffect(() => {
+    if (file) {
+      setIsLoading(true)
+      upload()
+    }
+  }, [file])
 
   useEffect(() => {
     if (inputRef.current) {
@@ -56,30 +86,35 @@ export const Textarea = () => {
     }
   }, [inputRef])
 
-  useEffect(() => {
-    if (file) {
-      console.log(file)
-    }
-  }, [file])
-
   return (
-    <div className={styles.inputContainer}>
-      <button className={styles.button} type='button'>
-        <img alt='clip' src={clip} className={styles.clip} />
-      </button>
-      <textarea
-        ref={inputRef}
-        value={inputValue}
-        className={styles.inputText}
-        placeholder='Сообщение'
-        onChange={handleInputChange}
-        onCut={handleInputHeight}
-        onPaste={handleInputHeight}
-        onInput={handleInputHeight}
-      />
-      <button className={styles.button} type='button' onClick={handleSubmit}>
-        {isButtonVisible && <img alt='' src={send} className={styles.sendIcon} />}
-      </button>
-    </div>
+    <>
+      {file && (
+        <div className={styles.file}>
+          <img src={clip} alt='clip' className={styles.file_clip} />
+          <p className={styles.file_title}>{file.name}</p>
+          <img src={close} alt='delete file' className={styles.file_delete} onClick={() => setFile(null)} />
+        </div>
+      )}
+
+      <div className={styles.inputContainer}>
+        <label className={styles.button}>
+          <img alt='Clip' src={clip} className={styles.clip} />
+          <input type='file' onChange={handleSetFile} />
+        </label>
+        <textarea
+          ref={inputRef}
+          value={inputValue}
+          className={styles.inputText}
+          placeholder='Сообщение'
+          onChange={handleInputChange}
+          onCut={handleInputHeight}
+          onPaste={handleInputHeight}
+          onInput={handleInputHeight}
+        />
+        <button className={styles.button} type='button' onClick={handleSubmit}>
+          {isLoading ? <Spinner /> : isButtonVisible && <img alt='' src={send} className={styles.sendIcon} />}
+        </button>
+      </div>
+    </>
   )
 }

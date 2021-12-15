@@ -37,6 +37,7 @@ export const useChat = () => {
   const token = tokenObj.access
 
   const currentMessages = useAppSelector((state) => state.chat.currentMessages)
+  const uploadedFile = useAppSelector((state) => state.chat.uploadedFile)
 
   useEffect(() => {
     if (!socket) {
@@ -126,13 +127,20 @@ export const useChat = () => {
   }
 
   const sendGroupMessage = (groupName: string, message: string) => {
-    const dataToSend = {
+    const dataToSend1 = {
+      command: commands.sendGroupMessage,
+      group: groupName,
+      message,
+      files_pk: uploadedFile,
+    }
+
+    const dataToSend2 = {
       command: commands.sendGroupMessage,
       group: groupName,
       message,
     }
 
-    send(dataToSend)
+    uploadedFile.length === 0 ? send(dataToSend2) : send(dataToSend1)
   }
 
   const joinGroup = (groupName: string) => {
@@ -145,14 +153,20 @@ export const useChat = () => {
   }
 
   const sendDialogueMessage = (recipient: string, message: string) => {
-    console.log('sendDialogueMessage')
-    const dataToSend = {
+    const dataToSend1 = {
+      command: commands.sendDialogueMessage,
+      recipient,
+      message,
+      files_pk: uploadedFile,
+    }
+
+    const dataToSend2 = {
       command: commands.sendDialogueMessage,
       recipient,
       message,
     }
 
-    send(dataToSend)
+    uploadedFile.length === 0 ? send(dataToSend2) : send(dataToSend1)
   }
 
   const sendLastReadedMessage = (messageId: number, groupName: string) => {

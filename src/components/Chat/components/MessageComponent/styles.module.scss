@@ -90,7 +90,7 @@
   display: flex;
   position: relative;
   box-sizing: border-box;
-  width: 75%;
+  width: 100%;
   margin: 0;
   padding: 12px 50px 12px 14px;
   border-radius: $border-radius;
@@ -103,12 +103,25 @@
   background: $color-FO-white;
 }
 
+.myMessageCont {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin-left: auto;
+}
+
+.messageCont {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
 .myMessage {
   grid-area: message;
   display: flex;
   position: relative;
   box-sizing: border-box;
-  width: 75%;
+  width: 100%;
   margin: 0 0 0 auto;
   padding: 12px 50px 12px 14px;
   word-wrap: anywhere;
