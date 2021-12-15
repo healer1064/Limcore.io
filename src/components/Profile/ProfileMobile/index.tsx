@@ -30,7 +30,7 @@ export const ProfileMobile: React.FC = () => {
       dispatch(setData({ ...userData.profile }))
     }
 
-    if (userData !== null && userData?.first_name /* && user.first_name && user.last_name && user.gender */) {
+    if (userData !== null && userData.profile?.first_name /* && user.first_name && user.last_name && user.gender */) {
       dispatch(setProfileComplete(true))
     }
 
