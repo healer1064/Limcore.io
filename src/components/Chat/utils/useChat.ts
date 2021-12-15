@@ -7,6 +7,7 @@ import {
   setGenChatMembers,
   setGenChatMembersStatus,
   setDialogueStatus,
+  setDialoguesLastMessage,
   setCurrentPage,
   setWholePages,
   setContent,
@@ -82,20 +83,25 @@ export const useChat = () => {
           const arr = []
           arr.push(data.message)
           dispatch(setCurrentMessages([...currentMessages, ...arr]))
-        } else if (currentSlug === '') {
-          // TODO захардкодил страницу с группами нужно поправить
-          getGroupsList(1)
         }
+        dispatch(setDialoguesLastMessage(data))
       }
 
       if (data.command === 3) {
-        if (currentSlug === data.group.slug || currentDialogueMember.id === data.group.other_user.id) {
-          const arr = []
-          arr.push(data.message)
-          dispatch(setCurrentMessages([...currentMessages, ...arr]))
-        } else if (currentSlug === '' && !currentDialogueMember?.id) {
-          getGroupsList(1)
+        const isDialogueExist = currentDialogues.some((dialogue) => dialogue.slug === data.group.slug)
+        if (isDialogueExist) {
+          if (currentSlug === data.group.slug || currentDialogueMember.id === data.group.other_user.id) {
+            const arr = []
+            arr.push(data.message)
+            dispatch(setCurrentMessages([...currentMessages, ...arr]))
+          }
+
+          dispatch(setDialoguesLastMessage(data))
+
+          return
         }
+
+        getGroupsList(1)
       }
 
       if (data.command === 4) {
@@ -117,7 +123,7 @@ export const useChat = () => {
       }
 
       if (data.command === 12 || data.command === 13) {
-        const dataToDispatch = { id: data.user_pk, status: data.command === 12 ? '1' : '0' }
+        const dataToDispatch = { id: data.user_pk, status: data.command === 12 ? 1 : 0 }
         const isExistingDialogue = currentDialogues.some((dialogue) => {
           if (dialogue.other_user) {
             return dialogue.other_user.id === data.user_pk

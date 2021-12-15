@@ -40,7 +40,7 @@ export const Dialogue = ({ data }: IDialogueProps) => {
         alt='image'
         className={styles.foto}
       />
-      {!IS_GENERAL_CHAT && data.other_user.status === '1' && <img alt='' src={active} className={styles.status} />}
+      {!IS_GENERAL_CHAT && data.other_user.status === 1 && <img alt='' src={active} className={styles.status} />}
       <p className={styles.name}>{title}</p>
       <p className={styles.message}>{data.last_message?.message}</p>
       <data className={styles.date}>{data.last_message ? getMonthAndDay(data.last_message.created_at) : ''}</data>

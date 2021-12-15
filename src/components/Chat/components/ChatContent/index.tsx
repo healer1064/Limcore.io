@@ -50,7 +50,6 @@ export const ChatContent = () => {
     dispatch(setCurrentMessages([]))
     dispatch(setContent(''))
     dispatch(setCurrentSlug(''))
-    getGroupsList(1) // TODO - если групп будет больше 50 будет пагинация
   }
 
   // Подгрузка сообщений по скроллу
@@ -114,7 +113,7 @@ export const ChatContent = () => {
             <p className={styles.name}>
               {currentDialogueMember.first_name || 'User'} {currentDialogueMember.last_name || ''}
             </p>
-            <p className={styles.status}>{currentDialogueMember.status === '1' ? 'В сети' : 'Не в сети'} </p>
+            <p className={styles.status}>{currentDialogueMember.status === 1 ? 'В сети' : 'Не в сети'} </p>
           </>
         )}
       </div>

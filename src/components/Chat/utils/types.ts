@@ -21,7 +21,7 @@ export interface IMessageInterface {
   is_edited: boolean
   message: string
   msg_type: number
-  update_at: string
+  updated_at: string
   user: IUserInterface
   file?: any[]
 }
@@ -49,7 +49,7 @@ export interface IUserInterface {
   last_name?: string
   middle_name?: string
   phone: string
-  status: string
+  status: number
 }
 
 export interface IFileInterface {

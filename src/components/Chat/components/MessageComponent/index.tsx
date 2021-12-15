@@ -29,19 +29,18 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, openRating }:
     <>
       {date && <div className={styles.date}>{date}</div>}
       <div className={styles.member}>
-        <span className={styles.member_name}>{isMyMsg ? '' : userName}</span>
         {isMyMsg ? (
           <div className={styles.myMessageCont}>
+            {message.file.length !== 0 && <File file={message.file} />}
             <p className={styles.myMessage}>
               {message.message}
               <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
             </p>
-            {message.file.length !== 0 && <File file={message.file} />}
           </div>
         ) : (
           <>
             <img src={currentUser.avatar ? currentUser.avatar : profileIcon} alt='' className={styles.foto} />
-            {currentUser.status === '1' && <img alt='' src={active} className={styles.status} />}
+            {currentUser.status === 1 && <img alt='' src={active} className={styles.status} />}
             {currentSlug === 'general_chat' && (
               <span className={styles.raiting} onClick={openRating}>
                 <img src={red} alt='Rating' className={styles.raitingIcon} />
@@ -50,11 +49,11 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, openRating }:
             )}
 
             <div className={styles.messageCont}>
+              {message.file.length !== 0 && <File file={message.file} />}
               <p className={styles.message}>
                 {message.message}
                 <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
               </p>
-              {message.file.length !== 0 && <File file={message.file} />}
             </div>
           </>
         )}

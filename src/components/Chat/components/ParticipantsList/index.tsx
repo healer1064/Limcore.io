@@ -15,6 +15,11 @@ interface IParticipantsList {
 
 export const ParticipantsList = ({ onClose, participants, isActive }: IParticipantsList) => {
   const [t] = useTranslation()
+  const sortedPartisipants = [...participants].sort((a, b) => {
+    const aMemberStatus = a.user.status || 0
+    const bMemberStatus = b.user.status || 0
+    return bMemberStatus - aMemberStatus
+  })
 
   return (
     <Modal isMobile active={isActive} setActive={onClose}>
@@ -32,7 +37,7 @@ export const ParticipantsList = ({ onClose, participants, isActive }: IParticipa
           </button>
         </div>
         <div className={styles.messagesContainer}>
-          {participants.map((member: IMemberInterface) => (
+          {sortedPartisipants.map((member: IMemberInterface) => (
             <Participant key={member.user.id} member={member} />
           ))}
         </div>

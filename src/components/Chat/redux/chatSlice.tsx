@@ -44,13 +44,14 @@ export const chatSlice = createSlice({
       state.genChatMembers[userIndex].user.status = payload.status
     },
     setDialogues: (state, { payload }) => {
-      // TODO когда сортировка будет реализована на бэке - убрать
-      payload.sort((a, b) => {
-        const aTime = new Date(a.last_message.updated_at).getTime()
-        const bTime = new Date(b.last_message.updated_at).getTime()
-        return bTime - aTime
-      })
       state.dialogues = payload
+    },
+    setDialoguesLastMessage: (state, { payload }) => {
+      // TODO поменять, когда бэк по  коиманде 3 будет присылать собеседника в other_user
+      const slug = payload?.group ? payload.group.slug : 'general_chat'
+      const dialogueIndex = state.dialogues.findIndex((dialogue) => dialogue.slug === slug)
+      state.dialogues[dialogueIndex].last_message = payload.message
+      state.dialogues[dialogueIndex].unread_count += 1
     },
     setDialogueStatus: (state, { payload }) => {
       const currentDialogue = state.dialogues.findIndex((dialogue) => {
@@ -101,6 +102,7 @@ export const {
   setGenChatMembers,
   setGenChatMembersStatus,
   setDialogueStatus,
+  setDialoguesLastMessage,
   setCurrentPage,
   setWholePages,
   setCurrentSlug,

@@ -12,9 +12,10 @@
 .member {
   position: relative;
   display: flex;
+  align-items: flex-end;
   box-sizing: border-box;
   padding: 0;
-  margin: 20px;
+  margin: 10px 20px;
 
   &_name {
     position: absolute;
@@ -40,7 +41,7 @@
 .status {
   position: absolute;
   left: 24px;
-  top: 27px;
+  bottom: -5px;
 }
 
 .raiting {
@@ -87,6 +88,7 @@
 .message {
   grid-area: message;
   display: flex;
+  flex-direction: column;
   position: relative;
   box-sizing: border-box;
   width: 100%;
@@ -118,6 +120,7 @@
 .myMessage {
   grid-area: message;
   display: flex;
+  flex-direction: column;
   position: relative;
   box-sizing: border-box;
   width: 100%;
