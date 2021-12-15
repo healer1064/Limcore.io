@@ -37,6 +37,10 @@ export const useChat = () => {
   const token = tokenObj.access
 
   const currentMessages = useAppSelector((state) => state.chat.currentMessages)
+  const currentSlug = useAppSelector((state) => state.chat.currentSlug)
+  const currentDialogueMember = useAppSelector((state) => state.chat.currentDialogueMember)
+  const currentDialogues = useAppSelector((state) => state.chat.dialogues)
+  const currentGenChatMembers = useAppSelector((state) => state.chat.genChatMembers)
   const uploadedFile = useAppSelector((state) => state.chat.uploadedFile)
 
   useEffect(() => {
@@ -74,19 +78,24 @@ export const useChat = () => {
       }
 
       if (data.command === 1) {
-        const arr = []
-        arr.push(data.message)
-        dispatch(setCurrentMessages([...currentMessages, ...arr]))
-
-        // TODO захардкодил страницу с группами нужно поправить
-        getGroupsList(1)
+        if (currentSlug === 'general_chat') {
+          const arr = []
+          arr.push(data.message)
+          dispatch(setCurrentMessages([...currentMessages, ...arr]))
+        } else if (currentSlug === '') {
+          // TODO захардкодил страницу с группами нужно поправить
+          getGroupsList(1)
+        }
       }
 
       if (data.command === 3) {
-        const arr = []
-        arr.push(data.message)
-
-        dispatch(setCurrentMessages([...currentMessages, ...arr]))
+        if (currentSlug === data.group.slug || currentDialogueMember.id === data.group.other_user.id) {
+          const arr = []
+          arr.push(data.message)
+          dispatch(setCurrentMessages([...currentMessages, ...arr]))
+        } else if (currentSlug === '' && !currentDialogueMember?.id) {
+          getGroupsList(1)
+        }
       }
 
       if (data.command === 4) {
@@ -107,16 +116,23 @@ export const useChat = () => {
         data.result.length === 0 ? dispatch(setCurrentMessages([])) : dispatch(setCurrentMessages(data.result))
       }
 
-      if (data.command === 12) {
-        const dataToDispatch = { id: data.user_pk, status: '1' }
-        dispatch(setDialogueStatus(dataToDispatch))
-        dispatch(setGenChatMembersStatus(dataToDispatch))
-      }
+      if (data.command === 12 || data.command === 13) {
+        const dataToDispatch = { id: data.user_pk, status: data.command === 12 ? '1' : '0' }
+        const isExistingDialogue = currentDialogues.some((dialogue) => {
+          if (dialogue.other_user) {
+            return dialogue.other_user.id === data.user_pk
+          }
+        })
+        const isExistingGenChatUser = currentGenChatMembers.some((member) => {
+          return member.user.id === data.user_pk
+        })
 
-      if (data.command === 13) {
-        const dataToDispatch = { id: data.user_pk, status: '0' }
-        dispatch(setDialogueStatus(dataToDispatch))
-        dispatch(setGenChatMembersStatus(dataToDispatch))
+        if (isExistingDialogue) {
+          dispatch(setDialogueStatus(dataToDispatch))
+        }
+        if (isExistingGenChatUser) {
+          dispatch(setGenChatMembersStatus(dataToDispatch))
+        }
       }
     }
   }
