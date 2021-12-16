@@ -266,7 +266,7 @@
 }
 
 .description {
-  color: $color-4C-white;
+  @include subtitle-13px($color-4C-white);
   width: 100%;
   max-width: 450px;
   margin-right: 42px;
@@ -395,6 +395,7 @@
     width: 100%;
     max-width: 100%;
     margin: 0 10px 0 0;
+    @include subtitle-13px($color-4C-white);
 
     &:last-child {
       margin: 0;
