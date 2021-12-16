@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import active from '@icons/activeStatus.svg'
 import { useAppDispatch } from '@app/redux/hooks'
 import { setContent, setCurrentSlug } from '../../redux/chatSlice'
-import { getMonthAndDay } from '@components/Chat/utils/funcs'
+import { getMonthAndDay, getUserName } from '@components/Chat/utils/funcs'
 import limcoreIcon from '@icons/limcore.svg'
 import profileIcon from '@icons/profileicon.svg'
 import { IDialogueInterface } from '@components/Chat/utils/types'
@@ -24,7 +24,7 @@ export const Dialogue = ({ data }: IDialogueProps) => {
   // const name = `${firstName} ${lastName}`
   const name = `${data.other_user?.first_name || 'User'} ${data.other_user?.last_name || ''}`
 
-  const title = IS_GENERAL_CHAT ? 'Mining Data Centre Limcore' : name
+  const title = IS_GENERAL_CHAT ? 'Mining Data Centre Limcore' : getUserName(data.other_user)
 
   const handleChatOpen = () => {
     dispatch(setCurrentSlug(data.slug))

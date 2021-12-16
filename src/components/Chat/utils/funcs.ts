@@ -1,3 +1,5 @@
+import { IUserInterface } from './types'
+
 export const getMonthAndDay = (date: string) => {
   const msgDate = new Date(date)
 
@@ -63,4 +65,14 @@ export const getMonthNameWithDate = (date: string) => {
   }
 
   return `${day} ${monthName}`
+}
+
+export const getUserName = (user: IUserInterface): string => {
+  if (user.chat_name) {
+    return user.chat_name
+  } else if (user.first_name && user.last_name) {
+    return `${user.first_name} ${user.last_name[0]}.`
+  } else {
+    return `User #${user.id}`
+  }
 }

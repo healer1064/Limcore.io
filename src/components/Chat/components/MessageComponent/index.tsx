@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
 import profileIcon from '@icons/profileicon.svg'
-import { getHoursAndMinutes } from '@components/Chat/utils/funcs'
+import { getHoursAndMinutes, getUserName } from '@components/Chat/utils/funcs'
 import { IMessageInterface } from '@components/Chat/utils/types'
 import red from '@icons/redRaiting.svg'
 import active from '@icons/activeStatus.svg'
@@ -22,20 +22,11 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, showName, ope
   const currentUser = useAppSelector((state) => state.chat.genChatMembers).find(
     (member) => member.user.id === userId,
   ).user
-  const userName = () => {
-    if (currentUser.chat_name) {
-      return currentUser.chat_name
-    } else if (currentUser.first_name && currentUser.last_name) {
-      return `${currentUser.first_name} ${currentUser.last_name[0]}.`
-    } else {
-      return `User #${currentUser.id}`
-    }
-  }
+
   return (
     <>
       {date && <div className={styles.date}>{date}</div>}
       <div className={styles.member}>
-        {showName && <span className={styles.member_name}>{isMyMsg ? '' : userName()}</span>}
         {isMyMsg ? (
           <div className={styles.myMessageCont}>
             {message.file.length !== 0 && <File file={message.file} />}
@@ -48,11 +39,14 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, showName, ope
           <>
             <img src={currentUser.avatar ? currentUser.avatar : profileIcon} alt='' className={styles.foto} />
             {currentUser.status === 1 && <img alt='' src={active} className={styles.status} />}
-            {currentSlug === 'general_chat' && (
-              <span className={styles.raiting} onClick={openRating}>
-                <img src={red} alt='Rating' className={styles.raitingIcon} />
-                <span>20 ТВ</span>
-              </span>
+            {currentSlug === 'general_chat' && showName && (
+              <>
+                <span className={styles.member_name}>{isMyMsg ? '' : getUserName(currentUser)}</span>
+                <span className={styles.raiting} onClick={openRating}>
+                  <img src={red} alt='Rating' className={styles.raitingIcon} />
+                  <span>20 ТВ</span>
+                </span>
+              </>
             )}
 
             <div className={styles.messageCont}>
