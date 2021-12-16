@@ -30,9 +30,6 @@
 }
 
 .listHeader {
-  position: fixed;
-  z-index: 1;
-
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -41,7 +38,7 @@
   min-height: 70px;
   width: 100%;
   justify-content: space-between;
-  border-bottom: 1px solid $color-E5-white;
+  border-bottom: 1px solid $color-E5-grey;
   background-color: $white;
 }
 
@@ -97,19 +94,26 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 80px 0 20px;
+  padding: 10px 0 20px;
   margin: 0 20px;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
 @media screen and (min-width: 769px) {
+  .listContainer {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 42%;
+    height: 610px;
+    border-radius: $border-radius;
+    margin-top: auto;
+  }
+
   .list {
     width: 375px;
     height: 610px;
-    position: absolute;
-    bottom: 0;
-    right: 120px;
     box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
     border-radius: $border-radius;
   }
