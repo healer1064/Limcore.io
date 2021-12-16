@@ -14,7 +14,7 @@ export const MainCaption: React.FC = () => {
         </h1>
         <h3 className={Styles.subtitle}>{t('landing_subtitle')}</h3>
       </div>
-      <figure className={Styles.wrap}>
+      <div className={Styles.wrap}>
         <iframe
           className={Styles.photo}
           width='100%'
@@ -25,7 +25,7 @@ export const MainCaption: React.FC = () => {
           allow='accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
           allowFullScreen
         />
-      </figure>
+      </div>
     </div>
   )
 }
