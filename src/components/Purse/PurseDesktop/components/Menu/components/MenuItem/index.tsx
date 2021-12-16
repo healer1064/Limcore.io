@@ -17,7 +17,7 @@ export const MenuItem: React.FC<MenuItemProps> = ({ openCard, image, syncIcon, t
         {syncIcon}
       </p>
       <p className={styles.menu__sum}>{balance}</p>
-      <img className={styles.menu__logo} src={image} width='30' height='30' />
+      <img className={styles.menu__logo} src={image} width='30' height='30' alt='logo' />
     </button>
   )
 }
