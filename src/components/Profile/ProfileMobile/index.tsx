@@ -12,6 +12,7 @@ import { EditLocation } from './components/EditLocation'
 import { AddAuth } from './components/AddAuth'
 import { useTranslation } from 'react-i18next'
 import { FooterMobile } from '@components/Footer/FooterMobile'
+import { EditName } from './components/EditName'
 
 export const ProfileMobile: React.FC = () => {
   const [t] = useTranslation()
@@ -62,6 +63,11 @@ export const ProfileMobile: React.FC = () => {
                 <AddAuth />
               </Container>
             )}
+            {viewContent === 'editName' && (
+              <Container title={t('chat_nameAdd')}>
+                <EditName />
+              </Container>
+            )}
             {/* {viewContent === 'editPhone' && (
               <Container title={t('profile_phoneNumber')}>
                 <EditPhone />
@@ -70,11 +76,6 @@ export const ProfileMobile: React.FC = () => {
             {/* {viewContent === 'editEmail' && (
               <Container title='E-mail'>
                 <EditEmail />
-              </Container>
-            )} */}
-            {/* {viewContent === 'editName' && (
-              <Container title='Имя в чатах'>
-                <EditName />
               </Container>
             )} */}
             {/* {viewContent === 'changePhone' && (
