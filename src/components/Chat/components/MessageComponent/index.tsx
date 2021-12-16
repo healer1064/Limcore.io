@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import profileIcon from '@icons/profileicon.svg'
 import { getHoursAndMinutes, getUserName } from '@components/Chat/utils/funcs'
 import { IMessageInterface } from '@components/Chat/utils/types'
-import red from '@icons/redRaiting.svg'
+import { LimcRating } from '../LimcRating'
 import active from '@icons/activeStatus.svg'
 import { useAppSelector } from '@app/redux/hooks'
 import { File } from '../File'
@@ -23,9 +23,12 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, showName, ope
     (member) => member.user.id === userId,
   ).user
 
+  const toShowRaiting = Boolean(currentUser.limc_balance)
+
   return (
     <>
       {date && <div className={styles.date}>{date}</div>}
+
       <div className={styles.member}>
         {isMyMsg ? (
           <div className={styles.myMessageCont}>
@@ -42,10 +45,7 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, showName, ope
             {currentSlug === 'general_chat' && showName && (
               <>
                 <span className={styles.member_name}>{isMyMsg ? '' : getUserName(currentUser)}</span>
-                <span className={styles.raiting} onClick={openRating}>
-                  <img src={red} alt='Rating' className={styles.raitingIcon} />
-                  <span>20 ТВ</span>
-                </span>
+                {toShowRaiting && <LimcRating openRating={openRating} limcBalance={currentUser.limc_balance} />}
               </>
             )}
 
