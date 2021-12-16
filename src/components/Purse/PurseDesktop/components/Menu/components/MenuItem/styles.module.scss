@@ -9,6 +9,7 @@
   margin: 16px 0 0;
   padding: 0;
   border: none;
+  border-bottom: 1px solid $color-E5-grey;
   background-color: transparent;
   grid-template-rows: repeat(2, minmax(min-content, max-content));
   grid-template-columns: repeat(2, minmax(min-content, max-content));
@@ -23,6 +24,10 @@
 
   &:focus {
     outline: $outline;
+  }
+
+  &:last-of-type {
+    border-bottom: none;
   }
 }
 
@@ -43,7 +48,7 @@
   font-style: normal;
   font-weight: $fontWeightSemiBold;
   @include p3;
-  padding: 6px 0 0;
+  padding: 6px 0 16px;
   margin: 0;
   text-align: left;
 }

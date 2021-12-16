@@ -51,6 +51,7 @@ export interface IUserInterface {
   middle_name?: string
   phone: string
   status: number
+  limc_balance: number | null
 }
 
 export interface IFileInterface {

@@ -9,7 +9,8 @@
   margin: 10px 0 0;
   height: 45px;
   font-family: $main-font;
-  @include mediumP3($color-39-black);
+  @include main($color-39-black);
+  @include p2;
   text-align: center;
 
   &::placeholder {
