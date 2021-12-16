@@ -19,6 +19,7 @@ export const chatSlice = createSlice({
   initialState: {
     visibleContent: 'loading' as TVisibleContent,
 
+    loader: false,
     currentSlug: '',
     currentDialogueMember: {} as IUserInterface,
     currentMessages: [] as IMessageInterface[],
@@ -31,6 +32,9 @@ export const chatSlice = createSlice({
     filteredDialogues: [] as IDialogueInterface[],
   },
   reducers: {
+    setLoader: (state, { payload }) => {
+      state.loader = payload
+    },
     setCurrentMessages: (state, { payload }) => {
       state.currentMessages = payload
     },
@@ -94,6 +98,7 @@ export const chatSlice = createSlice({
 
 const { actions, reducer } = chatSlice
 export const {
+  setLoader,
   setCurrentMessages,
   setDialogues,
   setFilteredDialogues,

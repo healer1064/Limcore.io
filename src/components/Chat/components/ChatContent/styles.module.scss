@@ -46,6 +46,14 @@
   cursor: pointer;
 }
 
+.loaderContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .foto {
   grid-area: foto;
   border-radius: 50%;
@@ -122,8 +130,6 @@
     width: 375px;
     height: 610px;
     position: relative;
-    bottom: 14px;
-    left: calc(100% - 495px);
     box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
     border-radius: $border-radius;
   }

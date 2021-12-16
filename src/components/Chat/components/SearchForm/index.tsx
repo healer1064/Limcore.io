@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import closeButton from '@icons/greyClose.svg'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setFilteredDialogues } from '../../../Chat/redux/chatSlice'
+import { getUserName } from '@components/Chat/utils/funcs'
 
 type TButtonsVisibility = '' | 'close' | 'reset'
 
@@ -41,15 +42,7 @@ export const SearchForm = ({ desktop }) => {
     const searchString = searched.toLowerCase()
     const filtered = dialogues.filter((dialogue) => {
       if (dialogue.other_user) {
-        if (dialogue.other_user.first_name) {
-          return dialogue.other_user.first_name.toLowerCase().includes(searchString.toLowerCase())
-        } else if (dialogue.other_user.last_name) {
-          return dialogue.other_user.last_name.toLowerCase().includes(searchString.toLowerCase())
-        }
-      } else {
-        if (dialogue.name) {
-          return dialogue.name.toLowerCase().includes(searchString.toLowerCase())
-        }
+        return getUserName(dialogue.other_user).toLowerCase().includes(searchString.toLowerCase())
       }
     })
     dispatch(setFilteredDialogues(filtered))
