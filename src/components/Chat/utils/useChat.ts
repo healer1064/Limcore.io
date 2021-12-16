@@ -11,6 +11,7 @@ import {
   setCurrentPage,
   setWholePages,
   setContent,
+  setLoader,
 } from '../redux/chatSlice'
 import { IDialogueInterface, ISendInterface } from './types'
 import { useAppSelector } from './../../../app/redux/hooks'
@@ -108,6 +109,7 @@ export const useChat = () => {
         dispatch(setCurrentMessages([...data.result.reverse(), ...currentMessages]))
         dispatch(setCurrentPage(data.page))
         dispatch(setWholePages(data.num_pages))
+        dispatch(setLoader(false))
       }
 
       if (data.command === 5) {
@@ -202,6 +204,7 @@ export const useChat = () => {
   }
 
   const getGroupMessages = (groupName: string, page: number) => {
+    dispatch(setLoader(true))
     const dataToSend = {
       command: commands.getGroupMessages,
       group: groupName,

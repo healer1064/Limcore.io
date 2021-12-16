@@ -7,12 +7,15 @@
   flex-direction: column;
   box-sizing: border-box;
   padding: 0;
-  margin-top: -20px;
   z-index: 2;
   background-color: $white;
   transition: opacity 200ms ease, visibility 200ms ease;
   overflow-x: hidden;
   overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  max-height: 100%;
+  border-radius: $border-radius;
 
   // position: fixed;
   // top: 0;
@@ -37,12 +40,16 @@
   margin: 0;
   min-height: 70px;
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
   border-bottom: 1px solid $color-E5-grey;
   background-color: $white;
+  position: sticky;
+  top: 0;
 }
 
 .button {
+  position: absolute;
+  left: 16px;
   padding: 0;
   border: none;
   background-color: transparent;
@@ -111,12 +118,6 @@
     margin-top: auto;
   }
 
-  .list {
-    width: 375px;
-    height: 610px;
-    box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
-    border-radius: $border-radius;
-  }
   .arrow {
     margin: 0 30px 0 0;
   }
