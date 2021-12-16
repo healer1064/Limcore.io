@@ -60,3 +60,16 @@
   overflow-y: auto;
 }
 
+@media (min-width: 770px) {
+  .container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    z-index: 1000;
+    height: 100vh;
+    width: 100%;
+  }
+}

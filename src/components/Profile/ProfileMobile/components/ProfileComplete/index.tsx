@@ -44,6 +44,11 @@ export const ProfileComplete: React.FC = () => {
     bodyEl.current.style.overflow = 'hidden'
   }
 
+  const onClickChatName = () => {
+    changeView('editName')
+    bodyEl.current.style.overflow = 'hidden'
+  }
+
   const onClickLocation = () => {
     changeView('editLocation')
     bodyEl.current.style.overflow = 'hidden'
@@ -157,7 +162,7 @@ export const ProfileComplete: React.FC = () => {
                   <span className={Styles.content}>{t('chat_nameAdd')}</span>
                 )}
               </div>
-              <ButtonSmall onClick={() => changeView('editName')}>{t('change')}</ButtonSmall>
+              <ButtonSmall onClick={onClickChatName}>{t('change')}</ButtonSmall>
             </div>
           </li>
           <li className={Styles.item}>

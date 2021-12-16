@@ -21,6 +21,8 @@ export const ProfileMobile: React.FC = () => {
   const profileComplete = useAppSelector((state) => state.cabinet.profileComplete)
   const viewContent = useAppSelector((state) => state.cabinet.viewContent)
 
+  const condition = viewContent === 'none' || viewContent === 'main' || viewContent === 'profile'
+
   // const onBackAddAuth = () => {
   //   dispatch(changeViewContent('addAuth'))
   //   dispatch(changeStep(0))
@@ -44,7 +46,7 @@ export const ProfileMobile: React.FC = () => {
 
   return (
     <div className={Styles.profile}>
-      {profileComplete ? <ProfileComplete /> : <Profile />}
+      {condition && (profileComplete ? <ProfileComplete /> : <Profile />)}
       <>
         {viewContent ? (
           <>
