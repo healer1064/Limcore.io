@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
-import profileIcon from '@icons/profileicon.svg'
+// import profileIcon from '@icons/profileicon.svg'
+import defaultAvatar from '@icons/defaultAvatar.svg'
 import { useAppSelector } from '@app/redux/hooks'
 import { ChatContent } from '../ChatContent'
 import { useDispatch } from 'react-redux'
@@ -27,7 +28,7 @@ export const Participant = ({ member }: IParticipantProps) => {
   const [isOpened, setIsOpened] = useState(false)
   const userId = useAppSelector((state) => state.user.userData?.id)
   const me = member.user.id === userId ? 'Вы' : ''
-  const avatar = member.user.avatar ? member.user.avatar : profileIcon
+  const avatar = member.user.avatar ? member.user.avatar : defaultAvatar
   // const showRaiting = Boolean(member.user.limc_balance)
 
   const onOpen = () => {

@@ -64,6 +64,8 @@
 }
 
 .desc {
+  margin: 0;
+  padding: 0;
   font-family: $main-font;
   @include subtitle-14px($color-99-gray);
 
