@@ -22,7 +22,7 @@ export const ParticipantsList = ({ onClose, participants, isActive }: IParticipa
   })
 
   return (
-    <Modal isMobile active={isActive} setActive={onClose}>
+    <Modal classname={styles.listContainer} isMobile active={isActive} setActive={onClose}>
       <section className={styles.list}>
         <div className={styles.listHeader}>
           <button className={styles.button}>
