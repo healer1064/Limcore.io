@@ -11,7 +11,8 @@ import limcoreIcon from '@icons/limcore.svg'
 import { getMonthNameWithDate } from '@components/Chat/utils/funcs'
 import { IDialogueInterface, IMessageInterface } from '@components/Chat/utils/types'
 import { useChat } from '@components/Chat/utils/useChat'
-import profileIcon from '@icons/profileicon.svg'
+// import profileIcon from '@icons/profileicon.svg'
+import defaultAvatar from '@icons/defaultAvatar.svg'
 import { RaitingList } from '../RaitingList'
 import raitingStyles from '../RaitingList/styles.module.scss'
 import { Spinner } from '@components/Spinner'
@@ -113,7 +114,7 @@ export const ChatContent = () => {
           </>
         ) : (
           <>
-            <img src={currentDialogueMember.avatar || profileIcon} alt='Avatar' className={styles.foto} />
+            <img src={currentDialogueMember.avatar || defaultAvatar} alt='Avatar' className={styles.foto} />
             <p className={styles.name}>
               {currentDialogueMember.first_name || 'User'} {currentDialogueMember.last_name || ''}
             </p>
