@@ -13,22 +13,29 @@ interface IMessageComponent {
   message: IMessageInterface
   isMyMsg: boolean
   date: string
+  showName: boolean
   openRating: () => void
 }
 
-export const MessageComponent = ({ userId, message, isMyMsg, date, openRating }: IMessageComponent) => {
+export const MessageComponent = ({ userId, message, isMyMsg, date, showName, openRating }: IMessageComponent) => {
   const currentSlug = useAppSelector((state) => state.chat.currentSlug)
   const currentUser = useAppSelector((state) => state.chat.genChatMembers).find(
     (member) => member.user.id === userId,
   ).user
-  const userName =
-    currentUser.first_name && currentUser.last_name
-      ? `${currentUser.first_name} ${currentUser.last_name}`
-      : `User #${currentUser.id}`
+  const userName = () => {
+    if (currentUser.chat_name) {
+      return currentUser.chat_name
+    } else if (currentUser.first_name && currentUser.last_name) {
+      return `${currentUser.first_name} ${currentUser.last_name[0]}.`
+    } else {
+      return `User #${currentUser.id}`
+    }
+  }
   return (
     <>
       {date && <div className={styles.date}>{date}</div>}
       <div className={styles.member}>
+        {showName && <span className={styles.member_name}>{isMyMsg ? '' : userName()}</span>}
         {isMyMsg ? (
           <div className={styles.myMessageCont}>
             {message.file.length !== 0 && <File file={message.file} />}
