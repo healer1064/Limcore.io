@@ -14,6 +14,7 @@ import { useChat } from '@components/Chat/utils/useChat'
 import profileIcon from '@icons/profileicon.svg'
 import { RaitingList } from '../RaitingList'
 import raitingStyles from '../RaitingList/styles.module.scss'
+import { Spinner } from '@components/Spinner'
 
 export const ChatContent = () => {
   const [t] = useTranslation()
@@ -30,6 +31,7 @@ export const ChatContent = () => {
   const wholePages = useAppSelector((state) => state.chat.wholePages)
   const dialogues = useAppSelector((state) => state.chat.dialogues)
   const currentDialogueMember = useAppSelector((state) => state.chat.currentDialogueMember)
+  const loader = useAppSelector((state) => state.chat.loader)
 
   let dateBuffer: string = null
   let idBuffer: number
@@ -120,6 +122,11 @@ export const ChatContent = () => {
         )}
       </div>
       <div className={styles.groupMessagesContainer} ref={messagesEndRef} onScroll={onGetAnswers}>
+        {loader && (
+          <div className={styles.loaderContainer}>
+            <Spinner />
+          </div>
+        )}
         {currentMessages.map((msg: IMessageInterface) => {
           const msgDate = getMonthNameWithDate(msg.created_at)
           let buffer = dateBuffer

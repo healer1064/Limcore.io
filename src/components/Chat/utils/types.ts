@@ -40,6 +40,7 @@ export interface IDialogueInterface {
 }
 
 export interface IUserInterface {
+  // limc_balance: number
   avatar?: string
   chat_name?: string
   email: string

@@ -62,34 +62,36 @@ export const Chat = ({ handleChatClose }) => {
         </div>
       )
     case '':
-      return desktop ? (
-        <section className={styles.desktop}>
-          <div className={styles.chat}>
-            <div className={styles.header}>
-              <h1 className={styles.title}>{t('chat_title')}</h1>
-              <button className={styles.button} type='button' onClick={handleChatClose}>
-                <img src={close} alt='' />
-              </button>
+      return width ? (
+        desktop ? (
+          <section className={styles.desktop}>
+            <div className={styles.chat}>
+              <div className={styles.header}>
+                <h1 className={styles.title}>{t('chat_title')}</h1>
+                <button className={styles.button} type='button' onClick={handleChatClose}>
+                  <img src={close} alt='' />
+                </button>
+              </div>
+              <SearchForm desktop={desktop} />
+              <section className={styles.messageSection}>
+                {sortedDialogues?.map((dialogue: IDialogueInterface, i) => (
+                  <Dialogue key={i} data={dialogue} />
+                ))}
+              </section>
             </div>
+          </section>
+        ) : (
+          <div className={styles.chat}>
             <SearchForm desktop={desktop} />
-            <section className={styles.messageSection}>
+            <article className={styles.messageSection}>
               {sortedDialogues?.map((dialogue: IDialogueInterface, i) => (
                 <Dialogue key={i} data={dialogue} />
               ))}
-            </section>
+            </article>
+            <FooterMobile />
           </div>
-        </section>
-      ) : (
-        <div className={styles.chat}>
-          <SearchForm desktop={desktop} />
-          <article className={styles.messageSection}>
-            {sortedDialogues?.map((dialogue: IDialogueInterface, i) => (
-              <Dialogue key={i} data={dialogue} />
-            ))}
-          </article>
-          <FooterMobile />
-        </div>
-      )
+        )
+      ) : null
     case 'content':
       return <ChatContent />
   }
