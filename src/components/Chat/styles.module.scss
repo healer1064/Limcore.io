@@ -8,7 +8,6 @@
   padding: 0;
   margin: 8px 20px 100px 20px;
   overflow: hidden;
-  border-bottom: 1px solid $color-E5-grey;
 }
 
 .spinnerContainer {
@@ -70,6 +69,11 @@
   margin: 0;
   justify-content: space-between;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  top: 0;
+  position: sticky;
+  background-color: $white;
+  z-index: 10;
+  border-radius: $border-radius $border-radius 0 0;
 }
 
 .title {

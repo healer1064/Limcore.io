@@ -19,7 +19,8 @@
   position: fixed;
   bottom: 20px;
   width: 375px;
-  border-radius: $border-radius;
+  border-radius: 0 0 $border-radius $border-radius;
+  z-index: 10;
 }
 
 .searchInput {

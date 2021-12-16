@@ -5,7 +5,7 @@ import { useAppDispatch } from '@app/redux/hooks'
 import { setContent, setCurrentSlug } from '../../redux/chatSlice'
 import { getMonthAndDay, getUserName } from '@components/Chat/utils/funcs'
 import limcoreIcon from '@icons/limcore.svg'
-import profileIcon from '@icons/profileicon.svg'
+import defaultAvatar from '@icons/defaultAvatar.svg'
 import { IDialogueInterface } from '@components/Chat/utils/types'
 import { useChat } from '@components/Chat/utils/useChat'
 
@@ -36,7 +36,7 @@ export const Dialogue = ({ data }: IDialogueProps) => {
   return (
     <div className={styles.messageContainer} onClick={handleChatOpen}>
       <img
-        src={IS_GENERAL_CHAT ? limcoreIcon : data.other_user.avatar || profileIcon}
+        src={IS_GENERAL_CHAT ? limcoreIcon : data.other_user.avatar || defaultAvatar}
         alt='image'
         className={styles.foto}
       />

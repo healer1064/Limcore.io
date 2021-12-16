@@ -49,7 +49,7 @@
 
 .button {
   position: absolute;
-  left: 16px;
+  left: 32px;
   padding: 0;
   border: none;
   background-color: transparent;
@@ -108,6 +108,9 @@
 }
 
 @media screen and (min-width: 769px) {
+  .button {
+   left: 16px;
+  }
   .listContainer {
     display: flex;
     flex-direction: column;

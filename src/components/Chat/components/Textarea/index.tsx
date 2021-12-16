@@ -80,12 +80,6 @@ export const Textarea = () => {
     }
   }, [file])
 
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus()
-    }
-  }, [inputRef])
-
   return (
     <>
       {file && (
