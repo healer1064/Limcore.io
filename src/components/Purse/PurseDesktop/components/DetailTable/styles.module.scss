@@ -8,7 +8,10 @@
   .tableRow {
     height: 80px;
     &:not(:last-child) {
-       border-bottom: 1px solid $color-E5-white;
+       border-bottom: 1px solid $color-E5-grey;
+    }
+    &:first-of-type {
+      border-bottom: 1px solid $color-E5-grey;
     }
     .tableHeader {
       @include section-title($color-99-gray);

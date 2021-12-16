@@ -81,9 +81,8 @@
 .notification {
   font-family: $main-font;
   @include main($color-4F-black);
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 1.5;
+  @include subtitle-14px($color-4F-black);
+  font-weight: $fontWeightRegular;
   max-width: 225px;
 }
 

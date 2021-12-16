@@ -292,6 +292,7 @@
 
 .trust_subtitle {
   @include second-subtitle-13px($color-99-gray);
+  max-width: 325px;
 }
 
 .trust_cont {
