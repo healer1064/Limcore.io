@@ -40,19 +40,13 @@
   height: 36px;
   border-radius: 50%;
   background: $color-EF-white;
-
-  span {
-    @include mediumP2($color-99-gray);
-  }
+  @include mediumP2($color-99-gray);
 }
 
 .number_active {
   background: $primary-color;
-
-  span {
-    color: $color-FO-white;
-    opacity: .8;
-  }
+  color: $color-FO-white;
+  opacity: .8;
 }
 
 .line {
