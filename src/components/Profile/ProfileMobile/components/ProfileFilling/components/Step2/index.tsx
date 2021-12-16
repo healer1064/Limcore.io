@@ -36,21 +36,15 @@ export const Step2: React.FC<Step2Props> = ({ nextStep }) => {
     <>
       <div className={Styles.progress}>
         <div className={Styles.step}>
-          <div className={`${Styles.number} ${Styles.number_active}`}>
-            <span>1</span>
-          </div>
+          <div className={`${Styles.number} ${Styles.number_active}`}>1</div>
           <span className={`${Styles.line} ${Styles.line_active}`}>{}</span>
         </div>
         <div className={Styles.step}>
-          <div className={`${Styles.number} ${Styles.number_active}`}>
-            <span>2</span>
-          </div>
+          <div className={`${Styles.number} ${Styles.number_active}`}>2</div>
         </div>
         <div className={Styles.step}>
           <span className={Styles.line}>{}</span>
-          <div className={Styles.number}>
-            <span>3</span>
-          </div>
+          <div className={Styles.number}>3</div>
         </div>
       </div>
       <div className={Styles.container}>

@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import profileIcon from '@icons/profileicon.svg'
+// import profileIcon from '@icons/profileicon.svg'
+import defaultAvatar from '@icons/defaultAvatar.svg'
 import { getHoursAndMinutes, getUserName } from '@components/Chat/utils/funcs'
 import { IMessageInterface } from '@components/Chat/utils/types'
 import { LimcRating } from '../LimcRating'
@@ -41,7 +42,7 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, showName, ope
         ) : (
           <>
             {showName && (
-              <img src={currentUser.avatar ? currentUser.avatar : profileIcon} alt='' className={styles.foto} />
+              <img src={currentUser.avatar ? currentUser.avatar : defaultAvatar} alt='' className={styles.foto} />
             )}
             {showName && currentUser.status === 1 && <img alt='' src={active} className={styles.status} />}
 

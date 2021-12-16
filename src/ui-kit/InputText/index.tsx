@@ -35,7 +35,7 @@ export const InputText: React.FC<InputTextProps> = ({
   }
 
   return (
-    <fieldset>
+    <fieldset className={Styles.fieldset}>
       <input
         className={cls.join(' ')}
         onChange={onChange}
