@@ -72,6 +72,8 @@ export const getUserName = (user: IUserInterface): string => {
     return user.chat_name
   } else if (user.first_name && user.last_name) {
     return `${user.first_name} ${user.last_name[0]}.`
+  } else if (user.first_name || user.last_name) {
+    return user.first_name || user.last_name
   } else {
     return `User #${user.id}`
   }

@@ -55,39 +55,6 @@ export const PurseDesktop = () => {
   const [isChatVisible, setIsChatVisible] = useState(false)
   const handleChatOpen = () => setIsChatVisible(true)
   const handleChatClose = () => setIsChatVisible(false)
-  // const bodyEl = useRef(document.querySelector('body'))
-  // const htmlEl = useRef(document.querySelector('html'))
-
-  // const [scrollPosition, setScrollPosition] = useState(0)
-
-  // useEffect(() => {
-  //   setScrollPosition(window.pageYOffset)
-  //   const documentWidth = document.documentElement.clientWidth
-  //   const windowWidth = window.innerWidth
-  //   const scrollBarWidth = windowWidth - documentWidth
-  //   bodyEl.current.style.paddingRight = scrollBarWidth.toString()
-
-  //   if (isChatVisible) {
-  //     setScrollPosition(window.pageYOffset)
-  //     bodyEl.current.style.top = `-${window.pageYOffset}px`
-  //     bodyEl.current.style.overflow = 'hidden'
-  //     bodyEl.current.style.position = 'fixed'
-  //     htmlEl.current.style.height = '100vh'
-  //   } else {
-  //     bodyEl.current.style.removeProperty('overflow')
-  //     bodyEl.current.style.removeProperty('position')
-  //     bodyEl.current.style.removeProperty('top')
-  //     htmlEl.current.style.removeProperty('height')
-  //     window.scrollTo(0, scrollPosition)
-  //   }
-
-  //   return () => {
-  //     bodyEl.current.style.removeProperty('overflow')
-  //     bodyEl.current.style.removeProperty('position')
-  //     bodyEl.current.style.removeProperty('top')
-  //     htmlEl.current.style.removeProperty('height')
-  //   }
-  // }, [isChatVisible])
 
   return (
     <>

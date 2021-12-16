@@ -12,26 +12,25 @@
 .member {
   position: relative;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   box-sizing: border-box;
   padding: 0;
-  margin: 20px;
+  margin: 20px 20px 5px;
 
   &_name {
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translate(-50%, 0);
     z-index: 1;
     @include subtitle-13px($color-99-gray);
   }
 }
 
+.firstMessageMember {
+  margin: 5px 20px;
+}
+
 .foto {
   grid-area: foto;
   padding: 0;
-  margin: 0 10px 0 0;
-  border: 1px solid black;
+  margin: 0px 10px 0 0;
   border-radius: 50%;
   width: 37px;
   height: 37px;
@@ -42,7 +41,7 @@
 .status {
   position: absolute;
   left: 24px;
-  bottom: -5px;
+  top: 27px;
 }
 
 .raiting {
@@ -103,6 +102,10 @@
   font-size: 13px;
   line-height: 1.45;
   background: $color-FO-white;
+}
+
+.firstMessage {
+  margin: 0 0 0 47px;
 }
 
 .myMessageCont {

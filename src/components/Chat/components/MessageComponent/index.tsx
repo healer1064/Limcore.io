@@ -29,7 +29,7 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, showName, ope
     <>
       {date && <div className={styles.date}>{date}</div>}
 
-      <div className={styles.member}>
+      <div className={showName ? styles.member : `${styles.member} ${styles.firstMessageMember}`}>
         {isMyMsg ? (
           <div className={styles.myMessageCont}>
             {message.file.length !== 0 && <File file={message.file} />}
@@ -40,18 +40,20 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, showName, ope
           </div>
         ) : (
           <>
-            <img src={currentUser.avatar ? currentUser.avatar : profileIcon} alt='' className={styles.foto} />
-            {currentUser.status === 1 && <img alt='' src={active} className={styles.status} />}
-            {currentSlug === 'general_chat' && showName && (
-              <>
-                <span className={styles.member_name}>{isMyMsg ? '' : getUserName(currentUser)}</span>
-                {toShowRaiting && <LimcRating openRating={openRating} limcBalance={currentUser.limc_balance} />}
-              </>
+            {showName && (
+              <img src={currentUser.avatar ? currentUser.avatar : profileIcon} alt='' className={styles.foto} />
             )}
+            {showName && currentUser.status === 1 && <img alt='' src={active} className={styles.status} />}
 
-            <div className={styles.messageCont}>
+            <div className={showName ? styles.messageCont : `${styles.messageCont} ${styles.firstMessage}`}>
               {message.file.length !== 0 && <File file={message.file} />}
               <p className={styles.message}>
+                {currentSlug === 'general_chat' && showName && (
+                  <>
+                    <span className={styles.member_name}>{isMyMsg ? '' : getUserName(currentUser)}</span>
+                    {toShowRaiting && <LimcRating openRating={openRating} limcBalance={currentUser.limc_balance} />}
+                  </>
+                )}
                 {message.message}
                 <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
               </p>
