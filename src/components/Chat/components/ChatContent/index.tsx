@@ -32,6 +32,8 @@ export const ChatContent = () => {
   const currentDialogueMember = useAppSelector((state) => state.chat.currentDialogueMember)
 
   let dateBuffer: string = null
+  let idBuffer: number
+  let showName: boolean
   const IS_GENERAL_CHAT = slug === 'general_chat'
 
   // Открытие списка участников общего чата
@@ -129,6 +131,12 @@ export const ChatContent = () => {
             buffer = ''
           }
 
+          if (idBuffer !== msg.user.id || buffer) {
+            idBuffer = msg.user.id
+            showName = true
+          } else {
+            showName = false
+          }
           return (
             <MessageComponent
               key={msg.id}
@@ -136,6 +144,7 @@ export const ChatContent = () => {
               userId={msg.user.id}
               isMyMsg={userId === msg.user.id}
               date={buffer}
+              showName={showName}
               openRating={openRating}
             />
           )

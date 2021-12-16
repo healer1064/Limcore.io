@@ -15,12 +15,13 @@
   align-items: flex-end;
   box-sizing: border-box;
   padding: 0;
-  margin: 10px 20px;
+  margin: 20px;
 
   &_name {
     position: absolute;
     top: -20px;
-    left: 141px;
+    left: 50%;
+    transform: translate(-50%, 0);
     z-index: 1;
     @include subtitle-13px($color-99-gray);
   }
