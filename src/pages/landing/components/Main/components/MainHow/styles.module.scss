@@ -16,7 +16,7 @@
 
 .caption {
   font-family: $main-font;
-  @include main($color-4F-black);
+  @include main($primary-color);
   font-weight: $fontWeightSemiBold;
   font-size: 60px;
   line-height: 1.4;
