@@ -11,9 +11,11 @@ import authIcon from '@icons/auth.svg'
 import emailIcon from '@icons/email.svg'
 import phoneIcon from '@icons/phone.svg'
 import locationIcon from '@icons/location.svg'
+import nameIcon from '@icons/name.svg'
 import closeIcon from '@icons/close-notification.svg'
 import smartphoneImage from '../../../../../assets/images/smartphone.png'
 import { useTranslation } from 'react-i18next'
+import { ButtonSmall } from '../../../../../ui-kit/ButtonSmall'
 
 export const ProfileComplete: React.FC = () => {
   const [t] = useTranslation()
@@ -21,8 +23,11 @@ export const ProfileComplete: React.FC = () => {
 
   const [img, setImg] = useState(null)
   const [notificationOpen, setNotificationOpen] = useState(true)
-  const userData = useAppSelector((state) => state.user.userData)
 
+  const userData = useAppSelector((state) => state.user.userData)
+  const data = useAppSelector((state) => state.user.data)
+
+  const chatName = Boolean(data.chat_name)
   const bodyEl = useRef(document.querySelector('body'))
 
   const closeNotification = (event) => {
@@ -126,15 +131,22 @@ export const ProfileComplete: React.FC = () => {
               {/* <ButtonSmall onClick={() => changeView('editEmail')}>Изменить</ButtonSmall> */}
             </div>
           </li>
-          {/* <li className={Styles.item}>
+          <li className={Styles.item}>
             <img className={Styles.icon} src={nameIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
               <div className={Styles.block}>
-                <span className={Styles.content}>Добавить имя в чатах</span>
+                {chatName ? (
+                  <div className={Styles.block}>
+                    <span className={Styles.label}>{t('chat_nameInChat')}</span>
+                    <span className={Styles.content}>{data.chat_name}</span>
+                  </div>
+                ) : (
+                  <span className={Styles.content}>{t('chat_nameAdd')}</span>
+                )}
               </div>
-              <ButtonSmall onClick={() => changeView('editName')}>Изменить</ButtonSmall>
+              <ButtonSmall onClick={() => changeView('editName')}>{t('change')}</ButtonSmall>
             </div>
-          </li> */}
+          </li>
           <li className={Styles.item} onClick={onClickLocation}>
             <img className={Styles.icon} src={locationIcon} alt='Иконка' />
             <div className={Styles.wrapper}>
