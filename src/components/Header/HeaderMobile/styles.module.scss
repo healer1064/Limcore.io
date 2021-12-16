@@ -143,7 +143,7 @@
   flex-direction: row;
   box-sizing: border-box;
   margin: 0;
-  padding: 24px 35px 10px 0;
+  padding: 24px 25px 10px 0;
   justify-content: space-between;
 }
 
@@ -296,13 +296,11 @@
 
 .burgerHeader {
   display: flex;
-  height: 75px;
   width: 100%;
   justify-content: flex-end;
   margin: 0;
   padding: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  outline: none !important;
 }
 
 .closeButton {
@@ -311,5 +309,5 @@
   object-position: center;
   object-fit: cover;
   padding: 0;
-  margin: 0 35px 0 0;
+  margin: 0 35px 20px;
 }

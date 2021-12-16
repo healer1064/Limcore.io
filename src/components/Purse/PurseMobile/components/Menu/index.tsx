@@ -3,6 +3,7 @@ import styles from './styles.module.scss'
 import { MenuItem } from './components/MenuItem/index'
 import { useAppSelector } from '@app/redux/hooks'
 import classNames from 'classnames'
+import { ModalLimc } from '@components/Purse/PurseMobile/components/Menu/components/ModalLimc'
 
 export const Menu = () => {
   const isSinc = useAppSelector((state) => state.auth.isSincWithWallet)

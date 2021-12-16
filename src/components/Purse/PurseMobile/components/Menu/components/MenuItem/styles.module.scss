@@ -36,7 +36,7 @@
 
   &__sum {
     @include font-style(14px, 600, 20px, $color-3A-black);
-   @include ellipsisText();
+    @include ellipsisText();
   }
 
   &__icon {

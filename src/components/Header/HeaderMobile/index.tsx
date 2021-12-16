@@ -100,7 +100,7 @@ export const HeaderMobile: React.FC = () => {
             <button className={Styles.burgerHeader} type='reset' onClick={closeBurger}>
               <img alt='close' src={close} className={Styles.closeButton} />
             </button>
-            <img className={Styles.logoInOpenBurger} src={logoIcon} alt='Лого' />
+            {/* <img className={Styles.logoInOpenBurger} src={logoIcon} alt='Лого' /> */}
             {window.location.pathname === '/' ? (
               <ul className={Styles.list}>
                 {tempLink?.map((item) => {
@@ -152,7 +152,7 @@ export const HeaderMobile: React.FC = () => {
                   info@limcore.io
                 </a>
               </p>
-              <LanguagePopup position={{ top: '-105px', left: '-25px', background: '#4a70f8' }} />
+              <LanguagePopup position={{ top: '-120px', left: '-25px', background: '#4a70f8' }} />
             </div>
           </Modal>
           {/* <Container title='' onClose={closeBurger}> */}
