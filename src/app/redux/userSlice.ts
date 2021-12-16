@@ -79,6 +79,7 @@ export const userSlice = createSlice({
       home_building_number: '',
       home_apartment_number: '',
       chat_name: null,
+      is_balance_visible: false,
     },
   },
   reducers: {

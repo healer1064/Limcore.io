@@ -371,6 +371,7 @@ i18n.use(LanguageDetector).init({
         chat_name: 'Name',
         chat_newName: 'Enter your new chat name',
         chat_nameInChat: 'Your chat name',
+        chat_showRaiting: 'Do you want to show your chat raiting?',
 
         streams_title_1: 'Edifice build up',
         streams_title_2: 'Surrounding area modification',
@@ -773,6 +774,7 @@ i18n.use(LanguageDetector).init({
         chat_name: 'Имя',
         chat_newName: 'Введите новое имя',
         chat_nameInChat: 'Имя в чатах',
+        chat_showRaiting: 'Показывать ваш рейтинг в чате?',
 
         streams_title_1: 'Ремонт здания',
         streams_title_2: 'Ремонт прилегающей территории',
@@ -1161,7 +1163,8 @@ i18n.use(LanguageDetector).init({
         chat_show: '这个名字将被用户在聊天中看到',
         chat_name: '名称',
         chat_newName: '请输入一个新名称',
-        chat_nameInChat: 'Your chat name',
+        chat_nameInChat: '你的聊天名称',
+        chat_showRaiting: '在聊天中显示您的评分?',
 
         streams_title_1: '建筑整修',
         streams_title_2: '周边地区的整修',
