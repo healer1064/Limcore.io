@@ -96,7 +96,7 @@ export const HeaderMobile: React.FC = () => {
           </>
         )}
         <div className={burgerStyles}>
-          <Modal active={burgerOpen} setActive={closeBurger}>
+          <Modal active={burgerOpen} setActive={closeBurger} isMobile>
             <button className={Styles.burgerHeader} type='reset' onClick={closeBurger}>
               <img alt='close' src={close} className={Styles.closeButton} />
             </button>
