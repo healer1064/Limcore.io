@@ -364,6 +364,14 @@ i18n.use(LanguageDetector).init({
         profile_2fa_wantToOff: 'Turn off',
         profile_2fa_cancel: 'Cancel',
 
+        // Chat name
+        chat_nameAdd: 'Add chat name',
+        chat_change: 'Change chat name',
+        chat_show: 'This name will be shown to users',
+        chat_name: 'Name',
+        chat_newName: 'Enter your new chat name',
+        chat_nameInChat: 'Your chat name',
+
         streams_title_1: 'Edifice build up',
         streams_title_2: 'Surrounding area modification',
         stream_camera: 'Camera',
@@ -415,7 +423,6 @@ i18n.use(LanguageDetector).init({
         balance: 'Баланс',
         commonBalance: 'Общий баланс',
         walletconnect_disconnect: 'Отключиться',
-
         // Auth: step1
         logIn: 'Авторизация',
         cellNumber: 'Введите телефон',
@@ -758,6 +765,14 @@ i18n.use(LanguageDetector).init({
         profile_2fa_doWantToOff: 'Выключить двухфакторную аутентификацию?',
         profile_2fa_wantToOff: 'Выключить',
         profile_2fa_cancel: 'Отмена',
+
+        // Chat name
+        chat_nameAdd: 'Добавить имя в чате',
+        chat_change: 'Изменить имя',
+        chat_show: 'Это имя будут видеть пользователи в чатах',
+        chat_name: 'Имя',
+        chat_newName: 'Введите новое имя',
+        chat_nameInChat: 'Имя в чатах',
 
         streams_title_1: 'Ремонт здания',
         streams_title_2: 'Ремонт прилегающей территории',
@@ -1139,6 +1154,15 @@ i18n.use(LanguageDetector).init({
         profile_2fa_doWantToOff: '禁用双因素身份验证吗？',
         profile_2fa_wantToOff: '禁用',
         profile_2fa_cancel: '取消',
+
+        // Chat name
+        chat_nameAdd: '在聊天中添加姓名',
+        chat_change: '更换名字',
+        chat_show: '这个名字将被用户在聊天中看到',
+        chat_name: '名称',
+        chat_newName: '请输入一个新名称',
+        chat_nameInChat: 'Your chat name',
+
         streams_title_1: '建筑整修',
         streams_title_2: '周边地区的整修',
         stream_camera: '摄像头',
