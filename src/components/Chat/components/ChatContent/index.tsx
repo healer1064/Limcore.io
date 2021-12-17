@@ -147,7 +147,7 @@ export const ChatContent = () => {
             <MessageComponent
               key={msg.id}
               message={msg}
-              userId={msg.user.id}
+              user={msg.user}
               isMyMsg={userId === msg.user.id}
               date={buffer}
               firstMessage={firstMessage}

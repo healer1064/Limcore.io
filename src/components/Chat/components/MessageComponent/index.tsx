@@ -3,14 +3,14 @@ import styles from './styles.module.scss'
 // import profileIcon from '@icons/profileicon.svg'
 import defaultAvatar from '@icons/defaultAvatar.svg'
 import { getHoursAndMinutes, getUserName } from '@components/Chat/utils/funcs'
-import { IMessageInterface } from '@components/Chat/utils/types'
+import { IMessageInterface, IUserInterface } from '@components/Chat/utils/types'
 import { LimcRating } from '../LimcRating'
 import active from '@icons/activeStatus.svg'
 import { useAppSelector } from '@app/redux/hooks'
 import { File } from '../File'
 
 interface IMessageComponent {
-  userId: number
+  user: IUserInterface
   message: IMessageInterface
   isMyMsg: boolean
   date: string
@@ -18,13 +18,10 @@ interface IMessageComponent {
   openRating: () => void
 }
 
-export const MessageComponent = ({ userId, message, isMyMsg, date, firstMessage, openRating }: IMessageComponent) => {
+export const MessageComponent = ({ user, message, isMyMsg, date, firstMessage, openRating }: IMessageComponent) => {
   const currentSlug = useAppSelector((state) => state.chat.currentSlug)
-  const currentUser = useAppSelector((state) => state.chat.genChatMembers).find(
-    (member) => member.user.id === userId,
-  ).user
 
-  const toShowRaiting = Boolean(currentUser.limc_balance)
+  const toShowRaiting = Boolean(user.limc_balance)
 
   return firstMessage ? (
     <>
@@ -40,16 +37,16 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, firstMessage,
           </div>
         ) : (
           <>
-            <img src={currentUser.avatar ? currentUser.avatar : defaultAvatar} alt='' className={styles.foto} />
-            {currentUser.status === 1 && <img alt='' src={active} className={styles.status} />}
+            <img src={user.avatar ? user.avatar : defaultAvatar} alt='' className={styles.foto} />
+            {user.status === 1 && <img alt='' src={active} className={styles.status} />}
 
             <div className={styles.messageCont}>
               {message.file.length !== 0 && <File file={message.file} />}
               <p className={styles.message}>
                 {currentSlug === 'general_chat' && (
                   <>
-                    <span className={styles.member_name}>{isMyMsg ? '' : getUserName(currentUser)}</span>
-                    {toShowRaiting && <LimcRating openRating={openRating} limcBalance={currentUser.limc_balance} />}
+                    <span className={styles.member_name}>{isMyMsg ? '' : getUserName(user)}</span>
+                    {toShowRaiting && <LimcRating openRating={openRating} limcBalance={user.limc_balance} />}
                   </>
                 )}
                 {message.message}
