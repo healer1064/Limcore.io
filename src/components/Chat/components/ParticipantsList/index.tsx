@@ -22,8 +22,8 @@ export const ParticipantsList = ({ onClose, participants, isActive }: IParticipa
   return isActive ? (
     <section className={styles.list}>
       <div className={styles.listHeader}>
-        <button className={styles.button}>
-          <img src={arrow} alt='icon' className={styles.arrow} onClick={onClose} />
+        <button className={styles.button} onClick={onClose}>
+          <img src={arrow} alt='icon' className={styles.arrow} />
         </button>
         <p className={styles.title}>
           {t('group_title')}
