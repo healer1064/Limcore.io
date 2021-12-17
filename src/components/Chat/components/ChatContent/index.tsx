@@ -21,7 +21,7 @@ export const ChatContent = () => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const messagesEndRef = useRef(null)
-  const { getGroupMessages, sendLastReadedMessage, getGroupsList } = useChat()
+  const { getGroupMessages, sendLastReadedMessage } = useChat()
 
   const slug = useAppSelector((state) => state.chat.currentSlug)
   const userId = useAppSelector((state) => state.user.userData?.id)

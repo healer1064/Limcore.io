@@ -97,62 +97,74 @@ export const HeaderMobile: React.FC = () => {
         )}
         <div className={burgerStyles}>
           <Modal active={burgerOpen} setActive={closeBurger} isMobile>
-            <button className={Styles.burgerHeader} type='reset' onClick={closeBurger}>
-              <img alt='close' src={close} className={Styles.closeButton} />
-            </button>
-            {/* <img className={Styles.logoInOpenBurger} src={logoIcon} alt='Лого' /> */}
-            {window.location.pathname === '/' ? (
-              <ul className={Styles.list}>
-                {tempLink?.map((item) => {
-                  return (
-                    <Link
-                      className={Styles.link}
-                      key={item.id}
-                      to={item.link}
-                      spy={item.spy}
-                      smooth={item.smooth}
-                      onClick={closeBurger}
-                    >
-                      {item.value}
-                    </Link>
-                  )
-                })}
+            <div className={Styles.burgerContent}>
+              <button className={Styles.burgerHeader} type='reset' onClick={closeBurger}>
+                <img alt='close' src={close} className={Styles.closeButton} />
+              </button>
+              {/* <img className={Styles.logoInOpenBurger} src={logoIcon} alt='Лого' /> */}
+              {window.location.pathname === '/' ? (
+                <ul className={Styles.list}>
+                  {tempLink?.map((item) => {
+                    return (
+                      <Link
+                        className={Styles.link}
+                        key={item.id}
+                        to={item.link}
+                        spy={item.spy}
+                        smooth={item.smooth}
+                        onClick={closeBurger}
+                      >
+                        {item.value}
+                      </Link>
+                    )
+                  })}
+                </ul>
+              ) : null}
+              <ul className={Styles.social}>
+                <li className={Styles.content_item}>
+                  <a
+                    href='https://t.me/limc_russ'
+                    target='blank'
+                    rel='noopener noreferrer'
+                    className={Styles.socialLink}
+                  >
+                    <Telegram className={Styles.content_icon} />
+                  </a>
+                </li>
+                <li className={Styles.content_item}>
+                  <a
+                    href='https://instagram.com/limcore.io?utm_medium=copy_link'
+                    target='blank'
+                    rel='noopener noreferrer'
+                    className={Styles.socialLink}
+                  >
+                    <Instagram className={Styles.content_icon} />
+                  </a>
+                </li>
+                <li className={Styles.content_item}>
+                  <a
+                    href='https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg'
+                    target='blank'
+                    rel='noopener noreferrer'
+                    className={Styles.socialLink}
+                  >
+                    <Youtube className={Styles.content_icon} />
+                  </a>
+                </li>
               </ul>
-            ) : null}
-            <ul className={Styles.social}>
-              <li className={Styles.content_item}>
-                <a href='https://t.me/limc_russ' target='blank' rel='noopener noreferrer' className={Styles.socialLink}>
-                  <Telegram className={Styles.content_icon} />
-                </a>
-              </li>
-              <li className={Styles.content_item}>
-                <a
-                  href='https://instagram.com/limcore.io?utm_medium=copy_link'
-                  target='blank'
-                  rel='noopener noreferrer'
-                  className={Styles.socialLink}
-                >
-                  <Instagram className={Styles.content_icon} />
-                </a>
-              </li>
-              <li className={Styles.content_item}>
-                <a
-                  href='https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg'
-                  target='blank'
-                  rel='noopener noreferrer'
-                  className={Styles.socialLink}
-                >
-                  <Youtube className={Styles.content_icon} />
-                </a>
-              </li>
-            </ul>
-            <div className={Styles.group}>
-              <p className={Styles.email}>
-                <a href='mailto:info@limcore.io' target='blank' rel='noopener noreferrer' className={Styles.emailLink}>
-                  info@limcore.io
-                </a>
-              </p>
-              <LanguagePopup position={{ top: '-120px', left: '-25px', background: '#4a70f8' }} />
+              <div className={Styles.group}>
+                <p className={Styles.email}>
+                  <a
+                    href='mailto:info@limcore.io'
+                    target='blank'
+                    rel='noopener noreferrer'
+                    className={Styles.emailLink}
+                  >
+                    info@limcore.io
+                  </a>
+                </p>
+                <LanguagePopup position={{ top: '-120px', left: '-25px', background: '#4a70f8' }} />
+              </div>
             </div>
           </Modal>
           {/* <Container title='' onClose={closeBurger}> */}
