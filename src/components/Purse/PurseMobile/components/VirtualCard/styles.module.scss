@@ -9,7 +9,7 @@
   height: 76px;  
   padding: 0;
   margin: 0;
-  background-color: $color-blue-pale;
+  background-color: $color-FO-white;
   border-radius: $border-radius;
 
   & * {
@@ -26,7 +26,7 @@
     font-weight: 600;
     font-size: 13px;
     line-height: 1.5;
-    color: $color-gray-medium;
+    color: $color-4F-black;
     z-index: 2;
   }
 
@@ -44,7 +44,7 @@
 
     width: 20px;
     height: 20px;
-    outline: $outline;
+    outline: none;
     border: none;
     box-shadow: none;
     transition: 0.5s ease-in-out;
@@ -55,6 +55,6 @@
   &__closeImage {
     display: block;
     width: 100%;
-    background-color: $color-blue-pale;
+    background-color: $color-FO-white;
   }
 }

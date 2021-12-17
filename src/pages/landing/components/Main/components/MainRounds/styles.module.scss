@@ -4,7 +4,7 @@
 .rounds {
   display: flex;
   flex-direction: column;
-  margin-bottom: 60px;
+  margin: 0 20px 60px;
 }
 
 .block {
@@ -86,7 +86,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: #4a70f8;
+  background: $primary-color;
   border-radius: 6px 0 0 6px;
   height: 100%;
 }
@@ -380,6 +380,11 @@
     grid-area: icon;
     cursor: pointer;
     margin: 0 8px 0 0;
+    outline: none;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   .value {
@@ -548,6 +553,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  outline: none;
 
   span {
     @include main($color-67-black);
@@ -569,6 +575,7 @@
   background: $primary-color;
   transition: background 0.2s ease;
   text-decoration: none;
+  outline: none;
 
   &:hover {
     background: $color-32-blue;
@@ -581,6 +588,6 @@
   }
 
   &:focus {
-    outline: $outline;
+    outline: none;
   }
 }

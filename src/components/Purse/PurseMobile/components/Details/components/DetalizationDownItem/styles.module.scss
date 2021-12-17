@@ -37,13 +37,10 @@
     top: 16px;
     right: 20px;
     @include button-style();
+    outline: none;
 
     &:active {
       opacity: .7;
-    }
-
-    &:focus {
-      outline: $outline;
     }
   }
 }
@@ -142,7 +139,7 @@
 
 .dots {
   margin-left: 20px;
-  outline: $outline;
+  outline: none;
   background-color: transparent;
   border: none;
 }
