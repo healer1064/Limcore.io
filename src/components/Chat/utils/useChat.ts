@@ -48,7 +48,7 @@ export const useChat = () => {
 
   useEffect(() => {
     if (!socket) {
-      socket = new WebSocket(`ws://217.28.228.152:9005/ws/chat/?token=${token}`)
+      socket = new WebSocket(`wss://limcore.dev.iamrobot.xyz/ws/chat/?token=${token}`)
 
       socket.onopen = () => {
         dispatch(setContent(''))
