@@ -43,6 +43,8 @@ export const SearchForm = ({ desktop }) => {
     const filtered = dialogues.filter((dialogue) => {
       if (dialogue.other_user) {
         return getUserName(dialogue.other_user).toLowerCase().includes(searchString.toLowerCase())
+      } else {
+        return dialogue.name.toLowerCase().includes(searchString.toLowerCase())
       }
     })
     dispatch(setFilteredDialogues(filtered))
