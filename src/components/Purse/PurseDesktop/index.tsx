@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { Menu } from '@components/Purse/PurseDesktop/components/Menu'
@@ -11,7 +11,6 @@ import { Chat } from '@components/Chat'
 import chatIcon from '@icons/chatIcon.svg'
 import closeIcon from '@icons/greyClose.svg'
 import { HeaderPurseDesktop } from '@components/Purse/PurseDesktop/components/HeaderPurseDesktop'
-import { PageBalanceLIMC } from '@components/Purse/PurseDesktop/components/PageBalanceLIMC'
 
 export const PurseDesktop = () => {
   const dispatch = useAppDispatch()
