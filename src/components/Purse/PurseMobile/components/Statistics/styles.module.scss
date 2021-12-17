@@ -20,10 +20,6 @@
     background-color: transparent;
     outline: none;
     transform: translateY(1px);
-
-    &:focus {
-      outline: $outline;
-    }
   }
 
   .progressbar { 
@@ -113,7 +109,7 @@
     padding: 0;
     border: none;
     @include subtitle-14px($color-4A-blue);
-    outline: $outline;
+    outline: none;
     background-color: transparent;
     transition: color .3s ease;
   }

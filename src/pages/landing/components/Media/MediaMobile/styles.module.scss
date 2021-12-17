@@ -40,7 +40,7 @@
   overflow: hidden;
 
   &:focus {
-    outline: $outline;
+    outline: none;
   }
 
   img {
@@ -83,7 +83,7 @@
   text-decoration: none;
 
   &:focus {
-    outline: $outline;
+    outline: none;
   }
 }
 

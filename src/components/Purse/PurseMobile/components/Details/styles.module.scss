@@ -36,6 +36,7 @@
     top: 16px;
     right: 20px;
     @include button-style();
+    outline: none;
 
     &:active {
       opacity: .7;
@@ -181,6 +182,7 @@
     font-weight: $fontWeightSemiBold;
     text-align: center;    
     color: $primary-color;
+    outline: none;
 
     &:active {
       opacity: .7;

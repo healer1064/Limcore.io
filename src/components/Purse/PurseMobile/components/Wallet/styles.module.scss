@@ -10,7 +10,7 @@
   padding: 0;
   margin: 0;
 
-  background-color: $color-cyan-pale;
+  background-color: $color-FO-white;
   border-radius: $border-radius;
 
   & * {
@@ -23,7 +23,7 @@
     width: 148px;
     margin-top: 18px;
     margin-left: 24px;
-    @include subtitle-13px($color-gray-medium);
+    @include subtitle-13px($color-4F-black);
     font-weight: $fontWeightSemiBold;
   }
 
@@ -40,7 +40,7 @@
 
     width: 20px;
     height: 20px;
-    outline: $outline;
+    outline: none;
     border: none;
     box-shadow: none;
     transition: 0.5s ease-in-out;
@@ -50,6 +50,6 @@
   &__closeImage {
     display: block;
     width: 100%;
-    background-color: $color-cyan-pale;
+    background-color: $color-FO-white;
   }
 }

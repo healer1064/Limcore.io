@@ -24,7 +24,7 @@
   &__subtitle {
     margin-top: 15px;
     padding-bottom: 20px;
-    @include subtitle-14px($color-gray-mouse);
+    @include subtitle-14px($color-99-gray);
     font-weight: $fontWeightMedium;
   }
 
@@ -45,6 +45,7 @@
     @include semiBoldH4($primary-color);
     text-align: center;
     transition: color .3s ease, border .3s ease;
+    outline: none;
     
     &:hover {
       color: $color-31-blue;
@@ -54,10 +55,6 @@
     
     &:active {
       opacity: .7;
-    }
-
-    &:focus {
-      outline: $outline;
     }
   }
 

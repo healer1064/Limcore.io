@@ -15,12 +15,12 @@
 
   &__title {
     padding-bottom: 6px;
-    @include semiBoldH4($color-gray-dark);
+    @include semiBoldH4($color-39-black);
   }
 
   &__subtitle {
     padding-bottom: 20px;
-    @include subtitle-14px($color-gray-mouse);
+    @include subtitle-14px($color-99-gray);
     font-weight: $fontWeightMedium;
   }
 
@@ -28,20 +28,17 @@
     @include button-style();
     width: 100%;
     height: 50px;
-    background-color: $color-blue;
+    background-color: $color-4A-blue;
     border-radius: $border-radius;
     font-size: 16px;
     font-weight: $fontWeightMedium;
     line-height: 50px;
     text-align: center;
     color: $white;
+    outline: none;
 
     &:active {
       opacity: .7;
-    }
-
-    &:focus {
-      outline: $outline;
     }
   }
 }

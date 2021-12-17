@@ -35,18 +35,13 @@
   &:hover {
     cursor: pointer;
   }
-
-  &:focus {
-    outline: $outline;
-  }
 }
 
 .logo {
   max-width: 150px;
   //transform: translateY(42px);
-
   &:focus {
-    outline: $outline;
+    outline: none;
   }
 }
 
@@ -61,16 +56,13 @@
   & > img {
     transform: translateY(1px);
   }
-
-  img:focus {
-    outline: $outline;
-  }
 }
 
 .logoIcon {
   //transform: translateY(-42px);
+
   &:focus {
-    outline: $outline;
+    outline: none;
   }
 }
 
@@ -121,10 +113,6 @@
   &:hover {
     cursor: pointer;
     opacity: .5;
-  }
-
-  &:focus {
-    outline: $outline;
   }
 }
 
@@ -181,12 +169,6 @@
     font-size: 16px;
     line-height: 20px;
     text-decoration: none;
-  }
-}
-
-.emailLink, .socialLink {
-  &:focus {
-    outline: $outline;
   }
 }
 

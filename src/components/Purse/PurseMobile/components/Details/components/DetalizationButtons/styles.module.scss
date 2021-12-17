@@ -28,7 +28,7 @@
   margin: 0;
   border: none;
   @include subtitle-14px($color-4F-black);
-  outline: $outline;
+  outline: none;
   background-color: transparent;
 
   .icon {
