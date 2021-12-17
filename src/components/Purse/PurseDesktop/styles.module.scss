@@ -66,7 +66,7 @@
   }
 
   &:active, &:focus {
-    outline: $outline;
+    border: 1.4px solid $color-67-black;
   }
 }
 

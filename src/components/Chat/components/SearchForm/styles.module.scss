@@ -46,14 +46,8 @@
     @include h4;
   }
 
-  &:active {
-    outline: 1.4px solid $color-67-black;
+  &:active, &:focus {
     border: 1.4px solid $color-67-black;
-  }
-
-  &:focus {
-    outline: $outline;
-    border-radius: $border-radius;
   }
 }
 

@@ -27,6 +27,10 @@ export const Participant = ({ member }: IParticipantProps) => {
 
   const [isOpened, setIsOpened] = useState(false)
   const userId = useAppSelector((state) => state.user.userData?.id)
+  const currentMemberDialogue = useAppSelector((state) =>
+    state.chat.dialogues.find((dialogue) => dialogue.other_user && dialogue.other_user.id === member.user.id),
+  )
+  const currentMemberDialogueSlug = currentMemberDialogue?.slug || 'nonExistDialogue'
   const me = member.user.id === userId ? 'Вы' : ''
   const avatar = member.user.avatar ? member.user.avatar : defaultAvatar
   // const showRaiting = Boolean(member.user.limc_balance)
@@ -38,9 +42,8 @@ export const Participant = ({ member }: IParticipantProps) => {
       dispatch(setCurrentMessages([]))
 
       dispatch(setCurrentDialogueMember(member.user))
-      dispatch(setCurrentSlug(''))
+      dispatch(setCurrentSlug(currentMemberDialogueSlug))
       checkDialogueExistence(member.user.id)
-
       setIsOpened(true)
     }
   }

@@ -14,11 +14,11 @@ interface IMessageComponent {
   message: IMessageInterface
   isMyMsg: boolean
   date: string
-  showName: boolean
+  firstMessage: boolean
   openRating: () => void
 }
 
-export const MessageComponent = ({ userId, message, isMyMsg, date, showName, openRating }: IMessageComponent) => {
+export const MessageComponent = ({ userId, message, isMyMsg, date, firstMessage, openRating }: IMessageComponent) => {
   const currentSlug = useAppSelector((state) => state.chat.currentSlug)
   const currentUser = useAppSelector((state) => state.chat.genChatMembers).find(
     (member) => member.user.id === userId,
@@ -26,11 +26,10 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, showName, ope
 
   const toShowRaiting = Boolean(currentUser.limc_balance)
 
-  return (
+  return firstMessage ? (
     <>
       {date && <div className={styles.date}>{date}</div>}
-
-      <div className={showName ? styles.member : `${styles.member} ${styles.firstMessageMember}`}>
+      <div className={!date ? styles.member : `${styles.member} ${styles.firstMessageMember}`}>
         {isMyMsg ? (
           <div className={styles.myMessageCont}>
             {message.file.length !== 0 && <File file={message.file} />}
@@ -41,20 +40,43 @@ export const MessageComponent = ({ userId, message, isMyMsg, date, showName, ope
           </div>
         ) : (
           <>
-            {showName && (
-              <img src={currentUser.avatar ? currentUser.avatar : defaultAvatar} alt='' className={styles.foto} />
-            )}
-            {showName && currentUser.status === 1 && <img alt='' src={active} className={styles.status} />}
+            <img src={currentUser.avatar ? currentUser.avatar : defaultAvatar} alt='' className={styles.foto} />
+            {currentUser.status === 1 && <img alt='' src={active} className={styles.status} />}
 
-            <div className={showName ? styles.messageCont : `${styles.messageCont} ${styles.firstMessage}`}>
+            <div className={styles.messageCont}>
               {message.file.length !== 0 && <File file={message.file} />}
               <p className={styles.message}>
-                {currentSlug === 'general_chat' && showName && (
+                {currentSlug === 'general_chat' && (
                   <>
                     <span className={styles.member_name}>{isMyMsg ? '' : getUserName(currentUser)}</span>
                     {toShowRaiting && <LimcRating openRating={openRating} limcBalance={currentUser.limc_balance} />}
                   </>
                 )}
+                {message.message}
+                <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
+              </p>
+            </div>
+          </>
+        )}
+      </div>
+    </>
+  ) : (
+    <>
+      {date && <div className={styles.date}>{date}</div>}
+      <div className={`${styles.member} ${styles.firstMessageMember}`}>
+        {isMyMsg ? (
+          <div className={styles.myMessageCont}>
+            {message.file.length !== 0 && <File file={message.file} />}
+            <p className={styles.myMessage}>
+              {message.message}
+              <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
+            </p>
+          </div>
+        ) : (
+          <>
+            <div className={`${styles.messageCont} ${styles.firstMessage}`}>
+              {message.file.length !== 0 && <File file={message.file} />}
+              <p className={styles.message}>
                 {message.message}
                 <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
               </p>

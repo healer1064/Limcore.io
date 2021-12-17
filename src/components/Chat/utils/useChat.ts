@@ -12,6 +12,7 @@ import {
   setWholePages,
   setContent,
   setLoader,
+  setCurrentSlug,
 } from '../redux/chatSlice'
 import { IDialogueInterface, ISendInterface } from './types'
 import { useAppSelector } from './../../../app/redux/hooks'
@@ -78,7 +79,11 @@ export const useChat = () => {
           dispatch(setDialogues(data.groups))
         }
       }
-
+      // if (data.command === 0) {
+      //   if (data.error) {
+      //     dispatch(setCurrentSlug('nonExistDialogue'))
+      //   }
+      // }
       if (data.command === 1) {
         if (currentSlug === 'general_chat') {
           const arr = []
@@ -89,20 +94,23 @@ export const useChat = () => {
       }
 
       if (data.command === 3) {
-        const isDialogueExist = currentDialogues.some((dialogue) => dialogue.slug === data.group.slug)
-        if (isDialogueExist) {
-          if (currentSlug === data.group.slug || currentDialogueMember.id === data.group.other_user.id) {
-            const arr = []
-            arr.push(data.message)
-            dispatch(setCurrentMessages([...currentMessages, ...arr]))
-          }
+        const isDialogueInList = currentDialogues.some((dialogue) => dialogue.slug === data.group.slug)
 
-          dispatch(setDialoguesLastMessage(data))
-
-          return
+        if (currentSlug === 'nonExistDialogue') {
+          dispatch(setCurrentSlug(data.group.slug))
         }
 
-        getGroupsList(1)
+        if (isDialogueInList) {
+          dispatch(setDialoguesLastMessage(data))
+        } else {
+          getGroupsList(1)
+        }
+
+        if (currentSlug === data.group.slug || currentDialogueMember.id === data.group.other_user.id) {
+          const arr = []
+          arr.push(data.message)
+          dispatch(setCurrentMessages([...currentMessages, ...arr]))
+        }
       }
 
       if (data.command === 4) {
