@@ -8,7 +8,7 @@ import { Textarea } from '../../../../components/Chat/components/Textarea'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setContent, setCurrentDialogueMember, setCurrentMessages, setCurrentSlug } from '../../redux/chatSlice'
 import limcoreIcon from '@icons/limcore.svg'
-import { getMonthNameWithDate } from '@components/Chat/utils/funcs'
+import { getMonthNameWithDate, getUserName } from '@components/Chat/utils/funcs'
 import { IDialogueInterface, IMessageInterface } from '@components/Chat/utils/types'
 import { useChat } from '@components/Chat/utils/useChat'
 // import profileIcon from '@icons/profileicon.svg'
@@ -36,7 +36,7 @@ export const ChatContent = () => {
 
   let dateBuffer: string = null
   let idBuffer: number
-  let showName: boolean
+  let firstMessage: boolean
   const IS_GENERAL_CHAT = slug === 'general_chat'
 
   // Открытие списка участников общего чата
@@ -115,9 +115,7 @@ export const ChatContent = () => {
         ) : (
           <>
             <img src={currentDialogueMember.avatar || defaultAvatar} alt='Avatar' className={styles.foto} />
-            <p className={styles.name}>
-              {currentDialogueMember.first_name || 'User'} {currentDialogueMember.last_name || ''}
-            </p>
+            <p className={styles.name}>{getUserName(currentDialogueMember)}</p>
             <p className={styles.status}>{currentDialogueMember.status === 1 ? 'В сети' : 'Не в сети'} </p>
           </>
         )}
@@ -141,9 +139,9 @@ export const ChatContent = () => {
 
           if (idBuffer !== msg.user.id || buffer) {
             idBuffer = msg.user.id
-            showName = true
+            firstMessage = true
           } else {
-            showName = false
+            firstMessage = false
           }
           return (
             <MessageComponent
@@ -152,7 +150,7 @@ export const ChatContent = () => {
               userId={msg.user.id}
               isMyMsg={userId === msg.user.id}
               date={buffer}
-              showName={showName}
+              firstMessage={firstMessage}
               openRating={openRating}
             />
           )

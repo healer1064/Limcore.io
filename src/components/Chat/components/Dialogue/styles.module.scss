@@ -19,6 +19,9 @@
   &:hover {
     cursor: pointer;
   }
+  &:active {
+    opacity: 0.5;
+  }
 
   // &:last-of-type {
   //   grid-template-rows: repeat(2, minmax(min-content, max-content));

@@ -14,7 +14,7 @@ export const EditName: React.FC = () => {
   const [t] = useTranslation()
   const dispatch = useDispatch()
 
-  const data = useAppSelector((state) => state.user.data)
+  const data = useAppSelector((state) => state.user.userData.profile)
   const existName = Boolean(data.chat_name)
 
   const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
