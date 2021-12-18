@@ -54,9 +54,9 @@
     cursor: pointer;
   }
 
-  &:focus {
-    outline: $outline;
-  }
+  // &:focus {
+  //   outline: $outline;
+  // }
 }
 
 .container {
@@ -211,9 +211,9 @@ input[type='radio'] {
 .logoLink {
   margin-right: 10px;
 
-  &:focus {
-    outline: $outline;
-  }
+  // &:focus {
+  //   outline: $outline;
+  // }
 }
 
 .profileLogo {

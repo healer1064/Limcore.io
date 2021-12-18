@@ -20,7 +20,6 @@ interface IMessageComponent {
 
 export const MessageComponent = ({ user, message, isMyMsg, date, firstMessage, openRating }: IMessageComponent) => {
   const currentSlug = useAppSelector((state) => state.chat.currentSlug)
-
   const toShowRaiting = Boolean(user.limc_balance)
 
   return firstMessage ? (
@@ -46,7 +45,7 @@ export const MessageComponent = ({ user, message, isMyMsg, date, firstMessage, o
                 {currentSlug === 'general_chat' && (
                   <>
                     <span className={styles.member_name}>{isMyMsg ? '' : getUserName(user)}</span>
-                    {toShowRaiting && <LimcRating openRating={openRating} limcBalance={user.limc_balance} />}
+                    {/* {toShowRaiting && <LimcRating openRating={openRating} limcBalance={user.limc_balance} />} */}
                   </>
                 )}
                 {message.message}

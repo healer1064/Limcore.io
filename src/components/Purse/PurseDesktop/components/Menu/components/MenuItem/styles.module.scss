@@ -22,9 +22,9 @@
     display: none;
   }
 
-  &:focus {
-    outline: $outline;
-  }
+  // &:focus {
+  //   outline: $outline;
+  // }
 
   &:last-of-type {
     border-bottom: none;
