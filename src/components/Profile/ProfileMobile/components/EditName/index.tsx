@@ -14,17 +14,19 @@ export const EditName: React.FC = () => {
   const [t] = useTranslation()
   const dispatch = useDispatch()
 
+  const myData = useAppSelector((state) => state.user.data)
   const data = useAppSelector((state) => state.user.userData.profile)
+
   const existName = Boolean(data.chat_name)
 
   const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    dispatch(setData({ ...data, chat_name: event.target.value }))
+    dispatch(setData({ ...myData, chat_name: event.target.value }))
   }
 
   const onEditName = async (event: MouseEvent) => {
     event.preventDefault()
 
-    const dataClone = JSON.parse(JSON.stringify(data))
+    const dataClone = JSON.parse(JSON.stringify(myData))
     delete dataClone.avatar
 
     const response = await dispatch(updateProfileUser(dataClone))
@@ -41,6 +43,8 @@ export const EditName: React.FC = () => {
         dispatch(changeStep(0))
       }
     }
+
+    document.querySelector('body').style.overflow = 'auto'
   }
 
   return (

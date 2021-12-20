@@ -28,11 +28,11 @@ export const MessageComponent = ({ user, message, isMyMsg, date, firstMessage, o
       <div className={!date ? styles.member : `${styles.member} ${styles.firstMessageMember}`}>
         {isMyMsg ? (
           <div className={styles.myMessageCont}>
-            {message.file.length !== 0 && <File file={message.file} />}
             <p className={styles.myMessage}>
               {message.message}
               <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
             </p>
+            {message.file.length !== 0 && <File file={message.file} />}
           </div>
         ) : (
           <>
@@ -40,17 +40,19 @@ export const MessageComponent = ({ user, message, isMyMsg, date, firstMessage, o
             {user.status === 1 && <img alt='' src={active} className={styles.status} />}
 
             <div className={styles.messageCont}>
-              {message.file.length !== 0 && <File file={message.file} />}
               <p className={styles.message}>
                 {currentSlug === 'general_chat' && (
                   <>
                     <span className={styles.member_name}>{isMyMsg ? '' : getUserName(user)}</span>
-                    {/* {toShowRaiting && <LimcRating openRating={openRating} limcBalance={user.limc_balance} />} */}
+                    {toShowRaiting && (
+                      <LimcRating openRating={openRating} limcBalance={Math.floor(user.limc_balance)} />
+                    )}
                   </>
                 )}
                 {message.message}
                 <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
               </p>
+              {message.file.length !== 0 && <File file={message.file} />}
             </div>
           </>
         )}
@@ -62,20 +64,20 @@ export const MessageComponent = ({ user, message, isMyMsg, date, firstMessage, o
       <div className={`${styles.member} ${styles.firstMessageMember}`}>
         {isMyMsg ? (
           <div className={styles.myMessageCont}>
-            {message.file.length !== 0 && <File file={message.file} />}
             <p className={styles.myMessage}>
               {message.message}
               <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
             </p>
+            {message.file.length !== 0 && <File file={message.file} />}
           </div>
         ) : (
           <>
             <div className={`${styles.messageCont} ${styles.firstMessage}`}>
-              {message.file.length !== 0 && <File file={message.file} />}
               <p className={styles.message}>
                 {message.message}
                 <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
               </p>
+              {message.file.length !== 0 && <File file={message.file} />}
             </div>
           </>
         )}

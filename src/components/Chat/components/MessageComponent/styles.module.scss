@@ -21,6 +21,10 @@
     z-index: 1;
     @include subtitle-13px($color-99-gray);
   }
+
+  &:last-child {
+    margin-bottom: 25px;
+  }
 }
 
 .firstMessageMember {
@@ -92,7 +96,7 @@
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  margin: 0;
+  margin: 0 0 5px 0;
   padding: 12px 50px 12px 14px;
   border-radius: $border-radius;
   word-wrap: anywhere;
@@ -128,7 +132,7 @@
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  margin: 0 0 0 auto;
+  margin: 0 0 5px auto;
   padding: 12px 50px 12px 14px;
   word-wrap: anywhere;
   background: $primary-color;
