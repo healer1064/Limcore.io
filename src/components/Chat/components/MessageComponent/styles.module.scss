@@ -1,0 +1,154 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/_vars.scss';
+
+.date {
+  margin: 20px auto;
+  width: fit-content;
+  @include p3;
+  font-weight: $fontWeightSemiBold;
+  color: $color-99-gray;
+}
+
+.member {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 20px 20px 5px;
+
+  &_name {
+    z-index: 1;
+    @include subtitle-13px($color-99-gray);
+  }
+
+  &:last-child {
+    margin-bottom: 25px;
+  }
+}
+
+.firstMessageMember {
+  margin: 5px 20px;
+}
+
+.foto {
+  grid-area: foto;
+  padding: 0;
+  margin: 0px 10px 0 0;
+  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.status {
+  position: absolute;
+  left: 24px;
+  top: 27px;
+}
+
+.raiting {
+  position: absolute;
+  top: -24px;
+  left: 47px;
+  z-index: 1;
+
+  grid-area: raiting;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 6px;
+  max-width: 70px;
+  background-color: $white;
+  border-radius: $border-radius;
+  font-family: $main-font;
+  @include main($color-39-black);
+  font-weight: $fontWeightMedium;
+  font-size: 9px;
+  line-height: 1.3;
+}
+
+.score {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 0 0 3px;
+  @include main($color-39-black);
+  font-weight: $fontWeightMedium;
+  font-size: 9px;
+  line-height: 1.3;
+}
+
+.raitingIcon {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 3px 0 0;
+}
+
+.message {
+  grid-area: message;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0 5px 0;
+  padding: 12px 50px 12px 14px;
+  border-radius: $border-radius;
+  word-wrap: anywhere;
+  font-family: $main-font;
+  @include main($color-4F-black);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.45;
+  background: $color-FO-white;
+}
+
+.firstMessage {
+  margin: 0 0 0 47px;
+}
+
+.myMessageCont {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin-left: auto;
+}
+
+.messageCont {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.myMessage {
+  grid-area: message;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0 5px auto;
+  padding: 12px 50px 12px 14px;
+  word-wrap: anywhere;
+  background: $primary-color;
+  border-radius: $border-radius;
+  @include main($white);
+  font-weight: $fontWeightRegular;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.time {
+  position: absolute;
+  bottom: 13px;
+  right: 13px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  color: $color-99-gray;
+}

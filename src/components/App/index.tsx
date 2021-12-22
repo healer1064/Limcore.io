@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
-import { BrowserRouter as Router, Redirect, Route, Switch, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 // import { getTransactions } from '../../pages/auth/redux/auth.slice'
 import { checkToken, refreshToken, setIsAuth, setWalletConnectSoldLimcs } from '../../pages/auth/redux/authSlice'
 
@@ -27,7 +27,9 @@ import { HeaderMobile } from '@components/Header/HeaderMobile/index'
 // import { CabinetPage } from '../../pages/cabinet'
 import { AuthMobile } from '../../pages/auth/AuthMobile'
 
-import { Dummy } from '../../components/Dummy'
+// TODO вернуть чат
+// import { Chat } from '@components/Chat'
+import { Dummy } from '@components/Dummy'
 import { LandingPage } from '../../pages/landing'
 import { Purse } from '@components/Purse'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
@@ -95,6 +97,7 @@ const App = () => {
                 {!desktop && (
                   <>
                     <Route path='/broadcasts' exact component={BroadcastsMobile} />
+                    {/* <Route path='/chat' exact component={Chat} /> */}
                     <Route path='/chat' exact component={Dummy} />
                     <Route path='/profile' exact component={ProfileMobile} />
                   </>

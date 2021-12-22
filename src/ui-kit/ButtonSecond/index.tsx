@@ -5,9 +5,10 @@ interface ButtonProps {
   className?: string
   onClick?: any
   disabled?: boolean
+  type?: 'button' | 'reset' | 'submit'
 }
 
-export const ButtonSecond: React.FC<ButtonProps> = ({ className, onClick, disabled, children }) => {
+export const ButtonSecond: React.FC<ButtonProps> = ({ className, onClick, disabled, type, children }) => {
   const cls = [`${Styles.button}`]
 
   if (className) {
@@ -15,7 +16,7 @@ export const ButtonSecond: React.FC<ButtonProps> = ({ className, onClick, disabl
   }
 
   return (
-    <button className={cls.join(' ')} onClick={onClick} disabled={disabled}>
+    <button className={cls.join(' ')} onClick={onClick} disabled={disabled} type={type}>
       {children}
     </button>
   )

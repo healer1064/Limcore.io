@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setData, setMiddleName } from '../../../../../../../app/redux/userSlice'
-import { api } from '@app/api'
 import Styles from './styles.module.scss'
 
 import { Popup } from '@components/Popup'
@@ -26,6 +25,7 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
   const data = useAppSelector((state) => state.user.data)
   const middleName = useAppSelector((state) => state.user.middleName)
   const [popup, setPopup] = useState(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [complete, setComplete] = useState(true)
   const maxLength = 200
 
@@ -47,31 +47,19 @@ export const Step1: React.FC<Step1Props> = ({ nextStep }) => {
     dispatch(setData({ ...data, gender: value }))
   }
 
-  // useEffect(() => {
-  //   if (data.first_name) {
-  //     setComplete(true)
-  //   }
-  // }, [data])
-
   return (
     <>
       <div className={Styles.progress}>
         <div className={Styles.step}>
-          <div className={`${Styles.number} ${Styles.number_active}`}>
-            <span>1</span>
-          </div>
-          <span className={`${Styles.line} ${Styles.line_active}`}>{}</span>
+          <div className={`${Styles.number} ${Styles.number_active}`}>1</div>
+          <span className={`${Styles.line} ${Styles.line_active}`} />
         </div>
         <div className={Styles.step}>
-          <div className={Styles.number}>
-            <span>2</span>
-          </div>
+          <div className={Styles.number}>2</div>
         </div>
         <div className={Styles.step}>
-          <span className={Styles.line}>{}</span>
-          <div className={Styles.number}>
-            <span>3</span>
-          </div>
+          <span className={Styles.line} />
+          <div className={Styles.number}>3</div>
         </div>
       </div>
       <div className={Styles.container}>

@@ -1,11 +1,16 @@
+@import '../../../vars&mixins.scss';
+@import '../../../../../scss/cabinet';
+@import '../../../../../scss/_vars';
+@import '../../../../../scss/typography';
+
 .logo {
   display: flex;
   box-sizing: border-box;
-  width: 159px;
-  height: 41px;
+  width: 145px;
+  height: 36px;
   position: absolute;
-  top: 25px;
-  left: 0;
+  top: 20px;
+  left: 20px;
 
   &:hover {
     cursor: pointer;
@@ -17,5 +22,9 @@
     position: relative;
     top: 0;
     left: 0;
+
+    &:focus {
+      outline: $outline;
+    }
   }
 }

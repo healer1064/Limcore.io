@@ -1,12 +1,14 @@
-@import '../../../../../scss/cabinet';
 @import '../../../vars&mixins.scss';
+@import '../../../../../scss/cabinet';
+@import '../../../../../scss/_vars';
+@import '../../../../../scss/typography';
 
 .details {
   width: 40%;
   position: relative;
   margin: 0 10px 0 0;
   padding: 26px;
-  background-color: #F9FAFE;
+  background-color: $color-F9-white;
   box-shadow: $box-shadow2;
   border-radius: $border-radius;
   transition: 0.5s ease-in-out;
@@ -29,7 +31,7 @@
 
   &__title {
     padding-bottom: 16px;
-    @include section-title();
+    @include section-title($color-3A-black);
   }
 
   &__balance {
@@ -51,7 +53,6 @@
   &Modal {
     padding: 0 20px;
     width: 100vw;
-    height: 100vh;
 
     // DetalizationDown
     & > ul {
@@ -70,8 +71,8 @@
 
       & > ul {
         padding: 20px;
-        box-shadow: 0px 4px 25px 0px #7070701A;
-        border-radius: 14px;
+        box-shadow: 0 4px 25px 0 $color-70-grey;
+        border-radius: $border-radius;
       }
     }
   }
@@ -93,20 +94,13 @@
 
   &__text {
     flex: 1 1 0;
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 1.4;
-    color: $color-gray-mouse;    
+  @include second-subtitle-13px($color-99-gray);
   }
 
   &__data {
     flex: none;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 20px;
-
+    @include subtitle-14px($color-4F-black);
     text-align: right;
-    color: $color-gray-medium;    
   }
 }
 
@@ -120,10 +114,6 @@
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-
-  & + & {
-    //border-top: 1px solid rgba(0, 0, 0, 0.1);
-  }
 
   &:first-of-type {
     padding-top: 22px;
@@ -146,13 +136,13 @@
   flex: 1 1 0;
 
   &__title {
-    @include subtitle-14px($color-gray-black);
+    @include subtitle-14px($color-3A-black);
     margin-bottom: 2px;
     text-align: left;  
   }
 
   &__text {
-    @include subtitle-13px($color-gray-mouse);
+    @include subtitle-13px($color-99-gray);
     text-align: left;
   }
 }
@@ -162,12 +152,12 @@
   flex: none;
 
   &__title {
-    @include subtitle-14px($color-gray-medium);
+    @include subtitle-14px($color-4F-black);
     text-align: right;
   }
 
   &__text {
-    @include subtitle-13px($color-gray-mouse);
+    @include subtitle-13px($color-99-gray);
     text-align: right;
   }
 }
@@ -177,28 +167,23 @@
     margin-top: 15px;
     padding-bottom: 20px;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: $fontWeightMedium;
     line-height: 21px;
-    color: $color-gray-mouse;
+    color: $color-99-gray;
   }
 
   &__profileButton {
     @include button-style();
     width: 100%;
     height: 50px;
-
-    background-color: #fff;
-    border: 1px solid $color-blue;    
+    background-color: $white;
+    border: 1px solid $primary-color;
     border-radius: $border-radius;
-
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 22px;
-    text-align: center;    
-    color: $color-blue;
+    @include semiBoldH4($primary-color);
+    text-align: center;
 
     &:active {
-      opacity: 0.7;
+      opacity: .7;
     }
   }
 }

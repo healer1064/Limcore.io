@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import classNames from 'classnames'
-import { WalletIcon } from '@icons/WalletIcon'
 
 import tchiaIcon from '@icons/tchia.png'
 import tflaxIcon from '@icons/tflax.png'
@@ -282,27 +281,31 @@ export const DetailTable = () => {
   return (
     <>
       <table className={styles.table}>
-        <tr className={styles.tableRow}>
-          <th className={classNames(styles.tableHeader, styles.tableHeader_asset)}>{t('purse_forksAsset')}</th>
-          <th className={classNames(styles.tableHeader, styles.tableHeader_balance)}>{t('purse_forksBalance')}</th>
-          <th className={classNames(styles.tableHeader, styles.tableHeader_price)}>{t('purse_forksPrice')}</th>
-        </tr>
-        {displayedItems.map((item) => (
-          <tr className={styles.tableRow} key={item.id}>
-            <td className={styles.tableData}>
-              <div className={styles.dataContainer}>
-                <div className={styles.tableDataLogo}>
-                  <img src={item.logo} alt={item.name} />
-                </div>
-                <h4 className={styles.tableDataName}>{item.name}</h4>
-                <p className={styles.tableDataCode}>{item.code}</p>
-                {/* {item.current ? <WalletIcon /> : null} */}
-              </div>
-            </td>
-            <td className={styles.tableData}>{item.balance}</td>
-            <td className={styles.tableData}>${item.price}</td>
+        <thead>
+          <tr className={styles.tableRow}>
+            <th className={classNames(styles.tableHeader, styles.tableHeader_asset)}>{t('purse_forksAsset')}</th>
+            <th className={classNames(styles.tableHeader, styles.tableHeader_balance)}>{t('purse_forksBalance')}</th>
+            <th className={classNames(styles.tableHeader, styles.tableHeader_price)}>{t('purse_forksPrice')}</th>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {displayedItems.map((item) => (
+            <tr className={styles.tableRow} key={item.id}>
+              <td className={styles.tableData}>
+                <div className={styles.dataContainer}>
+                  <div className={styles.tableDataLogo}>
+                    <img src={item.logo} alt={item.name} />
+                  </div>
+                  <h4 className={styles.tableDataName}>{item.name}</h4>
+                  <p className={styles.tableDataCode}>{item.code}</p>
+                  {/* {item.current ? <WalletIcon /> : null} */}
+                </div>
+              </td>
+              <td className={styles.tableData}>{item.balance}</td>
+              <td className={styles.tableData}>${item.price}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
       {displayedItems.length <= 3 && (
         <button className={styles.tableBtn} onClick={onClickMore}>

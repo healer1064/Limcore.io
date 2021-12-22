@@ -1,0 +1,86 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/_vars.scss';
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: 20px 30px 0 0;
+  padding: 12px 14px 0;
+  background-color: $color-FO-white;
+  border-radius: $border-radius;
+
+  &_owner {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin: 20px 0 0 30px;
+    padding: 12px 14px 0;
+    background-color: $primary-color;
+    border-radius: $border-radius;
+  }
+}
+
+.text {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: $main-font;
+  @include main($color-4F-black);
+  font-weight: $fontWeightMedium;
+  font-size: 13px;
+  line-height: 1.45;
+
+  &_owner {
+    display: flex;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: $main-font;
+    @include main($white);
+    font-weight: $fontWeightMedium;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+}
+
+.time {
+  padding: 0;
+  margin: 0;
+  font-family: $main-font;
+  @include main($color-99-gray);
+  font-weight: $fontWeightRegular;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: right;
+  position: relative;
+  bottom: 18px;
+
+  &_owner {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    padding: 0;
+    margin: 0;
+    font-family: $main-font;
+    @include main($color-88-violet);
+    font-weight: $fontWeightRegular;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: right;
+    position: relative;
+    bottom: 18px;
+  }
+}
+
+.checkIcon {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 0 0 5px;
+
+  &_invisible {
+    display: none;
+  }
+}

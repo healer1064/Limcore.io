@@ -1,0 +1,94 @@
+@import '../../../vars&mixins.scss';
+@import '../../../../../scss/cabinet';
+@import '../../../../../scss/_vars';
+@import '../../../../../scss/typography';
+
+.balance {
+  grid-area: balance;
+  padding: 60px 0 0 0;
+
+  &_invisible {
+    display: none;
+  }
+}
+
+.roadMap {
+  grid-area: roadMap;
+
+  &_invisible {
+    display: none;
+  }
+
+  .buyLimcBtn {
+    @include section-title($white);
+    display: inline-block;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    border-radius: $border-radius;
+    padding: 15px 75px;
+    color: $white;
+    background-color: $color-4A-blue;
+    margin: 30px 0;
+    &:hover {
+      background-color: $color-31-blue;
+    }
+    &:active {
+      background-color: $color-2D-blue;
+    }
+    &:focus {
+      outline: $outline;
+    }
+  }
+}
+
+.mining {
+  grid-area: mining;
+  width: 100%;
+  max-width: 100%;
+  &_invisible {
+    display: none;
+  }
+}
+
+.miningDetails {
+  display: flex;
+  flex-direction: column;
+  .miningDetailsWrapper {
+    width: 100%;
+    display: flex;
+  }
+  .statistics {
+    border: 1px solid $color-DC-white;
+    background-color: $color-F9-white;
+    width: 60%;
+    padding: 17px 30px;
+    border-radius: $border-radius;
+  }
+}
+
+.detailsTitle {
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightSemiBold;
+  font-size: 24px;
+  line-height: 1.5;
+  padding: 60px 0 20px 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 920px) {
+  .miningDetails {
+    flex-direction: column;
+    
+    .miningDetailsWrapper {
+     width: 100%;
+     flex-direction: column;
+    }
+
+    .statistics {
+      width: 100%;
+    }
+  }
+}

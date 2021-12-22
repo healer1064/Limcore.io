@@ -1,16 +1,12 @@
-import React, { FC } from 'react'
+import React from 'react'
 import styles from './styles.module.scss'
-import buyIcon from '@icons/buy.svg'
-import sellIcon from '@icons/sellBlue.svg'
-import tradeIcon from '@icons/changeBlue.svg'
-import { TransactionsDetails } from '@components/Purse/PurseDesktop/components/Transactions/components/TransactionsDetails'
 import { Transactions } from '../Transactions'
 
 type PageBalanceUSDTPropsType = {
   usdtBalance: any
   isOpen: any
   handlePageBalanceUSDTCloseClick: () => void
-  openProfile: () => void
+  openProfile: any
 }
 
 export const PageBalanceUSDT: React.FC<PageBalanceUSDTPropsType> = ({
@@ -95,7 +91,7 @@ export const PageBalanceUSDT: React.FC<PageBalanceUSDTPropsType> = ({
         </div> */}
       </div>
       {/* <TransactionsDetails onClick={() => {}} /> */}
-      <Transactions onProfileClick={openProfile} onTransactionsClick={() => {}} isUserHasTransactions />
+      <Transactions onProfileClick={openProfile} />
     </div>
   )
 }

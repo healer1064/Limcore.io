@@ -41,7 +41,7 @@ export const LanguagePopup = ({ position, footerStyles }: ILanguagePopupProps) =
 
   return (
     <div className={Styles.lang} style={footerLangStyles}>
-      <div
+      <nav
         className={classNames(Styles.block, showPopapLanguage && Styles.active)}
         onClick={() => setShowPopapLanguage(!showPopapLanguage)}
         style={footerBlockStyles}
@@ -68,7 +68,7 @@ export const LanguagePopup = ({ position, footerStyles }: ILanguagePopupProps) =
         <span className={classNames(showPopapLanguage && Styles.arrowActive, Styles.arrow)}>
           <VectorIcon />
         </span>
-      </div>
+      </nav>
       <div
         className={classNames(Styles.el__langoptions, showPopapLanguage && Styles.active)}
         style={elLangOptionsStyles}

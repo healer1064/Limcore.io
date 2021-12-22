@@ -10,10 +10,10 @@ interface InputRadioProps {
 
 export const InputRadio: React.FC<InputRadioProps> = ({ onChange, value, checked, titleRadio }) => {
   return (
-    <div className={Styles.block}>
+    <fieldset className={Styles.block}>
       <input className={Styles.input} onChange={onChange} value={value} type='radio' name='radio' checked={checked} />
-      <span className={Styles.radio}>{}</span>
+      <span className={Styles.radio} />
       {titleRadio}
-    </div>
+    </fieldset>
   )
 }

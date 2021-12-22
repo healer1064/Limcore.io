@@ -1,9 +1,12 @@
+@import '../../scss/typography.scss';
+@import '../../scss/vars.scss';
+
 .footer {
   display: flex;
   justify-content: center;
   padding: 40px 0 30px;
   width: 100%;
-  background-color: #1e1f22;
+  background-color: $color-1D-black;
 
   &__container {
     position: relative;
@@ -31,20 +34,19 @@
     margin: 0 0 20px 0;
     padding: 0;
     box-sizing: border-box;
-
     justify-content: flex-start;
     width: 60px;
   }
 
   &__language {
-    color: #b4bfd5;
+    color: $color-B4-violet;
     display: flex;
     box-sizing: border-box;
     margin: 0;
     padding: 2px 0 0 0;
     background-color: transparent;
     border: none;
-    outline: none;
+    outline: $outline;
   }
 
   &__languageIcon {
@@ -75,13 +77,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: #b4bfd5;
-    font-family: Montserrat;
+    color: $color-B4-violet;
+    font-family: $main-font;
   }
 
   &_listTitle {
-    font-style: normal;
-    font-weight: 600;
+    @include main($color-B4-violet);
+    font-weight: $fontWeightSemiBold;
     font-size: 16px;
     line-height: 1.25;
     margin: 0;
@@ -90,14 +92,6 @@
   }
 
   &_listTitle_noWrap {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 1.25;
-    margin: 0;
-    padding: 0 0 20px 0;
-    box-sizing: border-box;
-    display: flex;
     white-space: nowrap;
   }
 
@@ -106,8 +100,8 @@
   }
 
   &__listItem {
-    font-weight: 500;
-    font-style: normal;
+    font-weight: $fontWeightMedium;
+    @include main($color-B4-violet);
     font-size: 14px;
     line-height: 1.2;
     margin: 0;
@@ -118,13 +112,8 @@
     }
 
     &_gray {
-      font-weight: 500;
-      font-style: normal;
-      font-size: 14px;
-      line-height: 1.2;
-      margin: 0;
       padding: 0 0 12px 0;
-      color: #717a8d;
+      color: $color-71-grey;
 
       &:last-child {
         padding: 0;
@@ -132,13 +121,8 @@
     }
 
     &_city {
-      font-weight: 500;
-      font-style: normal;
-      font-size: 14px;
-      line-height: 1.2;
-      margin: 0;
       padding: 0 0 12px 0;
-      color: #717a8d;
+      color: $color-71-grey;
       max-width: 245px;
 
       &:last-child {
@@ -165,50 +149,38 @@
     margin-top: 20px;
   }
 
-  &__information {
-    grid-area: information;
+  &__list {
     display: flex;
     flex-direction: column;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+
+  &__information {
+    grid-area: information;
     max-width: 317px;
   }
 
   &__users {
     grid-area: users;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
     max-width: 306px;
   }
 
   &__address {
     grid-area: address;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
   }
 
   &__issuer {
     grid-area: issuer;
-    display: flex;
     flex-direction: row;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
   }
 
   &__email {
     grid-area: email;
-    color: #b4bfd5;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 600;
+    font-family: $main-font;
+    @include main($color-B4-violet);
+    font-weight: $fontWeightSemiBold;
     font-size: 16px;
     line-height: 1.25;
     margin: 0;
@@ -217,11 +189,10 @@
     text-align: end;
 
     & > a {
-      color: #b4bfd5;
+      @include main($color-B4-violet);
       text-decoration: none;
-      font-family: Montserrat;
-      font-style: normal;
-      font-weight: 600;
+      font-family: $main-font;
+      font-weight: $fontWeightSemiBold;
       font-size: 16px;
       line-height: 1.25;
     }
@@ -233,12 +204,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Montserrat;
-    font-weight: 500;
-    font-style: normal;
+    font-family: $main-font;
+    font-weight: $fontWeightMedium;
+    @include main($color-71-grey);
     font-size: 16px;
     line-height: 1.25;
-    color: #717a8d;
     text-align: end;
     align-content: end;
   }
@@ -258,7 +228,7 @@
     grid-area: line;
     width: 100%;
     height: 1px;
-    background-color: #13151b;
+    background-color: $color-13-black;
     margin: 47px 0 30px;
     padding: 0;
     box-sizing: border-box;
@@ -279,19 +249,21 @@
 
   &__link {
     text-decoration: none;
-    color: #B4BFD4;
+    color: $color-B4-violet;
 
     &:hover {
       cursor: pointer;
       text-decoration: underline;
     }
   }
+
+  &__round {
+    border-radius: 50%;
+  }
 }
 
 .wrapper {
   display: flex;
-  // align-items: center;
-  // justify-content: space-between;
   width: 100%;
   max-width: 1024px;
 }
@@ -321,7 +293,7 @@
   align-items: center;
   margin: 0 10px 0 0;
   border-radius: 50%;
-  background-color: #36373A;
+  background-color: $color-36-grey;
   width: 32px;
   height: 32px;
 
@@ -348,8 +320,9 @@
     grid-template-areas:
     'logo logo'
     'social social'
-    'translation translation'
-    'email language'
+    //'translation translation'
+    'language language'
+    'email email'
     'address address'
     'issuer issuer'
     'information information'
@@ -393,18 +366,33 @@
     margin: 0 16px 0 0;
     padding: 10px 12px;
     border-radius: 50%;
-    background-color: #36373A;
+    background-color: $color-36-grey;
     width: 40px;
     height: 40px;
 
     &:hover {
       cursor: pointer;
     }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .footer__link {
+    &:focus {
+      outline: none;
+    }
   }
 
   .footer__email {
     margin: 0 0 30px 0;
     text-align: start;
+    align-self: flex-end;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   .footer__languageGroup {
@@ -417,7 +405,7 @@
   }
 
   .footer_listTitle {
-    color: #647BA8;
+    color: $color-64-grey;
     padding: 0 0 16px 0;
   }
 
@@ -426,7 +414,7 @@
   }
 
   .footer_listTitle_noWrap {
-    color: #647BA8;
+    color: $color-64-grey;
     padding: 0 0 16px 0;
     white-space: normal;
   }

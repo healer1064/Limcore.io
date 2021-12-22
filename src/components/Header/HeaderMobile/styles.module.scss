@@ -1,3 +1,6 @@
+@import '../../../scss/typography.scss';
+@import '../../../scss/vars.scss';
+
 .header {
   display: flex;
   align-items: center;
@@ -9,7 +12,6 @@
 }
 
 .wrap {
-  // position: relative;
   display: flex;
   align-items: center;
 }
@@ -20,7 +22,7 @@
 
   &:hover {
     cursor: pointer;
-    opacity: 0.7;
+    opacity: .7;
   }
 }
 
@@ -37,7 +39,10 @@
 
 .logo {
   max-width: 150px;
-  transform: translateY(42px);
+  //transform: translateY(42px);
+  &:focus {
+    outline: none;
+  }
 }
 
 .profileLogo {
@@ -54,13 +59,17 @@
 }
 
 .logoIcon {
-  transform: translateY(-42px);
+  //transform: translateY(-42px);
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .row {
   width: 21px;
   height: 2px;
-  background: #4a70f8;
+  background: $primary-color;
 
   &:not(:last-child) {
     margin-bottom: 5px;
@@ -70,7 +79,7 @@
 .logoInOpenBurger {
   display: flex;
   box-sizing: border-box;
-  margin: 0;
+  margin: 0 0 0 35px;
   padding: 0;
   justify-self: flex-start;
   max-height: 11px;
@@ -82,12 +91,12 @@
 .list {
   display: flex;
   box-sizing: border-box;
-  margin: 30px 0 0;
-  padding: 0;
+  margin: 30px 0 auto 0;
+  padding: 0 0 0 35px;
   flex-direction: column;
   list-style: none;
   width: 100%;
-  height: 100%;
+  // height: 75%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -97,12 +106,9 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0 0 20px 0;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 1.5;
-  color: #393C42;
+  font-family: $main-font;
+  @include mediumP1($color-39-black);
+  font-weight: $fontWeightSemiBold;
 
   &:hover {
     cursor: pointer;
@@ -115,7 +121,7 @@
   flex-direction: row;
   box-sizing: border-box;
   margin: 0;
-  padding: 30px 0 0;
+  padding: 25px 0 0 35px;
   list-style: none;
   justify-content: space-between;
 }
@@ -125,7 +131,7 @@
   flex-direction: row;
   box-sizing: border-box;
   margin: 0;
-  padding: 24px 0 10px;
+  padding: 15px 25px 25px 0;
   justify-content: space-between;
 }
 
@@ -135,7 +141,7 @@
 }
 
 .language {
-  color: #b4bfd5;
+  color: $color-B4-violet;
   display: flex;
   box-sizing: border-box;
   margin: 0;
@@ -153,16 +159,15 @@
 
 .email {
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 35px;
   box-sizing: border-box;
   
   & > a {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 500;
+    font-family: $main-font;
+    @include main($primary-color);
+    font-weight: $fontWeightMedium;
     font-size: 16px;
     line-height: 20px;
-    color: #4A70F8;
     text-decoration: none;
   }
 }
@@ -190,7 +195,7 @@
   margin: 0;
   padding: 10px 12px;
   border-radius: 50%;
-  background-color: #D3D8DF;
+  background-color: $color-D3-white;
   width: 40px;
   height: 40px;
 
@@ -216,23 +221,22 @@
   padding-bottom: 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
-  &_item:not(:last-child) {
-    margin-bottom: 15px;
-  }
+  // &_item:not(:last-child) {
+  //   margin-bottom: 15px;
+  // }
   
   &_link {
     display: flex;
     align-items: center;
-
     font-size: 16px;
-    font-weight: 600;
+    font-weight: $fontWeightSemiBold;
     line-height: 1;
-    color: #4A70F8;
+    color: $primary-color;
     text-decoration: none;
 
     & > svg > path,
     & > svg > circle {
-      stroke: #4A70F8;
+      stroke: $primary-color;
     }
   }
 
@@ -247,7 +251,6 @@
 
 .social {
   display: flex;
-  // margin: 0 auto;
   max-width: 200px;
   width: 100%;
 }
@@ -255,20 +258,45 @@
 .profileBtn {
   padding: 5px 15px;
   margin: 0 25px 0 0;
-  border: 1px solid #4a70f8;
-  border-radius: 14px;
+  border: 1px solid $primary-color;
+  border-radius: $border-radius;
 
   outline: none;
-  background-color: #fff;
+  background-color: $white;
   
   &_link {
     display: flex;
     align-items: center;
-    
     font-size: 14px;
-    font-weight: 600;
+    font-weight: $fontWeightSemiBold;
     line-height: 22px;
-    color: #4a70f8;
+    color: $primary-color;
     text-decoration: none;
+    outline: none;
   }
+}
+
+.burgerContent {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+}
+
+.burgerHeader {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.closeButton {
+  width: 24px;
+  height: 24px;
+  object-position: center;
+  object-fit: cover;
+  padding: 0;
+  margin: 0 35px 20px;
 }

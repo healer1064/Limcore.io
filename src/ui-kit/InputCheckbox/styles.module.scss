@@ -1,6 +1,12 @@
+@import '../../scss/typography.scss';
+@import '../../scss/vars.scss';
+
 .block {
   display: flex;
-  align-items: center;
+  //align-items: center;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
 
 .input {
@@ -22,8 +28,9 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #fff;
-  margin-right: 12px;
+  background-color: $white;
+  margin: 0 12px 0 0;
+  padding: 0;
 }
 
 .icon {

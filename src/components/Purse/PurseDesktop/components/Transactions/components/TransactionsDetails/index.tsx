@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { ModalHeader } from '../../../ModalHeader'
 import { UserHasTransactions } from '../UserHasTransactions'
 import {
   s7,
@@ -11,13 +10,13 @@ import {
   buttonCloseWhite,
 } from '@components/Purse/PurseMobile/images/index'
 import styles from './styles.module.scss'
-import { BottomModal } from '../../../BottomModal'
+import { BottomModal } from '@components/Modal/BottomModal'
 import { CurrencySort } from './components/CurrencySort/index'
 import { TypeSort } from './components/TypeSort/index'
 // import { PeriodSort } from './components/PeriodSort/index'
 import { SumSort } from './components/SumSort/index'
 
-export const TransactionsDetails = ({ onClick }) => {
+export const TransactionsDetails = () => {
   // Модалки по клику на табы
   const [isCurrencyVisible, setIsCurrencyVisible] = useState(false)
   const [isTypeVisible, setIsTypeVisible] = useState(false)
@@ -136,14 +135,6 @@ export const TransactionsDetails = ({ onClick }) => {
     setIsTypeVisible(false)
   }
 
-  // Период
-  // const handlePeriodOpenClick = () => {
-  //   setIsPeriodVisible(true)
-  // }
-  // const handlePeriodCloseClick = () => {
-  //   setIsPeriodVisible(false)
-  // }
-
   // Сумма
   const handleSumOpenClick = () => {
     setIsSumVisible(true)
@@ -151,14 +142,6 @@ export const TransactionsDetails = ({ onClick }) => {
   const handleSumCloseClick = () => {
     setIsSumVisible(false)
   }
-
-  // Свой период
-  // const handleOwnPeriodOpen = () => {
-  //   setIsOwnPeriodVisible(true)
-  // }
-  // const handleOwnPeriodClose = () => {
-  //   setIsOwnPeriodVisible(false)
-  // }
 
   // Временные данные
   const tempInfo = [
@@ -230,18 +213,18 @@ export const TransactionsDetails = ({ onClick }) => {
       <h2 className={styles.title}>Транзакции</h2>
       <ul className={styles.list}>
         <li className={styles.item}>
-          <button className={styles.btn} onClick={handleCurrencyOpenClick}>
+          <button className={styles.btn} onClick={handleCurrencyOpenClick} type='button'>
             Валюта
-            <img src={chevronDown} />
+            <img src={chevronDown} alt='icon' />
           </button>
           <BottomModal title='Валюта' active={isCurrencyVisible} setActive={handleCurrencyCloseClick}>
             <CurrencySort onChange={handleCurrencyChange} />
           </BottomModal>
         </li>
         <li className={styles.item}>
-          <button className={styles.btn} onClick={handleTypeOpenClick}>
+          <button className={styles.btn} onClick={handleTypeOpenClick} type='button'>
             Тип операции
-            <img src={chevronDown} />
+            <img src={chevronDown} alt='icon' />
           </button>
           <BottomModal title='Тип операции' active={isTypeVisible} setActive={handleTypeCloseClick}>
             <TypeSort onChange={handleTypeChange} />
@@ -262,9 +245,9 @@ export const TransactionsDetails = ({ onClick }) => {
           </BottomModal>
         </li> */}
         <li className={styles.item}>
-          <button className={styles.btn} onClick={handleSumOpenClick}>
+          <button className={styles.btn} onClick={handleSumOpenClick} type='button'>
             Сумма
-            <img src={chevronDown} />
+            <img src={chevronDown} alt='icon' />
           </button>
 
           <BottomModal title='Сумма' active={isSumVisible} setActive={handleSumCloseClick}>
@@ -280,9 +263,9 @@ export const TransactionsDetails = ({ onClick }) => {
         </li>
         {isResetTabVisible && (
           <li className={styles.item}>
-            <button className={styles.btn} style={{ backgroundColor: '#67686C', color: '#fff' }}>
+            <button className={styles.btn} style={{ backgroundColor: '#67686C', color: '#fff' }} type='button'>
               От {fromSum} до {toSum}
-              <img src={buttonCloseWhite} className={styles.cross} onClick={handleResetSumSort} />
+              <img src={buttonCloseWhite} className={styles.cross} onClick={handleResetSumSort} alt='icon' />
             </button>
           </li>
         )}
@@ -290,13 +273,14 @@ export const TransactionsDetails = ({ onClick }) => {
           <li className={styles.item}>
             <button className={styles.btn} style={{ backgroundColor: '#67686C', color: '#fff' }}>
               {currencySort}
-              <img src={buttonCloseWhite} className={styles.cross} onClick={handleResetCurrencySort} />
+              <img src={buttonCloseWhite} className={styles.cross} onClick={handleResetCurrencySort} alt='icon' />
             </button>
           </li>
         )}
         {isTypeTabVisible && (
           <li className={styles.item}>
             <button
+              type='button'
               className={styles.btn}
               style={{
                 backgroundColor: '#67686C',
@@ -304,7 +288,7 @@ export const TransactionsDetails = ({ onClick }) => {
               }}
             >
               <span className={styles.btnSpan}>{typeSort}</span>
-              <img src={buttonCloseWhite} className={styles.cross} onClick={handleResetTypeSort} />
+              <img src={buttonCloseWhite} className={styles.cross} onClick={handleResetTypeSort} alt='icon' />
             </button>
           </li>
         )}
@@ -314,7 +298,12 @@ export const TransactionsDetails = ({ onClick }) => {
           isCurrentTabVisible ||
           (isTypeTabVisible && (
             <li className={styles.item}>
-              <button className={styles.btn} style={{ backgroundColor: 'transparent' }} onClick={handleAllSortsReset}>
+              <button
+                type='reset'
+                className={styles.btn}
+                style={{ backgroundColor: 'transparent' }}
+                onClick={handleAllSortsReset}
+              >
                 Сбросить
               </button>
             </li>

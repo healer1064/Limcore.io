@@ -1,6 +1,8 @@
+@import '../../scss/typography.scss';
+@import '../../scss/vars.scss';
+
 .lang {
   position: relative;
-
   display: flex;
   align-items: center;
   gap: 10px;
@@ -13,43 +15,39 @@
 
 .block {
   position: relative;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 5px;
   min-width: 65px;
   height: 100%;
-
   transition: all 0.3s ease;
-  cursor: pointer;
   
-  &:hover,
-  &:focus {
+  &:hover {
+    cursor: pointer;
     .langTitle,
     path {
-      color: #4A70F8;
-      stroke: #4A70F8;
+      color: $primary-color;
+      stroke: $primary-color;
     }
+  }
+
+  &:focus {
+    outline: $outline;
   }
   
   &.active {
     .langTitle,
     path {
-      color: #4A70F8;
-      stroke: #4A70F8;
+      color: $primary-color;
+      stroke: $primary-color;
     }
   }
 
   span {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 140%;
-    color: #67686c;
+    font-family: $main-font;
+    @include mediumP3($color-67-black);
     text-transform: uppercase;
-    
     transition: color 0.3s ease;
   }
 
@@ -82,17 +80,14 @@
 .el__langoptions {
   position: absolute;
   z-index: 10;
-
   display: flex;
   flex-direction: column;
   padding: 18px 16px;
   width: 99px;
-  // height: 96px;
   height: 120px;
-  border-radius: 14px;
-  
-  box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
-  background: #f9f9f7;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
+  background: $color-F9-white;
   list-style: none;
   transition: opacity 0.3s ease;
   opacity: 0;
@@ -105,7 +100,6 @@
 }
 
 .langoption_ru {
-  // margin-bottom: 19px;
   margin-bottom: 15px;
 }
 
@@ -123,25 +117,20 @@
 }
 
 .langoption__text {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 140%;
-  color: #4f535a;
-
-  cursor: pointer;
+  font-family: $main-font;
+  @include mediumP3($color-4F-black);
   
   &:hover,
   &:focus {
-    color: #4A70F8;
+    cursor: pointer;
+    color: $primary-color;
     transition: all 0.3s ease;
   }
 }
 
 .langoption__text_checked {
   font-weight: 600;
-  color: #3a3b3d;
+  color: $color-3A-black;
 }
 
 input[type='radio'] {

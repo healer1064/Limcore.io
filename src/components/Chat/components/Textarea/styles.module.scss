@@ -1,0 +1,140 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/_vars.scss';
+
+.inputContainer {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 10px 0 0;
+  margin: 0 auto;
+  border-top: 1px solid $color-E5-grey;
+  width: 100%;
+}
+
+.file {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 50%;
+  max-height: 35px;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  background-color: #F0F5FD;
+
+  &_clip {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+  }
+
+  &_title {
+    margin-right: auto;
+
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;  
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &_delete {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.clip {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 18px 14px;
+  width: 20px;
+  height: 22px;
+  object-fit: cover;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.inputText {
+  display: flex;
+  box-sizing: border-box;
+  padding: 10px 10px 10px 14px;
+  margin: 10px 0;
+  height: 40px;
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightMedium;
+  width: 100%;
+  background: $white;
+  overflow: hidden;
+  resize: none;
+  border: 1.4px solid $color-B4-violet;
+  border-radius: $border-radius;
+
+  &::placeholder {
+    display: flex;
+    box-sizing: border-box;
+    font-family: $main-font;
+    @include main($color-B4-violet);
+    font-weight: $fontWeightMedium;
+  }
+
+  &:active, &:focus {
+    border: 1.4px solid $color-67-black;
+  }
+  
+  &:focus {
+    font-size: 16px;
+  }
+}
+
+.sendIcon {
+  display: flex;
+  box-sizing: border-box;
+  margin: 10px 0 10px 8px;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  
+  &:focus, &:active {
+    outline: none;
+    border-radius: 25%;
+    border: none;
+  }
+
+  // Spinner
+  & > div {
+    width: 60px;
+    height: 40px;
+
+    & > div {
+      width: 100%;
+      height: 100%;
+    }  
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .inputContainer {
+    width: 375px;
+    position: relative;
+    bottom: 0;
+    right: 0;
+  }
+}

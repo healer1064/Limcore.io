@@ -22,10 +22,9 @@ export const Footer: React.FC = () => {
   return (
     <footer className={Styles.footer}>
       <div className={Styles.wrapper}>
-        <div className={Styles.footer__container}>
+        <nav className={Styles.footer__container}>
           <FooterLogo />
           <LanguagePopup position={{ top: '-30px', left: '90px', background: '#1e1f22' }} footerStyles />
-
           <ul className={`${Styles.footer__etc} ${Styles.footer__list}`}>
             <h3 className={`${Styles.footer_listTitle} ${Styles.footer__listTitle_etcTitle}`}>{t('other')}</h3>
             <div className={Styles.footer__listItemContainer_etc}>
@@ -48,11 +47,11 @@ export const Footer: React.FC = () => {
                 {t('footer_docsRF')}
               </Link>
             </li>
-            <li className={Styles.footer__listItem}>
+            {/* <li className={Styles.footer__listItem}>
               <Link className={Styles.footer__link} to='/files/round1.zip' download target='_blank'>
                 {t('footer_docsRound1')}
               </Link>
-            </li>
+            </li> */}
             <li className={Styles.footer__listItem}>
               <a href='#' target='_blank' rel='noopener noreferrer' className={Styles.footer__link}>
                 {t('footer_equipInsurance')}
@@ -80,88 +79,79 @@ export const Footer: React.FC = () => {
           <div className={Styles.footer__line} />
           <ul className={`${Styles.footer__address} ${Styles.footer__list}`}>
             <h3 className={Styles.footer_listTitle}>{t('footer_russia')}</h3>
-            <li className={`${Styles.footer__listItem_gray} ${Styles.footer__listItem_address}`}>
+            <li
+              className={`${Styles.footer__listItem} ${Styles.footer__listItem_gray} ${Styles.footer__listItem_address}`}
+            >
               {t('footer_fullOrganisationName')}
             </li>
-            <li className={`${Styles.footer__listItem_gray} ${Styles.footer__listItem_address}`}>{t('footer_docs')}</li>
-            <li className={`${Styles.footer__listItem_gray} ${Styles.footer__listItem_city}`}>{t('footer_address')}</li>
+            <li
+              className={`${Styles.footer__listItem} ${Styles.footer__listItem_gray} ${Styles.footer__listItem_address}`}
+            >
+              {t('footer_docs')}
+            </li>
+            <li
+              className={`${Styles.footer__listItem} ${Styles.footer__listItem_gray} ${Styles.footer__listItem_city}`}
+            >
+              {t('footer_address')}
+            </li>
           </ul>
           <ul className={`${Styles.footer__issuer} ${Styles.footer__list}`}>
-            <div className={Styles.footer__listItemContainer}>
-              <h3 className={Styles.footer_listTitle_noWrap}>{t('footer_issuer')}</h3>
-              <li className={Styles.footer__listItem_gray}>QQ Global Markets LLC</li>
-              <li className={Styles.footer__listItem_gray}>P.O. Box 1574</li>
-              <li className={Styles.footer__listItem_gray}>Kingstown, VC 0100</li>
-              <li className={Styles.footer__listItem_gray}>St. Vincent and the Grenadines</li>
-            </div>
+            {/* <div className={Styles.footer__listItemContainer}>
+              <h3 className={`${Styles.footer_listTitle} ${Styles.footer_listTitle_noWrap}`}>{t('footer_issuer')}</h3>
+              <li className={`${Styles.footer__listItem} ${Styles.footer__listItem_gray}`}>QQ Global Markets LLC</li>
+              <li className={`${Styles.footer__listItem} ${Styles.footer__listItem_gray}`}>P.O. Box 1574</li>
+              <li className={`${Styles.footer__listItem} ${Styles.footer__listItem_gray}`}>Kingstown, VC 0100</li>
+              <li className={`${Styles.footer__listItem} ${Styles.footer__listItem_gray}`}>
+                St. Vincent and the Grenadines
+              </li>
+            </div> */}
             <div className={Styles.footer__listItemContainer}>
               <h3 className={Styles.footer_listTitle}>{t('footer_switzerland')}</h3>
-              <li className={Styles.footer__listItem_gray}>{t('footer_inRegProcess')}</li>
+              <li className={`${Styles.footer__listItem} ${Styles.footer__listItem_gray}`}>
+                {t('footer_inRegProcess')}
+              </li>
             </div>
           </ul>
           <p className={Styles.footer__email}>
             <a href='mailto:info@limcore.io'>info@limcore.io</a>
           </p>
           <ul className={Styles.footer__social}>
-            {/* <li>
-              <a href='https://twitter.com' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
-                <img src={twitter} className={Styles.footer__socialIcon} />
-              </a>
-            </li> */}
             <li>
-              {/* <a */}
-              {/*  href='https://www.linkedin.com' */}
-              {/*  target='blank' */}
-              {/*  rel='noopener noreferrer' */}
-              {/*  className={Styles.footer__link} */}
-              {/* > */}
-              {/*  <img src={linkedIn} className={Styles.footer__socialIcon} /> */}
-              {/* </a> */}
               <a
                 href='https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg'
                 target='blank'
                 rel='noopener noreferrer'
                 className={Styles.footer__YouTubeLink}
               >
-                <img src={youTube} className={Styles.footer__YouTubeIcon} />
+                <img src={youTube} className={Styles.footer__YouTubeIcon} alt='icon' />
               </a>
             </li>
-            {/* <li>
-              <a href='https://vk.com/' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
-                <img src={vk} className={Styles.footer__socialIcon} />
-              </a>
-            </li> */}
             <li>
               <a
                 href='https://instagram.com/limcore.io?utm_medium=copy_link'
                 target='blank'
                 rel='noopener noreferrer'
-                className={Styles.footer__link}
+                className={`${Styles.footer__link} ${Styles.footer__round}`}
               >
-                <img src={insta} className={Styles.footer__socialIcon} />
+                <img src={insta} className={Styles.footer__socialIcon} alt='icon' />
               </a>
             </li>
             <li>
-              <a href='https://t.me/limc_russ' target='blank' rel='noopener noreferrer' className={Styles.footer__link}>
-                <img src={tg} className={Styles.footer__socialIcon} />
-              </a>
-            </li>
-            {/* <li>
               <a
-                href='https://ru-ru.facebook.com/'
+                href='https://t.me/limc_russ'
                 target='blank'
                 rel='noopener noreferrer'
-                className={Styles.footer__link}
+                className={`${Styles.footer__link} ${Styles.footer__round}`}
               >
-                <img src={facebook} className={Styles.footer__socialIcon} />
+                <img src={tg} className={Styles.footer__socialIcon} alt='icon' />
               </a>
-            </li> */}
+            </li>
           </ul>
           <p className={Styles.footer__copyright}>
             &copy;
             {` ${new Date().getFullYear()} LimCore`}
           </p>
-        </div>
+        </nav>
       </div>
     </footer>
   )

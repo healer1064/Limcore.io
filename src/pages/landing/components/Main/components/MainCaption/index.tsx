@@ -26,7 +26,6 @@ export const MainCaption: React.FC = () => {
           allowFullScreen
         />
       </div>
-      {/* <img className={Styles.photo} src={centerImage} alt='Иконка' /> */}
     </div>
   )
 }

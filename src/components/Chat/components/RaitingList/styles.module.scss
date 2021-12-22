@@ -1,0 +1,122 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/_vars.scss';
+
+.raitingList {
+  visibility: visible;
+  opacity: 1;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(43, 40, 41, 0.5);
+  z-index: 2000;
+  transition: visibility 300ms linear, opacity 300ms linear, background 300ms linear;
+
+  &_invisible {
+    visibility: hidden;
+    opacity: 0;
+    background-color: transparent;
+    transition: visibility 300ms linear, opacity 300ms linear, background-color 300ms linear;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 375px;
+  padding: 0;
+  margin: 0;
+  background-color: $white;
+  box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
+  border-top-right-radius: 14px;
+  border-top-left-radius: 14px;
+}
+
+.closeRaiting {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.raitingNotice {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 4px 20px 30px;
+  @include mediumP3($color-99-gray);
+}
+
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 30px 20px 10px;
+  list-style: none;
+}
+
+.listItem {
+  display: flex;
+  box-sizing: border-box;
+  padding: 18px 0;
+  margin: 0;
+  border-bottom: 1px solid $color-E5-grey;
+}
+
+.listNumber {
+  display: flex;
+  box-sizing: border-box;
+  padding: 5px 0;
+  margin: 0;
+  font-family: $main-font;
+  @include main($color-4F-black);
+  font-weight: $fontWeightSemiBold;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.icon {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 15px 0 0;
+  width: 24px;
+  height: 24px;
+}
+
+@media screen and (min-width: 769px) {
+  .raitingList {
+    width: 375px;
+    height: 610px;
+    position: absolute;
+    bottom: 0;
+    right: 120px;
+    box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
+    border-radius: $border-radius;
+  }
+
+  .container {
+    width: 375px;
+    position: absolute;
+    bottom: 0;
+    right: 120px;
+  }
+}

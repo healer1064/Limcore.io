@@ -1,14 +1,13 @@
-@import '../../../../../scss/cabinet';
 @import '../../../vars&mixins.scss';
+@import '../../../../../scss/cabinet';
+@import '../../../../../scss/_vars';
+@import '../../../../../scss/typography';
 
 .details {
   position: relative;
   padding: 24px 0;
-  margin: 0;
-  margin-top: 25px;
-  margin-bottom: 30px;
-
-  background-color: #FFF;
+  margin: 25px 0 30px;
+  background-color: $white;
   box-shadow: $box-shadow2;
   border-radius: $border-radius;
   transition: 0.5s ease-in-out;
@@ -20,12 +19,11 @@
 
   &__header {
     padding: 0 20px;
-    // border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   }
 
   &__title {
     padding-bottom: 16px;
-    @include section-title();
+    @include section-title($color-3A-black);
   }
 
   &__balance {
@@ -38,16 +36,17 @@
     top: 16px;
     right: 20px;
     @include button-style();
+    outline: none;
 
     &:active {
-      opacity: 0.7;
+      opacity: .7;
     }
   }
 
   &Modal {
-    padding: 27px 20px 0;
+    padding: 0 20px;
+    margin: 0;
     width: 100vw;
-    height: calc(100vh + 50px);
     overflow-y: hidden;
 
     // DetalizationDown
@@ -67,8 +66,8 @@
 
       & > ul {
         padding: 20px;
-        box-shadow: 0px 4px 25px 0px #7070701A;
-        border-radius: 14px;
+        box-shadow: 0 4px 25px 0 $color-70-grey;
+        border-radius: $border-radius;
       }
     }
   }
@@ -90,20 +89,15 @@
 
   &__text {
     flex: 1 1 0;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 20px;
-    color: $color-gray-mouse;    
+    @include mediumP3($color-99-gray);
+    font-weight: $fontWeightSemiBold;
   }
 
   &__data {
     flex: none;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 20px;
-
+    @include mediumP3($color-4F-black);
+    font-weight: $fontWeightSemiBold;
     text-align: right;
-    color: $color-gray-medium;    
   }
 }
 
@@ -143,13 +137,13 @@
   flex: 1 1 0;
 
   &__title {
-    @include subtitle-14px($color-gray-black);
+    @include subtitle-14px($color-3A-black);
     margin-bottom: 2px;
     text-align: left;  
   }
 
   &__text {
-    @include subtitle-13px($color-gray-mouse);
+    @include subtitle-13px($color-99-gray);
     text-align: left;
   }
 }
@@ -159,12 +153,12 @@
   flex: none;
 
   &__title {
-    @include subtitle-14px($color-gray-medium);
+    @include subtitle-14px($color-4F-black);
     text-align: right;
   }
 
   &__text {
-    @include subtitle-13px($color-gray-mouse);
+    @include subtitle-13px($color-99-gray);
     text-align: right;
   }
 }
@@ -173,29 +167,25 @@
   &__subtitle {
     margin-top: 15px;
     padding-bottom: 20px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-    color: $color-gray-mouse;
+    @include subtitle-14px($color-99-gray);
+    font-weight: $fontWeightMedium;
   }
 
   &__profileButton {
     @include button-style();
     width: 100%;
     height: 50px;
-
-    background-color: #fff;
-    border: 1px solid $color-blue;    
+    background-color: $white;
+    border: 1px solid $primary-color;
     border-radius: $border-radius;
-
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 22px;
+    @include p2;
+    font-weight: $fontWeightSemiBold;
     text-align: center;    
-    color: $color-blue;
+    color: $primary-color;
+    outline: none;
 
     &:active {
-      opacity: 0.7;
+      opacity: .7;
     }
   }
 }

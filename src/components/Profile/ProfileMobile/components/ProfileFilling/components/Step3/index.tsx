@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { getUser, updateUser, setData } from '../../../../../../../app/redux/userSlice'
+import { getUser, updateProfileUser, setData } from '../../../../../../../app/redux/userSlice'
 import { changeViewContent, changeStep } from '../../../../../../../pages/cabinet/redux/cabinetSlice'
 import Styles from './styles.module.scss'
 
@@ -14,6 +14,7 @@ export const Step3: React.FC = () => {
   const dispatch = useAppDispatch()
   const data = useAppSelector((state) => state.user.data)
   const error = useAppSelector((state) => state.user.error)
+  const bodyEl = useRef(document.querySelector('body'))
   const maxLength = 200
 
   const onChangeValue = (event) => {
@@ -24,10 +25,13 @@ export const Step3: React.FC = () => {
   const completeFilling = async (event) => {
     event.preventDefault()
 
-    const response = await dispatch(updateUser(data))
+    const dataClone = JSON.parse(JSON.stringify(data))
+    delete dataClone.avatar
+
+    const response = await dispatch(updateProfileUser(dataClone))
 
     if (response.error) {
-      console.log('error updateUser!!!')
+      console.log('error updateProfileUser!!!')
     } else {
       const res = await dispatch(getUser())
 
@@ -38,27 +42,23 @@ export const Step3: React.FC = () => {
         dispatch(changeStep(0))
       }
     }
+
+    bodyEl.current.style.overflow = 'auto'
   }
 
   return (
     <>
       <div className={Styles.progress}>
         <div className={Styles.step}>
-          <div className={`${Styles.number} ${Styles.number_active}`}>
-            <span>1</span>
-          </div>
+          <div className={`${Styles.number} ${Styles.number_active}`}>1</div>
           <span className={`${Styles.line} ${Styles.line_active}`}>{}</span>
         </div>
         <div className={Styles.step}>
-          <div className={`${Styles.number} ${Styles.number_active}`}>
-            <span>2</span>
-          </div>
+          <div className={`${Styles.number} ${Styles.number_active}`}>2</div>
         </div>
         <div className={Styles.step}>
           <span className={`${Styles.line} ${Styles.line_active}`}>{}</span>
-          <div className={`${Styles.number} ${Styles.number_active}`}>
-            <span>3</span>
-          </div>
+          <div className={`${Styles.number} ${Styles.number_active}`}>3</div>
         </div>
       </div>
       <div className={Styles.container}>
@@ -112,7 +112,7 @@ export const Step3: React.FC = () => {
           <ButtonBig onClick={completeFilling}>{t('profile_complete')}</ButtonBig>
           {error && (
             <div className={Styles.error}>
-              <span>Что-то пошло не так</span>
+              <span>{t('err_smthWentWrong')}</span>
             </div>
           )}
         </form>

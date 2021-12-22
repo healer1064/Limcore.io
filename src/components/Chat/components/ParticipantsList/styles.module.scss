@@ -1,0 +1,123 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/_vars.scss';
+
+.list {
+  visibility: visible;
+  opacity: 1;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0;
+  z-index: 2;
+  background-color: $white;
+  transition: opacity 200ms ease, visibility 200ms ease;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  max-height: 100%;
+  border-radius: $border-radius;
+
+  // position: fixed;
+  // top: 0;
+  // bottom: 0;
+  // right: 0;
+  // left: 0;
+
+//   &_invisible {
+//     visibility: hidden;
+//     opacity: 0;
+//     transition: opacity 200ms ease, visibility 200ms ease;
+//     position: absolute;
+//   }
+// }
+}
+
+.listHeader {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 16px 32px;
+  margin: 0;
+  min-height: 70px;
+  width: 100%;
+  justify-content: center;
+  border-bottom: 1px solid $color-E5-grey;
+  background-color: $white;
+  position: sticky;
+  top: 0;
+}
+
+.button {
+  position: absolute;
+  left: 32px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.arrow {
+  display: flex;
+  box-sizing: border-box;
+  padding:  5px;
+  align-self: center;
+}
+
+.close {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  width: 26px;
+  height: 26px;
+  object-fit: cover;
+}
+
+.title {
+  display: flex;
+  box-sizing: border-box;
+  padding: 5px 0;
+  margin: 0;
+  font-family: $main-font;
+  font-weight: $fontWeightSemiBold;
+  @include main($color-39-black);
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.number {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 0 0 8px;
+  font-family: $main-font;
+  font-weight: $fontWeightSemiBold;
+  @include main($color-99-gray);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.messagesContainer {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 10px 0 20px;
+  margin: 0 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@media screen and (min-width: 769px) {
+  .button {
+   left: 16px;
+  }
+  .listContainer {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 42%;
+    height: 610px;
+    border-radius: $border-radius;
+    margin-top: auto;
+  }
+}

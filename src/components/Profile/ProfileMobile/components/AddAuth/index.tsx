@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { changeStep, changeViewContent } from '../../../../../pages/cabinet/redux/cabinetSlice'
+import { changeStep } from '../../../../../pages/cabinet/redux/cabinetSlice'
 import { cancel2FA, getUser } from '../../../../../app/redux/userSlice'
 import Styles from './styles.module.scss'
 
 import { Step1 } from './components/Step1'
-import { Step2 } from './components/Step2'
 import { Step3 } from './components/Step3'
 import { Popup } from '../../../../Popup'
 
 import { ButtonBig } from '../../../../../ui-kit/ButtonBig'
-import { ButtonSmall } from '../../../../../ui-kit/ButtonSmall'
 import { ToggleButton } from '../../../../../ui-kit/ToggleButton'
 import { useTranslation } from 'react-i18next'
 
@@ -42,11 +40,6 @@ export const AddAuth: React.FC = () => {
       dispatch(getUser())
       closePopup()
     }
-  }
-
-  const changePhone = () => {
-    dispatch(changeViewContent('changePhone'))
-    nextStep(1)
   }
 
   useEffect(() => {

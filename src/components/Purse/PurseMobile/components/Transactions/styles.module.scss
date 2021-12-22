@@ -1,14 +1,14 @@
-@import '../../../../../scss/cabinet';
 @import '../../../vars&mixins.scss';
+@import '../../../../../scss/cabinet';
+@import '../../../../../scss/_vars';
+@import '../../../../../scss/typography';
 
 .transactions {
   position: relative;
   width: 100%;
   padding: 24px 20px;
-  margin: 0;
-  margin-top: 40px;
-
-  background-color: #FFF;
+  margin: 40px 0 0;
+  background-color: $white;
   box-shadow: $box-shadow2;
   border-radius: $border-radius;  
 
@@ -24,10 +24,8 @@
   &__subtitle {
     margin-top: 15px;
     padding-bottom: 20px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-    color: $color-gray-mouse;
+    @include subtitle-14px($color-99-gray);
+    font-weight: $fontWeightMedium;
   }
 
   &__cont {
@@ -41,26 +39,22 @@
     max-width: 500px;
     width: 100%;
     height: 50px;
-
-    background-color: #fff;
-    border: 1px solid $color-blue;    
+    background-color: $white;
+    border: 1px solid $primary-color;
     border-radius: $border-radius;
-    
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 22px;
-    text-align: center;    
-    color: $color-blue;
+    @include semiBoldH4($primary-color);
+    text-align: center;
     transition: color .3s ease, border .3s ease;
+    outline: none;
     
     &:hover {
-      color: #3159E9;
-      border: 1px solid #3159E9;    
+      color: $color-31-blue;
+      border: 1px solid $color-31-blue;
       transition: color .3s ease, border .3s ease;
     }
     
     &:active {
-      opacity: 0.7;
+      opacity: .7;
     }
   }
 
@@ -71,7 +65,11 @@
     @include button-style();
 
     &:active {
-      opacity: 0.7;
+      opacity: .7;
+    }
+
+    &:focus {
+      outline: $outline;
     }
   }
 }

@@ -17,6 +17,8 @@ export const RoadMap: React.FC = () => {
       status: 'done',
       deadline: t('roadmap_deadline_may30'),
       priority: 10,
+      vertikal: 'short',
+      titleType: 'short',
     },
     {
       id: 2,
@@ -24,6 +26,8 @@ export const RoadMap: React.FC = () => {
       status: 'done',
       deadline: t('roadmap_deadline_june24'),
       priority: 10,
+      vertikal: 'short',
+      titleType: 'short',
     },
     {
       id: 3,
@@ -31,6 +35,8 @@ export const RoadMap: React.FC = () => {
       status: 'done',
       deadline: t('roadmap_deadline_july10'),
       priority: 10,
+      vertikal: 'long',
+      titleType: 'long',
     },
     {
       id: 4,
@@ -38,6 +44,8 @@ export const RoadMap: React.FC = () => {
       status: 'done',
       deadline: t('roadmap_deadline_july22'),
       priority: 10,
+      vertikal: 'short',
+      titleType: 'long',
     },
     {
       id: 5,
@@ -45,6 +53,8 @@ export const RoadMap: React.FC = () => {
       status: 'done',
       deadline: t('roadmap_deadline_august03'),
       priority: 10,
+      vertikal: 'short',
+      titleType: 'long',
     },
     {
       id: 6,
@@ -52,6 +62,8 @@ export const RoadMap: React.FC = () => {
       status: 'done',
       deadline: t('roadmap_deadline_october15'),
       priority: 10,
+      vertikal: 'long',
+      titleType: 'short',
     },
     {
       id: 7,
@@ -59,6 +71,8 @@ export const RoadMap: React.FC = () => {
       status: 'done',
       deadline: t('roadmap_deadline_november1'),
       priority: 10,
+      vertikal: 'long',
+      titleType: 'long',
     },
     {
       id: 8,
@@ -66,6 +80,8 @@ export const RoadMap: React.FC = () => {
       status: 'in progress',
       deadline: t('roadmap_inProcess'),
       priority: 10,
+      vertikal: 'short',
+      titleType: 'long',
     },
     {
       id: 9,
@@ -73,20 +89,26 @@ export const RoadMap: React.FC = () => {
       status: 'done',
       deadline: t('roadmap_deadline_november15'),
       priority: 10,
+      vertikal: 'short',
+      titleType: 'short',
     },
-    {
-      id: 10,
-      title: t('roadmap_startRound1'),
-      status: 'done',
-      deadline: t('roadmap_deadline_1530'),
-      priority: 10,
-    },
+    // {
+    //   id: 10,
+    //   title: t('roadmap_startRound1'),
+    //   status: 'done',
+    //   deadline: t('roadmap_deadline_1530'),
+    //   priority: 10,
+    //   vertikal: 'short',
+    //   titleType: 'short',
+    // },
     {
       id: 11,
       title: 'Blockchain Life. Diamond Sponsor',
       status: 'done',
       deadline: t('roadmap_deadline_2627'),
       priority: 10,
+      vertikal: 'long',
+      titleType: 'short',
     },
     {
       id: 12,
@@ -94,20 +116,26 @@ export const RoadMap: React.FC = () => {
       status: 'in progress',
       deadline: t('roadmap_decemberEnd'),
       priority: 10,
+      vertikal: 'short',
+      titleType: 'short',
     },
-    {
-      id: 13,
-      title: t('roadmap_startRound2'),
-      status: 'in progress',
-      deadline: t('roadmap_deadline_1025'),
-      priority: 10,
-    },
+    // {
+    //   id: 13,
+    //   title: t('roadmap_startRound2'),
+    //   status: 'in progress',
+    //   deadline: t('roadmap_deadline_1025'),
+    //   priority: 10,
+    //   vertikal: 'short',
+    //   titleType: 'short',
+    // },
     {
       id: 14,
       title: t('roadmap_listing'),
       status: 'in progress',
       deadline: t('roadmap_deadline_2501'),
       priority: 10,
+      vertikal: 'long',
+      titleType: 'long',
     },
     {
       id: 15,
@@ -115,34 +143,44 @@ export const RoadMap: React.FC = () => {
       status: 'in progress',
       deadline: t('roadmap_deadline_2502'),
       priority: 10,
+      vertikal: 'long',
+      titleType: 'long',
     },
-    {
-      id: 16,
-      title: t('roadmap_startRound3'),
-      status: 'in progress',
-      deadline: '2022',
-      priority: 10,
-    },
-    {
-      id: 17,
-      title: t('roadmap_startRound4'),
-      status: 'in progress',
-      deadline: '2022',
-      priority: 10,
-    },
-    {
-      id: 18,
-      title: t('roadmap_startRound5'),
-      status: 'in progress',
-      deadline: '2022',
-      priority: 10,
-    },
+    // {
+    //   id: 16,
+    //   title: t('roadmap_startRound3'),
+    //   status: 'in progress',
+    //   deadline: '2022',
+    //   priority: 10,
+    //   vertikal: 'short',
+    //   titleType: 'short',
+    // },
+    // {
+    //   id: 17,
+    //   title: t('roadmap_startRound4'),
+    //   status: 'in progress',
+    //   deadline: '2022',
+    //   priority: 10,
+    //   vertikal: 'short',
+    //   titleType: 'short',
+    // },
+    // {
+    //   id: 18,
+    //   title: t('roadmap_startRound5'),
+    //   status: 'in progress',
+    //   deadline: '2022',
+    //   priority: 10,
+    //   vertikal: 'short',
+    //   titleType: 'short',
+    // },
     {
       id: 19,
       title: t('roadmap_mvp'),
       status: 'in progress',
       deadline: '2023 – 2024',
       priority: 10,
+      vertikal: 'long',
+      titleType: 'long',
     },
     {
       id: 20,
@@ -150,6 +188,8 @@ export const RoadMap: React.FC = () => {
       status: 'in progress',
       deadline: '2025 – 2026',
       priority: 10,
+      vertikal: 'long',
+      titleType: 'long',
     },
   ]
 
@@ -160,7 +200,7 @@ export const RoadMap: React.FC = () => {
           <h3 className={Styles.title}>Roadmap</h3>
           <p className={Styles.text}>
             {t('roadmap_tg')}{' '}
-            <a className={Styles.link} target='blank' href='https://t.me/limc_russ'>
+            <a className={Styles.link} target='blank' href='https://t.me/limc_russ' rel='noreferrer noopener'>
               <TelegramIcon className={Styles.icon} /> {t('roadmap_tg_channel')}
             </a>
           </p>
@@ -170,7 +210,7 @@ export const RoadMap: React.FC = () => {
             <RoadMapItem key={item.id} title={item.title} date={item.deadline} status={item.status} />
           ))}
         </ul>
-        <RoadMapDesktop />
+        <RoadMapDesktop roadMapArray={roadMapArray} />
       </div>
     </section>
   )

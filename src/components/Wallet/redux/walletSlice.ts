@@ -4,29 +4,18 @@ import { api } from '../../../app/api'
 
 export const getForksPrice: any = createAsyncThunk('landing-page/xchforks', async function () {
   const response = await api.get('landing-page/xchforks')
-  console.log('getForksPrice', response)
   return response
 })
 
 export const getSyncData: any = createAsyncThunk('wallet/getSyncData', async function (address) {
   const response = await api.post('walletconnect/', address)
-  console.log('getSyncData', response)
   return response.data
 })
 
 export const walletSlice = createSlice({
   name: 'wallet',
   initialState: {
-    address: '',
     countdown_days: 80,
-    usdt_balance: '0',
-    limc_price: {
-      lock_time: 0,
-      slug: '',
-      title: '',
-      usdt_amount: '',
-    },
-    limcCount: 0,
     limcLimit: 80000,
     forks: {
       chia: 0,

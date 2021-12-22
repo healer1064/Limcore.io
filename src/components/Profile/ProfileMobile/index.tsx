@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setProfileComplete, changeViewContent, changeStep } from '../../../pages/cabinet/redux/cabinetSlice'
+import { setProfileComplete } from '../../../pages/cabinet/redux/cabinetSlice'
 import { setData } from '../../../app/redux/userSlice'
 import Styles from './styles.module.scss'
 
@@ -8,33 +8,32 @@ import { Container } from '@components/Container'
 import { Profile } from './components/Profile'
 import { ProfileFilling } from './components/ProfileFilling'
 import { ProfileComplete } from './components/ProfileComplete'
-import { EditPhone } from './components/EditPhone'
-import { EditEmail } from './components/EditEmail'
-import { EditName } from './components/EditName'
 import { EditLocation } from './components/EditLocation'
 import { AddAuth } from './components/AddAuth'
-import { ChangePhone } from './components/AddAuth/components/ChangePhone'
 import { useTranslation } from 'react-i18next'
+import { FooterMobile } from '@components/Footer/FooterMobile'
+import { EditName } from './components/EditName'
 
 export const ProfileMobile: React.FC = () => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const userData = useAppSelector((state) => state.user.userData)
-  const user = useAppSelector((state) => state.user.data)
   const profileComplete = useAppSelector((state) => state.cabinet.profileComplete)
   const viewContent = useAppSelector((state) => state.cabinet.viewContent)
 
-  const onBackAddAuth = () => {
-    dispatch(changeViewContent('addAuth'))
-    dispatch(changeStep(0))
-  }
+  const condition = viewContent === 'none' || viewContent === 'main' || viewContent === 'profile'
+
+  // const onBackAddAuth = () => {
+  //   dispatch(changeViewContent('addAuth'))
+  //   dispatch(changeStep(0))
+  // }
 
   useEffect(() => {
     if (userData !== null) {
       dispatch(setData({ ...userData.profile }))
     }
 
-    if (userData !== null && userData?.profile !== null /* && user.first_name && user.last_name && user.gender */) {
+    if (userData !== null && userData.profile?.first_name /* && user.first_name && user.last_name && user.gender */) {
       dispatch(setProfileComplete(true))
     }
 
@@ -45,32 +44,15 @@ export const ProfileMobile: React.FC = () => {
     // }
   }, [userData])
 
-  console.log('userData', userData)
-
   return (
     <div className={Styles.profile}>
-      {profileComplete ? <ProfileComplete /> : <Profile />}
+      {condition && (profileComplete ? <ProfileComplete /> : <Profile />)}
       <>
         {viewContent ? (
           <>
             {viewContent === 'filling' && (
               <Container title={t('profile_fillIn')}>
                 <ProfileFilling />
-              </Container>
-            )}
-            {viewContent === 'editPhone' && (
-              <Container title={t('profile_phoneNumber')}>
-                <EditPhone />
-              </Container>
-            )}
-            {viewContent === 'editEmail' && (
-              <Container title='E-mail'>
-                <EditEmail />
-              </Container>
-            )}
-            {viewContent === 'editName' && (
-              <Container title='Имя в чатах'>
-                <EditName />
               </Container>
             )}
             {viewContent === 'editLocation' && (
@@ -83,14 +65,30 @@ export const ProfileMobile: React.FC = () => {
                 <AddAuth />
               </Container>
             )}
-            {viewContent === 'changePhone' && (
+            {viewContent === 'editName' && (
+              <Container title={t('chat_nameAdd')}>
+                <EditName />
+              </Container>
+            )}
+            {/* {viewContent === 'editPhone' && (
+              <Container title={t('profile_phoneNumber')}>
+                <EditPhone />
+              </Container>
+            )} */}
+            {/* {viewContent === 'editEmail' && (
+              <Container title='E-mail'>
+                <EditEmail />
+              </Container>
+            )} */}
+            {/* {viewContent === 'changePhone' && (
               <Container title='Изменить номер телефона' onClickBack={onBackAddAuth}>
                 <ChangePhone />
               </Container>
-            )}
+            )} */}
           </>
         ) : null}
       </>
+      <FooterMobile />
     </div>
   )
 }

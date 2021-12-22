@@ -22,7 +22,7 @@ export const MainHow: React.FC = () => {
       </div>
       {width > 768 ? (
         <div className={Styles.container}>
-          <span className={Styles.title}>{t('limcoreDescription_howWorks')}</span>
+          <h3 className={Styles.title}>{t('limcoreDescription_howWorks')}</h3>
           <ul className={Styles.list}>
             <li className={Styles.item}>
               <span>{t('limcoreDescription_howSubtitle1')}</span>
@@ -40,7 +40,7 @@ export const MainHow: React.FC = () => {
         </div>
       ) : (
         <>
-          <span className={Styles.title}>{t('limcoreDescription_howWorks')}</span>
+          <h3 className={Styles.title}>{t('limcoreDescription_howWorks')}</h3>
           <Swiper
             pagination={{
               el: `.${Styles.pagination}`,

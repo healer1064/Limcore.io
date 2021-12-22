@@ -1,0 +1,317 @@
+@import '../../../vars&mixins.scss';
+@import '../../../../../scss/cabinet';
+@import '../../../../../scss/_vars';
+@import '../../../../../scss/typography';
+
+.purse {
+  z-index: 102;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
+  height: 100%;
+  background-color: transparent;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 20px 20px 0 100px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+
+  &:focus {
+    outline: $outline;
+  }
+
+  &__link {
+    font-family: $main-font;
+    @include mediumP3($color-67-black);
+    display: flex;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 50px 0 0;
+
+    &:focus {
+      outline: $outline;
+    }
+
+    &:last-child {
+      padding: 0;
+    }
+    &:hover {
+      cursor: pointer;
+      color: $primary-color;
+    }
+
+    &_active, &:active {
+      color: $color-2D-blue;
+    }
+  }
+}
+
+.profileGroup {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 28px;
+  margin: 0 0 0 10px;
+  path {
+    fill: $color-99-gray;
+  }
+  &:hover {
+      path {
+    fill: $color-4A-blue;
+      }
+  }
+  &:focus {
+    outline: $outline;
+  }
+}
+.profileIcon {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 8px 0 0;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  object-fit: cover;
+  &:hover {
+    border: 1px solid $color-4A-blue;
+  }
+  &:focus {
+    outline: $outline;
+  }
+}
+
+.profileName {
+  font-family: $main-font;
+  @include mediumP3($color-3A-black);
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  &:hover {
+    color: $color-4A-blue;
+  }
+}
+
+.purseContainer {
+  display: grid;
+  box-sizing: border-box;
+  margin: 30px 20px 0;
+  grid-template-columns: 300px;
+  column-gap: 40px;
+  grid-template-areas:
+    'accounts broadcasts'
+    'accounts balance'
+    'accounts roadMap'
+    'accounts mining'
+    'accounts wallet'
+    'accounts transactions';
+}
+
+.accounts {
+  grid-area: accounts;
+  box-sizing: border-box;
+  padding: 40px 30px 0;
+  height: 657px;
+  width: 308px;
+  background-color: $white;
+  box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
+  border-radius: $border-radius;
+}
+
+.balance {
+  grid-area: balance;
+  padding: 60px 0 0 0;
+
+  &_invisible {
+    display: none;
+  }
+}
+
+.roadMap {
+  grid-area: roadMap;
+
+  &_invisible {
+    display: none;
+  }
+  .byLimcBtn {
+    @include section-title($white);
+    display: inline-block;
+    font-size: 18px;
+    border: none;
+    outline: $outline;
+    text-decoration: none;
+    border-radius: $border-radius;
+    padding: 15px 75px;
+    background-color: $color-4A-blue;
+    margin: 30px 0;
+    &:hover {
+      background-color: $color-31-blue;
+    }
+    &:active {
+      background-color: $color-2D-blue;
+    }
+  }
+}
+
+.modalContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(43, 40, 41, 0.5);
+
+  &_invisible {
+    display: none;
+  }
+}
+
+.mining {
+  grid-area: mining;
+  width: 100%;
+  max-width: 100%;
+  &_invisible {
+    display: none;
+  }
+}
+
+.miningDetails {
+  display: flex;
+  flex-direction: column;
+  .miningDetailsWrapper {
+    width: 100%;
+    display: flex;
+  }
+  .statistics {
+    border: 1px solid $color-DC-white;
+    background-color: $color-F9-white;
+    width: 60%;
+    padding: 17px 30px;
+    border-radius: $border-radius;
+  }
+}
+
+.detailsTitle {
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightSemiBold;
+  font-size: 24px;
+  line-height: 1.5;
+  padding: 60px 0 20px 0;
+  margin: 0;
+}
+.wallet {
+  grid-area: wallet;
+  max-width: 100%;
+  &_invisible {
+    display: none;
+  }
+}
+.transactions {
+  grid-area: transactions;
+
+  &_invisible {
+    display: none;
+  }
+}
+
+.items {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 0 64px 0;
+  align-items: center;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  max-width: 140px;
+  padding: 15px;
+  background: $color-F9-white;
+  border-radius: $border-radius;
+  @include subtitle-13px($primary-color);
+  font-weight: $fontWeightSemiBold;
+
+  &:hover {
+    transition: background 0.3s ease;
+    background: $color-8C-violet;
+    cursor: pointer;
+    color: $white;
+  }
+}
+
+.item_active {
+  background: $primary-color;
+  transition: background 0.3s ease;
+  color: $white;
+
+  &:hover {
+    background: $color-8C-violet;
+    transition: background 0.3s ease;
+    cursor: pointer;
+  }
+}
+
+.icon {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 6px 0 0;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+}
+
+@media screen and (max-width: 920px) {
+  .miningDetails {
+    flex-direction: column;
+    .miningDetailsWrapper {
+     width: 100%;
+     flex-direction: column;
+    }
+  .statistics {
+    width: 100%;
+  }
+  }
+  .nav__link {
+    padding: 0 20px 0 0;
+  }
+}

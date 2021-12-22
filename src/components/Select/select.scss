@@ -1,0 +1,67 @@
+@import '../../scss/_cabinet.scss';
+@import '../../scss/_vars.scss';
+@import '../../scss/typography.scss';
+
+.select {
+    margin-left: 16px;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.select-btn {
+    width: 171px;
+    height: 32px;
+    background: $white;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.select-btn-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 6px 16px;
+}
+
+.arrow-open {
+    transform: rotate(180deg);
+}
+
+.select-btn-text {
+    @include mediumP3($color-1D-black);
+    margin-right: 6px;
+}
+
+.options-select {
+    position: absolute;
+    width: 171px;
+    background: $white;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12), 0 12px 20px rgba(0, 0, 0, 0.14);
+    border-radius: 16px;
+    margin-top: 4px;
+}
+
+.options-select-content {
+    padding: 14px 12px 2px 12px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.option-select__item {
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 24px;
+}
+
+.option-select__text {
+    white-space: nowrap;
+    @include mediumP3($color-1D-black);
+    min-width: 114px;
+}

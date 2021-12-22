@@ -1,3 +1,6 @@
+@import '../../../../../scss/typography.scss';
+@import '../../../../../scss/vars.scss';
+
 .info {
   display: flex;
   flex-direction: column;
@@ -43,12 +46,11 @@ input[type='file'] {
 }
 
 .name {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-39-black);
+  font-weight: $fontWeightSemiBold;
   font-size: 14px;
-  line-height: 140%;
-  color: #393c42;
+  line-height: 1.4;
 }
 
 .container {
@@ -58,12 +60,8 @@ input[type='file'] {
 }
 
 .caption {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 140%;
-  color: #393c42;
+  font-family: $main-font;
+  @include semiBoldH4($color-39-black);
   margin-bottom: 12px;
 }
 
@@ -78,9 +76,9 @@ input[type='file'] {
   position: relative;
   display: flex;
   flex-direction: column;
-  background: #ffffff;
-  box-shadow: 0px 4px 25px rgba(112, 112, 112, 0.1);
-  border-radius: 14px;
+  background: $white;
+  box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
+  border-radius: $border-radius;
   padding: 20px;
   width: 147px;
   height: 132px;
@@ -92,22 +90,18 @@ input[type='file'] {
 }
 
 .title {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 140%;
-  color: #3a3b3d;
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightSemiBold;
+  @include p3;
   margin-top: 10px;
 }
 
 .subtitle {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 140%;
-  color: #99a0ad;
+  font-family: $main-font;
+  @include main($color-99-gray);
+  font-weight: $fontWeightSemiBold;
+  @include p3;
   margin-top: 2px;
 }
 
@@ -137,7 +131,10 @@ input[type='file'] {
   gap: 12px;
   width: 100%;
   height: 72px;
-  cursor: pointer;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .wrapper {
@@ -145,7 +142,7 @@ input[type='file'] {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid $color-E5-grey;
   padding: 14px 0;
   height: 100%;
 }
@@ -160,33 +157,23 @@ input[type='file'] {
 }
 
 .label {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 140%;
-  color: #99a0ad;
+  font-family: $main-font;
+  @include mediumP3($color-99-gray);
   margin-bottom: 4px;
 }
 
 .content {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 140%;
-  color: #393c42;
+  font-family: $main-font;
+  @include main($color-39-black);
+  font-weight: $fontWeightSemiBold;
+  @include p3;
 }
 
 .change {
   background: none;
   border: none;
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 150%;
-  color: #4a70f8;
+  font-family: $main-font;
+  @include mediumP3($primary-color);
 }
 
 .arrow {
@@ -199,20 +186,21 @@ input[type='file'] {
   display: flex;
   align-items: center;
   padding: 18px 24px;
-  background: #f0f5fd;
+  background: $color-FO-white;
   border-radius: 14px;
   height: 76px;
   margin-top: 15px;
-  cursor: pointer;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .text {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 150%;
-  color: #4f535a;
+  font-family: $main-font;
+  @include main($color-4F-black);
+  font-weight: $fontWeightSemiBold;
+  @include p6;
   max-width: 250px;
 }
 

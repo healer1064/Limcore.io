@@ -11,7 +11,7 @@ export const ToggleButton: React.FC<ToggleButtonProps> = ({ onChange, checked, d
   return (
     <label className={Styles.toggle}>
       <input onChange={onChange} type='checkbox' checked={checked} disabled={disabled} />
-      <span className={Styles.slider}>{}</span>
+      <span className={Styles.slider} />
     </label>
   )
 }

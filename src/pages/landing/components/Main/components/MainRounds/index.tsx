@@ -1,27 +1,24 @@
 import React, { useState } from 'react'
 import Styles from './styles.module.scss'
 
-import { PopupMainPage } from '../PopupMainPage'
 import PopupStyles from '../PopupMainPage/styles.module.scss'
 
 import limcoreIcon from '@icons/limcore.svg'
 import { InfoIcon } from '@icons/InfoIcon'
-import { useAppSelector, useAppDispatch } from '@app/redux/hooks'
-import { useHistory } from 'react-router'
+import { useAppSelector } from '@app/redux/hooks'
 import { useTranslation } from 'react-i18next'
-import { setIsBuyLimcClick } from '../../../../../auth/redux/authSlice'
+import { BottomModal } from '@components/Modal/BottomModal'
 import useWindowSize from '@helpers/useWindowSizeHook'
+import { PopupMainPage } from '../PopupMainPage'
 
 export const MainRounds: React.FC = () => {
+  const [t] = useTranslation()
   const { width } = useWindowSize()
-  const desktop = width > 767
-  const dispatch = useAppDispatch()
-  const history = useHistory()
+  const mobile = width < 769
+
+  const [popupOpen, setPopupOpen] = useState(false)
   const limcCount = useAppSelector((state) => state.auth.walletConnectSoldLimcs)
   const limcLimit = useAppSelector((state) => state.wallet.limcLimit)
-  const isAuth = useAppSelector((state) => state.auth.isAuth)
-  const [popupOpen, setPopupOpen] = useState(false)
-  const [t] = useTranslation()
 
   const closePopup = () => {
     setPopupOpen(false)
@@ -29,16 +26,6 @@ export const MainRounds: React.FC = () => {
   const openPopup = () => {
     setPopupOpen(true)
   }
-
-  const handleLoginModalOpen = () => {
-    dispatch(setIsBuyLimcClick(true))
-    if (!desktop) {
-      history.push('/auth')
-    }
-  }
-  // const handleLoginModalClose = () => {
-  //   dispatch(setIsBuyLimcClick(false))
-  // }
 
   return (
     <div className={Styles.rounds}>
@@ -63,33 +50,25 @@ export const MainRounds: React.FC = () => {
           </li>
         </ul>
       </div>
-      <PopupMainPage closePopup={closePopup} popupOpen={popupOpen} className={PopupStyles.popup_round}>
-        <p className={PopupStyles.text}>{t('purse_mainingStart')}</p>
-      </PopupMainPage>
+      {mobile ? (
+        <BottomModal active={popupOpen} setActive={closePopup}>
+          <p className={PopupStyles.text}>{t('purse_mainingStart')}</p>
+        </BottomModal>
+      ) : (
+        <PopupMainPage closePopup={closePopup} popupOpen={popupOpen} className={PopupStyles.popup_round}>
+          <p className={PopupStyles.text}>{t('purse_mainingStart')}</p>
+        </PopupMainPage>
+      )}
       <div className={Styles.progress}>
-        <span className={Styles.bar} style={{ width: `calc(${limcCount} / 80000 * 100%)` }}>
-          {}
-        </span>
+        <span className={Styles.bar} style={{ width: `calc(${limcCount} / 80000 * 100%)` }} />
         <span className={Styles.count}>{limcCount} / 80000</span>
       </div>
       <div className={Styles.wrapp}>
-        <a href='https://round1.limcore.io' className={Styles.buy}>
+        <a href='https://round1.limcore.io' className={Styles.buy} target='_blank' rel='noreferrer noreopener'>
           {t('buyLimc')}
         </a>
         <span>{t('lockUp')}</span>
       </div>
-      {/* <div className={Styles.tempDeclaration}>
-        <h4 className={Styles.tempDeclaration__title}>{t('firstRound_startSelling')}</h4>
-        <div>
-          <p className={Styles.tempDeclaration__paragraph}>{t('firstRound_followNews')}</p>
-          <div>
-            <img className={Styles.tempDeclaration__icon} src={TGIcon} alt='telegram_icon' />
-            <a className={Styles.tempDeclaration__link} href='https://t.me/limc_russ' target='_blank' rel='noreferrer'>
-              @limc_russ
-            </a>
-          </div>
-        </div>
-      </div> */}
       <div className={Styles.roadContainer}>
         <div className={Styles.emptyContainers}>
           <div className={Styles.emptyContainer_first} />
@@ -98,7 +77,7 @@ export const MainRounds: React.FC = () => {
         <div className={Styles.road}>
           <div className={Styles.cover}>
             <div className={Styles.round}>
-              <span className={Styles.date__mobile}>10.01.2022</span>
+              <time className={Styles.date__mobile}>10.01.2022</time>
               <span className={Styles.subtitle}>{t('roundsRoadmap_round2')}</span>
               <div className={Styles.row}>
                 <span>{t('roundsRoadmap_limcMin')}</span>
@@ -106,7 +85,7 @@ export const MainRounds: React.FC = () => {
               </div>
             </div>
             <div className={Styles.round}>
-              <span className={Styles.date__mobile}>25.02.2022</span>
+              <time className={Styles.date__mobile}>25.02.2022</time>
               <span className={Styles.subtitle}>{t('roundsRoadmap_round3')}</span>
               <div className={Styles.row}>
                 <span>{t('roundsRoadmap_priceLater')}</span>
@@ -124,21 +103,21 @@ export const MainRounds: React.FC = () => {
                 <span>{t('roundsRoadmap_priceLater')}</span>
               </div>
             </div>
-            <span className={Styles.date__mobile}>{t('roundsRoadmap_endSelling')}</span>
+            <time className={Styles.date__mobile}>{t('roundsRoadmap_endSelling')}</time>
           </div>
         </div>
         <div className={Styles.shell}>
           <div className={Styles.lines}>
-            <div className={Styles.line}>{}</div>
-            <div className={Styles.line}>{}</div>
+            <div className={Styles.line} />
+            <div className={Styles.line} />
           </div>
           <div className={Styles.dates}>
             <div className={Styles.date}>
-              <span className={Styles.date__span}>10.01.2022</span>
+              <time className={Styles.date__span}>10.01.2022</time>
             </div>
             <div className={Styles.date}>
-              <span className={Styles.date__span}>25.02.2022</span>
-              <span className={Styles.date__lastSpan}>{t('roundsRoadmap_endSelling')}</span>
+              <time className={Styles.date__span}>25.02.2022</time>
+              <time className={Styles.date__lastSpan}>{t('roundsRoadmap_endSelling')}</time>
             </div>
           </div>
         </div>

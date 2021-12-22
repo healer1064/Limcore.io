@@ -1,9 +1,15 @@
+@import '../../../../../vars&mixins.scss';
+@import '../../../../../../../scss/cabinet';
+@import '../../../../../../../scss/_vars';
+@import '../../../../../../../scss/typography';
+
 .menuItem {
   display: grid;
   box-sizing: border-box;
   margin: 16px 0 0;
   padding: 0;
   border: none;
+  border-bottom: 1px solid $color-E5-grey;
   background-color: transparent;
   grid-template-rows: repeat(2, minmax(min-content, max-content));
   grid-template-columns: repeat(2, minmax(min-content, max-content));
@@ -15,18 +21,21 @@
   &_invisible {
     display: none;
   }
+
+  // &:focus {
+  //   outline: $outline;
+  // }
+
+  &:last-of-type {
+    border-bottom: none;
+  }
 }
 
 .menu__title {
   display: flex;
   gap: 10px;
   grid-area: title;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 1.4;
-  color: #99A0AD;
+  @include second-subtitle-13px($color-99-gray);
   padding: 0;
   margin: 0;
   text-align: left;
@@ -34,13 +43,12 @@
 
 .menu__sum {
   grid-area: balance;
-  font-family: Montserrat;
+  font-family: $main-font;
+  @include main($color-4F-black);
   font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 1.4;
-  color: #4F535A;
-  padding: 6px 0 0;
+  font-weight: $fontWeightSemiBold;
+  @include p3;
+  padding: 6px 0 16px;
   margin: 0;
   text-align: left;
 }

@@ -1,4 +1,7 @@
+@import '../../../vars&mixins.scss';
 @import '../../../../../scss/cabinet';
+@import '../../../../../scss/_vars';
+@import '../../../../../scss/typography';
 
 .menu {
   display: flex;
@@ -6,12 +9,8 @@
 }
 
 .name {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 1.4;
-  color: #3A3B3D;
+  font-family: $main-font;
+  @include semiBoldH4($color-3A-black);
   display: flex;
   box-sizing: border-box;
   margin: 0;
@@ -27,12 +26,8 @@
   justify-content: space-between;
 
   &__text {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 13px;
+    @include second-subtitle-13px($color-4F-black);
     line-height: 1.4;
-    color: #4F535A;
     display: flex;
     box-sizing: border-box;
     margin: 0;
@@ -53,7 +48,7 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: #F9FAFE;
+  background: $color-F9-white;
   border: none;
   justify-content: center;
   align-content: center;
@@ -61,7 +56,8 @@
   &:hover {
     cursor: pointer;
   }
-}
 
-@media screen and (max-width: 900px) {
+  &:focus {
+    outline: $outline;
+  }
 }

@@ -11,11 +11,11 @@ interface InputCheckboxProps {
 
 export const InputCheckbox: React.FC<InputCheckboxProps> = ({ onChange, value, checked, icon, titleCheckbox }) => {
   return (
-    <div className={Styles.block}>
+    <fieldset className={Styles.block}>
       <input className={Styles.input} onChange={onChange} type='checkbox' value={value} checked={checked} />
-      <span className={Styles.checkbox}>{}</span>
-      {icon && <img src={icon} className={Styles.icon} />}
+      <span className={Styles.checkbox} />
+      {icon && <img src={icon} alt={value} className={Styles.icon} />}
       {titleCheckbox}
-    </div>
+    </fieldset>
   )
 }

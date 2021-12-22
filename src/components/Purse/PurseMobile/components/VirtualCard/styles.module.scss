@@ -1,4 +1,7 @@
+@import '../../../vars&mixins.scss';
 @import '../../../../../scss/cabinet';
+@import '../../../../../scss/_vars';
+@import '../../../../../scss/typography';
 
 .card {
   position: relative;
@@ -6,10 +9,8 @@
   height: 76px;  
   padding: 0;
   margin: 0;
-  // margin-top: 30px;
-
-  background-color: $color-blue-pale;
-  border-radius: 14px;  
+  background-color: $color-FO-white;
+  border-radius: $border-radius;
 
   & * {
     padding: 0;
@@ -25,7 +26,7 @@
     font-weight: 600;
     font-size: 13px;
     line-height: 1.5;
-    color: $color-gray-medium;
+    color: $color-4F-black;
     z-index: 2;
   }
 
@@ -47,8 +48,6 @@
     border: none;
     box-shadow: none;
     transition: 0.5s ease-in-out;
-
-    outline: none;
     background-color: transparent;
     cursor: pointer;
   }
@@ -56,6 +55,6 @@
   &__closeImage {
     display: block;
     width: 100%;
-    background-color: $color-blue-pale;
+    background-color: $color-FO-white;
   }
 }

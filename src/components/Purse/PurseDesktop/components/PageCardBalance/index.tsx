@@ -1,8 +1,5 @@
-import React, { FC } from 'react'
+import React from 'react'
 import styles from './styles.module.scss'
-import buyIcon from '@icons/buy.svg'
-import sellIcon from '@icons/sellBlue.svg'
-import tradeIcon from '@icons/changeBlue.svg'
 import { TransactionsDetails } from '@components/Purse/PurseDesktop/components/Transactions/components/TransactionsDetails'
 
 type PageCardBalancePropsType = {
@@ -39,7 +36,7 @@ export const PageCardBalance: React.FC<PageCardBalancePropsType> = ({
       </button>
       <h1 className={styles.pageCardBalance__title}>{`$ ${usdtBalance}`}</h1>
       <div className={styles.items}>
-        <div className={`${styles.item} ${styles.item_active}`}>
+        <button className={`${styles.item} ${styles.item_active}`} type='button'>
           <svg
             className={styles.icon}
             width='24'
@@ -63,8 +60,8 @@ export const PageCardBalance: React.FC<PageCardBalancePropsType> = ({
             />
           </svg>
           Пополнить
-        </div>
-        <div className={styles.item}>
+        </button>
+        <button className={styles.item} type='button'>
           <svg
             className={styles.icon}
             width='24'
@@ -88,9 +85,9 @@ export const PageCardBalance: React.FC<PageCardBalancePropsType> = ({
             />
           </svg>
           Перевести
-        </div>
+        </button>
       </div>
-      <TransactionsDetails onClick={() => {}} />
+      <TransactionsDetails />
     </div>
   )
 }

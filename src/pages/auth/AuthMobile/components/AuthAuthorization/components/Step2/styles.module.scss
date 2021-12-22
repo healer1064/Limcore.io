@@ -1,3 +1,6 @@
+@import '../../../../../../../scss/typography.scss';
+@import '../../../../../../../scss/_vars.scss';
+
 .content {
   display: flex;
   flex-direction: column;
@@ -9,23 +12,19 @@
 }
 
 .title {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
+  font-family: $main-font;
+  @include main($color-39-black);
+  font-weight: $fontWeightSemiBold;
   font-size: 18px;
-  line-height: 150%;
-  color: #393c42;
-  margin: 0;
-  margin-bottom: 20px;
+  line-height: 1.5;
+  margin: 0 0 20px;
 }
 
 .notification {
-  font-family: 'Montserrat';
-  font-style: normal;
+  font-family: $main-font;
+  @include main($color-4F-black);
+  @include subtitle-14px($color-4F-black);
   font-weight: normal;
-  font-size: 14px;
-  line-height: 150%;
-  color: #4f535a;
   max-width: 225px;
 }
 
@@ -39,7 +38,6 @@
   display: flex;
   margin-bottom: 16px;
   padding-left: 5px;
-  // height: 20px;
 
   .error {
     position: absolute;
@@ -49,20 +47,17 @@
     margin: 0;
     padding: 0;
 
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-    color: #ff6a6a;
+    @include subtitle-14px($color-FF-red);
+    font-weight: $fontWeightMedium;
   }
 }
 
 .time {
-  font-family: 'Montserrat';
-  font-style: normal;
+  font-family: $main-font;
+  @include main($color-4F-black);
   font-weight: normal;
   font-size: 14px;
-  line-height: 150%;
-  color: #4f535a;
+  line-height: 1.5;
   display: flex;
   box-sizing: border-box;
   margin: 0;

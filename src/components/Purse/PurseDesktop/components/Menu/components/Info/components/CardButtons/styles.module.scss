@@ -1,4 +1,5 @@
 @import '../../../../../../../vars&mixins.scss';
+@import '../../../../../../../../../scss/_vars';
 
 .buttons {
   display: flex;
@@ -23,15 +24,13 @@
       width: 100%;
       border: none;
       border-radius: 14px;
-      
-      background: #EDF4FF;
-      outline: none;
-  
+      background: $color-ED-white;
+      outline: $outline;
       @include subtitle-13px($color-4A-blue);
-      font-weight: 600;
+      font-weight: $fontWeightSemiBold;
 
       &__active {
-        color: #fff;
+        color: $white;
         background-color: $color-4A-blue;
       }
     }

@@ -1,24 +1,21 @@
+@import '../../../../../../../scss/typography.scss';
+@import '../../../../../../../scss/vars.scss';
+
 .block {
   display: flex;
   flex-direction: column;
 }
 
 .cap {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 130%;
-  color: #3a3b3d;
+  font-family: $main-font;
+  @include semiBoldH4($color-3A-black);
   margin-bottom: 6px;
 }
 
 .subcap {
-  font-family: 'Montserrat';
+  font-family: $main-font;
   font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 150%;
-  color: #99a0ad;
+  @include subtitle-14px($color-99-gray);
+  font-weight: $fontWeightMedium;
   margin-bottom: 20px;
 }
