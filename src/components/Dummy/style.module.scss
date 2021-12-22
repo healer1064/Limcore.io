@@ -1,0 +1,69 @@
+.dummy {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 80px 35px 0;
+  width: 100%;
+  height: calc(100vh - 210px);
+}
+
+.title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #4f535a;
+  transform: translateY(-20px);
+}
+
+.link {
+  color: #4a70f8;
+  text-decoration: none;
+}
+
+.img {
+  display: flex;
+  align-items: center;
+  max-width: 375px;
+  width: 100%;
+  // height: 529px;
+  max-height: 50vh;
+  // background-position: center;
+  // background-size: contain;
+  // background-repeat: no-repeat;
+  // background-image: url(../../assets/images/chatTemp.png);
+  // transform: translateY(-25px);
+  
+  // & > svg {
+  //   transform: translateX(-25px);
+  // }
+}
+
+@media (max-width: 1024px) {
+  .found_container {
+    height: calc(100vh - 190px);
+  }
+}
+
+@media (max-width: 376px) {
+  .title {
+    transform: translateY(-40px);
+  }
+
+  .img {
+    transform: translateY(-28px);
+    background-size: 120%;
+  }
+}
+
+@media (max-width: 320px) {
+  .title {
+    transform: translateY(0px);
+  }
+
+  .img {
+    display: none;
+  }
+}
