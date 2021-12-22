@@ -8,7 +8,7 @@ import { DetailTable } from './../../components/DetailTable/DetailTable'
 import { PageBalanceLIMC } from '@components/Purse/PurseDesktop/components/PageBalanceLIMC'
 import { PageBalanceUSDT } from '@components/Purse/PurseDesktop/components/PageBalanceUSDT'
 import { Modal } from '@components/Modal/index'
-import { RoadMap } from './../../components/RoadMap'
+// import { RoadMap } from './../../components/RoadMap'
 import { UntilMiningStart } from './../../components/UntilMiningStart/UntilMiningStart'
 import { useTranslation } from 'react-i18next'
 
@@ -42,12 +42,12 @@ export const Content = ({ pageCardBalance, closeCard, openProfile }: IContentPro
       <div className={`${pageCardBalance !== '' ? styles.balance_invisible : styles.balance}`}>
         <Balance />
       </div>
-      <div className={`${pageCardBalance !== '' ? styles.roadMap_invisible : styles.roadMap}`}>
+      {/* <div className={`${pageCardBalance !== '' ? styles.roadMap_invisible : styles.roadMap}`}>
         <RoadMap />
         <a className={styles.buyLimcBtn} href='https://round1.limcore.io'>
           {t('buyLimc')}
         </a>
-      </div>
+      </div> */}
       <div className={`${pageCardBalance !== '' ? styles.mining_invisible : styles.mining}`}>
         <h3 className={styles.detailsTitle}>{t('purse_mainingDetails')}</h3>
         <div className={styles.miningDetails}>

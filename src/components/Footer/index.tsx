@@ -47,11 +47,11 @@ export const Footer: React.FC = () => {
                 {t('footer_docsRF')}
               </Link>
             </li>
-            <li className={Styles.footer__listItem}>
+            {/* <li className={Styles.footer__listItem}>
               <Link className={Styles.footer__link} to='/files/round1.zip' download target='_blank'>
                 {t('footer_docsRound1')}
               </Link>
-            </li>
+            </li> */}
             <li className={Styles.footer__listItem}>
               <a href='#' target='_blank' rel='noopener noreferrer' className={Styles.footer__link}>
                 {t('footer_equipInsurance')}
@@ -96,7 +96,7 @@ export const Footer: React.FC = () => {
             </li>
           </ul>
           <ul className={`${Styles.footer__issuer} ${Styles.footer__list}`}>
-            <div className={Styles.footer__listItemContainer}>
+            {/* <div className={Styles.footer__listItemContainer}>
               <h3 className={`${Styles.footer_listTitle} ${Styles.footer_listTitle_noWrap}`}>{t('footer_issuer')}</h3>
               <li className={`${Styles.footer__listItem} ${Styles.footer__listItem_gray}`}>QQ Global Markets LLC</li>
               <li className={`${Styles.footer__listItem} ${Styles.footer__listItem_gray}`}>P.O. Box 1574</li>
@@ -104,7 +104,7 @@ export const Footer: React.FC = () => {
               <li className={`${Styles.footer__listItem} ${Styles.footer__listItem_gray}`}>
                 St. Vincent and the Grenadines
               </li>
-            </div>
+            </div> */}
             <div className={Styles.footer__listItemContainer}>
               <h3 className={Styles.footer_listTitle}>{t('footer_switzerland')}</h3>
               <li className={`${Styles.footer__listItem} ${Styles.footer__listItem_gray}`}>

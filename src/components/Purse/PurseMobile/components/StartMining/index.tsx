@@ -9,9 +9,9 @@ export const StartMining = (props) => {
     <div className={styles.start}>
       <h3 className={styles.start__title}>Начните майнить прямо сейчас</h3>
       <p className={styles.start__subtitle}>Купите LIMC с помощью банковской карты или USDT</p>
-      <button type='button' className={styles.start__button} onClick={props.onButtonClick}>
+      {/* <button type='button' className={styles.start__button} onClick={props.onButtonClick}>
         {t('buyLimc')}
-      </button>
+      </button> */}
     </div>
   )
 }
