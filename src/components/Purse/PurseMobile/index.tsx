@@ -29,10 +29,10 @@ export const PurseMobile: FC = () => {
       <Balance />
       <Menu />
       <div className={styles.purse__content}>
-        <RoadMap />
-        <ButtonBig className={styles.buy} onClick={openLimc}>
+        {/* <RoadMap /> */}
+        {/* <ButtonBig className={styles.buy} onClick={openLimc}>
           {t('buyLimc')}
-        </ButtonBig>
+        </ButtonBig> */}
         <Statistics />
         <Details />
         <FooterMobile />

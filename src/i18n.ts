@@ -19,6 +19,7 @@ i18n.use(LanguageDetector).init({
         balance: 'Balance',
         commonBalance: 'Common balance',
         walletconnect_disconnect: 'Disconnect',
+        roundEnd: 'Round closed',
 
         // Auth: step1
         logIn: 'Log on',
@@ -424,6 +425,8 @@ i18n.use(LanguageDetector).init({
         balance: 'Баланс',
         commonBalance: 'Общий баланс',
         walletconnect_disconnect: 'Отключиться',
+        roundEnd: 'Раунд закрыт',
+
         // Auth: step1
         logIn: 'Авторизация',
         cellNumber: 'Введите телефон',
@@ -827,6 +830,7 @@ i18n.use(LanguageDetector).init({
         balance: '平衡',
         commonBalance: '总平衡',
         walletconnect_disconnect: '断开',
+        roundEnd: '圆形关闭',
 
         // Auth: step1
         logIn: '登录',

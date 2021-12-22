@@ -210,11 +210,11 @@ export const CalculatorCaption: React.FC = () => {
           </div>
           {/* TODO DELETE DISABLED */}
           {/* <ButtonBig onClick={handleLoginModalOpen}> */}
-          <ButtonBig>
+          {/* <ButtonBig>
             <a href='https://round1.limcore.io' className={Styles.buyLimc}>
               {t('buyLimc')}
             </a>
-          </ButtonBig>
+          </ButtonBig> */}
 
           {desktop && <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />}
         </div>
