@@ -21,6 +21,7 @@ export const MenuItem = ({ type }) => {
 
   const limcBalance = useAppSelector((state) => state.auth.walletConnectLimc)
   const usdtBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
+  const profileComplete = useAppSelector((state) => state.cabinet.profileComplete)
 
   const openLimc = () => dispatch(changeViewContent('LIMC'))
   const openUsdt = () => dispatch(changeViewContent('USDT'))
@@ -47,7 +48,12 @@ export const MenuItem = ({ type }) => {
             <p className={styles.menu__sum}>{t('purse_needSync')}</p>
           )}
 
-          <ModalLimc balance={limcBalance} isActive={viewContent === 'LIMC'} onClose={closePopup} />
+          <ModalLimc
+            profileComplete={profileComplete}
+            balance={limcBalance}
+            isActive={viewContent === 'LIMC'}
+            onClose={closePopup}
+          />
         </button>
       )
     case 'usdt':
