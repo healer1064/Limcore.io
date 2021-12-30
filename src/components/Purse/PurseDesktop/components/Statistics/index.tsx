@@ -11,7 +11,6 @@ interface IStatisticsProps {
 export const Statistics = ({ onClick }: IStatisticsProps) => {
   const [t] = useTranslation()
   const balanceLimc = useAppSelector((state) => state.auth.walletConnectLimc)
-  // const daysPassed = useAppSelector((state) => state.wallet.countdown_days) // понадобиться после окончания первого раунда
 
   return (
     <div className={styles.statistics}>

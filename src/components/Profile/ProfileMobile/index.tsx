@@ -21,7 +21,12 @@ export const ProfileMobile: React.FC = () => {
   const profileComplete = useAppSelector((state) => state.cabinet.profileComplete)
   const viewContent = useAppSelector((state) => state.cabinet.viewContent)
 
-  const condition = viewContent === 'none' || viewContent === 'main' || viewContent === 'profile'
+  const condition =
+    viewContent === '' ||
+    viewContent === 'none' ||
+    viewContent === 'main' ||
+    viewContent === 'profile' ||
+    viewContent === 'LIMC'
 
   // const onBackAddAuth = () => {
   //   dispatch(changeViewContent('addAuth'))
