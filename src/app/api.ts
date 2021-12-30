@@ -2,11 +2,10 @@ import axios, { AxiosRequestConfig, Method } from 'axios'
 
 const DEV = process.env.NODE_ENV !== 'production'
 
-const { REACT_APP_API_DEV, REACT_APP_API_PROD } = process.env
+const { REACT_APP_API } = process.env
 
-export const API_BASE_URL = DEV ? REACT_APP_API_DEV : REACT_APP_API_PROD
 
-const getURL = (path: string) => `${API_BASE_URL}${path}`
+const getURL = (path: string) => `${REACT_APP_API}${path}`
 
 /**
  * возвращает header для запроса
