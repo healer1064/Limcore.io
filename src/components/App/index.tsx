@@ -28,8 +28,8 @@ import { HeaderMobile } from '@components/Header/HeaderMobile/index'
 import { AuthMobile } from '../../pages/auth/AuthMobile'
 
 // TODO вернуть чат
-import { Chat } from '@components/Chat'
-// import { Dummy } from '@components/Dummy'
+// import { Chat } from '@components/Chat'
+import { Dummy } from '@components/Dummy'
 import { LandingPage } from '../../pages/landing'
 import { Purse } from '@components/Purse'
 import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
@@ -97,8 +97,8 @@ const App = () => {
                 {!desktop && (
                   <>
                     <Route path='/broadcasts' exact component={BroadcastsMobile} />
-                    <Route path='/chat' exact component={Chat} />
-                    {/* <Route path='/chat' exact component={Dummy} /> */}
+                    {/* <Route path='/chat' exact component={Chat} /> */}
+                    <Route path='/chat' exact component={Dummy} />
                     <Route path='/profile' exact component={ProfileMobile} />
                   </>
                 )}
