@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import styles from './styles.module.scss'
 import { ArrowRight } from '@icons/ArrowRight'
 import classNames from 'classnames'
+import { countDaysDifference } from '@lib/utils/countDaysDifference'
 
 interface UntilMiningStartProps {
   onClick?: () => void
@@ -17,16 +18,19 @@ export const UntilMiningStart = ({ onClick, tooltip, popup, className }: UntilMi
   const [t] = useTranslation()
   const [isPopup, setIsPopup] = useState(false)
   const [isTooltip, setIsTooltip] = useState(false)
-  // const daysPassed = useAppSelector((state) => state.wallet.countdown_days) // понадобиться после окончания первого раунда
   const balanceLimc = useAppSelector((state) => state.auth.walletConnectLimc)
+  const daysLeft = countDaysDifference()
 
   useEffect(() => {
     setIsPopup(popup)
     setIsTooltip(tooltip)
   }, [tooltip, popup])
 
-  const visualizationStyle = (num) => {
-    const percent = num * 100
+  const visualizationStyle = (num: number) => {
+    const LOCK_UP_DAYS = 80
+    const DAY_IN_PERCENT = 100 / LOCK_UP_DAYS
+
+    const percent = (LOCK_UP_DAYS - num) * DAY_IN_PERCENT
     return { background: `linear-gradient(90deg, #4DBE28 ${percent}%, #E5FBDE ${percent}%)` }
   }
 
@@ -40,9 +44,11 @@ export const UntilMiningStart = ({ onClick, tooltip, popup, className }: UntilMi
           </button>
         )}
       </div>
-      <span className={styles.visualization} style={visualizationStyle(0)} />
+      <span className={styles.visualization} style={visualizationStyle(daysLeft)} />
       <div className={styles.descWrapper}>
-        <p className={styles.untilMiningDesc}>80 {t('purse_mainingDateLast')}</p>
+        <p className={styles.untilMiningDesc}>
+          {daysLeft} {t('purse_mainingDateLast')}
+        </p>
         <data className={styles.visualizationNumber}>0 TB / {Number(balanceLimc).toFixed(2)} TB</data>
       </div>
       {isPopup && (
