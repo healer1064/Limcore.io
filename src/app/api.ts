@@ -4,7 +4,6 @@ const DEV = process.env.NODE_ENV !== 'production'
 
 const { REACT_APP_API } = process.env
 
-
 const getURL = (path: string) => `${REACT_APP_API}${path}`
 
 /**
