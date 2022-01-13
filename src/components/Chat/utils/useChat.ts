@@ -14,8 +14,9 @@ import {
   setLoader,
   setCurrentSlug,
 } from '../redux/chatSlice'
-import { IDialogueInterface, ISendInterface } from './types'
+import { IDialogueInterface, ISendInterface, IMessageInterface } from './types'
 import { useAppSelector } from './../../../app/redux/hooks'
+import { findIndex } from 'lodash'
 
 const commands = {
   sendGroupMessage: 1,
@@ -28,6 +29,10 @@ const commands = {
   checkDialogueExistence: 11,
   userCame: 12,
   userLeft: 13,
+  deleteMessage: 15,
+  blockUser: 16,
+  unblockUser: 17,
+  getDialogue: 18,
   // еще есть IS_TYPING
 }
 
@@ -79,11 +84,7 @@ export const useChat = () => {
           dispatch(setDialogues(data.groups))
         }
       }
-      // if (data.command === 0) {
-      //   if (data.error) {
-      //     dispatch(setCurrentSlug('nonExistDialogue'))
-      //   }
-      // }
+
       if (data.command === 1) {
         if (currentSlug === 'general_chat') {
           const arr = []
@@ -148,6 +149,15 @@ export const useChat = () => {
         }
         if (isExistingGenChatUser) {
           dispatch(setGenChatMembersStatus(dataToDispatch))
+        }
+      }
+
+      if (data.command === 15) {
+        const deletedMessageIndex = findIndex(currentMessages, (msg: IMessageInterface) => msg.id === data.message_pk)
+        const currentMessagesCopy = JSON.parse(JSON.stringify(currentMessages))
+        if (deletedMessageIndex !== -1) {
+          currentMessagesCopy.splice(deletedMessageIndex)
+          dispatch(setCurrentMessages(currentMessagesCopy))
         }
       }
     }
@@ -242,6 +252,44 @@ export const useChat = () => {
     send(dataToSend)
   }
 
+  const deleteMessage = (messageId: number) => {
+    const dataToSend = {
+      command: commands.deleteMessage,
+      message_pk: messageId,
+    }
+
+    send(dataToSend)
+  }
+
+  const blockUser = (userId: number, groupName: string) => {
+    const dataToSend = {
+      command: commands.blockUser,
+      user_pk: userId,
+      group: groupName,
+    }
+
+    send(dataToSend)
+  }
+
+  const unblockUser = (userId: number, groupName: string) => {
+    const dataToSend = {
+      command: commands.unblockUser,
+      user_pk: userId,
+      group: groupName,
+    }
+
+    send(dataToSend)
+  }
+
+  const getDialogue = (groupName: string) => {
+    const dataToSend = {
+      command: commands.getDialogue,
+      group: groupName,
+    }
+
+    send(dataToSend)
+  }
+
   return {
     sendGroupMessage,
     joinGroup,
@@ -250,5 +298,9 @@ export const useChat = () => {
     getGroupMessages,
     getGroupsList,
     checkDialogueExistence,
+    deleteMessage,
+    blockUser,
+    unblockUser,
+    getDialogue,
   }
 }

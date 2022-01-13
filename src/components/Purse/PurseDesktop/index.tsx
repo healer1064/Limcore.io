@@ -72,13 +72,13 @@ export const PurseDesktop = () => {
             <Content pageCardBalance={pageCardBalance} closeCard={closeCard} openProfile={openProfile} />
           )}
         </div>
-        {/* <button className={styles.chatIcon} type='button'>
+        <button className={styles.chatIcon} type='button'>
           {isChatVisible ? (
             <img alt='' src={closeIcon} onClick={handleChatClose} />
           ) : (
             <img alt='' src={chatIcon} onClick={handleChatOpen} />
           )}
-        </button> */}
+        </button>
         {isChatVisible ? (
           <div className={styles.chatContainer}>
             <Chat handleChatClose={handleChatClose} />{' '}

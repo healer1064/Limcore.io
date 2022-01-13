@@ -27,6 +27,9 @@ export const chatSlice = createSlice({
     wholePages: 0,
     uploadedFile: [],
 
+    currentClickedMessage: null,
+    currentClickedUser: null,
+
     genChatMembers: [] as IMemberInterface[],
     dialogues: [] as IDialogueInterface[],
     filteredDialogues: [] as IDialogueInterface[],
@@ -88,6 +91,12 @@ export const chatSlice = createSlice({
     setUploadedFile: (state, { payload }) => {
       state.uploadedFile = payload
     },
+    setCurrentClickedMessage: (state, { payload }) => {
+      state.currentClickedMessage = payload
+    },
+    setCurrentClickedUser: (state, { payload }) => {
+      state.currentClickedUser = payload
+    },
   },
   extraReducers: {
     [uploadFile.fulfilled]: (state, action) => {
@@ -113,6 +122,8 @@ export const {
   setCurrentSlug,
   setCurrentDialogueMember,
   setUploadedFile,
+  setCurrentClickedMessage,
+  setCurrentClickedUser,
 } = actions
 
 export const chatSelector = (state: RootState) => state.chat

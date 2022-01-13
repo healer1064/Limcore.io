@@ -6,16 +6,23 @@ import { ParticipantsList } from '../ParticipantsList'
 import arrow from '@icons/arrow-left-blue.svg'
 import { Textarea } from '../../../../components/Chat/components/Textarea'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setContent, setCurrentDialogueMember, setCurrentMessages, setCurrentSlug } from '../../redux/chatSlice'
+import {
+  setContent,
+  setCurrentClickedMessage,
+  setCurrentClickedUser,
+  setCurrentDialogueMember,
+  setCurrentMessages,
+  setCurrentSlug,
+} from '../../redux/chatSlice'
 import limcoreIcon from '@icons/limcore.svg'
 import { getMonthNameWithDate, getUserName } from '@components/Chat/utils/funcs'
 import { IDialogueInterface, IMessageInterface } from '@components/Chat/utils/types'
 import { useChat } from '@components/Chat/utils/useChat'
-// import profileIcon from '@icons/profileicon.svg'
 import defaultAvatar from '@icons/defaultAvatar.svg'
 import { RaitingList } from '../RaitingList'
 import raitingStyles from '../RaitingList/styles.module.scss'
 import { Spinner } from '@components/Spinner'
+import { Controllers } from '../Controllers/index'
 
 export const ChatContent = () => {
   const [t] = useTranslation()
@@ -39,6 +46,24 @@ export const ChatContent = () => {
   let firstMessage: boolean
   const IS_GENERAL_CHAT = slug === 'general_chat'
 
+  // Модерация
+  const [anchorEl, setAnchorEl] = useState(null)
+  const [open, setOpen] = useState(false)
+
+  const closeMenu = () => {
+    setOpen(false)
+    setAnchorEl(null)
+    dispatch(setCurrentClickedMessage(null))
+    setTimeout(() => {
+      dispatch(setCurrentClickedUser(null))
+    }, 300)
+  }
+
+  const openMenu = (event: React.SyntheticEvent) => {
+    setOpen(true)
+    setAnchorEl(event.currentTarget)
+  }
+
   // Открытие списка участников общего чата
   const [isListOpened, setIsListOpened] = useState(false)
   const openList = () => setIsListOpened(true)
@@ -46,11 +71,14 @@ export const ChatContent = () => {
 
   // Открытие рейтинга по лимкам
   const [raitingClassName, setRaitingClassName] = useState(raitingStyles.raitingList_invisible)
-  const openRating = () => setRaitingClassName(raitingStyles.raitingList)
   const closeRating = () => setRaitingClassName(raitingStyles.raitingList_invisible)
+  const openRating = (event: React.SyntheticEvent) => {
+    event.stopPropagation()
+    setRaitingClassName(raitingStyles.raitingList)
+  }
 
-  // Закрыть чат
-  const onClose = () => {
+  // Закрыть диалог
+  const onCloseDialogue = () => {
     dispatch(setCurrentDialogueMember({}))
     dispatch(setCurrentMessages([]))
     dispatch(setContent(''))
@@ -103,7 +131,7 @@ export const ChatContent = () => {
   return (
     <section className={styles.groupContainer}>
       <div className={styles.groupHeader}>
-        <img alt='' src={arrow} className={styles.arrow} onClick={onClose} />
+        <img alt='' src={arrow} className={styles.arrow} onClick={onCloseDialogue} />
         {IS_GENERAL_CHAT ? (
           <>
             <img src={limcoreIcon} alt='Limcore' className={styles.foto} />
@@ -127,6 +155,9 @@ export const ChatContent = () => {
           </div>
         )}
         {currentMessages.map((msg: IMessageInterface) => {
+          if (!msg) {
+            return null
+          }
           const msgDate = getMonthNameWithDate(msg.created_at)
           let buffer = dateBuffer
 
@@ -143,6 +174,7 @@ export const ChatContent = () => {
           } else {
             firstMessage = false
           }
+
           return (
             <MessageComponent
               key={msg.id}
@@ -152,6 +184,7 @@ export const ChatContent = () => {
               date={buffer}
               firstMessage={firstMessage}
               openRating={openRating}
+              openMenu={openMenu}
             />
           )
         })}
@@ -160,6 +193,7 @@ export const ChatContent = () => {
         <>
           <ParticipantsList isActive={isListOpened} onClose={closeList} participants={participants} />
           <RaitingList handleRaitingListClose={closeRating} raitingClassName={raitingClassName} />
+          <Controllers anchorEl={anchorEl} open={open} onClose={closeMenu} />
         </>
       )}
       <Textarea />

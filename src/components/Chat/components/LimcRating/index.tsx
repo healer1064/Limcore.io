@@ -7,7 +7,7 @@ import orange from '@icons/raitingOrange.svg'
 
 interface ILimcRating {
   limcBalance: number
-  openRating: () => void
+  openRating: (event: React.SyntheticEvent) => void
 }
 
 export const LimcRating = ({ limcBalance, openRating }: ILimcRating) => {

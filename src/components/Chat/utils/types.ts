@@ -37,6 +37,9 @@ export interface IDialogueInterface {
   name?: string
   owner?: number
   slug?: string
+  settings?: {
+    role: number
+  }
 }
 
 export interface IUserInterface {
