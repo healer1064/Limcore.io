@@ -96,6 +96,8 @@
 }
 
 .score {
+  margin: 0;
+  padding: 0;
   font-family: $main-font;
   @include main($color-99-gray);
   font-weight: $fontWeightMedium;

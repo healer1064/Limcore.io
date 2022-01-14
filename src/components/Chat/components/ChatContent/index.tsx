@@ -198,6 +198,7 @@ export const ChatContent = () => {
           <RaitingList handleRaitingListClose={closeRating} raitingClassName={raitingClassName} />
         </>
       )}
+      {/* {generalChat.settings.role !== 0 && <Controllers anchorEl={anchorEl} open={open} onClose={closeMenu} />} */}
       <Controllers anchorEl={anchorEl} open={open} onClose={closeMenu} />
       <Textarea />
     </section>

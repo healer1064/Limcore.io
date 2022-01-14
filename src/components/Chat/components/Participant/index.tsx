@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
-import classNames from 'classnames'
 import defaultAvatar from '@icons/defaultAvatar.svg'
 import { useAppSelector } from '@app/redux/hooks'
 import { ChatContent } from '../ChatContent'
@@ -27,9 +26,9 @@ export const Participant = ({ member }: IParticipantProps) => {
 
   const [isOpened, setIsOpened] = useState(false)
   const userId = useAppSelector((state) => state.user.userData?.id)
-  const generalChat = useAppSelector((state) =>
-    state.chat.dialogues.find((dialogue) => dialogue.slug === 'general_chat'),
-  )
+  // const generalChat = useAppSelector((state) =>
+  //   state.chat.dialogues.find((dialogue) => dialogue.slug === 'general_chat'),
+  // )
   const currentMemberDialogue = useAppSelector((state) =>
     state.chat.dialogues.find((dialogue) => dialogue.other_user && dialogue.other_user.id === member.user.id),
   )
@@ -66,12 +65,16 @@ export const Participant = ({ member }: IParticipantProps) => {
       ) : (
         <p className={styles.status}>Не в сети</p>
       )}
-      {showRaiting && (
+      {showRaiting && !member.role && (
         <span className={styles.raiting}>
           <LimcRating limcBalance={limcNumber} />
         </span>
       )}
-      {/* Выводить либо рейтинг лимков, либо статус, что админ */}
+      {Boolean(member.role) && (
+        <span className={styles.raiting}>
+          <p className={styles.score}>{member.role === 1 ? 'CEO Limcore.io' : 'Admin'}</p>
+        </span>
+      )}
       <span className={styles.line} />
       {isOpened && <ChatContent />}
     </div>
