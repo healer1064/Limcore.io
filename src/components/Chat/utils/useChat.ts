@@ -114,10 +114,12 @@ export const useChat = () => {
       }
 
       if (data.command === 4) {
-        dispatch(setCurrentMessages([...data.result.reverse(), ...currentMessages]))
-        dispatch(setCurrentPage(data.page))
-        dispatch(setWholePages(data.num_pages))
-        dispatch(setLoader(false))
+        if (data.group === currentSlug) {
+          dispatch(setCurrentMessages([...data.result.reverse(), ...currentMessages]))
+          dispatch(setCurrentPage(data.page))
+          dispatch(setWholePages(data.num_pages))
+          dispatch(setLoader(false))
+        }
       }
 
       if (data.command === 5) {
