@@ -9,7 +9,7 @@ export interface ISendInterface {
 }
 
 export interface IMemberInterface {
-  join: string
+  is_blocked: boolean
   role: number
   user: IUserInterface
 }

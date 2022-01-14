@@ -122,6 +122,8 @@ export const useChat = () => {
 
       if (data.command === 5) {
         dispatch(setDialogues(data.result))
+        const generalChat = data.result.find((group: IDialogueInterface) => group.slug === 'general_chat')
+        dispatch(setGenChatMembers(generalChat?.members))
       }
 
       if (data.command === 10) {
@@ -157,14 +159,9 @@ export const useChat = () => {
         getGroupsList(1)
       }
 
-      // if (data.command === 18) {
-      //   const commingDialogueSlug: string = data.group.slug
-      //   const notTargetDialogues = currentDialogues.filter(
-      //     (dialogue: IDialogueInterface) => dialogue.slug !== commingDialogueSlug,
-      //   )
-      //   console.log([...notTargetDialogues, data.group])
-      //   dispatch(setDialogues([...notTargetDialogues, data.group]))
-      // }
+      if (data.command === 16 || data.command === 17) {
+        getGroupsList(1) // - для обновления списка участников общего чата
+      }
     }
   }
 

@@ -27,6 +27,9 @@
   &_name {
     z-index: 1;
     @include subtitle-13px($color-99-gray);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 
   &:last-child {

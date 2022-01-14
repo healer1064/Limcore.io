@@ -5,6 +5,7 @@ import { useAppSelector } from '@app/redux/hooks'
 import { ChatContent } from '../ChatContent'
 import { useDispatch } from 'react-redux'
 import {
+  setCurrentClickedUser,
   setCurrentDialogueMember,
   setCurrentMessages,
   setCurrentPage,
@@ -15,12 +16,14 @@ import { IMemberInterface } from '@components/Chat/utils/types'
 import { useChat } from '@components/Chat/utils/useChat'
 import { getUserName } from '@components/Chat/utils/funcs'
 import { LimcRating } from '@components/Chat/components/LimcRating'
+import blockIcon from '@icons/block.svg'
 
 interface IParticipantProps {
   member: IMemberInterface
+  openUnblockModal: () => void
 }
 
-export const Participant = ({ member }: IParticipantProps) => {
+export const Participant = ({ member, openUnblockModal }: IParticipantProps) => {
   const { checkDialogueExistence } = useChat()
   const dispatch = useDispatch()
 
@@ -34,6 +37,7 @@ export const Participant = ({ member }: IParticipantProps) => {
   )
   const currentMemberDialogueSlug = currentMemberDialogue?.slug || 'nonExistDialogue'
   const me = member.user.id === userId ? 'Вы' : ''
+  const isAdmin = Boolean(member.role)
   const avatar = member.user.avatar ? member.user.avatar : defaultAvatar
 
   const showRaiting = Boolean(member.user.limc_balance)
@@ -53,10 +57,21 @@ export const Participant = ({ member }: IParticipantProps) => {
     }
   }
 
+  const onUnblock = (event: React.SyntheticEvent) => {
+    event.stopPropagation()
+    dispatch(setCurrentClickedUser(member.user.id))
+    openUnblockModal()
+  }
+
   return (
     <div className={styles.message} onClick={onOpen}>
       <img src={avatar} alt='avatar' className={styles.foto} />
       <p className={styles.name}>
+        {isAdmin ||
+          // (!isAdmin && member.user.id !== userId && (
+          (!isAdmin && member.user.id !== userId && member.is_blocked && (
+            <img src={blockIcon} onClick={onUnblock} className={styles.blockIcon} />
+          ))}
         {getUserName(member.user)}
         <span className={styles.me}>{me}</span>
       </p>
@@ -65,12 +80,12 @@ export const Participant = ({ member }: IParticipantProps) => {
       ) : (
         <p className={styles.status}>Не в сети</p>
       )}
-      {showRaiting && !member.role && (
+      {showRaiting && !isAdmin && (
         <span className={styles.raiting}>
           <LimcRating limcBalance={limcNumber} />
         </span>
       )}
-      {Boolean(member.role) && (
+      {isAdmin && (
         <span className={styles.raiting}>
           <p className={styles.score}>{member.role === 1 ? 'CEO Limcore.io' : 'Admin'}</p>
         </span>
