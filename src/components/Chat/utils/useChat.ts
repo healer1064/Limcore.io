@@ -48,6 +48,7 @@ export const useChat = () => {
   const currentDialogues = useAppSelector((state) => state.chat.dialogues)
   const currentGenChatMembers = useAppSelector((state) => state.chat.genChatMembers)
   const uploadedFile = useAppSelector((state) => state.chat.uploadedFile)
+  const currentDialogueMember = useAppSelector((state) => state.chat.currentDialogueMember)
 
   useEffect(() => {
     if (!socket) {
@@ -95,7 +96,7 @@ export const useChat = () => {
       if (data.command === 3) {
         const isDialogueInList = currentDialogues.some((dialogue) => dialogue.slug === data.group.slug)
 
-        if (currentSlug === 'nonExistDialogue') {
+        if (currentSlug === 'nonExistDialogue' && data.group.other_user.id === currentDialogueMember.id) {
           dispatch(setCurrentSlug(data.group.slug))
         }
 
@@ -105,8 +106,7 @@ export const useChat = () => {
           getGroupsList(1)
         }
 
-        // if (currentSlug === data.group.slug || currentDialogueMember.id === data.group.other_user.id)
-        if (currentSlug === data.group?.slug || currentSlug === data.group[0]?.slug) {
+        if (currentSlug === data.group.slug || currentDialogueMember.id === data.group.other_user.id) {
           const arr = []
           arr.push(data.message)
           dispatch(setCurrentMessages([...currentMessages, ...arr]))
