@@ -16,7 +16,6 @@ import {
 } from '../redux/chatSlice'
 import { IDialogueInterface, ISendInterface, IMessageInterface } from './types'
 import { useAppSelector } from './../../../app/redux/hooks'
-import { findIndex } from 'lodash'
 
 const commands = {
   sendGroupMessage: 1,
@@ -46,7 +45,6 @@ export const useChat = () => {
 
   const currentMessages = useAppSelector((state) => state.chat.currentMessages)
   const currentSlug = useAppSelector((state) => state.chat.currentSlug)
-  const currentDialogueMember = useAppSelector((state) => state.chat.currentDialogueMember)
   const currentDialogues = useAppSelector((state) => state.chat.dialogues)
   const currentGenChatMembers = useAppSelector((state) => state.chat.genChatMembers)
   const uploadedFile = useAppSelector((state) => state.chat.uploadedFile)
@@ -107,7 +105,8 @@ export const useChat = () => {
           getGroupsList(1)
         }
 
-        if (currentSlug === data.group.slug || currentDialogueMember.id === data.group.other_user.id) {
+        // if (currentSlug === data.group.slug || currentDialogueMember.id === data.group.other_user.id)
+        if (currentSlug === data.group?.slug || currentSlug === data.group[0]?.slug) {
           const arr = []
           arr.push(data.message)
           dispatch(setCurrentMessages([...currentMessages, ...arr]))
@@ -153,13 +152,19 @@ export const useChat = () => {
       }
 
       if (data.command === 15) {
-        const deletedMessageIndex = findIndex(currentMessages, (msg: IMessageInterface) => msg.id === data.message_pk)
-        const currentMessagesCopy = JSON.parse(JSON.stringify(currentMessages))
-        if (deletedMessageIndex !== -1) {
-          currentMessagesCopy.splice(deletedMessageIndex)
-          dispatch(setCurrentMessages(currentMessagesCopy))
-        }
+        const withoutDeletedMessage = currentMessages.filter((msg: IMessageInterface) => msg.id !== data.message_pk)
+        dispatch(setCurrentMessages(withoutDeletedMessage))
+        getGroupsList(1)
       }
+
+      // if (data.command === 18) {
+      //   const commingDialogueSlug: string = data.group.slug
+      //   const notTargetDialogues = currentDialogues.filter(
+      //     (dialogue: IDialogueInterface) => dialogue.slug !== commingDialogueSlug,
+      //   )
+      //   console.log([...notTargetDialogues, data.group])
+      //   dispatch(setDialogues([...notTargetDialogues, data.group]))
+      // }
     }
   }
 

@@ -154,10 +154,13 @@ export const ChatContent = () => {
             <Spinner />
           </div>
         )}
+        {!loader && currentMessages.length === 0 && (
+          <div className={styles.dialogueEmpty}>
+            <p className={styles.dialogueEmptyNoMsgs}>Сообщений пока нет...</p>
+            <p className={styles.dialogueEmptyStart}>Начните общение!</p>
+          </div>
+        )}
         {currentMessages.map((msg: IMessageInterface) => {
-          if (!msg) {
-            return null
-          }
           const msgDate = getMonthNameWithDate(msg.created_at)
           let buffer = dateBuffer
 
@@ -193,9 +196,9 @@ export const ChatContent = () => {
         <>
           <ParticipantsList isActive={isListOpened} onClose={closeList} participants={participants} />
           <RaitingList handleRaitingListClose={closeRating} raitingClassName={raitingClassName} />
-          <Controllers anchorEl={anchorEl} open={open} onClose={closeMenu} />
         </>
       )}
+      <Controllers anchorEl={anchorEl} open={open} onClose={closeMenu} />
       <Textarea />
     </section>
   )

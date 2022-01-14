@@ -50,7 +50,9 @@ export const MessageComponent = ({
               {currentSlug === 'general_chat' && (
                 <>
                   <span className={styles.member_name}>{userName}</span>
-                  {toShowRaiting && <LimcRating openRating={openRating} limcBalance={Math.floor(user.limc_balance)} />}
+                  <span className={styles.raiting} onClick={openRating}>
+                    {toShowRaiting && <LimcRating limcBalance={Math.floor(Number(user.limc_balance))} />}
+                  </span>
                 </>
               )}
             </Message>

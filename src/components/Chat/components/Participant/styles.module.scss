@@ -6,13 +6,13 @@
   align-items: center;
   box-sizing: border-box;
   padding: 10px 0;
-  grid-template-columns: 45px 3fr 1fr;
+  grid-template-columns: 45px 2fr 2fr;
   grid-template-rows: repeat(3, minmax(min-content, max-content));
   column-gap: 8px;
   cursor: pointer;
   grid-template-areas:
   'foto name rank'
-  'foto status .'
+  'foto status text'
   '. line line';
 }
 
@@ -76,7 +76,7 @@
 .raiting {
   grid-area: rank;
   padding: 0;
-  margin: 0;
+  margin: 0 0 0 auto;
   text-align: right;
   display: flex;
   align-items: center;
@@ -104,6 +104,8 @@
 }
 
 .me {
+  grid-area: text;
+  margin-left: 10px;
   font-size: 14px;
   font-weight: $fontWeightSemiBold;
   color: $primary-color;
