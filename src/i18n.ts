@@ -100,7 +100,7 @@ i18n.use(LanguageDetector).init({
         roundsRoadmap_description2:
           'Prices and limits for Rounds 3, 4, 5 will be published later, as at the latest update of our website we haven’t received yet guaranteed quantity of the equipment we get from the producer factories by planned Rounds end dates.',
 
-        limcoreDescription_modern: 'Modern datacenter of Chi mining and all the forks simultaneously.',
+        limcoreDescription_modern: 'Modern datacenter of Chia mining and all the forks simultaneously.',
         limcoreDescription_safe:
           'It is much safer and more profitable than most of the other investing offers in the market.',
         limcoreDescription_howWorks: 'How does it work?',
