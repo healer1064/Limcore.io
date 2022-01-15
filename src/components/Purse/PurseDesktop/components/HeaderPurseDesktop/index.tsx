@@ -53,18 +53,18 @@ export const HeaderPurseDesktop = ({ isProfileActive, openProfile, closeProfile 
     <header className={styles.header}>
       <Logo />
       <nav className={styles.nav}>
-        <a
+        {/* <a
           className={classnames([styles.nav__link, viewPurseContent === 'main' && styles.nav__link_active])}
           onClick={openMain}
         >
           {t('purse_navMain')}
-        </a>
-        <a
+        </a> */}
+        {/* <a
           className={classnames([styles.nav__link, viewPurseContent === 'broadcasts' && styles.nav__link_active])}
           onClick={openBroadcasts}
         >
           {t('purse_navStreams')}
-        </a>
+        </a> */}
         <LanguagePopup />
       </nav>
 

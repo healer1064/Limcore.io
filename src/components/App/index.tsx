@@ -32,7 +32,7 @@ import { AuthMobile } from '../../pages/auth/AuthMobile'
 import { Dummy } from '@components/Dummy'
 import { LandingPage } from '../../pages/landing'
 import { Purse } from '@components/Purse'
-import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
+// import { BroadcastsMobile } from '@components/Broadcasts/BroadcastsMobile'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getUser } from '@app/redux/userSlice'
 // import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
@@ -96,7 +96,10 @@ const App = () => {
                 <Route path='/my' exact component={Purse} />
                 {!desktop && (
                   <>
-                    <Route path='/broadcasts' exact component={BroadcastsMobile} />
+                    <Route path='/broadcasts'>
+                      <Redirect to='/my' />
+                    </Route>
+                    {/* <Route path='/broadcasts' exact component={BroadcastsMobile} /> */}
                     {/* <Route path='/chat' exact component={Chat} /> */}
                     <Route path='/chat' exact component={Dummy} />
                     <Route path='/profile' exact component={ProfileMobile} />
