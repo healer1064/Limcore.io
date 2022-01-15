@@ -18,10 +18,10 @@ export const FooterMobile: React.FC = () => {
           <PurseIcon />
           {t('footer_mobNavPurse')}
         </NavLink>
-        <NavLink to='/broadcasts' exact className={Styles.link} activeClassName={Styles.broadcasts}>
+        {/* <NavLink to='/broadcasts' exact className={Styles.link} activeClassName={Styles.broadcasts}>
           <BroadcastsIcon />
           {t('footer_mobNavStreams')}
-        </NavLink>
+        </NavLink> */}
         <NavLink to='/chat' exact className={Styles.link} activeClassName={`${Styles.link_active}`}>
           <ChatIcon />
           {t('footer_mobNavChat')}
