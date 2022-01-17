@@ -49,6 +49,7 @@ export const useChat = () => {
   const currentGenChatMembers = useAppSelector((state) => state.chat.genChatMembers)
   const uploadedFile = useAppSelector((state) => state.chat.uploadedFile)
   const currentDialogueMember = useAppSelector((state) => state.chat.currentDialogueMember)
+  const userId = useAppSelector((state) => state.user.userData.id)
 
   useEffect(() => {
     if (!socket) {
@@ -148,7 +149,7 @@ export const useChat = () => {
             return dialogue.other_user.id === data.user_pk
           }
         })
-        const isExistingGenChatUser = currentGenChatMembers.some((member) => {
+        const isExistingGenChatUser = currentGenChatMembers?.some((member) => {
           return member.user.id === data.user_pk
         })
 
@@ -166,7 +167,14 @@ export const useChat = () => {
         getGroupsList(1)
       }
 
-      if (data.command === 16 || data.command === 17) {
+      if (data.command === 16) {
+        getGroupsList(1) // - для обновления списка участников общего чата
+        if (data.user_pk === userId) {
+          dispatch(setContent(''))
+        }
+      }
+
+      if (data.command === 17) {
         getGroupsList(1) // - для обновления списка участников общего чата
       }
     }

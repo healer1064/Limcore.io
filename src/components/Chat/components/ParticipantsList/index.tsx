@@ -43,6 +43,8 @@ export const ParticipantsList = ({ onClose, participants, isActive }: IParticipa
   const desktop = width >= 769
   const [isUnblockModalOpened, setIsUnblockModalOpened] = useState(false)
   const currentClickedUser = useAppSelector((state) => state.chat.currentClickedUser)
+  const userId = useAppSelector((state) => state.user.userData?.id)
+  const isAdmin = Boolean(participants.find((member) => member.user.id === userId).role)
 
   const sortedPartisipants = [...participants].sort((a, b) => {
     const aMemberStatus = a.user.status || 0
@@ -57,7 +59,7 @@ export const ParticipantsList = ({ onClose, participants, isActive }: IParticipa
     console.log(`Unblock user #${currentClickedUser}`)
     event.stopPropagation()
     setIsUnblockModalOpened(false)
-    unblockUser(currentClickedUser, 'general_slug')
+    unblockUser(currentClickedUser, 'general_chat')
   }
 
   return isActive ? (
@@ -73,7 +75,7 @@ export const ParticipantsList = ({ onClose, participants, isActive }: IParticipa
       </div>
       <div className={styles.messagesContainer}>
         {sortedPartisipants.map((member: IMemberInterface) => (
-          <Participant key={member.user.id} member={member} openUnblockModal={openUnblockModal} />
+          <Participant key={member.user.id} member={member} openUnblockModal={openUnblockModal} isAdmin={isAdmin} />
         ))}
       </div>
       {desktop ? (
