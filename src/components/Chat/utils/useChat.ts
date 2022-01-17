@@ -84,6 +84,10 @@ export const useChat = () => {
         }
       }
 
+      if (data.command === 0) {
+        dispatch(setLoader(false))
+      }
+
       if (data.command === 1) {
         if (currentSlug === 'general_chat') {
           const arr = []
@@ -134,6 +138,7 @@ export const useChat = () => {
 
       if (data.command === 11) {
         data.result.length === 0 ? dispatch(setCurrentMessages([])) : dispatch(setCurrentMessages(data.result))
+        dispatch(setLoader(false))
       }
 
       if (data.command === 12 || data.command === 13) {
