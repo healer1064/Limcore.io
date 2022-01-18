@@ -90,12 +90,14 @@ export const useChat = () => {
       }
 
       if (data.command === 1) {
-        if (currentSlug === 'general_chat') {
-          const arr = []
-          arr.push(data.message)
-          dispatch(setCurrentMessages([...currentMessages, ...arr]))
+        if (currentDialogues.some((dialogue) => dialogue.slug === 'general_chat')) {
+          if (currentSlug === 'general_chat') {
+            const arr = []
+            arr.push(data.message)
+            dispatch(setCurrentMessages([...currentMessages, ...arr]))
+          }
+          dispatch(setDialoguesLastMessage(data))
         }
-        dispatch(setDialoguesLastMessage(data))
       }
 
       if (data.command === 3) {
