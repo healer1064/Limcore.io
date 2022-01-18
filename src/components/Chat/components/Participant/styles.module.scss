@@ -12,8 +12,15 @@
   cursor: pointer;
   grid-template-areas:
   'foto name rank'
-  'foto status .'
+  'foto status text'
   '. line line';
+}
+
+.blockIcon {
+  margin-right: 5px;
+  transform: translateY(5px);
+  width: 20px;
+  height: 20px;
 }
 
 .foto {
@@ -76,7 +83,7 @@
 .raiting {
   grid-area: rank;
   padding: 0;
-  margin: 0;
+  margin: 0 0 0 auto;
   text-align: right;
   display: flex;
   align-items: center;
@@ -96,6 +103,8 @@
 }
 
 .score {
+  margin: 0;
+  padding: 0;
   font-family: $main-font;
   @include main($color-99-gray);
   font-weight: $fontWeightMedium;
@@ -104,6 +113,8 @@
 }
 
 .me {
+  grid-area: text;
+  margin-left: 10px;
   font-size: 14px;
   font-weight: $fontWeightSemiBold;
   color: $primary-color;

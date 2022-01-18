@@ -9,7 +9,7 @@ export interface ISendInterface {
 }
 
 export interface IMemberInterface {
-  join: string
+  is_blocked: boolean
   role: number
   user: IUserInterface
 }
@@ -37,6 +37,9 @@ export interface IDialogueInterface {
   name?: string
   owner?: number
   slug?: string
+  settings?: {
+    role: number
+  }
 }
 
 export interface IUserInterface {
@@ -51,7 +54,7 @@ export interface IUserInterface {
   middle_name?: string
   phone: string
   status: number
-  limc_balance: number | null
+  limc_balance: number | string
 }
 
 export interface IFileInterface {

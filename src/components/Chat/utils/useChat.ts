@@ -14,7 +14,7 @@ import {
   setLoader,
   setCurrentSlug,
 } from '../redux/chatSlice'
-import { IDialogueInterface, ISendInterface } from './types'
+import { IDialogueInterface, ISendInterface, IMessageInterface } from './types'
 import { useAppSelector } from './../../../app/redux/hooks'
 
 const commands = {
@@ -28,6 +28,10 @@ const commands = {
   checkDialogueExistence: 11,
   userCame: 12,
   userLeft: 13,
+  deleteMessage: 15,
+  blockUser: 16,
+  unblockUser: 17,
+  getDialogue: 18,
   // еще есть IS_TYPING
 }
 
@@ -41,10 +45,11 @@ export const useChat = () => {
 
   const currentMessages = useAppSelector((state) => state.chat.currentMessages)
   const currentSlug = useAppSelector((state) => state.chat.currentSlug)
-  const currentDialogueMember = useAppSelector((state) => state.chat.currentDialogueMember)
   const currentDialogues = useAppSelector((state) => state.chat.dialogues)
   const currentGenChatMembers = useAppSelector((state) => state.chat.genChatMembers)
   const uploadedFile = useAppSelector((state) => state.chat.uploadedFile)
+  const currentDialogueMember = useAppSelector((state) => state.chat.currentDialogueMember)
+  const userId = useAppSelector((state) => state.user.userData.id)
 
   useEffect(() => {
     if (!socket) {
@@ -79,24 +84,26 @@ export const useChat = () => {
           dispatch(setDialogues(data.groups))
         }
       }
-      // if (data.command === 0) {
-      //   if (data.error) {
-      //     dispatch(setCurrentSlug('nonExistDialogue'))
-      //   }
-      // }
+
+      if (data.command === 0) {
+        dispatch(setLoader(false))
+      }
+
       if (data.command === 1) {
-        if (currentSlug === 'general_chat') {
-          const arr = []
-          arr.push(data.message)
-          dispatch(setCurrentMessages([...currentMessages, ...arr]))
+        if (currentDialogues.some((dialogue) => dialogue.slug === 'general_chat')) {
+          if (currentSlug === 'general_chat') {
+            const arr = []
+            arr.push(data.message)
+            dispatch(setCurrentMessages([...currentMessages, ...arr]))
+          }
+          dispatch(setDialoguesLastMessage(data))
         }
-        dispatch(setDialoguesLastMessage(data))
       }
 
       if (data.command === 3) {
         const isDialogueInList = currentDialogues.some((dialogue) => dialogue.slug === data.group.slug)
 
-        if (currentSlug === 'nonExistDialogue') {
+        if (currentSlug === 'nonExistDialogue' && data.group.other_user.id === currentDialogueMember.id) {
           dispatch(setCurrentSlug(data.group.slug))
         }
 
@@ -114,14 +121,18 @@ export const useChat = () => {
       }
 
       if (data.command === 4) {
-        dispatch(setCurrentMessages([...data.result.reverse(), ...currentMessages]))
-        dispatch(setCurrentPage(data.page))
-        dispatch(setWholePages(data.num_pages))
-        dispatch(setLoader(false))
+        if (data.group === currentSlug) {
+          dispatch(setCurrentMessages([...data.result.reverse(), ...currentMessages]))
+          dispatch(setCurrentPage(data.page))
+          dispatch(setWholePages(data.num_pages))
+          dispatch(setLoader(false))
+        }
       }
 
       if (data.command === 5) {
         dispatch(setDialogues(data.result))
+        const generalChat = data.result.find((group: IDialogueInterface) => group.slug === 'general_chat')
+        dispatch(setGenChatMembers(generalChat?.members))
       }
 
       if (data.command === 10) {
@@ -130,6 +141,7 @@ export const useChat = () => {
 
       if (data.command === 11) {
         data.result.length === 0 ? dispatch(setCurrentMessages([])) : dispatch(setCurrentMessages(data.result))
+        dispatch(setLoader(false))
       }
 
       if (data.command === 12 || data.command === 13) {
@@ -139,7 +151,7 @@ export const useChat = () => {
             return dialogue.other_user.id === data.user_pk
           }
         })
-        const isExistingGenChatUser = currentGenChatMembers.some((member) => {
+        const isExistingGenChatUser = currentGenChatMembers?.some((member) => {
           return member.user.id === data.user_pk
         })
 
@@ -149,6 +161,23 @@ export const useChat = () => {
         if (isExistingGenChatUser) {
           dispatch(setGenChatMembersStatus(dataToDispatch))
         }
+      }
+
+      if (data.command === 15) {
+        const withoutDeletedMessage = currentMessages.filter((msg: IMessageInterface) => msg.id !== data.message_pk)
+        dispatch(setCurrentMessages(withoutDeletedMessage))
+        getGroupsList(1)
+      }
+
+      if (data.command === 16) {
+        getGroupsList(1) // - для обновления списка участников общего чата
+        if (data.user_pk === userId) {
+          dispatch(setContent(''))
+        }
+      }
+
+      if (data.command === 17) {
+        getGroupsList(1) // - для обновления списка участников общего чата
       }
     }
   }
@@ -242,6 +271,44 @@ export const useChat = () => {
     send(dataToSend)
   }
 
+  const deleteMessage = (messageId: number) => {
+    const dataToSend = {
+      command: commands.deleteMessage,
+      message_pk: messageId,
+    }
+
+    send(dataToSend)
+  }
+
+  const blockUser = (userId: number, groupName: string) => {
+    const dataToSend = {
+      command: commands.blockUser,
+      user_pk: userId,
+      group: groupName,
+    }
+
+    send(dataToSend)
+  }
+
+  const unblockUser = (userId: number, groupName: string) => {
+    const dataToSend = {
+      command: commands.unblockUser,
+      user_pk: userId,
+      group: groupName,
+    }
+
+    send(dataToSend)
+  }
+
+  const getDialogue = (groupName: string) => {
+    const dataToSend = {
+      command: commands.getDialogue,
+      group: groupName,
+    }
+
+    send(dataToSend)
+  }
+
   return {
     sendGroupMessage,
     joinGroup,
@@ -250,5 +317,9 @@ export const useChat = () => {
     getGroupMessages,
     getGroupsList,
     checkDialogueExistence,
+    deleteMessage,
+    blockUser,
+    unblockUser,
+    getDialogue,
   }
 }

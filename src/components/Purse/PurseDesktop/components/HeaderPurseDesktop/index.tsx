@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import profile from '@icons/profileIcon.png'
 import { Logo } from '@components/Purse/PurseDesktop/components/Logo'
-import classnames from 'classnames'
+// import classnames from 'classnames'
 
 import { Modal } from '@components/Modal/index'
 import { ModalHeader } from '@components/Modal/ModalHeader'
@@ -11,9 +11,9 @@ import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { setIsAuth } from '../../../../../pages/auth/redux/authSlice'
 import { useHistory } from 'react-router'
 import { LogoutIcon } from '@icons/LogoutIcon'
-import { useTranslation } from 'react-i18next'
+// import { useTranslation } from 'react-i18next'
 import { LanguagePopup } from '@components/LanguagePopup'
-import { changeViewPurseContent } from '../../../../../pages/cabinet/redux/cabinetSlice'
+// import { changeViewPurseContent } from '../../../../../pages/cabinet/redux/cabinetSlice'
 
 interface IHeaderPurseDesktop {
   isProfileActive: boolean
@@ -22,7 +22,7 @@ interface IHeaderPurseDesktop {
 }
 
 export const HeaderPurseDesktop = ({ isProfileActive, openProfile, closeProfile }: IHeaderPurseDesktop) => {
-  const [t] = useTranslation()
+  // const [t] = useTranslation()
   const dispatch = useAppDispatch()
   const history = useHistory()
 
@@ -37,7 +37,7 @@ export const HeaderPurseDesktop = ({ isProfileActive, openProfile, closeProfile 
     }
   }
   const avatarUrl = useAppSelector((state) => state.user.userData?.profile?.avatar)
-  const viewPurseContent = useAppSelector((state) => state.cabinet.viewPurseContent)
+  // const viewPurseContent = useAppSelector((state) => state.cabinet.viewPurseContent)
 
   const onLogout = () => {
     localStorage.clear()
@@ -46,25 +46,25 @@ export const HeaderPurseDesktop = ({ isProfileActive, openProfile, closeProfile 
     location.reload()
   }
 
-  const openMain = () => dispatch(changeViewPurseContent('main'))
-  const openBroadcasts = () => dispatch(changeViewPurseContent('broadcasts'))
+  // const openMain = () => dispatch(changeViewPurseContent('main'))
+  // const openBroadcasts = () => dispatch(changeViewPurseContent('broadcasts'))
 
   return (
     <header className={styles.header}>
       <Logo />
       <nav className={styles.nav}>
-        <a
+        {/* <a
           className={classnames([styles.nav__link, viewPurseContent === 'main' && styles.nav__link_active])}
           onClick={openMain}
         >
           {t('purse_navMain')}
-        </a>
-        <a
+        </a> */}
+        {/* <a
           className={classnames([styles.nav__link, viewPurseContent === 'broadcasts' && styles.nav__link_active])}
           onClick={openBroadcasts}
         >
           {t('purse_navStreams')}
-        </a>
+        </a> */}
         <LanguagePopup />
       </nav>
 

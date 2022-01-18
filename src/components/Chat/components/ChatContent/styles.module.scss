@@ -114,6 +114,7 @@
 }
 
 .groupMessagesContainer {
+  position: relative;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
@@ -124,6 +125,29 @@
 
   & > :first-child {
     margin-top: auto;
+  }
+}
+
+.dialogueEmpty {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+
+  .dialogueEmptyNoMsgs {
+    margin: 0 0 8px 0;
+    padding: 0;
+    @include p3();
+    color: $color-4F-black;
+    font-weight: 600;
+  }
+
+  .dialogueEmptyStart {
+    margin: 0;
+    padding: 0;
+    @include p6();
+    color: $color-4F-black;
+    font-weight: 500;
   }
 }
 
