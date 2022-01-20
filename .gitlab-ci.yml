@@ -19,7 +19,7 @@ dev build:
     - echo $CI_REGISTRY
     - echo $CI_REGISTRY_USER
     - echo $CI_REGISTRY_PASSWORD
-    - cp $DEV_ENV ./.env
+    - cp $DEV_ENV .env
     - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
     - /kaniko/executor --context ./ --dockerfile ./Dockerfile --destination $CI_REGISTRY_IMAGE/dev:$CI_COMMIT_TAG
   only:
@@ -59,7 +59,7 @@ prod build:
     - echo $CI_REGISTRY_USER
     - echo $CI_REGISTRY_PASSWORD
     - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
-    - cp $PROD_ENV ./.env
+    - cp $PROD_ENV .env
     - /kaniko/executor --context ./ --dockerfile ./Dockerfile --destination $CI_REGISTRY_IMAGE/prod:$CI_COMMIT_TAG
   tags:
     - limcore-aws-build
