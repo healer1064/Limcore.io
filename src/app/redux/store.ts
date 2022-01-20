@@ -24,7 +24,7 @@ export const store = configureStore({
     wallet: walletSlice,
     chat: chatSlice,
   },
-  devTools: process.env.NODE_ENV !== 'production',
+  devTools: process.env.MODE !== 'production',
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
