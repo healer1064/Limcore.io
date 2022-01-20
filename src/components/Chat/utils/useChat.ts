@@ -51,9 +51,11 @@ export const useChat = () => {
   const currentDialogueMember = useAppSelector((state) => state.chat.currentDialogueMember)
   const userId = useAppSelector((state) => state.user.userData.id)
 
+  const { REACT_APP_API_HOST, REACT_APP_CHAT_ENDPOINT } = process.env
+
   useEffect(() => {
     if (!socket) {
-      socket = new WebSocket(`wss://limcore.dev.iamrobot.xyz/ws/chat/?token=${token}`)
+      socket = new WebSocket(`wss://${REACT_APP_API_HOST}${REACT_APP_CHAT_ENDPOINT}?token=${token}`)
 
       socket.onopen = () => {
         dispatch(setContent(''))

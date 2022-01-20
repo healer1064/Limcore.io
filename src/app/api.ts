@@ -1,10 +1,10 @@
 import axios, { AxiosRequestConfig, Method } from 'axios'
 
-const DEV = process.env.NODE_ENV !== 'production'
+const DEV = process.env.MODE !== 'production'
 
-const { REACT_APP_API } = process.env
+const { REACT_APP_API_ENDPOINT, REACT_APP_API_HOST } = process.env
 
-const getURL = (path: string) => `${REACT_APP_API}${path}`
+const getURL = (path: string) => `https://${REACT_APP_API_HOST}${REACT_APP_API_ENDPOINT}${path}`
 
 /**
  * возвращает header для запроса
