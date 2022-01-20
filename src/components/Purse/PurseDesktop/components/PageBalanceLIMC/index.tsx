@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import buyIcon from '@icons/buy.svg'
+// import buyIcon from '@icons/buy.svg'
 import { Transactions } from '../Transactions'
-import { useTranslation } from 'react-i18next'
+// import { useTranslation } from 'react-i18next'
 
 type PageBalanceLIMCPropsType = {
   limcBalance: any
@@ -17,7 +17,7 @@ export const PageBalanceLIMC: React.FC<PageBalanceLIMCPropsType> = ({
   handlePageBalanceLIMCCloseClick,
   openProfile,
 }) => {
-  const [t] = useTranslation()
+  // const [t] = useTranslation()
 
   return (
     <div className={isOpen ? styles.pageBalanceLIMC : styles.pageBalanceLIMC_invisible}>
