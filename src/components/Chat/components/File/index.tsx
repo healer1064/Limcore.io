@@ -9,6 +9,7 @@ interface IFile {
 
 export const File = ({ file }: IFile) => {
   const fileType = file[0].filename.split('.')[1]
+  const stopPropagation = (event: React.SyntheticEvent) => event.stopPropagation()
 
   switch (fileType) {
     case 'png':
@@ -18,14 +19,14 @@ export const File = ({ file }: IFile) => {
     case 'svg':
     case 'gif':
       return (
-        <div className={styles.imgContainer}>
+        <div className={styles.imgContainer} onClick={stopPropagation}>
           <img src={file[0].file} className={styles.file} />
         </div>
       )
 
     case 'mp3':
       return (
-        <audio controls src={file[0].file} className={styles.file}>
+        <audio controls src={file[0].file} className={styles.file} onClick={stopPropagation}>
           Your browser does not support the
           <code>audio</code> element.
         </audio>
@@ -39,13 +40,13 @@ export const File = ({ file }: IFile) => {
     case 'mp4':
     case 'webm':
       return (
-        <video className={styles.file} controls>
+        <video className={styles.file} controls onClick={stopPropagation}>
           <source src={file[0].file} />
         </video>
       )
     default:
       return (
-        <div className={styles.download}>
+        <div className={styles.download} onClick={stopPropagation}>
           <img src={downloadIcon} className={styles.download_icon} />
           <a className={styles.file} href={file[0].file} download target='_blank' rel='noreferrer'>
             {file[0].filename}

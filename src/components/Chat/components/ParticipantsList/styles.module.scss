@@ -45,6 +45,7 @@
   background-color: $white;
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 
 .button {
@@ -105,6 +106,39 @@
   margin: 0 20px;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.unblock {
+  margin: 0 auto;
+  padding-bottom: 15px;
+  width: fit-content;
+  @include semiBoldH4($color-99-gray);
+
+  .unblock__inner {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .unblock__btn {
+    width: 48%;
+    margin: 0;
+    padding: 5px 10px;
+    border-radius: 14px;
+    @include subtitle-14px($color-99-gray);
+  }
+
+  .unblock__delete {
+    color: $white;
+    background-color: $color-F2-red;
+  }
+
+  .unblock__cancel {
+    border: 1px solid $color-39-black;
+    color: $color-39-black;
+    background-color: transparent;
+  }
 }
 
 @media screen and (min-width: 769px) {

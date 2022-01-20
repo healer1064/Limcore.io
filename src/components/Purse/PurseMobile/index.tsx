@@ -6,18 +6,18 @@ import { Menu } from './components/Menu'
 import { Details } from './components/Details'
 import { Statistics } from './components/Statistics'
 
-import { ButtonBig } from '../../../ui-kit/ButtonBig'
+// import { ButtonBig } from '../../../ui-kit/ButtonBig'
 
 import { FooterMobile } from '@components/Footer/FooterMobile'
-import { RoadMap } from '@components/Purse/PurseMobile/components/RoadMap'
-import { useTranslation } from 'react-i18next'
-import { useDispatch } from 'react-redux'
-import { changeViewContent } from '../../../pages/cabinet/redux/cabinetSlice'
+// import { RoadMap } from '@components/Purse/PurseMobile/components/RoadMap'
+// import { useTranslation } from 'react-i18next'
+// import { useDispatch } from 'react-redux'
+// import { changeViewContent } from '../../../pages/cabinet/redux/cabinetSlice'
 
 export const PurseMobile: FC = () => {
-  const [t] = useTranslation()
-  const dispatch = useDispatch()
-  const openLimc = () => dispatch(changeViewContent('LIMC'))
+  // const [t] = useTranslation()
+  // const dispatch = useDispatch()
+  // const openLimc = () => dispatch(changeViewContent('LIMC'))
 
   // на iPhone Pro Max ЛК появляется с прокруткой ~50px от верха страницы
   useEffect(() => {

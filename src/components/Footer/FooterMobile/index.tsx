@@ -4,7 +4,7 @@ import Styles from './styles.module.scss'
 
 import { PurseIcon } from '@icons/PurseIcon'
 import { ChatIcon } from '@icons/ChatIcon'
-import { BroadcastsIcon } from '@icons/BroadcastsIcon'
+// import { BroadcastsIcon } from '@icons/BroadcastsIcon'
 import { ProfileIcon } from '@icons/ProfileIcon'
 import { useTranslation } from 'react-i18next'
 
