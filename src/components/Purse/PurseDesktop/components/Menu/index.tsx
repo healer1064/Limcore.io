@@ -10,7 +10,7 @@ interface IMenuProps {
   openLimcBalance: () => any
   openUsdtBalance: () => any
 }
-
+// eslint-disable-next-line
 export const Menu = ({ openLimcBalance, openUsdtBalance }: IMenuProps) => {
   const [t] = useTranslation()
 
@@ -22,14 +22,12 @@ export const Menu = ({ openLimcBalance, openUsdtBalance }: IMenuProps) => {
     <div className={styles.menu}>
       <h2 className={styles.name}>{t('purse_myAccounts')}</h2>
       <MenuItem
-        openCard={openLimcBalance}
         image={balanceLimc}
         syncIcon={isSync ? null : <UnsyncIcon />}
         title='LIMC'
         balance={isSync ? `${limcBalance} LIMC` : t('purse_notSync')}
       />
       <MenuItem
-        openCard={openUsdtBalance}
         image={balanceUsdt}
         syncIcon={isSync ? null : <UnsyncIcon />}
         title='USDT'
