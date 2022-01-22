@@ -10,6 +10,7 @@ interface IMenuProps {
   openLimcBalance: () => any
   openUsdtBalance: () => any
 }
+
 // eslint-disable-next-line
 export const Menu = ({ openLimcBalance, openUsdtBalance }: IMenuProps) => {
   const [t] = useTranslation()
