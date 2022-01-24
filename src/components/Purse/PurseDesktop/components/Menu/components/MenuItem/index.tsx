@@ -2,16 +2,15 @@ import React, { ReactNode } from 'react'
 import styles from './styles.module.scss'
 
 interface MenuItemProps {
-  openCard: () => any
   image: any
   syncIcon: null | ReactNode
   title: any
   balance: any
 }
 
-export const MenuItem: React.FC<MenuItemProps> = ({ openCard, image, syncIcon, title, balance }) => {
+export const MenuItem: React.FC<MenuItemProps> = ({ image, syncIcon, title, balance }) => {
   return (
-    <button className={styles.menuItem} onClick={openCard}>
+    <button className={styles.menuItem}>
       <p className={styles.menu__title}>
         {title}
         {syncIcon}

@@ -47,8 +47,7 @@ export const Chat = ({ handleChatClose }) => {
       return (
         <div className={styles.errorContainer}>
           <div className={styles.errorInner}>
-            <p>Chat is not available now.</p>
-            <p>Please try again later.</p>
+            <p>Please reload the page.</p>
           </div>
           <FooterMobile />
         </div>
