@@ -62,7 +62,6 @@ const App = () => {
           setIsLoading(false)
         })
         .catch(() => {
-          console.error('qq')
           dispatch(refreshToken({ refresh: tokenObj.refresh }))
         })
     } else {
