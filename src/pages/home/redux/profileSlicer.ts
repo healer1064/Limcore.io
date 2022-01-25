@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { apiTypes } from '@app/apiTypes'
+import { Agreement } from '@app/apiTypes'
 import { api } from '@app/api'
 
 type getAgreementsType = {
@@ -8,7 +8,7 @@ type getAgreementsType = {
 }
 
 export const getAgreements = createAsyncThunk('profile/getAgreements', async (data: getAgreementsType) => {
-  const response = await api.get<apiTypes.Agreement[]>(`agreements/user/${data.userId}/partner/${data.dealerId}`)
+  const response = await api.get<Agreement[]>(`agreements/user/${data.userId}/partner/${data.dealerId}`)
   return response.data
 })
 

@@ -258,14 +258,15 @@ export const authSlice = createSlice({
     },
     [refreshToken.fulfilled]: (state, action) => {
       console.log('refreshToken', action)
-
       const jwtObj = JSON.parse(localStorage.getItem('jwtToken'))
       const data = { ...jwtObj, access: action.payload.data.access }
 
       localStorage.setItem('jwtToken', JSON.stringify(data))
-      window.location.href = '/my'
+
+      window.location.reload()
     },
     [refreshToken.rejected]: (state, action) => {
+      console.log('refreshToken rejected')
       localStorage.removeItem('jwtToken')
       window.location.reload()
     },

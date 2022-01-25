@@ -1,3 +1,4 @@
+import { UserData } from './../apiTypes'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 // import { apiTypes } from '@app/apiTypes'
 import { api } from '@app/api'
@@ -48,7 +49,7 @@ export const userSlice = createSlice({
     userId: null,
     dealerId: null,
 
-    userData: null,
+    userData: {} as UserData,
     error: false,
     email: null,
     middleName: false,

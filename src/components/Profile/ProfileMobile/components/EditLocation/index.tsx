@@ -62,7 +62,7 @@ export const EditLocation: React.FC = () => {
               <span className={Styles.title}>{t('profile_addressReg')}</span>
             </div>
             <span className={Styles.subtitle}>
-              {t('profile_shortCity')} {userData.profile?.city}, {t('profile_shortStreet')} {userData.profile?.street},{' '}
+              {t('profile_shortCity')} {userData.profile?.city}, {t('profile_shortStreet')} {userData.profile?.street},
               {t('profile_shortHouse')} {userData.profile?.house_number}
             </span>
             <Label className={Styles.label}>
