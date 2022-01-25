@@ -54,21 +54,28 @@ export const useChat = () => {
   const { REACT_APP_API_HOST, REACT_APP_CHAT_ENDPOINT } = process.env
 
   useEffect(() => {
-    if (!socket) {
-      socket = new WebSocket(`wss://${REACT_APP_API_HOST}${REACT_APP_CHAT_ENDPOINT}?token=${token}`)
+    const connect = () => {
+      if (!socket || socket.readyState === 3) {
+        socket = new WebSocket(`wss://${REACT_APP_API_HOST}${REACT_APP_CHAT_ENDPOINT}?token=${token}`)
 
-      socket.onopen = () => {
-        dispatch(setContent(''))
-      }
+        socket.onopen = () => {
+          dispatch(setContent(''))
+        }
 
-      socket.onerror = () => {
-        dispatch(setContent('error'))
-      }
+        socket.onerror = (err) => {
+          console.log('error', err)
+        }
 
-      socket.onclose = () => {
-        console.log('...websocket is closing')
+        socket.onclose = (ev) => {
+          dispatch(setContent('loading'))
+          console.log('...websocket is closing', ev)
+          if (ev.code === 1006) {
+            connect()
+          }
+        }
       }
     }
+    connect()
   }, [])
 
   if (socket) {

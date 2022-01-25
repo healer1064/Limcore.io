@@ -111,7 +111,7 @@ export const ChatContent = () => {
     if (!IS_GENERAL_CHAT && currentDialogue) {
       dispatch(setCurrentDialogueMember(currentDialogue.other_user))
     }
-  }, [])
+  }, [currentDialogue.other_user])
 
   // Логика скролла
   useEffect(() => {
