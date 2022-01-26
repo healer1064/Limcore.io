@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 // import { getTransactions } from '../../pages/auth/redux/auth.slice'
-import { checkToken, refreshToken, setIsAuth, setWalletConnectSoldLimcs } from '../../pages/auth/redux/authSlice'
+import {
+  checkToken,
+  getLastConnectWallet,
+  refreshToken,
+  setIsAuth,
+  setWalletConnectSoldLimcs,
+} from '../../pages/auth/redux/authSlice'
 
 // import { Footer } from '../Footer'
 import { FooterMobile } from '../Footer/FooterMobile'
@@ -52,12 +58,12 @@ const App = () => {
     const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
     getSoldLimcs().then((res) => dispatch(setWalletConnectSoldLimcs(res)))
     dispatch(getForksPrice())
-
     if (tokenObj.access) {
       dispatch(checkToken({ token: tokenObj.access }))
         .then(() => {
           dispatch(setIsAuth(true))
           dispatch(getUser())
+          dispatch(getLastConnectWallet())
           // dispatch(getTransactions())
           setIsLoading(false)
         })
@@ -67,7 +73,7 @@ const App = () => {
     } else {
       setIsLoading(false)
     }
-  }, [isAuth])
+  }, [])
 
   return (
     <Router>

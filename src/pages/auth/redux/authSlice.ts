@@ -127,12 +127,18 @@ export const login2FA: any = createAsyncThunk('user/login2FA', async (data: any)
   return response.data
 })
 
+export const getLastConnectWallet: any = createAsyncThunk('wallet/getLastConnect', async function () {
+  const response = await api.get('walletconnect/last-connect/')
+  return response.data
+})
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
     isBuyLimcClick: false,
     isAuth: false,
     isSincWithWallet: false,
+    lastSyncedWallet: '',
     walletConnectLimc: '0',
     walletConnectUsdt: '0',
     walletConnectSoldLimcs: 0,
@@ -262,13 +268,14 @@ export const authSlice = createSlice({
       const data = { ...jwtObj, access: action.payload.data.access }
 
       localStorage.setItem('jwtToken', JSON.stringify(data))
-
-      window.location.reload()
     },
     [refreshToken.rejected]: (state, action) => {
       console.log('refreshToken rejected')
       localStorage.removeItem('jwtToken')
       window.location.reload()
+    },
+    [getLastConnectWallet.fulfilled]: (state, action) => {
+      state.lastSyncedWallet = { ...action.payload }
     },
   },
 })

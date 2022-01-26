@@ -14,7 +14,7 @@ import classNames from 'classnames'
 
 export const MenuItem = ({ type }) => {
   const [t] = useTranslation()
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   const isSinc = useAppSelector((state) => state.auth.isSincWithWallet)
   const viewContent = useAppSelector((state) => state.cabinet.viewContent)
@@ -23,19 +23,15 @@ export const MenuItem = ({ type }) => {
   const usdtBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
   const profileComplete = useAppSelector((state) => state.cabinet.profileComplete)
 
-  const openLimc = () => dispatch(changeViewContent('LIMC'))
-  const openUsdt = () => dispatch(changeViewContent('USDT'))
-  const closePopup = () => dispatch(changeViewContent(''))
+  // const openLimc = () => dispatch(changeViewContent('LIMC'))
+  // const openUsdt = () => dispatch(changeViewContent('USDT'))
+  // const closePopup = () => dispatch(changeViewContent(''))
 
   switch (type) {
     case 'limc':
       return (
-        <button
-          type='button'
-          className={classNames(styles.menu__item, styles.menu__balance)}
-          onClick={isSinc ? openLimc : () => {}}
-        >
-          <span className={styles.menu__icon}>{isSinc ? <BlueArrow /> : <ShouldSinc />}</span>
+        <div className={classNames(styles.menu__item, styles.menu__balance)}>
+          <span className={styles.menu__icon}>{isSinc ? null : <ShouldSinc />}</span>
           <img src={balanceLimc} width='40' height='40' className={styles.menu__img} alt='icon' />
           <h5 className={styles.menu__title}>{t('balance')} LIMC</h5>
 
@@ -48,22 +44,18 @@ export const MenuItem = ({ type }) => {
             <p className={styles.menu__sum}>{t('purse_needSync')}</p>
           )}
 
-          <ModalLimc
+          {/* <ModalLimc
             profileComplete={profileComplete}
             balance={limcBalance}
             isActive={viewContent === 'LIMC'}
             onClose={closePopup}
-          />
-        </button>
+          /> */}
+        </div>
       )
     case 'usdt':
       return (
-        <button
-          type='button'
-          className={classNames(styles.menu__item, styles.menu__balance)}
-          onClick={isSinc ? openUsdt : () => {}}
-        >
-          <span className={styles.menu__icon}>{isSinc ? <BlueArrow /> : <ShouldSinc />}</span>
+        <div className={classNames(styles.menu__item, styles.menu__balance)}>
+          <span className={styles.menu__icon}>{isSinc ? null : <ShouldSinc />}</span>
           <img src={balanceUsdt} width='40' height='40' className={styles.menu__img} alt='icon' />
           <h5 className={styles.menu__title}>{t('balance')} USDT</h5>
 
@@ -76,8 +68,8 @@ export const MenuItem = ({ type }) => {
             <p className={styles.menu__sum}>{t('purse_needSync')}</p>
           )}
 
-          <ModalUsdt balance={usdtBalance} isActive={viewContent === 'USDT'} onClose={closePopup} />
-        </button>
+          {/* <ModalUsdt balance={usdtBalance} isActive={viewContent === 'USDT'} onClose={closePopup} /> */}
+        </div>
       )
   }
 }
