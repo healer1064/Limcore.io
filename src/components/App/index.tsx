@@ -6,7 +6,6 @@ import {
   checkToken,
   getLastConnectWallet,
   refreshToken,
-  setIsAuth,
   setWalletConnectSoldLimcs,
 } from '../../pages/auth/redux/authSlice'
 
@@ -55,6 +54,7 @@ const App = () => {
   const isAuth = useAppSelector((state) => state.auth.isAuth)
 
   useEffect(() => {
+    setIsLoading(true)
     getSoldLimcs().then((res) => dispatch(setWalletConnectSoldLimcs(res)))
     dispatch(getForksPrice())
 
@@ -79,7 +79,7 @@ const App = () => {
     }
 
     checkAccessToken()
-  }, [])
+  }, [isAuth])
 
   return (
     <Router>

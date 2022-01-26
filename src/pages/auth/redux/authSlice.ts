@@ -261,7 +261,12 @@ export const authSlice = createSlice({
       }
     },
     [checkToken.rejected]: (state, action) => {
-      throw new Error('token_not_valid')
+      console.log(action)
+      if (action.error.message === 'Request failed with status code 401') {
+        throw new Error('token_not_valid')
+      } else {
+        throw new Error(action.error)
+      }
     },
     [refreshToken.fulfilled]: (state, action) => {
       console.log('refreshToken', action)
