@@ -55,24 +55,30 @@ const App = () => {
   const isAuth = useAppSelector((state) => state.auth.isAuth)
 
   useEffect(() => {
-    const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
     getSoldLimcs().then((res) => dispatch(setWalletConnectSoldLimcs(res)))
     dispatch(getForksPrice())
-    if (tokenObj.access) {
-      dispatch(checkToken({ token: tokenObj.access }))
-        .then(() => {
-          dispatch(setIsAuth(true))
-          dispatch(getUser())
-          dispatch(getLastConnectWallet())
+
+    const checkAccessToken = async () => {
+      const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
+      if (tokenObj.access) {
+        try {
+          await dispatch(checkToken({ token: tokenObj.access }))
+          await dispatch(getUser())
+          await dispatch(getLastConnectWallet())
           // dispatch(getTransactions())
-          setIsLoading(false)
-        })
-        .catch(() => {
-          dispatch(refreshToken({ refresh: tokenObj.refresh }))
-        })
-    } else {
+        } catch (err) {
+          if (err.message === 'token_not_valid') {
+            await dispatch(refreshToken({ refresh: tokenObj.refresh }))
+            await checkAccessToken()
+          } else {
+            console.error(err)
+          }
+        }
+      }
       setIsLoading(false)
     }
+
+    checkAccessToken()
   }, [])
 
   return (

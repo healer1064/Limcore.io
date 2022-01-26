@@ -1,3 +1,4 @@
+import { Message } from './../../../components/Chat/components/MessageComponent/components/Message'
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { api } from '../../../app/api'
@@ -260,7 +261,7 @@ export const authSlice = createSlice({
       }
     },
     [checkToken.rejected]: (state, action) => {
-      throw new Error('access_token_invalid')
+      throw new Error('token_not_valid')
     },
     [refreshToken.fulfilled]: (state, action) => {
       console.log('refreshToken', action)
