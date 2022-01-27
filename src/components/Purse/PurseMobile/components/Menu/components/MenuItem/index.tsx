@@ -70,7 +70,6 @@ export const MenuItem = ({ type }) => {
           {isSinc ? (
             <div className={styles.row}>
               <span>{usdtBalance} USDT</span>
-              <img src={lockIcon} alt='Lock' />
             </div>
           ) : (
             <p className={styles.menu__sum}>{t('purse_needSync')}</p>
