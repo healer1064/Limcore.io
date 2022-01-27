@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 // import { getTransactions } from '../../pages/auth/redux/auth.slice'
-import { checkToken, refreshToken, setIsAuth, setWalletConnectSoldLimcs } from '../../pages/auth/redux/authSlice'
+import {
+  checkToken,
+  getLastConnectWallet,
+  refreshToken,
+  setWalletConnectSoldLimcs,
+} from '../../pages/auth/redux/authSlice'
 
 // import { Footer } from '../Footer'
 import { FooterMobile } from '../Footer/FooterMobile'
@@ -49,23 +54,32 @@ const App = () => {
   const isAuth = useAppSelector((state) => state.auth.isAuth)
 
   useEffect(() => {
-    const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
+    setIsLoading(true)
     getSoldLimcs().then((res) => dispatch(setWalletConnectSoldLimcs(res)))
     dispatch(getForksPrice())
 
-    if (tokenObj.access) {
-      dispatch(checkToken({ token: tokenObj.access }))
-        .then(() => {
-          dispatch(setIsAuth(true))
-          dispatch(getUser())
+    const checkAccessToken = async () => {
+      const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
+      if (tokenObj.access) {
+        try {
+          await dispatch(checkToken({ token: tokenObj.access }))
+          await dispatch(getUser())
+          await dispatch(getLastConnectWallet())
           // dispatch(getTransactions())
-          setIsLoading(false)
-        })
-        .catch(() => {
-          dispatch(refreshToken({ refresh: tokenObj.refresh }))
-        })
-    } else {
+        } catch (err) {
+          if (err.message === 'token_not_valid') {
+            await dispatch(refreshToken({ refresh: tokenObj.refresh }))
+            await checkAccessToken()
+          } else {
+            console.error(err)
+          }
+        }
+      }
       setIsLoading(false)
+    }
+
+    if (!isAuth) {
+      checkAccessToken()
     }
   }, [isAuth])
 
