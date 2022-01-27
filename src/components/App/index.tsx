@@ -78,7 +78,9 @@ const App = () => {
       setIsLoading(false)
     }
 
-    checkAccessToken()
+    if (!isAuth) {
+      checkAccessToken()
+    }
   }, [isAuth])
 
   return (
