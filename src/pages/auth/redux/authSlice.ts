@@ -1,4 +1,3 @@
-import { Message } from './../../../components/Chat/components/MessageComponent/components/Message'
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { api } from '../../../app/api'

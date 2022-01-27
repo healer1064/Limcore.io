@@ -1,13 +1,13 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import BlueArrow from '../../../../images/BlueArrow/BlueArrow'
+// import BlueArrow from '../../../../images/BlueArrow/BlueArrow'
 import { ShouldSinc } from '../../../Balance/Icons/ShouldSinc'
 import { useAppSelector } from '@app/redux/hooks'
 import lockIcon from '@icons/lock-me.svg'
-import { ModalLimc } from '../ModalLimc'
-import { ModalUsdt } from '../ModalUsdt'
-import { changeViewContent } from '../../../../../../../pages/cabinet/redux/cabinetSlice'
-import { useDispatch } from 'react-redux'
+// import { ModalLimc } from '../ModalLimc'
+// import { ModalUsdt } from '../ModalUsdt'
+// import { changeViewContent } from '../../../../../../../pages/cabinet/redux/cabinetSlice'
+// import { useDispatch } from 'react-redux'
 import { balanceLimc, balanceUsdt } from '@components/Purse/PurseDesktop/images'
 import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
@@ -17,11 +17,11 @@ export const MenuItem = ({ type }) => {
   // const dispatch = useDispatch()
 
   const isSinc = useAppSelector((state) => state.auth.isSincWithWallet)
-  const viewContent = useAppSelector((state) => state.cabinet.viewContent)
+  // const viewContent = useAppSelector((state) => state.cabinet.viewContent)
 
   const limcBalance = useAppSelector((state) => state.auth.walletConnectLimc)
   const usdtBalance = useAppSelector((state) => state.auth.walletConnectUsdt)
-  const profileComplete = useAppSelector((state) => state.cabinet.profileComplete)
+  // const profileComplete = useAppSelector((state) => state.cabinet.profileComplete)
 
   // const openLimc = () => dispatch(changeViewContent('LIMC'))
   // const openUsdt = () => dispatch(changeViewContent('USDT'))
