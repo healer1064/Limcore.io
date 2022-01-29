@@ -1,0 +1,52 @@
+@import '../../scss/typography.scss';
+@import '../../scss/vars.scss';
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  margin: 0;
+  padding: 0;
+  padding-top: 5px;
+}
+
+.textarea {
+  display: flex;
+  box-sizing: border-box;
+  padding: 10px 10px 10px 14px;
+  height: 100px;
+  overflow: auto;
+  font-family: $main-font;
+  @include main($color-3A-black);
+  font-weight: $fontWeightMedium;
+  width: 100%;
+  background: $white;
+  resize: none;
+  border: 1.4px solid $color-B4-violet;
+  border-radius: $border-radius;
+
+  &:disabled {
+    opacity: .5;
+  }
+
+  &::placeholder {
+    font-family: $main-font;
+    @include mediumP3($color-B4-violet);
+  }
+
+  &:focus {
+    outline: $outline;
+  }
+}
+
+.textarea_error {
+  border: 1.4px solid $color-FF-red;
+}
+
+.error {
+  font-family: $main-font;
+  @include mediumP3($color-FF-red);
+  margin: 8px 0 0;
+  padding: 0;
+}
+

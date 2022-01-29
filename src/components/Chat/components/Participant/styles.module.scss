@@ -6,7 +6,7 @@
   align-items: center;
   box-sizing: border-box;
   padding: 10px 0;
-  grid-template-columns: 45px 3fr 1fr;
+  grid-template-columns: 45px 3fr 2fr;
   grid-template-rows: repeat(3, minmax(min-content, max-content));
   column-gap: 8px;
   cursor: pointer;

@@ -8,6 +8,7 @@ import { useAppSelector } from '@app/redux/hooks'
 import { setUploadedFile, uploadFile } from '@components/Chat/redux/chatSlice'
 import { useDispatch } from 'react-redux'
 import { Spinner } from '@components/Spinner'
+import { handleInputHeight } from '../../../../lib/utils/handleInputHeight'
 
 export const Textarea = () => {
   const dispatch = useDispatch()
@@ -32,26 +33,31 @@ export const Textarea = () => {
     e.target.value.length < 1 ? setIsButtonVisible(false) : setIsButtonVisible(true)
   }
 
-  const handleInputHeight = (e) => {
-    e.target.value.length !== 0
-      ? (inputRef.current.style.height = e.target.scrollHeight + 'px')
-      : (inputRef.current.style.height = '40px')
-
+  const handleInputChange = (e) => {
+    handleInputHeight(e, inputRef)
+    setInputValue(e.target.value)
     handleSendIconVisibility(e)
   }
 
-  const handleInputChange = (e) => {
-    handleInputHeight(e)
-    setInputValue(e.target.value)
-  }
-
   const handleSubmit = () => {
-    IS_GENERAL_CHAT ? sendGroupMessage(slug, inputValue) : sendDialogueMessage(slug, inputValue)
+    // not empty text || not empty text and has file || not empty text and doesnt have file
+    const defaultSendCondition =
+      inputValue.trim() !== '' || (inputValue.trim() !== '' && file) || (inputValue.trim() !== '' && !file)
+
+    if (defaultSendCondition) {
+      IS_GENERAL_CHAT ? sendGroupMessage(slug, inputValue) : sendDialogueMessage(slug, inputValue)
+    }
+
+    // empty text and has file
+    if (inputValue.trim() === '' && file) {
+      IS_GENERAL_CHAT ? sendGroupMessage(slug, file.name) : sendDialogueMessage(slug, file.name)
+    }
+
+    // Reset states
     setInputValue('')
     setFile(null)
     dispatch(setUploadedFile([]))
     setIsButtonVisible(false)
-
     inputRef.current.style.height = '40px'
   }
 
@@ -68,6 +74,7 @@ export const Textarea = () => {
     if (!response.error) {
       dispatch(setUploadedFile([response.payload.id]))
       setIsLoading(false)
+      setIsButtonVisible(true)
     } else {
       console.log('uploadError')
     }
@@ -101,9 +108,9 @@ export const Textarea = () => {
           className={styles.inputText}
           placeholder='Сообщение'
           onChange={handleInputChange}
-          onCut={handleInputHeight}
-          onPaste={handleInputHeight}
-          onInput={handleInputHeight}
+          onCut={handleInputChange}
+          onPaste={handleInputChange}
+          onInput={handleInputChange}
         />
         <button className={styles.button} type='button' onClick={handleSubmit}>
           {isLoading ? <Spinner /> : isButtonVisible && <img alt='' src={send} className={styles.sendIcon} />}

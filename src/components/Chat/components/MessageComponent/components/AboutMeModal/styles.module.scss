@@ -1,0 +1,58 @@
+@import '../../../../../../scss/typography.scss';
+@import '../../../../../../scss/_vars.scss';
+
+.modal {
+  position: absolute;
+  min-width: 250px;
+  left: 45px;
+  bottom: 40px;
+  z-index: 10;
+  padding: 12px;
+  border-radius: $border-radius;
+  background-color: $white;
+  box-shadow: 1px 2px 3px 4px rgba(20, 20, 20, 0.15);
+}
+
+.modal_avatar {
+  padding: 0;
+  margin: 0px 10px 0 0;
+  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.modal_inner {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.modal_close {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}
+
+.about_block {
+  display: flex;
+  flex-direction: column;
+}
+
+.about_title,
+.about_text {
+  font-family: $main-font;
+  @include main($color-4F-black);
+  font-weight: $fontWeightSemiBold;
+  @include p6;
+  margin-bottom: 5px;
+}
+
+.about_text {
+  margin: 0;
+  padding: 0;
+  font-family: $main-font;
+  @include main($color-99-gray);
+  @include p6;
+}

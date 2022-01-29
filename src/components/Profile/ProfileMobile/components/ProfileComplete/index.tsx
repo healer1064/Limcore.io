@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { changeViewContent } from '../../.././../../pages/cabinet/redux/cabinetSlice'
-import { updateAvatarUser, getUser, updateProfileUser } from '../../../../../app/redux/userSlice'
+import { updateAvatarUser, getUser, updateProfileUser, setUserAboutInfo } from '../../../../../app/redux/userSlice'
 import Styles from './styles.module.scss'
 
 import avatarImage from '../../../../../assets/images/noAvatar.png'
@@ -18,19 +18,25 @@ import smartphoneImage from '../../../../../assets/images/smartphone.png'
 import { useTranslation } from 'react-i18next'
 import { ButtonSmall } from '../../../../../ui-kit/ButtonSmall'
 import { ToggleButton } from '../../../../../ui-kit/ToggleButton'
+import { Label } from '../../../../../ui-kit/Label/index'
+import { Textarea } from '../../../../../ui-kit/Textarea/index'
+import { handleInputHeight } from '../../../../../lib/utils/handleInputHeight'
 
 export const ProfileComplete: React.FC = () => {
   const [t] = useTranslation()
   const dispatch = useAppDispatch()
+  let timeoutId
 
   const [img, setImg] = useState(null)
   const [notificationOpen, setNotificationOpen] = useState(true)
 
   const userData = useAppSelector((state) => state.user.userData)
   const data = useAppSelector((state) => state.user.data)
+  const aboutMe = useAppSelector((state) => state.user.data.about_me)
 
   const chatName = Boolean(data.chat_name)
   const bodyEl = useRef(document.querySelector('body'))
+  const textareaRef = useRef(null)
 
   const closeNotification = (event) => {
     event.stopPropagation()
@@ -65,6 +71,16 @@ export const ProfileComplete: React.FC = () => {
     } else {
       dispatch(getUser())
     }
+  }
+
+  const handleTextareaChange = (e) => {
+    clearTimeout(timeoutId)
+
+    dispatch(setUserAboutInfo({ about_me: e.target.value }))
+
+    timeoutId = setTimeout(async () => {
+      await dispatch(updateProfileUser({ about_me: e.target.value }))
+    }, 5000)
   }
 
   const onShowLimcChange = async () => {
@@ -185,11 +201,24 @@ export const ProfileComplete: React.FC = () => {
           </li>
           <li className={Styles.item} onClick={onClick2FA}>
             <img className={Styles.icon} src={authIcon} alt='Icon' />
-            <div className={`${Styles.wrapper} ${Styles.wrapper_edit}`}>
+            <div className={Styles.wrapper}>
               <div className={Styles.block}>
                 <span className={Styles.content}>{t('profile_2fa')}</span>
               </div>
               <img className={Styles.arrow} src={linkIcon} alt='Icon' />
+            </div>
+          </li>
+          <li className={`${Styles.item} ${Styles.about_me_item}`}>
+            <img className={`${Styles.icon} ${Styles.about_me_icon}`} src={chatIcon} alt='Icon' />
+            <div className={`${Styles.block} ${Styles.about_me_block}`}>
+              <Label className={Styles.about_me_title} titleText={`${t('profile_about_me')}`}>
+                <Textarea
+                  textareaRef={textareaRef}
+                  onChange={handleTextareaChange}
+                  value={aboutMe}
+                  placeholder={t('profile_textarea_text')}
+                />
+              </Label>
             </div>
           </li>
         </ul>

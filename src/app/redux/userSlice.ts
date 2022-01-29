@@ -58,6 +58,7 @@ export const userSlice = createSlice({
       qr_url: '',
     },
     data: {
+      about_me: '',
       avatar: '',
       first_name: '',
       middle_name: '',
@@ -101,6 +102,9 @@ export const userSlice = createSlice({
     },
     setData(state, { payload }) {
       state.data = payload
+    },
+    setUserAboutInfo(state, { payload }) {
+      state.data.about_me = payload.about_me
     },
   },
   extraReducers: (builder) => {
@@ -151,6 +155,7 @@ export const userSlice = createSlice({
   },
 })
 
-export const { setData2FA, setUserId, setDealerId, setUserEmail, setData, setMiddleName } = userSlice.actions
+export const { setData2FA, setUserId, setDealerId, setUserEmail, setData, setMiddleName, setUserAboutInfo } =
+  userSlice.actions
 
 export default userSlice.reducer
