@@ -54,18 +54,20 @@ const App = () => {
   const isAuth = useAppSelector((state) => state.auth.isAuth)
 
   useEffect(() => {
-    setIsLoading(true)
     getSoldLimcs().then((res) => dispatch(setWalletConnectSoldLimcs(res)))
     dispatch(getForksPrice())
 
     const checkAccessToken = async () => {
+      setIsLoading(true)
       const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
       if (tokenObj.access) {
         try {
           await dispatch(checkToken({ token: tokenObj.access }))
-          await dispatch(getUser())
-          await dispatch(getLastConnectWallet())
-          // dispatch(getTransactions())
+          if (isAuth) {
+            await dispatch(getUser())
+            await dispatch(getLastConnectWallet())
+            // dispatch(getTransactions())
+          }
         } catch (err) {
           if (err.message === 'token_not_valid') {
             await dispatch(refreshToken({ refresh: tokenObj.refresh }))
@@ -78,9 +80,7 @@ const App = () => {
       setIsLoading(false)
     }
 
-    if (!isAuth) {
-      checkAccessToken()
-    }
+    checkAccessToken()
   }, [isAuth])
 
   return (
