@@ -1,3 +1,4 @@
+import { checkToken, refreshToken } from './../../../pages/auth/redux/authSlice'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import {
@@ -42,7 +43,7 @@ export const useChat = () => {
   const dispatch = useDispatch()
 
   const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
-  const token = tokenObj.access
+  let token = tokenObj.access
 
   const currentMessages = useAppSelector((state) => state.chat.currentMessages)
   const currentSlug = useAppSelector((state) => state.chat.currentSlug)
@@ -68,8 +69,24 @@ export const useChat = () => {
         socket.onclose = (ev) => {
           dispatch(setContent('loading'))
           console.log('...websocket is closing', ev)
+          // check if the disconnect is caused by an invalid token
           if (ev.code === 1006) {
-            connect()
+            dispatch(checkToken({ token: tokenObj.access })).then(
+              (resolve) => {
+                connect()
+              },
+              (reject) => {
+                dispatch(refreshToken({ refresh: tokenObj.refresh })).then(
+                  (resolve) => {
+                    token = resolve.payload.data.access
+                    connect()
+                  },
+                  (reject) => {
+                    window.location.reload()
+                  },
+                )
+              },
+            )
           }
         }
       }

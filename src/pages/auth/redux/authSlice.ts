@@ -277,6 +277,7 @@ export const authSlice = createSlice({
     [refreshToken.rejected]: (state, action) => {
       console.log('refreshToken rejected')
       localStorage.removeItem('jwtToken')
+      throw new Error(action.error)
     },
     [getLastConnectWallet.fulfilled]: (state, action) => {
       state.lastSyncedWallet = { ...action.payload }
