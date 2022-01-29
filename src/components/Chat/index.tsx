@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './styles.module.scss'
 import { FooterMobile } from '@components/Footer/FooterMobile'
 import { SearchForm } from '@components/Chat/components/SearchForm'
@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next'
 import close from '@icons/greyClose.svg'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { Spinner } from '@components/Spinner'
-import { ButtonBig } from '../../ui-kit/ButtonBig'
 import { useAppSelector } from '@app/redux/hooks'
 import { useChat } from './utils/useChat'
 import { ChatContent } from './components/ChatContent'
@@ -16,7 +15,7 @@ import { IDialogueInterface } from './utils/types'
 export const Chat = ({ handleChatClose }) => {
   const [t] = useTranslation()
   const { width } = useWindowSize()
-  const { joinGroup } = useChat()
+  useChat()
 
   const desktop = width >= 769
 
@@ -30,12 +29,6 @@ export const Chat = ({ handleChatClose }) => {
       const bTime = new Date(b.last_message.updated_at).getTime()
       return bTime - aTime
     })
-
-  const onJoin = () => {
-    joinGroup('general_chat')
-    window.location.reload()
-  }
-
   switch (content) {
     case 'loading':
       return (
@@ -48,16 +41,6 @@ export const Chat = ({ handleChatClose }) => {
         <div className={styles.errorContainer}>
           <div className={styles.errorInner}>
             <p>Please reload the page.</p>
-          </div>
-          <FooterMobile />
-        </div>
-      )
-    case 'no-content':
-      return (
-        <div className={styles.errorContainer}>
-          <div className={styles.joinChat}>
-            <p className={styles.joinChat_title}>Вас еще нет в общем чате? Присоединяйтесь!</p>
-            <ButtonBig onClick={onJoin}>Вступить в чат</ButtonBig>
           </div>
           <FooterMobile />
         </div>

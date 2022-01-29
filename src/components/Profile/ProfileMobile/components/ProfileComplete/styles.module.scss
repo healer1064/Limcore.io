@@ -147,13 +147,31 @@ input[type='file'] {
   height: 100%;
 }
 
-.wrapper_edit {
-  border: none;
-}
-
 .block {
   display: flex;
   flex-direction: column;
+}
+
+.about_me_block {
+  width: 100%;
+  padding: 14px 0;
+}
+
+.about_me_item {
+  height: auto;
+  align-items: flex-start;
+}
+
+.about_me_icon {
+  margin-top: 15px;
+}
+
+.about_me_title {
+  font-family: $main-font;
+  @include main($color-4F-black);
+  font-weight: $fontWeightSemiBold;
+  @include p6;
+  display: inline-block;
 }
 
 .label {

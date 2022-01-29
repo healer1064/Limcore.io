@@ -44,7 +44,7 @@ export const ParticipantsList = ({ onClose, participants, isActive }: IParticipa
   const [isUnblockModalOpened, setIsUnblockModalOpened] = useState(false)
   const currentClickedUser = useAppSelector((state) => state.chat.currentClickedUser)
   const userId = useAppSelector((state) => state.user.userData?.id)
-  const isAdmin = Boolean(participants.find((member) => member.user.id === userId).role)
+  const isAdmin = Boolean(participants.find((member) => member.user.id === userId)?.role)
 
   const sortedPartisipants = [...participants].sort((a, b) => {
     const aMemberStatus = a.user.status || 0

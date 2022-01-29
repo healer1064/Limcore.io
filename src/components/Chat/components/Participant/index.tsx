@@ -25,7 +25,7 @@ interface IParticipantProps {
 }
 
 export const Participant = ({ member, openUnblockModal, isAdmin }: IParticipantProps) => {
-  const { checkDialogueExistence } = useChat()
+  const { unreadMessageCount } = useChat()
   const dispatch = useDispatch()
 
   const [isOpened, setIsOpened] = useState(false)
@@ -53,7 +53,7 @@ export const Participant = ({ member, openUnblockModal, isAdmin }: IParticipantP
 
       dispatch(setCurrentDialogueMember(member.user))
       dispatch(setCurrentSlug(currentMemberDialogueSlug))
-      checkDialogueExistence(member.user.id)
+      unreadMessageCount(member.user.id)
       setIsOpened(true)
     }
   }

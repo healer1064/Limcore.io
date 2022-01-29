@@ -302,6 +302,7 @@ i18n.use(LanguageDetector).init({
         profile_title1: 'Enter your First and Last names, birth date and sex',
         profile_firstName: 'First name',
         profile_firstNameEnter: 'Enter your First name',
+        profile_textarea_text: 'Enter the text',
         profile_lastName: 'Last name',
         profile_lastNameEnter: 'Enter your Last name',
         profile_paternityName: 'Paternity',
@@ -333,6 +334,7 @@ i18n.use(LanguageDetector).init({
 
         profile_phoneNumber: 'Cell number',
         profile_addresses: 'My addresses',
+        profile_about_me: 'About me',
         profile_2fa: 'Two-factor authentication',
         profile_2fa_connect: 'Connect the two-factor authentication',
 
@@ -373,6 +375,7 @@ i18n.use(LanguageDetector).init({
         chat_newName: 'Enter your new chat name',
         chat_nameInChat: 'Your chat name',
         chat_showRaiting: 'Do you want to show your chat raiting?',
+        chat_modal_text: 'Not yet filled',
 
         streams_title_1: 'Edifice build up',
         streams_title_2: 'Surrounding area modification',
@@ -707,6 +710,7 @@ i18n.use(LanguageDetector).init({
         profile_title1: 'Enter your First and Last names, birth date and sex',
         profile_firstName: 'Имя',
         profile_firstNameEnter: 'Введите ваше имя',
+        profile_textarea_text: 'Введите текст',
         profile_lastName: 'Фамилия',
         profile_lastNameEnter: 'Введите вашу фамилию',
         profile_paternityName: 'Отчество',
@@ -740,6 +744,7 @@ i18n.use(LanguageDetector).init({
         profile_addresses: 'Мои адреса',
         profile_2fa: 'Двухфакторная аутентификация',
         profile_2fa_connect: 'Подключите двухфакторную аутентификацию',
+        profile_about_me: 'Обо мне',
 
         profile_addressReg: 'Адрес регистрации',
         profile_addressLetters: 'Письма по этому адресу',
@@ -778,6 +783,7 @@ i18n.use(LanguageDetector).init({
         chat_newName: 'Введите новое имя',
         chat_nameInChat: 'Имя в чатах',
         chat_showRaiting: 'Показывать ваш рейтинг в чате?',
+        chat_modal_text: 'Пока не заполнено',
 
         streams_title_1: 'Ремонт здания',
         streams_title_2: 'Ремонт прилегающей территории',
@@ -1108,6 +1114,7 @@ i18n.use(LanguageDetector).init({
         profile_male: '男',
         profile_female: '女',
         profile_continue: '下一步',
+        profile_textarea_text: '输入文字',
 
         profile_title2: '请输入护照细节',
         profile_pasSer: '组号',
@@ -1131,6 +1138,7 @@ i18n.use(LanguageDetector).init({
         profile_addresses: '我的地址',
         profile_2fa: '双因素身份验证',
         profile_2fa_connect: '连接双因素身份验证',
+        profile_about_me: '关于我',
 
         profile_addressReg: '注册地址',
         profile_addressLetters: '将信寄到这个地址',
@@ -1169,6 +1177,7 @@ i18n.use(LanguageDetector).init({
         chat_newName: '请输入一个新名称',
         chat_nameInChat: '你的聊天名称',
         chat_showRaiting: '在聊天中显示您的评分?',
+        chat_modal_text: '尚未填写',
 
         streams_title_1: '建筑整修',
         streams_title_2: '周边地区的整修',

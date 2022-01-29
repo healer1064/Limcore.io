@@ -121,8 +121,10 @@ export const ChatContent = () => {
         setCurrentPosition(null)
       } else if (messagesEndRef.current && autoScroll) {
         messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight - messagesEndRef.current.clientHeight
+        const currentMessagesIds = []
+        currentMessagesIds.push(currentMessages[currentMessages.length - 1].id)
         if (currentMessages[currentMessages.length - 1]?.id) {
-          sendLastReadedMessage(currentMessages[currentMessages.length - 1].id, slug)
+          sendLastReadedMessage(currentMessagesIds, slug)
         }
       }
     }
@@ -198,7 +200,6 @@ export const ChatContent = () => {
           <RaitingList handleRaitingListClose={closeRating} raitingClassName={raitingClassName} />
         </>
       )}
-      {/* {generalChat.settings.role !== 0 && <Controllers anchorEl={anchorEl} open={open} onClose={closeMenu} />} */}
       <Controllers anchorEl={anchorEl} open={open} onClose={closeMenu} />
       <Textarea />
     </section>

@@ -8,6 +8,7 @@ import limcoreIcon from '@icons/limcore.svg'
 import defaultAvatar from '@icons/defaultAvatar.svg'
 import { IDialogueInterface } from '@components/Chat/utils/types'
 import { useChat } from '@components/Chat/utils/useChat'
+import { useAppSelector } from '../../../../app/redux/hooks'
 
 interface IDialogueProps {
   data: IDialogueInterface
@@ -15,15 +16,17 @@ interface IDialogueProps {
 
 export const Dialogue = ({ data }: IDialogueProps) => {
   const dispatch = useAppDispatch()
-  const { getGroupMessages } = useChat()
+  const { getGroupMessages, getMembersGroup } = useChat()
 
   const IS_GENERAL_CHAT = data.slug === 'general_chat'
   const title = IS_GENERAL_CHAT ? 'Mining Data Centre Limcore' : getUserName(data.other_user)
+  const currentPage = useAppSelector((state) => state.chat.currentPage)
 
   const handleChatOpen = () => {
     dispatch(setCurrentSlug(data.slug))
     dispatch(setContent('content'))
-    getGroupMessages(data.slug, 1)
+    getGroupMessages(data.slug, currentPage)
+    getMembersGroup(data.slug)
     // IS_GENERAL_CHAT ? dispatch(setCurrentSlug('general_chat')) : dispatch(setCurrentSlug(data.slug))
   }
 

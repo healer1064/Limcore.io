@@ -4,7 +4,7 @@ export type TVisibleContent = '' | 'loading' | 'error' | 'content' | 'no-content
 export interface ISendInterface {
   command: number
   group?: string
-  message?: string
+  message?: string | number
   page?: number
 }
 
@@ -23,7 +23,7 @@ export interface IMessageInterface {
   msg_type: number
   updated_at: string
   user: IUserInterface
-  file?: any[]
+  files?: any[]
 }
 
 export interface IDialogueInterface {
@@ -52,6 +52,7 @@ export interface IUserInterface {
   id: number
   last_name?: string
   middle_name?: string
+  about_me?: string
   phone: string
   status: number
   limc_balance: number | string

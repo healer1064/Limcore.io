@@ -7,6 +7,8 @@ import classNames from 'classnames'
 import { useDispatch } from 'react-redux'
 import { setCurrentClickedMessage, setCurrentClickedUser } from '@components/Chat/redux/chatSlice'
 import { useAppSelector } from '@app/redux/hooks'
+import SentIcon from '@icons/chatCheckmark.svg'
+// import ErrorIcon from '@icons/chatCross.svg'
 
 interface IMessage {
   message: IMessageInterface
@@ -23,7 +25,7 @@ export const Message = ({ message, children, notFirstMessage, isMyMsg, openMenu 
   )
   const currentSlug = useAppSelector((state) => state.chat.currentSlug)
 
-  const isAdmin = currentSlug === 'general_chat' && generalChat.settings.role !== 0
+  const isAdmin = currentSlug === 'general_chat' && generalChat?.settings?.role !== 0
   const clickCondition = (!isAdmin && isMyMsg) || isAdmin
   const containerClass = notFirstMessage ? classNames(styles.messageCont, styles.firstMessage) : styles.messageCont
 
@@ -42,8 +44,9 @@ export const Message = ({ message, children, notFirstMessage, isMyMsg, openMenu 
         {children}
         {message.message}
         <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
+        {isMyMsg && <img src={SentIcon} className={styles.sent} alt='Check' />}
       </p>
-      {message.file.length !== 0 && <File file={message.file} />}
+      {message.files.length !== 0 && <File file={message.files} />}
     </div>
   )
 }
