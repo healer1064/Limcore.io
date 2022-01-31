@@ -72,15 +72,18 @@ export const useChat = () => {
           // check if the disconnect is caused by an invalid token
           if (ev.code === 1006) {
             dispatch(checkToken({ token: tokenObj.access })).then(
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
               (resolve) => {
                 connect()
               },
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
               (reject) => {
                 dispatch(refreshToken({ refresh: tokenObj.refresh })).then(
                   (resolve) => {
                     token = resolve.payload.data.access
                     connect()
                   },
+                  // eslint-disable-next-line @typescript-eslint/no-unused-vars
                   (reject) => {
                     window.location.reload()
                   },
@@ -99,7 +102,6 @@ export const useChat = () => {
       const data = JSON.parse(event.data)
       console.log('comming data', data)
 
-      // TODO: очень странное, но рабочее условие, надо бы переделать
       if (data.groups?.length === 0) {
         dispatch(setContent('no-content'))
       } else {

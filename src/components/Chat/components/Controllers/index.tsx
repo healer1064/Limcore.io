@@ -36,13 +36,11 @@ export const Controllers = ({ anchorEl, open, onClose }: IControllers) => {
   const currentMessageId = useAppSelector((state) => state.chat.currentClickedMessage)
 
   const onMessageDelete = () => {
-    console.log(`Delete message #${currentMessageId}`)
     deleteMessage(currentMessageId)
     onClose()
   }
 
   const onUserBlock = () => {
-    console.log(`Block user #${currentMessageUserId}`)
     blockUser(currentMessageUserId, slug)
     onClose()
   }

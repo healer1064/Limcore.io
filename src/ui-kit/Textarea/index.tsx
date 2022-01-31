@@ -1,6 +1,5 @@
 import React from 'react'
 import Styles from './styles.module.scss'
-import { handleInputHeight } from '../../lib/utils/handleInputHeight'
 
 interface TextareaProps {
   className?: string

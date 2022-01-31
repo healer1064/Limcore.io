@@ -71,7 +71,9 @@ export const chatSlice = createSlice({
     },
     setDialogueUnreadedCount: (state, { payload }) => {
       const dialogueIndex = state.dialogues.findIndex((dialogue) => dialogue.slug === payload.group)
-      state.dialogues[dialogueIndex].unread_count = payload.unread_count
+      if (dialogueIndex !== -1) {
+        state.dialogues[dialogueIndex].unread_count = payload.unread_count
+      }
     },
     setContent: (state, { payload }) => {
       state.visibleContent = payload

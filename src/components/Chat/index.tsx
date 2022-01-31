@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styles from './styles.module.scss'
 import { FooterMobile } from '@components/Footer/FooterMobile'
 import { SearchForm } from '@components/Chat/components/SearchForm'
@@ -21,7 +21,6 @@ export const Chat = ({ handleChatClose }) => {
 
   const content = useAppSelector((state) => state.chat.visibleContent)
   const filteredDialogues = useAppSelector((state) => state.chat.filteredDialogues)
-  // TODO когда сортировка будет реализована на бэке - убрать
   const sortedDialogues = [...filteredDialogues]
     .filter((dialogue) => !!dialogue.last_message)
     .sort((a, b) => {
@@ -37,6 +36,7 @@ export const Chat = ({ handleChatClose }) => {
         </div>
       )
     case 'error':
+    case 'no-content':
       return (
         <div className={styles.errorContainer}>
           <div className={styles.errorInner}>

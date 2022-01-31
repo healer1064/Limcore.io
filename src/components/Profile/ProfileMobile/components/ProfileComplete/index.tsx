@@ -20,7 +20,6 @@ import { ButtonSmall } from '../../../../../ui-kit/ButtonSmall'
 import { ToggleButton } from '../../../../../ui-kit/ToggleButton'
 import { Label } from '../../../../../ui-kit/Label/index'
 import { Textarea } from '../../../../../ui-kit/Textarea/index'
-import { handleInputHeight } from '../../../../../lib/utils/handleInputHeight'
 
 export const ProfileComplete: React.FC = () => {
   const [t] = useTranslation()

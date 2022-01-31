@@ -1,14 +1,13 @@
 import React from 'react'
 import styles from './styles.module.scss'
 import active from '@icons/activeStatus.svg'
-import { useAppDispatch } from '@app/redux/hooks'
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setContent, setCurrentSlug } from '../../redux/chatSlice'
 import { getMonthAndDay, getUserName } from '@components/Chat/utils/funcs'
 import limcoreIcon from '@icons/limcore.svg'
 import defaultAvatar from '@icons/defaultAvatar.svg'
 import { IDialogueInterface } from '@components/Chat/utils/types'
 import { useChat } from '@components/Chat/utils/useChat'
-import { useAppSelector } from '../../../../app/redux/hooks'
 
 interface IDialogueProps {
   data: IDialogueInterface
@@ -27,7 +26,6 @@ export const Dialogue = ({ data }: IDialogueProps) => {
     dispatch(setContent('content'))
     getGroupMessages(data.slug, currentPage)
     getMembersGroup(data.slug)
-    // IS_GENERAL_CHAT ? dispatch(setCurrentSlug('general_chat')) : dispatch(setCurrentSlug(data.slug))
   }
 
   return (

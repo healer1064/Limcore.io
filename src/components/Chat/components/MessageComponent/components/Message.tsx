@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../styles.module.scss'
 import { getHoursAndMinutes } from '@components/Chat/utils/funcs'
-import { IDialogueInterface, IMessageInterface } from '@components/Chat/utils/types'
+import { IMessageInterface } from '@components/Chat/utils/types'
 import { File } from '../../File'
 import classNames from 'classnames'
 import { useDispatch } from 'react-redux'
@@ -20,12 +20,12 @@ interface IMessage {
 
 export const Message = ({ message, children, notFirstMessage, isMyMsg, openMenu }: IMessage) => {
   const dispatch = useDispatch()
-  const generalChat = useAppSelector((state) =>
-    state.chat.dialogues.find((dialogue: IDialogueInterface) => dialogue.slug === 'general_chat'),
-  )
+
+  const userId = useAppSelector((state) => state.user.userData.id)
+  const currentUser = useAppSelector((state) => state.chat.genChatMembers.find((member) => member.user.id === userId))
   const currentSlug = useAppSelector((state) => state.chat.currentSlug)
 
-  const isAdmin = currentSlug === 'general_chat' && generalChat?.settings?.role !== 0
+  const isAdmin = currentSlug === 'general_chat' && currentUser.role !== 0
   const clickCondition = (!isAdmin && isMyMsg) || isAdmin
   const containerClass = notFirstMessage ? classNames(styles.messageCont, styles.firstMessage) : styles.messageCont
 
