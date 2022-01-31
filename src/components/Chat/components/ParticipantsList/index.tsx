@@ -39,7 +39,7 @@ const UnblockModalContent = ({ unblockUser, closeUnblockModal }: IUnblockModalCo
 export const ParticipantsList = ({ onClose, participants, isActive }: IParticipantsList) => {
   const [t] = useTranslation()
   const { width } = useWindowSize()
-  const { unblockUser } = useChat()
+  const { unblockUser, getMembersGroup } = useChat()
   const desktop = width >= 769
   const [isUnblockModalOpened, setIsUnblockModalOpened] = useState(false)
   const currentClickedUser = useAppSelector((state) => state.chat.currentClickedUser)
@@ -56,10 +56,10 @@ export const ParticipantsList = ({ onClose, participants, isActive }: IParticipa
   const openUnblockModal = () => setIsUnblockModalOpened(true)
 
   const onUnblockUser = (event: React.SyntheticEvent) => {
-    console.log(`Unblock user #${currentClickedUser}`)
     event.stopPropagation()
     setIsUnblockModalOpened(false)
     unblockUser(currentClickedUser, 'general_chat')
+    getMembersGroup('general_chat')
   }
 
   return isActive ? (

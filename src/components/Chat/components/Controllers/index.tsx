@@ -29,7 +29,7 @@ const StyledMenu = styled((props) => <Menu className={styles.list} elevation={0}
 }))
 
 export const Controllers = ({ anchorEl, open, onClose }: IControllers) => {
-  const { deleteMessage, blockUser } = useChat()
+  const { deleteMessage, blockUser, getMembersGroup } = useChat()
   const slug = useAppSelector((state) => state.chat.currentSlug)
   const userId = useAppSelector((state) => state.user.userData.id)
   const currentMessageUserId = useAppSelector((state) => state.chat.currentClickedUser)
@@ -42,6 +42,7 @@ export const Controllers = ({ anchorEl, open, onClose }: IControllers) => {
 
   const onUserBlock = () => {
     blockUser(currentMessageUserId, slug)
+    getMembersGroup(slug)
     onClose()
   }
 
