@@ -36,7 +36,6 @@ export const Chat = ({ handleChatClose }) => {
         </div>
       )
     case 'error':
-    case 'no-content':
       return (
         <div className={styles.errorContainer}>
           <div className={styles.errorInner}>
@@ -46,6 +45,7 @@ export const Chat = ({ handleChatClose }) => {
         </div>
       )
     case '':
+    case 'no-content':
       return width ? (
         desktop ? (
           <section className={styles.desktop}>
