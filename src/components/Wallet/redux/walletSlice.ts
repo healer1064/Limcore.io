@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { api } from '../../../app/api'
 
 export const getForksPrice: any = createAsyncThunk('landing-page/xchforks', async function () {
-  const response = await api.get('landing-page/xchforks/')
+  const response = await api.get('landing-page/xchforks')
   return response
 })
 
