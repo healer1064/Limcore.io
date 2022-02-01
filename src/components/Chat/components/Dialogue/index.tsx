@@ -15,7 +15,7 @@ interface IDialogueProps {
 
 export const Dialogue = ({ data }: IDialogueProps) => {
   const dispatch = useAppDispatch()
-  const { getGroupMessages, getMembersGroup } = useChat()
+  const { getGroupMessages, getMembersGroup, messageReadAllBeforeCurrent } = useChat()
 
   const IS_GENERAL_CHAT = data.slug === 'general_chat'
   const title = IS_GENERAL_CHAT ? 'Mining Data Centre Limcore' : getUserName(data.other_user)
@@ -26,6 +26,7 @@ export const Dialogue = ({ data }: IDialogueProps) => {
     dispatch(setContent('content'))
     getGroupMessages(data.slug, currentPage)
     getMembersGroup(data.slug)
+    messageReadAllBeforeCurrent(data.last_message.id)
   }
 
   return (

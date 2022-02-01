@@ -115,6 +115,7 @@ export const useChat = () => {
       }
 
       if (data.command === 1) {
+        getGroups()
         if (currentDialogues.some((dialogue) => dialogue.slug === 'general_chat')) {
           if (currentSlug === 'general_chat') {
             const arr = []
@@ -151,7 +152,7 @@ export const useChat = () => {
 
         dispatch(setCurrentPage(data.page))
         dispatch(setWholePages(data.num_pages))
-        dispatch(setCurrentMessages(sortedMessagesByDate.reverse()))
+        dispatch(setCurrentMessages([...sortedMessagesByDate.reverse(), ...currentMessages]))
         dispatch(setLoader(false))
       }
 
@@ -265,6 +266,16 @@ export const useChat = () => {
     send(dataToSend)
   }
 
+  // eslint-disable-next-line camelcase
+  const messageReadAllBeforeCurrent = (message_pk: number) => {
+    const dataToSend = {
+      command: commands.messageReadAllBeforeCurrent,
+      message_pk,
+    }
+
+    send(dataToSend)
+  }
+
   const deleteMessage = (messageId: number) => {
     const dataToSend = {
       command: commands.deleteMessage,
@@ -304,5 +315,6 @@ export const useChat = () => {
     deleteMessage,
     blockUser,
     unblockUser,
+    messageReadAllBeforeCurrent,
   }
 }

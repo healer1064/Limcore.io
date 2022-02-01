@@ -156,12 +156,12 @@ export const ChatContent = () => {
             <Spinner />
           </div>
         )}
-        {!loader && currentMessages.length === 0 && (
+        {/* {!loader && currentMessages.length === 0 && (
           <div className={styles.dialogueEmpty}>
             <p className={styles.dialogueEmptyNoMsgs}>Сообщений пока нет...</p>
             <p className={styles.dialogueEmptyStart}>Начните общение!</p>
           </div>
-        )}
+        )} */}
         {currentMessages.map((msg: IMessageInterface) => {
           const msgDate = getMonthNameWithDate(msg.created_at)
           let buffer = dateBuffer
