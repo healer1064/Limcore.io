@@ -20,6 +20,7 @@ export const Dialogue = ({ data }: IDialogueProps) => {
   const IS_GENERAL_CHAT = data.slug === 'general_chat'
   const title = IS_GENERAL_CHAT ? 'Mining Data Centre Limcore' : getUserName(data.other_user)
   const currentPage = useAppSelector((state) => state.chat.currentPage)
+  const msgText = data.last_message?.message ? data.last_message.message : '*файл*'
 
   const handleChatOpen = () => {
     getGroupMessages(data.slug, currentPage)
@@ -38,7 +39,7 @@ export const Dialogue = ({ data }: IDialogueProps) => {
       />
       {!IS_GENERAL_CHAT && data.other_user.status === 1 && <img alt='' src={active} className={styles.status} />}
       <p className={styles.name}>{title}</p>
-      <p className={styles.message}>{data.last_message?.message}</p>
+      <p className={styles.message}>{msgText}</p>
       <data className={styles.date}>{data.last_message ? getMonthAndDay(data.last_message.created_at) : ''}</data>
       <div className={data.unread_count > 0 ? styles.unreadMessages : styles.unreadMessages_invisible}>
         {data.unread_count}

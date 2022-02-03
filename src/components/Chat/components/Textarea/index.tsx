@@ -34,25 +34,17 @@ export const Textarea = () => {
   }
 
   const handleInputChange = (e) => {
-    // handleInputHeight(e, inputRef)
     handleInputHeight(inputRef)
     setInputValue(e.target.value)
     handleSendIconVisibility(e)
   }
 
   const handleSubmit = () => {
-    // not empty text || not empty text and has file || not empty text and doesnt have file
-    const defaultSendCondition =
-      inputValue.trim() !== '' || (inputValue.trim() !== '' && file) || (inputValue.trim() !== '' && !file)
-
-    if (defaultSendCondition) {
-      IS_GENERAL_CHAT ? sendGroupMessage(slug, inputValue) : sendDialogueMessage(slug, inputValue)
+    if (inputValue.trim() === '' && uploadFile?.length === 0) {
+      return
     }
 
-    // empty text and has file
-    if (inputValue.trim() === '' && file) {
-      IS_GENERAL_CHAT ? sendGroupMessage(slug, '') : sendDialogueMessage(slug, '')
-    }
+    IS_GENERAL_CHAT ? sendGroupMessage(slug, inputValue.trim()) : sendDialogueMessage(slug, inputValue.trim())
 
     // Reset states
     setInputValue('')

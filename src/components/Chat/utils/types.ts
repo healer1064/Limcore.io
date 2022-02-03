@@ -68,3 +68,12 @@ export interface IFileInterface {
   size: number
   type: number
 }
+
+export interface ISendMessage {
+  command: number
+  group?: string
+  recipient?: string
+  message?: string
+  // eslint-disable-next-line camelcase
+  files_pk?: number[]
+}

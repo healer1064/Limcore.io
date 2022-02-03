@@ -40,14 +40,14 @@ export const Message = ({ message, children, notFirstMessage, isMyMsg, openMenu 
       className={isMyMsg ? styles.myMessageCont : containerClass}
       onClick={clickCondition ? onMessageClick : () => {}}
     >
-      <p className={isMyMsg ? styles.myMessage : styles.message}>
+      <div className={isMyMsg ? styles.myMessage : styles.message}>
         {children}
         {message.message}
         <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
         {isMyMsg && <img src={SentIcon} className={styles.sent} alt='Check' />}
         {isMyMsg && message.is_read && <img src={SentIcon} className={styles.read} alt='Check' />}
-      </p>
-      {message.files.length !== 0 && <File file={message.files} />}
+        {message.files.length !== 0 && <File file={message.files} />}
+      </div>
     </div>
   )
 }

@@ -167,6 +167,10 @@ export const ChatContent = () => {
           </div>
         )} */}
         {currentMessages.map((msg: IMessageInterface) => {
+          if (msg.files.length === 0 && (!msg.message || msg.message === '')) {
+            return
+          }
+
           const msgDate = getMonthNameWithDate(msg.created_at)
           let buffer = dateBuffer
 

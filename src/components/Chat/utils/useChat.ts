@@ -13,7 +13,7 @@ import {
   setLoader,
   setCurrentSlug,
 } from '../redux/chatSlice'
-import { ISendInterface, IMessageInterface } from './types'
+import { ISendInterface, IMessageInterface, ISendMessage } from './types'
 import { useAppSelector } from './../../../app/redux/hooks'
 
 const commands = {
@@ -188,37 +188,37 @@ export const useChat = () => {
   }
 
   const sendGroupMessage = (groupName: string, message: string) => {
-    const dataToSend1 = {
+    const dataToSend: ISendMessage = {
       command: commands.sendGroupMessage,
       group: groupName,
-      message,
-      files_pk: uploadedFile,
     }
 
-    const dataToSend2 = {
-      command: commands.sendGroupMessage,
-      group: groupName,
-      message,
+    if (message && message !== '') {
+      dataToSend.message = message
     }
 
-    uploadedFile.length === 0 ? send(dataToSend2) : send(dataToSend1)
+    if (uploadedFile && uploadedFile.length !== 0) {
+      dataToSend.files_pk = uploadedFile
+    }
+
+    send(dataToSend)
   }
 
   const sendDialogueMessage = (recipient: string, message: string) => {
-    const dataToSend1 = {
+    const dataToSend: ISendMessage = {
       command: commands.sendDialogueMessage,
       recipient,
-      message,
-      files_pk: uploadedFile,
     }
 
-    const dataToSend2 = {
-      command: commands.sendDialogueMessage,
-      recipient,
-      message,
+    if (message && message !== '') {
+      dataToSend.message = message
     }
 
-    uploadedFile.length === 0 ? send(dataToSend2) : send(dataToSend1)
+    if (uploadedFile && uploadedFile.length !== 0) {
+      dataToSend.files_pk = uploadedFile
+    }
+
+    send(dataToSend)
   }
 
   const sendLastReadedMessage = (messageId: number[], groupName: string) => {
