@@ -22,9 +22,9 @@ export const Dialogue = ({ data }: IDialogueProps) => {
   const currentPage = useAppSelector((state) => state.chat.currentPage)
 
   const handleChatOpen = () => {
+    getGroupMessages(data.slug, currentPage)
     dispatch(setCurrentSlug(data.slug))
     dispatch(setContent('content'))
-    getGroupMessages(data.slug, currentPage)
     getMembersGroup(data.slug)
     messageReadAllBeforeCurrent(data.last_message.id)
   }

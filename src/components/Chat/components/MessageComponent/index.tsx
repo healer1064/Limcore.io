@@ -49,12 +49,7 @@ export const MessageComponent = ({
         ) : (
           <>
             {aboutModal && (
-              <AboutMeModal
-                aboutUser={user.about_me}
-                closeModal={closeAboutModal}
-                avatar={userHasAvatar}
-                username={userName}
-              />
+              <AboutMeModal user={user} closeModal={closeAboutModal} avatar={userHasAvatar} username={userName} />
             )}
             <button onClick={openAboutModal}>
               <img src={userHasAvatar} alt='avatar' className={styles.foto} />

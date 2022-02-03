@@ -34,7 +34,8 @@ export const Textarea = () => {
   }
 
   const handleInputChange = (e) => {
-    handleInputHeight(e, inputRef)
+    // handleInputHeight(e, inputRef)
+    handleInputHeight(inputRef)
     setInputValue(e.target.value)
     handleSendIconVisibility(e)
   }
@@ -50,7 +51,7 @@ export const Textarea = () => {
 
     // empty text and has file
     if (inputValue.trim() === '' && file) {
-      IS_GENERAL_CHAT ? sendGroupMessage(slug, file.name) : sendDialogueMessage(slug, file.name)
+      IS_GENERAL_CHAT ? sendGroupMessage(slug, '') : sendDialogueMessage(slug, '')
     }
 
     // Reset states

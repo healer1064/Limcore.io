@@ -134,6 +134,8 @@ export const useChat = () => {
 
         if (isDialogueInList) {
           dispatch(setDialoguesLastMessage(data))
+        } else {
+          dispatch(setDialogues([data.group, ...currentDialogues]))
         }
 
         if (currentSlug === data.group.slug || currentDialogueMember.id === data.group.other_user.id) {
@@ -143,6 +145,10 @@ export const useChat = () => {
         }
       }
 
+      if (data.command === 3) {
+        dispatch(setDialogues(data.result))
+      }
+
       if (data.command === 4) {
         const sortedMessagesByDate = data.result.sort((a: any, b: any) => {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -150,14 +156,12 @@ export const useChat = () => {
           return new Date(b.updated_at) - new Date(a.updated_at)
         })
 
-        dispatch(setCurrentPage(data.page))
-        dispatch(setWholePages(data.num_pages))
-        dispatch(setCurrentMessages([...sortedMessagesByDate.reverse(), ...currentMessages]))
-        dispatch(setLoader(false))
-      }
-
-      if (data.command === 3) {
-        dispatch(setDialogues(data.result))
+        if (currentSlug !== '') {
+          dispatch(setCurrentPage(data.page))
+          dispatch(setWholePages(data.num_pages))
+          dispatch(setCurrentMessages([...sortedMessagesByDate.reverse(), ...currentMessages]))
+          dispatch(setLoader(false))
+        }
       }
 
       if (data.command === 5) {

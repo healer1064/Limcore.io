@@ -12,7 +12,9 @@ import {
   setCurrentClickedUser,
   setCurrentDialogueMember,
   setCurrentMessages,
+  setCurrentPage,
   setCurrentSlug,
+  setWholePages,
 } from '../../redux/chatSlice'
 import limcoreIcon from '@icons/limcore.svg'
 import { getMonthNameWithDate, getUserName } from '@components/Chat/utils/funcs'
@@ -79,10 +81,12 @@ export const ChatContent = () => {
 
   // Закрыть диалог
   const onCloseDialogue = () => {
-    dispatch(setCurrentDialogueMember({}))
-    dispatch(setCurrentMessages([]))
-    dispatch(setContent(''))
     dispatch(setCurrentSlug(''))
+    dispatch(setCurrentMessages([]))
+    dispatch(setCurrentDialogueMember({}))
+    dispatch(setContent(''))
+    dispatch(setCurrentPage(0))
+    dispatch(setWholePages(0))
   }
 
   // Подгрузка сообщений по скроллу
@@ -111,7 +115,7 @@ export const ChatContent = () => {
     if (!IS_GENERAL_CHAT && currentDialogue) {
       dispatch(setCurrentDialogueMember(currentDialogue.other_user))
     }
-  }, [currentDialogue.other_user])
+  }, [currentDialogue?.other_user])
 
   // Логика скролла
   useEffect(() => {
@@ -196,7 +200,7 @@ export const ChatContent = () => {
       </div>
       {IS_GENERAL_CHAT && (
         <>
-          <ParticipantsList isActive={isListOpened} onClose={closeList} participants={participants} />
+          {isListOpened && <ParticipantsList onClose={closeList} participants={participants} />}
           <RaitingList handleRaitingListClose={closeRating} raitingClassName={raitingClassName} />
         </>
       )}

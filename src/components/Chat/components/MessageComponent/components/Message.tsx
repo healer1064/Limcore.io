@@ -45,6 +45,7 @@ export const Message = ({ message, children, notFirstMessage, isMyMsg, openMenu 
         {message.message}
         <time className={styles.time}>{getHoursAndMinutes(message.created_at)}</time>
         {isMyMsg && <img src={SentIcon} className={styles.sent} alt='Check' />}
+        {isMyMsg && message.is_read && <img src={SentIcon} className={styles.read} alt='Check' />}
       </p>
       {message.files.length !== 0 && <File file={message.files} />}
     </div>

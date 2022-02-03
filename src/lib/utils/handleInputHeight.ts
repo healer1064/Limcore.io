@@ -1,5 +1,4 @@
-export const handleInputHeight = (e, ref) => {
-  e.target.value.length !== 0
-    ? (ref.current.style.height = e.target.scrollHeight + 'px')
-    : (ref.current.style.height = '40px')
+export const handleInputHeight = (ref: React.RefObject<HTMLInputElement>) => {
+  ref.current.style.height = '40px'
+  ref.current.style.height = ref.current.scrollHeight + 'px'
 }
