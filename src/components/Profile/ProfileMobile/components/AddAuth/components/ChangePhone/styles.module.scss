@@ -7,13 +7,13 @@
 }
 
 .cap {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include semiBoldH4($color-3A-black);
   margin-bottom: 6px;
 }
 
 .subcap {
-  font-family: $main-font;
+  font-family: $font-inter;
   font-style: normal;
   @include subtitle-14px($color-99-gray);
   font-weight: $fontWeightMedium;

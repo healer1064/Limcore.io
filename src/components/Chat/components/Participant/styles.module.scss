@@ -42,7 +42,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-family: $main-font;
+  font-family: $font-inter;
   @include mediumP3($color-39-black);
 }
 
@@ -50,7 +50,7 @@
   grid-area: status;
   padding: 0;
   margin: 0 0 10px 0;
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-99-gray);
   font-weight: $fontWeightMedium;
   font-size: 13px;
@@ -61,7 +61,7 @@
   grid-area: status;
   padding: 0;
   margin: 0 0 10px 0;
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($primary-color);
   font-weight: $fontWeightMedium;
   font-size: 13px;
@@ -72,7 +72,7 @@
   grid-area: rank;
   padding: 0;
   margin: 0;
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-99-gray);
   font-weight: $fontWeightMedium;
   font-size: 13px;
@@ -105,7 +105,7 @@
 .score {
   margin: 0;
   padding: 0;
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-99-gray);
   font-weight: $fontWeightMedium;
   font-size: 13px;

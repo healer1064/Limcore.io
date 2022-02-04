@@ -14,13 +14,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-width: 65px;
   height: 100%;
 
   transition: all 0.3s ease;
+  filter: drop-shadow(0px 0px 16px rgb(25, 226, 255));
+  background: transparent;
   
   &:hover {
     cursor: pointer;
+
     .langTitle,
     path {
       color: $primary-color;
@@ -33,13 +35,24 @@
   }
 }
 
+.text {
+  margin: 0;
+  @include font-style-inter(16px, 500, 24px, $color-E1-white);
+  background-color: transparent;
+}
+
 .arrow {
+  margin-left: 10px;
   height: 15px;
   transform: rotate(90deg);
 }
 
 .arrowActive {
   transform: rotate(-90deg);
+
+  & > svg > path {
+    stroke: $color-FC-yellow;
+  }
 }
 
 .dropdown__menu {
@@ -49,18 +62,19 @@
 
   display: flex;
   flex-direction: column;
-  padding: 18px 16px;
+  padding: 40px;
   border-radius: $border-radius;
   
-  background: $color-F9-white;
+  background: $color-19-dark;
   box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
   list-style: none;
-  transition: opacity 0.3s ease;
+  transition: opacity .3s ease;
   opacity: 0;
   visibility: hidden;
   
   &.active {
     opacity: 1;
     visibility: visible;
+    transition: opacity 0.3s ease;
   }
 }

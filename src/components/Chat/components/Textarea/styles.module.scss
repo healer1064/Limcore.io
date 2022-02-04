@@ -64,7 +64,7 @@
   padding: 10px 10px 10px 14px;
   margin: 10px 0;
   height: 40px;
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-3A-black);
   font-weight: $fontWeightMedium;
   width: 100%;
@@ -77,7 +77,7 @@
   &::placeholder {
     display: flex;
     box-sizing: border-box;
-    font-family: $main-font;
+    font-family: $font-inter;
     @include main($color-B4-violet);
     font-weight: $fontWeightMedium;
   }

@@ -40,7 +40,7 @@
   height: 36px;
   border-radius: 50%;
   background: $color-EF-white;
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-99-gray);
   font-weight: $fontWeightMedium;
   @include p2;
@@ -69,7 +69,7 @@
 }
 
 .caption {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include semiBoldH4($color-3A-black);
   margin-bottom: 20px;
 }
@@ -98,7 +98,7 @@
     outline: none;
 
     &::placeholder {
-      font-family: $main-font;
+      font-family: $font-inter;
       @include mediumP2($color-B4-violet);
     }
 

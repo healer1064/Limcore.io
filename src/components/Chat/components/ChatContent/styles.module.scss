@@ -68,7 +68,7 @@
   grid-area: name;
   padding: 0;
   margin: 0;
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-39-black);
   font-weight: $fontWeightSemiBold;
   font-size: 14px;
@@ -80,7 +80,7 @@
   grid-area: status;
   padding: 0;
   margin: 0;
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-B4-violet);
   font-weight: $fontWeightMedium;
   font-size: 13px;
@@ -95,7 +95,7 @@
     grid-area: status;
     padding: 0;
     margin: 0;
-    font-family: $main-font;
+    font-family: $font-inter;
     @include main($primary-color);
     font-weight: $fontWeightMedium;
     font-size: 13px;

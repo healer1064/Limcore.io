@@ -23,12 +23,12 @@
 }
 
 .title {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include mediumP3($color-99-gray)
 }
 
 .subtitle {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-3A-black);
   font-weight: $fontWeightSemiBold;
   font-size: 14px;
@@ -42,7 +42,7 @@
 }
 
 .caption {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-3A-black);
   font-weight: $fontWeightSemiBold;
   @include h4;
@@ -50,7 +50,7 @@
 }
 
 .subcaption {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include mediumP3($color-99-gray);
 }
 

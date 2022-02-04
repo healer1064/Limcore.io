@@ -10,7 +10,7 @@
 }
 
 .title {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-3A-black);
   font-weight: $fontWeightSemiBold;
   font-size: 24px;
@@ -29,7 +29,7 @@
   padding: 11px 0;
   width: 95%;
   height: 45px;
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($primary-color);
   font-weight: $fontWeightSemiBold;
   font-size: 16px;
@@ -152,13 +152,13 @@
     padding: 16px 10px;
     margin-top: 10px;
     height: 45px;
-    font-family: $main-font;
+    font-family: $font-inter;
     font-style: normal;
     font-weight: $fontWeightMedium;
     font-size: 16px;
   
     &::placeholder {
-      font-family: $main-font;
+      font-family: $font-inter;
       @include main($color-B4-violet);
       font-weight: $fontWeightMedium;
       font-size: 16px;

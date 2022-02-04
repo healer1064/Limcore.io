@@ -183,12 +183,12 @@ $fontWeightUltraWide: 900;
 }
 
 @mixin section-title($color) {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include semiBoldH4($color);
 }
 
 @mixin subtitle-14px($color) {
-  font-family: $main-font;
+  font-family: $font-inter;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
@@ -196,7 +196,7 @@ $fontWeightUltraWide: 900;
 }
 
 @mixin subtitle-13px($color) {
-  font-family: $main-font;
+  font-family: $font-inter;
   font-size: 13px;
   font-weight: $fontWeightMedium;
   line-height: 20px;
@@ -204,7 +204,7 @@ $fontWeightUltraWide: 900;
 }
 
 @mixin second-subtitle-13px($color) {
-  font-family: $main-font;
+  font-family: $font-inter;
   font-size: 13px;
   font-weight: $fontWeightMedium;
   line-height: 18px;

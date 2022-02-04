@@ -26,7 +26,7 @@ export const LanguagePopup = ({ position, footerStyles }: ILanguagePopupProps) =
   const [showPopapLanguage, setShowPopapLanguage] = useState(false)
 
   // Прокидывание позиции окна выбора языка
-  const elLangOptionsStyles = position || { top: '30px', left: '-33px', background: '#f9f9f7' }
+  const elLangOptionsStyles = position || { top: '30px', left: '-33px', background: '#192A2C' }
 
   // Извращения с стилями для футера
   const footerLangStyles = footerStyles ? { height: '100%', marginBottom: '25px' } : {}
@@ -46,24 +46,9 @@ export const LanguagePopup = ({ position, footerStyles }: ILanguagePopupProps) =
         onClick={() => setShowPopapLanguage(!showPopapLanguage)}
         style={footerBlockStyles}
       >
-        {i18n.language === 'ru' && (
-          <>
-            <img src={RUS} alt='Флаг' className={Styles.img} />
-            <span className={Styles.langTitle}>RU</span>
-          </>
-        )}
-        {i18n.language === 'en' && (
-          <>
-            <img src={ENG} alt='Флаг' className={Styles.img} />
-            <span className={Styles.langTitle}>EN</span>
-          </>
-        )}
-        {i18n.language === 'cn' && (
-          <>
-            <img src={CHN} alt='Флаг' className={Styles.img} />
-            <span className={Styles.langTitle}>CN</span>
-          </>
-        )}
+        {i18n.language === 'ru' && <span className={Styles.langTitle}>RU</span>}
+        {i18n.language === 'en' && <span className={Styles.langTitle}>EN</span>}
+        {i18n.language === 'cn' && <span className={Styles.langTitle}>CN</span>}
 
         <span className={classNames(showPopapLanguage && Styles.arrowActive, Styles.arrow)}>
           <VectorIcon />
