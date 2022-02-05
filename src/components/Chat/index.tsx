@@ -22,10 +22,10 @@ export const Chat = ({ handleChatClose }) => {
   const content = useAppSelector((state) => state.chat.visibleContent)
   const filteredDialogues = useAppSelector((state) => state.chat.filteredDialogues)
   const sortedDialogues = [...filteredDialogues]
-    .filter((dialogue) => !!dialogue.last_message)
+    // .filter((dialogue) => !!dialogue.last_message)
     .sort((a, b) => {
-      const aTime = new Date(a.last_message.updated_at).getTime()
-      const bTime = new Date(b.last_message.updated_at).getTime()
+      const aTime = new Date(a.last_message?.updated_at).getTime()
+      const bTime = new Date(b.last_message?.updated_at).getTime()
       return bTime - aTime
     })
   switch (content) {

@@ -20,13 +20,19 @@ export const Textarea = () => {
   const [file, setFile] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
+  const currentDialogueMember = useAppSelector((state) => state.chat.currentDialogueMember)
   const _slug = useAppSelector((state) => state.chat.currentSlug)
   let slug = _slug
-  const IS_GENERAL_CHAT = slug === 'general_chat'
 
-  const currentDialogueMember = useAppSelector((state) => state.chat.currentDialogueMember)
-  if (currentDialogueMember.id) {
+  const IS_GENERAL_CHAT = slug === 'general_chat'
+  const IS_SUPPORT = slug.includes('support')
+
+  if (currentDialogueMember?.id) {
     slug = String(currentDialogueMember.id)
+  }
+
+  if (IS_SUPPORT) {
+    slug = _slug
   }
 
   const handleSendIconVisibility = (e) => {
@@ -44,7 +50,9 @@ export const Textarea = () => {
       return
     }
 
-    IS_GENERAL_CHAT ? sendGroupMessage(slug, inputValue.trim()) : sendDialogueMessage(slug, inputValue.trim())
+    IS_GENERAL_CHAT || IS_SUPPORT
+      ? sendGroupMessage(slug, inputValue.trim())
+      : sendDialogueMessage(slug, inputValue.trim())
 
     // Reset states
     setInputValue('')

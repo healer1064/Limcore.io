@@ -117,7 +117,7 @@ export const useChat = () => {
       if (data.command === 1) {
         getGroups()
         if (currentDialogues.some((dialogue) => dialogue.slug === 'general_chat')) {
-          if (currentSlug === 'general_chat') {
+          if (currentSlug === 'general_chat' || currentSlug.includes('support')) {
             const arr = []
             arr.push(data.message)
             dispatch(setCurrentMessages([...currentMessages, ...arr]))

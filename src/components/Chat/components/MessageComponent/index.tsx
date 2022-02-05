@@ -9,6 +9,7 @@ import { useAppSelector } from '@app/redux/hooks'
 import classNames from 'classnames'
 import { Message } from './components/Message'
 import { AboutMeModal } from './components/AboutMeModal/AboutMeModal'
+import supportImage from '@images/support.png'
 
 interface IMessageComponent {
   user: IUserInterface
@@ -30,11 +31,17 @@ export const MessageComponent = ({
   openMenu,
 }: IMessageComponent) => {
   const currentSlug = useAppSelector((state) => state.chat.currentSlug)
-  const toShowRaiting = Boolean(user.limc_balance)
   const [aboutModal, setAboutModal] = useState(false)
 
+  const IS_SUPPORT = currentSlug.includes('support')
+  const IS_GENERAL_CHAT = currentSlug === 'general_chat'
+  const toShowRaiting = Boolean(user.limc_balance)
+
+  let avatar = null
+  const notSupportAvatar = user.avatar ? user.avatar : defaultAvatar
+  IS_SUPPORT ? (avatar = supportImage) : (avatar = notSupportAvatar)
+
   const isDateAbove = date ? classNames(styles.member, styles.firstMessageMember) : styles.member
-  const userHasAvatar = user.avatar ? user.avatar : defaultAvatar
   const userName = isMyMsg ? '' : getUserName(user)
 
   const openAboutModal = () => setAboutModal(true)
@@ -48,11 +55,11 @@ export const MessageComponent = ({
           <Message message={message} openMenu={openMenu} isMyMsg />
         ) : (
           <>
-            {aboutModal && (
-              <AboutMeModal user={user} closeModal={closeAboutModal} avatar={userHasAvatar} username={userName} />
+            {aboutModal && IS_GENERAL_CHAT && (
+              <AboutMeModal user={user} closeModal={closeAboutModal} avatar={avatar} username={userName} />
             )}
             <button onClick={openAboutModal}>
-              <img src={userHasAvatar} alt='avatar' className={styles.foto} />
+              <img src={avatar} alt='avatar' className={styles.foto} />
             </button>
             {user.status === 1 && <img alt='status' src={active} className={styles.status} />}
 
