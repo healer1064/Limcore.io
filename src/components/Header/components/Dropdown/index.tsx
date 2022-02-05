@@ -10,8 +10,16 @@ interface IDropdown {
 
 export const Dropdown = ({ title, children }: IDropdown) => {
   const [isOpened, setIsOpened] = useState(false)
-  const open = () => setIsOpened(true)
-  const close = () => setIsOpened(false)
+
+  let timeout = null
+  const open = () => {
+    clearInterval(timeout)
+    setIsOpened(true)
+  }
+
+  const close = () => {
+    timeout = setTimeout(() => setIsOpened(false), 100)
+  }
 
   return (
     <div className={Styles.dropdown}>

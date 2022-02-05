@@ -5,7 +5,6 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  background: $color-19-black;
   box-sizing: border-box;
   margin: 15px auto;
   padding: 0;
@@ -21,7 +20,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1024px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -42,6 +41,12 @@
 .item__link {
   text-decoration: none;
   @include font-style-inter(16px, 500, 24px, $color-E1-white);
+  transition: filter .3s ease;
+
+  &:hover {
+    filter: drop-shadow(0px 0px 15px rgb(25, 226, 255));
+    transition: filter .3s ease;
+  }
 }
 
 .link {

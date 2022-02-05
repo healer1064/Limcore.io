@@ -16,6 +16,10 @@
 .langTitle {
   display: inline-block;
   margin-right: 10px;
+
+  @include font-style-inter(16px, 500, 24px, $color-FC-yellow);
+  text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
 .block {
@@ -47,13 +51,6 @@
     }
   }
 
-  span {
-    font-family: $font-inter;
-    @include mediumP3($color-67-black);
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-  }
-
   .svg {
     transition: stroke 0.3s ease;
   }
@@ -83,10 +80,13 @@
 .el__langoptions {
   position: absolute;
   z-index: 10;
+  top: calc(100% + 10px) !important;
+
   display: flex;
   flex-direction: column;
   padding: 40px;
   border-radius: $border-radius;
+
   box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
   background: $color-19-dark;
   list-style: none;

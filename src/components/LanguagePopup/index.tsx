@@ -23,7 +23,18 @@ export const LanguagePopup = ({ position, footerStyles }: ILanguagePopupProps) =
   const [t, i18n] = useTranslation()
   const { width } = useWindowSize()
   const mobile = width < 769
+
   const [showPopapLanguage, setShowPopapLanguage] = useState(false)
+
+  let timeout = null
+  const showPopup = () => {
+    clearInterval(timeout)
+    setShowPopapLanguage(true)
+  }
+
+  const hidePopup = () => {
+    timeout = setTimeout(() => setShowPopapLanguage(false), 100)
+  }
 
   // Прокидывание позиции окна выбора языка
   const elLangOptionsStyles = position || { top: '30px', left: '-33px', background: '#192A2C' }
@@ -43,7 +54,8 @@ export const LanguagePopup = ({ position, footerStyles }: ILanguagePopupProps) =
     <div className={Styles.lang} style={footerLangStyles}>
       <nav
         className={classNames(Styles.block, showPopapLanguage && Styles.active)}
-        onClick={() => setShowPopapLanguage(!showPopapLanguage)}
+        onMouseEnter={showPopup}
+        onMouseLeave={hidePopup}
         style={footerBlockStyles}
       >
         {i18n.language === 'ru' && <span className={Styles.langTitle}>RU</span>}
@@ -57,6 +69,8 @@ export const LanguagePopup = ({ position, footerStyles }: ILanguagePopupProps) =
       <div
         className={classNames(Styles.el__langoptions, showPopapLanguage && Styles.active)}
         style={elLangOptionsStyles}
+        onMouseEnter={showPopup}
+        onMouseLeave={hidePopup}
       >
         {languages.map((lang) => {
           let divClass = null
