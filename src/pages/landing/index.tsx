@@ -3,6 +3,7 @@ import Styles from './styles.module.scss'
 
 import { Main } from './components/Main'
 // import { Calculator } from './components/Calculator'
+import { GamificationOfMining } from './components/GamificationOfMining'
 import { RoadMap } from './components/RoadMap'
 import { Team } from './components/Team'
 // import { UpEcosystem } from './components/UpEcosystem'
@@ -16,6 +17,7 @@ export const LandingPage: React.FC = () => {
     <div className={Styles.landing}>
       <Main />
       {/* <Calculator /> */}
+      <GamificationOfMining />
       <RoadMap />
       <Team />
       {/* <UpEcosystem /> */}
