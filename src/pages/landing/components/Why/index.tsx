@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import Lottie from 'react-lottie'
 import packmann from '@animations/packman.json'
 import useWindowSize from '@helpers/useWindowSizeHook'
-
+import noise from '../../../../assets/images/noise.png'
 export const Why: React.FC = () => {
   const { width } = useWindowSize()
   const defaultOptions = {
@@ -17,6 +17,7 @@ export const Why: React.FC = () => {
   return (
     <section className={styles.why}>
       <div className={styles.container}>
+        <div className={styles.noise} />
         <h2 className={styles.title}>Почему стоимость LIMC будет раст</h2>
         <p className={styles.description}>
           Экосистема Limcore не стоит на месте! Мы добавляем новые токены для майнинга и коины для валидации, увеличивая
