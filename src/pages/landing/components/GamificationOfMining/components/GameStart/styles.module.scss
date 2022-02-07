@@ -1,0 +1,77 @@
+.gameStart {
+  > h2 {
+    color: white;
+  }
+
+  p,
+  h2,
+  li {
+    font-family: "IbmPlexSans", "Arial", "Helvetica", sans-serif;
+    line-height: 24px;
+    color: white;
+  }
+}
+
+.gameStart__twoMods {
+  display: flex;
+  justify-content: space-between;
+
+  > div {
+    height: calc(211px - 30px);
+    overflow-y: auto;
+
+    &:first-of-type {
+      max-width: 150px;
+      margin-right: 25px;
+    }
+
+    &:last-of-type {
+      max-width: 300px;
+      margin-left: 25px;
+    }
+
+    @media all and (max-width: 768px) {
+      padding: 30px 30px 0 30px;
+
+      &:first-of-type {
+        margin-right: 6px;
+      }
+
+      &:last-of-type {
+        margin-left: 6px;
+      }
+    }
+  }
+
+  h3 {
+    font-family: "Press Start 2P", sans-serif;
+    font-size: 16px;
+    color: rgba(252, 254, 1, 1);
+  }
+
+  p {
+    word-break: break-word;
+  }
+}
+
+.gameStart__twoModsWrapper {
+  max-width: 550px;
+}
+
+.gameStart__blockquote {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+
+  > blockquote {
+    height: 250px;
+    padding: 40px 54px;
+    margin: 0;
+  }
+
+  > p {
+    margin: 0;
+    color: rgba(252, 255, 0, 1);
+  }
+}
