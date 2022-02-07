@@ -46,6 +46,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
     "react-scroll": "^1.8.4",
+    "react-transition-group": "^4.4.2",
     "react-use-localstorage": "^3.5.3",
     "redux-devtools-extension": "^2.13.9",
     "sass-loader": "^12.1.0",

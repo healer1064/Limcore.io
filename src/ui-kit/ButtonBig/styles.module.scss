@@ -6,16 +6,17 @@
   border: 2px solid $color-FC-yellow;
   border-radius: 30px;
 
-  @include font-style-ibmPlexSans(18px, 600, 22px, $primary-color);
+  @include font-style-ibmPlexSans(18px, 600, 22px, $color-19-black);
   text-transform: uppercase;
   
-  background-color: transparent;
-  transition: color .3s ease, border .3s ease;
+  background-color: $primary-color;
+  transition: color .3s ease, filter .3s ease;
   outline: none;
+  filter: drop-shadow(0px 0px 15px rgba(252, 255, 0, .5));
   
   &:hover {
-    transition: color .3s ease;
-    color: $white;
+    filter: drop-shadow(0px 0px 15px rgb(252, 255, 0));
+    transition: color .3s ease, filter .3s ease;
     cursor: pointer;
   }
 
