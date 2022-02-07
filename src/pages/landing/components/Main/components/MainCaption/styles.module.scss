@@ -2,6 +2,8 @@
 @import '../../../../../../scss/vars.scss';
 
 .container {
+  position: relative;
+
   max-width: 990px;
   width: 100%;
   margin: 0 auto;
@@ -16,6 +18,11 @@
   text-align: center;
 }
 
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
 .list {
   display: flex;
   flex-direction: column;
@@ -24,6 +31,10 @@
 }
 
 .item {
+  position: relative;
+
+  width: fit-content;
+
   &:not(:last-child) {
     margin-bottom: 73px;
   }
@@ -42,7 +53,86 @@
   @include font-style-ibmPlexSans(16px, 400, 22px, $color-E1-white)
 }
 
-.popup__container {
+.button {
+  margin-bottom: 55px;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 317px;
+  height: 158px;
+
+  background-image: url('../../../../../../assets/icons/infoBlockBorders.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.info__subtitle {
+  margin: 0;
+  padding: 0;
+  max-width: 242px;
+  @include font-style-ibmPlexSans(16px, 400, 22px, $color-E1-white);
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.animation {
+  pointer-events: none;
   position: absolute;
-  visibility: hidden;
+  top: 15%;
+  left: 15%;
+}
+
+.item__popup {
+  margin-left: 6px;
+}
+
+// Popup
+@keyframes show-popup {
+  0% {
+    opacity: .25;
+  }
+  50% {
+    opacity: .5;
+  }
+  75% {
+    opacity: .75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.popup {
+  position: absolute;
+  top: 120%;
+  right: 10%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 358px;
+  height: 174px;
+
+  background-image: url('../../../../../../assets/icons/infoBlockBorders2.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.popup__subtitle {
+  max-width: 261px;
+}
+
+.popup.entering {
+  animation: show-popup .7s forwards;
+}
+
+.popup.exiting {
+  animation: show-popup .7s reverse;
 }
