@@ -2,12 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 0;
+  padding: 20px;
 }
 
 .wrapper {
   position: relative;
   display: flex;
-  justify-content: flex-end;
-  width: 72%;
+  align-items: center;
+  justify-content: space-between;
+
+  @media all and (max-width: 1210px) {
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+  }
 }
