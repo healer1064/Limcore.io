@@ -1,7 +1,21 @@
 .garden {
-  position: absolute;
-  top: -130px;
-  left: 0;
-  width: clamp(450px, 100vw, 1000px);
-  height: clamp(400px, 720px, 900px);
+  width: 670px;
+  height: min(720px, 900px);
+  margin: 0 0 60px 0;
+
+  @media all and (max-width: 680px) {
+    width: 600px;
+    height: 600px;
+  }
+
+  @media all and (max-width: 605px) {
+    width: 450px;
+    height: 450px;
+    margin: 0;
+  }
+
+  @media all and (max-width: 450px) {
+    width: 300px;
+    height: 300px;
+  }
 }
