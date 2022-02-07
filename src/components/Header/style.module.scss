@@ -4,9 +4,9 @@
 .header {
   display: flex;
   justify-content: center;
+  padding: 39px 0;
   width: 100%;
   box-sizing: border-box;
-  margin: 15px auto;
   padding: 0;
 }
 
@@ -121,9 +121,12 @@
 
 .profileBtn {
   padding: 8px 18px;
-  margin: 0 0 0 20px;
-  border: 1px solid $color-FC-yellow;
-  border-radius: $border-radius;
+  margin: 0 0 0 44px;
+  border: 2px solid $color-FC-yellow;
+  border-radius: 30px;
+
+  @include font-style-ibmPlexSans(16px, 500, 22px, $primary-color);
+  
   background-color: transparent;
   transition: color .3s ease, border .3s ease;
   outline: none;
@@ -135,29 +138,15 @@
     text-decoration: none;
     transition: color .3s ease;
     outline: none;
-    
-    & > svg > path,
-    & > svg > ellipse {
-      transition: stroke .3s ease;
-    }
   }
 
   &:hover {
-    border: 1px solid $color-2D-blue;
-    transition: border .3s ease;
+    transition: color .3s ease;
 
     & > .profileBtn_link {
-      color: $color-2D-blue;
+      color: $white;
       transition: color .3s ease;
-      & > svg > path,
-      & > svg > ellipse {
-        stroke: $color-2D-blue;
-        transition: stroke .3s ease;
-      }
     }
-  }
-  &:focus {
-    outline: $outline;
   }
 }
 
@@ -166,33 +155,19 @@
   align-items: center;
   padding: 8px 18px;
   margin: 0 0 0 20px;
-  border: 1px solid $color-FC-yellow;
-  border-radius: $border-radius;
-  @include semiBoldH4($color-FC-yellow);
+  border: 2px solid $color-FC-yellow;
+  border-radius: 30px;
+
+  @include font-style-ibmPlexSans(16px, 500, 22px, $primary-color);
   text-decoration: none;
+  
   outline: none;
   background-color: $white;
-  transition: color .3s ease, border .3s ease;
-    
-  & > svg > path,
-  & > svg > ellipse {
-    transition: stroke .3s ease;
-  }  
+  transition: color .3s ease;
 
   &:hover {
-    border: 1px solid $color-2D-blue;
-    color: $color-2D-blue;
-    transition: color .3s ease, border .3s ease;
-
-    & > svg > path,
-    & > svg > ellipse {
-      stroke: $color-2D-blue;
-      transition: stroke .3s ease;
-    }
-  }
-
-  &:focus {
-    outline: $outline;
+    color: $white;
+    transition: color .3s ease;
   }
 }
 
