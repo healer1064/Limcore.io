@@ -3,7 +3,6 @@ import Styles from './style.module.scss'
 import { Link as LinkDom } from 'react-router-dom'
 
 import logoIcon from '../../assets/images/headerLogo.png'
-import { LoginIcon } from '@icons/LoginIcon'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import ModalAuth from '../../pages/landing/components/ModalAuth'
 import { setIsBuyLimcClick } from '../../pages/auth/redux/authSlice'
@@ -103,13 +102,12 @@ export const Header: React.FC = () => {
           {isAuth ? (
             <button className={Styles.profileBtn} type='button'>
               <LinkDom to='/my' className={Styles.profileBtn_link}>
-                <LoginIcon />
-                {t('profile')}
+                {/* {t('profile')} */}
+                Подключить кошелек
               </LinkDom>
             </button>
           ) : (
             <button className={Styles.loginBtn} onClick={handleLoginModalOpen} type='button'>
-              <LoginIcon />
               {t('login')}
             </button>
           )}

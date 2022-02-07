@@ -5,9 +5,44 @@
   max-width: 990px;
   width: 100%;
   margin: 0 auto;
+  padding: 39px 0;
 }
 
 .title {
+  margin: 0 0 63px 0;
+  padding: 0;
+
   @include font-style-pressStart(41px, 400, 65px, #F5F5EF);
-  // font-family: 'PressStart'
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+
+  list-style-type: none;
+}
+
+.item {
+  &:not(:last-child) {
+    margin-bottom: 73px;
+  }
+}
+
+.item__title {
+  margin: 0 0 16px 0;
+  @include font-style-ibmPlexSans(26px, 600, 22px, $primary-color);
+  text-transform: uppercase;
+}
+
+.item__subtitle {
+  display: flex;
+  align-items: center;
+  margin: 0 0 6px 0;
+  @include font-style-ibmPlexSans(16px, 400, 22px, $color-E1-white)
+}
+
+.popup__container {
+  position: absolute;
+  visibility: hidden;
 }
