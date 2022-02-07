@@ -3,7 +3,6 @@ import Styles from './style.module.scss'
 import { Link as LinkDom } from 'react-router-dom'
 
 import logoIcon from '../../assets/images/headerLogo.png'
-import { LoginIcon } from '@icons/LoginIcon'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import ModalAuth from '../../pages/landing/components/ModalAuth'
 import { setIsBuyLimcClick } from '../../pages/auth/redux/authSlice'
@@ -20,11 +19,17 @@ export const Header: React.FC = () => {
   const isAuth = useAppSelector((state) => state.auth.isAuth)
   const isBuyLimcClick = useAppSelector((state) => state.auth.isBuyLimcClick)
 
-  const links = [
+  const infoLinks = [
     { id: 1, value: 'Whitepaper', link: 'limcore' },
     { id: 2, value: 'Команда', link: 'roadmap' },
     { id: 3, value: 'FAQ', link: 'team' },
     { id: 5, value: 'Вакансии', link: 'questions' },
+    { id: 6, value: 'Для СМИ', link: 'questions' },
+  ]
+
+  const partnersLinks = [
+    { id: 2, value: 'Команда', link: 'roadmap' },
+    { id: 1, value: 'Whitepaper', link: 'limcore' },
     { id: 6, value: 'Для СМИ', link: 'questions' },
   ]
 
@@ -64,28 +69,45 @@ export const Header: React.FC = () => {
           <img src={logoIcon} alt='Лого' />
         </a>
         <ul className={Styles.list}>
-          <Dropdown title='Информация'>
-            {links.map((item) => {
-              return (
-                <a className={Styles.link} key={item.id} href={`#${item.link}`} onClick={(e) => handleClick(e)}>
-                  {item.value}
-                </a>
-              )
-            })}
-          </Dropdown>
+          <li className={Styles.item}>
+            <Dropdown title='Информация'>
+              {infoLinks.map((item) => {
+                return (
+                  <a className={Styles.link} key={item.id} href={`#${item.link}`} onClick={(e) => handleClick(e)}>
+                    {item.value}
+                  </a>
+                )
+              })}
+            </Dropdown>
+          </li>
+          <li className={Styles.item}>
+            <Dropdown title='Партнерам'>
+              {partnersLinks.map((item) => {
+                return (
+                  <a className={Styles.link} key={item.id} href={`#${item.link}`} onClick={(e) => handleClick(e)}>
+                    {item.value}
+                  </a>
+                )
+              })}
+            </Dropdown>
+          </li>
+          <li className={Styles.item}>
+            <a href='#' className={Styles.item__link}>
+              Статистика
+            </a>
+          </li>
         </ul>
         <div className={Styles.container}>
           <LanguagePopup />
           {isAuth ? (
             <button className={Styles.profileBtn} type='button'>
               <LinkDom to='/my' className={Styles.profileBtn_link}>
-                <LoginIcon />
-                {t('profile')}
+                {/* {t('profile')} */}
+                Подключить кошелек
               </LinkDom>
             </button>
           ) : (
             <button className={Styles.loginBtn} onClick={handleLoginModalOpen} type='button'>
-              <LoginIcon />
               {t('login')}
             </button>
           )}

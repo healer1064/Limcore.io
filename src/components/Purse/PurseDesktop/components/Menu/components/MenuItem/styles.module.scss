@@ -43,7 +43,7 @@
 
 .menu__sum {
   grid-area: balance;
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-4F-black);
   font-style: normal;
   font-weight: $fontWeightSemiBold;

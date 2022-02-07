@@ -1,5 +1,4 @@
 // Colors
-$primary-color: #4a70f8 !default;
 $white: #fff;
 $color-1D-black: #1D2023;
 $color-F2-red: #F24949;
@@ -48,10 +47,18 @@ $color-4C-white: #4c4c4c;
 $color-E5-grey: #e5e5e5;
 
 // Redesign vars
+$primary-color: #FCFF00 !default;
 $color-19-black: #191919;
+$color-19-dark: #192A2C;
+$color-E1-white: #E1E1D8;
+$color-26-aquamarine: #26DFF8;
+$color-FC-yellow: #FCFF00;
+$color-F5-white: #F5F5EF;
 
 // Typography
-$main-font: 'Montserrat', 'Arial', 'Helvetica', sans-serif !default;
+$font-pressStart: 'Press Start 2P', sans-serif !default;
+$font-inter: 'Inter', 'Arial', 'Helvetica', sans-serif;
+$font-ibmPlexSans: 'IbmPlexSans', 'Arial', 'Helvetica', sans-serif;
 
 // Big Button ui-kit
 $border-radius: 14px;
@@ -84,6 +91,31 @@ $box-shadow2: 0 4px 25px rgba(112, 112, 112, 0.1);
 }
 
 @mixin font-style($size, $weight, $line-height, $color) {
+  font-family: $font-inter;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+  color: $color;
+}
+
+@mixin font-style-inter($size, $weight, $line-height, $color) {
+  font-family: $font-inter;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+  color: $color;
+}
+
+@mixin font-style-pressStart($size, $weight, $line-height, $color) {
+  font-family: $font-pressStart;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+  color: $color;
+}
+
+@mixin font-style-ibmPlexSans($size, $weight, $line-height, $color) {
+  font-family: $font-ibmPlexSans;
   font-size: $size;
   font-weight: $weight;
   line-height: $line-height;

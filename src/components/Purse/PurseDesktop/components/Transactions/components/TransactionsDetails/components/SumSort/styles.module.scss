@@ -28,13 +28,13 @@
     padding: 16px 10px;
     margin-top: 10px;
     height: 45px;
-    font-family: $main-font;
+    font-family: $font-inter;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
   
     &::placeholder {
-      font-family: $main-font;
+      font-family: $font-inter;
       @include main($color-B4-violet);
       font-weight: $fontWeightMedium;
       font-size: 16px;

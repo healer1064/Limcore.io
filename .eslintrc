@@ -44,7 +44,8 @@
           ["@lib", "./src/lib"],
           ["@assets", "./src/assets/"],
           ["@icons", "./src/assets/icons"],
-          ["@images", "./src/assets/images"]
+          ["@images", "./src/assets/images"],
+          ["@animations", "./src/assets/animations"]
         ],
         "extensions": [".ts", ".tsx", ".js", ".jsx", ".json"]
       }

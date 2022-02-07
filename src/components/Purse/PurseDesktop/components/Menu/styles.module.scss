@@ -9,7 +9,7 @@
 }
 
 .name {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include semiBoldH4($color-3A-black);
   display: flex;
   box-sizing: border-box;

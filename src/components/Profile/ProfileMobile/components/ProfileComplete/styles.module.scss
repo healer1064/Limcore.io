@@ -46,7 +46,7 @@ input[type='file'] {
 }
 
 .name {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-39-black);
   font-weight: $fontWeightSemiBold;
   font-size: 14px;
@@ -60,7 +60,7 @@ input[type='file'] {
 }
 
 .caption {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include semiBoldH4($color-39-black);
   margin-bottom: 12px;
 }
@@ -90,7 +90,7 @@ input[type='file'] {
 }
 
 .title {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-3A-black);
   font-weight: $fontWeightSemiBold;
   @include p3;
@@ -98,7 +98,7 @@ input[type='file'] {
 }
 
 .subtitle {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-99-gray);
   font-weight: $fontWeightSemiBold;
   @include p3;
@@ -167,7 +167,7 @@ input[type='file'] {
 }
 
 .about_me_title {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-4F-black);
   font-weight: $fontWeightSemiBold;
   @include p6;
@@ -175,13 +175,13 @@ input[type='file'] {
 }
 
 .label {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include mediumP3($color-99-gray);
   margin-bottom: 4px;
 }
 
 .content {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-39-black);
   font-weight: $fontWeightSemiBold;
   @include p3;
@@ -190,7 +190,7 @@ input[type='file'] {
 .change {
   background: none;
   border: none;
-  font-family: $main-font;
+  font-family: $font-inter;
   @include mediumP3($primary-color);
 }
 
@@ -215,7 +215,7 @@ input[type='file'] {
 }
 
 .text {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-4F-black);
   font-weight: $fontWeightSemiBold;
   @include p6;

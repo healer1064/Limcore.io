@@ -42,7 +42,7 @@
 
 .about_title,
 .about_text {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-4F-black);
   font-weight: $fontWeightSemiBold;
   @include p6;
@@ -52,7 +52,7 @@
 .about_text {
   margin: 0;
   padding: 0;
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-99-gray);
   @include p6;
 }

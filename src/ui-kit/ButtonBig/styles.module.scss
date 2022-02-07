@@ -2,19 +2,20 @@
 @import '../../scss/vars.scss';
 
 .button {
-  margin: 0;
-  padding: 14px 0;
-  border: $big-button-border;
-  border-radius: $border-radius;
-  font-family: $main-font;
-  @include semiBoldH4($white);
-  text-align: center;
-  background: $primary-color;
-  transition: background .2s ease;
+  padding: 14px 72px;
+  border: 2px solid $color-FC-yellow;
+  border-radius: 30px;
 
+  @include font-style-ibmPlexSans(18px, 600, 22px, $primary-color);
+  text-transform: uppercase;
+  
+  background-color: transparent;
+  transition: color .3s ease, border .3s ease;
+  outline: none;
+  
   &:hover {
-    background: $color-32-blue;
-    transition: background .2s ease;
+    transition: color .3s ease;
+    color: $white;
     cursor: pointer;
   }
 
@@ -22,9 +23,4 @@
     opacity: .5;
     cursor: default;
   }
-
-  // &:active, &:focus {
-  //   outline: $outline;
-  // }
-
 }

@@ -24,7 +24,7 @@
 }
 
 .name {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-3A-black);
   font-weight: $fontWeightSemiBold;
   font-size: 32px;
@@ -53,7 +53,7 @@
 }
 
 .designation {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-99-gray);
   font-weight: $fontWeightMedium;
   font-size: 16px;
@@ -63,7 +63,7 @@
 }
 
 .value {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-3A-black);
   font-weight: 600;
   font-size: 16px;
@@ -92,7 +92,7 @@
 }
 
 .count {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-86-grey);
   font-weight: $fontWeightSemiBold;
   font-size: 14px;
@@ -111,7 +111,7 @@
   align-items: center;
 
   span {
-    font-family: $main-font;
+    font-family: $font-inter;
     @include main($color-67-black);
     font-weight: $fontWeightMedium;
     font-size: 14px;
@@ -124,7 +124,7 @@
   background: none;
   border-radius: 14px;
   border: 1px solid $primary-color;
-  font-family: $main-font;
+  font-family: $font-inter;
   @include semiBoldH4($color-4A-blue);
   text-align: center;
   padding: 14px 0;
@@ -142,7 +142,7 @@
   background: $primary-color;
   border-radius: $border-radius;
   border: 1px solid $primary-color;
-  font-family: $main-font;
+  font-family: $font-inter;
   @include semiBoldH4(white);
   text-align: center;
   padding: 14px 0;
@@ -181,7 +181,7 @@
 }
 
 .subtitle {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-4F-black);
   font-weight: $fontWeightSemiBold;
   font-size: 16px;
@@ -198,7 +198,7 @@
   margin-top: 10px;
 
   span {
-    font-family: $main-font;
+    font-family: $font-inter;
     @include main($color-86-grey);
     font-weight: $fontWeightSemiBold;
     font-size: 14px;
@@ -245,7 +245,7 @@
   }
 
   span {
-    font-family: $main-font;
+    font-family: $font-inter;
     @include main($color-4F-black);
     font-weight: $fontWeightMedium;
     font-size: 14px;
@@ -276,7 +276,7 @@
   }
 }
 .temporarily {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-F2-red);
   font-weight: $fontWeightMedium;
   font-size: 20px;
@@ -438,7 +438,7 @@
 
   .date__mobile {
     display: flex;
-    font-family: $main-font;
+    font-family: $font-inter;
     @include main($color-4F-black);
     font-weight: $fontWeightMedium;
     font-size: 14px;
@@ -513,7 +513,7 @@
     }
   }
   &__title {
-    font-family: $main-font;
+    font-family: $font-inter;
     @include main($color-3A-black);
     font-weight: $fontWeightSemiBold;
     font-size: 18px;
@@ -522,7 +522,7 @@
   }
   &__paragraph {
     margin: 0;
-    font-family: $main-font;
+    font-family: $font-inter;
     @include main($color-4C-white);
     font-weight: $fontWeightMedium;
     font-size: 16px;
@@ -535,7 +535,7 @@
     margin-right: 4px;
   }
   &__link {
-    font-family: $main-font;
+    font-family: $font-inter;
     @include main($primary-color);
     font-weight: $fontWeightMedium;
     font-size: 14px;

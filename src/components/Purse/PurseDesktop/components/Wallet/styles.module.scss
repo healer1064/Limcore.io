@@ -29,7 +29,7 @@
   }
 
   &__subtitle {
-    font-family: $main-font;
+    font-family: $font-inter;
     @include subtitle-14px($color-4F-black);
     font-weight: $fontWeightMedium;
     padding: 6px 0 0;
@@ -46,7 +46,7 @@
 }
 
 .moreButton {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($primary-color);
   font-weight: $fontWeightSemiBold;
   font-size: 16px;
