@@ -16,7 +16,6 @@ import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getUser } from '@app/redux/userSlice'
 import { getSoldLimcs } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
 import { getForksPrice } from '@components/Wallet/redux/walletSlice'
-import { Calculator } from '../../pages/Сalculator/index'
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -55,7 +54,7 @@ const App = () => {
         )}
         {desktop && !isLoading ? <Header /> : <HeaderMobile />}
         <>
-          <Calculator />
+          {/* <Calculator /> */}
           <main className={desktop ? `${Styles.main}` : `${Styles.main} ${Styles.main_mobile}`}>
             {!isAuth && !isLoading && (
               <Switch>

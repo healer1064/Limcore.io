@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import styles from './style.module.scss'
 import { StyledInputRange } from '@components/StyledComponents/StyledInputRange/StyledInputRange'
-import { data, BrownianMotion } from './BrownianMotion/BrownianMotion.jsx'
-
-export const Calculator = () => {
+import { BrownianMotion } from './BrownianMotion/BrownianMotion.jsx'
+import { data } from './constants'
+import { Modal } from './Modal/Modal'
+export const Calcs = () => {
   const [rangeValue, setRangeValue] = useState(1)
   const [modal, setModal] = useState(false)
   const handleModal = () => {
@@ -33,6 +34,7 @@ export const Calculator = () => {
               style={{
                 left: `${item.position.left}px`,
                 top: `${item.position.top}px`,
+                zIndex: -10,
               }}
             >
               <BrownianMotion interval={1} distance={100} step={40}>
@@ -44,7 +46,13 @@ export const Calculator = () => {
                     width: `${item.diameter}px`,
                     height: `${item.diameter}px`,
                   }}
-                />
+                >
+                  <img
+                    src={item.backgroundImage}
+                    alt='image'
+                    style={{ width: item.imgSizeW, height: item.imgSize, margin: item.margin }}
+                  />
+                </div>
               </BrownianMotion>
             </div>
           ))}
@@ -56,9 +64,7 @@ export const Calculator = () => {
             26$ годовых в $<span className={styles.calc__info} />
           </p>
         </div>
-        <div className={modal ? styles.calc__warn : styles.disabled}>
-          <p className={styles.calc__warn_text}> без учета перспектив роста стоимости активов</p>
-        </div>
+        <Modal modal={modal} styles={styles} />
         <div className={styles.calc__img} />
       </div>
     </section>

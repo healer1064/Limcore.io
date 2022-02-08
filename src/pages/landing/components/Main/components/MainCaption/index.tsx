@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Styles from './styles.module.scss'
-import Lottie from 'react-lottie'
+// import Lottie from 'react-lottie'
 import rocketAnim from '@animations/rocket.json'
 import popupIcon from '@icons/main_popup_icon.svg'
 import { Popover } from '@material-ui/core'

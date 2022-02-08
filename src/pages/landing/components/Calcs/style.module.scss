@@ -2,9 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 1920px;
-  font-family: 'IbmPlexSans', serif;
-  background-color: #191919;
+  font-family: "IbmPlexSans", "Arial", "Helvetica", sans-serif;
 }
 
 .calc__limc {
@@ -13,7 +11,7 @@
   grid-template-columns: 1fr;
   row-gap: 30px;
   width: 523px;
-  margin: 96px auto 70px 458px;
+  margin: 96px auto 70px 0;
   color: #f5f5ef;
 }
 
@@ -65,9 +63,10 @@
 }
 
 .calc__grid {
+  position: relative;
   display: grid;
   grid-template-rows: 1fr;
-  margin: 70px auto 377px 458px;
+  margin: 70px auto 377px 0;
 }
 
 .calc__up {
@@ -78,6 +77,7 @@
 
 .calc__click_zona {
   position: relative;
+  z-index: 10;
   grid-area: 2/1;
   width: 696px;
   height: 463px;
@@ -87,47 +87,16 @@
 
 .calc__click_img {
   position: absolute;
+  z-index: -10;
 }
 
 .calc__click_image {
-  width: 12px;
-  height: 12px;
-  padding: 15px;
+  z-index: -10;
+  display: flex;
+  justify-content: center;
+  margin: auto;
   background-color: white;
-  background-image: url("./image/one-min.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 50%;
-}
-
-.calc__click_image_two {
-  width: 28px;
-  height: 28px;
-  padding: 20px;
-  background-color: white;
-  background-image: url("./image/two-min.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 50%;
-}
-
-.calc__click_image_three {
-  width: 16px;
-  height: 28px;
-  padding: 20px;
-  background-color: white;
-  background-image: url("./image/three-min.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 50%;
-}
-
-.calc__click_image_prem {
-  position: absolute;
-  width: 46px;
-  height: 46px;
-  padding: 20px;
-  background-image: url("./image/prem-min.png");
+  filter: drop-shadow(0 0 5px rgba(98, 200, 215, 0.7));
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50%;
@@ -151,6 +120,7 @@
   height: 308px;
   margin: auto -201px -81px auto;
   background-image: url("./image/coin-min.png");
+  filter: drop-shadow(50px 130px 115px rgba(25, 226, 255, 0.12));
 }
 
 .calc__money {
@@ -185,16 +155,32 @@
 }
 
 .calc__warn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
   grid-area: 2/1;
   width: 268px;
   height: 124px;
-  margin: auto -486px 15px auto;
+  margin: 320px -486px 15px auto;
+  visibility: visible;
   background-image: url("./image/border-modal-min.png");
+  opacity: 1;
+  transition-delay: 0s, 1s;
+  transition-duration: 1s, 0s;
+  transition-property: opacity;
 }
 
-.disabled {
-  display: none;
+.calc__warn_active {
+  //display: none;
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transition-delay: 0s, 1s;
+  transition-duration: 1s, 0s;
+  transition-property: opacity;
 }
 
 .calc__warn_text {

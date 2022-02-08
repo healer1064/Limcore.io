@@ -20,12 +20,16 @@ export const StyledInputRange = withStyles({
   thumb: {
     width: 22,
     height: 22,
+    boxShadow: `0px 0px 20px 10px rgba(252, 255, 0, 0.5)`,
+    backdropFilter: 'blur(16px)',
     backgroundColor: '#fcff00',
     '&:hover, &.Mui-focusVisible': {
-      boxShadow: `0px 0px 0px 14px ${alpha('#fcff00', 0.2)}`,
+      boxShadow: `0px 0px 20px 16px rgba(252, 255, 0, 0.5)`,
+      backgroundColor: '#fdff7f',
     },
     '&.Mui-active': {
-      boxShadow: `0px 0px 0px 25px ${alpha('#fcff00', 0.4)}`,
+      boxShadow: `0px 0px 20px 16px rgba(252, 255, 0, 0.5)`,
+      backgroundColor: '#fdff7f',
     },
   },
 })(Slider)
