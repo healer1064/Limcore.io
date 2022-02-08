@@ -21,6 +21,7 @@ export const LandingPage: React.FC = () => {
   useEffect(() => {
     const resizeHandler = () => setClientWidth(window.innerWidth)
     window.addEventListener('resize', resizeHandler)
+
     return () => window.removeEventListener('resize', resizeHandler)
   }, [clientWidth])
 
