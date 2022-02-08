@@ -15,8 +15,12 @@
 .gameStart__twoMods {
   display: flex;
   justify-content: flex-start;
-  width: 580px;
+  width: fit-content;
   overflow-x: auto;
+
+  p {
+    word-break: break-word;
+  }
 
   @media all and (max-width: 600px) {
     width: 480px;
@@ -39,13 +43,19 @@
     overflow: none auto;
 
     &:first-of-type {
+      width: min-content;
       min-width: 200px;
       margin-right: 25px;
     }
 
     &:last-of-type {
-      min-width: 330px;
+      width: fit-content;
       margin-left: 25px;
+
+      > p {
+        width: 300px;
+        min-width: 250px;
+      }
     }
 
     @media all and (max-width: 768px) {
@@ -67,9 +77,5 @@
     font-family: "Press Start 2P", sans-serif;
     font-size: 16px;
     color: rgba(252, 254, 1, 1);
-  }
-
-  p {
-    word-break: break-word;
   }
 }

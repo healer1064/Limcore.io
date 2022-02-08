@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import style from './styles.module.scss'
 import { GameCaption } from './components/GameCaption'
@@ -6,20 +6,14 @@ import { Garden } from './components/Garden'
 import { GameStart } from './components/GameStart'
 import { Blockquote } from './components/GameStart/Blockquote'
 
-export const GamificationOfMining: React.FC = () => {
-  const { innerWidth: width } = window
+interface GamificationOfMiningProps {
+  clientWidth: number
+}
 
-  const [clientWidth, setClientWidth] = useState<number>(width)
-
-  useEffect(() => {
-    const resizeHandler = () => setClientWidth(window.innerWidth)
-    window.addEventListener('resize', resizeHandler)
-    return () => window.removeEventListener('resize', resizeHandler)
-  }, [])
-
+export const GamificationOfMining: React.FC<GamificationOfMiningProps> = ({ clientWidth }) => {
   return (
     <section className={style.main}>
-      <GameCaption />
+      <GameCaption text='Геймификация майнинга' />
       <div className={style.wrapper}>
         {clientWidth <= 768 ? <Blockquote /> : ''}
         <Garden />

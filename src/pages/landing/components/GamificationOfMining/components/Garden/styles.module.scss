@@ -3,6 +3,10 @@
   height: min(720px, 900px);
   margin: 0 0 60px 0;
 
+  @media all and (max-width: 768px) {
+    margin: 0;
+  }
+
   @media all and (max-width: 680px) {
     width: 600px;
     height: 600px;
@@ -11,7 +15,6 @@
   @media all and (max-width: 605px) {
     width: 450px;
     height: 450px;
-    margin: 0;
   }
 
   @media all and (max-width: 450px) {
