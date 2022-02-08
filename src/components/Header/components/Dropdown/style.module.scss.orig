@@ -1,0 +1,87 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/vars.scss';
+
+.dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+.title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  transition: filter 0.3s ease;
+
+  &:hover {
+<<<<<<< HEAD
+=======
+    filter: drop-shadow(0px 0px 15px rgb(25, 226, 255)) drop-shadow(0px 0px 15px rgb(25, 226, 255));
+>>>>>>> develop2
+    cursor: pointer;
+    filter: drop-shadow(0 0 15px rgb(25, 226, 255));
+    transition: filter 0.3s ease;
+
+    path {
+      color: $primary-color;
+      stroke: $primary-color;
+    }
+  }
+
+  .svg {
+    transition: stroke 0.3s ease;
+  }
+}
+
+.text {
+  margin: 0;
+
+  @include font-style-inter(16px, 500, 24px, $color-E1-white);
+
+  background-color: transparent;
+}
+
+.arrow {
+  height: 15px;
+  margin-left: 10px;
+  transform: rotate(90deg);
+}
+
+.arrowActive {
+  transform: rotate(-90deg);
+
+  & > svg > path {
+    stroke: $color-FC-yellow;
+  }
+}
+
+.dropdown__menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  list-style: none;
+  visibility: hidden;
+  background: $color-19-dark;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+}
+
+@media (max-width: 1150px) {
+  .text {
+    font-size: 14px;
+  }
+}

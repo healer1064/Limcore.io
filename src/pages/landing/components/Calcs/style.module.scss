@@ -203,3 +203,81 @@
   margin: 30px -400px auto auto;
   background-image: url("./image/line-min.png");
 }
+
+@media (max-width: 1280px) {
+  .calc {
+    padding-left: 20px;
+  }
+
+  .calc__text {
+    margin-top: 210px;
+    margin-right: -290px;
+  }
+
+  .calc__img {
+    width: 400px;
+    height: 140px;
+    margin-top: 70px;
+    margin-right: -300px;
+    background-size: contain;
+  }
+
+  .calc__click_zona {
+    width: 650px;
+    height: 450px;
+    background-size: contain;
+  }
+
+  .calc__image {
+    width: 250px;
+    height: 250px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .calc__money {
+    margin: 51px auto 0 10px;
+  }
+
+  .calc__money_text {
+    margin-left: 35px;
+  }
+}
+
+@media (max-width: 980px) {
+  .calc__text {
+    margin-top: 150px;
+    margin-right: -186px;
+  }
+
+  .calc__img {
+    width: 300px;
+    height: 140px;
+    margin-top: 60px;
+    margin-right: -198px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .calc__click_zona {
+    width: 550px;
+    height: 366px;
+  }
+
+  .calc__image {
+    width: 230px;
+    height: 230px;
+    margin: auto -150px -75px auto;
+  }
+
+  .calc__money {
+    margin: 51px auto 0 10px;
+  }
+
+  .calc__money__year {
+    margin-left: 24px;
+  }
+  //.calc__money_text {
+  //
+  //}
+}
