@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Styles from './styles.module.scss'
-// import Lottie from 'react-lottie'
+import Lottie from 'react-lottie'
 import rocketAnim from '@animations/rocket.json'
 import popup from '@icons/popupIcon.svg'
 import { Transition } from 'react-transition-group'

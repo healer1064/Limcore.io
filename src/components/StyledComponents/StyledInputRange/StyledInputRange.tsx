@@ -23,12 +23,16 @@ export const StyledInputRange = withStyles({
     boxShadow: `0px 0px 20px 10px rgba(252, 255, 0, 0.5)`,
     backdropFilter: 'blur(16px)',
     backgroundColor: '#fcff00',
-    '&:hover, &.Mui-focusVisible': {
-      boxShadow: `0px 0px 20px 16px rgba(252, 255, 0, 0.5)`,
+    '&:hover': {
+      boxShadow: `0px 0px 20px 14px rgba(252, 255, 0, 0.5)`,
       backgroundColor: '#fdff7f',
     },
+    '&.Mui-focusVisible': {
+      boxShadow: `0px 0px 20px 14px rgba(252, 255, 0, 0.5)`,
+      backdropFilter: 'blur(16px)',
+    },
     '&.Mui-active': {
-      boxShadow: `0px 0px 20px 16px rgba(252, 255, 0, 0.5)`,
+      boxShadow: `0px 0px 20px 14px rgba(252, 255, 0, 0.5)`,
       backgroundColor: '#fdff7f',
     },
   },

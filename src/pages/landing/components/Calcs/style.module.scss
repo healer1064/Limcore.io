@@ -29,11 +29,13 @@
 
 .calc__counter {
   grid-area: 1/1;
+  max-width: 416px;
   margin: 0 0 0 102px;
   font-size: 70px;
   font-style: normal;
   font-weight: 600;
   line-height: 135%;
+  border: none;
 }
 
 .calc__min_max {
@@ -124,8 +126,8 @@
 }
 
 .calc__money {
-  width: 84px;
-  margin: 88px 127px 0 94px;
+  width: 194px;
+  margin: 88px auto 0 39px;
   font-size: 70px;
   font-style: normal;
   font-weight: 600;
@@ -160,6 +162,7 @@
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 50;
   display: flex;
   grid-area: 2/1;
   width: 268px;

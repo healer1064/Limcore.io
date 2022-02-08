@@ -1,8 +1,4 @@
 import React from 'react'
-import one from '../image/one-min.png'
-import two from '../image/two-min.png'
-import three from '../image/three-min.png'
-import prem from '../image/prem-min.png'
 
 export class BrownianMotion extends React.Component {
   constructor(props) {

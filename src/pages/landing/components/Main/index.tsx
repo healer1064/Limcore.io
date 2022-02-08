@@ -13,8 +13,8 @@ export const Main: React.FC = () => {
     <section className={Styles.main}>
       <div className={Styles.wrapper}>
         <MainCaption />
-        {/* <CalcsMobile /> */}
-        <Calcs />
+        <CalcsMobile />
+        {/* <Calcs /> */}
         {/* <MainRounds /> */}
         <MainParthers />
         <MainHow />
