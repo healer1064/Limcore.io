@@ -1,0 +1,30 @@
+@import '../../scss/typography.scss';
+@import '../../scss/_vars.scss';
+
+.container {
+  width: 100%;
+  height: 100%;
+
+  &__title {
+    @include font-style-pressStart(41px, 400, 65px, $color-F5-white);
+    text-align: center;
+  }
+  .calculator {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    &__operator {
+      @include font-style-ibmPlexSans(46px, 500, 22px, $color-F5-white);
+      margin: 0 10px;
+    }
+  }
+  .main {
+    margin: 30px 0 0 0;
+    padding: 60px;
+    background-color: $color-19-dark;
+    width: 100%;
+    border-radius: 20px;
+  }
+}
+
