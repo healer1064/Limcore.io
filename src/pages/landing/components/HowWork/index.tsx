@@ -27,9 +27,9 @@ export const HowWork: React.FC = () => {
       preserveAspectRatio: 'xMidYMid slice',
     },
   }
+
   return (
     <section className={styles.howWork}>
-      <img src={noise} alt='noise' className={styles.noise} />
       <div className={styles.container}>
         <h2 className={styles.title}>Как это работает</h2>
         <ul className={styles.howWork__block}>
@@ -49,22 +49,14 @@ export const HowWork: React.FC = () => {
                 )}
                 <button className={styles.copyBtn} />
               </div>
-              <button className={styles.buyBtn}>КУПИТЬ LIMC</button>
+              <button className={styles.buyBtn}>Купить LIMC</button>
             </div>
-            {width > 768 ? (
-              <Lottie options={defaultOption} width={536} height={349} />
-            ) : (
-              <Lottie options={defaultOption} width={335} height={218} />
-            )}
+            <Lottie options={defaultOption} width={width > 786 ? 536 : 335} height={width > 786 ? 349 : 218} />
           </li>
           <li className={styles.item_2}>
-            {width > 768 ? (
-              <Lottie options={defaultOption2} width={536} height={349} />
-            ) : (
-              <div className={styles.order}>
-                <Lottie options={defaultOption2} width={335} height={228} />{' '}
-              </div>
-            )}
+            <div className={styles.order}>
+              <Lottie options={defaultOption2} width={width > 786 ? 536 : 335} height={width > 786 ? 349 : 228} />
+            </div>
             <div className={styles.item_right}>
               <span className={styles.num}>
                 02
@@ -72,30 +64,27 @@ export const HowWork: React.FC = () => {
               </span>
               <p className={styles.commission}>Комиссия сервиса Limcore —15% от общей прибыли с майнинга</p>
               <h3 className={styles.h3}>Майнинг</h3>
-              <p className={styles.p_2}>
-                Начисление прибыли с майнинга в режиме реального времени. Все честно и прозрачно!
+              <p className={styles.p}>
+                Начисление прибыли с майнинга в режиме <br /> реального времени. Все честно и прозрачно!
               </p>
-              <div>
-                <span className={styles.stat}>
-                  Убедись сам -{' '}
-                  <span className={styles.statistics}>
-                    {' '}
-                    Статистика <img src={uparrow} alt='up' />
-                  </span>
+              <div className={styles.statistics}>
+                Убедись сам -
+                <span className={styles.statistics_link}>
+                  Статистика <img src={uparrow} alt='up' />
                 </span>
               </div>
             </div>
           </li>
           <li className={styles.item_3}>
-            <div className={styles.left_3}>
+            <div className={styles.item_3_left}>
               <span className={styles.num}>03</span>
               <h3 className={styles.h3}>Вывод прибыли</h3>
               <span className={styles.pay}>
-                <p>
+                <p className={styles.p}>
                   Оплачивать покупки или снимать наличныев любом банкомате мира можно с помощью виртуальной банковской
                   карты Limcore!
                 </p>
-                <p>Скоро ее можно будет активировать в Limcore Wallet! Мы работаем над этим...</p>
+                <p className={styles.p}>Скоро ее можно будет активировать в Limcore Wallet! Мы работаем над этим...</p>
               </span>
             </div>
             <div className={styles.item_3_img} />

@@ -35,33 +35,21 @@ ul {
 }
 
 .item_left {
-  width: 100%;
+  max-width: 100%;
 }
 
 .h3 {
-  font-family: $font-ibmPlexSans;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 30px;
-  line-height: 22px;
+  @include font-style-ibmPlexSans(30px, 600, 22px, #f5f5ef);
 }
 
 .num {
-  font-family: $font-ibmPlexSans;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 60px;
-  line-height: 140%;
+  @include font-style-ibmPlexSans(60px, 600, 84px, #f5f5ef);
   margin-bottom: 26px;
   position: relative;
 }
 
 .p {
-  font-family: $font-ibmPlexSans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 150%;
+  @include font-style-ibmPlexSans(16px, 600, 24px, #E1E1D8);
 }
 
 .walletAdress {
@@ -85,11 +73,7 @@ ul {
   padding: 14px 72px;
   border: 2px solid #fcff00;
   border-radius: 30px;
-  font-family: $font-ibmPlexSans;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 22px;
-  color: #191919;
+  @include font-style-ibmPlexSans(18px, 600, 22px, #191919);
   text-transform: uppercase;
   background-color: #fcff00;
   transition: color 0.3s ease, filter 0.3s ease;
@@ -117,12 +101,7 @@ ul {
 
 .commission {
   max-width: 185px;
-  font-family: $font-ibmPlexSans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 140%;
-  color: #fcff00;
+  @include font-style-ibmPlexSans(16px, 600, 22px, #fcff00);
   position: absolute;
   top: 40px;
   right: 40px;
@@ -137,24 +116,12 @@ ul {
   top: -10px;
 }
 
-.p_2 {
-  width: 361px;
-}
-
-.stat {
-  font-family: $font-ibmPlexSans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  display: flex;
-}
-
 .statistics {
-  font-family: $font-ibmPlexSans;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 22px;
+  display: flex;
+  @include font-style-ibmPlexSans(16px, 600, 22px, #E1E1D8);
+}
+
+.statistics_link {
   color: #fcff00;
   cursor: pointer;
   margin-left: 4px;
@@ -167,7 +134,7 @@ ul {
   justify-content: space-between;
 }
 
-.left_3 {
+.item_3_left {
   max-width: 316px;
 }
 
@@ -177,19 +144,6 @@ ul {
   background-image: url('../../../../assets/images/card_03.svg');
 }
 
-.pay {
-  font-family: $font-ibmPlexSans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 150%;
-}
-
-.noise {
-  position: absolute;
-  right: 0;
-  z-index: 0;
-}
 
 @media all and (max-width: 768px) {
   .title {
