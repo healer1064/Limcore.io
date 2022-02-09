@@ -15,7 +15,7 @@
     width: 100%;
   }
 .title {
-    font-family: $font-inter;
+    font-family: $main-font;
     @include main($color-3A-black);
     font-weight: $fontWeightSemiBold;
     font-size: 32px;

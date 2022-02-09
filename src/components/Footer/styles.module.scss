@@ -78,7 +78,7 @@
     padding: 0;
     box-sizing: border-box;
     color: $color-B4-violet;
-    font-family: $font-inter;
+    font-family: $main-font;
   }
 
   &_listTitle {
@@ -178,7 +178,7 @@
 
   &__email {
     grid-area: email;
-    font-family: $font-inter;
+    font-family: $main-font;
     @include main($color-B4-violet);
     font-weight: $fontWeightSemiBold;
     font-size: 16px;
@@ -191,7 +191,7 @@
     & > a {
       @include main($color-B4-violet);
       text-decoration: none;
-      font-family: $font-inter;
+      font-family: $main-font;
       font-weight: $fontWeightSemiBold;
       font-size: 16px;
       line-height: 1.25;
@@ -204,7 +204,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: $font-inter;
+    font-family: $main-font;
     font-weight: $fontWeightMedium;
     @include main($color-71-grey);
     font-size: 16px;

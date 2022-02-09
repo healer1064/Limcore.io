@@ -14,7 +14,7 @@
   }
 
   &__title {
-    font-family: $font-inter;
+    font-family: $main-font;
     @include main($color-3A-black);
     font-weight: bold;
     font-size: 46px;
@@ -26,7 +26,7 @@
   }
 
   &__subtitle {
-    font-family: $font-inter;
+    font-family: $main-font;
     @include main($color-4F-black);
     font-weight: $fontWeightSemiBold;
     font-size: 20px;
@@ -53,7 +53,7 @@
   padding: 0;
   flex-direction: row;
   background-color: transparent;
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-3A-black);
   font-weight: $fontWeightSemiBold;
   font-size: 16px;

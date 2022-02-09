@@ -31,13 +31,13 @@
     padding: 16px 10px;
     margin-top: 10px;
     height: 45px;
-    font-family: $font-inter;
+    font-family: $main-font;
     font-style: normal;
     font-weight: $fontWeightMedium;
     font-size: 16px;
   
     &::placeholder {
-      font-family: $font-inter;
+      font-family: $main-font;
       @include semiBoldH4($color-B4-violet);
       font-weight: $fontWeightMedium;
     }

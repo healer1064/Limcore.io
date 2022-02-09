@@ -4,10 +4,11 @@
 .header {
   display: flex;
   justify-content: center;
-  padding: 39px 20px;
   width: 100%;
-  max-height: 137px;
+  background: $white;
   box-sizing: border-box;
+  margin: 15px auto;
+  padding: 0;
 }
 
 .logout:hover {
@@ -20,7 +21,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1440px;
+  max-width: 1024px;
   margin: 0 auto;
 }
 
@@ -29,37 +30,21 @@
   align-items: center;
   padding: 0;
   margin: 0;
-  list-style-type: none;
-}
-
-.item {
-  &:not(:last-child) {
-    margin-right: 64px;
-  }
-}
-
-.item__link {
-  text-decoration: none;
-  @include font-style-inter(16px, 500, 24px, $color-E1-white);
-  transition: filter .3s ease;
-
-  &:hover {
-    filter: drop-shadow(0px 0px 15px rgb(25, 226, 255)) drop-shadow(0px 0px 15px rgb(25, 226, 255));
-    transition: filter .3s ease;
-  }
 }
 
 .link {
-  @include font-style-inter(16px, 400, 21px, $color-E1-white);
+  font-family: $main-font;
+  @include mediumP3($color-67-black);
   text-decoration: none;
   transition: color 0.3s ease;
   display: flex;
   box-sizing: border-box;
   padding: 0;
+  margin: 0 24px 0 0;
   scroll-behavior: smooth;
 
-  &:not(:last-child) {
-    margin-bottom: 14px;
+  &:last-child {
+    margin: 0;
   }
 
   &:hover {
@@ -67,6 +52,10 @@
     transition: color 0.3s ease;
     cursor: pointer;
   }
+
+  // &:focus {
+  //   outline: $outline;
+  // }
 }
 
 .container {
@@ -113,19 +102,17 @@
   }
 
   .langTitle {
-    font-family: $font-inter;
+    font-family: $main-font;
     @include semiBoldH4($primary-color);
     transition: color 0.3s ease;
   }
 }
 
-@mixin accountButton() {
+.profileBtn {
   padding: 8px 18px;
-  border: 2px solid $color-FC-yellow;
-  border-radius: 30px;
-
-  @include font-style-ibmPlexSans(16px, 500, 22px, $primary-color);
-  
+  margin: 0 0 0 20px;
+  border: 1px solid $primary-color;
+  border-radius: $border-radius;
   background-color: transparent;
   transition: color .3s ease, border .3s ease;
   outline: none;
@@ -133,52 +120,68 @@
   &_link {
     display: flex;
     align-items: center;
-    @include semiBoldH4($color-FC-yellow);
+    @include semiBoldH4($primary-color);
     text-decoration: none;
     transition: color .3s ease;
     outline: none;
+    
+    & > svg > path,
+    & > svg > ellipse {
+      transition: stroke .3s ease;
+    }
   }
 
   &:hover {
-    transition: color .3s ease;
+    border: 1px solid $color-2D-blue;
+    transition: border .3s ease;
 
     & > .profileBtn_link {
-      color: $white;
+      color: $color-2D-blue;
       transition: color .3s ease;
+      & > svg > path,
+      & > svg > ellipse {
+        stroke: $color-2D-blue;
+        transition: stroke .3s ease;
+      }
     }
   }
-}
-
-.profileBtn {
-  @include accountButton();
-  margin: 0 0 0 44px;
-  
-  &_link {
-    display: flex;
-    align-items: center;
-    @include semiBoldH4($color-FC-yellow);
-    text-decoration: none;
-    transition: color .3s ease;
-    outline: none;
-  }
-
-  &:hover {
-    transition: color .3s ease;
-
-    & > .profileBtn_link {
-      color: $white;
-      transition: color .3s ease;
-    }
+  &:focus {
+    outline: $outline;
   }
 }
 
 .loginBtn {
-  @include accountButton();
+  display: flex;
+  align-items: center;
+  padding: 8px 18px;
   margin: 0 0 0 20px;
+  border: 1px solid $primary-color;
+  border-radius: $border-radius;
+  @include semiBoldH4($primary-color);
+  text-decoration: none;
+  outline: none;
+  background-color: $white;
+  transition: color .3s ease, border .3s ease;
+    
+  & > svg > path,
+  & > svg > ellipse {
+    transition: stroke .3s ease;
+  }  
 
   &:hover {
-    color: $white;
-    transition: color .3s ease;
+    border: 1px solid $color-2D-blue;
+    color: $color-2D-blue;
+    transition: color .3s ease, border .3s ease;
+
+    & > svg > path,
+    & > svg > ellipse {
+      stroke: $color-2D-blue;
+      transition: stroke .3s ease;
+    }
+  }
+
+  &:focus {
+    outline: $outline;
   }
 }
 
@@ -206,6 +209,10 @@ input[type='radio'] {
 
 .logoLink {
   margin-right: 10px;
+
+  // &:focus {
+  //   outline: $outline;
+  // }
 }
 
 .profileLogo {
@@ -221,32 +228,14 @@ input[type='radio'] {
   }
 }
 
-@media (max-width: 1150px) {
-  .list {
-    margin-right: 15px;
+@media (max-width: 900px) {
+  .link {
+    font-size: 12.5px;
+    margin: 0 12px 0 0;
   }
 
-  .item__link {
-    font-size: 14px;
-  }
-
-  .item:not(:last-child) {
-    margin-right: 25px;
-  }
-
-  .profileBtn,
-  .loginBtn {
-    font-size: 14px !important;
-    line-height: 16px !important;
-    
-    & > a {
-      font-size: 14px !important;
-      line-height: 16px !important;
-    }
-  }
-
-  .animation {
-    top: 35%;
-    left: 0;
+  .lang {
+    margin-right: 0;
+    transform: translateX(5px);
   }
 }

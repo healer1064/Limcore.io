@@ -15,19 +15,19 @@
 }
 
 .caption {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include semiBoldH4($color-3A-black);
   margin-bottom: 6px;
 }
 
 .subcaption {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include mediumP3($color-99-gray);
   margin-bottom: 20px;
 }
 
 .info {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-4F-black);
   font-weight: normal;
   font-size: 14px;
@@ -49,7 +49,7 @@
 }
 
 .timer {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-4F-black);
   font-weight: normal;
   @include p3;

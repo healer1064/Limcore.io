@@ -26,7 +26,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-4F-black);
   font-weight: $fontWeightMedium;
   font-size: 13px;
@@ -37,7 +37,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: $font-inter;
+    font-family: $main-font;
     @include main($white);
     font-weight: $fontWeightMedium;
     font-size: 13px;
@@ -48,7 +48,7 @@
 .time {
   padding: 0;
   margin: 0;
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-99-gray);
   font-weight: $fontWeightRegular;
   font-size: 13px;
@@ -63,7 +63,7 @@
     justify-content: flex-end;
     padding: 0;
     margin: 0;
-    font-family: $font-inter;
+    font-family: $main-font;
     @include main($color-88-violet);
     font-weight: $fontWeightRegular;
     font-size: 13px;

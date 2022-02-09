@@ -46,7 +46,7 @@ input[type='file'] {
 }
 
 .phone {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-39-black);
   font-weight: $fontWeightSemiBold;
   font-size: 14px;
@@ -63,13 +63,13 @@ input[type='file'] {
 }
 
 .title {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include semiBoldH4($color-3A-black);
   margin-bottom: 8px;
 }
 
 .info {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-4F-black);
   font-weight: $fontWeightMedium;
   font-size: 14px;
@@ -81,14 +81,14 @@ input[type='file'] {
   background: $primary-color;
   border-radius: $border-radius;
   border: none;
-  font-family: $font-inter;
+  font-family: $main-font;
   @include semiBoldH4($white);
   text-align: center;
   padding: 14px 0;
 }
 
 .text {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-99-gray);
   font-weight: $fontWeightMedium;
   font-size: 14px;
