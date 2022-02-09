@@ -1,41 +1,44 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Styles from './styles.module.scss'
 import rocketAnim from '@animations/rocket.json'
 import popup from '@icons/popupIcon.svg'
 import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
 import useWindowSize from '@helpers/useWindowSizeHook'
 import { BottomModal } from '@components/Modal/BottomModal'
-import Lottie from 'lottie-react'
+import { Player } from '@lottiefiles/react-lottie-player'
 
 type TModals = '' | 'first' | 'second'
 
 export const MainCaptionMobile: React.FC = () => {
   const { width } = useWindowSize()
-  const animRef = useRef(null)
+  const [lottiePseudeRef, setLottiePseudeRef] = useState<any>({ lottie: null })
 
   const [modals, setModals] = useState<TModals>('')
   const openModal = (which: TModals) => setModals(which)
   const closeAnyModal = () => setModals('')
 
-  // const toShow =
-  const onAnimComplete = () => {
-    // 600 frames at all
-    animRef.current.goToAndStop(380)
-    animRef.current.playSegments([380, 530], true)
-  }
-
-  useEffect(() => {
-    if (animRef.current) {
-      // animRef.current.play()
+  const onEvent = (event: string) => {
+    switch (event) {
+      case 'complete':
+        lottiePseudeRef.lottie.playSegments([380, 530], true)
+        break
+      case 'load':
+        lottiePseudeRef.lottie.play()
+        break
     }
-  }, [animRef])
+  }
 
   return (
     <div className={Styles.container}>
       <h1 className={Styles.title}>LIMCORE — ракета в сфере облачного майнинга!</h1>
 
       <div className={Styles.animation} style={{ height: '400px', width }}>
-        <Lottie autoPlay={false} animationData={rocketAnim} lottieRef={animRef} onComplete={onAnimComplete} />
+        <Player
+          onEvent={onEvent}
+          lottieRef={(instance) => setLottiePseudeRef({ lottie: instance })}
+          src={rocketAnim}
+          style={{ height: '400px', width }}
+        />
       </div>
 
       <div className={Styles.wrapper}>
