@@ -13,7 +13,7 @@ interface IBottomModalProps {
   }
 }
 
-export const BottomModal = ({ active, setActive, title, subtitle, children, style }: IBottomModalProps) => {
+export const BottomModal = ({ active, setActive, title, children, style }: IBottomModalProps) => {
   const node = document.getElementById('root')
   const modalClass = active ? styles.modalActive : styles.modal
   const bodyEl = useRef(document.querySelector('body'))
@@ -61,7 +61,6 @@ export const BottomModal = ({ active, setActive, title, subtitle, children, styl
       <div className={styles.modalContent} onClick={handleModalContentClick}>
         <button type='button' className={styles.close} onClick={setActive} />
         <h4 className={styles.title}>{title}</h4>
-        <p className={styles.subtitle}>{subtitle}</p>
         {children}
       </div>
     </div>,

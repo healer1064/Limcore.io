@@ -25,6 +25,11 @@ export const MainCaption: React.FC = () => {
   return (
     <div className={Styles.container}>
       <h1 className={Styles.title}>LIMCORE — ракета в сфере облачного майнинга!</h1>
+
+      <div className={Styles.animation}>
+        <Lottie options={defaultOptions} height={630} width={630} />
+      </div>
+
       <div className={Styles.wrapper}>
         <ul className={Styles.list}>
           <li className={Styles.item}>
@@ -38,7 +43,7 @@ export const MainCaption: React.FC = () => {
             <div className={Styles.item__subtitle}>
               С условиями
               <img src={popup} alt='Popup' className={Styles.item__popup} />
-              <Transition timeout={300} in={isPopupOpened} mountOnEnter unmountOnExit>
+              <Transition timeout={200} in={isPopupOpened} unmountOnExit>
                 {() => (
                   <div className={Styles.popup}>
                     <div className={Styles.popup__inner}>
@@ -65,10 +70,6 @@ export const MainCaption: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className={Styles.animation}>
-        <Lottie options={defaultOptions} height={630} width={630} />
       </div>
     </div>
   )

@@ -1,0 +1,18 @@
+@import '../../../../../scss/typography.scss';
+@import '../../../../../scss/_vars.scss';
+
+.tooltip {
+  @include font-style-ibmPlexSans(12px, normal, 140%, $primary-color);
+  position: absolute;
+  bottom: 50%;
+  right: -50px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  span {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,161 @@
+.mobile {
+  position: relative;
+  display: grid;
+  justify-content: center;
+  margin-bottom: 48px;
+  font-family: "IbmPlexSans", "Arial", "Helvetica", sans-serif;
+  color: #f5f5ef;
+}
+
+.mobile__limc {
+  display: grid;
+  grid-template-rows: 48px 62px 40px 420px;
+  grid-template-columns: 1fr;
+  row-gap: 15px;
+}
+
+.mobile__logo {
+  grid-area: 1/1;
+  width: 48px;
+  height: 48px;
+  margin: 0 14px 0 0;
+  background-image: url("../image/calcLogoMobile.svg");
+}
+
+.mobile__counter {
+  grid-area: 1/1;
+  margin: 0 auto 0 62px;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 135%;
+}
+
+.mobile__div_txt {
+  display: flex;
+  grid-area: 2/1;
+  justify-content: space-between;
+}
+
+.mobile__txt {
+  margin: 0;
+}
+
+.mobile__text {
+  width: 135px;
+  margin: 0 auto 0 60px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 140%;
+  color: #fcff00;
+  text-align: right;
+}
+
+.mobile__coin_img {
+  z-index: 12;
+  grid-area: 4/1;
+  width: 130px;
+  height: 130px;
+  margin: -50px 0 0 auto;
+  background-image: url('../image/coin-min.png');
+  filter: drop-shadow(-178px 447px 115px rgba(25, 226, 255, 0.25));
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.mobile__money {
+  width: 80px;
+  margin: 38px auto 6px 15px;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 39px;
+  color: #172b2e;
+  text-align: center;
+}
+
+.mobile__info {
+  width: 22px;
+  height: 22px;
+  padding-right: 18px;
+  margin: 0 auto auto 48px;
+  background-image: url("../image/vector.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.mobile__borders {
+  grid-area: 4/1;
+}
+
+.mobile__border_up {
+  width: 103px;
+  height: 33px;
+  background-image: url("../image/borderUpMobile-min.png");
+}
+
+.mobile__border {
+  position: relative;
+  z-index: 10;
+  width: 305px;
+  height: 388px;
+  overflow: hidden;
+  background-image: url("../image/borderMobile-min.png");
+}
+
+.mobile__click_img {
+  position: absolute;
+  z-index: -10;
+}
+
+.mobile__click_image {
+  z-index: -10;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  filter: drop-shadow(0 0 5px rgba(98, 200, 215, 0.7));
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+}
+
+.calc__warn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+  display: flex;
+  grid-area: 2/1;
+  width: 268px;
+  height: 124px;
+  margin: -315px 0 0 60px;
+  visibility: visible;
+  background-image: url("../image/border-modal-min.png");
+  opacity: 1;
+  transition-delay: 0s, 1s;
+  transition-duration: 1s, 0s;
+  transition-property: opacity;
+}
+
+.calc__warn_active {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transition-delay: 0s, 1s;
+  transition-duration: 1s, 0s;
+  transition-property: opacity;
+}
+
+.calc__warn_text {
+  width: 170px;
+  margin: 40px 38px 40px 40px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 22px;
+  color: #e1e1d8;
+  text-align: center;
+}

@@ -6,6 +6,8 @@
 
   max-width: 990px;
   width: 100%;
+  min-height: calc(100vh - 137px);
+  height: 100%;
   margin: 0 auto;
   padding: 39px 0;
 }
@@ -26,6 +28,8 @@
 .list {
   display: flex;
   flex-direction: column;
+  margin: 0;
+  padding: 0;
 
   list-style-type: none;
 }
@@ -37,6 +41,20 @@
 
   &:not(:last-child) {
     margin-bottom: 73px;
+  }
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    left: -27px;
+
+    height: 100%;
+    width: 1px;
+
+    background-color: rgba(25, 226, 255, 0.39);
+
+    filter: drop-shadow(0px 0px 9px rgb(25, 226, 255)) drop-shadow(0px 0px 9px rgb(25, 226, 255))  drop-shadow(0px 0px 9px #19e2ff) drop-shadow(0px 0px 9px #19e2ff);
   }
 }
 
@@ -53,21 +71,66 @@
   @include font-style-ibmPlexSans(16px, 400, 22px, $color-E1-white)
 }
 
+.inner {
+  transform: translateX(60px);
+}
+
 .button {
   margin-bottom: 55px;
 }
 
+@keyframes dragging {
+  0% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);
+  }
+
+  25% {
+    transform: perspective(1000px) rotateX(3deg) rotateY(3deg) scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: perspective(1000px) rotateX(6deg) rotateY(6deg) scale3d(1, 1, 1);
+  }
+
+  100% {
+    transform: perspective(1000px) rotateX(8deg) rotateY(8deg) scale3d(1, 1, 1);
+  }
+}
+
 .info {
+  position: relative;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 317px;
-  height: 158px;
+  margin-left: 30px;
+  padding: 31px 38px;
 
   background-image: url('../../../../../../assets/icons/infoBlockBorders.svg');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  transition: transform .3s cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s;
+  will-change: transform;
+  cursor: pointer;
+
+  &:hover {
+    animation: dragging .5s forwards;
+    will-change: transform;
+  }
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: -100%;
+    right: 32px;
+
+    height: 10px;
+    width: 1px;
+
+    background-color: rgba(25, 226, 255, 0.39);
+    filter: drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff);
+  }
 }
 
 .info__subtitle {
@@ -111,22 +174,20 @@
 .popup {
   position: absolute;
   top: 120%;
-  right: 10%;
+  right: -20%;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 358px;
-  height: 174px;
+  padding: 50px 58px;
 
   background-image: url('../../../../../../assets/icons/infoBlockBorders2.svg');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .popup__subtitle {
-  max-width: 261px;
+  width: 261px;
 }
 
 .popup.entering {
@@ -135,4 +196,71 @@
 
 .popup.exiting {
   animation: show-popup .7s reverse;
+}
+
+@media screen and (max-width: 1150px) {
+  .container {
+    padding: 39px;
+  }
+
+  .title {
+    font-size: 35px;
+  }
+
+  .list {
+    margin: 0 15px 0 0;
+  }
+
+  .inner {
+    transform: none;
+  }
+
+  .info {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .animation {
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .container {
+    height: calc(100vh - 77px);
+  }
+
+  .animation {
+    top: 50%;
+    left: 15%;
+
+    & > div {
+      width: 400px !important;
+      height: 400px !important;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .title {
+    font-size: 19px;
+    line-height: 30px;
+  }
+
+  .button {
+    margin: 23px 0 0 0;
+    width: 100%;
+  }
+
+  .wrapper {
+    flex-direction: column;
+    margin: 0 auto;
+    width: fit-content;
+  }
+
+  .list,
+  .inner {
+    width: fit-content;
+  }
 }
