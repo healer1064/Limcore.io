@@ -48,7 +48,7 @@
     padding: 0 0 4px 0;
     box-sizing: border-box;
     @include main($color-99-gray);
-    font-family: $main-font;
+    font-family: $font-inter;
     font-weight: $fontWeightMedium;
     font-size: 13px;
     line-height: 1.4;
@@ -60,7 +60,7 @@
     padding: 0 0 4px 0;
     box-sizing: border-box;
     @include main($color-99-gray);
-    font-family: $main-font;
+    font-family: $font-inter;
     font-weight: $fontWeightMedium;
     font-size: 13px;
     line-height: 1.4;
@@ -71,7 +71,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: $main-font;
+    font-family: $font-inter;
     font-weight: $fontWeightSemiBold;
     @include main($color-3A-black);
     font-size: 14px;
@@ -84,7 +84,7 @@
     padding: 12px 0 0 0;
     box-sizing: border-box;
     border-top: 1px solid $color-DB-white;
-    font-family: $main-font;
+    font-family: $font-inter;
     font-weight: $fontWeightRegular;
     @include main($color-4F-black);
     font-size: 14px;

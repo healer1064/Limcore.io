@@ -36,7 +36,7 @@
   background: $color-EF-white;
 
   span {
-    font-family: $main-font;
+    font-family: $font-inter;
     @include main($color-99-gray);
     font-weight: $fontWeightMedium;
     font-size: 16px;
@@ -70,7 +70,7 @@
 }
 
 .title {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-39-black);
   font-weight: $fontWeightSemiBold;
   font-size: 24px;

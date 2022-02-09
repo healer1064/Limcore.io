@@ -23,10 +23,21 @@ export const LanguagePopup = ({ position, footerStyles }: ILanguagePopupProps) =
   const [t, i18n] = useTranslation()
   const { width } = useWindowSize()
   const mobile = width < 769
+
   const [showPopapLanguage, setShowPopapLanguage] = useState(false)
 
+  let timeout = null
+  const showPopup = () => {
+    clearInterval(timeout)
+    setShowPopapLanguage(true)
+  }
+
+  const hidePopup = () => {
+    timeout = setTimeout(() => setShowPopapLanguage(false), 100)
+  }
+
   // Прокидывание позиции окна выбора языка
-  const elLangOptionsStyles = position || { top: '30px', left: '-33px', background: '#f9f9f7' }
+  const elLangOptionsStyles = position || { top: '30px', left: '-33px', background: '#192A2C' }
 
   // Извращения с стилями для футера
   const footerLangStyles = footerStyles ? { height: '100%', marginBottom: '25px' } : {}
@@ -43,27 +54,14 @@ export const LanguagePopup = ({ position, footerStyles }: ILanguagePopupProps) =
     <div className={Styles.lang} style={footerLangStyles}>
       <nav
         className={classNames(Styles.block, showPopapLanguage && Styles.active)}
+        onMouseEnter={showPopup}
+        onMouseLeave={hidePopup}
         onClick={() => setShowPopapLanguage(!showPopapLanguage)}
         style={footerBlockStyles}
       >
-        {i18n.language === 'ru' && (
-          <>
-            <img src={RUS} alt='Флаг' className={Styles.img} />
-            <span className={Styles.langTitle}>RU</span>
-          </>
-        )}
-        {i18n.language === 'en' && (
-          <>
-            <img src={ENG} alt='Флаг' className={Styles.img} />
-            <span className={Styles.langTitle}>EN</span>
-          </>
-        )}
-        {i18n.language === 'cn' && (
-          <>
-            <img src={CHN} alt='Флаг' className={Styles.img} />
-            <span className={Styles.langTitle}>CN</span>
-          </>
-        )}
+        {i18n.language === 'ru' && <span className={Styles.langTitle}>RU</span>}
+        {i18n.language === 'en' && <span className={Styles.langTitle}>EN</span>}
+        {i18n.language === 'cn' && <span className={Styles.langTitle}>CN</span>}
 
         <span className={classNames(showPopapLanguage && Styles.arrowActive, Styles.arrow)}>
           <VectorIcon />
@@ -72,6 +70,8 @@ export const LanguagePopup = ({ position, footerStyles }: ILanguagePopupProps) =
       <div
         className={classNames(Styles.el__langoptions, showPopapLanguage && Styles.active)}
         style={elLangOptionsStyles}
+        onMouseEnter={showPopup}
+        onMouseLeave={hidePopup}
       >
         {languages.map((lang) => {
           let divClass = null

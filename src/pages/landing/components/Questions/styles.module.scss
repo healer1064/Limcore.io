@@ -35,7 +35,7 @@ button {
 }
 
 .caption {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-3A-black);
   font-weight: $fontWeightSemiBold;
   font-size: 32px;
@@ -70,7 +70,7 @@ button {
   }
 
   span {
-    font-family: $main-font;
+    font-family: $font-inter;
     @include main($color-4F-black);
     font-weight: $fontWeightMedium;
     font-size: 16px;
@@ -108,7 +108,7 @@ button {
 }
 
 .title {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-3A-black);
   font-weight: $fontWeightSemiBold;
   font-size: 24px;
@@ -117,7 +117,7 @@ button {
 }
 
 .text {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-67-black);
   font-weight: $fontWeightMedium;
   font-size: 14px;
@@ -126,7 +126,7 @@ button {
 }
 
 .description {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-4F-black);
   font-weight: $fontWeightSemiBold;
   font-size: 14px;

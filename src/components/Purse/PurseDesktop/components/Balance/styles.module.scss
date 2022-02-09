@@ -22,7 +22,7 @@
 
   &__title {
     transition: opacity .3s ease;
-    font-family: $main-font;
+    font-family: $font-inter;
     @include main($color-3A-black);
     font-weight: 600;
     font-size: 24px;
@@ -156,7 +156,7 @@
     }
     
     .count {
-      font-family: $main-font;
+      font-family: $font-inter;
       font-style: normal;
       @include subtitle-14px($color-86-grey);
       z-index: 3;
@@ -207,13 +207,13 @@
   }
 
   &__subtitle {
-    font-family: $main-font;
+    font-family: $font-inter;
     @include subtitle-13px($color-99-gray);
     padding: 12px 0 0;
   }
 
   &__number {
-    font-family: $main-font;
+    font-family: $font-inter;
     @include main($color-4F-black);
     font-weight: $fontWeightSemiBold;
     font-size: 14px;

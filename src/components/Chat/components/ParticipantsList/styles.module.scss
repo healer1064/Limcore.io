@@ -58,7 +58,7 @@
   box-sizing: border-box;
   padding: 5px 0;
   margin: 0;
-  font-family: $main-font;
+  font-family: $font-inter;
   font-weight: $fontWeightSemiBold;
   @include main($color-39-black);
   font-size: 14px;
@@ -71,7 +71,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0 0 0 8px;
-  font-family: $main-font;
+  font-family: $font-inter;
   font-weight: $fontWeightSemiBold;
   @include main($color-99-gray);
   font-size: 14px;

@@ -8,11 +8,11 @@
   padding: 16px 10px;
   margin: 10px 0 0;
   height: 45px;
-  font-family: $main-font;
+  font-family: $font-inter;
   @include mediumP3($color-39-black);
 
   &::placeholder {
-    font-family: $main-font;
+    font-family: $font-inter;
     @include mediumP3($color-B4-violet);
   }
 
@@ -27,7 +27,7 @@
 }
 
 .error {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include mediumP3($color-FF-red);
   margin: 8px 0 0;
   padding: 0;

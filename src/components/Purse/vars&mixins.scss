@@ -28,12 +28,12 @@ $color-DB-white: #dbe0ee;
 $color-86-grey: #868da7;
 
 @mixin section-title() {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include semiBoldH4($color-gray-dark);
 }
 
 @mixin subtitle-14px($color) {
-  font-family: $main-font;
+  font-family: $font-inter;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
@@ -41,7 +41,7 @@ $color-86-grey: #868da7;
 }
 
 @mixin subtitle-13px($color) {
-  font-family: $main-font;
+  font-family: $font-inter;
   font-size: 13px;
   font-weight: $fontWeightMedium;
   line-height: 20px;
@@ -49,7 +49,7 @@ $color-86-grey: #868da7;
 }
 
 @mixin second-subtitle-13px($color) {
-  font-family: $main-font;
+  font-family: $font-inter;
   font-size: 13px;
   font-weight: $fontWeightMedium;
   line-height: 18px;

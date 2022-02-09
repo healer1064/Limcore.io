@@ -16,7 +16,7 @@ fieldset {
   padding: 10px 10px 10px 14px;
   height: 100px;
   overflow: auto;
-  font-family: $main-font;
+  font-family: $font-inter;
   @include main($color-3A-black);
   font-weight: $fontWeightMedium;
   width: 100%;
@@ -30,7 +30,7 @@ fieldset {
   }
 
   &::placeholder {
-    font-family: $main-font;
+    font-family: $font-inter;
     @include mediumP3($color-B4-violet);
   }
 
@@ -44,7 +44,7 @@ fieldset {
 }
 
 .error {
-  font-family: $main-font;
+  font-family: $font-inter;
   @include mediumP3($color-FF-red);
   margin: 8px 0 0;
   padding: 0;

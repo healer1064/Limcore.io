@@ -2,26 +2,26 @@
 @import '../../scss/vars.scss';
 
 .button {
-  background: none;
-  border: none;
-  border-radius: $border-radius;
-  font-family: $main-font;
-  @include semiBoldH4($white);
-  text-align: center;
-  color: $primary-color;
-  padding: 14px 0;
-  margin: 0;
+  padding: 8px 18px;
+  border: 2px solid $color-FC-yellow;
+  border-radius: 30px;
+
+  @include font-style-ibmPlexSans(16px, 500, 22px, $primary-color);
+  
+  background-color: transparent;
+  transition: color .3s ease, border .3s ease;
+  outline: none;
+  
+  &_link {
+    display: flex;
+    align-items: center;
+    @include semiBoldH4($color-FC-yellow);
+    text-decoration: none;
+    transition: color .3s ease;
+    outline: none;
+  }
 
   &:hover {
-    cursor: pointer;
+    transition: color .3s ease;
   }
-
-  &:disabled {
-    opacity: .5;
-    cursor: default;
-  }
-
-  // &:active, &:focus {
-  //   outline: $outline;
-  // };
 }

@@ -13,13 +13,20 @@
   }
 }
 
+.langTitle {
+  display: inline-block;
+  margin-right: 10px;
+
+  @include font-style-inter(16px, 500, 24px, $color-FC-yellow);
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
 .block {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 5px;
-  min-width: 65px;
   height: 100%;
   transition: all 0.3s ease;
   
@@ -42,13 +49,6 @@
       color: $primary-color;
       stroke: $primary-color;
     }
-  }
-
-  span {
-    font-family: $main-font;
-    @include mediumP3($color-67-black);
-    text-transform: uppercase;
-    transition: color 0.3s ease;
   }
 
   .svg {
@@ -80,14 +80,15 @@
 .el__langoptions {
   position: absolute;
   z-index: 10;
+  top: calc(100% + 10px);
+
   display: flex;
   flex-direction: column;
-  padding: 18px 16px;
-  width: 99px;
-  height: 120px;
+  padding: 40px;
   border-radius: $border-radius;
+
   box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
-  background: $color-F9-white;
+  background: $color-19-dark;
   list-style: none;
   transition: opacity 0.3s ease;
   opacity: 0;
@@ -100,7 +101,7 @@
 }
 
 .langoption_ru {
-  margin-bottom: 15px;
+  margin-bottom: 14px;
 }
 
 .langoption {
@@ -117,20 +118,19 @@
 }
 
 .langoption__text {
-  font-family: $main-font;
-  @include mediumP3($color-4F-black);
+  font-family: $font-inter;
+  @include font-style-ibmPlexSans(16px, 500, 20px, $color-E1-white);
   
   &:hover,
   &:focus {
     cursor: pointer;
-    color: $primary-color;
+    color: $color-FC-yellow;
     transition: all 0.3s ease;
   }
 }
 
 .langoption__text_checked {
-  font-weight: 600;
-  color: $color-3A-black;
+  color: $color-FC-yellow;
 }
 
 input[type='radio'] {
