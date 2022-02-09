@@ -1,0 +1,279 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/_vars.scss';
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.howWork {
+  color: white;
+  margin-bottom: 188px;
+  position: relative;
+}
+
+.container {
+  max-width: 990px;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.title {
+  font-family: $font-pressStart;
+  font-size: 41px;
+  line-height: 135%;
+  text-align: center;
+}
+
+.item_1 {
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 200px;
+}
+
+.item_left {
+  width: 100%;
+}
+
+.h3 {
+  font-family: $font-ibmPlexSans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 22px;
+}
+
+.num {
+  font-family: $font-ibmPlexSans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 60px;
+  line-height: 140%;
+  margin-bottom: 26px;
+  position: relative;
+}
+
+.p {
+  font-family: $font-ibmPlexSans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.walletAdress {
+  display: flex;
+  align-items: center;
+  margin-bottom: 38px;
+  span {
+    margin-right: 10px;
+  }
+}
+
+.copyBtn {
+  z-index: 5;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background-image: url('../../../../assets/images/copy.svg');
+}
+
+.buyBtn {
+  padding: 14px 72px;
+  border: 2px solid #fcff00;
+  border-radius: 30px;
+  font-family: $font-ibmPlexSans;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  color: #191919;
+  text-transform: uppercase;
+  background-color: #fcff00;
+  transition: color 0.3s ease, filter 0.3s ease;
+  outline: none;
+  filter: drop-shadow(0px 0px 15px rgba(252, 255, 0, 0.5));
+}
+
+.buyBtn:hover {
+  filter: drop-shadow(0px 0px 15px #fcff00);
+  transition: color 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+.item_2 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 200px;
+}
+
+.item_right {
+  position: relative;
+  width: 100%;
+  max-width: 516px;
+}
+
+.commission {
+  max-width: 185px;
+  font-family: $font-ibmPlexSans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 140%;
+  color: #fcff00;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+
+.line {
+  width: 282px;
+  height: 107px;
+  position: absolute;
+  background-image: url('../../../../assets/images/line_02.png');
+  left: -55px;
+  top: -10px;
+}
+
+.p_2 {
+  width: 361px;
+}
+
+.stat {
+  font-family: $font-ibmPlexSans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  display: flex;
+}
+
+.statistics {
+  font-family: $font-ibmPlexSans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #fcff00;
+  cursor: pointer;
+  margin-left: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.item_3 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left_3 {
+  max-width: 316px;
+}
+
+.item_3_img {
+  width: 516px;
+  height: 490px;
+  background-image: url('../../../../assets/images/card_03.svg');
+}
+
+.pay {
+  font-family: $font-ibmPlexSans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 150%;
+}
+
+.noise {
+  position: absolute;
+  right: 0;
+  z-index: 0;
+}
+
+@media all and (max-width: 768px) {
+  .title {
+    font-size: 19px;
+    line-height: 160%;
+  }
+
+  .item_1 {
+    flex-direction: column;
+    margin-bottom: 100px;
+  }
+
+  .item_left {
+    min-width: 335px;
+    width: 340px;
+    max-width: 740px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+
+  .h3 {
+    font-size: 24px;
+    line-height: 22px;
+  }
+
+  .num {
+    font-size: 40px;
+    line-height: 140%;
+  }
+
+  .noise {
+    display: none;
+  }
+
+  .item_2 {
+    flex-direction: column;
+    width: 335px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+  }
+  .item_right {
+    order: 1;
+  }
+
+  .line {
+    width: 148px;
+    height: 79px;
+    left: -15px;
+    background-image: url('../../../../assets/images/line_mob.svg');
+  }
+  .commission {
+    font-size: 14px;
+    line-height: 140%;
+    text-align: right;
+    width: 127px;
+    right: 0;
+    top: 0;
+    margin: 0;
+  }
+
+  .p_2 {
+    font-size: 16px;
+    line-height: 150%;
+    width: 100%;
+  }
+
+  .item_3 {
+    width: 335px;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  .pay {
+    p {
+      margin: 0;
+    }
+  }
+  .item_3_img {
+    width: 335px;
+    height: 318px;
+    background-size: cover;
+  }
+
+  .order {
+    order: 2;
+  }
+}

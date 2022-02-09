@@ -3,6 +3,7 @@
 
 .equipment {
   color: white;
+  position: relative;
 }
 
 .container {
@@ -21,18 +22,25 @@
 .block {
   display: flex;
   justify-content: space-between;
-  
-  .desck{
-      position: relative;
+
+  .desck {
+    position: relative;
+    img {
+      position: absolute;
+      left: -20px;
+    }
   }
 
   p {
     font-size: 16px;
     line-height: 150%;
   }
+}
 
-  img {
-    position: absolute;
-    left: -20px;
-  }
+.map {
+  width: 809px;
+  height: 1024px;
+  object-fit: cover;
+  position: absolute;
+  margin-left: auto ;
 }
