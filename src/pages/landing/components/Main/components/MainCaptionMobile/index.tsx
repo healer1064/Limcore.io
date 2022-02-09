@@ -1,47 +1,41 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Styles from './styles.module.scss'
 import rocketAnim from '@animations/rocket.json'
 import popup from '@icons/popupIcon.svg'
 import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
-import classNames from 'classnames'
 import useWindowSize from '@helpers/useWindowSizeHook'
-import { Player } from '@lottiefiles/react-lottie-player'
 import { BottomModal } from '@components/Modal/BottomModal'
+import Lottie from 'lottie-react'
 
-type TAnimation = '' | 'complete'
 type TModals = '' | 'first' | 'second'
 
 export const MainCaptionMobile: React.FC = () => {
   const { width } = useWindowSize()
   const animRef = useRef(null)
 
-  const [modals, setModals] = useState<TModals>('first')
+  const [modals, setModals] = useState<TModals>('')
   const openModal = (which: TModals) => setModals(which)
   const closeAnyModal = () => setModals('')
 
-  const [animation, setAnimation] = useState<TAnimation>('')
-  const [animFrameCount, setAnimFrameCount] = useState(0)
-
-  const onEvent = (event: string) => {
-    switch (event) {
-      case 'complete':
-        setAnimation('complete')
-        break
-      case 'load':
-        animRef.current.play()
-        break
-      case 'frame':
-        animFrameCount >= 150 ? setAnimation('complete') : setAnimFrameCount((prev) => prev++)
-        break
-    }
+  // const toShow =
+  const onAnimComplete = () => {
+    // 600 frames at all
+    animRef.current.goToAndStop(380)
+    animRef.current.playSegments([380, 530], true)
   }
+
+  useEffect(() => {
+    if (animRef.current) {
+      // animRef.current.play()
+    }
+  }, [animRef])
 
   return (
     <div className={Styles.container}>
       <h1 className={Styles.title}>LIMCORE — ракета в сфере облачного майнинга!</h1>
 
-      <div className={Styles.animation}>
-        <Player onEvent={onEvent} ref={animRef} autoplay={false} src={rocketAnim} style={{ height: '400px', width }} />
+      <div className={Styles.animation} style={{ height: '400px', width }}>
+        <Lottie autoPlay={false} animationData={rocketAnim} lottieRef={animRef} onComplete={onAnimComplete} />
       </div>
 
       <div className={Styles.wrapper}>
