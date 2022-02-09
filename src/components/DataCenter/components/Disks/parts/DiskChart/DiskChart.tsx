@@ -4,29 +4,41 @@ import { Line } from 'react-chartjs-2'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler)
 
-export const data = {
-  type: 'line',
-  labels: ['00:00', '02:00', '04:00', '08:00', '12:00', '16:00', '20:00', '23:59'],
-  borderJoinStyle: 'round',
-  datasets: [
-    {
-      fill: 'start',
-      label: 'Dataset 2',
-      data: [140, 100, 235, 140, 432, 567, 567],
-      borderColor: '#1FDFFF',
-      backgroundColor: 'rgba(41, 62, 64, 0.2)',
-      spanGaps: true,
+export const DiskChart = ({ disk }) => {
+  const options = {
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          callback(value) {
+            return `${value}K TB`
+          },
+        },
+      },
     },
-  ],
-}
+    borderJoinStyle: 'round',
+    borderCapStyle: 'round',
+  }
 
-export const DiskChart = () => {
+  const data = {
+    borderJoinStyle: 'round',
+    datasets: [
+      {
+        fill: 'start',
+        label: 'TB',
+        data: disk?.data || [],
+        borderColor: '#1FDFFF',
+        backgroundColor: 'rgba(41, 62, 64, 0.2)',
+        pointStyle: 'dash',
+        pointBorderWidth: 0,
+      },
+    ],
+  }
+
   return (
     <>
       <div>NAV</div>
-      {/* <Doughnut data={data} /> */}
-      {/* <Chart chartData={data} /> */}
-      <Line data={data} />
+      <Line data={data} options={options} />
     </>
   )
 }
