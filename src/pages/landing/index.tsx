@@ -23,7 +23,7 @@ export const LandingPage: React.FC = () => {
     window.addEventListener('resize', resizeHandler)
 
     return () => window.removeEventListener('resize', resizeHandler)
-  }, [clientWidth])
+  }, [])
 
   return (
     <div className={Styles.landing}>
