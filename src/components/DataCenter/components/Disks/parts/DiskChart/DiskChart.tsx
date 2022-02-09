@@ -1,6 +1,7 @@
 import { CategoryScale, Chart as ChartJS, LinearScale, LineElement, PointElement, Filler } from 'chart.js'
 import React from 'react'
 import { Line } from 'react-chartjs-2'
+import { ChartNavigation } from './ChartNavigation'
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler)
 
@@ -37,7 +38,7 @@ export const DiskChart = ({ disk }) => {
 
   return (
     <>
-      <div>NAV</div>
+      <ChartNavigation />
       <Line data={data} options={options} />
     </>
   )
