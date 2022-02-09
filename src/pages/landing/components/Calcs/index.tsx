@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import styles from './style.module.scss'
 import { StyledInputRange } from '@components/StyledComponents/StyledInputRange/StyledInputRange'
 import { BrownianMotion } from './BrownianMotion/BrownianMotion.jsx'
