@@ -37,17 +37,16 @@ export const Calcs = () => {
       <div className={styles.calc__grid}>
         <div className={styles.calc__up} />
         <div className={styles.calc__click_zona}>
-          {data.map((item) => (
+          {data.map((item, i) => (
             <div
-              key={Math.random()}
+              key={i}
               className={styles.calc__click_img}
               style={{
-                left: `${item.position.left}px`,
-                top: `${item.position.top}px`,
-                zIndex: -10,
+                left: '50%',
+                top: '50%',
               }}
             >
-              <BrownianMotion interval={1} distance={100} step={40}>
+              <BrownianMotion interval={item.interval} distance={item.distance} step={item.step}>
                 <div
                   className={styles.calc__click_image}
                   style={{
@@ -67,15 +66,15 @@ export const Calcs = () => {
             </div>
           ))}
         </div>
-        <p className={styles.calc__text}>Общий доход за 30d при текущем курсе</p>
         <div className={styles.calc__image} onMouseEnter={handleModal} onMouseLeave={handleModal}>
+          <p className={styles.calc__text}>Общий доход за 30d при текущем курсе</p>
           <h3 className={styles.calc__money}>${coin}</h3>
           <p className={styles.calc__money_year}>
             26$ годовых в $<span className={styles.calc__info} />
           </p>
+          <div className={styles.calc__img} />
+          <Modal modal={modal} styles={styles} />
         </div>
-        <Modal modal={modal} styles={styles} />
-        <div className={styles.calc__img} />
       </div>
     </section>
   )

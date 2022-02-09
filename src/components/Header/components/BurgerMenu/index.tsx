@@ -36,7 +36,7 @@ export const BurgerMenu = ({ burgerOpened, closeBurger }: IBurgerMenu) => {
     { id: 1, value: 'Whitepaper', link: 'whitepaper', spy: true, smooth: true },
     { id: 2, value: 'Команда', link: 'team', spy: true, smooth: true },
     { id: 3, value: 'FAQ', link: 'faq', spy: true, smooth: true },
-    { id: 5, value: 'Вакансии', link: 'posts', spy: true, smooth: true },
+    { id: 4, value: 'Вакансии', link: 'posts', spy: true, smooth: true },
     { id: 5, value: 'Для СМИ', link: 'smm', spy: true, smooth: true },
   ]
 
@@ -47,9 +47,9 @@ export const BurgerMenu = ({ burgerOpened, closeBurger }: IBurgerMenu) => {
 
   const socialMedia = [
     { id: 1, icon: <Telegram />, link: 'https://t.me/limc_russ' },
-    { id: 1, icon: <Youtube />, link: 'https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg' },
-    { id: 1, icon: <Discord />, link: 'https://t.me/limc_russ' },
-    { id: 1, icon: <Twitter />, link: 'https://t.me/limc_russ' },
+    { id: 2, icon: <Youtube />, link: 'https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg' },
+    { id: 3, icon: <Discord />, link: 'https://t.me/limc_russ' },
+    { id: 4, icon: <Twitter />, link: 'https://t.me/limc_russ' },
   ]
 
   return (
@@ -116,7 +116,7 @@ export const BurgerMenu = ({ burgerOpened, closeBurger }: IBurgerMenu) => {
           <div className={Styles.footer}>
             <ul className={Styles.social}>
               {socialMedia.map((item: ISocialMedia) => (
-                <li key={item.link} className={Styles.social__item}>
+                <li key={item.id} className={Styles.social__item}>
                   <a href={item.link} target='blank' rel='noopener noreferrer'>
                     {item.icon}
                   </a>
