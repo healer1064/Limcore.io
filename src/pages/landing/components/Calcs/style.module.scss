@@ -11,7 +11,7 @@
   grid-template-columns: 1fr;
   row-gap: 30px;
   width: 523px;
-  margin: 96px auto 70px 0;
+  margin: 0 0 70px 0;
   color: #f5f5ef;
 }
 
@@ -68,7 +68,7 @@
   position: relative;
   display: grid;
   grid-template-rows: 1fr;
-  margin: 70px auto 377px 0;
+  margin: 0 0 200px 0;
 }
 
 .calc__up {
@@ -88,6 +88,7 @@
 }
 
 .calc__click_img {
+  cursor: pointer;
   position: absolute;
   z-index: -10;
 }
@@ -104,10 +105,24 @@
   border-radius: 50%;
 }
 
+.calc__image {
+  position: absolute;
+  bottom: -20%;
+  right: 10%;
+  z-index: 12;
+  grid-area: 2/1;
+  width: 306px;
+  height: 308px;
+  background-image: url("./image/coin-min.png");
+  filter: drop-shadow(50px 130px 115px rgba(25, 226, 255, 0.12));
+}
+
 .calc__text {
+  position: absolute;
+  top: -30%;
+  right: -30%;
   grid-area: 2/1;
   width: 178px;
-  margin: 190px -365px auto auto;
   font-size: 18px;
   font-style: normal;
   font-weight: normal;
@@ -115,14 +130,13 @@
   color: #fcff00;
 }
 
-.calc__image {
-  z-index: 12;
-  grid-area: 2/1;
-  width: 306px;
-  height: 308px;
-  margin: auto -201px -81px auto;
-  background-image: url("./image/coin-min.png");
-  filter: drop-shadow(50px 130px 115px rgba(25, 226, 255, 0.12));
+.calc__img {
+  position: absolute;
+  bottom: -40%;
+  right: -70%;
+  width: 472px;
+  height: 177px;
+  background-image: url("./image/line-min.png");
 }
 
 .calc__money {
@@ -158,8 +172,9 @@
 
 .calc__warn {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 50%;
+  right: -20px;
+  transform: translate(120%, -50%);
   bottom: 0;
   left: 0;
   z-index: 50;
@@ -167,7 +182,6 @@
   grid-area: 2/1;
   width: 268px;
   height: 124px;
-  margin: 320px -486px 15px auto;
   visibility: visible;
   background-image: url("./image/border-modal-min.png");
   opacity: 1;
@@ -195,13 +209,6 @@
   line-height: 22px;
   color: #e1e1d8;
   text-align: center;
-}
-
-.calc__img {
-  width: 472px;
-  height: 177px;
-  margin: 30px -400px auto auto;
-  background-image: url("./image/line-min.png");
 }
 
 @media (max-width: 1280px) {

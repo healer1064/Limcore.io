@@ -3,6 +3,10 @@ import two from './image/two-min.png'
 import three from './image/three-min.png'
 import prem from './image/prem-min.png'
 
+function getRandomNumber(min, max) {
+  return Math.round(Math.random() * (max - min) + min)
+}
+
 export const data = [
   {
     color: 'white',
@@ -16,8 +20,8 @@ export const data = [
       top: 50,
     },
     interval: 1,
-    distance: 100,
-    step: 40,
+    distance: getRandomNumber(100, 200),
+    step: getRandomNumber(20, 60),
   },
   {
     color: 'white',
@@ -31,8 +35,8 @@ export const data = [
       top: 250,
     },
     interval: 1,
-    distance: 100,
-    step: 40,
+    distance: getRandomNumber(100, 200),
+    step: getRandomNumber(20, 60),
   },
   {
     color: 'white',
@@ -46,8 +50,8 @@ export const data = [
       top: 100,
     },
     interval: 1,
-    distance: 100,
-    step: 40,
+    distance: getRandomNumber(100, 200),
+    step: getRandomNumber(20, 60),
   },
   {
     color: 'white',
@@ -61,8 +65,8 @@ export const data = [
       top: 200,
     },
     interval: 1,
-    distance: 100,
-    step: 40,
+    distance: getRandomNumber(100, 200),
+    step: getRandomNumber(20, 60),
   },
   {
     color: 'white',
@@ -76,8 +80,8 @@ export const data = [
       top: 300,
     },
     interval: 1,
-    distance: 100,
-    step: 40,
+    distance: getRandomNumber(100, 200),
+    step: getRandomNumber(20, 60),
   },
   {
     color: 'white',
@@ -91,8 +95,8 @@ export const data = [
       top: 300,
     },
     interval: 1,
-    distance: 100,
-    step: 40,
+    distance: getRandomNumber(100, 200),
+    step: getRandomNumber(20, 60),
   },
   {
     color: 'white',
@@ -106,8 +110,8 @@ export const data = [
       top: 300,
     },
     interval: 1,
-    distance: 100,
-    step: 40,
+    distance: getRandomNumber(100, 200),
+    step: getRandomNumber(20, 60),
   },
   {
     color: 'white',
@@ -121,8 +125,8 @@ export const data = [
       top: 200,
     },
     interval: 1,
-    distance: 100,
-    step: 40,
+    distance: getRandomNumber(100, 200),
+    step: getRandomNumber(20, 60),
   },
   {
     color: 'white',
@@ -136,8 +140,8 @@ export const data = [
       top: 0,
     },
     interval: 1,
-    distance: 300,
-    step: 40,
+    distance: getRandomNumber(100, 200),
+    step: getRandomNumber(20, 60),
   },
   {
     color: 'white',
@@ -151,8 +155,8 @@ export const data = [
       top: 20,
     },
     interval: 1,
-    distance: 100,
-    step: 40,
+    distance: getRandomNumber(100, 200),
+    step: getRandomNumber(20, 60),
   },
   {
     color: 'blue',
@@ -163,8 +167,8 @@ export const data = [
       top: 250,
     },
     interval: 1,
-    distance: 100,
-    step: 40,
+    distance: getRandomNumber(100, 200),
+    step: getRandomNumber(20, 60),
   },
 ]
 
