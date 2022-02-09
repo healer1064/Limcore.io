@@ -42,7 +42,7 @@
 
 .about_title,
 .about_text {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-4F-black);
   font-weight: $fontWeightSemiBold;
   @include p6;
@@ -57,7 +57,7 @@
   -webkit-box-orient: vertical;
   margin: 0 0 10px 0;
   padding: 0;
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-99-gray);
   @include p6;
 }

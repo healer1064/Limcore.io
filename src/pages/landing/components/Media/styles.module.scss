@@ -24,7 +24,7 @@
 }
 
 .caption {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-3A-black);
   font-weight: $fontWeightSemiBold;
   font-size: 32px;
@@ -77,7 +77,7 @@
 
 .title {
   display: block;
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-3A-black);
   font-weight: $fontWeightSemiBold;
   font-size: 18px;
@@ -86,7 +86,7 @@
 }
 
 .description {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-4F-black);
   font-weight: normal;
   font-size: 16px;
@@ -102,7 +102,7 @@
 }
 
 .link {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-4A-blue);
   font-weight: 500;
   font-size: 13px;
@@ -115,7 +115,7 @@
 }
 
 .date {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-99-gray);
   font-weight: $fontWeightMedium;
   font-size: 13px;
@@ -124,7 +124,7 @@
 
 .empty {
   width: 282px;
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-3A-black);
   font-weight: $fontWeightMedium;
   font-size: 18px;

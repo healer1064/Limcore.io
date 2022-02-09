@@ -5,7 +5,6 @@ const aliases = (prefix = `src`) => ({
   '@hooks': `${prefix}/hooks`,
   '@icons': `${prefix}/assets/icons`,
   '@images': `${prefix}/assets/images`,
-  '@animations': `${prefix}/animations/`,
   '@helpers': `${prefix}/helpers`,
   '@lib': `${prefix}/lib/`,
 })

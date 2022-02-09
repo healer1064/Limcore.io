@@ -40,7 +40,7 @@
   }
 
   &__link {
-    font-family: $font-inter;
+    font-family: $main-font;
     @include mediumP3($color-67-black);
     display: flex;
     box-sizing: border-box;
@@ -116,7 +116,7 @@
 }
 
 .profileName {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include mediumP3($color-3A-black);
   display: flex;
   box-sizing: border-box;
@@ -227,7 +227,7 @@
 }
 
 .detailsTitle {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-3A-black);
   font-weight: $fontWeightSemiBold;
   font-size: 24px;

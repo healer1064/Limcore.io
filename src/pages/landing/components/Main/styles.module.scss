@@ -1,10 +1,12 @@
 @import '../../../../scss/typography.scss';
-@import '../../../../scss/_vars.scss';
+@import '../../../../scss/vars.scss';
 
 .main {
   display: flex;
   justify-content: center;
+  background: $color-F7-white;
   width: 100%;
+  padding: 60px 0 20px;
 }
 
 .wrapper {

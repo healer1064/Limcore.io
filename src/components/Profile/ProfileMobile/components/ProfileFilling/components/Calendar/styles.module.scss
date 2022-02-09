@@ -13,7 +13,7 @@
 }
 
 .title {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-4F-black);
   font-weight: $fontWeightSemiBold;
   @include p3;
@@ -27,7 +27,7 @@
 }
 
 .item {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-3A-black);
   font-weight: $fontWeightMedium;
   padding: 10px 20px;
@@ -69,7 +69,7 @@
   align-items: center;
   justify-content: center;
   justify-self: center;
-  font-family: $font-inter;
+  font-family: $main-font;
   @include mediumP4($color-4F-black);
   width: 40px;
 }
@@ -84,7 +84,7 @@
   align-items: center;
   justify-content: center;
   justify-self: center;
-  font-family: $font-inter;
+  font-family: $main-font;
   @include mediumP4($color-4F-black);
   color: $color-26-black;
   width: 40px;

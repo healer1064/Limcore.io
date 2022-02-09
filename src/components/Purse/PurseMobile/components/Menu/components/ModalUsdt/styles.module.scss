@@ -20,7 +20,7 @@
 }
 
 .title {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-3A-black);
   font-weight: bold;
   font-size: 28px;
@@ -41,7 +41,7 @@
 }
 
 .usd {
-  font-family: $font-inter;
+  font-family: $main-font;
   font-style: normal;
   @include mediumP3($color-4F-black);
   font-weight: $fontWeightSemiBold;

@@ -20,14 +20,14 @@
 }
 
 .caption {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-4F-black);
   font-weight: $fontWeightSemiBold;
   @include p2;
 }
 
 .subcaption {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include mediumP3($color-99-gray);
   margin-top: 6px;
 }

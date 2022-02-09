@@ -4,6 +4,6 @@
 .label {
   display: flex;
   flex-direction: column;
-  font-family: $font-inter;
+  font-family: $main-font;
   @include regularP3($color-4F-black);
 }

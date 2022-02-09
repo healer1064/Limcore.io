@@ -8,7 +8,7 @@
 }
 
 .caption {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-3A-black);
   font-weight: $fontWeightSemiBold;
   font-size: 22px;
@@ -35,7 +35,7 @@
   }
 
   span {
-    font-family: $font-inter;
+    font-family: $main-font;
     @include main($color-4F-black);
     font-weight: $fontWeightMedium;
     font-size: 14px;
@@ -90,7 +90,7 @@
 }
 
 .text {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-67-black);
   font-weight: $fontWeightMedium;
   font-size: 13px;
@@ -99,7 +99,7 @@
 }
 
 .description {
-  font-family: $font-inter;
+  font-family: $main-font;
   @include main($color-4F-black);
   font-weight: $fontWeightSemiBold;
   font-size: 13px;
@@ -121,7 +121,7 @@
     }
 
     span {
-      font-family: $font-inter;
+      font-family: $main-font;
       @include main($color-67-black);
       font-weight: $fontWeightMedium;
       font-size: 13px;

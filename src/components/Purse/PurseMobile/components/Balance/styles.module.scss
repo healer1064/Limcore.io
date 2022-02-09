@@ -152,7 +152,7 @@
     }
 
     .count {
-      font-family: $font-inter;
+      font-family: $main-font;
       @include subtitle-14px($color-86-grey);
       z-index: 3;
     }

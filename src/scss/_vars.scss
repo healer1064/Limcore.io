@@ -1,4 +1,45 @@
 // Colors
+
+//$primary-color-hover: #3257dd;
+//$primary-color-second-hover: #2D4EC5;
+//$secondary-color: #edf4ff !default;
+//$black: #393c42 !default;
+
+//$middle-white: #ccc;
+//$third-white: #F0F5FD;
+//$grey: #67686c !default;
+//$middle-grey: #4f535a;
+//$dark-grey: #3a3b3d;
+//$light-grey: #b4bfd4;
+//$very-light-grey: #E5E5E5;
+//$other-grey: #99A0AD;
+//$red: #ff6a6a;
+//$violet: #88A0FA;
+//$dark: #1e1f22;
+//$footer-grey: #717a8d;
+//$footer-line-black: #13151b;
+//$link-grey: #36373A;
+//$list-title: #647BA8;
+//$youtube-white: #D3D8DF;
+//$lang-white: #f9f9f7;
+//$notification-black: #1d2023;
+//$count-grey:  #969fa8;
+//$calendar-black: #262626;
+//$disable: #96afc7;
+//$step-white: #eff0f0;
+//$purse-white: #dbe0ee;
+//$purse-violet: #868da7;
+//$purse-other-white: #F9FAFE;
+//$color-gray-light: #bccbff;
+//$color-gray-mouse: #99a0ad;
+//$color-gray-medium: #4f535a;
+//$color-gray-black: #3a3b3d;
+//$color-gray-dark: #393c42;
+//$color-green-light: #abf294;
+//$color-cyan-pale: #f0fbfd;
+//$color-blue-pale: #f0f5fd;
+//$color-blue: #4a70f8;
+$primary-color: #4a70f8 !default;
 $white: #fff;
 $color-1D-black: #1D2023;
 $color-F2-red: #F24949;
@@ -46,19 +87,8 @@ $color-E8-white: #e8f1ff;
 $color-4C-white: #4c4c4c;
 $color-E5-grey: #e5e5e5;
 
-// Redesign vars
-$primary-color: #FCFF00 !default;
-$color-19-black: #191919;
-$color-19-dark: #192A2C;
-$color-E1-white: #E1E1D8;
-$color-26-aquamarine: #26DFF8;
-$color-FC-yellow: #FCFF00;
-$color-F5-white: #F5F5EF;
-
 // Typography
-$font-pressStart: 'Press Start 2P', sans-serif !default;
-$font-inter: 'Inter', 'Arial', 'Helvetica', sans-serif;
-$font-ibmPlexSans: 'IbmPlexSans', 'Arial', 'Helvetica', sans-serif;
+$main-font: 'Montserrat', 'Arial', 'Helvetica', sans-serif !default;
 
 // Big Button ui-kit
 $border-radius: 14px;
@@ -91,49 +121,9 @@ $box-shadow2: 0 4px 25px rgba(112, 112, 112, 0.1);
 }
 
 @mixin font-style($size, $weight, $line-height, $color) {
-  font-family: $font-inter;
   font-size: $size;
   font-weight: $weight;
   line-height: $line-height;
   color: $color;
 }
 
-@mixin font-style-inter($size, $weight, $line-height, $color) {
-  font-family: $font-inter;
-  font-size: $size;
-  font-weight: $weight;
-  line-height: $line-height;
-  color: $color;
-}
-
-@mixin font-style-pressStart($size, $weight, $line-height, $color) {
-  font-family: $font-pressStart;
-  font-size: $size;
-  font-weight: $weight;
-  line-height: $line-height;
-  color: $color;
-}
-
-@mixin font-style-ibmPlexSans($size, $weight, $line-height, $color) {
-  font-family: $font-ibmPlexSans;
-  font-size: $size;
-  font-weight: $weight;
-  line-height: $line-height;
-  color: $color;
-}
-
-// Borders
-@mixin beveled-corners($bg, $tl:0, $tr:$tl, $br:$tl, $bl:$tr) {
-  background: $bg;
-  background:
-  linear-gradient(135deg, transparent $tl, $bg 0)
-  top left,
-  linear-gradient(225deg, transparent $tr, $bg 0)
-  top right,
-  linear-gradient(-45deg, transparent $br, $bg 0)
-  bottom right,
-  linear-gradient(45deg, transparent $bl, $bg 0)
-  bottom left;
-  background-size: 50% 50%;
-  background-repeat: no-repeat;
-}

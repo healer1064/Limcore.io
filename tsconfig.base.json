@@ -26,7 +26,6 @@
       "@components/*": ["./components/*"],
       "@config/*": ["./config/*"],
       "@icons/*": ["./assets/icons/*"],
-      "@animations/*": ["./assets/animations/*"],
       "@helpers/*": ["./helpers/*"],
       "@lib/*": ["./lib/*"]
     }
