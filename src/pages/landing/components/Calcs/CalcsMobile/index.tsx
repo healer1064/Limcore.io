@@ -48,9 +48,9 @@ export const CalcsMobile = () => {
         <div className={styles.mobile__borders}>
           <div className={styles.mobile__border_up} />
           <div className={styles.mobile__border}>
-            {dataMobile.map((item) => (
+            {dataMobile.map((item, i) => (
               <div
-                key={Math.random()}
+                key={i}
                 className={styles.mobile__click_img}
                 style={{
                   left: `${item.position.left}px`,
