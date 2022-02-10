@@ -99,11 +99,11 @@
 }
 
 .animation {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 500px;
+  // position: absolute;
+  // left: 50%;
+  // transform: translateX(-50%);
+  // width: 600px;
+  // height: 500px;
 
   pointer-events: none;
 }
@@ -163,6 +163,14 @@
     flex-direction: column;
     width: 100%;
     margin: 0 auto 23px;  
+  }
+
+  .animation {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 500px;
   }
 }
 
