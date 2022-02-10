@@ -47,7 +47,7 @@
     content: '';
 
     position: absolute;
-    left: -27px;
+    left: -17px;
 
     height: 100%;
     width: 1px;
@@ -123,7 +123,7 @@
 
     position: absolute;
     bottom: -100%;
-    right: 32px;
+    right: 43px;
 
     height: 10px;
     width: 1px;
@@ -183,7 +183,8 @@
 
 @media screen and (max-width: 1150px) {
   .container {
-    padding: 39px;
+    width: calc(100vw - 94px);
+    padding: 39px 0;
   }
 
   .title {
@@ -200,8 +201,19 @@
 
   .info {
     margin-left: 0;
+
+    &::after {
+      right: -17px;
+    }
   }
 }
+
+// @media screen and (max-width: 1084px) {
+//   .container {
+//     // padding: 39px 0;
+//     // padding: 39px 47px;
+//   }
+// }
 
 @media screen and (max-width: 1000px) {
   .animation {

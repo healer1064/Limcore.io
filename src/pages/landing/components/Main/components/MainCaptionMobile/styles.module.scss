@@ -52,7 +52,7 @@
 .list {
   display: flex;
   flex-direction: column;
-  margin: 0 0 23px 23px;
+  margin: 0 0 23px 37px;
   padding: 0;
 
   list-style-type: none;
@@ -182,10 +182,6 @@
   .button {
     padding: 7px 71px;
     font-size: 14px;
-  }
-
-  .list {
-    margin: 0 0 0 23px;
   }
 
   .item__title {
