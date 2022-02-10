@@ -101,13 +101,6 @@
 }
 
 .animation {
-  position: absolute;
-  top: 7%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 500px;
-
   pointer-events: none;
 }
 
@@ -149,6 +142,17 @@
   padding: 0;
 
   @include font-style-ibmPlexSans(16px, 600, 22px, $color-E1-white);  
+}
+
+@media screen and (max-width: 700px) {
+  .animation {
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 500px;
+  }
 }
 
 @media screen and (max-width: 500px) {
