@@ -10,7 +10,8 @@
   justify-content: space-between;
   max-width: 990px;
   width: 100%;
-  height: calc(100vh - 77px);
+  // height: calc(100vh - 77px);
+  min-height: calc(100vh - 77px);
   margin: 0 auto;
   padding: 0 20px 20px 20px;
 }
@@ -19,7 +20,7 @@
   margin: 0;
   padding: 0;
 
-  @include font-style-pressStart(27px, 400, 65px, #F5F5EF);
+  @include font-style-pressStart(27px, 400, 40px, #F5F5EF);
   text-align: center;
 }
 
@@ -94,16 +95,18 @@
 }
 
 .button {
+  margin: 23px 0 0 0;
   width: 100%;
   text-transform: uppercase;
 }
 
 .animation {
-  // position: absolute;
-  // left: 50%;
-  // transform: translateX(-50%);
-  // width: 600px;
-  // height: 500px;
+  position: absolute;
+  top: 7%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 500px;
 
   pointer-events: none;
 }
@@ -148,39 +151,22 @@
   @include font-style-ibmPlexSans(16px, 600, 22px, $color-E1-white);  
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 500px) {
   .title {
     font-size: 19px;
     line-height: 30px;
   }
 
-  .button {
-    margin: 23px 0 0 0;
-    width: 100%;
-  }
-
-  .wrapper {
-    flex-direction: column;
-    width: 100%;
-    margin: 0 auto 23px;  
-  }
-
-  .animation {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 500px;
-  }
-}
-
-@media screen and (max-width: 500px) {
   .item__title {
     font-size: 20px;
   }
 
   .item__subtitle {
     font-size: 17px;
+  }
+
+  .animation {
+    top: 0;
   }
 }
 

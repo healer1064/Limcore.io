@@ -65,7 +65,7 @@ export const BurgerMenu = ({ burgerOpened, closeBurger }: IBurgerMenu) => {
         <div className={Styles.inner}>
           <div className={Styles.body}>
             <div className={Styles.connect}>
-              <ButtonSecond>Подключить кошелек</ButtonSecond>
+              <ButtonSecond className={Styles.connect__btn}>Подключить кошелек</ButtonSecond>
             </div>
 
             <ul className={Styles.list}>
