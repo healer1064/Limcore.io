@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import Styles from './style.module.scss'
 import { Spinner } from '@components/Spinner'
 import { Header } from '@components/Header'
-import { HeaderMobile } from '@components/Header/HeaderMobile/index'
+import { HeaderMobile } from '@components/Header/components/HeaderMobile'
 import { AuthMobile } from '../../pages/auth/AuthMobile'
 import { Chat } from '@components/Chat'
 import { LandingPage } from '../../pages/landing'
@@ -54,6 +54,7 @@ const App = () => {
         )}
         {desktop && !isLoading ? <Header /> : <HeaderMobile />}
         <>
+          {/* <Calculator /> */}
           <main className={desktop ? `${Styles.main}` : `${Styles.main} ${Styles.main_mobile}`}>
             {!isAuth && !isLoading && (
               <Switch>

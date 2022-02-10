@@ -9,9 +9,12 @@ import { RoadMap } from './components/RoadMap'
 import { Team } from './components/Team'
 // import { UpEcosystem } from './components/UpEcosystem'
 // import { OnLine } from './components/OnLine'
-import { Questions } from './components/Questions'
-import { Media } from './components/Media'
-import { Footer } from '@components/Footer'
+// import { Questions } from './components/Questions'
+// import { Media } from './components/Media'
+// import { Footer } from '@components/Footer'
+import { Calcs } from '../landing/components/Calcs'
+import { CalcsMobile } from '../landing/components/Calcs/CalcsMobile'
+import useWindowSize from '@helpers/useWindowSizeHook'
 
 export const LandingPage: React.FC = () => {
   const { innerWidth: width } = window
@@ -35,9 +38,9 @@ export const LandingPage: React.FC = () => {
       <Team />
       {/* <UpEcosystem /> */}
       {/* <OnLine /> */}
-      <Questions />
+      {/* <Questions />
       <Media />
-      <Footer />
+      <Footer /> */}
     </div>
   )
 }

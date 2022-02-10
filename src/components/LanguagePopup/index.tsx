@@ -56,6 +56,7 @@ export const LanguagePopup = ({ position, footerStyles }: ILanguagePopupProps) =
         className={classNames(Styles.block, showPopapLanguage && Styles.active)}
         onMouseEnter={showPopup}
         onMouseLeave={hidePopup}
+        onClick={() => setShowPopapLanguage(!showPopapLanguage)}
         style={footerBlockStyles}
       >
         {i18n.language === 'ru' && <span className={Styles.langTitle}>RU</span>}

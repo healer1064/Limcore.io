@@ -4,10 +4,10 @@
 .header {
   display: flex;
   justify-content: center;
-  padding: 39px 0;
+  padding: 39px 20px;
   width: 100%;
+  max-height: 137px;
   box-sizing: border-box;
-  padding: 0;
 }
 
 .logout:hover {
@@ -44,7 +44,7 @@
   transition: filter .3s ease;
 
   &:hover {
-    filter: drop-shadow(0px 0px 15px rgb(25, 226, 255));
+    filter: drop-shadow(0px 0px 15px rgb(25, 226, 255)) drop-shadow(0px 0px 15px rgb(25, 226, 255));
     transition: filter .3s ease;
   }
 }
@@ -119,9 +119,8 @@
   }
 }
 
-.profileBtn {
+@mixin accountButton() {
   padding: 8px 18px;
-  margin: 0 0 0 44px;
   border: 2px solid $color-FC-yellow;
   border-radius: 30px;
 
@@ -150,20 +149,32 @@
   }
 }
 
-.loginBtn {
-  display: flex;
-  align-items: center;
-  padding: 8px 18px;
-  margin: 0 0 0 20px;
-  border: 2px solid $color-FC-yellow;
-  border-radius: 30px;
-
-  @include font-style-ibmPlexSans(16px, 500, 22px, $primary-color);
-  text-decoration: none;
+.profileBtn {
+  @include accountButton();
+  margin: 0 0 0 44px;
   
-  outline: none;
-  background-color: $white;
-  transition: color .3s ease;
+  &_link {
+    display: flex;
+    align-items: center;
+    @include semiBoldH4($color-FC-yellow);
+    text-decoration: none;
+    transition: color .3s ease;
+    outline: none;
+  }
+
+  &:hover {
+    transition: color .3s ease;
+
+    & > .profileBtn_link {
+      color: $white;
+      transition: color .3s ease;
+    }
+  }
+}
+
+.loginBtn {
+  @include accountButton();
+  margin: 0 0 0 20px;
 
   &:hover {
     color: $white;
@@ -210,14 +221,32 @@ input[type='radio'] {
   }
 }
 
-@media (max-width: 900px) {
-  .link {
-    font-size: 12.5px;
-    margin: 0 12px 0 0;
+@media (max-width: 1150px) {
+  .list {
+    margin-right: 15px;
   }
 
-  .lang {
-    margin-right: 0;
-    transform: translateX(5px);
+  .item__link {
+    font-size: 14px;
+  }
+
+  .item:not(:last-child) {
+    margin-right: 25px;
+  }
+
+  .profileBtn,
+  .loginBtn {
+    font-size: 14px !important;
+    line-height: 16px !important;
+    
+    & > a {
+      font-size: 14px !important;
+      line-height: 16px !important;
+    }
+  }
+
+  .animation {
+    top: 35%;
+    left: 0;
   }
 }

@@ -98,7 +98,7 @@ export const Header: React.FC = () => {
           </li>
         </ul>
         <div className={Styles.container}>
-          <LanguagePopup />
+          <LanguagePopup position={{ top: '37px' }} />
           {isAuth ? (
             <button className={Styles.profileBtn} type='button'>
               <LinkDom to='/my' className={Styles.profileBtn_link}>
