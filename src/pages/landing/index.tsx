@@ -21,8 +21,8 @@ export const LandingPage: React.FC = () => {
       {/* <Calculator /> */}
       <RoadMap />
       {/* <Team /> */}
-      <HowWork />
-      <Why />
+      {/* <HowWork /> */}
+      {/* <Why /> */}
       {/* <Equipment /> */}
       {/* <UpEcosystem /> */}
       {/* <OnLine /> */}

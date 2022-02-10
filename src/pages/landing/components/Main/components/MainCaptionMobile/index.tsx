@@ -1,22 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Styles from './styles.module.scss'
 import rocketAnim from '@animations/rocket.json'
 import popup from '@icons/popupIcon.svg'
 import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
-import useWindowSize from '@helpers/useWindowSizeHook'
 import { BottomModal } from '@components/Modal/BottomModal'
 import { Player } from '@lottiefiles/react-lottie-player'
+import classNames from 'classnames'
 
 type TModals = '' | 'first' | 'second'
 
 export const MainCaptionMobile: React.FC = () => {
-  const { width } = useWindowSize()
   const [lottiePseudeRef, setLottiePseudeRef] = useState<any>({ lottie: null })
 
   const [modals, setModals] = useState<TModals>('')
   const openModal = (which: TModals) => setModals(which)
   const closeAnyModal = () => setModals('')
 
+  const [showList, setShowList] = useState(false)
   const onEvent = (event: string) => {
     switch (event) {
       case 'complete':
@@ -28,20 +28,26 @@ export const MainCaptionMobile: React.FC = () => {
     }
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      setShowList(true)
+    }, 3000)
+  }, [])
+
   return (
     <div className={Styles.container}>
       <h1 className={Styles.title}>LIMCORE — ракета в сфере облачного майнинга!</h1>
 
-      <div className={Styles.animation} style={{ height: '400px', width }}>
+      <div className={Styles.animation}>
         <Player
           onEvent={onEvent}
           lottieRef={(instance) => setLottiePseudeRef({ lottie: instance })}
           src={rocketAnim}
-          style={{ height: '400px', width }}
+          style={{ height: '100%', width: '100%' }}
         />
       </div>
 
-      <div className={Styles.wrapper}>
+      <div className={classNames(Styles.wrapper, showList && Styles.visible)}>
         <ul className={Styles.list}>
           <li className={Styles.item}>
             <h4 className={Styles.item__title}>1 LIMC $300 HitBTC</h4>
@@ -89,9 +95,7 @@ export const MainCaptionMobile: React.FC = () => {
           </li>
         </ul>
 
-        <div className={Styles.inner}>
-          <ButtonBig className={Styles.button}>КУПИТЬ LIMC</ButtonBig>
-        </div>
+        <ButtonBig className={Styles.button}>КУПИТЬ LIMC</ButtonBig>
       </div>
     </div>
   )

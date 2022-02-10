@@ -18,7 +18,7 @@ export const Main: React.FC = () => {
     <section className={Styles.main}>
       <div className={Styles.wrapper}>
         {desktop ? <MainCaption /> : <MainCaptionMobile />}
-        {desktop ? <Calcs /> : <CalcsMobile />}
+        {/* {desktop ? <Calcs /> : <CalcsMobile />} */}
         {/* <MainRounds /> */}
         {/* <MainParthers /> */}
         {/* <MainHow /> */}
