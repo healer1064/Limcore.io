@@ -3,7 +3,8 @@
 
 .container {
   width: 100vw;
-  height: 100vh;
+  max-height: 100vh;
+  height: 100%;
 }
 
 .header {
@@ -23,8 +24,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px;
-  height: calc(100% - 75px); // минус высота хедера
+  padding: 15px 20px 0 20px;
+  max-height: calc(100% - 75px); // минус высота хедера
+  height: 100%;
 }
 
 .close__btn {
@@ -33,6 +35,9 @@
 }
 
 .connect {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0 auto 40px;
   width: 100%;
 
