@@ -27,6 +27,11 @@
   height: calc(100% - 75px); // минус высота хедера
 }
 
+.close__btn {
+  background: transparent;
+  border: none;
+}
+
 .connect {
   margin: 0 auto 40px;
   width: fit-content;

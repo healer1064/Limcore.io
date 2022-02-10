@@ -155,22 +155,6 @@
   margin-left: 6px;
 }
 
-// Popup
-@keyframes show-popup {
-  0% {
-    opacity: .25;
-  }
-  50% {
-    opacity: .5;
-  }
-  75% {
-    opacity: .75;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 .popup {
   position: absolute;
   top: 120%;
@@ -184,18 +168,17 @@
   background-image: url('../../../../../../assets/icons/infoBlockBorders2.svg');
   background-position: center;
   background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.visible {
+  transition: opacity .3s ease;
+  opacity: 1;
 }
 
 .popup__subtitle {
   width: 261px;
-}
-
-.popup.entering {
-  animation: show-popup .7s forwards;
-}
-
-.popup.exiting {
-  animation: show-popup .7s reverse;
 }
 
 @media screen and (max-width: 1150px) {

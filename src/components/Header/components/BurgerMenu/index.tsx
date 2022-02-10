@@ -56,7 +56,7 @@ export const BurgerMenu = ({ burgerOpened, closeBurger }: IBurgerMenu) => {
         <div className={Styles.header}>
           <div className={Styles.header__inner}>
             <img className={Styles.logo} src={logoIcon} alt='Лого' />
-            <button type='reset' onClick={closeBurger}>
+            <button type='reset' className={Styles.close__btn} onClick={closeBurger}>
               <CloseIcon />
             </button>
           </div>
