@@ -1,0 +1,81 @@
+.gameStart {
+  > h2 {
+    color: white;
+  }
+
+  p,
+  h2,
+  li {
+    font-family: "IbmPlexSans", "Arial", "Helvetica", sans-serif;
+    line-height: 24px;
+    color: white;
+  }
+}
+
+.gameStart__twoMods {
+  display: flex;
+  justify-content: flex-start;
+  width: fit-content;
+  overflow-x: auto;
+
+  p {
+    word-break: break-word;
+  }
+
+  @media all and (max-width: 600px) {
+    width: 480px;
+  }
+
+  @media all and (max-width: 530px) {
+    width: 420px;
+  }
+
+  @media all and (max-width: 470px) {
+    width: 350px;
+  }
+
+  @media all and (max-width: 365px) {
+    width: 300px;
+  }
+
+  > div {
+    height: 230px;
+    overflow: none auto;
+
+    &:first-of-type {
+      width: min-content;
+      min-width: 200px;
+      margin-right: 25px;
+    }
+
+    &:last-of-type {
+      width: fit-content;
+      margin-left: 25px;
+
+      > p {
+        width: 300px;
+        min-width: 250px;
+      }
+    }
+
+    @media all and (max-width: 768px) {
+      padding: 30px 30px 0 30px;
+      background: linear-gradient(268.27deg, #192a2c 2.77%, #101717 75.26%);
+      border-radius: 30px;
+
+      &:first-of-type {
+        margin-right: 6px;
+      }
+
+      &:last-of-type {
+        margin-left: 6px;
+      }
+    }
+  }
+
+  h3 {
+    font-family: "Press Start 2P", sans-serif;
+    font-size: 16px;
+    color: rgba(252, 254, 1, 1);
+  }
+}
