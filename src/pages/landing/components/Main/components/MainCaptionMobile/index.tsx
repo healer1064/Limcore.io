@@ -5,7 +5,7 @@ import popup from '@icons/popupIcon.svg'
 import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
 import classNames from 'classnames'
 import useWindowSize from '@helpers/useWindowSizeHook'
-import { Player } from '@lottiefiles/react-lottie-player'
+// import { Player } from '@lottiefiles/react-lottie-player'
 import { BottomModal } from '@components/Modal/BottomModal'
 
 type TAnimation = '' | 'complete'
@@ -40,9 +40,9 @@ export const MainCaptionMobile: React.FC = () => {
     <div className={Styles.container}>
       <h1 className={Styles.title}>LIMCORE — ракета в сфере облачного майнинга!</h1>
 
-      <div className={Styles.animation}>
+      {/* <div className={Styles.animation}>
         <Player onEvent={onEvent} ref={animRef} autoplay={false} src={rocketAnim} style={{ height: '400px', width }} />
-      </div>
+      </div> */}
 
       <div className={Styles.wrapper}>
         <ul className={Styles.list}>

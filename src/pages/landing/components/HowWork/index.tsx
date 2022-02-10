@@ -3,7 +3,6 @@ import styles from './styles.module.scss'
 import folder from '@animations/folders.json'
 import folder2 from '@animations/folder2.json'
 import Lottie from 'react-lottie'
-import noise from '../../../../assets/images/noise_how.svg'
 import useWindowSize from '@helpers/useWindowSizeHook'
 import uparrow from '../../../../assets/images/arrow.svg'
 

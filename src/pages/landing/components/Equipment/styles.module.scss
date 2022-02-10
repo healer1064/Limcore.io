@@ -4,6 +4,8 @@
 .equipment {
   color: white;
   position: relative;
+  margin-bottom: 100px;
+  height: 1024px;
 }
 
 .container {
@@ -17,6 +19,7 @@
   font-size: 41px;
   line-height: 135%;
   text-align: center;
+  margin-bottom: 112px;
 }
 
 .block {
@@ -38,9 +41,11 @@
 }
 
 .map {
+  background-image: url('../../../../assets/images/map.svg');
   width: 809px;
   height: 1024px;
+
   object-fit: cover;
   position: absolute;
-  margin-left: auto ;
+  right: 0;
 }

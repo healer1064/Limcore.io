@@ -3,7 +3,6 @@ import styles from './styles.module.scss'
 import Lottie from 'react-lottie'
 import packmann from '@animations/packman.json'
 import useWindowSize from '@helpers/useWindowSizeHook'
-import noise from '../../../../assets/images/noise_why.png'
 
 export const Why: React.FC = () => {
   const { width } = useWindowSize()
@@ -17,7 +16,6 @@ export const Why: React.FC = () => {
   }
   return (
     <section className={styles.why}>
-      <img className={styles.noise} src={noise} alt='noise' />
       <div className={styles.container}>
         <h2 className={styles.title}>Почему стоимость LIMC будет раст</h2>
         <p className={styles.description}>

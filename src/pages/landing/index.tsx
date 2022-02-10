@@ -23,7 +23,7 @@ export const LandingPage: React.FC = () => {
       {/* <Team /> */}
       <HowWork />
       <Why />
-      {/* <Equipment /> */}
+      <Equipment />
       {/* <UpEcosystem /> */}
       {/* <OnLine /> */}
       <Questions />
