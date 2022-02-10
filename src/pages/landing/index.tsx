@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Styles from './styles.module.scss'
 
 import { Main } from './components/Main'
@@ -15,23 +15,18 @@ import { Main } from './components/Main'
 // import { Questions } from './components/Questions'
 // import { Media } from './components/Media'
 // import { Footer } from '@components/Footer'
+import { Calcs } from '../landing/components/Calcs'
+import { CalcsMobile } from '../landing/components/Calcs/CalcsMobile'
+import useWindowSize from '@helpers/useWindowSizeHook'
 
 export const LandingPage: React.FC = () => {
-  const { innerWidth: width } = window
-
-  const [clientWidth, setClientWidth] = useState<number>(width)
-
-  useEffect(() => {
-    const resizeHandler = () => setClientWidth(window.innerWidth)
-    window.addEventListener('resize', resizeHandler)
-
-    return () => window.removeEventListener('resize', resizeHandler)
-  }, [clientWidth])
+  const { width } = useWindowSize()
+  const desktop = width >= 769
 
   return (
     <div className={Styles.landing}>
       <Main />
-      {/* <Calculator /> */}
+      {/* {desktop ? <Calcs /> : <CalcsMobile />} */}
       {/* <GamificationOfMining clientWidth={clientWidth} />
       <AppForMining clientWidth={clientWidth} /> */}
       {/* <RoadMap /> */}
