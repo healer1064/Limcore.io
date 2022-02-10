@@ -181,6 +181,11 @@
   width: 261px;
 }
 
+.blur {
+  position: absolute;
+  filter: drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff);
+}
+
 @media screen and (max-width: 1150px) {
   .container {
     width: calc(100vw - 94px);
@@ -207,13 +212,6 @@
     }
   }
 }
-
-// @media screen and (max-width: 1084px) {
-//   .container {
-//     // padding: 39px 0;
-//     // padding: 39px 47px;
-//   }
-// }
 
 @media screen and (max-width: 1000px) {
   .animation {
