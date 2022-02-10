@@ -1,0 +1,11 @@
+.gameCaption {
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 41px;
+  font-weight: 400;
+  color: white;
+  text-align: center;
+
+  @media all and (max-width: 768px) {
+    font-size: 19px;
+  }
+}
