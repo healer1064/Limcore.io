@@ -22,25 +22,12 @@
     word-break: break-word;
   }
 
-  @media all and (max-width: 600px) {
-    width: 480px;
-  }
-
-  @media all and (max-width: 530px) {
-    width: 420px;
-  }
-
-  @media all and (max-width: 470px) {
-    width: 350px;
-  }
-
-  @media all and (max-width: 365px) {
-    width: 300px;
+  @media all and (max-width: 768px) {
+    width: calc(100vw - 40px);
   }
 
   > div {
     height: 230px;
-    overflow: none auto;
 
     &:first-of-type {
       width: min-content;
@@ -53,8 +40,8 @@
       margin-left: 25px;
 
       > p {
-        width: 300px;
-        min-width: 250px;
+        min-width: 300px;
+        max-width: 350px;
       }
     }
 
