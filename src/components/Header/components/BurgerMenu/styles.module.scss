@@ -34,7 +34,7 @@
 
 .connect {
   margin: 0 auto 40px;
-  width: fit-content;
+  width: 100%;
 
   & > button {
     min-width: 335px;
@@ -48,7 +48,7 @@
 }
 
 .list__title {
-  margin: 0 18px 0 0;
+  margin: 0 18px 15px 0;
   @include font-style-ibmPlexSans(18px, 600, 22px, $color-F5-white);
 }
 
@@ -86,7 +86,7 @@
 }
 
 .footer {
-  padding: 0 20px;
+  padding: 0 20px 20px;
 }
 
 .utils {
@@ -100,4 +100,11 @@
 .email {
   text-decoration: none;
   @include font-style-ibmPlexSans(18px, 400, 22px, $primary-color);
+}
+
+@media screen and (max-width: 370px) {
+  .connect__btn {
+    min-width: 0 !important;
+    width: 100%;
+  }
 }
