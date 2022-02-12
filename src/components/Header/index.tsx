@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Styles from './style.module.scss'
-import { Link as LinkDom } from 'react-router-dom'
+import { Link, Link as LinkDom, useHistory } from 'react-router-dom'
 
 import logoIcon from '../../assets/images/headerLogo.png'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
@@ -12,6 +12,7 @@ import { LanguagePopup } from '../LanguagePopup/index'
 import { Dropdown } from './components/Dropdown'
 
 export const Header: React.FC = () => {
+  const history = useHistory()
   const dispatch = useAppDispatch()
   const [t] = useTranslation()
 
@@ -56,10 +57,13 @@ export const Header: React.FC = () => {
   }, [isAuth])
 
   function handleClick(e) {
-    e.preventDefault()
-    const link = e.target.getAttribute('href').slice(1)
-    const destination = document.getElementById(`${link}`)
-    destination.scrollIntoView({ behavior: 'smooth' })
+    if (history.location.pathname === '/') {
+      const link = e.target.getAttribute('href').slice(1)
+      const destination = document.getElementById(`${link}`)
+      destination.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      history.push('./')
+    }
   }
 
   return (
@@ -92,9 +96,9 @@ export const Header: React.FC = () => {
             </Dropdown>
           </li>
           <li className={Styles.item}>
-            <a href='#' className={Styles.item__link}>
+            <Link to='/data-center' href='#' className={Styles.item__link}>
               Статистика
-            </a>
+            </Link>
           </li>
         </ul>
         <div className={Styles.container}>
