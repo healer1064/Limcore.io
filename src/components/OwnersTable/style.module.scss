@@ -1,0 +1,30 @@
+@import './../../scss/typography.scss';
+@import './../../scss/_vars.scss';
+
+.head_cell:first-child {
+  padding-left: 34px;
+}
+
+.icon_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-left: 4px;
+}
+.button_container {
+  display: flex;
+  margin-top: 50px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button {
+  padding: 14px 81px;
+  max-width: 471px;
+  border: 2px solid $primary-color;
+  border-radius: 80px;
+  font-weight: $fontWeightSemiBold;
+  color: $color-F5-white;
+}

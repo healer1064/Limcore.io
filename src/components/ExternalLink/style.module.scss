@@ -1,0 +1,15 @@
+@import '../../scss/typography.scss';
+@import '../../scss/_vars.scss';
+
+.external {
+  display: flex;
+  align-items: center;
+  @include p2();
+  text-decoration: none;
+  font-weight: $fontWeightSemiBold;
+  color: $primary-color;
+}
+
+.icon {
+  margin-left: 4px;
+}
