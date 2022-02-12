@@ -31,6 +31,9 @@
         color: $color-E1-white;
       };
       .tooltip {
+        border: none;
+        outline: none;
+        background-color: transparent;
         margin: 0 0 0 8px;
       }
     }

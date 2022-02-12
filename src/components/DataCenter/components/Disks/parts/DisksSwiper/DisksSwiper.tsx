@@ -3,6 +3,8 @@ import SwiperCore, { Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { DiskSlide } from './DiskSlide'
 import styles from './styles.module.scss'
+import 'swiper/swiper-bundle.min.css'
+import 'swiper/swiper.min.css'
 
 SwiperCore.use([Navigation])
 
