@@ -15,6 +15,7 @@ import { AppForMining } from './components/AppForMining'
 // import { Calcs } from '../landing/components/Calcs'
 // import { CalcsMobile } from '../landing/components/Calcs/CalcsMobile'
 import useWindowSize from '@helpers/useWindowSizeHook'
+import { ProjectNews } from './components/ProjectNews'
 
 export const LandingPage: React.FC = () => {
   const { width } = useWindowSize()
@@ -25,6 +26,7 @@ export const LandingPage: React.FC = () => {
       {/* <Calculator /> */}
       <GamificationOfMining clientWidth={width} />
       <AppForMining clientWidth={width} />
+      <ProjectNews />
       {/* <RoadMap />
       <Team /> */}
       {/* <UpEcosystem /> */}
