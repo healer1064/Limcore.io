@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styles from './style.module.scss'
 import { StyledInputRange } from '@components/StyledComponents/StyledInputRange/StyledInputRange'
-import { BrownianMotion } from './BrownianMotion/BrownianMotion.jsx'
+import { BrownianMotion } from './BrownianMotion/BrownianMotion'
 import { data } from './constants'
 import { Modal } from './Modal/Modal'
 
