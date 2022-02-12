@@ -10,17 +10,15 @@
 
 .title {
   position: relative;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 100%;
-
   transition: filter 0.3s ease;
-  
+
   &:hover {
-    filter: drop-shadow(0px 0px 15px rgb(25, 226, 255));
     cursor: pointer;
+    filter: drop-shadow(0 0 15px rgb(25, 226, 255));
     transition: filter 0.3s ease;
 
     path {
@@ -36,13 +34,15 @@
 
 .text {
   margin: 0;
+
   @include font-style-inter(16px, 500, 24px, $color-E1-white);
+
   background-color: transparent;
 }
 
 .arrow {
-  margin-left: 10px;
   height: 15px;
+  margin-left: 10px;
   transform: rotate(90deg);
 }
 
@@ -58,22 +58,26 @@
   position: absolute;
   top: calc(100% + 10px);
   z-index: 10;
-
   display: flex;
   flex-direction: column;
   padding: 40px;
-  border-radius: $border-radius;
-  
-  background: $color-19-dark;
-  box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
   list-style: none;
-  transition: opacity .3s ease;
-  opacity: 0;
   visibility: hidden;
-  
+  background: $color-19-dark;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 25px rgba(112, 112, 112, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
   &.active {
-    opacity: 1;
     visibility: visible;
+    opacity: 1;
     transition: opacity 0.3s ease;
+  }
+}
+
+@media (max-width: 1150px) {
+  .text {
+    font-size: 14px;
   }
 }

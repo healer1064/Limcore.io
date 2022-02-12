@@ -42,6 +42,7 @@
     "react-id-swiper": "^4.0.0",
     "react-imask": "^6.2.2",
     "react-lottie": "^1.2.3",
+    "react-motion": "^0.5.2",
     "react-phone-input-2": "^2.14.0",
     "react-redux": "^7.2.4",
     "react-router": "^5.2.0",
