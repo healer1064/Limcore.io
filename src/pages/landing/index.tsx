@@ -12,8 +12,8 @@ import { AppForMining } from './components/AppForMining'
 // import { Questions } from './components/Questions'
 // import { Media } from './components/Media'
 // import { Footer } from '@components/Footer'
-// import { Calcs } from '../landing/components/Calcs'
-// import { CalcsMobile } from '../landing/components/Calcs/CalcsMobile'
+import { Calcs } from '../landing/components/Calcs'
+import { CalcsMobile } from '../landing/components/Calcs/CalcsMobile'
 import useWindowSize from '@helpers/useWindowSizeHook'
 
 export const LandingPage: React.FC = () => {
@@ -23,6 +23,7 @@ export const LandingPage: React.FC = () => {
     <div className={Styles.landing}>
       <Main />
       {/* <Calculator /> */}
+      {width <= 768 ? <CalcsMobile /> : <Calcs />}
       <GamificationOfMining clientWidth={width} />
       <AppForMining clientWidth={width} />
       {/* <RoadMap />

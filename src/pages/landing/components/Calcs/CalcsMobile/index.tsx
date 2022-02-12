@@ -37,7 +37,7 @@ export const CalcsMobile = () => {
           min={1}
           max={40000}
           step={1}
-          style={{ gridArea: '2/1', width: '335px', margin: '30px 0 16px 0', padding: '0' }}
+          style={{ gridArea: '2/1', width: '100%', margin: '30px 0 16px 0', padding: '0' }}
           onChange={handleRange}
         />
         <p className={styles.mobile__text}>Общий доход за 30d при текущем курсе</p>
