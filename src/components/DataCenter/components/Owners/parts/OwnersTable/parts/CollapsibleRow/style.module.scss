@@ -1,0 +1,37 @@
+@import '../../../../../../../../scss/typography.scss';
+@import '../../../../../../../../scss/_vars.scss';
+
+.row {
+  cursor: pointer;
+}
+
+.row:hover .cell {
+  background-color: $color-45-green;
+  & > .icon_wrapper > svg circle {
+    fill: $color-DF-aquamarine;
+  }
+}
+
+.icon_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collapse_row:hover .collapse_cell {
+  color: $color-E1-white;
+}
+
+.collapse_row:hover .collapse_cell:nth-child(2) {
+  color: $primary-color;
+}
+.graph_container {
+  display: flex;
+  min-width: 87px;
+  max-width: 87px;
+  align-items: center;
+  justify-content: end;
+}
+.donut {
+  margin-left: 10px;
+}
