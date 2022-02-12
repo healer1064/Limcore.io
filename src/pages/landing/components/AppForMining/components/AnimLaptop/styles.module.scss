@@ -1,0 +1,13 @@
+.animLaptop {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 800px;
+  height: 600px;
+
+  @media all and (max-width: 1500px) {
+    position: static;
+    width: 100%;
+    height: calc(100% - 300px);
+  }
+}

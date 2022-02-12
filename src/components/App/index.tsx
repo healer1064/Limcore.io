@@ -16,8 +16,8 @@ import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getUser } from '@app/redux/userSlice'
 import { getSoldLimcs } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
 import { getForksPrice } from '@components/Wallet/redux/walletSlice'
-import { DataCenter } from '@components/DataCenter/DataCenter'
 import { DataCenterPage } from '../../pages/data-center'
+import { Borders } from '@components/Borders'
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -55,6 +55,7 @@ const App = () => {
           </div>
         )}
         {desktop && !isLoading ? <Header /> : <HeaderMobile />}
+        <Borders />
         <>
           {/* <Calculator /> */}
           <main className={desktop ? `${Styles.main}` : `${Styles.main} ${Styles.main_mobile}`}>

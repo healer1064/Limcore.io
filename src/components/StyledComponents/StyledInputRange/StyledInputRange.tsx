@@ -1,10 +1,9 @@
-import React from 'react'
-import { withStyles, alpha } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/core/styles'
 import { Slider } from '@material-ui/core'
 
 export const StyledInputRange = withStyles({
   root: {
-    width: 523,
+    width: '100%',
     height: 12,
   },
   track: {

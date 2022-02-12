@@ -18,7 +18,7 @@
 
   &:hover {
     cursor: pointer;
-    filter: drop-shadow(0 0 15px rgb(25, 226, 255));
+    filter: drop-shadow(0 0 15px rgb(25, 226, 255)) drop-shadow(0 0 15px rgb(25, 226, 255));
     transition: filter 0.3s ease;
 
     path {

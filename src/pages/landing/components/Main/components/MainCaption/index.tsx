@@ -3,11 +3,12 @@ import Styles from './styles.module.scss'
 import Lottie from 'react-lottie'
 import rocketAnim from '@animations/rocket.json'
 import popup from '@icons/popupIcon.svg'
-import { Transition } from 'react-transition-group'
 import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
 import classNames from 'classnames'
+import useWindowSize from '@helpers/useWindowSizeHook'
 
 export const MainCaption: React.FC = () => {
+  const { width } = useWindowSize()
   const [isPopupOpened, setIsPopupOpened] = useState(false)
 
   const openPopup = () => setIsPopupOpened(true)
@@ -22,9 +23,14 @@ export const MainCaption: React.FC = () => {
     },
   }
 
+  const blurStyles = { width: `${width / 3}px`, height: `${width / 4}px` }
+
   return (
     <div className={Styles.container}>
       <h1 className={Styles.title}>LIMCORE — ракета в сфере облачного майнинга!</h1>
+
+      <div className={Styles.blur} style={blurStyles} />
+      <div className={Styles.blur} style={blurStyles} />
 
       <div className={Styles.animation}>
         <Lottie options={defaultOptions} height={630} width={630} />
@@ -43,18 +49,14 @@ export const MainCaption: React.FC = () => {
             <div className={Styles.item__subtitle}>
               С условиями
               <img src={popup} alt='Popup' className={Styles.item__popup} />
-              <Transition timeout={200} in={isPopupOpened} unmountOnExit>
-                {() => (
-                  <div className={Styles.popup}>
-                    <div className={Styles.popup__inner}>
-                      <p className={classNames(Styles.info__subtitle, Styles.popup__subtitle)}>
-                        Покупая LIMC, вы приобретаете майнинговую мощность нашего дата-центра
-                      </p>
-                      <p className={classNames(Styles.info__subtitle, Styles.popup__subtitle)}>Навсегда!</p>
-                    </div>
-                  </div>
-                )}
-              </Transition>
+              <div className={classNames(Styles.popup, isPopupOpened && Styles.visible)}>
+                <div className={Styles.popup__inner}>
+                  <p className={classNames(Styles.info__subtitle, Styles.popup__subtitle)}>
+                    Покупая LIMC, вы приобретаете майнинговую мощность нашего дата-центра
+                  </p>
+                  <p className={classNames(Styles.info__subtitle, Styles.popup__subtitle)}>Навсегда!</p>
+                </div>
+              </div>
             </div>
           </li>
         </ul>
