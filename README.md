@@ -1,6 +1,6 @@
 # Limcore.io
 
-Figma: https://www.figma.com/file/sJsMrKx29SjMnod0rq2YGo/limcore.io?node-id=1624%3A18815
+Figma: https://www.figma.com/file/w0oQSI8MqSr2VnvgowcRaW/Limcore-2.0?node-id=0%3A1
 
 Проект Limcore.io
 
