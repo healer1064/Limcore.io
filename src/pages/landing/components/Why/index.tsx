@@ -22,11 +22,7 @@ export const Why: React.FC = () => {
           Экосистема Limcore не стоит на месте! Мы добавляем новые токены для майнинга и коины для валидации, увеличивая
           доход холдеров LIMC
         </p>
-        {width > 768 ? (
-          <Lottie options={defaultOptions} height={543} width={1061} />
-        ) : (
-          <Lottie options={defaultOptions} height={168} width={335} />
-        )}
+        <Lottie options={defaultOptions} width={width > 786 ? 1061 : 335} height={width > 786 ? 543 : 168} />
       </div>
     </section>
   )

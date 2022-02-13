@@ -1,7 +1,9 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import useWindowSize from '@helpers/useWindowSizeHook'
 import img from '../../../../assets/images/p_svg.svg'
+import underlineMob from '../../../../assets/images/underline_mob.png'
+import mapMob from '../../../../assets/images/map_mob.svg'
+import useWindowSize from '@helpers/useWindowSizeHook'
 
 export const Equipment: React.FC = () => {
   const { width } = useWindowSize()
@@ -11,11 +13,12 @@ export const Equipment: React.FC = () => {
       <div className={styles.container}>
         <h2 className={styles.title}>Где располагается оборудование</h2>
         <div className={styles.block}>
+          <img src={mapMob} className={styles.map_mob} />
           <div className={styles.desck}>
-            <p>
-              Мы приобретаем необходимое оборудование, <br /> располагая его децентрализованно в странах Евросоюза
+            <p className={styles.p}>
+              Мы приобретаем необходимое оборудование, располагая его децентрализованно в странах Евросоюза
             </p>
-            <img src={img} alt='img' />
+            <img src={width > 786 ? img : underlineMob} />
           </div>
         </div>
       </div>
