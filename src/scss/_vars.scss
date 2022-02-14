@@ -1,29 +1,29 @@
 // Colors
 $white: #fff;
-$color-1D-black: #1D2023;
-$color-F2-red: #F24949;
-$color-58-green: #58CD32;
-$color-4D-green: #4DBE28;
-$color-47-green: #47AF25;
-$color-E5-green: #E5FBDE;
-$color-39-black: #393C42;
-$color-4F-black: #4F535A;
-$color-3A-black: #3A3B3D;
-$color-67-black: #67686C;
-$color-99-gray: #99A0AD;
-$color-4A-blue: #4A70F8;
-$color-31-blue: #3159E9;
-$color-2D-blue: #2D4EC5;
-$color-DC-white: #DCDCDC;
-$color-F9-white: #F9FAFE;
-$color-70-grey: #7070701A;
+$color-1D-black: #1d2023;
+$color-F2-red: #f24949;
+$color-58-green: #58cd32;
+$color-4D-green: #4dbe28;
+$color-47-green: #47af25;
+$color-E5-green: #e5fbde;
+$color-39-black: #393c42;
+$color-4F-black: #4f535a;
+$color-3A-black: #3a3b3d;
+$color-67-black: #67686c;
+$color-99-gray: #99a0ad;
+$color-4A-blue: #4a70f8;
+$color-31-blue: #3159e9;
+$color-2D-blue: #2d4ec5;
+$color-DC-white: #dcdcdc;
+$color-F9-white: #f9fafe;
+$color-70-grey: #7070701a;
 $color-8C-violet: #8ca4f2;
-$color-ED-white: #EDF4FF;
-$color-E5-white: #E5FBDE;
+$color-ED-white: #edf4ff;
+$color-E5-white: #e5fbde;
 $color-7C-violet: #7c97f1;
-$color-B4-violet: #B4BFD4;
-$color-F2-red: #F24949;
-$color-FO-white: #F0F5FD;
+$color-B4-violet: #b4bfd4;
+$color-F2-red: #f24949;
+$color-FO-white: #f0f5fd;
 $color-DB-white: #dbe0ee;
 $color-86-grey: #868da7;
 $color-32-blue: #3257dd;
@@ -33,13 +33,13 @@ $color-EF-white: #eff0f0;
 $color-26-black: #262626;
 $color-96-blue: #96afc7;
 $color-96-grey: #969fa8;
-$color-D3-white: #D3D8DF;
+$color-D3-white: #d3d8df;
 $color-1E-black: #1e1f22;
 $color-71-grey: #717a8d;
 $color-13-black: #13151b;
-$color-36-grey: #36373A;
-$color-64-grey: #647BA8;
-$color-88-violet: #88A0FA;
+$color-36-grey: #36373a;
+$color-64-grey: #647ba8;
+$color-88-violet: #88a0fa;
 $color-F7-white: #f7f9ff;
 $color-F3-white: #f3f6fe;
 $color-E8-white: #e8f1ff;
@@ -47,24 +47,31 @@ $color-4C-white: #4c4c4c;
 $color-E5-grey: #e5e5e5;
 
 // Redesign vars
-$primary-color: #FCFF00 !default;
+$primary-color: #fcff00 !default;
 $color-19-black: #191919;
-$color-19-dark: #192A2C;
-$color-E1-white: #E1E1D8;
-$color-26-aquamarine: #26DFF8;
-$color-FC-yellow: #FCFF00;
-$color-F5-white: #F5F5EF;
-$color-56-green: #34565A;
-$color-AA-green: #A5AAA4;
-$color-2A-green: #192A2C;
-$color-B8-yellow: #B6B816;
-$color-84-green: #4F848A;
-$color-FA-white: #ECFAFD;
-$color-7C-yellow: #7B7C0A;
-$color-94-grey: #8C9496;
-$color-2B-black: #172B2E;
+$color-19-dark: #192a2c;
+$color-E1-white: #e1e1d8;
+$color-26-aquamarine: #26dff8;
+$color-FC-yellow: #fcff00;
+$color-F5-white: #f5f5ef;
+$color-56-green: #34565a;
+$color-AA-green: #a5aaa4;
+$color-2A-green: #192a2c;
+$color-B8-yellow: #b6b816;
+$color-84-green: #4f848a;
+$color-FA-white: #ecfafd;
+$color-7C-yellow: #7b7c0a;
+$color-94-grey: #8c9496;
+$color-2B-black: #172b2e;
 $color-63-grey: #366369;
 $color-45-green: #294548;
+$color-34-green: #1e3436;
+$color-1F-dark: #151f20;
+$color-64-aquamarine: #316469;
+$color-DF-aquamarine: #1fdfff;
+$color-4D-green: #1f4d5c;
+$color-58-grey: #36585c;
+$color-22-dark: #142224;
 
 // Typography
 $font-pressStart: 'Press Start 2P', sans-serif !default;
@@ -134,17 +141,12 @@ $box-shadow2: 0 4px 25px rgba(112, 112, 112, 0.1);
 }
 
 // Borders
-@mixin beveled-corners($bg, $tl:0, $tr:$tl, $br:$tl, $bl:$tr) {
+@mixin beveled-corners($bg, $tl: 0, $tr: $tl, $br: $tl, $bl: $tr) {
   background: $bg;
-  background:
-  linear-gradient(135deg, transparent $tl, $bg 0)
-  top left,
-  linear-gradient(225deg, transparent $tr, $bg 0)
-  top right,
-  linear-gradient(-45deg, transparent $br, $bg 0)
-  bottom right,
-  linear-gradient(45deg, transparent $bl, $bg 0)
-  bottom left;
+  background: linear-gradient(135deg, transparent $tl, $bg 0) top left,
+    linear-gradient(225deg, transparent $tr, $bg 0) top right,
+    linear-gradient(-45deg, transparent $br, $bg 0) bottom right,
+    linear-gradient(45deg, transparent $bl, $bg 0) bottom left;
   background-size: 50% 50%;
   background-repeat: no-repeat;
 }

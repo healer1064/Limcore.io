@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react'
 import { TableCell, withStyles } from '@material-ui/core'
+import clsx from 'clsx'
 
 const CollapseCell = withStyles(() => ({
   root: {
@@ -31,11 +32,17 @@ const CollapseCell = withStyles(() => ({
 
 export interface IStyledCollapseCell {
   children?: ReactNode
-  id?: string
   className?: string
+  index: number
+  length: number
 }
 
-export const StyledCollapseCell: React.FC<IStyledCollapseCell> = ({ children, className, id }) => {
+export const StyledCollapseCell: React.FC<IStyledCollapseCell> = ({ children, className, index, length }) => {
+  const id = clsx({
+    first: index === 0,
+    last: length - 1 === index,
+  })
+
   return (
     <CollapseCell className={className} id={id}>
       {children}

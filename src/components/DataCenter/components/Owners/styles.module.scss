@@ -11,25 +11,21 @@
   }
 
   .owners_heading {
+    @include font-style-pressStart(22px, normal, 140%, $color-F5-white);
     margin: 0;
-    color: $color-F5-white;
-    font-family: 'Press Start 2P', sans-serif;
     font-style: normal;
-    font-weight: normal;
-    font-size: 22px;
-    line-height: 140%;
   }
 
   .owners_description {
     margin: 0;
     color: $color-E1-white;
-    font-family: 'IbmPlexSans', 'Arial', 'Helvetica', sans-serif;
+    font-family: $font-ibmPlexSans;
     @include p1();
   }
 }
 
 .table {
-  font-family: 'IbmPlexSans', 'Arial', 'Helvetica', sans-serif;
+  font-family: $font-ibmPlexSans;
 
   &__header {
     display: flex;
@@ -49,7 +45,7 @@
     margin-right: 6px;
     height: 5px;
     width: 5px;
-    background-color: #36585c;
+    background-color: $color-58-grey;
     border-radius: 50%;
     display: inline-block;
   }
@@ -65,6 +61,6 @@
 
   .table__container {
     padding-top: 30px;
-    border-top: 2px solid #142224;
+    border-top: 2px solid $color-22-dark;
   }
 }

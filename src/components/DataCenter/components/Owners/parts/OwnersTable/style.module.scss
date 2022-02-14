@@ -1,5 +1,5 @@
-@import './../../scss/typography.scss';
-@import './../../scss/_vars.scss';
+@import '../../../../../../scss/typography.scss';
+@import '../../../../../../scss/_vars.scss';
 
 .head_cell:first-child {
   padding-left: 34px;
@@ -13,9 +13,14 @@
 .icon {
   margin-left: 4px;
 }
+.bottom_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .button_container {
   display: flex;
-  margin-top: 50px;
+  margin-top: 24px;
   flex-direction: column;
   align-items: center;
 }
@@ -24,6 +29,7 @@
   padding: 14px 81px;
   max-width: 471px;
   border: 2px solid $primary-color;
+  background: transparent;
   border-radius: 80px;
   font-weight: $fontWeightSemiBold;
   color: $color-F5-white;

@@ -1,8 +1,8 @@
 import { ExternalLink } from '@components/ExternalLink'
-import { OwnersCounter } from '@components/OwnersCounter'
-import { OwnersTable } from '@components/OwnersTable'
 import { ReactComponent as SearchIcon } from '@icons/searchGlass.svg'
 import React from 'react'
+import { OwnersCounter } from './parts/OwnersCounter'
+import { OwnersTable } from './parts/OwnersTable'
 import styles from './styles.module.scss'
 
 const data = {
@@ -10,29 +10,29 @@ const data = {
   data: [
     {
       rating: '1',
-      adress: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
       tokens: '102 LIMC',
       days: '80',
       info: [
-        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
-        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
-        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 30, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 40, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 10, limit: 60 } },
       ],
     },
     {
       rating: '3',
-      adress: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
       tokens: '102 LIMC',
       days: '80',
       info: [
-        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 60, limit: 60 } },
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
       ],
     },
     {
       rating: '2',
-      adress: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -43,7 +43,7 @@ const data = {
     },
     {
       rating: '3',
-      adress: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -54,7 +54,7 @@ const data = {
     },
     {
       rating: '1',
-      adress: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -65,7 +65,7 @@ const data = {
     },
     {
       rating: '2',
-      adress: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -76,7 +76,7 @@ const data = {
     },
     {
       rating: '2',
-      adress: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -87,7 +87,7 @@ const data = {
     },
     {
       rating: '2',
-      adress: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -98,7 +98,7 @@ const data = {
     },
     {
       rating: '2',
-      adress: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -109,7 +109,7 @@ const data = {
     },
     {
       rating: '2',
-      adress: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -120,7 +120,7 @@ const data = {
     },
     {
       rating: '2',
-      adress: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -131,7 +131,7 @@ const data = {
     },
     {
       rating: '2',
-      adress: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -142,7 +142,18 @@ const data = {
     },
     {
       rating: '2',
-      adress: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      tokens: '102 LIMC',
+      days: '80',
+      info: [
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+      ],
+    },
+    {
+      rating: '2',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
       tokens: '102 LIMC',
       days: '80',
       info: [
