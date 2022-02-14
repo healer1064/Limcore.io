@@ -1,7 +1,33 @@
 .cabinet {
+  z-index: 10;
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  // padding: 0 20px;
-  padding-top: 40px;
+  justify-content: center;
+  color: white;
+}
+
+.cabinet__container {
+  display: flex;
+  max-width: 1920px;
+}
+
+.cabinet__balance {
+  padding: 60px 80px;
+  background: rgba(25, 42, 44, 1);
+  border-radius: 20px;
+
+  > h2 {
+    font-family: "Press Start 2P", sans-serif;
+  }
+
+  > div {
+    display: flex;
+  }
+
+  @media all and (max-width: 768px) {
+    padding: 26px 20px;
+  }
+
+  @media all and (max-width: 360px) {
+    width: 100vw;
+  }
 }
