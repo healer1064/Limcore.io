@@ -1,0 +1,31 @@
+.youNeedInstallApp {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  max-width: 770px;
+
+  > p {
+    color: rgba(252, 255, 0, 1);
+
+    @media all and (max-width: 768px) {
+      align-self: end;
+    }
+  }
+}
+
+.youNeedInstallApp__wrapper {
+  width: fit-content;
+  max-width: 730px;
+  height: fit-content;
+  min-height: 300px;
+  padding: 140px 110px;
+
+  @media all and (max-width: 768px) {
+    min-height: fit-content;
+    padding: 0;
+  }
+
+  > p {
+    line-height: 24px;
+  }
+}

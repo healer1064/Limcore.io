@@ -3,6 +3,7 @@ import styles from './styles.module.scss'
 import Lottie from 'react-lottie'
 import packmann from '@animations/packman.json'
 import useWindowSize from '@helpers/useWindowSizeHook'
+import noise from '../../../../assets/images/noise_how.svg'
 
 export const Why: React.FC = () => {
   const { width } = useWindowSize()
