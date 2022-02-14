@@ -1,0 +1,89 @@
+$green-dep: rgba(79, 132, 138, 1);
+
+.cabinet__balanceLIMC {
+  min-width: 260px;
+  margin: 0 0 12px 0;
+  font-family: "IbmPlexSans", "Arial", "Helvetica", sans-serif;
+  font-size: 14px;
+
+  @media all and (max-width: 360px) {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.cabinet__balanceLIMC_item1 {
+  padding: 26px;
+  background: rgba(21, 31, 32, 1);
+  border-radius: 30px;
+}
+
+.cabinet__balanceLIMCTitle {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  color: $green-dep;
+
+  img {
+    width: 32px;
+    height: 32px;
+    margin: 0 6px 0 0;
+  }
+
+  @media all and (max-width: 360px) {
+    justify-content: center;
+  }
+}
+
+.cabinet__balanceLIMCStats {
+  margin: 0 0 20px 0;
+  font-size: 20px;
+
+  > span:first-of-type {
+    margin: 0 8px;
+  }
+
+  > span:last-of-type {
+    color: $green-dep;
+
+    img {
+      width: 13px;
+      height: 18px;
+      margin: 0 0 0 8px;
+    }
+  }
+}
+
+.cabinet__balanceLIMCMiddle {
+  margin: 0 0 4px 0;
+  color: $green-dep;
+}
+
+.cabinet__balanceLIMCSummary {
+  margin: 0 0 24px 0;
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.cabinet__balanceLIMCCourse {
+  margin: 0 0 16px 0;
+}
+
+.cabinet__balanceLIMCLine {
+  width: 100%;
+  margin: 0 0 18px 0;
+  border: 1px solid $green-dep;
+}
+
+.cabinet__balanceLIMCButton {
+  width: 100%;
+  padding: 10px 0;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid yellow;
+  border-radius: 30px;
+}
