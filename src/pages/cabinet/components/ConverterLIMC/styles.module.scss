@@ -1,0 +1,48 @@
+.cabinet__converterLIMC {
+  padding: 20px 30px;
+  font-family: "IbmPlexSans", "Arial", "Helvetica", sans-serif;
+  font-size: 16px;
+  background: rgba(21, 31, 32, 1);
+  border-radius: 30px;
+
+  @media all and (max-width: 360px) {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.cabinet__converterLIMCSelect {
+  display: flex;
+  align-items: center;
+  margin: 0 0 14px 0;
+
+  > img:first-of-type {
+    width: 32px;
+    height: 32px;
+    margin: 0 8px 0 0;
+  }
+
+  > span:first-of-type {
+    margin: 0 8px 0 0;
+    color: rgba(79, 132, 138, 1);
+  }
+
+  > span:last-of-type {
+    color: yellow;
+  }
+
+  > img:last-of-type {
+    width: 21px;
+    height: 21px;
+    cursor: pointer;
+  }
+
+  @media all and (max-width: 360px) {
+    justify-content: center;
+  }
+}
+
+.cabinet__converterLIMCNum {
+  font-size: 20px;
+  color: white;
+}
