@@ -16,6 +16,7 @@ import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getUser } from '@app/redux/userSlice'
 import { getSoldLimcs } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
 import { getForksPrice } from '@components/Wallet/redux/walletSlice'
+import { DataCenterPage } from '../../pages/data-center'
 import { Borders } from '@components/Borders'
 
 const App = () => {
@@ -60,6 +61,7 @@ const App = () => {
             {!isAuth && !isLoading && (
               <Switch>
                 <Route path='/' exact component={LandingPage} />
+                <Route path='/data-center' exact component={DataCenterPage} />
                 {!desktop && <Route path='/auth' exact component={AuthMobile} />}
                 <Route path='*'>
                   <Redirect to='/' />
