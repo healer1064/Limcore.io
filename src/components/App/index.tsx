@@ -57,7 +57,6 @@ const App = () => {
         {desktop && !isLoading ? <Header /> : <HeaderMobile />}
         <Borders />
         <>
-          {/* <Calculator /> */}
           <main className={desktop ? `${Styles.main}` : `${Styles.main} ${Styles.main_mobile}`}>
             {!isAuth && !isLoading && (
               <Switch>

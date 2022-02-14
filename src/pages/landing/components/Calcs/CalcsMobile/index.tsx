@@ -4,13 +4,16 @@ import { StyledInputRange } from '@components/StyledComponents/StyledInputRange/
 import { Modal } from '../Modal/Modal'
 import { dataMobile } from '../constants'
 import { BrownianMotion } from '../BrownianMotion/BrownianMotion'
+
 export const CalcsMobile = () => {
   const [rangeValue, setRangeValue] = useState(1)
   const [coin, setCoin] = useState('1')
   const [modal, setModal] = useState(false)
+
   const handleModal = () => {
     setModal(!modal)
   }
+
   const handleRange = (e, data) => {
     const money = data * 0.002 * 24 * 30
     setRangeValue(data)

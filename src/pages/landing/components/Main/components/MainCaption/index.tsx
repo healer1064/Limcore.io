@@ -5,10 +5,8 @@ import rocketAnim from '@animations/rocket.json'
 import popup from '@icons/popupIcon.svg'
 import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
 import classNames from 'classnames'
-import useWindowSize from '@helpers/useWindowSizeHook'
 
 export const MainCaption: React.FC = () => {
-  const { width } = useWindowSize()
   const [isPopupOpened, setIsPopupOpened] = useState(false)
 
   const openPopup = () => setIsPopupOpened(true)
@@ -23,14 +21,9 @@ export const MainCaption: React.FC = () => {
     },
   }
 
-  const blurStyles = { width: `${width / 3}px`, height: `${width / 4}px` }
-
   return (
     <div className={Styles.container}>
       <h1 className={Styles.title}>LIMCORE — ракета в сфере облачного майнинга!</h1>
-
-      <div className={Styles.blur} style={blurStyles} />
-      <div className={Styles.blur} style={blurStyles} />
 
       <div className={Styles.animation}>
         <Lottie options={defaultOptions} height={630} width={630} />
