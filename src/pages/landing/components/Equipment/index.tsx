@@ -1,20 +1,24 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import map from '../../../../assets/images/map.png'
+import img from '../../../../assets/images/p_svg.svg'
+import underlineMob from '../../../../assets/images/underline_mob.png'
+import mapMob from '../../../../assets/images/map_mob.svg'
 import useWindowSize from '@helpers/useWindowSizeHook'
-import img from '../../../../assets/images/p_img.png'
 
 export const Equipment: React.FC = () => {
   const { width } = useWindowSize()
   return (
     <section className={styles.equipment}>
-      <img className={styles.map} src={map} alt='map' />
+      <div className={styles.map} />
       <div className={styles.container}>
         <h2 className={styles.title}>Где располагается оборудование</h2>
         <div className={styles.block}>
+          <img src={mapMob} className={styles.map_mob} />
           <div className={styles.desck}>
-            <p>Мы приобретаем необходимое оборудование, располагая его децентрализованно в странах Евросоюза</p>
-            <img src={img} alt='img' />
+            <p className={styles.p}>
+              Мы приобретаем необходимое оборудование, располагая его децентрализованно в странах Евросоюза
+            </p>
+            <img src={width > 786 ? img : underlineMob} />
           </div>
         </div>
       </div>

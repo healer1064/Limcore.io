@@ -95,16 +95,12 @@ ul {
 
 .item_right {
   position: relative;
-  width: 100%;
-  max-width: 516px;
+  width: 454px;
 }
 
 .commission {
-  max-width: 185px;
   @include font-style-ibmPlexSans(16px, 600, 22px, #fcff00);
-  position: absolute;
-  top: 40px;
-  right: 40px;
+  position: relative;
 }
 
 .line {
@@ -144,11 +140,15 @@ ul {
   background-image: url('../../../../assets/images/card_03.svg');
 }
 
+.t {
+  display: flex;
+  justify-content: space-between;
+}
 
 @media all and (max-width: 768px) {
   .title {
     font-size: 19px;
-    line-height: 160%;
+    line-height: 30px;
   }
 
   .item_1 {
@@ -157,10 +157,7 @@ ul {
   }
 
   .item_left {
-    min-width: 335px;
-    width: 340px;
-    max-width: 740px;
-    margin: 0 auto;
+    padding: 0 20px;
     margin-bottom: 50px;
   }
 
@@ -180,12 +177,12 @@ ul {
 
   .item_2 {
     flex-direction: column;
-    width: 335px;
-    margin: 0 auto;
+    padding: 0 20px;
     margin-bottom: 100px;
   }
   .item_right {
     order: 1;
+    max-width: 100%;
   }
 
   .line {
@@ -195,10 +192,9 @@ ul {
     background-image: url('../../../../assets/images/line_mob.svg');
   }
   .commission {
-    font-size: 14px;
-    line-height: 140%;
     text-align: right;
-    width: 127px;
+    @include font-style-ibmPlexSans(14px, 600, 20px, #fcff00);
+    max-width: 127px;
     right: 0;
     top: 0;
     margin: 0;
@@ -211,9 +207,12 @@ ul {
   }
 
   .item_3 {
-    width: 335px;
     flex-direction: column;
-    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .item_3_left {
+    max-width: 100%;
   }
 
   .pay {
@@ -222,7 +221,7 @@ ul {
     }
   }
   .item_3_img {
-    width: 335px;
+    max-width: 335px;
     height: 318px;
     background-size: cover;
   }

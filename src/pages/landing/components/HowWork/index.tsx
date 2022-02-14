@@ -3,7 +3,6 @@ import styles from './styles.module.scss'
 import folder from '@animations/folders.json'
 import folder2 from '@animations/folder2.json'
 import Lottie from 'react-lottie'
-import noise from '../../../../assets/images/noise_how.svg'
 import useWindowSize from '@helpers/useWindowSizeHook'
 import uparrow from '../../../../assets/images/arrow.svg'
 
@@ -12,6 +11,7 @@ export const HowWork: React.FC = () => {
 
   const defaultOption = {
     loop: true,
+    renderer: 'svg',
     autoplay: true,
     animationData: folder,
     rendererSettings: {
@@ -55,14 +55,18 @@ export const HowWork: React.FC = () => {
           </li>
           <li className={styles.item_2}>
             <div className={styles.order}>
-              <Lottie options={defaultOption2} width={width > 786 ? 536 : 335} height={width > 786 ? 349 : 228} />
+              <Lottie options={defaultOption2} width={width > 786 ? 474 : 335} height={width > 786 ? 323 : 228} />
             </div>
             <div className={styles.item_right}>
-              <span className={styles.num}>
-                02
-                <div className={styles.line} />
-              </span>
-              <p className={styles.commission}>Комиссия сервиса Limcore —15% от общей прибыли с майнинга</p>
+              <div className={styles.t}>
+                <span className={styles.num}>
+                  02
+                  <div className={styles.line} />
+                </span>
+                <p className={styles.commission}>
+                  Комиссия сервиса <br /> Limcore —15% от <br /> общей прибыли с майнинга
+                </p>
+              </div>
               <h3 className={styles.h3}>Майнинг</h3>
               <p className={styles.p}>
                 Начисление прибыли с майнинга в режиме <br /> реального времени. Все честно и прозрачно!

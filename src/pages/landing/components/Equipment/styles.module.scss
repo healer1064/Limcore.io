@@ -4,6 +4,8 @@
 .equipment {
   color: white;
   position: relative;
+  margin-bottom: 100px;
+  height: 1024px;
 }
 
 .container {
@@ -30,17 +32,47 @@
       left: -20px;
     }
   }
+}
+.p {
+  @include font-style-ibmPlexSans(15px, 400, 24px, #e1e1d8);
+  max-width: 434px;
+}
 
-  p {
-    font-size: 16px;
-    line-height: 150%;
-  }
+.map_mob {
+  display: none;
 }
 
 .map {
+  background-image: url('../../../../assets/images/map.svg');
   width: 809px;
   height: 1024px;
   object-fit: cover;
   position: absolute;
-  margin-left: auto ;
+  right: 0;
+}
+
+@media all and (max-width: 768px) {
+  .equipment {
+    height: 587px;
+  }
+
+  .title {
+    font-size: 19px;
+    line-height: 30px;
+    margin-bottom: 350px;
+  }
+
+  .block {
+    flex-direction: column;
+  }
+  .map {
+    background-image: url('../../../../assets/images/map_mob.svg');
+    width: 300px;
+    height: 430px;
+    top: 90px;
+  }
+  .p {
+    max-width: 240px;
+    padding-left: 20px;
+  }
 }
