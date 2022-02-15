@@ -216,7 +216,8 @@
     @include font-style-ibmPlexSans(16px, 400, 21px, $color-E1-white);
 
     &:hover {
-      text-decoration: underline;
+      color: $primary-color;
+      transition: color 0.3s ease;
       cursor: pointer;
     }
   }

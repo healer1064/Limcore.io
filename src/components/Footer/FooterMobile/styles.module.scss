@@ -48,7 +48,6 @@
   &__listItem{
     @include font-style-ibmPlexSans(16px, 400, 21px, $color-E1-white);
     padding-bottom: 14px;
-    max-width: 108px;
   }
 
   &__listTitle{
@@ -158,5 +157,6 @@
 @media (max-width: 1162px) {
   .top__wrapper {
     column-gap: 20px;
+    padding-top: 38px;
   }
 }
