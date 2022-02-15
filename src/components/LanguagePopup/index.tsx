@@ -40,8 +40,7 @@ export const LanguagePopup = ({ position, footerStyles }: ILanguagePopupProps) =
   const elLangOptionsStyles = position || { top: '30px', left: '-33px', background: '#192A2C' }
 
   // Извращения с стилями для футера
-  const footerLangStyles = footerStyles ? { height: '100%', marginBottom: '25px' } : {}
-  const footerBlockStyles = footerStyles && mobile ? { marginBottom: '20px' } : {}
+  const footerLangStyles = footerStyles ? { height: '100%' } : {}
 
   const languages = ['ru', 'en', 'cn']
   const changeLanguage = (lang) => {
@@ -57,7 +56,6 @@ export const LanguagePopup = ({ position, footerStyles }: ILanguagePopupProps) =
         onMouseEnter={showPopup}
         onMouseLeave={hidePopup}
         onClick={() => setShowPopapLanguage(!showPopapLanguage)}
-        style={footerBlockStyles}
       >
         {i18n.language === 'ru' && <span className={Styles.langTitle}>RU</span>}
         {i18n.language === 'en' && <span className={Styles.langTitle}>EN</span>}

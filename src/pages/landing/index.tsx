@@ -10,8 +10,13 @@ import { Team } from './components/Team'
 import { Questions } from './components/Questions'
 import { Media } from './components/Media'
 import { Footer } from '@components/Footer'
+import useWindowSize from '@helpers/useWindowSizeHook'
+import { FooterMobile } from '@components/Footer/FooterMobile'
 
 export const LandingPage: React.FC = () => {
+  const { width } = useWindowSize()
+  const desktop = width >= 769
+
   return (
     <div className={Styles.landing}>
       <Main />
@@ -22,7 +27,7 @@ export const LandingPage: React.FC = () => {
       {/* <OnLine /> */}
       <Questions />
       <Media />
-      <Footer />
+      {desktop ? <Footer /> : <FooterMobile />}
     </div>
   )
 }
