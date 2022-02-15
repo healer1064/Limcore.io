@@ -6,7 +6,7 @@ $green-dep: rgba(79, 132, 138, 1);
   font-family: "IbmPlexSans", "Arial", "Helvetica", sans-serif;
   font-size: 14px;
 
-  @media all and (max-width: 360px) {
+  @media all and (max-width: 400px) {
     width: 100%;
     text-align: center;
   }
@@ -32,7 +32,7 @@ $green-dep: rgba(79, 132, 138, 1);
     margin: 0 6px 0 0;
   }
 
-  @media all and (max-width: 360px) {
+  @media all and (max-width: 400px) {
     justify-content: center;
   }
 }
@@ -86,4 +86,9 @@ $green-dep: rgba(79, 132, 138, 1);
   background: transparent;
   border: 2px solid yellow;
   border-radius: 30px;
+  transition: all 0.8s ease;
+
+  &:hover {
+    color: yellow;
+  }
 }

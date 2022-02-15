@@ -5,7 +5,7 @@
   background: rgba(21, 31, 32, 1);
   border-radius: 30px;
 
-  @media all and (max-width: 360px) {
+  @media all and (max-width: 400px) {
     width: 100%;
     text-align: center;
   }
@@ -37,7 +37,7 @@
     cursor: pointer;
   }
 
-  @media all and (max-width: 360px) {
+  @media all and (max-width: 400px) {
     justify-content: center;
   }
 }

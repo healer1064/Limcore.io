@@ -65,9 +65,9 @@ const App = () => {
                 {/* <Route path='*'> */}
                 {/*  <Redirect to='/' /> */}
                 {/* </Route> */}
-                <Route path='/my-cabinet' component={CabinetPage} />
+                <Route path='/my' component={CabinetPage} />
                 <Route path='/chat'>
-                  <Redirect to='/my-cabinet' />
+                  <Redirect to='/my' />
                 </Route>
               </Switch>
             )}
