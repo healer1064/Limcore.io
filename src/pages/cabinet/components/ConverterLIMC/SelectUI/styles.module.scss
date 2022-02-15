@@ -1,0 +1,42 @@
+.select {
+  position: relative;
+  background: transparent;
+
+  p {
+    color: yellow;
+    cursor: pointer;
+  }
+
+  > p {
+    display: flex;
+    align-items: center;
+
+    span {
+      width: 21px;
+      height: 21px;
+      cursor: pointer;
+    }
+  }
+
+  > div {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100px;
+    padding: 10px 0;
+    background: #192a2c;
+    border-radius: 20px;
+
+    > p {
+      padding: 2px 0;
+      margin: 0;
+      color: white;
+      text-align: center;
+      transition: all 0.5s ease;
+
+      &:hover {
+        color: yellow;
+      }
+    }
+  }
+}
