@@ -5,7 +5,7 @@
   background: rgba(21, 31, 32, 1);
   border-radius: 30px;
 
-  @media all and (max-width: 400px) {
+  @media all and (max-width: 768px) {
     width: 100%;
     text-align: center;
   }
@@ -16,28 +16,18 @@
   align-items: center;
   margin: 0 0 14px 0;
 
-  > img:first-of-type {
+  > img {
     width: 32px;
     height: 32px;
     margin: 0 8px 0 0;
   }
 
-  > span:first-of-type {
+  > span {
     margin: 0 8px 0 0;
     color: rgba(79, 132, 138, 1);
   }
 
-  > span:last-of-type {
-    color: yellow;
-  }
-
-  > img:last-of-type {
-    width: 21px;
-    height: 21px;
-    cursor: pointer;
-  }
-
-  @media all and (max-width: 400px) {
+  @media all and (max-width: 768px) {
     justify-content: center;
   }
 }
