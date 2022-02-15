@@ -2,11 +2,8 @@ import React from 'react'
 import styles from './styles.module.scss'
 import Lottie from 'react-lottie'
 import packmann from '@animations/packman.json'
-import useWindowSize from '@helpers/useWindowSizeHook'
-import noise from '../../../../assets/images/noise_how.svg'
 
 export const Why: React.FC = () => {
-  const { width } = useWindowSize()
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -23,7 +20,7 @@ export const Why: React.FC = () => {
           Экосистема Limcore не стоит на месте! Мы добавляем новые токены для майнинга и коины для валидации, увеличивая
           доход холдеров LIMC
         </p>
-        <Lottie options={defaultOptions} width={width > 786 ? 1061 : 335} height={width > 786 ? 543 : 168} />
+        <Lottie options={defaultOptions} />
       </div>
     </section>
   )

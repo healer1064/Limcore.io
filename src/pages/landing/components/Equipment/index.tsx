@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import img from '../../../../assets/images/p_svg.svg'
+import underLine from '../../../../assets/images/p_svg.svg'
 import underlineMob from '../../../../assets/images/underline_mob.png'
 import mapMob from '../../../../assets/images/map_mob.svg'
 import useWindowSize from '@helpers/useWindowSizeHook'
@@ -18,7 +18,7 @@ export const Equipment: React.FC = () => {
             <p className={styles.p}>
               Мы приобретаем необходимое оборудование, располагая его децентрализованно в странах Евросоюза
             </p>
-            <img src={width > 786 ? img : underlineMob} />
+            <img src={width > 786 ? underLine : underlineMob} />
           </div>
         </div>
       </div>

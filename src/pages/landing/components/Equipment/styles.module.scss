@@ -24,13 +24,13 @@
 .block {
   display: flex;
   justify-content: space-between;
-
-  .desck {
-    position: relative;
-    img {
-      position: absolute;
-      left: -20px;
-    }
+}
+.desck {
+  position: relative;
+  padding-left: 40px;
+  img {
+    position: absolute;
+    left: -20px;
   }
 }
 .p {
@@ -70,6 +70,10 @@
     width: 300px;
     height: 430px;
     top: 90px;
+  }
+
+  .desck {
+    padding: 0;
   }
   .p {
     max-width: 240px;
