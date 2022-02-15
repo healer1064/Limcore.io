@@ -73,28 +73,28 @@ export const DvdScreen = () => {
     <div className={styles.news__animation_links}>
       <div className={styles.news__position__absolute}>
         <DvdScreensaver className={styles.dvd__screen}>
-          <a href='#' className={styles.news__div_links} style={{ top: 0, left: 0 }}>
+          <a href='#' className={styles.news__div_links}>
             Telegram &#129125;
           </a>
         </DvdScreensaver>
       </div>
       <div className={styles.news__position__absolute}>
         <DvdScreensaver className={styles.dvd__screen}>
-          <a href='#' className={styles.news__div_links} style={{ top: 0, right: 0 }}>
+          <a href='#' className={styles.news__div_links}>
             Twitter &#129125;
           </a>
         </DvdScreensaver>
       </div>
       <div className={styles.news__position__absolute}>
         <DvdScreensaver className={styles.dvd__screen}>
-          <a href='#' className={styles.news__div_links} style={{ bottom: 0, left: 0 }}>
+          <a href='#' className={styles.news__div_links}>
             YouTube &#129125;
           </a>
         </DvdScreensaver>
       </div>
       <div className={styles.news__position__absolute}>
         <DvdScreensaver className={styles.dvd__screen}>
-          <a href='#' className={styles.news__div_links} style={{ bottom: 0, right: 0 }}>
+          <a href='#' className={styles.news__div_links}>
             Discord &#129125;
           </a>
         </DvdScreensaver>
