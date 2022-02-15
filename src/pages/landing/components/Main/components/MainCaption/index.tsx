@@ -13,7 +13,7 @@ export const MainCaption: React.FC = () => {
   const closePopup = () => setIsPopupOpened(false)
 
   const defaultOptions = {
-    loop: true,
+    loop: false,
     autoplay: true,
     animationData: rocketAnim,
     rendererSettings: {

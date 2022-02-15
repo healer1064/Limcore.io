@@ -70,7 +70,7 @@ export const Header: React.FC = () => {
     <header className={Styles.header}>
       <nav className={Styles.wrapper}>
         <a href='/' className={Styles.logoLink} target='blank' rel='noopener noreferrer'>
-          <img src={logoIcon} alt='Лого' />
+          <img src={logoIcon} alt='Лого' className={Styles.logoImg} />
         </a>
         <ul className={Styles.list}>
           <li className={Styles.item}>

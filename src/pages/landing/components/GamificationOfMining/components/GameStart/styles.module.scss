@@ -1,3 +1,5 @@
+@import '../../../../../../scss/_vars.scss';
+
 .gameStart {
   > h2 {
     color: white;
@@ -65,4 +67,14 @@
     font-size: 16px;
     color: rgba(252, 254, 1, 1);
   }
+}
+
+.list {
+  padding-left: 25px;
+  list-style-type: disc;
+}
+
+.item {
+  @include font-style-ibmPlexSans(16px, 400, 24px, $color-E1-white);
+  @include font-style-ibmPlexSans(16px, 400, 24px, $color-E1-white);
 }
