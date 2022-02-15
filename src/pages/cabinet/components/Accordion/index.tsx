@@ -14,11 +14,11 @@ export const AccordionUI: React.FC<AccordionProps> = ({ children, text }) => {
       {/* Я не смог задать эти стили классами так как те имели меньший приоритет */}
       <Accordion
         aria-controls='panel2a-content'
-        style={{ color: 'white', background: 'rgba(25, 42, 44, 1)', borderRadius: '20px' }}
+        style={{ color: 'white', background: 'rgba(25, 42, 44, 1)', borderRadius: '20px', margin: '0 0 20px 0' }}
       >
         <AccordionSummary expandIcon={<img src={blueArrow} />}>{text}</AccordionSummary>
         <AccordionDetails>
-          <div className={styles.cabinet__AccordionConent}>
+          <div className={styles.cabinet__AccordionContent}>
             <hr />
             <div>{children}</div>
           </div>
