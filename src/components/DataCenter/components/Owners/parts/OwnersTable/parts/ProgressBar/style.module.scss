@@ -1,0 +1,14 @@
+@import '../../../../../../../../scss/typography.scss';
+@import '../../../../../../../../scss/_vars.scss';
+
+.text {
+  @include font-style-ibmPlexSans(16px, 500, 22px, $color-E1-white);
+  margin: 0 0 10px 0;
+}
+
+.container {
+  min-width: 221px;
+  max-width: 221px;
+  height: 3px;
+  background-color: $color-4D-green;
+}

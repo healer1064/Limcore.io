@@ -32,10 +32,16 @@ ul {
   display: flex;
   justify-content: space-between;
   margin-bottom: 200px;
+  padding: 0 40px;
 }
 
 .item_left {
   max-width: 100%;
+}
+
+.folder_1 {
+  width: 535px;
+  height: 350px;
 }
 
 .h3 {
@@ -49,7 +55,7 @@ ul {
 }
 
 .p {
-  @include font-style-ibmPlexSans(16px, 600, 24px, #E1E1D8);
+  @include font-style-ibmPlexSans(16px, 600, 24px, #e1e1d8);
 }
 
 .walletAdress {
@@ -67,9 +73,14 @@ ul {
   width: 20px;
   height: 20px;
   background-image: url('../../../../assets/images/copy.svg');
+  outline: none;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
 }
 
 .buyBtn {
+  width: 100%;
   padding: 14px 72px;
   border: 2px solid #fcff00;
   border-radius: 30px;
@@ -93,18 +104,21 @@ ul {
   margin-bottom: 200px;
 }
 
+.folder_2 {
+  width: 475px;
+  height: 325px;
+}
+
 .item_right {
   position: relative;
-  width: 100%;
-  max-width: 516px;
+  max-width: 100%;
+  padding-right: 40px
 }
 
 .commission {
-  max-width: 185px;
   @include font-style-ibmPlexSans(16px, 600, 22px, #fcff00);
-  position: absolute;
-  top: 40px;
-  right: 40px;
+  position: relative;
+  top: 55px;
 }
 
 .line {
@@ -118,7 +132,7 @@ ul {
 
 .statistics {
   display: flex;
-  @include font-style-ibmPlexSans(16px, 600, 22px, #E1E1D8);
+  @include font-style-ibmPlexSans(16px, 600, 22px, #e1e1d8);
 }
 
 .statistics_link {
@@ -135,20 +149,32 @@ ul {
 }
 
 .item_3_left {
-  max-width: 316px;
+  max-width: 401px;
+  padding-left: 40px;
 }
 
-.item_3_img {
-  width: 516px;
-  height: 490px;
-  background-image: url('../../../../assets/images/card_03.svg');
+.pay_img {
+  max-width: 516px;
+  margin:  0 auto;
 }
 
+.num_commission {
+  display: flex;
+  justify-content: space-between;
+}
+
+.num_2 {
+  margin-right: 200px;
+}
 
 @media all and (max-width: 768px) {
+  .howWork {
+    margin-bottom: 100px;
+  }
+
   .title {
     font-size: 19px;
-    line-height: 160%;
+    line-height: 30px;
   }
 
   .item_1 {
@@ -156,10 +182,13 @@ ul {
     margin-bottom: 100px;
   }
 
+  .folder_1 {
+    width: 90vw;
+    height: 90vw;
+    margin: 0 auto;
+  }
+
   .item_left {
-    min-width: 335px;
-    width: 340px;
-    max-width: 740px;
     margin: 0 auto;
     margin-bottom: 50px;
   }
@@ -180,12 +209,13 @@ ul {
 
   .item_2 {
     flex-direction: column;
-    width: 335px;
-    margin: 0 auto;
+    padding: 0 20px;
     margin-bottom: 100px;
   }
   .item_right {
     order: 1;
+    margin: 0 auto;
+    padding: 0;
   }
 
   .line {
@@ -195,10 +225,9 @@ ul {
     background-image: url('../../../../assets/images/line_mob.svg');
   }
   .commission {
-    font-size: 14px;
-    line-height: 140%;
     text-align: right;
-    width: 127px;
+    @include font-style-ibmPlexSans(14px, 600, 20px, #fcff00);
+    max-width: 127px;
     right: 0;
     top: 0;
     margin: 0;
@@ -211,9 +240,15 @@ ul {
   }
 
   .item_3 {
-    width: 335px;
     flex-direction: column;
+    padding: 0 20px;
     margin: 0 auto;
+  }
+
+  .item_3_left {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0;
   }
 
   .pay {
@@ -221,13 +256,14 @@ ul {
       margin: 0;
     }
   }
-  .item_3_img {
-    width: 335px;
-    height: 318px;
-    background-size: cover;
+  .folder_2 {
+    order: 2;
+    width: 90vw;
+    height: 90vw;
+    margin: 0 auto;
   }
 
-  .order {
-    order: 2;
+  .num_2 {
+    margin: 0;
   }
 }

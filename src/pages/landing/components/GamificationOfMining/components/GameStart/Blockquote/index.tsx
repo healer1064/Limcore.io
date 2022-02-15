@@ -13,7 +13,7 @@ export const Blockquote: React.FC = () => {
           забирая или теряя при этом ресурсы
         </p>
       </blockquote>
-      <p>Запуск Q4 2023</p>
+      <p className={style.launch}>Запуск Q4 2023</p>
     </div>
   )
 }
