@@ -32,30 +32,30 @@ ul {
   display: flex;
   justify-content: space-between;
   margin-bottom: 200px;
-  padding: 0 40px;
+  padding: 0 20px;
 }
 
 .item_left {
-  max-width: 100%;
-}
-
-.folder_1 {
-  width: 535px;
-  height: 350px;
+  max-width: 500px;
+  width: 100%;
 }
 
 .h3 {
+  margin: 0 0 12px 0;
   @include font-style-ibmPlexSans(30px, 600, 22px, #f5f5ef);
 }
 
 .num {
-  @include font-style-ibmPlexSans(60px, 600, 84px, #f5f5ef);
-  margin-bottom: 26px;
   position: relative;
+
+  display: block;
+  margin-bottom: 26px;
+
+  @include font-style-ibmPlexSans(60px, 600, 84px, #f5f5ef);
 }
 
 .p {
-  @include font-style-ibmPlexSans(16px, 600, 24px, #e1e1d8);
+  @include font-style-ibmPlexSans(16px, 400, 24px, #e1e1d8);
 }
 
 .walletAdress {
@@ -111,13 +111,13 @@ ul {
 
 .item_right {
   position: relative;
-  max-width: 100%;
+  max-width: 500px;
+  width: 100%;
   padding-right: 40px
 }
 
 .commission {
   @include font-style-ibmPlexSans(16px, 600, 22px, #fcff00);
-  position: relative;
   top: 55px;
 }
 
@@ -132,7 +132,7 @@ ul {
 
 .statistics {
   display: flex;
-  @include font-style-ibmPlexSans(16px, 600, 22px, #e1e1d8);
+  @include font-style-ibmPlexSans(16px, 400, 22px, #e1e1d8);
 }
 
 .statistics_link {
@@ -151,11 +151,6 @@ ul {
 .item_3_left {
   max-width: 401px;
   padding-left: 40px;
-}
-
-.pay_img {
-  max-width: 516px;
-  margin:  0 auto;
 }
 
 .num_commission {
@@ -180,11 +175,10 @@ ul {
   .item_1 {
     flex-direction: column;
     margin-bottom: 100px;
+    overflow-x: hidden;
   }
 
   .folder_1 {
-    width: 90vw;
-    height: 90vw;
     margin: 0 auto;
   }
 
@@ -224,9 +218,10 @@ ul {
     left: -15px;
     background-image: url('../../../../assets/images/line_mob.svg');
   }
+
   .commission {
     text-align: right;
-    @include font-style-ibmPlexSans(14px, 600, 20px, #fcff00);
+    @include font-style-ibmPlexSans(14px, 400, 20px, #fcff00);
     max-width: 127px;
     right: 0;
     top: 0;
@@ -246,7 +241,8 @@ ul {
   }
 
   .item_3_left {
-    max-width: 100%;
+    max-width: 500px;
+    width: 100%;
     margin: 0 auto;
     padding: 0;
   }
@@ -265,5 +261,15 @@ ul {
 
   .num_2 {
     margin: 0;
+  }
+}
+
+@media all and (max-width: 400px) {
+  .folder_1 {
+    height: 350px;
+  }
+
+  .p {
+    max-width: 311px;
   }
 }

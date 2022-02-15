@@ -2,16 +2,16 @@ import React from 'react'
 import styles from './styles.module.scss'
 import folder from '@animations/folders.json'
 import folder2 from '@animations/folder2.json'
+import map from '@animations/map.json'
 import Lottie from 'react-lottie'
 import useWindowSize from '@helpers/useWindowSizeHook'
 import uparrow from '../../../../assets/images/arrow.svg'
-import imgCArd from '../../../../assets/images/card_03.svg'
 
 export const HowWork: React.FC = () => {
   const { width } = useWindowSize()
 
   const defaultOption = {
-    loop: true,
+    loop: false,
     autoplay: true,
     animationData: folder,
     rendererSettings: {
@@ -20,9 +20,18 @@ export const HowWork: React.FC = () => {
   }
 
   const defaultOption2 = {
-    loop: true,
+    loop: false,
     autoplay: true,
     animationData: folder2,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  }
+
+  const defaultOption3 = {
+    loop: false,
+    autoplay: true,
+    animationData: map,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice',
     },
@@ -102,8 +111,11 @@ export const HowWork: React.FC = () => {
                 </p>
               </span>
             </div>
-            {/* <div className={styles.item_3_img} /> */}
-            <img className={styles.pay_img} src={imgCArd} />
+            <div className={styles.pay_img}>
+              <Lottie options={defaultOption3} />
+            </div>
+
+            {/* <img className={styles.pay_img} src={imgCArd} /> */}
           </li>
         </ul>
       </div>
