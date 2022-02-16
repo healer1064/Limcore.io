@@ -1,25 +1,24 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDvdScreenSaver, DvdScreensaver } from 'react-dvd-screensaver'
 import styles from '../styles.module.scss'
 
-// // import * as React from 'react'
-//
-// interface DVDLogoState {
-//   x: number
-//   y: number
-//   xSpeed: number
-//   ySpeed: number
-// }
-//
-// interface DVDLogoProps {
-//   width: number
-//   height: number
-// }
-//
-// const MS_PER_FRAME = 5
-// const widthDVDLogo = 195
-// const heightDVDLogo = 91
-//
+interface DVDLogoState {
+  x: number
+  y: number
+  xSpeed: number
+  ySpeed: number
+}
+
+interface DVDLogoProps {
+  width: number
+  height: number
+}
+
+const MS_PER_FRAME = 5
+const widthDVDLogo = 195
+const heightDVDLogo = 91
+const width = 900
+const height = 500
 // export class DvdScreen extends Component<DVDLogoProps, DVDLogoState> {
 //   constructor(props: DVDLogoProps) {
 //     super(props)
@@ -58,46 +57,56 @@ import styles from '../styles.module.scss'
 //   render() {
 //     const { x, y } = this.state
 //     return (
-//       <>
-//         <a href='#' className={styles.news__div_links} style={{ top: 0, left: 0, transform: `translate(${x}, ${y})` }}>
+//       <div
+//         style={{
+//           width: 196,
+//           height: 91,
+//           position: 'absolute',
+//           transition: `transform(${x}, ${y})`,
+//         }}
+//       >
+//         <a href='#' className={styles.news__div_links}>
 //           Telegram &#129125;
 //         </a>
-//       </>
+//       </div>
 //     )
 //   }
 // }
-
+//
 export const DvdScreen = () => {
-  const dvdScreenSaver = useDvdScreenSaver({ speed: 0.1 })
+  const [x, setX] = useState(Math.random() * (0 - width - widthDVDLogo) + width - widthDVDLogo)
+  const [y, setY] = useState(Math.random() * (0 - height - heightDVDLogo) + height - heightDVDLogo)
+  const [xSpeed, setXSpeed] = useState(1)
+  const [ySpeed, setYSpeed] = useState(1)
+
+  const moveLinks = () => {
+    setX(x + xSpeed)
+    setY(y + ySpeed)
+    if (x + widthDVDLogo >= width || x <= 0) {
+      setXSpeed(-xSpeed)
+    }
+
+    if (y + heightDVDLogo >= height || y <= 0) {
+      setYSpeed(-ySpeed)
+    }
+  }
+
+  const changeCor = (x, y) => {
+    return { transform: `translate(${x}, ${y})` }
+  }
+  // console.log(changeCor(x, y))
+  useEffect(() => {
+    // console.log(x, y, 'x and y')
+    setInterval(() => {
+      moveLinks()
+    }, MS_PER_FRAME)
+  })
   return (
     <div className={styles.news__animation_links}>
       <div className={styles.news__position__absolute}>
-        <DvdScreensaver className={styles.dvd__screen}>
-          <a href='#' className={styles.news__div_links}>
-            Telegram &#129125;
-          </a>
-        </DvdScreensaver>
-      </div>
-      <div className={styles.news__position__absolute}>
-        <DvdScreensaver className={styles.dvd__screen}>
-          <a href='#' className={styles.news__div_links}>
-            Twitter &#129125;
-          </a>
-        </DvdScreensaver>
-      </div>
-      <div className={styles.news__position__absolute}>
-        <DvdScreensaver className={styles.dvd__screen}>
-          <a href='#' className={styles.news__div_links}>
-            YouTube &#129125;
-          </a>
-        </DvdScreensaver>
-      </div>
-      <div className={styles.news__position__absolute}>
-        <DvdScreensaver className={styles.dvd__screen}>
-          <a href='#' className={styles.news__div_links}>
-            Discord &#129125;
-          </a>
-        </DvdScreensaver>
+        <a href='#' className={styles.news__div_links} style={changeCor(x, y)}>
+          Telegram &#129125;
+        </a>
       </div>
     </div>
   )
