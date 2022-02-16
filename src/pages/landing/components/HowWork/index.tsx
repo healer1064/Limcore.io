@@ -2,10 +2,11 @@ import React from 'react'
 import styles from './styles.module.scss'
 import folder from '@animations/folders.json'
 import folder2 from '@animations/folder2.json'
+import map from '@animations/map.json'
 import Lottie from 'react-lottie'
-import noise from '../../../../assets/images/noise_how.svg'
 import useWindowSize from '@helpers/useWindowSizeHook'
 import uparrow from '../../../../assets/images/arrow.svg'
+import { ButtonBig } from '../../../../ui-kit/ButtonBig'
 
 export const HowWork: React.FC = () => {
   const { width } = useWindowSize()
@@ -28,18 +29,35 @@ export const HowWork: React.FC = () => {
     },
   }
 
+  const defaultOption3 = {
+    loop: true,
+    autoplay: true,
+    animationData: map,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  }
+
+  const animStyles = width <= 768 ? { width: 'auto' } : { width: Math.floor(width / 1.74) }
+  const secondAnimStyles = width <= 768 ? { width: 'auto' } : { width: Math.floor(width / 1.66) }
+
   return (
-    <section className={styles.howWork}>
+    <section className={styles.how}>
       <div className={styles.container}>
         <h2 className={styles.title}>Как это работает</h2>
-        <ul className={styles.howWork__block}>
-          <li className={styles.item_1}>
+
+        <ul className={styles.list}>
+          <li className={styles.item_first}>
+            <div className={styles.anim_first} style={animStyles}>
+              <Lottie options={defaultOption} />
+            </div>
+
             <div className={styles.item_left}>
-              <span className={styles.num}>01</span>
-              <h3 className={styles.h3}>Покупка LIMC</h3>
-              <p className={styles.p}>
+              <span className={styles.item_title}>01</span>
+              <h3 className={styles.item_subtitle}>Покупка LIMC</h3>
+              <p className={styles.text}>
                 Смарт-контракт все сделает за тебя,
-                <br /> просто свапни!
+                {width > 768 ? <br /> : null} просто свапни!
               </p>
               <div className={styles.walletAdress}>
                 {width > 768 ? (
@@ -49,23 +67,32 @@ export const HowWork: React.FC = () => {
                 )}
                 <button className={styles.copyBtn} />
               </div>
-              <button className={styles.buyBtn}>Купить LIMC</button>
+              <ButtonBig className={styles.button}>КУПИТЬ LIMC</ButtonBig>
             </div>
-            <Lottie options={defaultOption} width={width > 786 ? 536 : 335} height={width > 786 ? 349 : 218} />
           </li>
-          <li className={styles.item_2}>
-            <div className={styles.order}>
-              <Lottie options={defaultOption2} width={width > 786 ? 536 : 335} height={width > 786 ? 349 : 228} />
+
+          <li className={styles.item_second}>
+            <div className={styles.anim_second} style={secondAnimStyles}>
+              <Lottie options={defaultOption2} />
             </div>
+
             <div className={styles.item_right}>
-              <span className={styles.num}>
-                02
-                <div className={styles.line} />
-              </span>
-              <p className={styles.commission}>Комиссия сервиса Limcore —15% от общей прибыли с майнинга</p>
-              <h3 className={styles.h3}>Майнинг</h3>
-              <p className={styles.p}>
-                Начисление прибыли с майнинга в режиме <br /> реального времени. Все честно и прозрачно!
+              <div className={styles.num_commission}>
+                <span className={styles.num_2}>
+                  <span className={styles.item_title}>
+                    02
+                    <div className={styles.line} />
+                  </span>
+                </span>
+
+                <p className={styles.commission}>
+                  Комиссия сервиса <br /> Limcore —15% от <br /> общей прибыли с майнинга
+                </p>
+              </div>
+              <h3 className={styles.item_subtitle}>Майнинг</h3>
+              <p className={styles.text}>
+                Начисление прибыли с майнинга в режиме {width > 768 ? <br /> : null} реального времени.{' '}
+                {width > 768 ? null : <br />} Все честно и прозрачно!
               </p>
               <div className={styles.statistics}>
                 Убедись сам -
@@ -75,19 +102,25 @@ export const HowWork: React.FC = () => {
               </div>
             </div>
           </li>
-          <li className={styles.item_3}>
+
+          <li className={styles.item_third}>
+            <div className={styles.anim_third} style={animStyles}>
+              <Lottie options={defaultOption3} />
+            </div>
+
             <div className={styles.item_3_left}>
-              <span className={styles.num}>03</span>
-              <h3 className={styles.h3}>Вывод прибыли</h3>
+              <span className={styles.item_title}>03</span>
+              <h3 className={styles.item_subtitle}>Вывод прибыли</h3>
               <span className={styles.pay}>
-                <p className={styles.p}>
-                  Оплачивать покупки или снимать наличныев любом банкомате мира можно с помощью виртуальной банковской
+                <p className={styles.text}>
+                  Оплачивать покупки или снимать наличные в любом банкомате мира можно с помощью виртуальной банковской
                   карты Limcore!
                 </p>
-                <p className={styles.p}>Скоро ее можно будет активировать в Limcore Wallet! Мы работаем над этим...</p>
+                <p className={styles.text}>
+                  Скоро ее можно будет активировать в Limcore Wallet! Мы работаем над этим...
+                </p>
               </span>
             </div>
-            <div className={styles.item_3_img} />
           </li>
         </ul>
       </div>
