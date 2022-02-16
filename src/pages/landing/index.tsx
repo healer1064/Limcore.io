@@ -11,15 +11,20 @@ import { AppForMining } from './components/AppForMining'
 // import { Team } from './components/Team'
 // import { UpEcosystem } from './components/UpEcosystem'
 // import { OnLine } from './components/OnLine'
+import { Questions } from './components/Questions'
+import { Media } from './components/Media'
+import { Footer } from '@components/Footer'
+import useWindowSize from '@helpers/useWindowSizeHook'
+import { FooterMobile } from '@components/Footer/FooterMobile'
 // import { Questions } from './components/Questions'
 // import { Media } from './components/Media'
 // import { Footer } from '@components/Footer'
 import { Calcs } from '../landing/components/Calcs'
 import { CalcsMobile } from '../landing/components/Calcs/CalcsMobile'
-import useWindowSize from '@helpers/useWindowSizeHook'
 
 export const LandingPage: React.FC = () => {
   const { width } = useWindowSize()
+  const desktop = width >= 769
 
   return (
     <div className={Styles.landing}>
@@ -35,9 +40,9 @@ export const LandingPage: React.FC = () => {
       <Team /> */}
       {/* <UpEcosystem /> */}
       {/* <OnLine /> */}
-      {/* <Questions />
+      {/* <Questions />  */}
       <Media />
-      <Footer /> */}
+      {desktop ? <Footer /> : <FooterMobile />}
     </div>
   )
 }
