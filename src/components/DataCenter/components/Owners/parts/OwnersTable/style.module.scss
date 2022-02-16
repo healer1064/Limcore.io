@@ -15,6 +15,7 @@
 }
 .bottom_wrapper {
   display: flex;
+  margin-top: 40px;
   flex-direction: column;
   align-items: center;
 }
@@ -23,14 +24,4 @@
   margin-top: 24px;
   flex-direction: column;
   align-items: center;
-}
-
-.button {
-  padding: 14px 81px;
-  max-width: 471px;
-  border: 2px solid $primary-color;
-  background: transparent;
-  border-radius: 80px;
-  font-weight: $fontWeightSemiBold;
-  color: $color-F5-white;
 }

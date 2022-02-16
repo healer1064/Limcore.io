@@ -12,3 +12,8 @@
   height: 3px;
   background-color: $color-4D-green;
 }
+
+.text_mobile {
+  @include font-style-ibmPlexSans(14px, 500, 22px, $color-E1-white);
+  margin: 0 0 6px 0;
+}

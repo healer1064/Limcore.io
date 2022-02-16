@@ -16,3 +16,9 @@
     line-height: 14px;
   }
 }
+
+.container_mobile {
+  @include font-style-ibmPlexSans(26px, 600, 120%, $color-E1-white);
+  max-width: 134px;
+  padding: 14px 30px;
+}

@@ -3,23 +3,22 @@ import { TableCell, withStyles } from '@material-ui/core'
 import clsx from 'clsx'
 import styles from './style.module.scss'
 
-export interface IStyledCell {
+export interface IStyledMobileCell {
   children?: ReactNode
   align?: 'left' | 'right' | 'inherit' | 'center' | 'justify'
   className?: string
-  open?: boolean
 }
 
-const Cell = withStyles(() => ({
+const MobileStyledCell = withStyles(() => ({
   root: {
     position: 'relative',
     verticalAlign: 'middle',
-    fontSize: 16,
-    paddingTop: '20px',
-    paddingBottom: '20px',
+    fontSize: 14,
+    lineHeight: '22px',
+    padding: '10px 12px',
     fontFamily: ['IbmPlexSans', 'Arial'].join(','),
     border: 'none',
-    color: '#A4A4A4',
+    color: '#E1E1D8',
     zIndex: 1000,
     '&:first-child': {
       borderTopLeftRadius: 20,
@@ -32,15 +31,14 @@ const Cell = withStyles(() => ({
   },
 }))(TableCell)
 
-export const StyledCell: React.FC<IStyledCell> = ({ className, children, align, open }) => {
+export const MobileCell: React.FC<IStyledMobileCell> = ({ className, children, align }) => {
   const style = clsx({
-    [styles.primary_color]: !open,
-    [styles.secondary_color]: open,
+    [styles.primary_color]: true,
+    [className]: className,
   })
-
   return (
-    <Cell align={align} className={`${style} ${className}`}>
+    <MobileStyledCell align={align} className={style}>
       {children}
-    </Cell>
+    </MobileStyledCell>
   )
 }

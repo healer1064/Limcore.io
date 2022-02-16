@@ -1,17 +1,18 @@
-@import '../../../../scss/typography.scss';
-@import '../../../../scss/_vars.scss';
+@import '../../../../../../scss/typography.scss';
+@import '../../../../../../scss/_vars.scss';
 
 .owners_container {
   display: flex;
   align-items: center;
+  padding: 20px 10px 0 10px;
   margin-bottom: 47px;
 
   .text_wrapper {
-    margin-left: 30px;
+    margin-left: 18px;
   }
 
   .owners_heading {
-    @include font-style-pressStart(22px, normal, 140%, $color-F5-white);
+    @include font-style-pressStart(16px, normal, 160%, $color-F5-white);
     margin: 0;
     font-style: normal;
   }
@@ -20,7 +21,7 @@
     margin: 0;
     color: $color-E1-white;
     font-family: $font-ibmPlexSans;
-    @include p1();
+    @include p3();
   }
 }
 
@@ -30,11 +31,11 @@
   &__header {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 19px;
   }
 
   &__wallets_number {
-    @include p2();
+    @include p3();
     margin: 0;
     margin-right: 6px;
     font-weight: $fontWeightSemiBold;
@@ -54,14 +55,14 @@
     display: flex;
     align-items: center;
     margin-left: auto;
-    padding: 9px 14px;
+    padding: 11px 16px;
     border-radius: 20px;
     border: none;
     background-color: $color-45-green;
   }
 
   .table__container {
-    padding-top: 30px;
+    padding-top: 16px;
     border-top: 2px solid $color-22-dark;
   }
 }

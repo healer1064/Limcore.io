@@ -66,7 +66,7 @@ export const OwnersTable: React.FC<IOwnersTable> = ({ data }) => {
         <ProgressBar current={rows} limit={data.length} />
         <div className={styles.button_container}>
           <ExpandButton data={data} setRows={setRows} rows={rows} arr={arr} setArr={setArr}>
-            Загрузить еще 10 компонентов
+            Загрузить еще 10 кошельков
           </ExpandButton>
         </div>
       </div>

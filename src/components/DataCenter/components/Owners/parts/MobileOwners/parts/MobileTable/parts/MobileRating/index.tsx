@@ -1,17 +1,16 @@
 import React from 'react'
 import styles from './style.module.scss'
-import { StyledCell } from '../StyledCell/index'
+import clsx from 'clsx'
 import { ReactComponent as RatingGray } from '@icons/raitingGrey.svg'
 import { ReactComponent as RatingPurple } from '@icons/raitingPurple.svg'
 import { ReactComponent as RatingOrange } from '@icons/raitingOrange.svg'
 
-export interface IRatingCell {
+export interface IMobileRating {
   rating: string
-  open?: boolean
   className?: string
 }
 
-export const RatingCell: React.FC<IRatingCell> = ({ rating, open, className }) => {
+export const MobileRating: React.FC<IMobileRating> = ({ rating, className }) => {
   function ratingPicker(rating: string) {
     switch (rating) {
       case '1':
@@ -22,9 +21,9 @@ export const RatingCell: React.FC<IRatingCell> = ({ rating, open, className }) =
         return <RatingPurple className={styles.rating_icon} />
     }
   }
-  return (
-    <StyledCell open={open} className={className} align='center'>
-      <div className={styles.rating_wrapper}>{ratingPicker(rating)}</div>
-    </StyledCell>
-  )
+  const style = clsx({
+    [styles.rating_wrapper]: true,
+    [className]: className,
+  })
+  return <div className={style}>{ratingPicker(rating)}</div>
 }

@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react'
 import styles from './style.module.scss'
+import clsx from 'clsx'
 
 export interface IExpandButton {
   data: any
@@ -8,9 +9,10 @@ export interface IExpandButton {
   setRows: (prev) => void
   arr: any
   setArr: (any) => void
+  isMobile?: boolean
 }
 
-export const ExpandButton: React.FC<IExpandButton> = ({ data, setRows, rows, arr, setArr, children }) => {
+export const ExpandButton: React.FC<IExpandButton> = ({ data, setRows, rows, arr, setArr, children, isMobile }) => {
   function onRenderHandler() {
     if (data.length - rows >= 10) {
       setRows((prev) => prev + 10)
@@ -23,8 +25,13 @@ export const ExpandButton: React.FC<IExpandButton> = ({ data, setRows, rows, arr
     }
   }
 
+  const style = clsx({
+    [styles.button]: true,
+    [styles.button_mobile]: isMobile,
+  })
+
   return (
-    <button onClick={() => onRenderHandler()} className={styles.button} type='button'>
+    <button onClick={() => onRenderHandler()} className={style} type='button'>
       {children}
     </button>
   )
