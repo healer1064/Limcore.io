@@ -1,0 +1,39 @@
+.cabinet__converterLIMC {
+  padding: 20px 30px;
+  font-family: "IbmPlexSans", "Arial", "Helvetica", sans-serif;
+  font-size: 16px;
+  background: rgba(21, 31, 32, 1);
+  border-radius: 30px;
+
+  @media all and (max-width: 768px) {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.cabinet__converterLIMCSelect {
+  display: flex;
+  align-items: center;
+  margin: 0 0 14px 0;
+
+  > img {
+    width: 32px;
+    height: 32px;
+    margin: 0 8px 0 0;
+  }
+
+  > span {
+    margin: 0 8px 0 0;
+    color: rgba(79, 132, 138, 1);
+  }
+
+  @media all and (max-width: 768px) {
+    justify-content: center;
+    margin: 0 0 10px 0;
+  }
+}
+
+.cabinet__converterLIMCNum {
+  font-size: 20px;
+  color: white;
+}

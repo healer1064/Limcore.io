@@ -1,0 +1,32 @@
+.chat {
+  padding: 30px 28px;
+  margin: 0 0 20px 0;
+  color: white;
+  background: rgba(25, 42, 44, 1);
+  border-radius: 20px;
+}
+
+.chat__flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+
+  > div {
+    display: flex;
+    align-items: center;
+  }
+
+  > div:first-of-type {
+    > img {
+      width: 27px;
+      height: 24px;
+      margin: 0 18px 0 0;
+    }
+  }
+
+  > div:last-of-type img {
+    width: 8px;
+    height: 16px;
+  }
+}

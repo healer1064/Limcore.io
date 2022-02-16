@@ -1,0 +1,64 @@
+.refLink {
+  padding: 31px 24px;
+  margin: 0 0 20px 0;
+  background: rgba(25, 42, 44, 1);
+  border-radius: 20px;
+}
+
+.refLinkProfit {
+  display: flex;
+  align-items: center;
+  margin: 0 0 10px 0;
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+
+  > img {
+    width: 24px;
+    height: 24px;
+    margin: 0 12px 0 0;
+  }
+}
+
+.refLinkText {
+  max-width: 300px;
+  margin: 0 0 14px 0;
+  font-size: 14px;
+}
+
+.refLinkLink {
+  display: flex;
+  align-items: center;
+  padding: 23px 20px;
+  margin: 0 0 23px 0;
+  font-size: 16px;
+  background: rgba(41, 69, 72, 1);
+  border-radius: 20px;
+
+  > a {
+    flex: 0 1 100%;
+    color: white;
+    text-decoration: none;
+  }
+
+  > img {
+    flex: 0 0 13px;
+    width: 13px;
+    height: 15px;
+    cursor: pointer;
+  }
+}
+
+.refLinkStat {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: yellow;
+  cursor: pointer;
+
+  > img {
+    width: 5px;
+    height: 10px;
+    margin: 0 0 0 6px;
+  }
+}
