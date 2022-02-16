@@ -1,12 +1,12 @@
 import { Table, TableBody, TableContainer, TableHead, TableRow } from '@material-ui/core'
 import { CollapsibleRow } from './parts/CollapsibleRow/index'
 import { StyledHeadCell } from './parts/StyledHeadCell/index'
-import { ReactComponent as OliveInfoIcon } from '@icons/oliveInfoIcon.svg'
 import { ReactComponent as YellowArrowUp } from '@icons/yellowArrowUp.svg'
 import React, { useState } from 'react'
 import styles from './style.module.scss'
 import { ExpandButton } from './parts/ExpandButton'
 import { ProgressBar } from './parts/ProgressBar'
+import { RatingPopOver } from './parts/RatingPopOver'
 
 export interface IGraphs {
   current: number
@@ -36,19 +36,17 @@ export const OwnersTable: React.FC<IOwnersTable> = ({ data }) => {
 
   return (
     <>
-      <TableContainer>
+      <TableContainer className={styles.table_container}>
         <Table>
           <TableHead>
             <TableRow>
               <StyledHeadCell className={styles.head_cell}>
-                <div className={styles.icon_wrapper}>
-                  Рейтинг <OliveInfoIcon className={styles.icon} />
-                </div>
+                <RatingPopOver text='Рейтинг в таблице зависит от количества купленных терабайт.' />
               </StyledHeadCell>
               <StyledHeadCell className={styles.head_cell}>Адрес кошелька</StyledHeadCell>
               <StyledHeadCell className={styles.head_cell}>
                 <div className={styles.icon_wrapper}>
-                  Объем токенов <YellowArrowUp className={styles.icon} />
+                  Объем токенов <YellowArrowUp className={styles.icon_arrow} />
                 </div>
               </StyledHeadCell>
               <StyledHeadCell className={styles.head_cell}>До старта майнинга</StyledHeadCell>
@@ -64,11 +62,13 @@ export const OwnersTable: React.FC<IOwnersTable> = ({ data }) => {
       </TableContainer>
       <div className={styles.bottom_wrapper}>
         <ProgressBar current={rows} limit={data.length} />
-        <div className={styles.button_container}>
-          <ExpandButton data={data} setRows={setRows} rows={rows} arr={arr} setArr={setArr}>
-            Загрузить еще 10 кошельков
-          </ExpandButton>
-        </div>
+        {rows !== data.length && (
+          <div className={styles.button_container}>
+            <ExpandButton data={data} setRows={setRows} rows={rows} arr={arr} setArr={setArr}>
+              Загрузить еще 10 кошельков
+            </ExpandButton>
+          </div>
+        )}
       </div>
     </>
   )

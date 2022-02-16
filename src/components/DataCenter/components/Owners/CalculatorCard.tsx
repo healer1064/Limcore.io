@@ -169,7 +169,7 @@ const data = {
 
 export const Owners = () => {
   const { width } = useWindowSize()
-  const desktop = width > 807
+  const desktop = width > 970
 
   return desktop ? (
     <>

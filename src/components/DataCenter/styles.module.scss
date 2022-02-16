@@ -15,7 +15,9 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-
+  @media (min-width: 810px) {
+    padding: 0 30px;
+  }
   &__title {
     @include font-style-pressStart(41px, 400, 65px, $color-F5-white);
     text-align: center;

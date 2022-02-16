@@ -10,7 +10,7 @@ import useWindowSize from '@helpers/useWindowSizeHook'
 export const DataCenter = ({ className }) => {
   const [view, setView] = useState<'disks' | 'owners' | 'emission'>('disks')
   const { width } = useWindowSize()
-  const desktop = width > 807
+  const desktop = width > 970
 
   return (
     <>

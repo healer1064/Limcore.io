@@ -1,6 +1,27 @@
 @import '../../../../../../../../../../scss/typography.scss';
 @import '../../../../../../../../../../scss/_vars.scss';
 
+.description {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  @include font-style-ibmPlexSans(14px, 500, 22px, $color-E1-white);
+  &:not(:last-child) {
+    padding-bottom: 19px;
+    margin-bottom: 19px;
+    border-bottom: 2px solid #142224;
+  }
+  &__icon {
+    margin-right: 14px;
+  }
+  .link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: $color-E1-white;
+  }
+}
+
 .wrapper {
   display: flex;
   padding-bottom: 16px;

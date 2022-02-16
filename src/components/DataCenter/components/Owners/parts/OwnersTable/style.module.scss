@@ -1,18 +1,18 @@
 @import '../../../../../../scss/typography.scss';
 @import '../../../../../../scss/_vars.scss';
 
-.head_cell:first-child {
-  padding-left: 34px;
+.table_container {
+  position: relative;
 }
 
-.icon_wrapper {
-  display: flex;
-  align-items: center;
+.head_cell:first-child {
+  padding-left: 34px;
 }
 
 .icon {
   margin-left: 4px;
 }
+
 .bottom_wrapper {
   display: flex;
   margin-top: 40px;
