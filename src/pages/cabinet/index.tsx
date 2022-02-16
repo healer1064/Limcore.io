@@ -20,7 +20,7 @@ export const CabinetPage: React.FC = () => {
   return (
     <div className={styles.cabinet}>
       <div className={styles.cabinet__container}>
-        {mobileCondition ? '' : <ASide clientWidth={width} />}
+        {width <= 1010 ? '' : <ASide clientWidth={width} />}
         <div>
           <section className={styles.cabinet__balance}>
             <h2>Баланс</h2>
@@ -29,11 +29,12 @@ export const CabinetPage: React.FC = () => {
                 <BalanceLIMC clientWidth={width} />
                 <ConverterLIMC />
               </div>
-              {width <= 1350 ? '' : graph}
+              {width <= 1410 ? '' : graph}
             </div>
           </section>
+          {!mobileCondition && width <= 1010 ? <ASide clientWidth={width} /> : ''}
           {mobileCondition ? <Rating /> : ''}
-          {width <= 1350 ? <AccordionUI text='Показать график доходности'>{graph}</AccordionUI> : ''}
+          {width <= 1410 ? <AccordionUI text='Показать график доходности'>{graph}</AccordionUI> : ''}
           {mobileCondition ? <NewCard clientWidth={width} /> : ''}
         </div>
       </div>
