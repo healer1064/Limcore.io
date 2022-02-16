@@ -6,7 +6,7 @@ import RUS from '../../assets/icons/flag-ru.svg'
 import ENG from '../../assets/icons/flag-en.svg'
 import CHN from '../../assets/icons/flag-cn.svg'
 import Styles from './styles.module.scss'
-import useWindowSize from '@helpers/useWindowSizeHook'
+// import useWindowSize from '@helpers/useWindowSizeHook'
 
 interface ILanguagePopupProps {
   position?: {
@@ -21,8 +21,8 @@ interface ILanguagePopupProps {
 export const LanguagePopup = ({ position, footerStyles }: ILanguagePopupProps) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [t, i18n] = useTranslation()
-  const { width } = useWindowSize()
-  const mobile = width < 769
+  // const { width } = useWindowSize()
+  // const mobile = width < 769
 
   const [showPopapLanguage, setShowPopapLanguage] = useState(false)
 
@@ -39,7 +39,7 @@ export const LanguagePopup = ({ position, footerStyles }: ILanguagePopupProps) =
   // Прокидывание позиции окна выбора языка
   const elLangOptionsStyles = position || { top: '30px', left: '-33px', background: '#192A2C' }
 
-  // Извращения с стилями для футера
+  // Стили для футера
   const footerLangStyles = footerStyles ? { height: '100%' } : {}
 
   const languages = ['ru', 'en', 'cn']

@@ -11,8 +11,8 @@ import { AppForMining } from './components/AppForMining'
 // import { Team } from './components/Team'
 // import { UpEcosystem } from './components/UpEcosystem'
 // import { OnLine } from './components/OnLine'
-import { Questions } from './components/Questions'
-import { Media } from './components/Media'
+// import { Questions } from './components/Questions'
+// import { Media } from './components/Media'
 import { Footer } from '@components/Footer'
 import useWindowSize from '@helpers/useWindowSizeHook'
 import { FooterMobile } from '@components/Footer/FooterMobile'
@@ -41,7 +41,7 @@ export const LandingPage: React.FC = () => {
       {/* <UpEcosystem /> */}
       {/* <OnLine /> */}
       {/* <Questions />  */}
-      <Media />
+      {/* <Media /> */}
       {desktop ? <Footer /> : <FooterMobile />}
     </div>
   )
