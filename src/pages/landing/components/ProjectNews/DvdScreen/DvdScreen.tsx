@@ -76,6 +76,7 @@ const height = 500
 export const DvdScreen = () => {
   const [x, setX] = useState(Math.random() * (0 - width - widthDVDLogo) + width - widthDVDLogo)
   const [y, setY] = useState(Math.random() * (0 - height - heightDVDLogo) + height - heightDVDLogo)
+
   const [xSpeed, setXSpeed] = useState(1)
   const [ySpeed, setYSpeed] = useState(1)
 
@@ -92,15 +93,20 @@ export const DvdScreen = () => {
   }
 
   const changeCor = (x, y) => {
-    return { transform: `translate(${x}, ${y})` }
+    // console.log(`{ transform: translate(${x}, ${y}) }`)
+    return { transform: `translate(${x}px, ${y}px)` }
   }
-  // console.log(changeCor(x, y))
+
   useEffect(() => {
-    // console.log(x, y, 'x and y')
     setInterval(() => {
       moveLinks()
     }, MS_PER_FRAME)
   })
+
+  useEffect(() => {
+    changeCor(x, y)
+  }, [x, y])
+
   return (
     <div className={styles.news__animation_links}>
       <div className={styles.news__position__absolute}>
