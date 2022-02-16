@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { Menu } from '@components/Purse/PurseDesktop/components/Menu'
 import { Wallpaper } from '@components/Purse/PurseDesktop/components/Wallpaper'
 
-import { BroadcastsDesktop } from '@components/Broadcasts/BroadcastsDesktop'
 import { changeViewContent } from '../../../pages/cabinet/redux/cabinetSlice'
 import { Content } from './components/Content'
 import { Chat } from '@components/Chat'
@@ -67,7 +66,6 @@ export const PurseDesktop = () => {
             <Menu openLimcBalance={openLimcBalance} openUsdtBalance={openUsdtBalance} />
           </div>
 
-          {viewPurseContent === 'broadcasts' && <BroadcastsDesktop />}
           {viewPurseContent === 'main' && (
             <Content pageCardBalance={pageCardBalance} closeCard={closeCard} openProfile={openProfile} />
           )}
