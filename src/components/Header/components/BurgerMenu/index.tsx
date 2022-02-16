@@ -56,7 +56,7 @@ export const BurgerMenu = ({ burgerOpened, closeBurger }: IBurgerMenu) => {
         <div className={Styles.header}>
           <div className={Styles.header__inner}>
             <img className={Styles.logo} src={logoIcon} alt='Лого' />
-            <button type='reset' onClick={closeBurger}>
+            <button type='reset' className={Styles.close__btn} onClick={closeBurger}>
               <CloseIcon />
             </button>
           </div>
@@ -65,7 +65,7 @@ export const BurgerMenu = ({ burgerOpened, closeBurger }: IBurgerMenu) => {
         <div className={Styles.inner}>
           <div className={Styles.body}>
             <div className={Styles.connect}>
-              <ButtonSecond>Подключить кошелек</ButtonSecond>
+              <ButtonSecond className={Styles.connect__btn}>Подключить кошелек</ButtonSecond>
             </div>
 
             <ul className={Styles.list}>

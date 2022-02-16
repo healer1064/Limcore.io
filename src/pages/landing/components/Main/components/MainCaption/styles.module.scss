@@ -47,14 +47,14 @@
     content: '';
 
     position: absolute;
-    left: -27px;
+    left: -17px;
 
     height: 100%;
     width: 1px;
 
     background-color: rgba(25, 226, 255, 0.39);
 
-    filter: drop-shadow(0px 0px 9px rgb(25, 226, 255)) drop-shadow(0px 0px 9px rgb(25, 226, 255))  drop-shadow(0px 0px 9px #19e2ff) drop-shadow(0px 0px 9px #19e2ff);
+    filter: drop-shadow(0px 0px 9px rgb(25, 226, 255)) drop-shadow(0px 0px 9px rgb(25, 226, 255))  drop-shadow(0px 0px 9px #19e2ff) drop-shadow(0px 0px 9px #19e2ff) drop-shadow(0px 0px 9px #19e2ff) drop-shadow(0px 0px 9px #19e2ff);
   }
 }
 
@@ -105,13 +105,16 @@
   align-items: center;
   margin-left: 30px;
   padding: 31px 38px;
+  border-bottom-right-radius: 37px;
 
   background-image: url('../../../../../../assets/icons/infoBlockBorders.svg');
   background-position: center;
   background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.25);
   transition: transform .3s cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s;
   will-change: transform;
   cursor: pointer;
+  animation: dragging .5s reverse;
 
   &:hover {
     animation: dragging .5s forwards;
@@ -123,7 +126,7 @@
 
     position: absolute;
     bottom: -100%;
-    right: 32px;
+    right: 43px;
 
     height: 10px;
     width: 1px;
@@ -155,22 +158,6 @@
   margin-left: 6px;
 }
 
-// Popup
-@keyframes show-popup {
-  0% {
-    opacity: .25;
-  }
-  50% {
-    opacity: .5;
-  }
-  75% {
-    opacity: .75;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 .popup {
   position: absolute;
   top: 120%;
@@ -184,23 +171,28 @@
   background-image: url('../../../../../../assets/icons/infoBlockBorders2.svg');
   background-position: center;
   background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.visible {
+  transition: opacity .3s ease;
+  opacity: 1;
 }
 
 .popup__subtitle {
   width: 261px;
 }
 
-.popup.entering {
-  animation: show-popup .7s forwards;
-}
-
-.popup.exiting {
-  animation: show-popup .7s reverse;
+.blur {
+  position: absolute;
+  filter: drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff);
 }
 
 @media screen and (max-width: 1150px) {
   .container {
-    padding: 39px;
+    width: calc(100vw - 94px);
+    padding: 39px 0;
   }
 
   .title {
@@ -217,6 +209,10 @@
 
   .info {
     margin-left: 0;
+
+    &::after {
+      right: -17px;
+    }
   }
 }
 

@@ -1,0 +1,45 @@
+.newCard {
+  position: relative;
+  height: 200px;
+  padding: 24px;
+  overflow: hidden;
+  background: rgba(25, 42, 44, 1);
+  border: 1px solid #1fdfff;
+  border-radius: 20px;
+
+  @media all and (max-width: 768px) {
+    height: 118px;
+    margin: 0 0 60px 0;
+  }
+}
+
+.newCard__title {
+  max-width: 243px;
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.newCard__masterCard {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  @media all and (max-width: 768px) {
+    right: 0;
+    bottom: 0;
+    left: unset;
+  }
+}
+
+.newCard__soon {
+  position: absolute;
+  top: 70px;
+  right: 100px;
+
+  @media all and (max-width: 768px) {
+    top: 54px;
+    right: unset;
+    left: 105px;
+  }
+}

@@ -1,0 +1,82 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/_vars.scss';
+
+.equipment {
+  color: white;
+  position: relative;
+  margin-bottom: 100px;
+  height: 1024px;
+}
+
+.container {
+  max-width: 990px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: $font-pressStart;
+  font-size: 41px;
+  line-height: 135%;
+  text-align: center;
+}
+
+.block {
+  display: flex;
+  justify-content: space-between;
+}
+.desck {
+  position: relative;
+  padding-left: 40px;
+  img {
+    position: absolute;
+    left: -20px;
+  }
+}
+.p {
+  @include font-style-ibmPlexSans(15px, 400, 24px, #e1e1d8);
+  max-width: 434px;
+}
+
+.map_mob {
+  display: none;
+}
+
+.map {
+  background-image: url('../../../../assets/images/map.svg');
+  width: 809px;
+  height: 1024px;
+  object-fit: cover;
+  position: absolute;
+  right: 0;
+}
+
+@media all and (max-width: 768px) {
+  .equipment {
+    height: 587px;
+  }
+
+  .title {
+    font-size: 19px;
+    line-height: 30px;
+    margin-bottom: 350px;
+  }
+
+  .block {
+    flex-direction: column;
+  }
+  .map {
+    background-image: url('../../../../assets/images/map_mob.svg');
+    width: 300px;
+    height: 430px;
+    top: 90px;
+  }
+
+  .desck {
+    padding: 0;
+  }
+  .p {
+    max-width: 240px;
+    padding-left: 20px;
+  }
+}

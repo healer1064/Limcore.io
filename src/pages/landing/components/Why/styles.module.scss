@@ -1,0 +1,68 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/vars.scss';
+
+.why {
+  color: white;
+  margin-bottom: 100px;
+  position: relative;
+}
+
+.container {
+  max-width: 990px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  text-align: center;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 41px;
+  font-family: $font-pressStart;
+  line-height: 140%;
+  color: #f5f5ef;
+}
+.description {
+  max-width: 393px;
+  font-family: $font-ibmPlexSans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 150%;
+  color: #e1e1d8;
+  margin: 0;
+  margin-left: auto;
+}
+
+.noise {
+  position: absolute;
+  right: 0;
+  width: 900px;
+  height: 632px;
+}
+
+@media all and (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .title {
+    font-size: 19px;
+    line-height: 160%;
+  }
+  
+  .description {
+    order: 3;
+    max-width: 100%;
+    text-align: center;
+    margin: 0;
+    font-size: 16px;
+    line-height: 150%;
+    margin: 0 20px 0 20px;
+    max-width: 500px;
+    width: 100%;  
+  }
+}

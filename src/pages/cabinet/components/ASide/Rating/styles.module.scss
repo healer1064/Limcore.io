@@ -1,0 +1,42 @@
+.ASide__rating {
+  padding: 30px 24px;
+  margin: 0 0 20px 0;
+  font-size: 14px;
+  color: rgba(79, 132, 138, 1);
+  background: rgba(25, 42, 44, 1);
+  border-radius: 20px;
+
+  @media all and (max-width: 768px) {
+    padding: 25px 20px;
+  }
+}
+
+.ASide__ratingFlex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > div {
+    display: flex;
+    align-items: center;
+  }
+
+  > div:first-of-type {
+    > img {
+      width: 15px;
+      height: 15px;
+      margin: 0 0 0 8px;
+    }
+  }
+
+  > div:last-of-type {
+    font-size: 16px;
+    color: white;
+
+    > img {
+      width: 19px;
+      height: 19px;
+      margin: 0 10px 0 0;
+    }
+  }
+}
