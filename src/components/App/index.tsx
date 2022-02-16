@@ -18,6 +18,7 @@ import { getSoldLimcs } from '@components/Purse/PurseMobile/components/Balance/w
 import { getForksPrice } from '@components/Wallet/redux/walletSlice'
 import { DataCenterPage } from '../../pages/data-center'
 import { Borders } from '@components/Borders'
+import { CabinetPage } from '../../pages/cabinet'
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -63,8 +64,12 @@ const App = () => {
                 <Route path='/' exact component={LandingPage} />
                 <Route path='/data-center' exact component={DataCenterPage} />
                 {!desktop && <Route path='/auth' exact component={AuthMobile} />}
-                <Route path='*'>
-                  <Redirect to='/' />
+                {/* <Route path='*'> */}
+                {/*  <Redirect to='/' /> */}
+                {/* </Route> */}
+                <Route path='/my' component={CabinetPage} />
+                <Route path='/chat'>
+                  <Redirect to='/my' />
                 </Route>
               </Switch>
             )}
@@ -82,9 +87,9 @@ const App = () => {
                     <Route path='/profile' exact component={ProfileMobile} />
                   </>
                 )}
-                <Route path='*'>
-                  <Redirect to='/my' />
-                </Route>
+                {/* <Route path='*'> */}
+                {/*  <Redirect to='/my' /> */}
+                {/* </Route> */}
               </Switch>
             )}
           </main>

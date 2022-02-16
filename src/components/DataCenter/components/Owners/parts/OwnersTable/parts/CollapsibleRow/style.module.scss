@@ -25,12 +25,13 @@
 .collapse_row:hover .collapse_cell:nth-child(2) {
   color: $primary-color;
 }
+
 .graph_container {
   display: flex;
   min-width: 87px;
   max-width: 87px;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .donut {
   margin-left: 10px;

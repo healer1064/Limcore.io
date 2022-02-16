@@ -9,9 +9,9 @@ export const Calcs = () => {
   const [rangeValue, setRangeValue] = useState(1)
   const [coin, setCoin] = useState('1')
   const [modal, setModal] = useState(false)
-  const handleModal = () => {
-    setModal(!modal)
-  }
+
+  const handleModal = () => setModal(!modal)
+
   const handleRange = (e, data) => {
     const money = data * 0.002 * 24 * 30
     setRangeValue(data)
@@ -25,6 +25,7 @@ export const Calcs = () => {
       setCoin(String(Math.round(money)).slice(0, 3))
     }
   }
+
   return (
     <section className={styles.calc}>
       <div>
@@ -74,6 +75,7 @@ export const Calcs = () => {
               26$ годовых в $<span className={styles.calc__info} />
             </p>
             <div className={styles.calc__img} />
+
             <Modal modal={modal} styles={styles} />
           </div>
         </div>
