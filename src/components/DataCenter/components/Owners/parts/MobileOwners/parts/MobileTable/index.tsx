@@ -49,11 +49,13 @@ export const MobileTable = ({ data }) => {
       </TableContainer>
       <div className={styles.bottom_wrapper}>
         <ProgressBar isMobile current={rows} limit={data.length} />
-        <div className={styles.button_container}>
-          <ExpandButton isMobile data={data} setRows={setRows} rows={rows} arr={arr} setArr={setArr}>
-            Загрузить еще 10 кошельков
-          </ExpandButton>
-        </div>
+        {rows !== data.length && (
+          <div className={styles.button_container}>
+            <ExpandButton isMobile data={data} setRows={setRows} rows={rows} arr={arr} setArr={setArr}>
+              Загрузить еще 10 кошельков
+            </ExpandButton>
+          </div>
+        )}
       </div>
     </>
   )
