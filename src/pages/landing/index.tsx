@@ -5,7 +5,7 @@ import { Main } from './components/Main'
 // import { Calculator } from './components/Calculator'
 import { GamificationOfMining } from './components/GamificationOfMining'
 import { AppForMining } from './components/AppForMining'
-// import { RoadMap } from './components/RoadMap'
+import { RoadMap } from './components/RoadMap1'
 // import { Team } from './components/Team'
 // import { UpEcosystem } from './components/UpEcosystem'
 // import { OnLine } from './components/OnLine'
@@ -25,8 +25,8 @@ export const LandingPage: React.FC = () => {
       {/* <Calculator /> */}
       <GamificationOfMining clientWidth={width} />
       <AppForMining clientWidth={width} />
-      {/* <RoadMap />
-      <Team /> */}
+      <RoadMap />
+      {/* <Team /> */}
       {/* <UpEcosystem /> */}
       {/* <OnLine /> */}
       {/* <Questions />
