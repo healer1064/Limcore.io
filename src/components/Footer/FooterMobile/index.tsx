@@ -24,10 +24,10 @@ export const FooterMobile: React.FC = () => {
       <div className={Styles.top__wrapper}>
         <FooterLogo className={Styles.footer__logo} />
         <ul className={Styles.footer__social}>
-          <Telegram width={35} height={29} className={Styles.footer__socialIcon} />
-          <Youtube width={37} height={25} className={Styles.footer__socialIcon} />
-          <Discord width={44} height={35} className={Styles.footer__socialIcon} />
-          <Twitter width={37} height={30} className={Styles.footer__socialIcon} />
+          <Telegram className={Styles.footer__socialIcon} />
+          <Youtube className={Styles.footer__socialIcon} />
+          <Discord className={Styles.footer__socialIcon} />
+          <Twitter className={Styles.footer__socialIcon} />
         </ul>
         <ul className={`${Styles.footer__information} ${Styles.footer__list}`}>
           <FooterListTitle className={Styles.footer__listTitle}>{t('footer_infoDeclosure')}</FooterListTitle>

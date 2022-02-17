@@ -32,10 +32,10 @@ export const Footer: React.FC = () => {
           <div className={Styles.social__group}>
             <FooterListTitle className={Styles.footer_listTitle}>{t('Подписывайтесь')}</FooterListTitle>
             <ul className={Styles.footer__social}>
-              <Telegram width={32} height={27} className={Styles.footer__socialIcon} />
-              <Youtube width={34} height={23} className={Styles.footer__socialIcon} />
-              <Discord width={40} height={32} className={Styles.footer__socialIcon} />
-              <Twitter width={34} height={28} className={Styles.footer__socialIcon} />
+              <Telegram className={Styles.footer__socialIcon} />
+              <Youtube className={Styles.footer__socialIcon} />
+              <Discord className={Styles.footer__socialIcon} />
+              <Twitter className={Styles.footer__socialIcon} />
             </ul>
           </div>
           <ul className={`${Styles.footer__information} ${Styles.footer__list}`}>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import folder from '@animations/folders.json'
 import folder2 from '@animations/folder2.json'
@@ -7,12 +7,26 @@ import Lottie from 'react-lottie'
 import useWindowSize from '@helpers/useWindowSizeHook'
 import uparrow from '../../../../assets/images/arrow.svg'
 import { ButtonBig } from '../../../../ui-kit/ButtonBig'
+import { useInView } from 'react-intersection-observer'
 
 export const HowWork: React.FC = () => {
   const { width } = useWindowSize()
 
+  const [firstAnimStopped, setFirstAnimStopped] = useState(true)
+  const [secondAnimStopped, setSecondAnimStopped] = useState(true)
+  const [thirdAnimStopped, setThirdAnimStopped] = useState(true)
+
+  const OBSERVER_OPTIONS = { rootMargin: '50px' }
+  const [firstAnimRef, firstAnimInView] = useInView(OBSERVER_OPTIONS)
+  const [secondAnimRef, secondAnimInView] = useInView(OBSERVER_OPTIONS)
+  const [thirdAnimRef, thirdAnimInView] = useInView(OBSERVER_OPTIONS)
+
+  type TAnimStyles = { width: string | number }
+  const [animStyles, setAnimStyles] = useState<TAnimStyles>({ width: '' })
+  const [secondAnimStyles, setSecondAnimStyles] = useState<TAnimStyles>({ width: '' })
+
   const defaultOption = {
-    loop: true,
+    loop: false,
     autoplay: true,
     animationData: folder,
     rendererSettings: {
@@ -21,7 +35,7 @@ export const HowWork: React.FC = () => {
   }
 
   const defaultOption2 = {
-    loop: true,
+    loop: false,
     autoplay: true,
     animationData: folder2,
     rendererSettings: {
@@ -30,7 +44,7 @@ export const HowWork: React.FC = () => {
   }
 
   const defaultOption3 = {
-    loop: true,
+    loop: false,
     autoplay: true,
     animationData: map,
     rendererSettings: {
@@ -38,8 +52,26 @@ export const HowWork: React.FC = () => {
     },
   }
 
-  const animStyles = width <= 768 ? { width: 'auto' } : { width: Math.floor(width / 1.74) }
-  const secondAnimStyles = width <= 768 ? { width: 'auto' } : { width: Math.floor(width / 1.66) }
+  useEffect(() => {
+    if (firstAnimInView) {
+      setFirstAnimStopped(false)
+    }
+
+    if (secondAnimInView) {
+      setSecondAnimStopped(false)
+    }
+
+    if (thirdAnimInView) {
+      setThirdAnimStopped(false)
+    }
+  }, [firstAnimInView, secondAnimInView, thirdAnimInView])
+
+  useEffect(() => {
+    if (width) {
+      width <= 768 ? setAnimStyles({ width: 'auto' }) : setAnimStyles({ width: Math.floor(width / 1.74) })
+      width <= 768 ? setSecondAnimStyles({ width: 'auto' }) : setSecondAnimStyles({ width: Math.floor(width / 1.66) })
+    }
+  }, [width])
 
   return (
     <section className={styles.how}>
@@ -48,8 +80,8 @@ export const HowWork: React.FC = () => {
 
         <ul className={styles.list}>
           <li className={styles.item_first}>
-            <div className={styles.anim_first} style={animStyles}>
-              <Lottie options={defaultOption} />
+            <div className={styles.anim_first} style={animStyles} ref={firstAnimRef}>
+              <Lottie options={defaultOption} isStopped={firstAnimStopped} />
             </div>
 
             <div className={styles.item_left}>
@@ -72,8 +104,8 @@ export const HowWork: React.FC = () => {
           </li>
 
           <li className={styles.item_second}>
-            <div className={styles.anim_second} style={secondAnimStyles}>
-              <Lottie options={defaultOption2} />
+            <div className={styles.anim_second} style={secondAnimStyles} ref={secondAnimRef}>
+              <Lottie options={defaultOption2} isStopped={secondAnimStopped} />
             </div>
 
             <div className={styles.item_right}>
@@ -104,8 +136,8 @@ export const HowWork: React.FC = () => {
           </li>
 
           <li className={styles.item_third}>
-            <div className={styles.anim_third} style={animStyles}>
-              <Lottie options={defaultOption3} />
+            <div className={styles.anim_third} style={animStyles} ref={thirdAnimRef}>
+              <Lottie options={defaultOption3} isStopped={thirdAnimStopped} />
             </div>
 
             <div className={styles.item_3_left}>
