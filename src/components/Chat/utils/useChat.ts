@@ -13,7 +13,7 @@ import {
   setLoader,
   setCurrentSlug,
 } from '../redux/chatSlice'
-import { ISendInterface, IMessageInterface } from './types'
+import { ISendInterface, IMessageInterface, ISendMessage } from './types'
 import { useAppSelector } from './../../../app/redux/hooks'
 
 const commands = {
@@ -117,7 +117,7 @@ export const useChat = () => {
       if (data.command === 1) {
         getGroups()
         if (currentDialogues.some((dialogue) => dialogue.slug === 'general_chat')) {
-          if (currentSlug === 'general_chat') {
+          if (currentSlug === 'general_chat' || currentSlug.includes('support')) {
             const arr = []
             arr.push(data.message)
             dispatch(setCurrentMessages([...currentMessages, ...arr]))
@@ -134,6 +134,8 @@ export const useChat = () => {
 
         if (isDialogueInList) {
           dispatch(setDialoguesLastMessage(data))
+        } else {
+          dispatch(setDialogues([data.group, ...currentDialogues]))
         }
 
         if (currentSlug === data.group.slug || currentDialogueMember.id === data.group.other_user.id) {
@@ -143,6 +145,10 @@ export const useChat = () => {
         }
       }
 
+      if (data.command === 3) {
+        dispatch(setDialogues(data.result))
+      }
+
       if (data.command === 4) {
         const sortedMessagesByDate = data.result.sort((a: any, b: any) => {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -150,14 +156,12 @@ export const useChat = () => {
           return new Date(b.updated_at) - new Date(a.updated_at)
         })
 
-        dispatch(setCurrentPage(data.page))
-        dispatch(setWholePages(data.num_pages))
-        dispatch(setCurrentMessages([...sortedMessagesByDate.reverse(), ...currentMessages]))
-        dispatch(setLoader(false))
-      }
-
-      if (data.command === 3) {
-        dispatch(setDialogues(data.result))
+        if (currentSlug !== '') {
+          dispatch(setCurrentPage(data.page))
+          dispatch(setWholePages(data.num_pages))
+          dispatch(setCurrentMessages([...sortedMessagesByDate.reverse(), ...currentMessages]))
+          dispatch(setLoader(false))
+        }
       }
 
       if (data.command === 5) {
@@ -184,37 +188,37 @@ export const useChat = () => {
   }
 
   const sendGroupMessage = (groupName: string, message: string) => {
-    const dataToSend1 = {
+    const dataToSend: ISendMessage = {
       command: commands.sendGroupMessage,
       group: groupName,
-      message,
-      files_pk: uploadedFile,
     }
 
-    const dataToSend2 = {
-      command: commands.sendGroupMessage,
-      group: groupName,
-      message,
+    if (message && message !== '') {
+      dataToSend.message = message
     }
 
-    uploadedFile.length === 0 ? send(dataToSend2) : send(dataToSend1)
+    if (uploadedFile && uploadedFile.length !== 0) {
+      dataToSend.files_pk = uploadedFile
+    }
+
+    send(dataToSend)
   }
 
   const sendDialogueMessage = (recipient: string, message: string) => {
-    const dataToSend1 = {
+    const dataToSend: ISendMessage = {
       command: commands.sendDialogueMessage,
       recipient,
-      message,
-      files_pk: uploadedFile,
     }
 
-    const dataToSend2 = {
-      command: commands.sendDialogueMessage,
-      recipient,
-      message,
+    if (message && message !== '') {
+      dataToSend.message = message
     }
 
-    uploadedFile.length === 0 ? send(dataToSend2) : send(dataToSend1)
+    if (uploadedFile && uploadedFile.length !== 0) {
+      dataToSend.files_pk = uploadedFile
+    }
+
+    send(dataToSend)
   }
 
   const sendLastReadedMessage = (messageId: number[], groupName: string) => {

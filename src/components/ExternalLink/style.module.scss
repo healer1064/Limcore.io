@@ -13,3 +13,11 @@
 .icon {
   margin-left: 4px;
 }
+
+.external_mobile {
+  @include p3();
+}
+.icon_mobile {
+  height: 20px;
+  width: 20px;
+}

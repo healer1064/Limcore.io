@@ -28,7 +28,6 @@ export const CollapsibleRow = ({ data }) => {
           </div>
         </StyledCell>
       </TableRow>
-      {!open && <tr style={{ height: 10 }} />}
       {open &&
         data.info.map((infos, index, arr) => {
           return (
@@ -50,7 +49,7 @@ export const CollapsibleRow = ({ data }) => {
             </TableRow>
           )
         })}
-      <tr style={{ height: 10 }} />
+      {!open && <tr style={{ height: 10 }} />}
     </>
   )
 }

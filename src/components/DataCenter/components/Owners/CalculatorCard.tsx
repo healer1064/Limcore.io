@@ -1,9 +1,11 @@
 import { ExternalLink } from '@components/ExternalLink'
+import useWindowSize from '@helpers/useWindowSizeHook'
 import { ReactComponent as SearchIcon } from '@icons/searchGlass.svg'
 import React from 'react'
 import { OwnersCounter } from './parts/OwnersCounter'
 import { OwnersTable } from './parts/OwnersTable'
 import styles from './styles.module.scss'
+import { MobileOwners } from './parts/MobileOwners'
 
 const data = {
   owners: 400,
@@ -21,7 +23,7 @@ const data = {
     },
     {
       rating: '3',
-      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55a',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -32,7 +34,7 @@ const data = {
     },
     {
       rating: '2',
-      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55b',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -43,7 +45,7 @@ const data = {
     },
     {
       rating: '3',
-      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55c',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -54,7 +56,7 @@ const data = {
     },
     {
       rating: '1',
-      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55e',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -65,7 +67,7 @@ const data = {
     },
     {
       rating: '2',
-      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55f',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -76,7 +78,7 @@ const data = {
     },
     {
       rating: '2',
-      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55s',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -87,7 +89,7 @@ const data = {
     },
     {
       rating: '2',
-      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55q',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -98,7 +100,7 @@ const data = {
     },
     {
       rating: '2',
-      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55t',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -109,7 +111,7 @@ const data = {
     },
     {
       rating: '2',
-      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55k',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -120,7 +122,7 @@ const data = {
     },
     {
       rating: '2',
-      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55g',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -131,7 +133,7 @@ const data = {
     },
     {
       rating: '2',
-      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55h',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -142,7 +144,7 @@ const data = {
     },
     {
       rating: '2',
-      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55j',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -153,7 +155,7 @@ const data = {
     },
     {
       rating: '2',
-      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55r',
       tokens: '102 LIMC',
       days: '80',
       info: [
@@ -166,7 +168,10 @@ const data = {
 }
 
 export const Owners = () => {
-  return (
+  const { width } = useWindowSize()
+  const desktop = width > 970
+
+  return desktop ? (
     <>
       <div className={styles.owners_container}>
         <OwnersCounter number={data.owners} />
@@ -191,5 +196,7 @@ export const Owners = () => {
         </div>
       </div>
     </>
+  ) : (
+    <MobileOwners data={data.data} number={data.owners} />
   )
 }

@@ -7,7 +7,7 @@ import { ReactComponent as RatingOrange } from '@icons/raitingOrange.svg'
 
 export interface IRatingCell {
   rating: string
-  open: boolean
+  open?: boolean
   className?: string
 }
 

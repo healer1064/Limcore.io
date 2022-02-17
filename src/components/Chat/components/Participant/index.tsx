@@ -5,7 +5,6 @@ import { useAppSelector } from '@app/redux/hooks'
 import { ChatContent } from '../ChatContent'
 import { useDispatch } from 'react-redux'
 import {
-  setCurrentClickedUser,
   setCurrentDialogueMember,
   setCurrentMessages,
   setCurrentPage,
@@ -20,19 +19,15 @@ import blockIcon from '@icons/block.svg'
 
 interface IParticipantProps {
   member: IMemberInterface
-  openUnblockModal: () => void
   isAdmin: boolean
 }
 
-export const Participant = ({ member, openUnblockModal, isAdmin }: IParticipantProps) => {
-  const { unreadMessageCount } = useChat()
+export const Participant = ({ member, isAdmin }: IParticipantProps) => {
+  const { unreadMessageCount, getGroupMessages, unblockUser, getMembersGroup } = useChat()
   const dispatch = useDispatch()
 
   const [isOpened, setIsOpened] = useState(false)
   const userId = useAppSelector((state) => state.user.userData?.id)
-  // const generalChat = useAppSelector((state) =>
-  //   state.chat.dialogues.find((dialogue) => dialogue.slug === 'general_chat'),
-  // )
   const currentMemberDialogue = useAppSelector((state) =>
     state.chat.dialogues.find((dialogue) => dialogue.other_user && dialogue.other_user.id === member.user.id),
   )
@@ -47,12 +42,13 @@ export const Participant = ({ member, openUnblockModal, isAdmin }: IParticipantP
 
   const onOpen = () => {
     if (!me) {
-      dispatch(setCurrentPage(0))
+      dispatch(setCurrentPage(1))
       dispatch(setWholePages(0))
       dispatch(setCurrentMessages([]))
 
       dispatch(setCurrentDialogueMember(member.user))
       dispatch(setCurrentSlug(currentMemberDialogueSlug))
+      getGroupMessages(currentMemberDialogueSlug, 1)
       unreadMessageCount(member.user.id)
       setIsOpened(true)
     }
@@ -60,8 +56,8 @@ export const Participant = ({ member, openUnblockModal, isAdmin }: IParticipantP
 
   const onUnblock = (event: React.SyntheticEvent) => {
     event.stopPropagation()
-    dispatch(setCurrentClickedUser(member.user.id))
-    openUnblockModal()
+    unblockUser(member.user.id, 'general_chat')
+    getMembersGroup('general_chat')
   }
 
   return (

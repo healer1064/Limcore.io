@@ -19,17 +19,19 @@ export const File = ({ file }: IFile) => {
     case 'svg':
     case 'gif':
       return (
-        <div className={styles.imgContainer} onClick={stopPropagation}>
-          <img src={file[0].file} className={styles.file} />
+        <div className={styles.сontainer}>
+          <img src={file[0].file} className={styles.file} onClick={stopPropagation} />
         </div>
       )
 
     case 'mp3':
       return (
-        <audio controls src={file[0].file} className={styles.file} onClick={stopPropagation}>
-          Your browser does not support the
-          <code>audio</code> element.
-        </audio>
+        <div className={styles.сontainer}>
+          <audio controls src={file[0].file} className={styles.file} onClick={stopPropagation}>
+            Your browser does not support the
+            <code>audio</code> element.
+          </audio>
+        </div>
       )
 
     case 'avi':
@@ -40,15 +42,24 @@ export const File = ({ file }: IFile) => {
     case 'mp4':
     case 'webm':
       return (
-        <video className={styles.file} controls onClick={stopPropagation}>
-          <source src={file[0].file} />
-        </video>
+        <div className={styles.сontainer}>
+          <video className={styles.file} controls onClick={stopPropagation}>
+            <source src={file[0].file} />
+          </video>
+        </div>
       )
     default:
       return (
-        <div className={styles.download} onClick={stopPropagation}>
+        <div className={styles.download}>
           <img src={downloadIcon} className={styles.download_icon} />
-          <a className={styles.file} href={file[0].file} download target='_blank' rel='noreferrer'>
+          <a
+            className={styles.file}
+            href={file[0].file}
+            download
+            target='_blank'
+            rel='noreferrer'
+            onClick={stopPropagation}
+          >
             {file[0].filename}
           </a>
         </div>

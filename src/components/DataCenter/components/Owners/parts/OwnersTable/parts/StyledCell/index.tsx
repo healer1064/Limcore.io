@@ -7,7 +7,7 @@ export interface IStyledCell {
   children?: ReactNode
   align?: 'left' | 'right' | 'inherit' | 'center' | 'justify'
   className?: string
-  open: boolean
+  open?: boolean
 }
 
 const Cell = withStyles(() => ({
@@ -15,6 +15,8 @@ const Cell = withStyles(() => ({
     position: 'relative',
     verticalAlign: 'middle',
     fontSize: 16,
+    paddingTop: '20px',
+    paddingBottom: '20px',
     fontFamily: ['IbmPlexSans', 'Arial'].join(','),
     border: 'none',
     color: '#A4A4A4',

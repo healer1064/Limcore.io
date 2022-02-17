@@ -2,92 +2,26 @@
 @import '../../../scss/vars.scss';
 
 .footer {
-
-  &__line{
-    box-sizing: border-box;
-    grid-area: line;
-    width: 100%;
-    height: 1px;
-    padding: 0;
-    margin: 40px 0 20px;
-    background-color: #3aa7b7;
-    box-shadow: 0 0 20px #65bbcb;
-  }
-
-  &__logo {
-    grid-area: logo;
-    width: 185px;
-    height: 66px;
-  }
-
-  &__social{
-    grid-area: social;
-    display: flex;
-    padding: 0;
-    align-items: center;
-  }
-
-  &__socialIcon{
-    margin-right: 30px;
-    fill: $color-3A-blue;
-
-    &:hover {
-      cursor: pointer;
-      fill: $color-BE-blue;
-    }
-  }
-
-  &__list{
-    list-style-type: none;
-    padding: 0;
-    flex-direction: column;
-    display: flex;
-    margin: 0;
-  }
-
-  &__listItem{
-    @include font-style-ibmPlexSans(16px, 400, 21px, $color-E1-white);
-    padding-bottom: 14px;
-  }
-
-  &__listTitle{
-    @include font-style-pressStart(14px, 400, 14px, $color-F5-white);
-    padding-bottom: 24px;
-  }
-
-  &__information{
-    grid-area: information;
-  }
-
-  &__users{
-    grid-area: users;
-    margin-left: auto;
-  }
-
-  &__email{
-    grid-area: email;
-    margin: 13px 0 0 0;
-    @include font-style-ibmPlexSans(18px, 400, 22px, $primary-color);
-
-    & > a {
-      @include font-style-ibmPlexSans(18px, 400, 22px, $primary-color);
-
-      text-decoration: none;
-    }
-  }
-
-  &__copyright{
-    @include font-style-ibmPlexSans(16px, 400, 21px, $color-85-blue);
-  }
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 101;
+  padding: 5px 25px 8px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 1px solid $color-B4-violet;
+  background-color: $white;
 }
 
 .top__wrapper {
   display: grid;
   grid-template-areas:
-      'logo logo'
-      'social social'
-      'information users'
-      'information email';
+    'logo logo'
+    'social social'
+    'information users'
+    'information email';
   grid-template-rows: repeat(4, minmax(min-content, max-content));
   grid-template-columns: 50%;
   column-gap: 30px;
@@ -97,11 +31,11 @@
   margin: 0 auto;
 }
 
-.bottom__wrapper{
+.bottom__wrapper {
   display: grid;
   grid-template-areas:
-          'icons  hitBTC'
-          'copyAndLang copyAndLang';
+    'icons  hitBTC'
+    'copyAndLang copyAndLang';
   grid-template-rows: repeat(2, minmax(min-content, max-content));
   grid-template-columns: 50%;
   align-items: center;
@@ -112,7 +46,7 @@
   margin: 0 auto;
 }
 
-.icons__group{
+.icons__group {
   grid-area: icons;
   display: flex;
   flex-direction: column;
@@ -126,27 +60,27 @@
   }
 }
 
-.hitBTC__group{
+.hitBTC__group {
   grid-area: hitBTC;
   margin-left: auto;
   display: flex;
   flex-direction: column;
 
-  &__icon{
+  &__icon {
     width: 90px;
     height: 36px;
     align-self: end;
     margin-bottom: 9px;
   }
 
-  &__text{
+  &__text {
     @include font-style-ibmPlexSans(16px, 400, 21px, $color-85-blue);
     margin: 0;
     text-align: end;
   }
 }
 
-.copyAndLang__group{
+.copyAndLang__group {
   grid-area: copyAndLang;
   display: flex;
   padding: 14px 0 20px;

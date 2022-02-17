@@ -1,20 +1,21 @@
 @import '../../../../../../scss/typography.scss';
 @import '../../../../../../scss/_vars.scss';
 
-.head_cell:first-child {
-  padding-left: 34px;
+.table_container {
+  position: relative;
 }
 
-.icon_wrapper {
-  display: flex;
-  align-items: center;
+.head_cell:first-child {
+  padding-left: 34px;
 }
 
 .icon {
   margin-left: 4px;
 }
+
 .bottom_wrapper {
   display: flex;
+  margin-top: 40px;
   flex-direction: column;
   align-items: center;
 }
@@ -23,14 +24,4 @@
   margin-top: 24px;
   flex-direction: column;
   align-items: center;
-}
-
-.button {
-  padding: 14px 81px;
-  max-width: 471px;
-  border: 2px solid $primary-color;
-  background: transparent;
-  border-radius: 80px;
-  font-weight: $fontWeightSemiBold;
-  color: $color-F5-white;
 }
