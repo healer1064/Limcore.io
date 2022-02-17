@@ -11,7 +11,7 @@ import { HeaderMobile } from '@components/Header/components/HeaderMobile'
 import { AuthMobile } from '../../pages/auth/AuthMobile'
 import { Chat } from '@components/Chat'
 import { LandingPage } from '../../pages/landing'
-import { Purse } from '@components/Purse'
+// import { Purse } from '@components/Purse'
 import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getUser } from '@app/redux/userSlice'
 import { getSoldLimcs } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
@@ -77,7 +77,7 @@ const App = () => {
             {isAuth && !isLoading && (
               <Switch>
                 <Route path='/' exact component={LandingPage} />
-                <Route path='/my' exact component={Purse} />
+                <Route path='/my' exact component={CabinetPage} />
                 {!desktop && (
                   <>
                     <Route path='/broadcasts'>

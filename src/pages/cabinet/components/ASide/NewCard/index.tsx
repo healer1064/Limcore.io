@@ -10,7 +10,6 @@ interface NewCardProps {
 }
 
 export const NewCard: React.FC<NewCardProps> = ({ clientWidth }) => {
-  console.log(clientWidth <= 768)
   return (
     <div className={styles.newCard}>
       <h2 className={styles.newCard__title}>Выпуск банковской карты</h2>
