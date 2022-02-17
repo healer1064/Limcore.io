@@ -12,6 +12,15 @@ import { useInView } from 'react-intersection-observer'
 export const HowWork: React.FC = () => {
   const { width } = useWindowSize()
 
+  // Прикол в том, что анимации разные по внутренним размерам и это всё нужно, чтобы они визуально были одинаковые
+  type TAnimStyles = { width: string | number }
+  const [animStyles, setAnimStyles] = useState<TAnimStyles>({ width: '' })
+  const [secondAnimStyles, setSecondAnimStyles] = useState<TAnimStyles>({ width: '' })
+
+  type TSecondAnimMargin = { marginBottom: string }
+  const [secondAnimMargin, setSecondAnimMargin] = useState<TSecondAnimMargin>({ marginBottom: '200px' })
+  // ===
+
   const [firstAnimStopped, setFirstAnimStopped] = useState(true)
   const [secondAnimStopped, setSecondAnimStopped] = useState(true)
   const [thirdAnimStopped, setThirdAnimStopped] = useState(true)
@@ -20,10 +29,6 @@ export const HowWork: React.FC = () => {
   const [firstAnimRef, firstAnimInView] = useInView(OBSERVER_OPTIONS)
   const [secondAnimRef, secondAnimInView] = useInView(OBSERVER_OPTIONS)
   const [thirdAnimRef, thirdAnimInView] = useInView(OBSERVER_OPTIONS)
-
-  type TAnimStyles = { width: string | number }
-  const [animStyles, setAnimStyles] = useState<TAnimStyles>({ width: '' })
-  const [secondAnimStyles, setSecondAnimStyles] = useState<TAnimStyles>({ width: '' })
 
   const defaultOption = {
     loop: false,
@@ -69,7 +74,11 @@ export const HowWork: React.FC = () => {
   useEffect(() => {
     if (width) {
       width <= 768 ? setAnimStyles({ width: 'auto' }) : setAnimStyles({ width: Math.floor(width / 1.74) })
-      width <= 768 ? setSecondAnimStyles({ width: 'auto' }) : setSecondAnimStyles({ width: Math.floor(width / 1.66) })
+      width <= 768
+        ? setSecondAnimStyles({ width: Math.floor(width / 0.75) })
+        : setSecondAnimStyles({ width: Math.floor(width / 1.66) })
+
+      width <= 768 && setSecondAnimMargin({ marginBottom: `${Math.floor(width) + 75}px` })
     }
   }, [width])
 
@@ -103,7 +112,7 @@ export const HowWork: React.FC = () => {
             </div>
           </li>
 
-          <li className={styles.item_second}>
+          <li className={styles.item_second} style={secondAnimMargin}>
             <div className={styles.anim_second} style={secondAnimStyles} ref={secondAnimRef}>
               <Lottie options={defaultOption2} isStopped={secondAnimStopped} />
             </div>

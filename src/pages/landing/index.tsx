@@ -42,7 +42,7 @@ export const LandingPage: React.FC = () => {
       {/* <OnLine /> */}
       {/* <Questions />  */}
       {/* <Media /> */}
-      {desktop ? <Footer /> : <FooterMobile />}
+      {/* {desktop ? <Footer /> : <FooterMobile />} */}
     </div>
   )
 }
