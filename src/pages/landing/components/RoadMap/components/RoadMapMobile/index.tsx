@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './styles.module.scss'
 import classNames from 'classnames'
 
-export const RoadMapDesktop: React.FC = () => {
+export const RoadMapMobile: React.FC = () => {
   return (
     <div className={styles.roadmap}>
       <div className={styles.container}>
@@ -52,7 +52,7 @@ export const RoadMapDesktop: React.FC = () => {
               </li>
             </ul>
 
-            <div className={classNames(styles.item__circle, styles.item__circle__disabled)} />
+            <div className={classNames(styles.item__circle, styles.item__circle_disabled)} />
           </li>
 
           <li className={styles.item}>
@@ -61,13 +61,20 @@ export const RoadMapDesktop: React.FC = () => {
               <li className={classNames(styles.item__text, styles.item__text_disabled)}>
                 Приложение для майнинга Chia и форков на ПК
               </li>
-              <h6 className={classNames(styles.item__title, styles.item__title_middle)}>Q4 2023</h6>
+            </ul>
+
+            <div className={classNames(styles.item__circle, styles.item__circle_disabled)} />
+          </li>
+
+          <li className={styles.item}>
+            <h6 className={styles.item__title}>Q4 2023</h6>
+            <ul className={classNames(styles.item__list, styles.item__list_disabled)}>
               <li className={classNames(styles.item__text, styles.item__text_disabled)}>
                 Cвоя игра для фарминга Chia и форков на земельном участке
               </li>
             </ul>
 
-            <div className={classNames(styles.item__circle, styles.item__circle__disabled)} />
+            <div className={classNames(styles.item__circle, styles.item__circle_disabled)} />
           </li>
         </ul>
       </div>
