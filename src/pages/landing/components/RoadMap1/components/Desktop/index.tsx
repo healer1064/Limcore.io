@@ -14,22 +14,27 @@ import Puls from '../../images/puls.png'
 export const Desktop: React.FC = () => {
   const road = data.map((el) => {
     const status = el.status === 'active' ? 'circle active' : 'circle'
+    const activeWrapperStyles = el.status === 'active' ? { paddingTop: '35px' } : { paddingTop: '15px' }
+
+    const heightStyles = el.task3 ? { height: '700px' } : { height: '615px' }
+
     return (
       <li key={el.id} className={status}>
-        <div className='wrapper'>
+        <div className='wrapper' style={heightStyles}>
           <h4>{el.quarter}</h4>
-          <ul className='points'>
+
+          <ul className='points' style={activeWrapperStyles}>
             <li className='point'>{el.task1}</li>
 
-            {Array.isArray(el.task2) ? (
-              <div className='wrapper' key={el.task2[0].id}>
+            {el.task2 && Array.isArray(el.task2) ? (
+              <div className='wrapper' key={el.task2[0].id} style={{ transform: 'translateY(-25px)' }}>
                 <h4>{el.task2[0].quarter}</h4>
                 <li className='point'>{el.task2[0].task1}</li>
               </div>
             ) : (
-              el.task2
+              <li className='point'>{el.task2}</li>
             )}
-            <li className='point'>{el.task3}</li>
+            {el.task3 && <li className='point'>{el.task3}</li>}
           </ul>
         </div>
       </li>

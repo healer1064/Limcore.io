@@ -1,54 +1,75 @@
-import React, { useRef, useState } from 'react'
-import Styles from './styles.module.scss'
-import { RoadMapItemDesktop } from '../../partsDesktop'
-import { ArrowLeft } from '@icons/ArrowLeft'
-import { ArrowRight } from '@icons/ArrowRight'
+import React from 'react'
+import styles from './styles.module.scss'
+import classNames from 'classnames'
 
-export const RoadMapDesktop = ({ roadMapArray }) => {
-  const roadmapRef = useRef<HTMLDivElement>(null)
-  const [isArrowHidden, setIsArrowHidden] = useState(true)
-  const scrollLeft = () => {
-    roadmapRef.current.scrollLeft += 300
-    if (roadmapRef.current.scrollLeft !== 0) {
-      setIsArrowHidden(false)
-    }
-  }
-  const scrollRight = () => {
-    roadmapRef.current.scrollLeft -= 300
-    if (roadmapRef.current.scrollLeft === 0) {
-      setIsArrowHidden(true)
-    }
-  }
-
+export const RoadmapDesktop: React.FC = () => {
   return (
-    <div className={Styles.container}>
-      <span className={Styles.blueLine} />
-      <button className={`${Styles.scrollButton} ${Styles.scrollButtonLeft}`} type='button' onClick={scrollLeft}>
-        <ArrowRight className={Styles.scrollIcon} />
-      </button>
-      <button
-        className={`${Styles.scrollButton} ${Styles.scrollButtonRight} ${isArrowHidden && Styles.arrowHidden}`}
-        type='button'
-        onClick={scrollRight}
-      >
-        <ArrowLeft className={Styles.scrollIcon} />
-      </button>
-      <div className={Styles.roadMap} ref={roadmapRef}>
-        {roadMapArray.map((item, index) => {
-          const position = index % 2 === 0 ? 'top' : 'down'
+    <div className={styles.roadmap}>
+      <div className={styles.container}>
+        <h2 className={styles.title}>Дорожная карта</h2>
 
-          return (
-            <RoadMapItemDesktop
-              key={item.id}
-              title={item.title}
-              date={item.deadline}
-              status={item.status}
-              vertikal={item.vertikal}
-              position={position}
-              titleType={item.titleType}
-            />
-          )
-        })}
+        <ul className={styles.list}>
+          <li className={styles.item}>
+            <h6 className={styles.item__title}>Q3 2021</h6>
+            <ul className={styles.item__list}>
+              <li className={styles.item__text}>Сборка тестовой стойки для майнинга</li>
+              <li className={styles.item__text}>Запуск личного кабинета v0.1</li>
+              <li className={styles.item__text}>Создание Limcore Token</li>
+            </ul>
+
+            <div className={styles.item__circle} />
+          </li>
+
+          <li className={styles.item}>
+            <h6 className={styles.item__title}>Q4 2021</h6>
+            <ul className={styles.item__list}>
+              <li className={styles.item__text}>Запуск личного кабинета</li>
+              <li className={styles.item__text}>Blockchain Life. Diamond Sponsor</li>
+            </ul>
+
+            <div className={styles.item__circle} />
+          </li>
+
+          <li className={styles.item}>
+            <h6 className={styles.item__title}>Q1 2022</h6>
+            <ul className={styles.item__list}>
+              <li className={classNames(styles.item__text, styles.item__text_active)}>
+                Запуск фарминга для первых пользователей
+              </li>
+              <li className={classNames(styles.item__text, styles.item__text_active)}>Листинг LIMC на бирже HitBTC</li>
+            </ul>
+
+            <div className={classNames(styles.item__circle, styles.item__circle_active)} />
+          </li>
+
+          <li className={styles.item}>
+            <h6 className={styles.item__title}>Q2 2022</h6>
+            <ul className={styles.item__list}>
+              <li className={classNames(styles.item__text, styles.item__text_disabled)}>Подключение банковских карт</li>
+              <li className={classNames(styles.item__text, styles.item__text_disabled)}>Своя биржа форков</li>
+              <li className={classNames(styles.item__text, styles.item__text_disabled)}>
+                Дополнительные листинги на биржах
+              </li>
+            </ul>
+
+            <div className={classNames(styles.item__circle, styles.item__circle__disabled)} />
+          </li>
+
+          <li className={styles.item}>
+            <h6 className={styles.item__title}>Q4 2022</h6>
+            <ul className={styles.item__list}>
+              <li className={classNames(styles.item__text, styles.item__text_disabled)}>
+                Приложение для майнингаChia и форков на ПК
+              </li>
+              <h6 className={styles.item__title}>Q4 2023</h6>
+              <li className={classNames(styles.item__text, styles.item__text_disabled)}>
+                Cвоя игра для фарминга Chia и форков на земельном участке
+              </li>
+            </ul>
+
+            <div className={classNames(styles.item__circle, styles.item__circle__disabled)} />
+          </li>
+        </ul>
       </div>
     </div>
   )

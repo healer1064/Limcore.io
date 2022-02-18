@@ -1,3 +1,4 @@
+@import '../../../../../../../scss/vars';
 
 $main-bg-color: linear-gradient(154.3deg, #24FA93 16.25%, #62E5F7 59.03%, #24DFFA 83.04%);
 $round-color: #9AEFFF;
@@ -52,25 +53,34 @@ $round-color: #9AEFFF;
   width: 180px;
   list-style: none;
   padding-left: 21px;
+  padding-bottom: 50px;
 }
 
 .point {
   position: relative;
-  font-size: 14px;
-  line-height: 18px;
-  margin-bottom: 49px;
+
+  max-width: 135px;
+
+  &:not(:last-child) {
+    margin-bottom: 50px;
+  }
+  
+  @include font-style-ibmPlexSans(14px, 400, 18px, $color-E1-white);
 
   &:before {
+    content: '';
+
     position: absolute;
     right: calc(100% + 13px);
-    content: '';
+    
     display: block;
     width: 15px;
     height: 15px;
+    border: 3px solid $round-color;
     border-radius: 50%;
+    
     background: #000000;
     box-shadow: 0 0 10px $round-color, 0 0 10px $round-color;
-    border: 3px solid $round-color;
   }
 }
 
@@ -101,5 +111,6 @@ $round-color: #9AEFFF;
 
 .circle.active ~ .circle {
   background: var(--plan-bg-color);
-  border: none
+  border: none;
+  z-index: 10;
 }

@@ -1,137 +1,143 @@
-@import '../../../../../../scss/typography.scss';
-@import '../../../../../../scss/vars.scss';
+@import '../../../../../../scss/vars';
 
-.roadMap {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow: hidden;
-  scroll-behavior: smooth;
-  min-height: 110%;
-  height: auto;
-}
-
-.container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 90%, $color-F9-white 100%);
-  z-index: 3;
-}
-
-@media (max-width: 769px) {
-  .container::before {
-    display: none;
-  }
-}
-
-.roadMap::-webkit-scrollbar {
-  width: 0;
-}
-
-.scrollButtonLeft {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  border: 2px solid $white;
-  width: 60px;
-  height: 60px;
-  background-color: $white;
-  border-radius: 50%;
-  position: absolute;
-  top: 49%;
-  right: -50px;
-  z-index: 5;
-  box-shadow: 20px 20px 52px rgba(0, 0, 0, 0.05);
-  transition: border 0.3s ease;
-
-  &:hover {
-    cursor: pointer;
-    border: 2px solid $primary-color;
-    transition: border 0.3s ease;
-  }
-}
-
-.scrollButtonRight {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  border: 2px solid $white;
-  width: 60px;
-  height: 60px;
-  background-color: $white;
-  border-radius: 50%;
-  position: absolute;
-  top: 49%;
-  left: -50px;
-  z-index: 5;
-  box-shadow: 20px 20px 52px rgba(0, 0, 0, 0.05);
-  transition: border 0.3s ease;
-
-  &:hover {
-    cursor: pointer;
-    border: 2px solid $primary-color;
-    transition: border 0.3s ease;
-  }
-}
-
-.scrollIcon {
-  display: flex;
-  box-sizing: border-box;
-  width: 7px;
-  height: 14px;
-  margin: 24px auto;
-  padding: 0;
-  transform: translateY(-2px);
-}
-
-.arrowHidden {
-  display: none;
-}
-
-.blueLine {
-  display: flex;
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  height: 6px;
+.container {
+  max-width: 1085px;
   width: 100%;
-  background-color: $primary-color;
-  position: absolute;
-  z-index: -2;
-  top: 50%;
+  margin: 0 auto;
 }
 
-@media (min-width: 769px) {
-  .container {
-    display: flex;
+.title {
+  width: fit-content;
+  margin: 0 auto 50px;
+  @include font-style-pressStart(41px, 400, 55px, $color-E5-white);
+}
+
+.list {
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 118px 76px 146px;
+
+  list-style-type: none;
+  background-image: url('../../../../../../assets/images/roadmapFolder.png');
+  background-size: contain;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: calc(146px + 28px);
+    right: 2px;
+
+    width: calc(100% - 20px);
+    height: 4px;
+
+    background-color: #ABC3C8;
+  }
+}
+
+.item {
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item__circle {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+
+  background: linear-gradient(154.3deg, #24FA93 16.25%, #62E5F7 59.03%, #24DFFA 83.04%);
+  box-shadow: 0px 0px 60px rgba(81, 235, 219, 0.5);
+  transform: translateX(-33px);
+}
+
+.item__circle_active {
+  background: #FCFF00;
+  box-shadow: 0px 0px 14px rgba(252, 255, 0, 0.5);
+}
+
+.item__circle__disabled {
+  background: #ABC3C8;
+}
+
+.item__title {
+  margin-top: auto;
+  @include font-style-ibmPlexSans(18px, 600, 23px, $color-F5-white);
+}
+
+.item__list {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 25px 0 0 13px;
+
+  list-style-type: none;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
     height: 100%;
-    position: relative;
-    z-index: 5;
+    width: 1px;
+
+    background: #9AEFFF;
+    box-shadow: 0px 0px 14px #62C8D7;
+    border-radius: 15px;
   }
 }
 
-@media screen and (max-width: 1450px) {
-  .roadMap {
-    width: 100%;
-    margin: 0 auto;
+.item__text {
+  position: relative;
+  
+  margin-bottom: 49px;
+  max-width: 140px;
+
+  @include font-style-ibmPlexSans(14px, 400, 18px, $color-E1-white);
+
+  // &:not(:last-child) {
+  //   margin-bottom: 49px;
+  // }
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: -20px;
+
+    width: 15px;
+    height: 15px;
+    border: 3px solid #9AEFFF;
+    border-radius: 50%;
+    
+    background: #000000;
+    box-shadow: 0 0 10px #9AEFFF, 0 0 10px #9AEFFF;
   }
 }
 
-@media screen and (max-width: 1200px) {
-  .scrollButton,
-  .scrollButtonRight,
-  .scrollButtonLeft,
-  .roadMap {
-    display: none;
+.item__text_active {
+  &::before {
+    border: none;
+        
+    background: #FCFF00;
+    box-shadow: 0px 0px 14px rgba(252, 255, 0, 0.5);
   }
-  .blueLine {
-    display: none;
+}
+
+.item__text_disabled {
+  &::before {
+    border: none;
+    background: #ABC3C8;
+    box-shadow: none;
   }
 }
