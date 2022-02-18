@@ -1,0 +1,25 @@
+@import '../../../../../../../../scss/typography.scss';
+@import '../../../../../../../../scss/_vars.scss';
+
+.popover {
+  @include font-style-ibmPlexSans(16px, 500, 22px, $color-E1-white);
+  position: absolute;
+  padding: 40px;
+  width: 369px;
+  height: 246px;
+  left: 9%;
+  top: 0;
+  background-image: url('../../../../../../../../assets/icons/PopUpBorder.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 10000;
+}
+
+.display {
+  display: block;
+}
+
+.none {
+  display: none;
+}

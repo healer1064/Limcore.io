@@ -1,0 +1,62 @@
+@import '../../../../../../../../../../scss/typography.scss';
+@import '../../../../../../../../../../scss/_vars.scss';
+
+.description {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  @include font-style-ibmPlexSans(14px, 500, 22px, $color-E1-white);
+  &:not(:last-child) {
+    padding-bottom: 19px;
+    margin-bottom: 19px;
+    border-bottom: 2px solid #142224;
+  }
+  &__icon {
+    margin-right: 14px;
+  }
+  .link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: $color-E1-white;
+  }
+}
+
+.wrapper {
+  display: flex;
+  padding-bottom: 16px;
+  align-items: center;
+  border-bottom: 2px solid $color-22-dark;
+  .tokens {
+    @include font-style-ibmPlexSans(14px, 500, 22px, $color-E1-white);
+    margin-left: auto;
+    height: 44px;
+  }
+}
+.info_wrapper {
+  margin-top: 16px;
+  padding: 0 0 0 40px;
+  @include font-style-ibmPlexSans(14px, 500, 22px, #a4a4a4);
+  .line_wrapper {
+    display: flex;
+  }
+  .date {
+    margin: 0;
+    &:not(:last-child) {
+      margin-bottom: 7px;
+    }
+  }
+  .size {
+    margin: 0;
+    margin-left: auto;
+  }
+  .graphs {
+    display: flex;
+    align-items: center;
+    &__text {
+      margin: 0;
+      margin-right: 10px;
+      color: $color-E1-white;
+    }
+  }
+}

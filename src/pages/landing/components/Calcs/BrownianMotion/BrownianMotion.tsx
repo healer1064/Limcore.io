@@ -1,23 +1,32 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styles from './styles.module.scss'
 
-export const BrownianMotion = (props) => {
+interface IBrownianMotion {
+  interval: number
+  distance: number
+  step: number
+  children: React.ReactNode
+}
+
+export const BrownianMotion = ({ interval, children, distance, step }: IBrownianMotion) => {
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 })
   const [showTooltip, setShowTooltip] = useState(false)
-  const intervalId = useRef(null)
-  const { interval, children, distance, step } = props
-  const maxRotate = 55
+
   const { x, y } = coordinates
+  const intervalId = useRef(null)
+  const maxRotate = 55
   let deg = +(Math.random() * 360).toFixed()
 
   const newCoordinates = () => {
     setCoordinates((prevState) => {
       deg += +(Math.random() * maxRotate * 2 - maxRotate).toFixed()
       let shift = getShift(deg, step)
+
       while (Math.abs(prevState.x + shift.x) >= distance || Math.abs(prevState.y + shift.y) >= distance) {
         deg += +(Math.random() * maxRotate * 2 - maxRotate).toFixed()
         shift = getShift(deg, step)
       }
+
       return {
         x: prevState.x + shift.x,
         y: prevState.y + shift.y,
@@ -42,6 +51,7 @@ export const BrownianMotion = (props) => {
 
   useEffect(() => {
     start()
+
     return () => {
       clearInterval(intervalId.current)
     }

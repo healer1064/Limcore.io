@@ -19,6 +19,7 @@ export interface IMessageInterface {
   group: number | null
   id: number
   is_edited: boolean
+  is_read: boolean
   message: string
   msg_type: number
   updated_at: string
@@ -66,4 +67,13 @@ export interface IFileInterface {
   id: number
   size: number
   type: number
+}
+
+export interface ISendMessage {
+  command: number
+  group?: string
+  recipient?: string
+  message?: string
+  // eslint-disable-next-line camelcase
+  files_pk?: number[]
 }

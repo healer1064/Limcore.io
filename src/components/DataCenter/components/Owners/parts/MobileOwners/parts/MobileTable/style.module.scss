@@ -1,0 +1,38 @@
+@import '../../../../../../../../scss/typography.scss';
+@import '../../../../../../../../scss/_vars.scss';
+
+.head_cell {
+  @include font-style-ibmPlexSans(12px, 500, 22px, $color-84-green);
+}
+.tokens {
+  display: flex;
+  height: 44px;
+}
+.icon_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom_wrapper {
+  display: flex;
+  margin-top: 24px;
+  flex-direction: column;
+  align-items: center;
+}
+.button_container {
+  display: flex;
+  margin-top: 14px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button {
+  padding: 14px 70px;
+  max-width: 471px;
+  border: 2px solid $primary-color;
+  background: transparent;
+  border-radius: 80px;
+  font-weight: $fontWeightSemiBold;
+  color: $color-F5-white;
+}

@@ -1,0 +1,21 @@
+@import '../../../../../../../../scss/typography.scss';
+@import '../../../../../../../../scss/_vars.scss';
+
+.rating_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.primary_color {
+  background-color: $color-34-green;
+}
+
+.secondary_color {
+  background-color: $color-45-green;
+}
+
+.rating_icon {
+  height: 30px;
+  width: 30px;
+}

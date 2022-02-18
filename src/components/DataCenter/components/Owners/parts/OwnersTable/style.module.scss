@@ -1,0 +1,27 @@
+@import '../../../../../../scss/typography.scss';
+@import '../../../../../../scss/_vars.scss';
+
+.table_container {
+  position: relative;
+}
+
+.head_cell:first-child {
+  padding-left: 34px;
+}
+
+.icon {
+  margin-left: 4px;
+}
+
+.bottom_wrapper {
+  display: flex;
+  margin-top: 40px;
+  flex-direction: column;
+  align-items: center;
+}
+.button_container {
+  display: flex;
+  margin-top: 24px;
+  flex-direction: column;
+  align-items: center;
+}

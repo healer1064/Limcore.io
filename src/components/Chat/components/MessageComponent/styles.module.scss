@@ -88,7 +88,8 @@
   box-sizing: border-box;
   width: 100%;
   margin: 0 0 5px 0;
-  padding: 12px 50px 12px 14px;
+  // padding: 12px 50px 12px 14px;
+  padding: 12px 12px 30px 14px;
   border-radius: $border-radius;
   word-wrap: anywhere;
   font-family: $font-inter;
@@ -124,7 +125,8 @@
   box-sizing: border-box;
   width: 100%;
   margin: 0 0 5px auto;
-  padding: 12px 50px 12px 14px;
+  // padding: 12px 50px 12px 14px;
+  padding: 12px 12px 30px 14px;
   word-wrap: anywhere;
   background: $primary-color;
   border-radius: $border-radius;
@@ -172,6 +174,15 @@
   position: absolute;
   bottom: 15px;
   right: 7px;
+
+  width: 13px;
+  height: 15px;
+}
+
+.read {
+  position: absolute;
+  bottom: 15px;
+  right: 10px;
 
   width: 13px;
   height: 15px;
