@@ -1,0 +1,105 @@
+
+$main-bg-color: linear-gradient(154.3deg, #24FA93 16.25%, #62E5F7 59.03%, #24DFFA 83.04%);
+$round-color: #9AEFFF;
+
+.folder {
+  position: relative;
+  justify-content: center;
+  margin-bottom: 210px;
+  display: grid;
+
+  & .circles {
+  position: absolute;
+  column-gap: 130px;
+  margin: 513px 0 0 0;
+  list-style: none;
+  display: flex;
+  padding-left: 0;
+
+    & .circle {
+      position: relative;
+      height: 66px;
+      width: 66px;
+      border-radius: 50%;
+      background: $main-bg-color;
+      box-shadow: var(--main-box-shadow);
+      color: var(--text-color);
+      padding-left: 33.5px;
+      z-index: 2;
+    }
+}}
+
+.wrapper h4 {
+  width: 157px;
+}
+
+.circle > .wrapper {
+  transform: translateY(-50%);
+}
+
+.circle > .wrapper::before {       // Vertical lines
+  position: absolute;
+  width: 1px;
+  height: 308px                 ;
+  background: var(--plan-bg-color);
+  content: '';
+  top: 50px;
+  display: block;
+  z-index: 0;
+}
+
+.points {
+  width: 180px;
+  list-style: none;
+  padding-left: 21px;
+}
+
+.point {
+  position: relative;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 49px;
+
+  &:before {
+    position: absolute;
+    right: calc(100% + 13px);
+    content: '';
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #000000;
+    box-shadow: 0 0 10px $round-color, 0 0 10px $round-color;
+    border: 3px solid $round-color;
+  }
+}
+
+.active .point::before,
+.active ~ .circle .points::before {
+  background: var(--active-bg-color);
+  box-shadow: var(--active-box-shadow);
+  border: none                ;
+}
+
+.active .circle .point::before,
+.active ~ .circle .point::before {
+  box-shadow: none;
+  border: none                ;
+}
+
+.active ~ .circle .point::before {
+  background: var(--plan-bg-color);
+  border: none                ;
+}
+
+.circles > .circle.active {
+  background: var(--active-bg-color);
+  box-shadow: var(--active-box-shadow);
+  border: none;
+  z-index: 3;
+}
+
+.circle.active ~ .circle {
+  background: var(--plan-bg-color);
+  border: none
+}
