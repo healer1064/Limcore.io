@@ -1,12 +1,12 @@
 import useWindowSize from '@helpers/useWindowSizeHook'
 import React from 'react'
 import styles from './styles.module.scss'
-import { RoadmapDesktop } from './components/RoadmapDesktop'
-import { RoadmapMobile } from './components/RoadmapMobile'
+import { RoadMapDesktop } from './components/RoadMapDesktop'
 
-export const Roadmap: React.FC = () => {
+export const RoadMap: React.FC = () => {
   const { width } = useWindowSize()
   const desktop = width >= 769
 
-  return <section className={styles.roadmap}>{desktop ? <RoadmapDesktop /> : <RoadmapMobile />}</section>
+  // return <section className={styles.roadmap}>{desktop ? <RoadMapDesktop /> : <RoadMapMobile />}</section>
+  return <section className={styles.roadmap}>{desktop && <RoadMapDesktop />}</section>
 }

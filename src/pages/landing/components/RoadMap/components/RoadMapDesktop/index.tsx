@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './styles.module.scss'
 import classNames from 'classnames'
 
-export const RoadmapDesktop: React.FC = () => {
+export const RoadMapDesktop: React.FC = () => {
   return (
     <div className={styles.roadmap}>
       <div className={styles.container}>
@@ -32,7 +32,7 @@ export const RoadmapDesktop: React.FC = () => {
 
           <li className={styles.item}>
             <h6 className={styles.item__title}>Q1 2022</h6>
-            <ul className={styles.item__list}>
+            <ul className={classNames(styles.item__list, styles.item__list_active)}>
               <li className={classNames(styles.item__text, styles.item__text_active)}>
                 Запуск фарминга для первых пользователей
               </li>
@@ -44,7 +44,7 @@ export const RoadmapDesktop: React.FC = () => {
 
           <li className={styles.item}>
             <h6 className={styles.item__title}>Q2 2022</h6>
-            <ul className={styles.item__list}>
+            <ul className={classNames(styles.item__list, styles.item__list_disabled)}>
               <li className={classNames(styles.item__text, styles.item__text_disabled)}>Подключение банковских карт</li>
               <li className={classNames(styles.item__text, styles.item__text_disabled)}>Своя биржа форков</li>
               <li className={classNames(styles.item__text, styles.item__text_disabled)}>
@@ -57,11 +57,11 @@ export const RoadmapDesktop: React.FC = () => {
 
           <li className={styles.item}>
             <h6 className={styles.item__title}>Q4 2022</h6>
-            <ul className={styles.item__list}>
+            <ul className={classNames(styles.item__list, styles.item__list_disabled)}>
               <li className={classNames(styles.item__text, styles.item__text_disabled)}>
                 Приложение для майнингаChia и форков на ПК
               </li>
-              <h6 className={styles.item__title}>Q4 2023</h6>
+              <h6 className={classNames(styles.item__title, styles.item__title_middle)}>Q4 2023</h6>
               <li className={classNames(styles.item__text, styles.item__text_disabled)}>
                 Cвоя игра для фарминга Chia и форков на земельном участке
               </li>

@@ -1,5 +1,9 @@
 @import '../../../../../../scss/vars';
 
+.roadmap {
+  padding: 0 20px;
+}
+
 .container {
   max-width: 1085px;
   width: 100%;
@@ -21,7 +25,8 @@
 
   list-style-type: none;
   background-image: url('../../../../../../assets/images/roadmapFolder.png');
-  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 
   &::after {
     content: '';
@@ -43,6 +48,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
 }
 
 .item__circle {
@@ -67,6 +76,10 @@
 .item__title {
   margin-top: auto;
   @include font-style-ibmPlexSans(18px, 600, 23px, $color-F5-white);
+}
+
+.item__title_middle {
+  margin: 0 0 20px 0;
 }
 
 .item__list {
@@ -96,17 +109,30 @@
   }
 }
 
+.item__list_active {
+  padding: 50px 0 0 13px;
+
+    &::before {
+    background: #ABC3C8;
+  }
+}
+
+.item__list_disabled {
+  padding: 10px 0 0 13px;
+
+    &::before {
+    background: #ABC3C8;
+  }
+}
+
 .item__text {
   position: relative;
   
+  height: 36px; // нельзя так, но это спасает :D
   margin-bottom: 49px;
   max-width: 140px;
 
   @include font-style-ibmPlexSans(14px, 400, 18px, $color-E1-white);
-
-  // &:not(:last-child) {
-  //   margin-bottom: 49px;
-  // }
 
   &::before {
     content: '';
@@ -139,5 +165,11 @@
     border: none;
     background: #ABC3C8;
     box-shadow: none;
+  }
+}
+
+@media all and (max-width: 1000px) {
+  .item__text {
+    height: auto;
   }
 }
