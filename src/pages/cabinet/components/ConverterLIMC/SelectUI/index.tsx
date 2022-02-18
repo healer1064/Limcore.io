@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import style from './styles.module.scss'
 import blueArrow from '@icons/blueArrow.svg'
@@ -20,19 +20,6 @@ export const SelectUI: React.FC<SelectUIProps> = ({ selectOptions, defaultValue,
   )
   const [opened, setOpened] = useState<boolean>(false)
 
-  const onClickHideSelect = (event) => {
-    const target = event.currentTarget
-    const closeCondition =
-      target?.classList?.contains('menu') ||
-      target?.classList?.contains('menu__item') ||
-      target?.classList?.contains('select__label')
-    if (!closeCondition) {
-      setOpened(() => false)
-    }
-  }
-
-  useEffect(() => () => window.removeEventListener('click', onClickHideSelect))
-
   const onChangeSelectValue = (value: string) => {
     return () => {
       const selectValue = selectOptions.find((option) => option.value === value)
@@ -42,20 +29,18 @@ export const SelectUI: React.FC<SelectUIProps> = ({ selectOptions, defaultValue,
     }
   }
 
+  let setTimeoutDisplayName
   const onMouseEnterOpen = () => {
+    clearTimeout(setTimeoutDisplayName)
     setOpened(() => true)
   }
 
-  const onMouseLeaveClose = (event) => {
-    const target = event.currentTarget
-    const closeCondition =
-      target.classList.contains('menu') ||
-      target.classList.contains('menu__item') ||
-      target.classList.contains('select__label')
-    window.addEventListener('click', onClickHideSelect)
-    if (!closeCondition) {
-      setOpened(() => false)
-    }
+  const onMouseLeaveClose = () => {
+    setTimeoutDisplayName = setTimeout(() => setOpened(() => false), 100)
+  }
+
+  const onMouseEnterOption = () => {
+    clearTimeout(setTimeoutDisplayName)
   }
 
   return (
@@ -66,10 +51,22 @@ export const SelectUI: React.FC<SelectUIProps> = ({ selectOptions, defaultValue,
           <img src={blueArrow} />
         </span>
       </p>
-      <div style={{ display: opened ? 'block' : 'none' }} className='menu'>
+      <div
+        style={{ display: opened ? 'block' : 'none' }}
+        className='menu'
+        onMouseEnter={onMouseEnterOption}
+        onMouseLeave={onMouseLeaveClose}
+      >
         {selectOptions.map((option) => {
           return (
-            <p className='menu__item' key={option.value} role='button' onClick={onChangeSelectValue(option.value)}>
+            <p
+              className='menu__item'
+              key={option.value}
+              role='button'
+              onClick={onChangeSelectValue(option.value)}
+              onMouseEnter={onMouseEnterOption}
+              onMouseLeave={onMouseLeaveClose}
+            >
               {option.label}
             </p>
           )
