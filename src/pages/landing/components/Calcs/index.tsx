@@ -37,7 +37,7 @@ export const Calcs = () => {
           <StyledInputRange min={1} max={40000} step={1} onChange={handleRange} />
         </div>
         <div className={styles.calc__grid}>
-          <div className={styles.calc__up} />
+          {/* <div className={styles.calc__up} /> */}
           <div className={styles.calc__click_zona}>
             {data.map((item, i) => (
               <div
