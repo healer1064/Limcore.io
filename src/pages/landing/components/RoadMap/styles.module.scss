@@ -2,4 +2,8 @@
   margin-bottom: 250px;
 }
 
-
+@media all and (max-width: 768px) {
+  .roadmap {
+    margin-bottom: 100px;
+  }
+}

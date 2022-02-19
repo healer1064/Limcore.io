@@ -49,7 +49,6 @@ export const CalcsMobile = () => {
           <span className={styles.mobile__info} onClick={handleModal} />
         </div>
         <div className={styles.mobile__borders}>
-          <div className={styles.mobile__border_up} />
           <div className={styles.mobile__border}>
             {dataMobile.map((item, i) => (
               <div

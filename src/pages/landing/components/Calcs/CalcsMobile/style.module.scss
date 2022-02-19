@@ -2,7 +2,7 @@
   position: relative;
   max-width: 990px;
   width: 100%;
-  margin: 0 auto 48px;
+  margin: 0 auto 120px;
 
   font-family: "IbmPlexSans", "Arial", "Helvetica", sans-serif;
   color: #f5f5ef;
@@ -90,25 +90,20 @@
 
 .mobile__borders {
   grid-area: 4/1;
-}
 
-.mobile__border_up {
-  width: 103px;
-  height: 33px;
-  background-image: url("../image/borderUpMobile-min.png");
+  background: url('../../../../../assets/images/calcForksBackground.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 .mobile__border {
   position: relative;
   z-index: 10;
-  width: calc(100vw - 20px);
-  // max-width: 305px;
+  overflow: hidden;
+
+  margin-top: 25px;
   width: 100%;
   height: calc(100% - 33px);
-  overflow: hidden;
-  background-image: url("../image/borderMobile-min.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
 }
 
 .mobile__click_img {

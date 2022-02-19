@@ -1,7 +1,7 @@
 import React from 'react'
 
 import style from './styles.module.scss'
-import blockquoteRect from '@icons/BlockquoteRect.png'
+import blockquoteRect from '../../../../../../../assets/images/gamificationBorders.png'
 
 export const Blockquote: React.FC = () => {
   return (

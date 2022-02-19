@@ -81,20 +81,15 @@
 
 }
 
-.calc__up {
-  width: 153px;
-  height: 29px;
-  background-image: url("./image/calcBackgroundUp.png");
-}
-
 .calc__click_zona {
   position: relative;
   z-index: 10;
   grid-area: 2/1;
+  padding-top: 25px;
   width: 696px;
   height: 463px;
   overflow: hidden;
-  background: url("./image/calcBackground.png") 0 0/100% 100%;
+  background: url('../../../../assets/images/calcForksBackground.png') 0 0/100% 100%;
 }
 
 .calc__click_img {
