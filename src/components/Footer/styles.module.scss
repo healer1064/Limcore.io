@@ -202,11 +202,15 @@
     height: 27px;
     padding: 0;
     margin: 0 27px 0 0;
-    fill: $color-3A-blue;
+    transition: fill .3s ease;
 
     &:hover {
       cursor: pointer;
-      fill: $color-BE-blue;
+
+      & > path:first-child {
+        fill: $color-BE-blue;
+        transition: fill .3s ease;
+      }
     }
   }
 
