@@ -32,10 +32,18 @@ export const Footer: React.FC = () => {
           <div className={Styles.social__group}>
             <FooterListTitle className={Styles.footer_listTitle}>{t('Подписывайтесь')}</FooterListTitle>
             <ul className={Styles.footer__social}>
-              <Telegram className={Styles.footer__socialIcon} />
-              <Youtube className={Styles.footer__socialIcon} />
-              <Discord className={Styles.footer__socialIcon} />
-              <Twitter className={Styles.footer__socialIcon} />
+              <a href='https://t.me/limc_russ' target='blank' rel='noopener noreferrer'>
+                <Telegram className={Styles.footer__socialIcon} />
+              </a>
+              <a href='https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg' target='blank' rel='noopener noreferrer'>
+                <Youtube className={Styles.footer__socialIcon} />
+              </a>
+              <a href='https://diskord.com' target='blank' rel='noopener noreferrer'>
+                <Discord className={Styles.footer__socialIcon} />
+              </a>
+              <a href='https://twitter.com' target='blank' rel='noopener noreferrer'>
+                <Twitter className={Styles.footer__socialIcon} />
+              </a>
             </ul>
           </div>
           <ul className={`${Styles.footer__information} ${Styles.footer__list}`}>

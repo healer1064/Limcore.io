@@ -24,10 +24,18 @@ export const FooterMobile: React.FC = () => {
       <div className={Styles.top__wrapper}>
         <FooterLogo className={Styles.footer__logo} />
         <ul className={Styles.footer__social}>
-          <Telegram className={Styles.footer__socialIcon} />
-          <Youtube className={Styles.footer__socialIcon} />
-          <Discord className={Styles.footer__socialIcon} />
-          <Twitter className={Styles.footer__socialIcon} />
+          <a href='https://t.me/limc_russ' target='blank' rel='noopener noreferrer'>
+            <Telegram className={Styles.footer__socialIcon} />
+          </a>
+          <a href='https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg' target='blank' rel='noopener noreferrer'>
+            <Youtube className={Styles.footer__socialIcon} />
+          </a>
+          <a href='https://diskord.com' target='blank' rel='noopener noreferrer'>
+            <Discord className={Styles.footer__socialIcon} />
+          </a>
+          <a href='https://twitter.com' target='blank' rel='noopener noreferrer'>
+            <Twitter className={Styles.footer__socialIcon} />
+          </a>
         </ul>
         <ul className={`${Styles.footer__information} ${Styles.footer__list}`}>
           <FooterListTitle className={Styles.footer__listTitle}>{t('footer_infoDeclosure')}</FooterListTitle>

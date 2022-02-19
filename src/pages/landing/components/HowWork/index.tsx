@@ -86,7 +86,6 @@ export const HowWork: React.FC = () => {
     <section className={styles.how}>
       <div className={styles.container}>
         <h2 className={styles.title}>Как это работает</h2>
-
         <ul className={styles.list}>
           <li className={styles.item_first}>
             <div className={styles.anim_first} style={animStyles} ref={firstAnimRef}>

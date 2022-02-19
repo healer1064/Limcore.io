@@ -94,3 +94,9 @@
     padding-top: 38px;
   }
 }
+
+@media (max-width: 350px) {
+  .footer__listTitle {
+    font-size: 12px;
+  }
+}
