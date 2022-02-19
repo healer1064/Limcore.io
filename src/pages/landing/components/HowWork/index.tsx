@@ -71,6 +71,9 @@ export const HowWork: React.FC = () => {
     }
   }, [firstAnimInView, secondAnimInView, thirdAnimInView])
 
+  console.log(width)
+  console.log(secondAnimMargin)
+
   useEffect(() => {
     if (width) {
       width <= 768 ? setAnimStyles({ width: 'auto' }) : setAnimStyles({ width: Math.floor(width / 1.74) })
@@ -78,7 +81,9 @@ export const HowWork: React.FC = () => {
         ? setSecondAnimStyles({ width: Math.floor(width / 0.75) })
         : setSecondAnimStyles({ width: Math.floor(width / 1.66) })
 
-      width <= 768 && setSecondAnimMargin({ marginBottom: `${Math.floor(width) + 75}px` })
+      width <= 768
+        ? setSecondAnimMargin({ marginBottom: `${Math.floor(width) + 75}px` })
+        : setSecondAnimMargin({ marginBottom: `200px` })
     }
   }, [width])
 
