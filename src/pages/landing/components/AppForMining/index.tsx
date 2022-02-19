@@ -13,6 +13,7 @@ interface AppForMiningProps {
 export const AppForMining: React.FC<AppForMiningProps> = ({ clientWidth }) => {
   return (
     <section className={style.appForMining}>
+      <div className={style.border} />
       <GameCaption text='Приложение для майнинга' />
       <YourPC clientWidth={clientWidth} />
       <div className={style.appForMining__wrapper}>

@@ -123,7 +123,7 @@
     height: 15px;
     border: 3px solid #9AEFFF;
     border-radius: 50%;
-    
+
     background: #000000;
     box-shadow: 0 0 10px #9AEFFF, 0 0 10px #9AEFFF;
   }
@@ -136,7 +136,7 @@
 .item__text_active {
   &::before {
     border: none;
-        
+
     background: #FCFF00;
     box-shadow: 0px 0px 14px rgba(252, 255, 0, 0.5);
     animation: opacityAnim 1s infinite linear;
@@ -148,6 +148,62 @@
     border: none;
     background: #ABC3C8;
     box-shadow: none;
+  }
+}
+
+.border {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1024px;
+  width: calc(100vw - 60px);
+  height: 100%;
+
+  &__center {
+    position: relative;
+    margin: 0 auto;
+    width: 1px;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      top: 650px;
+      left: -1px;
+
+      height: 10px;
+      width: 1px;
+
+      background-color: rgba(25, 226, 255, 0.39);
+      filter: drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff);
+    }
+  }
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: -40px;
+    right: -5px;
+
+    height: 10px;
+    width: 1px;
+
+    background-color: rgba(25, 226, 255, 0.39);
+    filter: drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff);
+  }
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    bottom: -1300px;
+    left: 5px;
+
+    height: 10px;
+    width: 1px;
+
+    background-color: rgba(25, 226, 255, 0.39);
+    filter: drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff);
   }
 }
 

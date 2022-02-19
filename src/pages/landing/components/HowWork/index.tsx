@@ -84,6 +84,8 @@ export const HowWork: React.FC = () => {
 
   return (
     <section className={styles.how}>
+      <div className={styles.border} />
+      <div className={styles.border__center} />
       <div className={styles.container}>
         <h2 className={styles.title}>Как это работает</h2>
         <ul className={styles.list}>

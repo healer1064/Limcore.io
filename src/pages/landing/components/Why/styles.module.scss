@@ -7,6 +7,25 @@
   color: white;
 }
 
+.border {
+  position: relative;
+  width: calc(100vw - 60px);
+  max-width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+
+  &::after {
+    position: absolute;
+    top: 850px;
+    right: 0;
+    width: 1px;
+    height: 10px;
+    content: '';
+    background-color: rgba(25, 226, 255, 0.39);
+    filter: drop-shadow(0 0 5px #19e2ff) drop-shadow(0 0 5px #19e2ff) drop-shadow(0 0 5px #19e2ff) drop-shadow(0 0 5px #19e2ff) drop-shadow(0 0 5px #19e2ff);
+  }
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -75,5 +94,29 @@
     font-size: 16px;
     line-height: 150%;
     text-align: center;
+  }
+
+  .border {
+    &__center {
+      position: relative;
+      width: 1px;
+      margin: 0 auto;
+
+      &::after {
+        position: absolute;
+        top: -650px;
+        left: -1px;
+        width: 1px;
+        height: 10px;
+        content: '';
+        background-color: rgba(25, 226, 255, 0.39);
+        filter: drop-shadow(0 0 5px #19e2ff) drop-shadow(0 0 5px #19e2ff) drop-shadow(0 0 5px #19e2ff) drop-shadow(0 0 5px #19e2ff) drop-shadow(0 0 5px #19e2ff);
+      }
+    }
+
+    &::after {
+      top: -50px;
+      left: 0;
+    }
   }
 }

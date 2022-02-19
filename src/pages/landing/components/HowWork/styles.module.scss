@@ -5,6 +5,61 @@
   margin-bottom: 188px;
 }
 
+.border {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1024px;
+  width: calc(100vw - 60px);
+
+  &__center {
+    position: relative;
+    margin: 0 auto;
+    width: 1px;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      top: 650px;
+      left: -1px;
+
+      height: 10px;
+      width: 1px;
+
+      background-color: rgba(25, 226, 255, 0.39);
+      filter: drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff);
+    }
+  }
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: 70px;
+    left: 0;
+
+    height: 10px;
+    width: 1px;
+
+    background-color: rgba(25, 226, 255, 0.39);
+    filter: drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff);
+  }
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 1550px;
+    left: 0;
+
+    height: 10px;
+    width: 1px;
+
+    background-color: rgba(25, 226, 255, 0.39);
+    filter: drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff);
+  }
+}
+
 .container {
   max-width: 990px;
   width: 100%;
@@ -181,6 +236,27 @@
   .anim_third {
     position: initial;
     transform: none;
+  }
+
+  .border {
+    &__center {
+      &::after {
+        top: -40px;
+        left: 0;
+      }
+    }
+
+    &::after {
+      left: revert;
+      top: -750px;
+      right: 0;
+    }
+
+    &::before {
+      left: revert;
+      top: 950px;
+      right: 0;
+    }
   }
 
   .anim_second {

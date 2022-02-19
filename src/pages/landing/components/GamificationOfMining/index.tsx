@@ -13,6 +13,7 @@ interface GamificationOfMiningProps {
 export const GamificationOfMining: React.FC<GamificationOfMiningProps> = ({ clientWidth }) => {
   return (
     <section className={style.main}>
+      <div className={style.border} />
       <GameCaption text='Геймификация майнинга' />
       <div className={style.wrapper}>
         {clientWidth <= 768 ? <Blockquote /> : ''}
