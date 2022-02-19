@@ -77,6 +77,8 @@
   display: grid;
   grid-template-rows: 1fr;
   margin: 0 0 200px 0;
+
+
 }
 
 .calc__up {
@@ -145,6 +147,7 @@
   width: 472px;
   height: 177px;
   background: url("./image/line-min.png") 0 0/100% 100%;
+
 }
 
 .calc__money {
@@ -166,6 +169,7 @@
   font-weight: normal;
   line-height: 140%;
   color: #44450e;
+
 }
 
 .calc__info {
@@ -257,6 +261,29 @@
 
   .calc__money_text {
     margin-left: 35px;
+  }
+}
+
+@media (max-width: 1085px) {
+  .border__element {
+    display: inline-block;
+    position: relative;
+    max-width: 1024px;
+    width: 100%;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      top: 350px;
+      right: 10px;
+
+      height: 10px;
+      width: 1px;
+
+      background-color: rgba(25, 226, 255, 0.39);
+      filter: drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff) drop-shadow(0px 0px 5px #19e2ff);
+    }
   }
 }
 

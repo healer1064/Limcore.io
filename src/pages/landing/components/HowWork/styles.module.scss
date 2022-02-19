@@ -13,9 +13,11 @@
 
 .title {
   margin: 0 0 130px 0;
+  position: relative;
 
   @include font-style-pressStart(41px, 400, 55px, $color-F5-white);
   text-align: center;
+
 }
 
 .list {
@@ -28,7 +30,7 @@
 
 .item_first {
   position: relative;
-  
+
   display: flex;
   margin-bottom: 275px;
   padding: 0 20px;
@@ -45,7 +47,6 @@
 
 .item_third {
   position: relative;
-  
   display: flex;
   padding: 0 20px;
 }
@@ -158,20 +159,20 @@
 }
 
 @media all and (max-width: 1175px) {
-  .anim_second {
-    transform: translateY(-50%) translateX(-25%);
-  }
+  .item_3_left {
 
-  .item_title {
-    font-size: 45px;
-  }
+    &::after {
+      top: 220px;
+      left: -37px;
 
-  .item_subtitle {
-    font-size: 24px;
+    }
   }
+}
 
-  .commission {
-    font-size: 14px;
+@media (max-width: 1085px) {
+  .item_3_left {
+    max-width: 401px;
+    padding-left: 40px;
   }
 }
 
@@ -194,7 +195,7 @@
     width: 100%;
     margin: 0 auto;
   }
-  
+
   .how {
     margin-bottom: 100px;
   }
