@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Component } from 'react'
+import React, { Component } from 'react'
 import styles from '../styles.module.scss'
 
 const widthDVDLogo = 195
@@ -14,8 +14,8 @@ interface DVDLogoState {
 }
 
 interface DVDLogoProps {
-  width: number
-  height: number
+  width: any
+  height: any
 }
 
 export class DvdScreen extends Component<DVDLogoProps, DVDLogoState> {
@@ -73,15 +73,15 @@ export class DvdScreen extends Component<DVDLogoProps, DVDLogoState> {
         {/* </a> */}
         {/* </div> */}
         {/* <div className={styles.news__animation_links}> */}
-        <a
-          href='#'
-          className={styles.news__div_links}
-          style={{
-            transform: `translate(${this.random(1, 0.9) * x}px, ${this.random(1, 0.9) * y}px)`,
-          }}
-        >
-          YouTube &#129125;
-        </a>
+        {/* <a */}
+        {/*  href='#' */}
+        {/*  className={styles.news__div_links} */}
+        {/*  style={{ */}
+        {/*    transform: `translate(${this.random(1, 0.9) * x}px, ${this.random(1, 0.9) * y}px)`, */}
+        {/*  }} */}
+        {/* > */}
+        {/*  YouTube &#129125; */}
+        {/* </a> */}
         {/* </div> */}
         {/* <div className={styles.news__animation_links}> */}
         <a

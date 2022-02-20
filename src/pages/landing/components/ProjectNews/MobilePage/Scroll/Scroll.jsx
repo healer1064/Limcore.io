@@ -88,7 +88,6 @@ function MyProvider({ children }) {
 const Scroll = () => {
   let count = 0
   const { data, loading, more, load } = React.useContext(MyContext)
-  const loader = React.useRef(load)
   const observer = React.useRef(
     new IntersectionObserver(
       (entries) => {
@@ -101,11 +100,6 @@ const Scroll = () => {
     ),
   )
   const [element, setElement] = useState(null)
-
-  useEffect(() => {
-    loader.current = load
-  }, [load])
-
   useEffect(() => {
     const currentElement = element
     const currentObserver = observer.current
