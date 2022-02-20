@@ -37,6 +37,11 @@ const links = [
     name: 'Discord',
     id: 7,
   },
+  {
+    href: '#',
+    name: 'Twitter',
+    id: 8,
+  },
 ]
 
 const perPage = 7
@@ -126,8 +131,8 @@ const Scroll = () => {
       })}
 
       {!loading && more && (
-        <a ref={setElement} href='#' className={styles.mobile__scroll_item}>
-          Twitter &#129125;
+        <a ref={setElement} className={styles.mobile__scroll_item}>
+          Telegram &#129125;
         </a>
       )}
     </div>
