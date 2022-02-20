@@ -1,0 +1,81 @@
+.mobile__scroll_item {
+  height: 300px;
+}
+
+.mySwiper {
+  display: grid;
+  grid-template-rows: 380px 10px;
+  grid-template-columns: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.mobile__time {
+  width: 31px;
+  margin: 24px 0 0 auto !important;
+}
+
+.mobile__card_active {
+  background: #2d4ec5 !important;
+}
+
+.swiper-slide {
+  display: flex;
+  grid-area: 1/1;
+  align-items: center;
+  justify-content: center;
+  height: 370px;
+  border-radius: 18px;
+}
+
+.mobile__card {
+  width: 226px;
+  height: 307px;
+  padding: 20px;
+  margin: 0 auto;
+  background: linear-gradient(154.3deg, #24fa93 16.25%, #62e5f7 59.03%, #24dffa 83.04%);
+  border-radius: 40px;
+}
+
+.mobile__date {
+  margin: 0;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 140%;
+  color: #225c65;
+  text-align: right;
+}
+
+.mobile__description {
+  margin: 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 145%;
+  color: #2c2b2b;
+}
+
+.swiper-wrapper {
+  width: 90vw;
+  height: auto;
+}
+
+.swiper-slide-shadow {
+  display: none;
+}
+
+.swiper-pagination {
+  position: relative;
+  grid-area: 2/1;
+  width: 70px !important;
+  margin: 0 auto 0 auto;
+  background-color: #c5eaf1;
+  border-radius: 40px;
+}
+
+.swiper-pagination-progressbar-fill {
+  background: #fcff00 !important;
+}

@@ -1,45 +1,111 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Component } from 'react'
 import styles from '../styles.module.scss'
 
-const MS_PER_FRAME = 5
 const widthDVDLogo = 195
 const heightDVDLogo = 91
-const width = 900
-const height = 500
 
-export const DvdScreen = () => {
-  const [x, setX] = useState(Math.random() * (0 - width - widthDVDLogo) + width - widthDVDLogo)
-  const [y, setY] = useState(Math.random() * (0 - height - heightDVDLogo) + height - heightDVDLogo)
+// import * as React from "react";
 
-  const [xSpeed, setXSpeed] = useState(1)
-  const [ySpeed, setYSpeed] = useState(1)
+interface DVDLogoState {
+  x: number
+  y: number
+  xSpeed: number
+  ySpeed: number
+}
 
-  const moveLinks = () => {
-    setX(x + xSpeed)
-    setY(y + ySpeed)
+interface DVDLogoProps {
+  width: number
+  height: number
+}
 
-    if (x + widthDVDLogo >= width || x <= 0) {
-      setXSpeed(-xSpeed)
-    }
+export class DvdScreen extends Component<DVDLogoProps, DVDLogoState> {
+  constructor(props: DVDLogoProps) {
+    super(props)
 
-    if (y + heightDVDLogo >= height || y <= 0) {
-      setYSpeed(-ySpeed)
+    this.state = {
+      x: DvdScreen.getRandomNumber(0, this.props.width - widthDVDLogo),
+      y: DvdScreen.getRandomNumber(0, this.props.height - heightDVDLogo),
+      xSpeed: 1,
+      ySpeed: 1,
     }
   }
 
-  useEffect(() => {
-    setInterval(() => {
-      moveLinks()
-    }, MS_PER_FRAME)
-  })
+  static getRandomNumber(min: number, max: number): number {
+    return Math.random() * (max - min) + min
+  }
 
-  return (
-    <div className={styles.news__animation_links}>
-      <div className={styles.news__position__absolute}>
-        <a href='#' className={styles.news__div_links} style={{ transform: `translate(${x}px, ${y}px)` }}>
-          Telegram &#129125;
+  componentDidMount() {
+    setInterval(() => this.moveDVDLogo(), 0)
+  }
+
+  moveDVDLogo() {
+    this.setState({
+      x: this.state.x + this.state.xSpeed,
+      y: this.state.y + this.state.ySpeed,
+    })
+
+    if (this.state.x + widthDVDLogo >= this.props.width || this.state.x <= 0) {
+      this.setState({ xSpeed: -this.state.xSpeed })
+    }
+
+    if (this.state.y + heightDVDLogo >= this.props.height || this.state.y <= 0) {
+      this.setState({ ySpeed: -this.state.ySpeed })
+    }
+  }
+
+  random(max, min) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+
+  render() {
+    const { x, y } = this.state
+    return (
+      <>
+        {/* <div className={styles.news__animation_links}> */}
+        {/* <a */}
+        {/*  href='#' */}
+        {/*  className={styles.news__div_links} */}
+        {/*  style={{ */}
+        {/*    transform: `translate(${Math.random() * x}px, ${Math.random() * y}px)`, */}
+        {/*  }} */}
+        {/* > */}
+        {/*  Telegram &#129125; */}
+        {/* </a> */}
+        {/* </div> */}
+        {/* <div className={styles.news__animation_links}> */}
+        <a
+          href='#'
+          className={styles.news__div_links}
+          style={{
+            transform: `translate(${this.random(1, 0.9) * x}px, ${this.random(1, 0.9) * y}px)`,
+          }}
+        >
+          YouTube &#129125;
         </a>
-      </div>
-    </div>
-  )
+        {/* </div> */}
+        {/* <div className={styles.news__animation_links}> */}
+        <a
+          href='#'
+          className={styles.news__div_links}
+          style={{
+            transform: `translate(${x}px, ${y}px)`,
+          }}
+        >
+          Twitter &#129125;
+        </a>
+        {/* </div> */}
+        {/* <div className={styles.news__animation_links}> */}
+        {/* <a */}
+        {/*  href='#' */}
+        {/*  className={styles.news__div_links} */}
+        {/*  style={{ */}
+        {/*    transform: `translate(${Math.random() * x}px, ${Math.random() * y}px)`, */}
+        {/*  }} */}
+        {/* > */}
+        {/*  Discord &#129125; */}
+        {/* </a> */}
+        {/* </div> */}
+      </>
+    )
+  }
 }
