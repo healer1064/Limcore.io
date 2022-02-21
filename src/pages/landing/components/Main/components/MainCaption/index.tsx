@@ -3,8 +3,8 @@ import Styles from './styles.module.scss'
 import Lottie from 'react-lottie'
 import rocketAnim from '@animations/rocket.json'
 import popup from '@icons/popupIcon.svg'
-import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
 import classNames from 'classnames'
+import { BuyLimcButton } from '@components/BuyLimcModal'
 
 export const MainCaption: React.FC = () => {
   const [isPopupOpened, setIsPopupOpened] = useState(false)
@@ -56,7 +56,7 @@ export const MainCaption: React.FC = () => {
         </ul>
 
         <div className={Styles.inner}>
-          <ButtonBig className={Styles.button}>КУПИТЬ LIMC</ButtonBig>
+          <BuyLimcButton className={Styles.button} />
           <div className={Styles.info}>
             <div className={Styles.info__inner}>
               <p className={Styles.info__subtitle}>
