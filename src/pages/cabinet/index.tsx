@@ -9,6 +9,8 @@ import { AccordionUI } from './components/Accordion'
 import { ASide } from './components/ASide'
 import { Rating } from './components/ASide/Rating'
 import { NewCard } from './components/ASide/NewCard'
+import { Mining } from './components/Mining'
+import { RefLink } from './components/ASide/RefLink'
 
 export const CabinetPage: React.FC = () => {
   const { width } = useWindowSize()
@@ -20,7 +22,7 @@ export const CabinetPage: React.FC = () => {
   return (
     <div className={styles.cabinet}>
       <div className={styles.cabinet__container}>
-        {width <= 1010 ? '' : <ASide clientWidth={width} />}
+        {width <= 1265 ? '' : <ASide clientWidth={width} />}
         <div>
           <section className={styles.cabinet__balance}>
             <h2>Баланс</h2>
@@ -32,10 +34,12 @@ export const CabinetPage: React.FC = () => {
               {width <= 1410 ? '' : graph}
             </div>
           </section>
-          {!mobileCondition && width <= 1010 ? <ASide clientWidth={width} /> : ''}
-          {mobileCondition ? <Rating /> : ''}
-          {width <= 1410 ? <AccordionUI text='Показать график доходности'>{graph}</AccordionUI> : ''}
-          {mobileCondition ? <NewCard clientWidth={width} /> : ''}
+          {!mobileCondition && width <= 1265 && <ASide clientWidth={width} />}
+          {mobileCondition && <Rating />}
+          {width <= 1410 && <AccordionUI text='Показать график доходности'>{graph}</AccordionUI>}
+          {mobileCondition && <NewCard clientWidth={width} />}
+          <Mining clientWidth={width} />
+          {mobileCondition && <RefLink />}
         </div>
       </div>
     </div>

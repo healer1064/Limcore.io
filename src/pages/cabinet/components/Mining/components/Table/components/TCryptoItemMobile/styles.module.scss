@@ -1,0 +1,56 @@
+.TCryptoItemMobile__flexStats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px 0 0 0;
+
+  p {
+    margin: 0;
+  }
+
+  p:first-of-type {
+    font-size: 14px;
+    color: rgba(79, 132, 138, 1);
+  }
+}
+
+.TCryptoItemMobile__head {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0 10px 0;
+  border-bottom: 2px solid #294548;
+
+  > div {
+    display: flex;
+    align-items: center;
+
+    > p:first-of-type {
+      margin: 0 6px 0 8px;
+    }
+
+    > p:last-of-type {
+      margin: 0 15px 0 0;
+      color: rgba(79, 132, 138, 1);
+    }
+
+    > div {
+      display: flex;
+      align-items: center;
+
+      > img[class='purse'] {
+        width: 24px;
+        height: 24px;
+        margin: 0 10px 0 0;
+      }
+
+      > img[class='union'] {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}
+
+.TCryptoItemMobile__greenP {
+  color: rgba(0, 218, 35, 1);
+}

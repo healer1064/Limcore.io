@@ -1,0 +1,15 @@
+.table {
+  border-top: 2px solid rgba(17, 32, 34, 1);
+}
+
+.table__item {
+  display: grid;
+  grid-template-rows: 58px;
+  grid-template-columns: 0.5fr 199px repeat(5, 1fr);
+  align-items: center;
+  padding: 0 40px;
+}
+
+.table__itemMobile {
+  padding: 20px 10px;
+}
