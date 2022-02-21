@@ -1,0 +1,78 @@
+.mining {
+  padding: 60px 0;
+  margin: 0 0 60px 0;
+  font-family: "IbmPlexSans", "Arial", "Helvetica", sans-serif;
+  background: rgba(25, 42, 44, 1);
+  border-radius: 20px;
+
+  > div:first-of-type {
+    padding: 0 80px;
+
+    @media all and (max-width: 768px) {
+      padding: 0 20px;
+    }
+
+    > h2 {
+      margin: 0 0 20px 0;
+      font-family: "Press Start 2P", sans-serif;
+      font-size: 24px;
+
+      @media all and (max-width: 768px) {
+        margin: 0;
+        font-size: 18px;
+      }
+    }
+  }
+
+  @media all and (max-width: 768px) {
+    padding: 26px 0;
+  }
+}
+
+.mining__profit {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  margin: 0 0 42px 0;
+
+  > div:first-of-type {
+    grid-area: profit;
+  }
+
+  > div:last-of-type {
+    grid-area: startMining;
+  }
+
+  @media all and (max-width: 1410px) {
+    justify-content: center;
+  }
+
+  @media all and (max-width: 768px) {
+    display: grid;
+    grid-template-areas: "startMining" "profit";
+    grid-template-rows: 150px 1fr;
+    grid-template-columns: 1fr;
+  }
+}
+
+.mining__buttons {
+  display: flex;
+  margin: 0 0 24px 0;
+}
+
+.mining__buttonToday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 100px;
+  margin: 0 0 16px 0;
+  background: rgba(41, 69, 72, 1);
+  border-radius: 20px;
+
+  > img {
+    width: 5px;
+    height: 11px;
+    margin: 0 0 0 10px;
+    transform: rotate(90deg);
+  }
+}

@@ -1,0 +1,84 @@
+.startMining {
+  width: 100%;
+  max-width: 480px;
+  min-height: 142px;
+  padding: 52px 45px;
+
+  p {
+    margin: 0;
+  }
+
+  @media all and (max-width: 768px) {
+    padding: 30px 81px;
+  }
+
+  @media all and (max-width: 460px) {
+    padding: 34px 52px;
+  }
+
+  @media all and (max-width: 400px) {
+    padding: 34px 29px;
+  }
+
+  @media all and (max-width: 353px) {
+    padding: 34px 23px;
+  }
+}
+
+.startMining__beforeStart {
+  display: flex;
+  align-items: center;
+  margin: 0 0 14px 0;
+
+  > p {
+    margin: 0 8px 0 0;
+  }
+
+  > img {
+    width: 8px;
+    height: 16px;
+  }
+}
+
+.startMining__loadingBlock {
+  width: 100%;
+}
+
+.startMining__loading {
+  height: 12px;
+  margin: 0 0 12px 0;
+  overflow: hidden;
+  background: rgba(54, 88, 92, 1);
+  border-radius: 12px;
+
+  > p {
+    height: 100%;
+    background: rgba(38, 223, 248, 1);
+  }
+}
+
+.startMining__stats {
+  display: flex;
+  justify-content: space-between;
+
+  > p:first-of-type {
+    font-size: 14px;
+    color: rgba(79, 132, 138, 1);
+
+    @media all and (max-width: 400px) {
+      font-size: 13px;
+    }
+  }
+
+  > p:last-of-type {
+    color: rgba(38, 223, 248, 1);
+
+    @media all and (max-width: 768px) {
+      font-size: 14px;
+    }
+
+    @media all and (max-width: 400px) {
+      font-size: 13px;
+    }
+  }
+}

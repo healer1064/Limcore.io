@@ -5,8 +5,8 @@ import USDTIcon from '@icons/USDTIcon.svg'
 import { Option, SelectUI } from './SelectUI'
 
 export const ConverterLIMC: React.FC = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectData, setSelectData] = useState<Option>()
-  console.log(selectData)
 
   const options = [
     { value: 'TRC-20', label: 'TRC-20' },
