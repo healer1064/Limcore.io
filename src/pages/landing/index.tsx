@@ -27,7 +27,7 @@ export const LandingPage: React.FC = () => {
       {/* <Calculator /> */}
       <GamificationOfMining clientWidth={width} />
       <AppForMining clientWidth={width} />
-      {width > 768 ? <ProjectNews clientWith={width} /> : <MobileNews />}
+      {width > 768 ? <ProjectNews /> : <MobileNews />}
       {/* <RoadMap />
       <Team /> */}
       {/* <UpEcosystem /> */}
