@@ -3,10 +3,11 @@
 }
 
 .mySwiper {
-  display: grid;
-  grid-template-rows: 380px 10px;
-  grid-template-columns: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
   width: 100%;
+  max-width: 1920px;
   margin: 0;
 }
 
@@ -21,7 +22,6 @@
 
 .swiper-slide {
   display: flex;
-  grid-area: 1/1;
   align-items: center;
   justify-content: center;
   height: 370px;
@@ -68,10 +68,9 @@
 }
 
 .swiper-pagination {
-  position: relative;
-  grid-area: 2/1;
+  position: static !important;
   width: 70px !important;
-  margin: 0 auto 0 auto;
+  margin: 19px 0 0;
   background-color: #c5eaf1;
   border-radius: 40px;
 }

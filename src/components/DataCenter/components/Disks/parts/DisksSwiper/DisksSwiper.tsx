@@ -1,6 +1,6 @@
 import React from 'react'
 import SwiperCore, { Navigation } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper, SwiperSlide } from 'swiper/react/swiper-react'
 import { DiskSlide } from './DiskSlide'
 import styles from './styles.module.scss'
 import 'swiper/swiper-bundle.min.css'
