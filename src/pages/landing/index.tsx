@@ -2,39 +2,50 @@ import React from 'react'
 import Styles from './styles.module.scss'
 
 import { Main } from './components/Main'
-// import { Calculator } from './components/Calculator'
+// import { Team } from './components/Team'
+import { HowWork } from './components/HowWork/index'
+import { Why } from './components/Why/index'
+import { Equipment } from './components/Equipment/index'
 import { GamificationOfMining } from './components/GamificationOfMining'
 import { AppForMining } from './components/AppForMining'
-// import { RoadMap } from './components/RoadMap'
+import { RoadMap } from './components/RoadMap'
 // import { Team } from './components/Team'
 // import { UpEcosystem } from './components/UpEcosystem'
 // import { OnLine } from './components/OnLine'
 // import { Questions } from './components/Questions'
 // import { Media } from './components/Media'
-// import { Footer } from '@components/Footer'
-// import { Calcs } from '../landing/components/Calcs'
-// import { CalcsMobile } from '../landing/components/Calcs/CalcsMobile'
+import { Footer } from '@components/Footer'
 import useWindowSize from '@helpers/useWindowSizeHook'
-import { ProjectNews } from './components/ProjectNews'
-import { MobileNews } from './components/ProjectNews/MobilePage/MobileNews'
+import { FooterMobile } from '@components/Footer/FooterMobile'
+// import { Questions } from './components/Questions'
+// import { Media } from './components/Media'
+// import { Footer } from '@components/Footer'
+import { Calcs } from '../landing/components/Calcs'
+import { CalcsMobile } from '../landing/components/Calcs/CalcsMobile'
+// import { Orbit } from '../landing/components/Orbit/'
 
 export const LandingPage: React.FC = () => {
   const { width } = useWindowSize()
+  const desktop = width >= 769
 
   return (
     <div className={Styles.landing}>
       <Main />
-      {/* <Calculator /> */}
+      {width <= 768 ? <CalcsMobile /> : <Calcs />}
+      {/* <Team /> */}
+      <HowWork />
+      <Why />
+      <Equipment />
       <GamificationOfMining clientWidth={width} />
       <AppForMining clientWidth={width} />
-      {width > 768 ? <ProjectNews /> : <MobileNews />}
-      {/* <RoadMap />
-      <Team /> */}
+      <RoadMap />
+      {/* <Orbit /> */}
+      {/* <Team /> */}
       {/* <UpEcosystem /> */}
       {/* <OnLine /> */}
-      {/* <Questions />
-      <Media />
-      <Footer /> */}
+      {/* <Questions />  */}
+      {/* <Media /> */}
+      {desktop ? <Footer /> : <FooterMobile />}
     </div>
   )
 }

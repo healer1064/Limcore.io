@@ -2,38 +2,41 @@
 @import '../../../../scss/vars.scss';
 
 .why {
-  color: white;
-  margin-bottom: 100px;
   position: relative;
+  margin-bottom: 100px;
+  color: white;
 }
 
 .container {
-  max-width: 990px;
-  width: 100%;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 990px;
+  margin: 0 auto;
 }
 
 .title {
-  text-align: center;
+  font-family: $font-pressStart;
+  font-size: 41px;
   font-style: normal;
   font-weight: normal;
-  font-size: 41px;
-  font-family: $font-pressStart;
   line-height: 140%;
   color: #f5f5ef;
+  text-align: center;
 }
+
 .description {
+  position: relative;
   max-width: 393px;
-  font-family: $font-ibmPlexSans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 150%;
-  color: #e1e1d8;
   margin: 0;
   margin-left: auto;
+  font-family: $font-ibmPlexSans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 150%;
+  color: #e1e1d8;
 }
 
 .noise {
@@ -43,18 +46,34 @@
   height: 632px;
 }
 
+@media all and (max-width: 990px) {
+  .description {
+    &::after {
+      top: 20px;
+      right: 30px;
+    }
+  }
+}
+
 @media all and (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
   .title {
     font-size: 19px;
     line-height: 160%;
   }
+
   .description {
     order: 3;
+    width: 100%;
     max-width: 100%;
-    text-align: center;
+    max-width: 500px;
     margin: 0;
+    margin: 0 20px 0 20px;
     font-size: 16px;
     line-height: 150%;
-    margin: 0 20px 0 20px;
+    text-align: center;
   }
 }

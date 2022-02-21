@@ -1,7 +1,7 @@
 import React from 'react'
 
 import style from './styles.module.scss'
-import blockquoteRect from '@icons/BlockquoteRect.png'
+import blockquoteRect from '../../../../../../../assets/images/gamificationBorders.png'
 
 export const Blockquote: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ export const Blockquote: React.FC = () => {
           забирая или теряя при этом ресурсы
         </p>
       </blockquote>
-      <p>Запуск Q4 2023</p>
+      <p className={style.launch}>Запуск Q4 2023</p>
     </div>
   )
 }

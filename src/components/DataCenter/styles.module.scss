@@ -1,0 +1,47 @@
+@import '../../scss/typography.scss';
+@import '../../scss/_vars.scss';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 1024px;
+  width: 100%;
+}
+
+.dataCenterContainer {
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  @media (min-width: 810px) {
+    padding: 0 30px;
+  }
+  &__title {
+    @include font-style-pressStart(41px, 400, 65px, $color-F5-white);
+    text-align: center;
+  }
+  .calculator {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    &__operator {
+      @include font-style-ibmPlexSans(46px, 500, 22px, $color-F5-white);
+      margin: 0 10px;
+    }
+  }
+  .main {
+    margin: 30px 0 0 0;
+    padding: 60px;
+
+    background-color: $color-19-dark;
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  .main_mobile {
+    padding: 10px;
+  }
+}

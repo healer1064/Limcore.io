@@ -1,0 +1,52 @@
+@import '../../../../../../scss/typography.scss';
+@import '../../../../../../scss/_vars.scss';
+
+.swiper {
+  // width: 100%;
+  // margin: 0 auto;
+  // display: flex;
+  :global(.swiper-button-prev), :global(.swiper-button-next) {
+    background-color: $color-45-green;
+    border-radius: 66px;
+    color: $primary-color;
+    z-index: 100;
+    bottom: 0;
+  }
+  :global(.swiper-button-prev) {
+
+  }
+  :global(.swiper-button-next) {
+
+  }
+  :global(.swiper-button-prev):after, :global(.swiper-button-next):after {
+    font-size: 14px;
+  }
+  :global(.swiper-button-disabled) {
+    color: $color-84-green;
+    opacity: 1 !important; 
+  }
+  :global(.swiper-wrapper) {
+
+  }
+}
+
+.disk__item {
+  padding: 12px 32px;
+  border-radius: 24px;
+  text-align: center;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
+  cursor: pointer;
+  .item {
+    &__title {
+      @include font-style-ibmPlexSans(16px, 500, 22px, $color-2B-black);
+      margin: 0;
+    }
+    &__desc {
+      @include font-style-ibmPlexSans(12px, 500, 16px, $color-63-grey);
+      margin: 0;
+    }
+  }
+}

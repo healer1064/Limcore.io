@@ -1,0 +1,29 @@
+.profit {
+  min-width: 319px;
+  padding: 20px 30px;
+  margin: 0 33px 0 0;
+  background: rgba(21, 31, 32, 1);
+  border-radius: 30px;
+
+  p {
+    margin: 0;
+    line-height: 22px;
+  }
+
+  @media all and (max-width: 768px) {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+.profit__flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 12px 0;
+
+  > p:first-of-type {
+    font-size: 14px;
+    color: rgba(79, 132, 138, 1);
+  }
+}

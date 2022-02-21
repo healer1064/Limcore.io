@@ -181,7 +181,7 @@ export const dataMobile = [
     diameter: 30,
     margin: 'auto',
     position: {
-      left: 50,
+      left: 100,
       top: 10,
     },
     interval: 1,
@@ -196,7 +196,7 @@ export const dataMobile = [
     diameter: 30,
     margin: 'auto',
     position: {
-      left: 60,
+      left: 160,
       top: 100,
     },
     interval: 1,
@@ -211,7 +211,7 @@ export const dataMobile = [
     diameter: 30,
     margin: 'auto',
     position: {
-      left: 250,
+      left: 450,
       top: 100,
     },
     interval: 1,
@@ -226,7 +226,7 @@ export const dataMobile = [
     diameter: 30,
     margin: 'auto',
     position: {
-      left: 30,
+      left: 230,
       top: 200,
     },
     interval: 1,
@@ -241,7 +241,7 @@ export const dataMobile = [
     diameter: 30,
     margin: 'auto',
     position: {
-      left: 100,
+      left: 450,
       top: 250,
     },
     interval: 1,
@@ -256,7 +256,7 @@ export const dataMobile = [
     diameter: 50,
     margin: 'auto',
     position: {
-      left: 150,
+      left: 100,
       top: 150,
     },
     interval: 1,
@@ -283,7 +283,7 @@ export const dataMobile = [
     backgroundImage: prem,
     diameter: 50,
     position: {
-      left: 150,
+      left: 50,
       top: 210,
     },
     interval: 1,

@@ -1,0 +1,44 @@
+@import '../../../../../../../scss/typography';
+@import '../../../../../../../scss/vars';
+@import "orbit_animation";
+@import "orbit.scss";
+@import "forlder";
+@import "folder_animation";
+
+.container {
+  --main-bg-color: linear-gradient(154.3deg, #24FA93 16.25%, #62E5F7 59.03%, #24DFFA 83.04%);
+  --main-box-shadow: 0 0 60px rgba(81, 235, 219, 0.5);
+  --main-transform: matrix(1, 0, 0, -1, 0, 0);
+
+  --active-bg-color: #FCFF00;
+  --active-box-shadow: 0px 0px 60px rgba(252, 255, 0, 0.5);
+
+  --plan-bg-color: #ABC3C8;
+
+  --title-color: #F5F5EF;
+  --text-color: #E1E1D8;
+
+  --puls-bg-color: #FFFAD1;
+  --puls-box-shadow: #FCFF00;
+  --puls-filter-color: blur(35px);
+  --puls-transform-color: rotate(88.99deg);
+}
+
+.container {
+  position: relative;
+  max-width: 990px;
+  width: 100%;
+  min-height: calc(100vh - 137px);
+  height: 100%;
+  margin: 0 auto;
+  padding: 39px 0;
+}
+
+.title {
+  @include font-style-pressStart(41px, 400, 55.35px, var(--title-color));
+  text-align: center;
+  margin-bottom: 49px;
+}
+
+
+

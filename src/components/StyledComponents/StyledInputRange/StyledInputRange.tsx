@@ -3,7 +3,7 @@ import { Slider } from '@material-ui/core'
 
 export const StyledInputRange = withStyles({
   root: {
-    width: 523,
+    width: '100%',
     height: 12,
   },
   track: {

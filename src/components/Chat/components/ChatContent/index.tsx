@@ -12,7 +12,9 @@ import {
   setCurrentClickedUser,
   setCurrentDialogueMember,
   setCurrentMessages,
+  setCurrentPage,
   setCurrentSlug,
+  setWholePages,
 } from '../../redux/chatSlice'
 import limcoreIcon from '@icons/limcore.svg'
 import { getMonthNameWithDate, getUserName } from '@components/Chat/utils/funcs'
@@ -23,6 +25,7 @@ import { RaitingList } from '../RaitingList'
 import raitingStyles from '../RaitingList/styles.module.scss'
 import { Spinner } from '@components/Spinner'
 import { Controllers } from '../Controllers/index'
+import supportImage from '@images/support.png'
 
 export const ChatContent = () => {
   const [t] = useTranslation()
@@ -45,6 +48,7 @@ export const ChatContent = () => {
   let idBuffer: number
   let firstMessage: boolean
   const IS_GENERAL_CHAT = slug === 'general_chat'
+  const IS_SUPPORT = slug.includes('support')
 
   // Модерация
   const [anchorEl, setAnchorEl] = useState(null)
@@ -79,10 +83,12 @@ export const ChatContent = () => {
 
   // Закрыть диалог
   const onCloseDialogue = () => {
-    dispatch(setCurrentDialogueMember({}))
-    dispatch(setCurrentMessages([]))
-    dispatch(setContent(''))
     dispatch(setCurrentSlug(''))
+    dispatch(setCurrentMessages([]))
+    dispatch(setCurrentDialogueMember({}))
+    dispatch(setContent(''))
+    dispatch(setCurrentPage(0))
+    dispatch(setWholePages(0))
   }
 
   // Подгрузка сообщений по скроллу
@@ -111,7 +117,7 @@ export const ChatContent = () => {
     if (!IS_GENERAL_CHAT && currentDialogue) {
       dispatch(setCurrentDialogueMember(currentDialogue.other_user))
     }
-  }, [currentDialogue.other_user])
+  }, [currentDialogue?.other_user])
 
   // Логика скролла
   useEffect(() => {
@@ -134,7 +140,7 @@ export const ChatContent = () => {
     <section className={styles.groupContainer}>
       <div className={styles.groupHeader}>
         <img alt='' src={arrow} className={styles.arrow} onClick={onCloseDialogue} />
-        {IS_GENERAL_CHAT ? (
+        {IS_GENERAL_CHAT && (
           <>
             <img src={limcoreIcon} alt='Limcore' className={styles.foto} />
             <p className={styles.name}>Mining Data Centre Limcore</p>
@@ -142,7 +148,14 @@ export const ChatContent = () => {
               {`${participants.length} ${t('group_number')}`}
             </p>
           </>
-        ) : (
+        )}
+        {IS_SUPPORT && (
+          <>
+            <img src={supportImage} alt='Limcore' className={styles.foto} />
+            <p className={styles.name}>Поддержка</p>
+          </>
+        )}
+        {!IS_SUPPORT && !IS_GENERAL_CHAT && (
           <>
             <img src={currentDialogueMember.avatar || defaultAvatar} alt='Avatar' className={styles.foto} />
             <p className={styles.name}>{getUserName(currentDialogueMember)}</p>
@@ -162,7 +175,17 @@ export const ChatContent = () => {
             <p className={styles.dialogueEmptyStart}>Начните общение!</p>
           </div>
         )} */}
+        {!loader && IS_SUPPORT && currentMessages.length === 0 && (
+          <div className={styles.dialogueEmpty}>
+            <p className={styles.dialogueEmptyNoMsgs}>Привет!</p>
+            <p className={styles.dialogueEmptyStart}>Отвечу на любой вопрос!</p>
+          </div>
+        )}
         {currentMessages.map((msg: IMessageInterface) => {
+          if (msg.files.length === 0 && (!msg.message || msg.message === '')) {
+            return
+          }
+
           const msgDate = getMonthNameWithDate(msg.created_at)
           let buffer = dateBuffer
 
@@ -196,7 +219,7 @@ export const ChatContent = () => {
       </div>
       {IS_GENERAL_CHAT && (
         <>
-          <ParticipantsList isActive={isListOpened} onClose={closeList} participants={participants} />
+          {isListOpened && <ParticipantsList onClose={closeList} participants={participants} />}
           <RaitingList handleRaitingListClose={closeRating} raitingClassName={raitingClassName} />
         </>
       )}

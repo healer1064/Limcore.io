@@ -22,10 +22,10 @@ export const Chat = ({ handleChatClose }) => {
   const content = useAppSelector((state) => state.chat.visibleContent)
   const filteredDialogues = useAppSelector((state) => state.chat.filteredDialogues)
   const sortedDialogues = [...filteredDialogues]
-    .filter((dialogue) => !!dialogue.last_message)
+    // .filter((dialogue) => !!dialogue.last_message)
     .sort((a, b) => {
-      const aTime = new Date(a.last_message.updated_at).getTime()
-      const bTime = new Date(b.last_message.updated_at).getTime()
+      const aTime = new Date(a.last_message?.updated_at).getTime()
+      const bTime = new Date(b.last_message?.updated_at).getTime()
       return bTime - aTime
     })
   switch (content) {
@@ -49,20 +49,18 @@ export const Chat = ({ handleChatClose }) => {
       return width ? (
         desktop ? (
           <section className={styles.desktop}>
-            <div className={styles.chat}>
-              <div className={styles.header}>
-                <h1 className={styles.title}>{t('chat_title')}</h1>
-                <button className={styles.button} type='button' onClick={handleChatClose}>
-                  <img src={close} alt='' />
-                </button>
-              </div>
-              <SearchForm desktop={desktop} />
-              <section className={styles.messageSection}>
-                {sortedDialogues?.map((dialogue: IDialogueInterface, i) => (
-                  <Dialogue key={i} data={dialogue} />
-                ))}
-              </section>
+            <div className={styles.header}>
+              <h1 className={styles.title}>{t('chat_title')}</h1>
+              <button className={styles.button} type='button' onClick={handleChatClose}>
+                <img src={close} alt='' />
+              </button>
             </div>
+            <SearchForm desktop={desktop} />
+            <section className={styles.messageSection}>
+              {sortedDialogues?.map((dialogue: IDialogueInterface, i) => (
+                <Dialogue key={i} data={dialogue} />
+              ))}
+            </section>
           </section>
         ) : (
           <div className={styles.chat}>

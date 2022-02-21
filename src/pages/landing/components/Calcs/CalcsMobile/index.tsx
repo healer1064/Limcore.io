@@ -4,13 +4,16 @@ import { StyledInputRange } from '@components/StyledComponents/StyledInputRange/
 import { Modal } from '../Modal/Modal'
 import { dataMobile } from '../constants'
 import { BrownianMotion } from '../BrownianMotion/BrownianMotion'
+
 export const CalcsMobile = () => {
   const [rangeValue, setRangeValue] = useState(1)
   const [coin, setCoin] = useState('1')
   const [modal, setModal] = useState(false)
+
   const handleModal = () => {
     setModal(!modal)
   }
+
   const handleRange = (e, data) => {
     const money = data * 0.002 * 24 * 30
     setRangeValue(data)
@@ -37,7 +40,7 @@ export const CalcsMobile = () => {
           min={1}
           max={40000}
           step={1}
-          style={{ gridArea: '2/1', width: '335px', margin: '30px 0 16px 0', padding: '0' }}
+          style={{ gridArea: '2/1', width: '100%', margin: '30px 0 16px 0', padding: '0' }}
           onChange={handleRange}
         />
         <p className={styles.mobile__text}>Общий доход за 30d при текущем курсе</p>
@@ -46,7 +49,6 @@ export const CalcsMobile = () => {
           <span className={styles.mobile__info} onClick={handleModal} />
         </div>
         <div className={styles.mobile__borders}>
-          <div className={styles.mobile__border_up} />
           <div className={styles.mobile__border}>
             {dataMobile.map((item, i) => (
               <div

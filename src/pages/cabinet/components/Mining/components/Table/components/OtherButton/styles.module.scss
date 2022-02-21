@@ -1,0 +1,19 @@
+.otherButton {
+  display: flex;
+  justify-content: space-between;
+  width: 25px;
+
+  > div {
+    width: 5px;
+    height: 5px;
+    background-color: #a4a4a4;
+    border-radius: 50%;
+    transition: background-color 1s cubic-bezier(0, 1.39, 0.58, 1);
+  }
+
+  &:hover {
+    > div {
+      background-color: #1fdfff;
+    }
+  }
+}

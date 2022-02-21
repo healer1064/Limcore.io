@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  margin-bottom: 200px;
 }
 
 .wrapper {
@@ -14,5 +15,11 @@
   @media all and (max-width: 1210px) {
     flex-wrap: wrap-reverse;
     justify-content: center;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .main {
+    margin-bottom: 100px;
   }
 }
