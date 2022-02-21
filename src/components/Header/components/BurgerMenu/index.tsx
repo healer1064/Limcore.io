@@ -12,6 +12,20 @@ import { CloseIcon } from '@icons/CloseIcon'
 import logoIcon from '@images/headerLogo.png'
 import { ButtonSecond } from '../../../../ui-kit/ButtonSecond'
 
+import Dialog from '@mui/material/Dialog'
+import IconButton from '@mui/material/IconButton'
+
+import img1 from '../../../../assets/images/g1.png'
+import img2 from '../../../../assets/images/g2.png'
+import img3 from '../../../../assets/images/g3.png'
+import img4 from '../../../../assets/images/g4.png'
+
+export interface DialogTitleProps {
+  id: string
+  children?: React.ReactNode
+  onClose: () => void
+}
+
 interface IBurgerMenu {
   burgerOpened: boolean
   closeBurger: () => void
@@ -50,6 +64,16 @@ export const BurgerMenu = ({ burgerOpened, closeBurger }: IBurgerMenu) => {
     { id: 4, icon: <Twitter />, link: 'https://t.me/limc_russ' },
   ]
 
+  const [open, setOpen] = React.useState(false)
+
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
+  }
+
   return (
     <Modal active={burgerOpened} setActive={closeBurger} isMobile>
       <div className={Styles.container}>
@@ -65,7 +89,9 @@ export const BurgerMenu = ({ burgerOpened, closeBurger }: IBurgerMenu) => {
         <div className={Styles.inner}>
           <div className={Styles.body}>
             <div className={Styles.connect}>
-              <ButtonSecond className={Styles.connect__btn}>Подключить кошелек</ButtonSecond>
+              <ButtonSecond className={Styles.connect__btn} onClick={handleClickOpen}>
+                Подключить кошелек
+              </ButtonSecond>
             </div>
 
             <ul className={Styles.list}>
@@ -117,6 +143,59 @@ export const BurgerMenu = ({ burgerOpened, closeBurger }: IBurgerMenu) => {
               <LanguagePopup position={{ top: '-180px', left: '-100px' }} />
             </div>
           </div>
+        </div>
+        <div>
+          <Dialog fullScreen open={open} onClose={handleClose}>
+            <div className={Styles.redik}>
+              <div>
+                <div className={Styles.diolognav}>
+                  <p className={Styles.dilogText}>ПОДКЛЮЧИТЬ КОШЕЛЕК</p>
+                  <IconButton
+                    onClick={handleClose}
+                    sx={{
+                      position: 'absolute',
+                      right: 8,
+                      top: 8,
+                      marginTop: 3,
+                      marginRight: 1,
+                      color: (theme) => theme.palette.grey[500],
+                    }}
+                  >
+                    <CloseIcon />
+                  </IconButton>
+                </div>
+                <div className={Styles.diologContainer}>
+                  <div className={Styles.diologItem}>
+                    <div className={Styles.diologItemCont}>
+                      <div className={Styles.itemitem}>
+                        <img src={img2} />
+                        <p>WalletConnect</p>
+                      </div>
+                      <div className={Styles.itemitem}>
+                        <img src={img3} />
+                        <p>WalletConnect</p>
+                      </div>
+                    </div>
+                    <div className={Styles.diologItemCont}>
+                      <div className={Styles.itemitem}>
+                        <img src={img1} />
+                        <p>Metamask</p>
+                      </div>
+                      <div className={Styles.itemitem}>
+                        <img src={img4} className={Styles.itemitemimg} />
+                        <p>Другие</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={Styles.center}>
+                <button autoFocus className={Styles.button}>
+                  Подключить
+                </button>
+              </div>
+            </div>
+          </Dialog>
         </div>
       </div>
     </Modal>
