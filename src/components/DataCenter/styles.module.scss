@@ -21,6 +21,11 @@
   &__title {
     @include font-style-pressStart(41px, 400, 65px, $color-F5-white);
     text-align: center;
+    &_mobile {
+      margin: 0 0 20px 0;
+      @include font-style-pressStart(19px, normal, 160%, $color-F5-white);
+      text-align: center;
+    }
   }
   .calculator {
     display: flex;
@@ -35,13 +40,32 @@
   .main {
     margin: 30px 0 0 0;
     padding: 60px;
-
     background-color: $color-19-dark;
     width: 100%;
     border-radius: 20px;
+    @media (max-width: 971px) {
+      margin: 0;
+    }
   }
 
   .main_mobile {
     padding: 10px;
   }
+}
+
+.mobile_wrapper {
+  @media (max-width: 810px) {
+    padding: 0 30px;
+  }
+}
+.sign_spacer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  @include font-style-ibmPlexSans(46px, normal, 46px, $color-F5-white);
+}
+
+.nav_wrapper {
+  display: flex;
+  margin-bottom: 20px;
 }

@@ -7,6 +7,7 @@ import styles from './style.module.scss'
 import { ExpandButton } from './parts/ExpandButton'
 import { ProgressBar } from './parts/ProgressBar'
 import { RatingPopOver } from './parts/RatingPopOver'
+import { formatNumerals } from '@helpers/formatNumerals'
 
 export interface IGraphs {
   current: number
@@ -65,7 +66,12 @@ export const OwnersTable: React.FC<IOwnersTable> = ({ data }) => {
         {rows !== data.length && (
           <div className={styles.button_container}>
             <ExpandButton data={data} setRows={setRows} rows={rows} arr={arr} setArr={setArr}>
-              Загрузить еще 10 кошельков
+              Загрузить еще {data.length - rows > 10 ? 10 : data.length - rows}
+              {formatNumerals(data.length - rows > 10 ? 10 : data.length - rows, [
+                ' кошелек',
+                ' кошелька',
+                ' кошельков',
+              ])}
             </ExpandButton>
           </div>
         )}

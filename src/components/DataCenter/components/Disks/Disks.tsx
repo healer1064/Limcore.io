@@ -95,7 +95,11 @@ const mock = [
   },
 ]
 
-export const Disks = () => {
+export interface IDisks {
+  desktop: boolean
+}
+
+export const Disks: React.FC<IDisks> = ({ desktop }) => {
   const [activeTab, setActiveTab] = useState(NaN)
 
   useEffect(() => {
@@ -104,13 +108,27 @@ export const Disks = () => {
 
   return (
     <>
-      <DisksSwiper data={mock} onClick={setActiveTab} activeTab={activeTab} />
-      <DiskChart
-        disk={mock.find((item) => {
-          return item.id === activeTab
-        })}
-      />
-      <div>TABLE</div>
+      {desktop ? (
+        <>
+          <DisksSwiper data={mock} onClick={setActiveTab} activeTab={activeTab} />
+          <DiskChart
+            disk={mock.find((item) => {
+              return item.id === activeTab
+            })}
+          />
+          <div>DESKTOP_TABLE</div>
+        </>
+      ) : (
+        <>
+          <DisksSwiper data={mock} onClick={setActiveTab} activeTab={activeTab} />
+          <DiskChart
+            disk={mock.find((item) => {
+              return item.id === activeTab
+            })}
+          />
+          <div>MOBILE_TABLE</div>
+        </>
+      )}
     </>
   )
 }
