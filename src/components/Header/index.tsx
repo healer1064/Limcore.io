@@ -11,7 +11,62 @@ import { useTranslation } from 'react-i18next'
 import { LanguagePopup } from '../LanguagePopup/index'
 import { Dropdown } from './components/Dropdown'
 
+import { styled } from '@mui/material/styles'
+import Dialog from '@mui/material/Dialog'
+import DialogTitle from '@mui/material/DialogTitle'
+import IconButton from '@mui/material/IconButton'
+import CloseIcon from '@mui/icons-material/Close'
+
+import img1 from '../../assets/images/g1.png'
+import img2 from '../../assets/images/g2.png'
+import img3 from '../../assets/images/g3.png'
+import img4 from '../../assets/images/g4.png'
+
+const BootstrapDialog = styled(Dialog)({
+  '& .MuiPaper-root': {
+    backgroundColor: '#192A2C',
+    borderRadius: 20,
+  },
+})
+export interface DialogTitleProps {
+  id: string
+  children?: React.ReactNode
+  onClose: () => void
+}
+const BootstrapDialogTitle = (props: DialogTitleProps) => {
+  const { children, onClose, ...other } = props
+
+  return (
+    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
+      {children}
+      {onClose ? (
+        <IconButton
+          // aria-label="close"
+          onClick={onClose}
+          sx={{
+            position: 'absolute',
+            right: 8,
+            top: 8,
+            color: (theme) => theme.palette.grey[500],
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+    </DialogTitle>
+  )
+}
+
 export const Header: React.FC = () => {
+  const [open, setOpen] = React.useState(false)
+
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
+  const handleClose = () => {
+    setOpen(false)
+  }
+
   const history = useHistory()
   const dispatch = useAppDispatch()
   const [t] = useTranslation()
@@ -104,8 +159,8 @@ export const Header: React.FC = () => {
         <div className={Styles.container}>
           <LanguagePopup position={{ top: '37px' }} />
           {isAuth ? (
-            <button className={Styles.profileBtn} type='button'>
-              <LinkDom to='/my' className={Styles.profileBtn_link}>
+            <button className={Styles.profileBtn} type='button' onClick={handleClickOpen}>
+              <LinkDom to='/' className={Styles.profileBtn_link}>
                 {/* {t('profile')} */}
                 Подключить кошелек
               </LinkDom>
@@ -118,6 +173,40 @@ export const Header: React.FC = () => {
           <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />
         </div>
       </nav>
+      <div>
+        <BootstrapDialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={open}>
+          <BootstrapDialogTitle id='customized-dialog-title' onClose={handleClose}>
+            <p className={Styles.dilogText}>ПОДКЛЮЧИТЬ КОШЕЛЕК</p>
+          </BootstrapDialogTitle>
+          <div className={Styles.diologItem}>
+            <div className={Styles.diologItemCont}>
+              <div className={Styles.itemitem}>
+                <img src={img2} />
+                <p>WalletConnect</p>
+              </div>
+              <div className={Styles.itemitem}>
+                <img src={img3} />
+                <p>WalletConnect</p>
+              </div>
+            </div>
+            <div className={Styles.diologItemCont}>
+              <div className={Styles.itemitem}>
+                <img src={img1} />
+                <p>Metamask</p>
+              </div>
+              <div className={Styles.itemitem}>
+                <img src={img4} className={Styles.itemitemimg} />
+                <p>Другие</p>
+              </div>
+            </div>
+          </div>
+          <div className={Styles.center}>
+            <button autoFocus className={Styles.button}>
+              Подключить
+            </button>
+          </div>
+        </BootstrapDialog>
+      </div>
     </header>
   )
 }
