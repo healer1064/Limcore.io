@@ -71,9 +71,6 @@ export const HowWork: React.FC = () => {
     }
   }, [firstAnimInView, secondAnimInView, thirdAnimInView])
 
-  console.log(width)
-  console.log(secondAnimMargin)
-
   useEffect(() => {
     if (width) {
       width <= 768 ? setAnimStyles({ width: 'auto' }) : setAnimStyles({ width: Math.floor(width / 1.74) })

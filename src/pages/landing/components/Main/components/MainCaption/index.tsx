@@ -23,6 +23,7 @@ export const MainCaption: React.FC = () => {
 
   return (
     <div className={Styles.container}>
+      <div className={Styles.border} />
       <h1 className={Styles.title}>LIMCORE — ракета в сфере облачного майнинга!</h1>
 
       <div className={Styles.animation}>
