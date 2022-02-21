@@ -78,12 +78,16 @@ export const HowWork: React.FC = () => {
         ? setSecondAnimStyles({ width: Math.floor(width / 0.75) })
         : setSecondAnimStyles({ width: Math.floor(width / 1.66) })
 
-      width <= 768 && setSecondAnimMargin({ marginBottom: `${Math.floor(width) + 75}px` })
+      width <= 768
+        ? setSecondAnimMargin({ marginBottom: `${Math.floor(width) + 75}px` })
+        : setSecondAnimMargin({ marginBottom: `200px` })
     }
   }, [width])
 
   return (
     <section className={styles.how}>
+      <div className={styles.border} />
+      <div className={styles.border__center} />
       <div className={styles.container}>
         <h2 className={styles.title}>Как это работает</h2>
         <ul className={styles.list}>

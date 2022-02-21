@@ -5,6 +5,7 @@ import classNames from 'classnames'
 export const RoadMapDesktop: React.FC = () => {
   return (
     <div className={styles.roadmap}>
+      <div className={styles.border} />
       <div className={styles.container}>
         <h2 className={styles.title}>Дорожная карта</h2>
 

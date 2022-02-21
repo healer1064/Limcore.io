@@ -25,6 +25,8 @@ export const Why: React.FC = () => {
 
   return (
     <section className={styles.why}>
+      <div className={styles.border} />
+      <div className={styles.border__center} />
       <div className={styles.container} ref={ref}>
         <h2 className={styles.title}>Почему стоимость LIMC будет раст</h2>
         <p className={styles.description}>
