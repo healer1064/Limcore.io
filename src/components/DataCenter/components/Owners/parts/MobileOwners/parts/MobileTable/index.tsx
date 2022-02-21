@@ -7,6 +7,7 @@ import { StyledHeadCell } from '../../../OwnersTable/parts/StyledHeadCell'
 import styles from './style.module.scss'
 import { ReactComponent as YellowArrowUp } from '@icons/yellowArrowUp.svg'
 import { MobileRows } from './parts/MobileRows'
+import { formatNumerals } from '@helpers/formatNumerals'
 
 export interface IMobileTable {
   data: IData[]
@@ -52,7 +53,12 @@ export const MobileTable = ({ data }) => {
         {rows !== data.length && (
           <div className={styles.button_container}>
             <ExpandButton isMobile data={data} setRows={setRows} rows={rows} arr={arr} setArr={setArr}>
-              Загрузить еще 10 кошельков
+              Загрузить еще {data.length - rows > 10 ? 10 : data.length - rows}
+              {formatNumerals(data.length - rows > 10 ? 10 : data.length - rows, [
+                ' кошелек',
+                ' кошелька',
+                ' кошельков',
+              ])}
             </ExpandButton>
           </div>
         )}

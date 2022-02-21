@@ -1,0 +1,38 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/_vars.scss';
+
+.wrapper {
+  padding: 32px 13px 10px 32px;
+  border-radius: 20px;
+  background-color: $color-19-dark;
+
+  .title {
+    margin: 0 0 15px 0;
+    @include font-style-ibmPlexSans(16px, 500, 22px, $color-84-green);
+  }
+  .description {
+    display: flex;
+    @include font-style-ibmPlexSans(24px, 500, 17px, $color-E1-white);
+  }
+  .data_container {
+    display: flex;
+  }
+  .icon {
+    margin-left: auto;
+  }
+  .info_icon {
+    height: 20px;
+    width: 20px;
+    margin-left: 6px;
+  }
+}
+
+.modal_title {
+  margin: 0 0 10px 0;
+  @include font-style-ibmPlexSans(16px, 600, 22px, $color-E1-white);
+}
+
+.modal_description {
+  margin: 0;
+  @include font-style-ibmPlexSans(14px, normal, 22px, $color-E1-white);
+}

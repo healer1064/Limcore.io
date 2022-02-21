@@ -164,12 +164,92 @@ const data = {
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
       ],
     },
+    {
+      rating: '2',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55r',
+      tokens: '102 LIMC',
+      days: '80',
+      info: [
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+      ],
+    },
+    {
+      rating: '2',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55r',
+      tokens: '102 LIMC',
+      days: '80',
+      info: [
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+      ],
+    },
+    {
+      rating: '2',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55r',
+      tokens: '102 LIMC',
+      days: '80',
+      info: [
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+      ],
+    },
+    {
+      rating: '2',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55r',
+      tokens: '102 LIMC',
+      days: '80',
+      info: [
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+      ],
+    },
+    {
+      rating: '2',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55r',
+      tokens: '102 LIMC',
+      days: '80',
+      info: [
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+      ],
+    },
+    {
+      rating: '2',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55r',
+      tokens: '102 LIMC',
+      days: '80',
+      info: [
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+      ],
+    },
+    {
+      rating: '2',
+      address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55r',
+      tokens: '102 LIMC',
+      days: '80',
+      info: [
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+        { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
+      ],
+    },
   ],
 }
 
-export const Owners = () => {
+export interface IOwners {
+  desktop: boolean
+}
+
+export const Owners: React.FC<IOwners> = ({ desktop }) => {
   const { width } = useWindowSize()
-  const desktop = width > 970
 
   return desktop ? (
     <>

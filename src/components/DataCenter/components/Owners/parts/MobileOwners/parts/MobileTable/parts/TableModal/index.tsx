@@ -19,7 +19,14 @@ export interface ITableModal {
 export const TableModal: React.FC<ITableModal> = ({ address, days, rating, tokens, active, setActive, info }) => {
   const [description, setDescription] = useState(false)
   return (
-    <BottomModal style={{ zIndex: 5000 }} active={active} setActive={setActive}>
+    <BottomModal
+      style={{ zIndex: 5000 }}
+      active={active}
+      setActive={() => {
+        setActive()
+        setDescription(false)
+      }}
+    >
       {!description ? (
         <>
           <div className={styles.description} onClick={() => setDescription((prev) => !prev)}>
