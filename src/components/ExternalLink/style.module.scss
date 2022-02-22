@@ -16,6 +16,9 @@
 
 .external_mobile {
   @include p3();
+  @media (max-width: 374px) {
+    @include p4();
+  }
 }
 .icon_mobile {
   height: 20px;

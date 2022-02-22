@@ -20,7 +20,7 @@ export const TableModal: React.FC<ITableModal> = ({ address, days, rating, token
   const [description, setDescription] = useState(false)
   return (
     <BottomModal
-      style={{ zIndex: 5000 }}
+      style={{ zIndex: 9999 }}
       active={active}
       setActive={() => {
         setActive()
@@ -44,7 +44,7 @@ export const TableModal: React.FC<ITableModal> = ({ address, days, rating, token
         <>
           <div className={styles.wrapper}>
             <MobileAddress address={address} days={days} rating={rating} />
-            <div className={styles.tokens}>{tokens}</div>
+            <div className={styles.tokens}>{tokens} LIMC</div>
           </div>
           <div>
             {info.map((el) => (

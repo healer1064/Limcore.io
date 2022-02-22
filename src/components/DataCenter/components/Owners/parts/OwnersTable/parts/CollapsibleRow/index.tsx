@@ -7,8 +7,13 @@ import { ReactComponent as ThreeDotsIcon } from '@icons/threeDotsIcon.svg'
 import { RatingCell } from '../RatingCell'
 import { AddressCell } from '../AddressCell'
 import { CircleDiagram } from '../CircleDiagram'
+import { IData } from '../..'
 
-export const CollapsibleRow = ({ data }) => {
+export interface ICollapsibleRow {
+  data: IData
+}
+
+export const CollapsibleRow: React.FC<ICollapsibleRow> = ({ data }) => {
   const [open, setOpen] = useState(false)
 
   return (
@@ -17,7 +22,7 @@ export const CollapsibleRow = ({ data }) => {
         <RatingCell rating={data.rating} open={open} className={styles.cell} />
         <AddressCell className={styles.cell} open={open} address={data.address} />
         <StyledCell open={open} className={styles.cell}>
-          {data.tokens}
+          {data.tokens} LIMC
         </StyledCell>
         <StyledCell open={open} className={styles.cell}>
           {data.days} дней

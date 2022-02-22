@@ -35,6 +35,10 @@ export const OwnersTable: React.FC<IOwnersTable> = ({ data }) => {
   const [rows, setRows] = useState(data.length > 10 ? 10 : data.length)
   const [arr, setArr] = useState([...data.slice(0, rows)])
 
+  function sortHandler() {
+    setArr([...arr].sort((a, b) => (a.tokens > b.tokens ? 1 : -1)))
+  }
+
   return (
     <>
       <TableContainer className={styles.table_container}>
@@ -42,11 +46,11 @@ export const OwnersTable: React.FC<IOwnersTable> = ({ data }) => {
           <TableHead>
             <TableRow>
               <StyledHeadCell className={styles.head_cell}>
-                <RatingPopOver text='Рейтинг в таблице зависит от количества купленных терабайт.' />
+                <RatingPopOver />
               </StyledHeadCell>
               <StyledHeadCell className={styles.head_cell}>Адрес кошелька</StyledHeadCell>
               <StyledHeadCell className={styles.head_cell}>
-                <div className={styles.icon_wrapper}>
+                <div onClick={() => sortHandler()} className={styles.icon_wrapper}>
                   Объем токенов <YellowArrowUp className={styles.icon_arrow} />
                 </div>
               </StyledHeadCell>

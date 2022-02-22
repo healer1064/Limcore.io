@@ -1,17 +1,20 @@
-import React from 'react'
+import React, { ReactNode, useEffect } from 'react'
 import styles from './style.module.scss'
 import clsx from 'clsx'
+import { Fade } from '@mui/material'
 
 export interface IPopOver {
-  text: string
   isHover: boolean
+  children: ReactNode
 }
 
-export const PopOver: React.FC<IPopOver> = ({ text, isHover }) => {
+export const PopOver: React.FC<IPopOver> = ({ children, isHover }) => {
   const style = clsx({
     [styles.popover]: true,
-    [styles.display]: isHover,
-    [styles.none]: !isHover,
   })
-  return <div className={style}>{text}</div>
+  return (
+    <Fade in={isHover}>
+      <div className={style}>{children}</div>
+    </Fade>
+  )
 }

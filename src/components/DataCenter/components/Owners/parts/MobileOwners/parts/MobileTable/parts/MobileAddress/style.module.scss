@@ -4,12 +4,13 @@
 .icon {
   margin-right: 14px;
 }
-
 .container {
   @include font-style-ibmPlexSans(14px, 500, 22px, $color-E1-white);
   display: flex;
+  @media (max-width: 374px) {
+    @include font-style-ibmPlexSans(12px, 500, 18px, $color-E1-white);
+  }
 }
-
 .address {
   margin: 0;
   color: #a4a4a4;

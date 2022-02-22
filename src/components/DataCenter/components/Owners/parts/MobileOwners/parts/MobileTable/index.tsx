@@ -8,6 +8,7 @@ import styles from './style.module.scss'
 import { ReactComponent as YellowArrowUp } from '@icons/yellowArrowUp.svg'
 import { MobileRows } from './parts/MobileRows'
 import { formatNumerals } from '@helpers/formatNumerals'
+import { TableModal } from './parts/TableModal'
 
 export interface IMobileTable {
   data: IData[]
@@ -16,6 +17,22 @@ export interface IMobileTable {
 export const MobileTable = ({ data }) => {
   const [rows, setRows] = useState(data.length > 10 ? 10 : data.length)
   const [arr, setArr] = useState([...data.slice(0, rows)])
+  const [isOpen, setIsOpen] = useState(false)
+  const [modal, setModal] = useState<IData>({
+    rating: '',
+    address: '',
+    tokens: '',
+    days: '',
+    info: [
+      { dates: '', size: '', graphs: { current: 0, limit: 1 } },
+      { dates: '', size: '', graphs: { current: 0, limit: 1 } },
+      { dates: '', size: '', graphs: { current: 0, limit: 1 } },
+    ],
+  })
+
+  function sortHandler() {
+    setArr([...arr].sort((a, b) => (a.tokens > b.tokens ? 1 : -1)))
+  }
 
   return (
     <>
@@ -27,7 +44,7 @@ export const MobileTable = ({ data }) => {
                 <div className={styles.head_cell}>Адрес кошелька</div>
               </StyledHeadCell>
               <StyledHeadCell>
-                <div className={styles.head_cell}>
+                <div onClick={() => sortHandler()} className={styles.head_cell}>
                   Объем <YellowArrowUp className={styles.icon} />
                 </div>
               </StyledHeadCell>
@@ -35,16 +52,27 @@ export const MobileTable = ({ data }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {arr.map((el, index) => (
-              <MobileRows
-                info={el.info}
-                key={index}
-                address={el.address}
-                days={el.days}
-                tokens={el.tokens}
-                rating={el.rating}
-              />
-            ))}
+            {arr.map((el, index) => {
+              return (
+                <MobileRows
+                  onClick={() => {
+                    setModal(el)
+                    setIsOpen(true)
+                  }}
+                  data={el}
+                  key={index}
+                />
+              )
+            })}
+            <TableModal
+              address={modal.address}
+              days={modal.days}
+              rating={modal.rating}
+              tokens={modal.tokens}
+              active={isOpen}
+              info={modal.info}
+              setActive={() => setIsOpen((prev) => !prev)}
+            />
           </TableBody>
         </Table>
       </TableContainer>

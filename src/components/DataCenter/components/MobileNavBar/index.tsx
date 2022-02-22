@@ -13,7 +13,7 @@ export interface IMobileNavBar {
 
 export const MobileNavBar = ({ mobileView, onDisksHandler, onOwnersHandler, onEmissionHandler, width }) => {
   return (
-    <Swiper style={{ padding: '0px 10px' }} spaceBetween={5} slidesPerView={2.2} width={width}>
+    <Swiper style={{ padding: '0px 10px' }} spaceBetween={0} slidesPerView={2.5} width={width}>
       <SwiperSlide>
         <MobileNavTab
           onClick={onDisksHandler}

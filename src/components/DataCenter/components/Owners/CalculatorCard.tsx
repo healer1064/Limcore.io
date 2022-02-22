@@ -1,5 +1,4 @@
 import { ExternalLink } from '@components/ExternalLink'
-import useWindowSize from '@helpers/useWindowSizeHook'
 import { ReactComponent as SearchIcon } from '@icons/searchGlass.svg'
 import React from 'react'
 import { OwnersCounter } from './parts/OwnersCounter'
@@ -13,7 +12,7 @@ const data = {
     {
       rating: '1',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55d',
-      tokens: '102 LIMC',
+      tokens: '102',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 30, limit: 60 } },
@@ -24,7 +23,7 @@ const data = {
     {
       rating: '3',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55a',
-      tokens: '102 LIMC',
+      tokens: '102',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 60, limit: 60 } },
@@ -35,7 +34,7 @@ const data = {
     {
       rating: '2',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55b',
-      tokens: '102 LIMC',
+      tokens: '102',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -46,7 +45,7 @@ const data = {
     {
       rating: '3',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55c',
-      tokens: '102 LIMC',
+      tokens: '102',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -57,7 +56,7 @@ const data = {
     {
       rating: '1',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55e',
-      tokens: '102 LIMC',
+      tokens: '199',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -68,7 +67,7 @@ const data = {
     {
       rating: '2',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55f',
-      tokens: '102 LIMC',
+      tokens: '102',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -79,7 +78,7 @@ const data = {
     {
       rating: '2',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55s',
-      tokens: '102 LIMC',
+      tokens: '102',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -90,7 +89,7 @@ const data = {
     {
       rating: '2',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55q',
-      tokens: '102 LIMC',
+      tokens: '102',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -101,7 +100,7 @@ const data = {
     {
       rating: '2',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55t',
-      tokens: '102 LIMC',
+      tokens: '102',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -112,7 +111,7 @@ const data = {
     {
       rating: '2',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55k',
-      tokens: '102 LIMC',
+      tokens: '102',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -123,7 +122,7 @@ const data = {
     {
       rating: '2',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55g',
-      tokens: '102 LIMC',
+      tokens: '102',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -134,7 +133,7 @@ const data = {
     {
       rating: '2',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55h',
-      tokens: '102 LIMC',
+      tokens: '102',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -145,7 +144,7 @@ const data = {
     {
       rating: '2',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55j',
-      tokens: '102 LIMC',
+      tokens: '102',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -156,7 +155,7 @@ const data = {
     {
       rating: '2',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55r',
-      tokens: '102 LIMC',
+      tokens: '102',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -167,7 +166,7 @@ const data = {
     {
       rating: '2',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55r',
-      tokens: '102 LIMC',
+      tokens: '102',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -178,7 +177,7 @@ const data = {
     {
       rating: '2',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55r',
-      tokens: '102 LIMC',
+      tokens: '102',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -189,7 +188,7 @@ const data = {
     {
       rating: '2',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55r',
-      tokens: '102 LIMC',
+      tokens: '106',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -200,7 +199,7 @@ const data = {
     {
       rating: '2',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55r',
-      tokens: '102 LIMC',
+      tokens: '109',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -211,7 +210,7 @@ const data = {
     {
       rating: '2',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55r',
-      tokens: '102 LIMC',
+      tokens: '101',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -222,7 +221,7 @@ const data = {
     {
       rating: '2',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55r',
-      tokens: '102 LIMC',
+      tokens: '102',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -233,7 +232,7 @@ const data = {
     {
       rating: '2',
       address: '0xea0A6E3c511bbD10f4519EcE37Dc24887e11b55r',
-      tokens: '102 LIMC',
+      tokens: '104',
       days: '80',
       info: [
         { dates: '22 февраля, 2021', size: '120 TB', graphs: { current: 6, limit: 60 } },
@@ -249,8 +248,6 @@ export interface IOwners {
 }
 
 export const Owners: React.FC<IOwners> = ({ desktop }) => {
-  const { width } = useWindowSize()
-
   return desktop ? (
     <>
       <div className={styles.owners_container}>
