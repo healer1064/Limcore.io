@@ -32,7 +32,6 @@
   width: 226px;
   height: 307px;
   padding: 20px;
-  margin: 0 auto;
   background: linear-gradient(154.3deg, #24fa93 16.25%, #62e5f7 59.03%, #24dffa 83.04%);
   border-radius: 40px;
 }
@@ -41,9 +40,6 @@
   margin: 0;
   font-family: 'Noto Sans', sans-serif;
   font-size: 12px;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 140%;
   color: #225c65;
   text-align: right;
 }
@@ -52,15 +48,7 @@
   margin: 0;
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 14px;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 145%;
   color: #2c2b2b;
-}
-
-.swiper-wrapper {
-  width: 90vw;
-  height: auto;
 }
 
 .swiper-slide-shadow {
@@ -76,5 +64,18 @@
 }
 
 .swiper-pagination-progressbar-fill {
-  background: #fcff00 !important;
+  position: relative;
+  background: transparent !important;
+}
+
+.swiper-pagination-progressbar-fill::after {
+  position: absolute;
+  top: -22px;
+  right: -20px;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  content: '';
+  background: url("../../Images/sliderIcon.svg") 0 0/ 100% 100%;
+  border-radius: 50%;
 }

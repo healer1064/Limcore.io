@@ -12,6 +12,7 @@ import 'swiper/modules/navigation/navigation.min.css'
 import { EffectCards, Pagination } from 'swiper'
 import './styles.css'
 export default function App() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [active, setActive] = useState(false)
   return (
     <>
@@ -26,7 +27,7 @@ export default function App() {
       >
         {arrNews.map((element) => {
           return (
-            <SwiperSlide className='swiperSlide' key={element.id}>
+            <SwiperSlide className='swiperSlide' style={{ width: 300 + 'px' }} key={element.id}>
               <div className={`mobile__card ${active ? 'mobile__card_active' : ''}`}>
                 <p className='mobile__date'>{element.date}</p>
                 <p className='mobile__description'>{element.description}</p>

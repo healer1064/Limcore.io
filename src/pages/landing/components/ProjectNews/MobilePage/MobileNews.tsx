@@ -1,7 +1,7 @@
 import React from 'react'
 import Slider from './Slider/Slider'
 import styles from './styles.module.scss'
-import Scrolls from './Scroll/Scroll'
+import { Scroll } from './Scroll'
 // import { arrNews } from '../constants'
 
 export const MobileNews = () => {
@@ -12,7 +12,7 @@ export const MobileNews = () => {
         <a className={styles.mobile__link}>Присоединиться к чату &#129125;</a>
         <Slider />
       </div>
-      <Scrolls />
+      <Scroll />
     </section>
   )
 }
