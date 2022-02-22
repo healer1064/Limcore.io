@@ -2,13 +2,20 @@
 @import '../../../../../../scss/_vars.scss';
 
 .container {
-  padding: 7px 16px;
+  padding: 7px 9px;
   text-align: center;
   @include font-style-ibmPlexSans(13px, 500, 22px, $color-AA-green);
   border-radius: 60px;
+  @media (max-width: 374px) {
+    padding: 5px;
+    @include font-style-ibmPlexSans(10px, 500, 18px, $color-AA-green);
+  }
 }
 
 .chosen {
   @include font-style-ibmPlexSans(13px, 500, 22px, $color-E1-white);
   background-color: $color-45-green;
+  @media (max-width: 374px) {
+    @include font-style-ibmPlexSans(10px, 500, 18px, $color-E1-white);
+  }
 }

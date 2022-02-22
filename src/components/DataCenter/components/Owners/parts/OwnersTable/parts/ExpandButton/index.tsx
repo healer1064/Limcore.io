@@ -13,7 +13,8 @@ export interface IExpandButton {
 }
 
 export const ExpandButton: React.FC<IExpandButton> = ({ data, setRows, rows, arr, setArr, children, isMobile }) => {
-  function onRenderHandler() {
+  function onRenderHandler(e) {
+    e.preventDefault()
     if (data.length - rows >= 10) {
       setRows((prev) => prev + 10)
       setArr([...arr, ...data.slice(rows, rows + 10)])
@@ -31,7 +32,7 @@ export const ExpandButton: React.FC<IExpandButton> = ({ data, setRows, rows, arr
   })
 
   return (
-    <button onClick={() => onRenderHandler()} className={style} type='button'>
+    <button onClick={(e) => onRenderHandler(e)} className={style} type='button'>
       {children}
     </button>
   )

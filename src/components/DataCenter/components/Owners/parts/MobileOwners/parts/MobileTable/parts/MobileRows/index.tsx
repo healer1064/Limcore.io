@@ -1,44 +1,29 @@
 import { TableRow } from '@material-ui/core'
-import React, { useState } from 'react'
-import { IInfo } from '../../../../../OwnersTable'
+import React from 'react'
+import { IData } from '../../../../../OwnersTable'
 import styles from './style.module.scss'
 import { ReactComponent as ThreeDotsIcon } from '@icons/threeDotsIcon.svg'
 import { MobileCell } from '../MobileCell'
 import { MobileAddress } from '../MobileAddress'
-import { TableModal } from '../TableModal'
 
 export interface IMobileRows {
-  address: string
-  days: string
-  tokens: string
-  rating: string
-  info: IInfo[]
+  data: IData
+  onClick?: () => void
 }
 
-export const MobileRows: React.FC<IMobileRows> = ({ address, days, tokens, rating, info }) => {
-  const [isOpen, setIsOpen] = useState(false)
-
+export const MobileRows: React.FC<IMobileRows> = ({ data, onClick }) => {
   return (
     <>
-      <TableModal
-        address={address}
-        days={days}
-        rating={rating}
-        tokens={tokens}
-        active={isOpen}
-        info={info}
-        setActive={() => setIsOpen((prev) => !prev)}
-      />
-      <TableRow onClick={() => setIsOpen((prev) => !prev)}>
+      <TableRow onClick={onClick}>
         <MobileCell>
-          <MobileAddress address={address} days={days} rating={rating} />
+          <MobileAddress address={data.address} days={data.days} rating={data.rating} />
         </MobileCell>
         <MobileCell>
-          <div className={styles.tokens}>{tokens}</div>
+          <div className={styles.tokens}>{data.tokens} LIMC</div>
         </MobileCell>
         <MobileCell>
           <div className={styles.icon_wrapper}>
-            <ThreeDotsIcon />
+            <ThreeDotsIcon className={styles.icon} />
           </div>
         </MobileCell>
       </TableRow>

@@ -17,14 +17,14 @@ export const MobileTab: React.FC<IMobileTab> = ({ title, data, info, infoTitle, 
   const [active, setActive] = useState(false)
   return (
     <>
-      <div className={styles.wrapper}>
+      <div onClick={onClick} className={styles.wrapper}>
         <p className={styles.title}>{title}</p>
         <div className={styles.description}>
           <div className={styles.data_container}>
             {data}
             {info && <InfoIcon onClick={() => setActive((prev) => !prev)} className={styles.info_icon} />}
           </div>
-          <ArrowButton onClick={onClick} className={styles.icon} />
+          <ArrowButton className={styles.icon} />
         </div>
       </div>
       {info && (

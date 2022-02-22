@@ -28,6 +28,10 @@ const MobileStyledCell = withStyles(() => ({
       borderTopRightRadius: 20,
       borderBottomRightRadius: 20,
     },
+    '@media (max-width: 374px)': {
+      fontSize: 12,
+      padding: '4px',
+    },
   },
 }))(TableCell)
 

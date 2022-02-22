@@ -2,8 +2,12 @@ import styles from './style.module.scss'
 import React, { useState } from 'react'
 import { ReactComponent as OliveInfoIcon } from '@icons/oliveInfoIcon.svg'
 import { PopOver } from '../PopOver'
+import { ReactComponent as GreyRating } from '@icons/raitingGrey.svg'
+import { ReactComponent as OrangeRating } from '@icons/raitingOrange.svg'
+import { ReactComponent as PurpleRating } from '@icons/raitingPurple.svg'
+import { ReactComponent as RedRating } from '@icons/redRaiting.svg'
 
-export const RatingPopOver = ({ text }) => {
+export const RatingPopOver = () => {
   const [isHover, setIsHover] = useState(false)
 
   function onMouseEnterHandler() {
@@ -22,7 +26,34 @@ export const RatingPopOver = ({ text }) => {
     >
       Рейтинг
       <OliveInfoIcon className={styles.icon_info} />
-      <PopOver text={text} isHover={isHover} />
+      <PopOver isHover={isHover}>
+        <ul className={styles.list}>
+          <li className={styles.list_element}>
+            <div className={styles.element_content}>
+              <GreyRating className={styles.icon} />1 TB – 500 TB
+            </div>
+          </li>
+          <li className={styles.list_element}>
+            <div className={styles.element_content}>
+              <OrangeRating className={styles.icon} />
+              501 TB – 5,000 TB
+            </div>
+          </li>
+          <li className={styles.list_element}>
+            <div className={styles.element_content}>
+              <PurpleRating className={styles.icon} />
+              5,000 TB – 50,000 TB
+            </div>
+          </li>
+          <li className={styles.list_element}>
+            <div className={styles.element_content}>
+              <RedRating className={styles.icon} />
+              &#60; 50,000 TB
+            </div>
+          </li>
+        </ul>
+        <div className={styles.description}>Ваш рейтинг в чате зависит от количества купленных терабайт</div>
+      </PopOver>
     </div>
   )
 }

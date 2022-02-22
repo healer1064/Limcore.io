@@ -1,3 +1,6 @@
+@import '../../../../../../../../scss/typography.scss';
+@import '../../../../../../../../scss/_vars.scss';
+
 .icon_wrapper {
   display: flex;
   align-items: center;
@@ -6,4 +9,28 @@
 .icon_info {
   margin-left: 4px;
   cursor: pointer;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.list_element {
+  padding: 16px 0;
+  &:not(:last-child) {
+    border-bottom: 1px solid $color-84-green;
+  }
+}
+.element_content {
+  display: flex;
+  align-items: center;
+}
+.icon {
+  height: 24px;
+  width: 24px;
+  margin-right: 12px;
+}
+.description {
+  @include font-style-ibmPlexSans(14px, normal, 150%, $color-84-green);
 }
