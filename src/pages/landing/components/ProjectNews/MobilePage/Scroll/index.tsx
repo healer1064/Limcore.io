@@ -58,7 +58,7 @@ export const Scroll: React.FC = () => {
     <>
       <Swiper
         slidesPerView={width <= 600 ? (width <= 410 ? 2 : 3) : 4}
-        spaceBetween={30}
+        spaceBetween={width <= 410 ? -30 : 30}
         speed={1700}
         autoplay={{
           delay: 0,
