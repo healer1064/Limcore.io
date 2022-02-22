@@ -1,11 +1,10 @@
 import { TableRow } from '@material-ui/core'
-import React, { useState } from 'react'
+import React from 'react'
 import { IData } from '../../../../../OwnersTable'
 import styles from './style.module.scss'
 import { ReactComponent as ThreeDotsIcon } from '@icons/threeDotsIcon.svg'
 import { MobileCell } from '../MobileCell'
 import { MobileAddress } from '../MobileAddress'
-import { TableModal } from '../TableModal'
 
 export interface IMobileRows {
   data: IData

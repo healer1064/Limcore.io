@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react'
+import React, { ReactNode } from 'react'
 import styles from './style.module.scss'
 import clsx from 'clsx'
 import { Fade } from '@mui/material'

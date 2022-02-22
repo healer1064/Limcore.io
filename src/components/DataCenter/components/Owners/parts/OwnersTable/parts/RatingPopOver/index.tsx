@@ -1,5 +1,5 @@
 import styles from './style.module.scss'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { ReactComponent as OliveInfoIcon } from '@icons/oliveInfoIcon.svg'
 import { PopOver } from '../PopOver'
 import { ReactComponent as GreyRating } from '@icons/raitingGrey.svg'
