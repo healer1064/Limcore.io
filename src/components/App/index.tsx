@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useWindowSize from '../../helpers/useWindowSizeHook'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 import { checkToken, refreshToken, setIsAuth, setWalletConnectSoldLimcs } from '../../pages/auth/redux/authSlice'
-import { FooterMobile } from '../Footer/FooterMobile'
+// import { FooterMobile } from '../Footer/FooterMobile'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import Styles from './style.module.scss'
 import { Spinner } from '@components/Spinner'
@@ -19,6 +19,7 @@ import { getForksPrice } from '@components/Wallet/redux/walletSlice'
 import { DataCenterPage } from '../../pages/data-center'
 import { Borders } from '@components/Borders'
 import { CabinetPage } from '../../pages/cabinet'
+import { FooterShorted } from '@components/Footer/FooterShorted'
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -64,12 +65,12 @@ const App = () => {
                 <Route path='/' exact component={LandingPage} />
                 <Route path='/data-center' exact component={DataCenterPage} />
                 {!desktop && <Route path='/auth' exact component={AuthMobile} />}
-                {/* <Route path='*'> */}
-                {/*  <Redirect to='/' /> */}
-                {/* </Route> */}
                 <Route path='/my' component={CabinetPage} />
                 <Route path='/chat'>
                   <Redirect to='/my' />
+                </Route>
+                <Route path='*'>
+                  <Redirect to='/' />
                 </Route>
               </Switch>
             )}
@@ -87,13 +88,14 @@ const App = () => {
                     <Route path='/profile' exact component={ProfileMobile} />
                   </>
                 )}
-                {/* <Route path='*'> */}
-                {/*  <Redirect to='/my' /> */}
-                {/* </Route> */}
+                <Route path='*'>
+                  <Redirect to='/my' />
+                </Route>
               </Switch>
             )}
           </main>
-          {isAuth && !desktop && window.location.pathname === '/my' && <FooterMobile />}
+          {!isAuth && window.location.pathname === '/my' && <FooterShorted />}
+          {/* {isAuth && !desktop && window.location.pathname === '/my' && <FooterMobile />} */}
         </>
       </div>
     </Router>

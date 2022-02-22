@@ -1,3 +1,5 @@
+@import '../../../../../scss/vars';
+
 .newCard {
   position: relative;
   height: 200px;
@@ -6,6 +8,7 @@
   background: rgba(25, 42, 44, 1);
   border: 1px solid #1fdfff;
   border-radius: 20px;
+  cursor: pointer;
 
   @media all and (max-width: 768px) {
     height: 118px;
@@ -42,4 +45,23 @@
     right: unset;
     left: 105px;
   }
+}
+
+.modal__title {
+  margin: 0;
+  @include font-style-ibmPlexSans(18px, 500, 22px, $color-E1-white);
+}
+
+.modal__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal__text {
+  margin: 0;
+  max-width: 310px;
+  @include font-style-ibmPlexSans(16px, 500, 24px, $color-E1-white);
+  text-align: center;
 }

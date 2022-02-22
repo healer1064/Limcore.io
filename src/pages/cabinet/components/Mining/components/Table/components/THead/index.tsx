@@ -4,6 +4,7 @@ import styles from './styles.module.scss'
 import arrowYellowUp from '@icons/yellowArrowUp.svg'
 import infoIcon from '@icons/infoButton.svg'
 import { Checkbox } from '@material-ui/core'
+import classNames from 'classnames'
 
 interface THeadProps {
   checked: boolean
@@ -18,6 +19,19 @@ export const THead: React.FC<THeadProps> = ({ checked, onChangeSelectedCoins }) 
   }
   const onMouseLeaveCheckbox = () => {
     setHover(() => false)
+  }
+
+  // Popup
+  const [popupOpened, setPopupOpened] = useState(false)
+
+  let timeout = null
+  const openPopup = () => {
+    clearInterval(timeout)
+    setPopupOpened(true)
+  }
+
+  const closePopup = () => {
+    timeout = setTimeout(() => setPopupOpened(false), 100)
   }
 
   return (
@@ -39,11 +53,14 @@ export const THead: React.FC<THeadProps> = ({ checked, onChangeSelectedCoins }) 
       </div>
       <div>Сумма</div>
       <div className='today'>
-        <div>
+        <div className={styles.profit} onMouseEnter={openPopup} onMouseLeave={closePopup}>
           Заработано
-          <img className={styles.THead_ImgMargin} src={infoIcon} />
+          <img className={styles.THead_ImgMargin} style={{ transform: 'translateY(2px)' }} src={infoIcon} />
+          <div className={classNames(styles.popup, popupOpened && styles.popup__active)}>
+            <p className={styles.popup_subtitle}>Зачисление один раз в сутки</p>
+          </div>
         </div>
-        <p>Сегодня</p>
+        <p className={styles.today}>Сегодня</p>
       </div>
       <div />
     </div>

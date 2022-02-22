@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import limcYellow from '@icons/limcYellow.svg'
 import lockIcon from '@icons/lockIcon.svg'
 import styles from './styles.module.scss'
+import classNames from 'classnames'
 
 interface BalanceLIMCProps {
   clientWidth: number
@@ -12,6 +13,17 @@ export const BalanceLIMC: React.FC<BalanceLIMCProps> = ({ clientWidth }) => {
   const [balance] = useState<number>(11236.26)
   const [balance2] = useState<number>(1235)
   const [lockBalance] = useState<number>(1263)
+  const [popupOpened, setPopupOpened] = useState(false)
+
+  let timeout = null
+  const openPopup = () => {
+    clearInterval(timeout)
+    setPopupOpened(true)
+  }
+
+  const closePopup = () => {
+    timeout = setTimeout(() => setPopupOpened(false), 100)
+  }
 
   return (
     <div className={styles.cabinet__balanceLIMC}>
@@ -25,9 +37,13 @@ export const BalanceLIMC: React.FC<BalanceLIMCProps> = ({ clientWidth }) => {
             <div className={styles.cabinet__balanceLIMCStats}>
               {balance2}
               <span>/</span>
-              <span>
+              <span className={styles.lock} onMouseEnter={openPopup} onMouseLeave={closePopup}>
                 {lockBalance}
                 <img src={lockIcon} />
+
+                <div className={classNames(styles.popup, popupOpened && styles.popup__active)}>
+                  <p className={styles.popup_subtitle}>Сумма токенов на lock-up периоде</p>
+                </div>
               </span>
             </div>
             <div className={styles.cabinet__balanceLIMCMiddle}>Полный баланс</div>

@@ -1,3 +1,5 @@
+@import '../../../../../../../../scss/vars';
+
 .THead {
   display: grid;
   grid-template-rows: 50px;
@@ -5,16 +7,10 @@
   align-items: center;
   padding: 0 40px;
   color: rgba(79, 132, 138, 1);
+  font-family: $font-ibmPlexSans;
 
   > div[class='today'] {
     cursor: pointer;
-
-    p {
-      margin: 0;
-      color: white;
-      text-decoration: underline;
-      cursor: pointer;
-    }
 
     > div {
       display: flex;
@@ -32,7 +28,60 @@
   }
 }
 
+.profit {
+  position: relative;
+}
+
 .THead_ImgMargin {
   margin: 0 0 0 4px;
   cursor: pointer;
+}
+
+.today {
+  position: relative;
+
+  margin: 0;
+  width: fit-content;
+
+  @include font-style-ibmPlexSans(14px, 500, 22px, $color-E1-white);  
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+
+    padding: 0;
+    width: 100%;
+    height: 1px;
+
+    background-color: $color-E1-white;
+  }
+}
+
+.popup {
+  position: absolute;
+  top: calc(100% + 10px);
+  z-index: -1;
+  
+  padding: 20px;
+  min-width: 273px;
+  border-radius: 20px;
+  
+  background-color: #151F20;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.popup__active {
+  opacity: 1;
+  z-index: 1;
+  transition: opacity .3s ease;
+}
+
+.popup_subtitle {
+  margin: 0;
+  @include font-style-ibmPlexSans(14px, 400, 21px, $color-F5-white);
+  text-align: center;
 }
