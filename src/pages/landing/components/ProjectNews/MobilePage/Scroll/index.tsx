@@ -6,6 +6,7 @@ import 'swiper/swiper.min.css'
 
 import styles from '../styles.module.scss'
 import border from '../../Images/border-modal-min.png'
+import useWindowSize from '@helpers/useWindowSizeHook'
 
 const links = [
   {
@@ -51,10 +52,12 @@ const links = [
 ]
 
 export const Scroll: React.FC = () => {
+  const { width } = useWindowSize()
+
   return (
     <>
       <Swiper
-        slidesPerView={4}
+        slidesPerView={width <= 600 ? (width <= 410 ? 2 : 3) : 4}
         spaceBetween={30}
         speed={1700}
         autoplay={{

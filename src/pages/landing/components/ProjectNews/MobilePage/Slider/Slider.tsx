@@ -22,6 +22,7 @@ export default function App() {
         }}
         effect='cards'
         grabCursor
+        loop={Boolean(true)}
         modules={[EffectCards, Pagination]}
         className='mySwiper'
       >
