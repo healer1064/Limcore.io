@@ -16,7 +16,7 @@ export const StartMining: React.FC = () => {
   const [remainingDays] = useState<number>(4)
   const [allDays] = useState<number>(60)
 
-  const [modalOpened, setModalOpened] = useState(true)
+  const [modalOpened, setModalOpened] = useState(false)
   const [popupInModalOpened, setPopupInModalOpened] = useState(true)
 
   const openModal = () => setModalOpened(true)
@@ -25,7 +25,7 @@ export const StartMining: React.FC = () => {
   const hidePopupInModal = () => setPopupInModalOpened(false)
 
   return (
-    <div className={styles.startMining} style={{ background: `url("${startMiningFrame}") 0 0/100% 100%` }}>
+    <div className={styles.startMining} style={{ backgroundImage: `url("${startMiningFrame}")` }}>
       <div className={styles.startMining__beforeStart} onClick={openModal}>
         <p>До старта майнинга</p>
         <img src={arrowWhiteRight} />

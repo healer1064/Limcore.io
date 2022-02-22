@@ -62,7 +62,8 @@
 
 .popup {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 30px);
+  left: -100%;
   z-index: -1;
   
   padding: 20px;

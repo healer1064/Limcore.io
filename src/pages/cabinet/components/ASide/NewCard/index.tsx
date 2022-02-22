@@ -18,6 +18,9 @@ export const NewCard: React.FC<NewCardProps> = ({ clientWidth }) => {
   const openModal = () => setModalOpened(true)
   const closeModal = () => setModalOpened(false)
 
+  const desktop = clientWidth >= 768
+  console.log('desktop', desktop)
+
   return (
     <div className={styles.newCard} onClick={openModal}>
       <h2 className={styles.newCard__title}>Выпуск банковской карты</h2>
@@ -28,7 +31,7 @@ export const NewCard: React.FC<NewCardProps> = ({ clientWidth }) => {
       )}
       <img className={styles.newCard__soon} src={soonYellow} />
 
-      <Modal active={modalOpened} setActive={closeModal} crossFlag>
+      <Modal active={modalOpened} setActive={closeModal} crossFlag isDesktop={desktop} isMobile={!desktop}>
         <p className={styles.modal__title}>Банковская карта</p>
         <div className={styles.modal__inner}>
           <img src={card} alt='Card' className={styles.modal__img} />

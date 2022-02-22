@@ -62,3 +62,9 @@
     margin: 0 0 0 6px;
   }
 }
+
+@media all and (max-width: 768px) {
+  .refLink {
+    margin: 0 0 50px 0;
+  }
+}
