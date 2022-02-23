@@ -4,7 +4,7 @@ import rocketAnim from '@animations/rocket.json'
 import popup from '@icons/popupIcon.svg'
 import { ButtonBig } from '../../../../../../ui-kit/ButtonBig'
 import { BottomModal } from '@components/Modal/BottomModal'
-import { Player } from '@lottiefiles/react-lottie-player'
+// import { Player } from '@lottiefiles/react-lottie-player'
 import classNames from 'classnames'
 
 type TModals = '' | 'first' | 'second'
@@ -39,12 +39,12 @@ export const MainCaptionMobile: React.FC = () => {
       <h1 className={Styles.title}>LIMCORE — ракета в сфере облачного майнинга!</h1>
 
       <div className={Styles.animation}>
-        <Player
-          onEvent={onEvent}
-          lottieRef={(instance) => setLottiePseudeRef({ lottie: instance })}
-          src={rocketAnim}
-          style={{ height: '100%', width: '100%' }}
-        />
+        {/* <Player */}
+        {/*  onEvent={onEvent} */}
+        {/*  lottieRef={(instance) => setLottiePseudeRef({ lottie: instance })} */}
+        {/*  src={rocketAnim} */}
+        {/*  style={{ height: '100%', width: '100%' }} */}
+        {/* /> */}
       </div>
 
       <div className={classNames(Styles.wrapper, showList && Styles.visible)}>

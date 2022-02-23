@@ -9,6 +9,7 @@ import { Equipment } from './components/Equipment/index'
 import { GamificationOfMining } from './components/GamificationOfMining'
 import { AppForMining } from './components/AppForMining'
 import { RoadMap } from './components/RoadMap'
+import { ProjectNews } from './components/ProjectNews'
 // import { Team } from './components/Team'
 // import { UpEcosystem } from './components/UpEcosystem'
 // import { OnLine } from './components/OnLine'
@@ -38,6 +39,7 @@ export const LandingPage: React.FC = () => {
       <Equipment />
       <GamificationOfMining clientWidth={width} />
       <AppForMining clientWidth={width} />
+      <ProjectNews />
       <RoadMap />
       {/* <Orbit /> */}
       {/* <Team /> */}

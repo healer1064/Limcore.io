@@ -119,7 +119,7 @@
   width: 306px;
   height: 308px;
   background-image: url("./image/coin-min.png");
-  filter: drop-shadow(50px 130px 115px rgba(25, 226, 255, 0.12));
+  filter: blur(115px);
 }
 
 .calc__text {

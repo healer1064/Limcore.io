@@ -1,0 +1,74 @@
+.mobile__scroll_item {
+  height: 300px;
+}
+
+.mySwiper {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0;
+}
+
+.mobile__time {
+  width: 31px;
+  margin: 24px 0 0 auto !important;
+}
+
+.mobile__card_active {
+  background: #2d4ec5 !important;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 370px;
+  border-radius: 18px;
+}
+
+.mobile__card {
+  width: 226px;
+  height: 307px;
+  padding: 20px;
+  background: linear-gradient(154.3deg, #24fa93 16.25%, #62e5f7 59.03%, #24dffa 83.04%);
+  border-radius: 40px;
+}
+
+@media screen and (max-width: 360px) {
+  .mobile__card {
+    width: 190px;
+  }
+}
+
+.mobile__date {
+  margin: 0;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 12px;
+  color: #225c65;
+  text-align: right;
+}
+
+.mobile__description {
+  margin: 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14px;
+  color: #2c2b2b;
+}
+
+.swiper-slide-shadow {
+  display: none;
+}
+
+.swiper-pagination {
+  position: static !important;
+  width: 70px !important;
+  margin: 19px 0 0;
+  background-color: #c5eaf1;
+  border-radius: 40px;
+}
+
+.swiper-pagination-progressbar-fill {
+  background: yellow !important;
+}
