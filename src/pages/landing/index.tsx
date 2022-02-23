@@ -32,7 +32,7 @@ export const LandingPage: React.FC = () => {
   return (
     <div className={Styles.landing}>
       <Main />
-      {width <= 768 ? <CalcsMobile /> : <Calcs />}
+      {desktop ? <Calcs /> : <CalcsMobile />}
       {/* <Team /> */}
       <HowWork />
       <Why />

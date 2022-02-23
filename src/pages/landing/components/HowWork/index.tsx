@@ -3,11 +3,12 @@ import styles from './styles.module.scss'
 import folder from '@animations/folders.json'
 import folder2 from '@animations/folder2.json'
 import map from '@animations/map.json'
-import Lottie from 'react-lottie'
+import { Lottie } from '@crello/react-lottie'
 import useWindowSize from '@helpers/useWindowSizeHook'
 import uparrow from '../../../../assets/images/arrow.svg'
 import { ButtonBig } from '../../../../ui-kit/ButtonBig'
 import { useInView } from 'react-intersection-observer'
+import { TAnimStates } from '@lib/utils/types'
 
 export const HowWork: React.FC = () => {
   const { width } = useWindowSize()
@@ -21,9 +22,9 @@ export const HowWork: React.FC = () => {
   const [secondAnimMargin, setSecondAnimMargin] = useState<TSecondAnimMargin>({ marginBottom: '200px' })
   // ===
 
-  const [firstAnimStopped, setFirstAnimStopped] = useState(true)
-  const [secondAnimStopped, setSecondAnimStopped] = useState(true)
-  const [thirdAnimStopped, setThirdAnimStopped] = useState(true)
+  const [firstAnimState, setFirstAnimState] = useState<TAnimStates>('stopped')
+  const [secondAnimState, setSecondAnimState] = useState<TAnimStates>('stopped')
+  const [thirdAnimState, setThirdAnimState] = useState<TAnimStates>('stopped')
 
   const OBSERVER_OPTIONS = { rootMargin: '50px' }
   const [firstAnimRef, firstAnimInView] = useInView(OBSERVER_OPTIONS)
@@ -59,15 +60,15 @@ export const HowWork: React.FC = () => {
 
   useEffect(() => {
     if (firstAnimInView) {
-      setFirstAnimStopped(false)
+      setFirstAnimState('playing')
     }
 
     if (secondAnimInView) {
-      setSecondAnimStopped(false)
+      setSecondAnimState('playing')
     }
 
     if (thirdAnimInView) {
-      setThirdAnimStopped(false)
+      setThirdAnimState('playing')
     }
   }, [firstAnimInView, secondAnimInView, thirdAnimInView])
 
@@ -93,7 +94,7 @@ export const HowWork: React.FC = () => {
         <ul className={styles.list}>
           <li className={styles.item_first}>
             <div className={styles.anim_first} style={animStyles} ref={firstAnimRef}>
-              <Lottie options={defaultOption} isStopped={firstAnimStopped} />
+              <Lottie config={defaultOption} playingState={firstAnimState} />
             </div>
 
             <div className={styles.item_left}>
@@ -117,7 +118,7 @@ export const HowWork: React.FC = () => {
 
           <li className={styles.item_second} style={secondAnimMargin}>
             <div className={styles.anim_second} style={secondAnimStyles} ref={secondAnimRef}>
-              <Lottie options={defaultOption2} isStopped={secondAnimStopped} />
+              <Lottie config={defaultOption2} playingState={secondAnimState} />
             </div>
 
             <div className={styles.item_right}>
@@ -149,7 +150,7 @@ export const HowWork: React.FC = () => {
 
           <li className={styles.item_third}>
             <div className={styles.anim_third} style={animStyles} ref={thirdAnimRef}>
-              <Lottie options={defaultOption3} isStopped={thirdAnimStopped} />
+              <Lottie config={defaultOption3} playingState={thirdAnimState} />
             </div>
 
             <div className={styles.item_3_left}>

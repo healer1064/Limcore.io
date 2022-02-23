@@ -1221,9 +1221,9 @@ i18n.use(LanguageDetector).init({
     formatSeparator: ',',
   },
 
-  react: {
-    wait: true,
-  },
+  // react: {
+  //   wait: true,
+  // },
 })
 
 export default i18n

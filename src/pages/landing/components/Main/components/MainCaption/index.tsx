@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Styles from './styles.module.scss'
-import Lottie from 'react-lottie'
+import { Lottie } from '@crello/react-lottie'
 import rocketAnim from '@animations/rocket.json'
 import popup from '@icons/popupIcon.svg'
 import classNames from 'classnames'
@@ -27,7 +27,7 @@ export const MainCaption: React.FC = () => {
       <h1 className={Styles.title}>LIMCORE — ракета в сфере облачного майнинга!</h1>
 
       <div className={Styles.animation}>
-        <Lottie options={defaultOptions} height={630} width={630} />
+        <Lottie config={defaultOptions} height='630px' width='630px' />
       </div>
 
       <div className={Styles.wrapper}>

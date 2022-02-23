@@ -8,11 +8,9 @@ import { MobileNews } from './MobilePage/MobileNews'
 export const ProjectNews = () => {
   const { width } = useWindowSize()
 
-  if (width <= 910) {
-    return <MobileNews />
-  }
-
-  return (
+  return width <= 910 ? (
+    <MobileNews />
+  ) : (
     <section className={styles.news}>
       <h3 className={styles.news__title}>Новости проекта</h3>
       <div className={styles.news__flex}>

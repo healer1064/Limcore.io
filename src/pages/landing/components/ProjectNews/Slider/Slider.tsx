@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from '../styles.module.scss'
 import { arrNews } from '../constants'
 
-export const Slider = (props) => {
+export const Slider = () => {
   const [index, setIndex] = useState(0)
   const [animation, setAnimation] = useState(false)
   let count = 0

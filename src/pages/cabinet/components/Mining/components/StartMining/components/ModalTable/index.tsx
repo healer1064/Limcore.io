@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import yellowChip from '../../../../../../../../assets/images/yellow_chip.svg'
+// import yellowChip from '../../../../../../../../assets/images/yellow_chip.svg'
 
 export const ModalTable: React.FC = () => {
   return (

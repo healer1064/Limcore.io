@@ -36,6 +36,11 @@ export class DvdTwitter extends Component<DVDLogoProps, DVDLogoState> {
     setInterval(() => this.moveDVDLogo(), 0)
   }
 
+  componentWillUnmount(): void {
+    // fix Warning: Can't perform a React state update on an unmounted component
+    this.setState = () => {}
+  }
+
   moveDVDLogo() {
     this.setState({
       x: this.state.x + this.state.xSpeed,
