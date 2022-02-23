@@ -25,16 +25,11 @@ export const DvdScreen = () => {
   }, [])
 
   return (
-    // <div className={styles.container} style={{ width: `${width - 500}px` }}>
     <div className={styles.container} id='dvdanim' ref={containerRef}>
       {!mobileCondition && <DvdTelegram width={containerWidth} height={560} />}
       {!mobileCondition && <DvdTwitter width={containerWidth} height={560} />}
       {!mobileCondition && <DvdYoutube width={containerWidth} height={560} />}
       {!mobileCondition && <DvdDiscord width={containerWidth} height={560} />}
-
-      {/* {width >= 1280 && <DvdScreen width={985} height={560} />}
-      {width > 1000 && width < 1280 && <DvdScreen width={520} height={560} />}
-      {width > 768 && width < 1000 && <DvdScreen width={300} height={560} />} */}
     </div>
   )
 }

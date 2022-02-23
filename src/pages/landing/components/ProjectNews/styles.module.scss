@@ -121,11 +121,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 250px;
   padding: 20px;
 }
 
 .news__flex {
   display: flex;
+  max-width: 1454px;
+  width: 100%;
+  margin-left: auto;
+  padding: 0 0 0 20px;
 }
 
 .news__title {
@@ -280,7 +285,6 @@
 .news__cards {
   position: relative;
   box-sizing: border-box;
-  margin: 0 0 157px 40px;
 }
 
 .dvd__screen {
