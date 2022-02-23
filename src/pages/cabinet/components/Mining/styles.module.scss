@@ -34,23 +34,8 @@
   flex-wrap: wrap-reverse;
   margin: 0 0 42px 0;
 
-  > div:first-of-type {
-    grid-area: profit;
-  }
-
-  > div:last-of-type {
-    grid-area: startMining;
-  }
-
   @media all and (max-width: 1410px) {
     justify-content: center;
-  }
-
-  @media all and (max-width: 768px) {
-    display: grid;
-    grid-template-areas: "startMining" "profit";
-    grid-template-rows: 150px 1fr;
-    grid-template-columns: 1fr;
   }
 }
 

@@ -10,9 +10,10 @@
     line-height: 22px;
   }
 
-  @media all and (max-width: 768px) {
+  @media all and (max-width: 1410px) {
     width: 100%;
     min-width: unset;
+    margin: 0;
   }
 }
 
