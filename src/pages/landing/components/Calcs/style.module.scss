@@ -1,10 +1,11 @@
+@import '../../../../scss/vars';
+
 .calc {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 150px;
   padding: 0 20px;
-  font-family: "IbmPlexSans", "Arial", "Helvetica", sans-serif;
 
   > div {
     width: 100%;
@@ -14,7 +15,7 @@
 
 .calc__limc {
   display: grid;
-  grid-template-rows: 95px 22px 30px;
+  grid-template-rows: 95px 0 30px;
   grid-template-columns: 1fr;
   row-gap: 30px;
   width: 100%;
@@ -39,10 +40,7 @@
   grid-area: 1/1;
   max-width: 416px;
   margin: 0 0 0 102px;
-  font-size: 70px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 135%;
+  @include font-style-ibmPlexSans(70px, 600, 94px, $color-F5-white);
   border: none;
 }
 
@@ -56,20 +54,14 @@
   grid-area: 2/1;
   padding: 0;
   margin: 0;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 22px;
+  @include font-style-ibmPlexSans(18px, 500, 22px, $color-E1-white);
 }
 
 .calc__grid_two {
   grid-area: 2/1;
   padding: 0;
   margin: 0 0 0 auto;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 22px;
+  @include font-style-ibmPlexSans(18px, 500, 22px, $color-E1-white);
 }
 
 .calc__grid {
@@ -77,8 +69,6 @@
   display: grid;
   grid-template-rows: 1fr;
   margin: 0 0 200px 0;
-
-
 }
 
 .calc__click_zona {
@@ -115,6 +105,10 @@
   right: 10%;
   bottom: -20%;
   z-index: 12;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   grid-area: 2/1;
   width: 306px;
   height: 308px;
@@ -123,15 +117,12 @@
 
 .calc__text {
   position: absolute;
-  top: -30%;
-  right: -30%;
+  top: -10%;
+  right: -56%;
   grid-area: 2/1;
   width: 178px;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 140%;
-  color: #fcff00;
+
+  @include font-style-ibmPlexSans(16px, 400, 22px, $color-FC-yellow);
 }
 
 .calc__img {
@@ -141,29 +132,24 @@
   width: 472px;
   height: 177px;
   background: url("./image/line-min.png") 0 0/100% 100%;
-
 }
 
 .calc__money {
   width: 194px;
   margin: 88px auto 0 39px;
-  font-size: 70px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 91px;
-  color: #172b2e;
+  @include font-style-ibmPlexSans(70px, 600, 91px, #172B2E);
   text-align: center;
 }
 
 .calc__money_year {
-  width: 143px;
-  margin: 0 auto;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 140%;
-  color: #44450e;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  
+  @include font-style-ibmPlexSans(18px, 400, 25px, #44450e);
+  white-space: nowrap;
 
+  transform: translateX(-15px);
 }
 
 .calc__info {
@@ -211,11 +197,7 @@
 .calc__warn_text {
   width: 190px;
   margin: 40px 38px 40px 40px;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 22px;
-  color: #e1e1d8;
+  @include font-style-ibmPlexSans(16px, 400, 22px, $color-E1-white);
   text-align: center;
 }
 

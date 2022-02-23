@@ -3,6 +3,7 @@
 
 .how {
   margin-bottom: 188px;
+  overflow: hidden;
 }
 
 .border {
@@ -74,6 +75,7 @@
 
 .item_first {
   position: relative;
+
   display: flex;
   padding: 0 20px;
   margin-bottom: 275px;
@@ -96,7 +98,8 @@
 .anim_first {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%) translateX(300px);
+  // transform: translateY(-50%) translateX(300px);
+  transform: translateY(-50%) translateX(235px);
 }
 
 .anim_second {
@@ -146,7 +149,9 @@
 }
 
 .copyBtn {
+  position: relative;
   z-index: 5;
+
   width: 20px;
   height: 20px;
   cursor: pointer;
@@ -200,6 +205,44 @@
   margin-right: 200px;
 }
 
+@keyframes copyPopupAnim {
+  0% {
+    opacity: 0;
+    z-index: -1;
+  }
+  50% {
+    opacity: 1;
+    z-index: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+.copyPopup {
+  position: absolute;
+
+  bottom: calc(100% + 10px);
+  right: 50%;
+  transform: translateX(50%);
+  
+  padding: 5px 20px;
+  border-radius: 20px;
+
+  @include font-style-ibmPlexSans(14px, 400, 21px, $color-F5-white);
+
+  background-color: #151F20;
+  box-shadow: 0px 0px 9px 0px #65BBCB;
+
+  opacity: 0;
+  z-index: -1;
+}
+
+.copyPopup_active {
+  animation: copyPopupAnim 3s forwards;
+}
+
 @media all and (max-width: 1175px) {
   .item_3_left {
     &::after {
@@ -249,7 +292,7 @@
   }
 
   .anim_second {
-    // width: 1000px !important;
+    width: 132%;
     top: 120%;
     left: 50%;
     transform: translateX(-50%);

@@ -6,9 +6,10 @@ interface IBrownianMotion {
   distance: number
   step: number
   children: React.ReactNode
+  name: string
 }
 
-export const BrownianMotion = ({ interval, children, distance, step }: IBrownianMotion) => {
+export const BrownianMotion = ({ interval, children, distance, step, name }: IBrownianMotion) => {
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 })
   const [showTooltip, setShowTooltip] = useState(false)
 
@@ -77,6 +78,12 @@ export const BrownianMotion = ({ interval, children, distance, step }: IBrownian
     >
       {showTooltip && (
         <div className={styles.tooltip}>
+          {name === 'Chia' && (
+            <>
+              <span>01 XCH</span>
+              <span>$0.001</span>
+            </>
+          )}
           <span>01 XCH</span>
           <span>$0.001</span>
         </div>

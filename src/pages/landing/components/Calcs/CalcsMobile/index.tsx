@@ -60,7 +60,7 @@ export const CalcsMobile = () => {
                   zIndex: -10,
                 }}
               >
-                <BrownianMotion interval={1} distance={100} step={40}>
+                <BrownianMotion interval={1} distance={100} step={40} name={item.name}>
                   <div
                     className={styles.mobile__click_image}
                     style={{

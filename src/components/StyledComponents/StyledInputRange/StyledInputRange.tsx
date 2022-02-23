@@ -13,8 +13,9 @@ export const StyledInputRange = withStyles({
   },
   rail: {
     height: 12,
-    backgroundColor: '#abc3c8',
+    backgroundColor: '#ABC3C8',
     borderRadius: 5,
+    opacity: 1,
   },
   thumb: {
     width: 22,

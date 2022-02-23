@@ -9,18 +9,28 @@ import uparrow from '../../../../assets/images/arrow.svg'
 import { ButtonBig } from '../../../../ui-kit/ButtonBig'
 import { useInView } from 'react-intersection-observer'
 import { TAnimStates } from '@lib/utils/types'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+import classNames from 'classnames'
+
+const LIMC_ADDRESS = '0x4095309503950395039503abobaabobusnaja3485uo2225'
 
 export const HowWork: React.FC = () => {
   const { width } = useWindowSize()
+  const [copyPopup, setCopyPopup] = useState(false)
+
+  const showCopyPopup = () => {
+    setCopyPopup(true)
+    setTimeout(() => setCopyPopup(false), 3000)
+  }
 
   // Прикол в том, что анимации разные по внутренним размерам и это всё нужно, чтобы они визуально были одинаковые
-  type TAnimStyles = { width: string | number }
-  const [animStyles, setAnimStyles] = useState<TAnimStyles>({ width: '' })
-  const [secondAnimStyles, setSecondAnimStyles] = useState<TAnimStyles>({ width: '' })
+  // type TAnimStyles = { width: string | number }
+  // const [animStyles, setAnimStyles] = useState<TAnimStyles>({ width: '' })
+  // const [secondAnimStyles, setSecondAnimStyles] = useState<TAnimStyles>({ width: '' })
+  // ===
 
   type TSecondAnimMargin = { marginBottom: string }
   const [secondAnimMargin, setSecondAnimMargin] = useState<TSecondAnimMargin>({ marginBottom: '200px' })
-  // ===
 
   const [firstAnimState, setFirstAnimState] = useState<TAnimStates>('stopped')
   const [secondAnimState, setSecondAnimState] = useState<TAnimStates>('stopped')
@@ -74,10 +84,10 @@ export const HowWork: React.FC = () => {
 
   useEffect(() => {
     if (width) {
-      width <= 768 ? setAnimStyles({ width: 'auto' }) : setAnimStyles({ width: Math.floor(width / 1.74) })
-      width <= 768
-        ? setSecondAnimStyles({ width: Math.floor(width / 0.75) })
-        : setSecondAnimStyles({ width: Math.floor(width / 1.66) })
+      // width <= 768 ? setAnimStyles({ width: 'auto' }) : setAnimStyles({ width: Math.floor(width / 1.74) })
+      // width <= 768
+      //   ? setSecondAnimStyles({ width: Math.floor(width / 0.75) })
+      //   : setSecondAnimStyles({ width: Math.floor(width / 1.66) })
 
       width <= 768
         ? setSecondAnimMargin({ marginBottom: `${Math.floor(width) + 75}px` })
@@ -93,7 +103,8 @@ export const HowWork: React.FC = () => {
         <h2 className={styles.title}>Как это работает</h2>
         <ul className={styles.list}>
           <li className={styles.item_first}>
-            <div className={styles.anim_first} style={animStyles} ref={firstAnimRef}>
+            {/* <div className={styles.anim_first} style={animStyles} ref={firstAnimRef}> */}
+            <div className={styles.anim_first} ref={firstAnimRef}>
               <Lottie config={defaultOption} playingState={firstAnimState} />
             </div>
 
@@ -106,18 +117,27 @@ export const HowWork: React.FC = () => {
               </p>
               <div className={styles.walletAdress}>
                 {width > 768 ? (
-                  <span>0x4095309503950395039503...3485uo2225</span>
+                  <span>
+                    {LIMC_ADDRESS.slice(0, 24)}...{LIMC_ADDRESS.slice(-10)}
+                  </span>
                 ) : (
-                  <span> 0x40953095039...3485uo2225</span>
+                  <span>
+                    {LIMC_ADDRESS.slice(0, 13)}...{LIMC_ADDRESS.slice(-10)}
+                  </span>
                 )}
-                <button className={styles.copyBtn} />
+                <CopyToClipboard text={LIMC_ADDRESS} onCopy={showCopyPopup}>
+                  <button className={styles.copyBtn}>
+                    <span className={classNames(styles.copyPopup, copyPopup && styles.copyPopup_active)}>Copied!</span>
+                  </button>
+                </CopyToClipboard>
               </div>
               <ButtonBig className={styles.button}>КУПИТЬ LIMC</ButtonBig>
             </div>
           </li>
 
           <li className={styles.item_second} style={secondAnimMargin}>
-            <div className={styles.anim_second} style={secondAnimStyles} ref={secondAnimRef}>
+            {/* <div className={styles.anim_second} style={secondAnimStyles} ref={secondAnimRef}> */}
+            <div className={styles.anim_second} ref={secondAnimRef}>
               <Lottie config={defaultOption2} playingState={secondAnimState} />
             </div>
 
@@ -149,7 +169,8 @@ export const HowWork: React.FC = () => {
           </li>
 
           <li className={styles.item_third}>
-            <div className={styles.anim_third} style={animStyles} ref={thirdAnimRef}>
+            {/* <div className={styles.anim_third} style={animStyles} ref={thirdAnimRef}> */}
+            <div className={styles.anim_third} ref={thirdAnimRef}>
               <Lottie config={defaultOption3} playingState={thirdAnimState} />
             </div>
 

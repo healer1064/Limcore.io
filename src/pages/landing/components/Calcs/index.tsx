@@ -37,7 +37,6 @@ export const Calcs = () => {
           <StyledInputRange min={1} max={40000} step={1} onChange={handleRange} />
         </div>
         <div className={styles.calc__grid}>
-          {/* <div className={styles.calc__up} /> */}
           <div className={styles.calc__click_zona}>
             {data.map((item, i) => (
               <div
@@ -48,12 +47,13 @@ export const Calcs = () => {
                   top: '50%',
                 }}
               >
-                <BrownianMotion interval={item.interval} distance={item.distance} step={item.step}>
+                <BrownianMotion interval={item.interval} distance={item.distance} step={item.step} name={item.name}>
                   <div
                     className={styles.calc__click_image}
                     style={{
                       backgroundColor: item.color,
                       backgroundRepeat: 'no-repeat',
+                      backgroundPosition: 'center',
                       width: `${item.diameter}px`,
                       height: `${item.diameter}px`,
                     }}
