@@ -22,6 +22,11 @@
     border-right: 20px solid #192a2c;
     border-bottom: 20px solid #192a2c;
     border-left: 20px solid transparent;
+
+    @media all and (max-width: 768px) {
+      right: -2px;
+      bottom: -2px;
+    }
   }
 
   &::before {
@@ -48,7 +53,7 @@
   }
 
   @media all and (max-width: 400px) {
-    padding: 17px;
+    padding: 21px;
   }
 }
 

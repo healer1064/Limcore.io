@@ -19,7 +19,6 @@ export const NewCard: React.FC<NewCardProps> = ({ clientWidth }) => {
   const closeModal = () => setModalOpened(false)
 
   const desktop = clientWidth > 768
-  console.log('desktop', desktop)
 
   return (
     <div className={styles.newCard} onClick={openModal}>

@@ -52,8 +52,9 @@
 
   &Content {
     position: relative;
-    left: 900px;
+    left: 0;
     overflow-y: auto;
+    opacity: 0;
 
     width: 470px;
     height: 100%;
@@ -72,7 +73,7 @@
   }
 
   &Active &Content {
-    left: 0;
+    opacity: 1;
   }
 }
 
