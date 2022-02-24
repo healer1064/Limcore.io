@@ -66,7 +66,7 @@ export const OwnersTable: React.FC<IOwnersTable> = ({ data }) => {
         </Table>
       </TableContainer>
       <div className={styles.bottom_wrapper}>
-        <ProgressBar current={rows} limit={data.length} />
+        <ProgressBar value='кошельков' current={rows} limit={data.length} />
         {rows !== data.length && (
           <div className={styles.button_container}>
             <ExpandButton data={data} setRows={setRows} rows={rows} arr={arr} setArr={setArr}>

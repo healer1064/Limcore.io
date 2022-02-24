@@ -13,7 +13,7 @@
     bottom: 0;
   }
   :global(.swiper-button-prev) {
-
+    margin-right: 20px;
   }
   :global(.swiper-button-next) {
 
@@ -23,11 +23,16 @@
   }
   :global(.swiper-button-disabled) {
     color: $color-84-green;
-    opacity: 1 !important; 
+    opacity: 1 !important;
   }
   :global(.swiper-wrapper) {
 
   }
+}
+
+.dist__list {
+display: flex;
+  flex-direction: column;
 }
 
 .disk__item {

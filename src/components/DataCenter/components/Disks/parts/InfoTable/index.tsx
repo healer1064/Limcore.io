@@ -1,25 +1,163 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import { SizeArrow } from '@icons/SizeArrow'
 import { DataCenterYellowArrow } from '@icons/DataCenterYellowArrow'
 import { LoadLine } from '@components/DataCenter/components/Disks/parts/LoadLine'
-import { InfoTableItem } from '@components/DataCenter/components/Disks/parts/InfoTable/components/InfoTableItem'
+import { IItem, InfoTableItem } from '@components/DataCenter/components/Disks/parts/InfoTable/components/InfoTableItem'
+import { ProgressBar } from '@components/DataCenter/components/Owners/parts/OwnersTable/parts/ProgressBar'
+import { ExpandButton } from '@components/DataCenter/components/Owners/parts/OwnersTable/parts/ExpandButton'
+import { formatNumerals } from '@helpers/formatNumerals'
 
 const data = [
-  { hardDisk: 'Seagate, MB8000JEQVA', size: 16, quantity: 147, temperature: 65 },
-  { hardDisk: 'Seagate, MB8000JEQVA', size: 16, quantity: 147, temperature: 65 },
-  { hardDisk: 'Seagate, MB8000JEQVA', size: 16, quantity: 147, temperature: 65 },
-  { hardDisk: 'Seagate, MB8000JEQVA', size: 16, quantity: 147, temperature: 65 },
-  { hardDisk: 'Seagate, MB8000JEQVA', size: 16, quantity: 147, temperature: 65 },
-  { hardDisk: 'Seagate, MB8000JEQVA', size: 16, quantity: 147, temperature: 65 },
-  { hardDisk: 'Seagate, MB8000JEQVA', size: 16, quantity: 147, temperature: 65 },
-  { hardDisk: 'Seagate, MB8000JEQVA', size: 16, quantity: 147, temperature: 65 },
-  { hardDisk: 'Seagate, MB8000JEQVA', size: 16, quantity: 147, temperature: 65 },
-  { hardDisk: 'Seagate, MB8000JEQVA', size: 16, quantity: 147, temperature: 65 },
-  { hardDisk: 'Seagate, MB8000JEQVA', size: 16, quantity: 147, temperature: 65 },
+  {
+    hardDisk: 'Seagate, MB8000JEQVA',
+    size: 16,
+    quantity: 147,
+    temperature: 65,
+    Vendor: 'HP',
+    Product: 'MB8000JEQVA',
+    UserCapacity: '8,001,563,222,016 bytes [8.00TB]',
+    RotationRate: 7200,
+    FormFactor: 3.5,
+  },
+  {
+    hardDisk: 'Seagate, MB8000JEQVA',
+    size: 16,
+    quantity: 147,
+    temperature: 65,
+    Vendor: 'HP',
+    Product: 'MB8000JEQVA',
+    UserCapacity: '8,001,563,222,016 bytes [8.00TB]',
+    RotationRate: 7200,
+    FormFactor: 3.5,
+  },
+  {
+    hardDisk: 'Seagate, MB8000JEQVA',
+    size: 16,
+    quantity: 147,
+    temperature: 65,
+    Vendor: 'HPP',
+    Product: 'MB8000JEQVA',
+    UserCapacity: '8,001,563,222,016 bytes [8.00TB]',
+    RotationRate: 7200,
+    FormFactor: 3.5,
+  },
+  {
+    hardDisk: 'Seagate, MB8000JEQVA',
+    size: 16,
+    quantity: 147,
+    temperature: 65,
+    Vendor: 'HHP',
+    Product: 'MB8000JEQVA',
+    UserCapacity: '8,001,563,222,016 bytes [8.00TB]',
+    RotationRate: 7200,
+    FormFactor: 3.5,
+  },
+  {
+    hardDisk: 'Seagate, MB8000JEQVA',
+    size: 16,
+    quantity: 147,
+    temperature: 65,
+    Vendor: 'HP',
+    Product: 'MB8000JEQVA',
+    UserCapacity: '8,001,563,222,016 bytes [8.00TB]',
+    RotationRate: 7200,
+    FormFactor: 3.5,
+  },
+  {
+    hardDisk: 'Seagate, MB8000JEQVA',
+    size: 16,
+    quantity: 147,
+    temperature: 65,
+    Vendor: 'HP',
+    Product: 'MB8000JEQVA',
+    UserCapacity: '8,001,563,222,016 bytes [8.00TB]',
+    RotationRate: 7200,
+    FormFactor: 3.5,
+  },
+  {
+    hardDisk: 'Seagate, MB8000JEQVA',
+    size: 16,
+    quantity: 147,
+    temperature: 65,
+    Vendor: 'HP',
+    Product: 'MB8000JEQVA',
+    UserCapacity: '8,001,563,222,016 bytes [8.00TB]',
+    RotationRate: 7200,
+    FormFactor: 3.5,
+  },
+  {
+    hardDisk: 'Seagate, MB8000JEQVA',
+    size: 16,
+    quantity: 147,
+    temperature: 65,
+    Vendor: 'HP',
+    Product: 'MB8000JEQVA',
+    UserCapacity: '8,001,563,222,016 bytes [8.00TB]',
+    RotationRate: 7200,
+    FormFactor: 3.5,
+  },
+  {
+    hardDisk: 'Seagate, MB8000JEQVA',
+    size: 16,
+    quantity: 147,
+    temperature: 65,
+    Vendor: 'HP',
+    Product: 'MB8000JEQVA',
+    UserCapacity: '8,001,563,222,016 bytes [8.00TB]',
+    RotationRate: 7200,
+    FormFactor: 3.5,
+  },
+  {
+    hardDisk: 'Seagate, MB8000JEQVA',
+    size: 16,
+    quantity: 147,
+    temperature: 65,
+    Vendor: 'HP',
+    Product: 'MB8000JEQVA',
+    UserCapacity: '8,001,563,222,016 bytes [8.00TB]',
+    RotationRate: 7200,
+    FormFactor: 3.5,
+  },
+  {
+    hardDisk: 'Seagate, MB8000JEQVA',
+    size: 16,
+    quantity: 147,
+    temperature: 65,
+    Vendor: 'HP',
+    Product: 'MB8000JEQVA',
+    UserCapacity: '8,001,563,222,016 bytes [8.00TB]',
+    RotationRate: 7200,
+    FormFactor: 3.5,
+  },
+  {
+    hardDisk: 'Seagate, MB8000JEQVA',
+    size: 16,
+    quantity: 147,
+    temperature: 65,
+    Vendor: 'HP',
+    Product: 'MB8000JEQVA',
+    UserCapacity: '8,001,563,222,016 bytes [8.00TB]',
+    RotationRate: 7200,
+    FormFactor: 3.5,
+  },
+  {
+    hardDisk: 'Seagate, MB8000JEQVA',
+    size: 16,
+    quantity: 147,
+    temperature: 65,
+    Vendor: 'HP',
+    Product: 'MB8000JEQVA',
+    UserCapacity: '8,001,563,222,016 bytes [8.00TB]',
+    RotationRate: 7200,
+    FormFactor: 3.5,
+  },
 ]
 
 export const InfoTable: React.FC = () => {
+  const [rows, setRows] = useState(data.length > 10 ? 10 : data.length)
+  const [arr, setArr] = useState([...data.slice(0, rows)])
+
   return (
     <div className={styles.infoTable}>
       <LoadLine className={styles.infoTable__load__line} classNameBar={styles.infoTable__load__line__bar} width='40%' />
@@ -51,16 +189,18 @@ export const InfoTable: React.FC = () => {
         </div>
       </div>
       <ul className={styles.infoTable__list}>
-        {data && data.map((item, i) => <InfoTableItem index={i} key={item.hardDisk + i} {...item} />)}
+        {data && data.map((item: IItem, i: number) => <InfoTableItem index={i} key={item.hardDisk + i} item={item} />)}
       </ul>
       <div className={styles.infoTable__loadMore__group}>
-        <div className={styles.infoTable__loadMore__group__info}>Показано 10 из 100 дисков</div>
-        <LoadLine
-          className={styles.infoTable__loadMore__group__line}
-          classNameBar={styles.infoTable__loadMore__group__line__bar}
-          width='40%'
-        />
-        <button className={styles.infoTable__loadMore__group__btn}>Загрузить еще 10 дисков</button>
+        <ProgressBar current={rows} limit={data.length} value='дисков' />
+        {rows !== data.length && (
+          <div className={styles.button_container}>
+            <ExpandButton data={data} setRows={setRows} rows={rows} arr={arr} setArr={setArr}>
+              Загрузить еще {data.length - rows > 10 ? 10 : data.length - rows}
+              {formatNumerals(data.length - rows > 10 ? 10 : data.length - rows, [' диск', ' диска', ' дисков'])}
+            </ExpandButton>
+          </div>
+        )}
       </div>
     </div>
   )

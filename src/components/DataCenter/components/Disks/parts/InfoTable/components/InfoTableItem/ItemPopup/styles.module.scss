@@ -1,0 +1,112 @@
+@import '../../../../../../../../../scss/typography.scss';
+@import '../../../../../../../../../scss/_vars.scss';
+
+.itemPopup {
+  &__wrapper {
+    display: flex;
+    position: absolute;
+    width: 374px;
+    height: 158px;
+    padding: 20px;
+    background: $color-13-black;
+    border-radius: 12px;
+    z-index: 2;
+    top: -160px;
+    left: 208px;
+
+  }
+
+  &__titles {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      background: #132022;
+      border-radius: 2px;
+      transform: rotate(585deg);
+      content: '';
+      bottom: -30px;
+      left: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__title {
+    @include font-style-ibmPlexSans(14px, 400, 17px, $color-A4-grey);
+
+    padding-bottom: 4px;
+  }
+
+  &__content{
+    margin-left: 18px;
+  }
+
+  &__text {
+    @include font-style-ibmPlexSans(14px, 400, 17px, $color-E1-white);
+    padding-bottom: 4px;
+  }
+
+  &__close__btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: $color-13-black;
+    border: none;
+    z-index: 3;
+  }
+}
+
+.itemPopup__container{
+  display: flex;
+  box-sizing: border-box;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 971px) {
+  .itemPopup {
+    &__titles {
+
+      &::after {
+        width: 0;
+        height: 0;
+      }
+    }
+    &__content{
+      margin-left: 24px;
+    }
+
+    &__title {
+      @include font-style-ibmPlexSans(14px, 400, 17px, $color-A4-grey);
+      white-space: nowrap;
+      padding-bottom: 4px;
+      display: flex;
+      align-items: start;
+    }
+
+    &__text {
+      @include font-style-ibmPlexSans(14px, 400, 17px, $color-E1-white);
+      padding-bottom: 4px;
+      white-space: pre-wrap;
+    }
+  }
+}
+
+@media (max-width: 395px) {
+  .itemPopup {
+    &__titles {
+
+      &::after {
+        width: 0;
+        height: 0;
+      }
+    }
+  }
+
+  &__content{
+    margin-left: 24px;
+  }
+}

@@ -1,2 +1,7 @@
 @import '../../../../../../scss/typography.scss';
 @import '../../../../../../scss/vars';
+
+.diskchart__wrapper {
+  display: flex;
+  flex-direction: column;
+}
