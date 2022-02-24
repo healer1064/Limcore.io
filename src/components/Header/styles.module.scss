@@ -13,7 +13,7 @@
 
 .logout:hover {
   cursor: pointer;
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .wrapper {
@@ -46,11 +46,11 @@
 .item__link {
   text-decoration: none;
   @include font-style-inter(16px, 500, 24px, $color-E1-white);
-  transition: filter .3s ease;
+  transition: filter 0.3s ease;
 
   &:hover {
     filter: drop-shadow(0px 0px 15px rgb(25, 226, 255)) drop-shadow(0px 0px 15px rgb(25, 226, 255));
-    transition: filter .3s ease;
+    transition: filter 0.3s ease;
   }
 }
 
@@ -130,26 +130,26 @@
   border-radius: 30px;
 
   @include font-style-ibmPlexSans(16px, 500, 22px, $primary-color);
-  
+
   background-color: transparent;
-  transition: color .3s ease, border .3s ease;
+  transition: color 0.3s ease, border 0.3s ease;
   outline: none;
-  
+
   &_link {
     display: flex;
     align-items: center;
     @include semiBoldH4($color-FC-yellow);
     text-decoration: none;
-    transition: color .3s ease;
+    transition: color 0.3s ease;
     outline: none;
   }
 
   &:hover {
-    transition: color .3s ease;
+    transition: color 0.3s ease;
 
     & > .profileBtn_link {
       color: $white;
-      transition: color .3s ease;
+      transition: color 0.3s ease;
     }
   }
 }
@@ -157,22 +157,62 @@
 .profileBtn {
   @include accountButton();
   margin: 0 0 0 44px;
-  
-  &_link {
-    display: flex;
-    align-items: center;
-    @include semiBoldH4($color-FC-yellow);
-    text-decoration: none;
-    transition: color .3s ease;
-    outline: none;
-  }
+
+  //&_link {
+  //  display: flex;
+  //  align-items: center;
+  //  @include semiBoldH4($color-FC-yellow);
+  //  text-decoration: none;
+  //  transition: color .3s ease;
+  //  outline: none;
+  //}
 
   &:hover {
-    transition: color .3s ease;
+    transition: color 0.3s ease;
 
     & > .profileBtn_link {
       color: $white;
-      transition: color .3s ease;
+      transition: color 0.3s ease;
+    }
+  }
+}
+
+.profile {
+  &__numWalletContainerLink {
+    position: relative;
+    cursor: pointer;
+    &:hover &_active {
+      opacity: 1;
+      bottom: -100%;
+      transform: translateY(-50%);
+      transition: opacity 0.5s, transform 0.5s;
+      z-index: 1;
+    }
+  }
+  &__numWallet {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 2px solid $color-FC-yellow;
+    padding: 10px 15px;
+    border-radius: 20px;
+    color: $color-FC-yellow;
+  }
+  &__link {
+    padding: 20px;
+    background-color: rgb(21, 31, 32);
+    margin-left: 44px;
+    text-decoration: none;
+    color: $color-FC-yellow;
+    border-radius: 10px;
+    &_out {
+      position: absolute;
+      right: 0;
+      bottom: -999em;
+      opacity: 0;
+      transition: opacity 0.5s, transform 0.5s;
+      transform: translateY(50px);
     }
   }
 }
@@ -183,7 +223,7 @@
 
   &:hover {
     color: $white;
-    transition: color .3s ease;
+    transition: color 0.3s ease;
   }
 }
 
@@ -220,7 +260,7 @@ input[type='radio'] {
 
   &:hover {
     path {
-      opacity: .7;
+      opacity: 0.7;
       transition: opacity 0.3s ease;
     }
   }
@@ -243,7 +283,7 @@ input[type='radio'] {
   .loginBtn {
     font-size: 14px !important;
     line-height: 16px !important;
-    
+
     & > a {
       font-size: 14px !important;
       line-height: 16px !important;
@@ -254,76 +294,4 @@ input[type='radio'] {
     top: 35%;
     left: 0;
   }
-}
-// MUI DILOG
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600&display=swap');
-
-
-.diologItem {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  font-size: 18px;
-  line-height: 22px;
-  color: white;
-  border-radius: 20px;
-  font-family: 'IBM Plex Sans', sans-serif;
-}
-.dilogText {
-  margin: 30px 20px 10px 20px;
-  font-weight: 600;
-  font-size: 26px;
-  line-height: 150%;
-  text-align: center;
-  letter-spacing: 0.5px;
-  color: #FCFF00;
-  font-family: 'IBM Plex Sans', sans-serif;
-}
-.itemitem {
-  width: 142px;
-  height: 102px;
-  margin: 20px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-.button {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 18px 35px;
-  width: 331px;
-  height: 50px;
-  background: #FCFF00;
-  box-shadow: 0px 0px 42px rgba(252, 255, 0, 0.4);
-  border-radius: 30px;
-  font-size: 18px;
-  line-height: 22px;
-  margin: auto;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  }
-.itemitem img {
-  margin-top: 10px;
-}
-.itemitemimg {
-  padding-top: 20px;
-  width: 30px;
-}
-.itemitem p {
-  font-size: 18px;
-  margin: 15px 0 12px 0;
-  padding: 0;
-}
-.itemitem:hover {  
-  background-color: #151F20;
-  border-radius: 16px;
-}
-.center {
-  width: 100%;
-  margin: 40px 0;
-
 }

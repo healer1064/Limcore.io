@@ -7,7 +7,7 @@
   align-items: center;
   gap: 10px;
   height: 24px;
-
+  margin-right: 44px;
   img {
     display: block;
   }
@@ -29,7 +29,7 @@
   justify-content: space-between;
   height: 100%;
   transition: all 0.3s ease;
-  
+
   &:hover {
     cursor: pointer;
     .langTitle,
@@ -42,7 +42,7 @@
   &:focus {
     outline: $outline;
   }
-  
+
   &.active {
     .langTitle,
     path {
@@ -93,7 +93,7 @@
   transition: opacity 0.3s ease;
   opacity: 0;
   visibility: hidden;
-  
+
   &.active {
     opacity: 1;
     visibility: visible;
@@ -120,7 +120,7 @@
 .langoption__text {
   font-family: $font-inter;
   @include font-style-ibmPlexSans(16px, 500, 20px, $color-E1-white);
-  
+
   &:hover,
   &:focus {
     cursor: pointer;

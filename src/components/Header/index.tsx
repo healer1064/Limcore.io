@@ -1,115 +1,78 @@
-import React, { useEffect, useState } from 'react'
-import Styles from './style.module.scss'
-import { Link, Link as LinkDom, useHistory } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import Styles from './styles.module.scss'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 
 import logoIcon from '../../assets/images/headerLogo.png'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import ModalAuth from '../../pages/landing/components/ModalAuth'
-import { setIsBuyLimcClick } from '../../pages/auth/redux/authSlice'
+import { setIsSincWithWallet, setWalletConnectLimc, setWalletConnectUsdt } from '../../pages/auth/redux/authSlice'
 
 import { useTranslation } from 'react-i18next'
 import { LanguagePopup } from '../LanguagePopup/index'
 import { Dropdown } from './components/Dropdown'
 
-import { styled } from '@mui/material/styles'
-import Dialog from '@mui/material/Dialog'
-import DialogTitle from '@mui/material/DialogTitle'
-import IconButton from '@mui/material/IconButton'
-import CloseIcon from '@mui/icons-material/Close'
-
-import img1 from '../../assets/images/g1.png'
-import img2 from '../../assets/images/g2.png'
-import img3 from '../../assets/images/g3.png'
-import img4 from '../../assets/images/g4.png'
-
-const BootstrapDialog = styled(Dialog)({
-  '& .MuiPaper-root': {
-    backgroundColor: '#192A2C',
-    borderRadius: 20,
-  },
-})
-export interface DialogTitleProps {
-  id: string
-  children?: React.ReactNode
-  onClose: () => void
-}
-const BootstrapDialogTitle = (props: DialogTitleProps) => {
-  const { children, onClose, ...other } = props
-
-  return (
-    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
-      {children}
-      {onClose ? (
-        <IconButton
-          // aria-label="close"
-          onClick={onClose}
-          sx={{
-            position: 'absolute',
-            right: 8,
-            top: 8,
-            color: (theme) => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
-      ) : null}
-    </DialogTitle>
-  )
-}
+import { infoLinks, partnersLinks } from '@components/Header/const'
+import ModalConnectWallet from '@components/Header/components/ModalConnectWallet'
+import { appSlice } from '@app/redux/reducers/appSlice'
+import { walletConnectSlice } from '@app/redux/reducers/walletConnectSlice'
+import WalletConnect from '@walletconnect/client'
+import QRCodeModal from '@walletconnect/qrcode-modal'
+import { getLimc, getUsdt } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
+import { getSyncData } from '@components/Wallet/redux/walletSlice'
 
 export const Header: React.FC = () => {
-  const [open, setOpen] = React.useState(false)
-
-  const handleClickOpen = () => {
-    setOpen(true)
-  }
-  const handleClose = () => {
-    setOpen(false)
-  }
-
+  const { pathname } = useLocation()
   const history = useHistory()
   const dispatch = useAppDispatch()
   const [t] = useTranslation()
+  const isSync = useAppSelector((state) => state.auth.isSincWithWallet)
+  const { openModalConnectWallet } = useAppSelector((state) => state.app)
+  const { address, chainId } = useAppSelector((state) => state.walletConnect)
+  const { handlerOpenAndCloseModalConnectWallet } = appSlice.actions
+  const { walletConnectAction } = walletConnectSlice.actions
 
-  const [isLoginModalVisible, setIsLoginModalVisible] = useState(false)
-  const isAuth = useAppSelector((state) => state.auth.isAuth)
-  const isBuyLimcClick = useAppSelector((state) => state.auth.isBuyLimcClick)
-
-  const infoLinks = [
-    { id: 1, value: 'Whitepaper', link: 'limcore' },
-    { id: 2, value: 'Команда', link: 'roadmap' },
-    { id: 3, value: 'FAQ', link: 'team' },
-    { id: 5, value: 'Вакансии', link: 'questions' },
-    { id: 6, value: 'Для СМИ', link: 'questions' },
-  ]
-
-  const partnersLinks = [
-    { id: 2, value: 'Команда', link: 'roadmap' },
-    { id: 1, value: 'Whitepaper', link: 'limcore' },
-    { id: 6, value: 'Для СМИ', link: 'questions' },
-  ]
-
-  useEffect(() => {
-    setIsLoginModalVisible(isBuyLimcClick)
-  }, [isBuyLimcClick])
-
-  const handleLoginModalOpen = () => {
-    setIsLoginModalVisible(true)
+  const handlerCloseModalConnectWallet = (): void => {
+    dispatch(handlerOpenAndCloseModalConnectWallet(false))
   }
 
-  const handleLoginModalClose = () => {
-    setIsLoginModalVisible(false)
-    if (isBuyLimcClick) {
-      const close = () => dispatch(setIsBuyLimcClick(false))
-      setTimeout(close, 200)
+  const connector = new WalletConnect({
+    bridge: 'https://bridge.walletconnect.org', // Required
+    qrcodeModal: QRCodeModal,
+  })
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  connector.on('disconnect', (error, payload) => {
+    if (error) {
+      throw error
     }
-  }
+    dispatch(walletConnectAction({ address: '', chainId: null }))
+    dispatch(setIsSincWithWallet(false))
+    window.location.reload()
+  })
 
   useEffect(() => {
-    if (isAuth) {
-      setIsLoginModalVisible(false)
+    if (connector.connected) {
+      dispatch(setIsSincWithWallet(true))
+      const dataFromLS = JSON.parse(localStorage.getItem('walletconnect'))
+      dispatch(walletConnectAction({ address: dataFromLS.accounts[0], chainId: dataFromLS.chainId }))
     }
-  }, [isAuth])
+  }, [])
+
+  useEffect(() => {
+    if (chainId) {
+      getUsdt(address).then((res) => dispatch(setWalletConnectUsdt(res)))
+      getLimc(address).then((res) => dispatch(setWalletConnectLimc(res)))
+      dispatch(getSyncData({ address }))
+    }
+  }, [chainId])
+
+  const handlerDisconnectWallet = (): void => {
+    if (connector.connected) {
+      connector.killSession().then((res) => res)
+      dispatch(setIsSincWithWallet(false))
+      dispatch(walletConnectAction({ address: '', chainId: null }))
+      history.push('/')
+    }
+  }
 
   function handleClick(e) {
     if (history.location.pathname === '/') {
@@ -120,7 +83,7 @@ export const Header: React.FC = () => {
       history.push('./')
     }
   }
-
+  const pathnameProfile = pathname === '/my'
   return (
     <header className={Styles.header}>
       <nav className={Styles.wrapper}>
@@ -158,55 +121,33 @@ export const Header: React.FC = () => {
         </ul>
         <div className={Styles.container}>
           <LanguagePopup position={{ top: '37px' }} />
-          {isAuth ? (
-            <button className={Styles.profileBtn} type='button' onClick={handleClickOpen}>
-              <LinkDom to='/' className={Styles.profileBtn_link}>
-                {/* {t('profile')} */}
-                Подключить кошелек
-              </LinkDom>
+          {!isSync ? (
+            <button
+              className={Styles.profileBtn}
+              type='button'
+              onClick={() => dispatch(handlerOpenAndCloseModalConnectWallet(true))}
+            >
+              Подключить кошелек
             </button>
+          ) : pathnameProfile ? (
+            <div className={Styles.profile__numWalletContainerLink}>
+              <p className={Styles.profile__numWallet}>{`${address.slice(0, 9)}...${address.slice(-7)}`}</p>
+              <Link
+                className={`${Styles.profile__link} ${Styles.profile__link_out} ${Styles.profile__numWalletContainerLink_active}`}
+                to='/'
+                onClick={handlerDisconnectWallet}
+              >
+                Выйти
+              </Link>
+            </div>
           ) : (
-            <button className={Styles.loginBtn} onClick={handleLoginModalOpen} type='button'>
-              {t('login')}
-            </button>
+            <Link className={`${Styles.profileBtn} ${Styles.profileBtn_link}`} to='/my'>
+              Профиль
+            </Link>
           )}
-          <ModalAuth isVisible={isLoginModalVisible} setModalClose={handleLoginModalClose} />
+          <ModalConnectWallet onClose={handlerCloseModalConnectWallet} open={openModalConnectWallet} />
         </div>
       </nav>
-      <div>
-        <BootstrapDialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={open}>
-          <BootstrapDialogTitle id='customized-dialog-title' onClose={handleClose}>
-            <p className={Styles.dilogText}>ПОДКЛЮЧИТЬ КОШЕЛЕК</p>
-          </BootstrapDialogTitle>
-          <div className={Styles.diologItem}>
-            <div className={Styles.diologItemCont}>
-              <div className={Styles.itemitem}>
-                <img src={img2} />
-                <p>WalletConnect</p>
-              </div>
-              <div className={Styles.itemitem}>
-                <img src={img3} />
-                <p>WalletConnect</p>
-              </div>
-            </div>
-            <div className={Styles.diologItemCont}>
-              <div className={Styles.itemitem}>
-                <img src={img1} />
-                <p>Metamask</p>
-              </div>
-              <div className={Styles.itemitem}>
-                <img src={img4} className={Styles.itemitemimg} />
-                <p>Другие</p>
-              </div>
-            </div>
-          </div>
-          <div className={Styles.center}>
-            <button autoFocus className={Styles.button}>
-              Подключить
-            </button>
-          </div>
-        </BootstrapDialog>
-      </div>
     </header>
   )
 }

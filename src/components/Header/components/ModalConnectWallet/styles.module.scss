@@ -1,0 +1,72 @@
+// MUI DILOG
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600&display=swap');
+
+.dialogItem {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 22px;
+  color: white;
+  border-radius: 20px;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+.dialogText {
+  margin: 30px 20px 10px 20px;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 150%;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: #FCFF00;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+.itemitem {
+  width: 142px;
+  height: 102px;
+  margin: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 35px;
+  width: 331px;
+  height: 50px;
+  background: #FCFF00;
+  box-shadow: 0px 0px 42px rgba(252, 255, 0, 0.4);
+  border-radius: 30px;
+  font-size: 18px;
+  line-height: 22px;
+  margin: auto;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+.itemitem img {
+  margin-top: 10px;
+}
+.itemitemimg {
+  padding-top: 20px;
+  width: 30px;
+}
+.itemitem p {
+  font-size: 18px;
+  margin: 15px 0 12px 0;
+  padding: 0;
+}
+.itemitem:hover {
+  background-color: #151F20;
+  border-radius: 16px;
+}
+.center {
+  width: 100%;
+  margin: 40px 0;
+
+}
