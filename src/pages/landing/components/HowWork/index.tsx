@@ -151,7 +151,7 @@ export const HowWork: React.FC = () => {
                 </span>
 
                 <p className={styles.commission}>
-                  Комиссия сервиса <br /> Limcore —15% от <br /> общей прибыли с майнинга
+                  Комиссия сервиса <br /> Limcore —15% от общей <br /> прибыли с майнинга
                 </p>
               </div>
               <h3 className={styles.item_subtitle}>Майнинг</h3>
@@ -160,10 +160,10 @@ export const HowWork: React.FC = () => {
                 {width > 768 ? null : <br />} Все честно и прозрачно!
               </p>
               <div className={styles.statistics}>
-                Убедись сам -
-                <span className={styles.statistics_link}>
+                Убедись сам —
+                <a href='#' className={styles.statistics_link}>
                   Статистика <img src={uparrow} alt='up' />
-                </span>
+                </a>
               </div>
             </div>
           </li>
