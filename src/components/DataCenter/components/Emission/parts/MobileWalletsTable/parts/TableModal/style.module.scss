@@ -1,0 +1,66 @@
+@import '../../../../../../../../scss/typography.scss';
+@import '../../../../../../../../scss/_vars.scss';
+
+.chose_wrapper {
+  padding: 48px 20px 31px 20px;
+}
+
+.description {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  @include font-style-ibmPlexSans(14px, 500, 22px, $color-E1-white);
+  &:not(:last-child) {
+    padding-bottom: 19px;
+    margin-bottom: 19px;
+    border-bottom: 2px solid #142224;
+  }
+  &__icon {
+    margin-right: 14px;
+  }
+  .link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: $color-E1-white;
+  }
+}
+
+.fork_wrapper {
+  padding: 48px 0 20px 0;
+}
+
+.modal_header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 21px;
+}
+
+.fork_content {
+  display: flex;
+  align-items: center;
+  padding: 11px 20px;
+  &:nth-last-child(even) {
+    background-color: #1c3234;
+  }
+}
+
+.modal_fork {
+  display: flex;
+  width: 92%;
+  justify-content: space-between;
+}
+
+.gray_arrow {
+  margin-left: 24px;
+}
+
+.mobile_search_button {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding: 11px 16px;
+  border-radius: 20px;
+  border: none;
+  background-color: $color-45-green;
+}

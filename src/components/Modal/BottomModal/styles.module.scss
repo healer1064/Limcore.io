@@ -13,7 +13,7 @@
   background-color: rgba(0, 0, 0, 0.4);
   opacity: 0;
   pointer-events: none;
-  transition: .3s ease;
+  transition: 0.3s ease;
 }
 
 .modal {
@@ -28,6 +28,12 @@
     background-color: $color-19-dark;
     bottom: -200px;
     transition: all 0.5s ease;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
+  &Special {
+    padding: 0;
   }
 
   &Active {
@@ -38,7 +44,7 @@
     visibility: visible;
   }
 
-    &Active &Content {
+  &Active &Content {
     bottom: 0;
   }
 }
@@ -48,7 +54,7 @@
   padding: 0;
   width: 100%;
 
-  @include font-style-ibmPlexSans(18px, 600, 22px, $primary-color);  
+  @include font-style-ibmPlexSans(18px, 600, 22px, $primary-color);
   text-align: center;
 }
 

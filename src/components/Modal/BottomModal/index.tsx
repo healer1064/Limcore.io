@@ -1,6 +1,7 @@
 import React, { SyntheticEvent, useRef, useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import styles from './styles.module.scss'
+import clsx from 'clsx'
 
 interface IBottomModalProps {
   active: boolean
@@ -11,9 +12,10 @@ interface IBottomModalProps {
   style?: {
     zIndex?: number
   }
+  isFork?: boolean
 }
 
-export const BottomModal = ({ active, setActive, title, children, style }: IBottomModalProps) => {
+export const BottomModal = ({ active, setActive, title, children, style, isFork }: IBottomModalProps) => {
   const node = document.getElementById('root')
   const modalClass = active ? styles.modalActive : styles.modal
   const bodyEl = useRef(document.querySelector('body'))
@@ -56,9 +58,14 @@ export const BottomModal = ({ active, setActive, title, children, style }: IBott
     event.stopPropagation()
   }
 
+  const modalContent = clsx({
+    [styles.modalContent]: true,
+    [styles.modalSpecial]: isFork,
+  })
+
   return ReactDOM.createPortal(
     <div className={modalClass} onClick={handleModalOutClick} style={style}>
-      <div className={styles.modalContent} onClick={handleModalContentClick}>
+      <div className={modalContent} onClick={handleModalContentClick}>
         <button type='button' className={styles.close} onClick={setActive} />
         <h4 className={styles.title}>{title}</h4>
         {children}
