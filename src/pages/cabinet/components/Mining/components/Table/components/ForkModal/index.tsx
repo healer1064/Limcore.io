@@ -37,7 +37,8 @@ export const ForkModal: React.FC<ForkModalProps> = ({ onClickClose, fork, modalO
           <span>{fork?.suffix}</span>
         </div>
         <div className={styles.modal__greenCaption}>
-          <p>Баланс</p>${fork?.balance}
+          <p>Баланс</p>
+          {fork?.balance}
         </div>
         <div className={styles.modal__greenCaption} style={{ margin: purseConnect ? '0 0 16px 0' : '0 0 42px 0' }}>
           <p>Стоимость</p>${fork?.cost}
