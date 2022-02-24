@@ -1,0 +1,94 @@
+@import '../../../../../../../../scss/vars.scss';
+@import '../../../../../../../../scss/typography.scss';
+
+.infoTable {
+  &__list {
+    list-style-type: none;
+    padding: 0;
+
+    &__item {
+      display: flex;
+      height: 58px;
+      align-items: center;
+      padding: 0 60px;
+    }
+
+    &__hard__disk {
+      width: 35%;
+      display: flex;
+      align-items: center;
+
+      &__name {
+        margin: 0;
+        @include font-style-ibmPlexSans(16px, 500, 22px, $color-E1-white);
+        padding-right: 6px;
+      }
+
+      &__btn {
+        border: none;
+        background: none;
+        border: none;
+        margin-top: 5px;
+      }
+
+    }
+
+    &__size {
+      width: 35%;
+      display: flex;
+      align-items: center;
+
+      &__title {
+        @include font-style-ibmPlexSans(16px, 400, 22px, $color-E1-white);
+        margin: 0;
+        padding-right: 10px;
+      }
+
+      &__line {
+        width: 70%;
+        background: $color-DB-green;
+        border-radius: 6px;
+        height: 6px;
+        &__bar {
+          background: $color-00-green;
+          border-radius: 6px;
+          height: 6px;
+        }
+
+      }
+    }
+
+    &__quantity {
+      width: 15%;
+      @include font-style-ibmPlexSans(16px, 400, 22px, $color-E1-white);
+      text-align: end;
+    }
+
+    &__temperature {
+      width: 15%;
+      display: flex;
+      justify-content: center;
+
+      &__content {
+        background: $color-45-green;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        width: 79px;
+        padding: 3px;
+        justify-content: center;
+
+        &__ellipse {
+          width: 19px;
+          height: 19px;
+          background: #1C3234;
+        }
+
+        &__text {
+          @include font-style-ibmPlexSans(16px, 400, 22px, $color-E1-white);
+          margin: 0 0 0 3px;
+        }
+      }
+    }
+  }
+}

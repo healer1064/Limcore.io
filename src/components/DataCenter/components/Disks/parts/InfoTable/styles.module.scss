@@ -1,0 +1,211 @@
+@import '../../../../../../scss/vars.scss';
+@import '../../../../../../scss/typography.scss';
+
+.infoTable {
+
+  &__load__line {
+    background: $color-58-grey;
+    border-radius: 12px;
+    height: 12px;
+    margin: 0 60px;
+
+    &__bar{
+      background: $color-26-aquamarine;
+      border-radius: 12px;
+      height: 12px;
+    }
+  }
+
+  &__info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+  }
+
+  &__group{
+    display: flex;
+    align-items: center;
+
+    &__text{
+      @include font-style-ibmPlexSans(12px, 600, 22px, $color-E1-white);
+      position: relative;
+      padding-right: 17px;
+
+      &::before {
+        position: absolute;
+        top: 9px;
+        right: 6px;
+        width: 5px;
+        height: 5px;
+        content: '';
+        background-color: $color-58-grey;
+        border-radius: 50%;
+      }
+    }
+
+    &__logo{
+      @include font-style-ibmPlexSans(12px, 600, 22px, $primary-color);
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__actual__date{
+    @include font-style-ibmPlexSans(12px, 400, 21px, $color-E1-white);
+  }
+
+  &__navigations {
+    display: flex;
+    padding: 38px 60px 0;
+
+    &__text{
+      @include font-style-ibmPlexSans(14px, 500, 25px, $color-84-green);
+    }
+
+    &__hard__disk{
+      width: 35%;
+    }
+
+    &__size{
+      width: 35%;
+
+      &__arrow {
+        padding-left: 7px;
+      }
+    }
+
+    &__quantity{
+      width: 15%;
+      text-align: end;
+    }
+
+    &__temperature {
+      width: 15%;
+      text-align: center;
+    }
+  }
+
+  &__list {
+    list-style-type: none;
+    padding: 0;
+
+    &__item {
+      display: flex;
+      height: 58px;
+      align-items: center;
+    }
+
+    &__hard__disk {
+      width: 35%;
+      display: flex;
+
+      &__name {
+        margin: 0;
+        @include font-style-ibmPlexSans(16px, 500, 22px, $color-E1-white);
+        padding-right: 6px;
+      }
+
+      &__btn {
+        border: none;
+        background: url(../../../../../../assets/images/DataCenter/dataCenterBtn.svg) no-repeat;
+        background-size: contain;
+        margin-top: 5px;
+      }
+
+    }
+
+    &__size {
+      width: 35%;
+      display: flex;
+      align-items: center;
+
+      &__title {
+        @include font-style-ibmPlexSans(16px, 400, 22px, $color-E1-white);
+        margin: 0;
+        padding-right: 10px;
+      }
+
+      &__line {
+        width: 70%;
+        background: $color-DB-green;
+        border-radius: 6px;
+        height: 6px;
+        &__bar {
+          background: $color-00-green;
+          border-radius: 6px;
+          height: 6px;
+        }
+
+      }
+    }
+
+    &__quantity {
+      width: 15%;
+      @include font-style-ibmPlexSans(16px, 400, 22px, $color-E1-white);
+      text-align: end;
+    }
+
+    &__temperature {
+      width: 15%;
+      display: flex;
+      justify-content: center;
+
+      &__content {
+        background: #294548;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        width: 79px;
+        padding: 3px;
+        justify-content: center;
+
+        &__ellipse {
+          width: 19px;
+          height: 19px;
+          background: #1C3234;
+        }
+
+        &__text {
+          @include font-style-ibmPlexSans(16px, 400, 22px, $color-E1-white);
+          margin: 0 0 0 3px;
+        }
+      }
+    }
+  }
+
+  &__loadMore__group{
+    padding: 50px 0 60px;
+    width: 383px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+
+    &__info{
+      @include font-style-ibmPlexSans(16px, 500, 22px, $color-E1-white);
+    }
+
+    &__line{
+      background: $color-4D-green;
+      border-radius: 1px;
+      height: 3px;
+      width: 221px;
+      margin: 10px 0 24px;
+
+      &__bar{
+        background: $color-26-aquamarine;
+        border-radius: 1px;
+        height: 3px;
+      }
+    }
+
+    &__btn {
+      @include font-style-ibmPlexSans(18px, 600, 22px, $color-E1-white);
+      border: 2px solid $color-FC-yellow;
+      border-radius: 80px;
+      background: $color-19-dark;
+      padding: 14px 78px;
+    }
+  }
+}
