@@ -52,7 +52,7 @@ export const RatingPopOver = () => {
             </div>
           </li>
         </ul>
-        <div className={styles.description}>Ваш рейтинг в чате зависит от количества купленных терабайт</div>
+        <div className={styles.description}>Ваш рейтинг зависит от количества купленных терабайт</div>
       </PopOver>
     </div>
   )
