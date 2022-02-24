@@ -118,7 +118,7 @@
     margin: 0 0 10px 0;
 
     > a {
-      flex: 0 1 90%;
+      flex: 0 1 fit-content;
       margin: 0 12px 0 0;
       color: white;
       text-decoration: none;
@@ -141,8 +141,8 @@
   @media all and (max-width: 768px) {
     > div > a {
       max-width: 90%;
-      font-size: 14px;
       overflow-x: auto;
+      font-size: 14px;
     }
 
     > p:last-of-type {
