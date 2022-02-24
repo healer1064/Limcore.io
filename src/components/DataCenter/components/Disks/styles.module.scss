@@ -1,2 +1,12 @@
 @import '../../../../scss/typography.scss';
 @import '../../../../scss/vars.scss';
+
+.disks__wrapper {
+  padding: 60px;
+}
+
+@media (max-width: 971px) {
+  .disks__wrapper {
+    padding: 20px;
+  }
+}

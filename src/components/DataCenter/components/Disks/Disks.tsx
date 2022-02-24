@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { DisksSwiper } from './parts/DisksSwiper/DisksSwiper'
 import { DiskChart } from './parts/DiskChart/DiskChart'
+import { InfoTable } from '@components/DataCenter/components/Disks/parts/InfoTable'
+import { InfoTableMobile } from '@components/DataCenter/components/Disks/parts/InfoTable/InfoTableMobile'
+import styles from './styles.module.scss'
 
 const mock = [
   {
@@ -110,23 +113,27 @@ export const Disks: React.FC<IDisks> = ({ desktop }) => {
     <>
       {desktop ? (
         <>
-          <DisksSwiper data={mock} onClick={setActiveTab} activeTab={activeTab} />
-          <DiskChart
-            disk={mock.find((item) => {
-              return item.id === activeTab
-            })}
-          />
-          <div>DESKTOP_TABLE</div>
+          <div className={styles.disks__wrapper}>
+            <DisksSwiper data={mock} onClick={setActiveTab} activeTab={activeTab} />
+            <DiskChart
+              disk={mock.find((item) => {
+                return item.id === activeTab
+              })}
+            />
+          </div>
+          <InfoTable />
         </>
       ) : (
         <>
-          <DisksSwiper data={mock} onClick={setActiveTab} activeTab={activeTab} />
-          <DiskChart
-            disk={mock.find((item) => {
-              return item.id === activeTab
-            })}
-          />
-          <div>MOBILE_TABLE</div>
+          <div className={styles.disks__wrapper}>
+            <DisksSwiper data={mock} onClick={setActiveTab} activeTab={activeTab} />
+            <DiskChart
+              disk={mock.find((item) => {
+                return item.id === activeTab
+              })}
+            />
+          </div>
+          <InfoTableMobile />
         </>
       )}
     </>
