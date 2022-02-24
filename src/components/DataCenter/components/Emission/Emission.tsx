@@ -16,11 +16,11 @@ export interface IEmission {
 export const Emission: React.FC<IEmission> = ({ desktop }) => {
   return (
     <>
-      <h3 className={styles.title}>
-        Намайнено <span className={styles.title_blue}>всего</span>
-      </h3>
       {desktop ? (
-        <>
+        <div className={styles.emissionContainer}>
+          <h3 className={styles.title}>
+            Намайнено <span className={styles.title_blue}>всего</span>
+          </h3>
           <ForksTableChart />
           <div className={styles.owners_container} />
           <div className={styles.table}>
@@ -34,9 +34,12 @@ export const Emission: React.FC<IEmission> = ({ desktop }) => {
               <WalletsTable data={data.data} />
             </div>
           </div>
-        </>
+        </div>
       ) : (
         <>
+          <h3 className={styles.title}>
+            Намайнено <span className={styles.title_blue}>всего</span>
+          </h3>
           <ForksTableChartMobile />
           <div className={styles.table__mobile_header}>
             <p className={styles.table__mobile_wallets_number}>Всего кошельков: {data.owners}</p>

@@ -4,8 +4,7 @@
 .owners_container {
   display: flex;
   align-items: center;
-  margin-bottom: 47px;
-
+  margin: 60px 0 47px 70px;
   .text_wrapper {
     margin-left: 30px;
   }
@@ -26,6 +25,7 @@
 
 .table {
   font-family: $font-ibmPlexSans;
+  padding: 0 70px 70px;
 
   &__header {
     display: flex;

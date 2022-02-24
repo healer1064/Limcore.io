@@ -1,6 +1,10 @@
 @import '../../../../scss/typography.scss';
 @import '../../../../scss/_vars.scss';
 
+.emissionContainer {
+  padding: 70px 60px;
+}
+
 .title {
   @include font-style-pressStart(22px, normal, 140%, $color-F5-white);
   margin: 0 0 25px 0;
