@@ -1,10 +1,10 @@
 import { ExternalLink } from '@components/ExternalLink'
-import { ReactComponent as SearchIcon } from '@icons/searchGlass.svg'
 import React from 'react'
 import { OwnersCounter } from './parts/OwnersCounter'
 import { OwnersTable } from './parts/OwnersTable'
 import styles from './styles.module.scss'
 import { MobileOwners } from './parts/MobileOwners'
+import { Search } from '../Search/Search'
 
 const data = {
   owners: 400,
@@ -262,11 +262,7 @@ export const Owners: React.FC<IOwners> = ({ desktop }) => {
           <p className={styles.table__wallets_number}>Всего кошельков: {data.owners}</p>
           <div className={styles.dot} />
           <ExternalLink link='*' text='BscScan' />
-          {/* TODO make a search component */}
-          <button type='button' className={styles.search_button}>
-            <SearchIcon />
-          </button>
-          {/* TODO make a search component */}
+          <Search />
         </div>
         <div className={styles.table__container}>
           <OwnersTable data={data.data} />

@@ -1,0 +1,50 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/_vars.scss';
+
+.search_button {
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  right: 0;
+  align-items: center;
+  padding: 9px 14px;
+  border-radius: 20px;
+  border: none;
+  background-color: $color-45-green;
+  &:hover {
+    path {
+      fill: $color-DF-aquamarine;
+    }
+  }
+  &.active {
+    background-color: $color-FC-yellow;
+    path {
+      fill: $color-13-black;
+    }
+  }
+}
+
+.searchWrapper {
+  position: relative;
+  margin: 0 0 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  width: 60%;
+}
+
+.searchInput {
+  @include font-style-ibmPlexSans(14px, normal, 22px, $color-E1-white);
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background-color: $color-45-green;
+  padding: 6px 15px;
+  width: 0%;
+  // opacity: 0;
+  transition: width linear .2s;
+  margin: 0 10px 0 0;
+  &.active {
+    width: 100%;
+    // opacity: 1;
+  }
+}

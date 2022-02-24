@@ -1,0 +1,62 @@
+@import '../../../../../../../../scss/typography.scss';
+@import '../../../../../../../../scss/_vars.scss';
+
+.row {
+  cursor: pointer;
+}
+
+.row:hover .cell {
+  background-color: $color-45-green;
+  & > .icon_wrapper > svg circle {
+    fill: $color-DF-aquamarine;
+  }
+}
+
+.icon_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text_wrapper {
+  display: flex;
+  align-items: center;
+  padding-left: 44px;
+  padding-top: 24px;
+}
+
+.fork_text {
+  display: flex;
+  align-items: center;
+  @include font-style-ibmPlexSans(14px, normal, 140%, $primary-color);
+}
+
+.info_icon {
+  margin-left: 4px;
+  cursor: touch;
+}
+
+.dot_icon {
+  margin: 0 4px;
+  height: 5px;
+  width: 5px;
+  background-color: $color-58-grey;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.fork_element {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  padding: 24px 15px 36px 15px;
+}
+.element {
+  padding: 18px 29px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 33%;
+}

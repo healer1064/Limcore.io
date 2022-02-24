@@ -1,0 +1,17 @@
+@import '../../../../../../../../scss/typography.scss';
+@import '../../../../../../../../scss/_vars.scss';
+
+.icon_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.icon_info {
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+.text {
+  @include font-style-ibmPlexSans(14px, normal, 120%, $color-FO-white);
+  padding: 10px 0;
+}

@@ -45,34 +45,38 @@ export const Modal = ({
   const desktopClass = isDesktop && styles.desktopModal
 
   const [scrollPosition, setScrollPosition] = useState(0)
+  const [renderCount, setRenderCount] = useState(0)
 
   useEffect(() => {
-    setScrollPosition(window.pageYOffset)
-    const documentWidth = document.documentElement.clientWidth
-    const windowWidth = window.innerWidth
-    const scrollBarWidth = windowWidth - documentWidth
-    bodyEl.current.style.paddingRight = scrollBarWidth.toString()
-
-    if (active) {
+    if (renderCount > 0) {
       setScrollPosition(window.pageYOffset)
-      bodyEl.current.style.top = `-${window.pageYOffset}px`
-      bodyEl.current.style.overflow = 'hidden'
-      bodyEl.current.style.position = 'fixed'
-      htmlEl.current.style.height = '100vh'
-    } else {
-      bodyEl.current.style.removeProperty('overflow')
-      bodyEl.current.style.removeProperty('position')
-      bodyEl.current.style.removeProperty('top')
-      htmlEl.current.style.removeProperty('height')
-      window.scrollTo(0, scrollPosition)
-    }
+      const documentWidth = document.documentElement.clientWidth
+      const windowWidth = window.innerWidth
+      const scrollBarWidth = windowWidth - documentWidth
+      bodyEl.current.style.paddingRight = scrollBarWidth.toString()
 
-    return () => {
-      bodyEl.current.style.removeProperty('overflow')
-      bodyEl.current.style.removeProperty('position')
-      bodyEl.current.style.removeProperty('top')
-      htmlEl.current.style.removeProperty('height')
+      if (active) {
+        setScrollPosition(window.pageYOffset)
+        bodyEl.current.style.top = `-${window.pageYOffset}px`
+        bodyEl.current.style.overflow = 'hidden'
+        bodyEl.current.style.position = 'fixed'
+        htmlEl.current.style.height = '100vh'
+      } else {
+        bodyEl.current.style.removeProperty('overflow')
+        bodyEl.current.style.removeProperty('position')
+        bodyEl.current.style.removeProperty('top')
+        htmlEl.current.style.removeProperty('height')
+        window.scrollTo(0, scrollPosition)
+      }
+
+      return () => {
+        bodyEl.current.style.removeProperty('overflow')
+        bodyEl.current.style.removeProperty('position')
+        bodyEl.current.style.removeProperty('top')
+        htmlEl.current.style.removeProperty('height')
+      }
     }
+    setRenderCount((prev) => prev + 1)
   }, [active])
 
   const handleModalOutClick = () => setActive(false)

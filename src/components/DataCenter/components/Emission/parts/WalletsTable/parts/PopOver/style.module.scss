@@ -1,0 +1,13 @@
+@import '../../../../../../../../scss/typography.scss';
+@import '../../../../../../../../scss/_vars.scss';
+
+.popover {
+  @include font-style-ibmPlexSans(14px, 500, 140%, $color-E1-white);
+  position: absolute;
+  padding: 30px 20px;
+  // left: 8%;
+  // top: 5%;
+  background-color: $color-1F-dark;
+  border-radius: 20px;
+  z-index: 10000;
+}
