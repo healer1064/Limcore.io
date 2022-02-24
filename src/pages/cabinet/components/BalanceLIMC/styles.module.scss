@@ -107,26 +107,34 @@ $green-dep: rgba(79, 132, 138, 1);
 .popup {
   position: absolute;
   top: calc(100% + 10px);
+  right: 0;
   z-index: -1;
-  
-  padding: 20px;
   min-width: 273px;
+  padding: 20px;
+  background-color: #151f20;
   border-radius: 20px;
-  
-  box-shadow: 0px 0px 7px 0px #65BBCB;
-  background-color: #151F20;
+  box-shadow: 0 0 7px 0 #65bbcb;
   opacity: 0;
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
+
+  @media all and (max-width: 1000px) {
+    right: -80px;
+  }
 }
 
 .popup__active {
-  opacity: 1;
   z-index: 1;
+  opacity: 1;
   transition: opacity .3s ease;
 }
 
 .popup_subtitle {
-  margin: 0;
   @include font-style-ibmPlexSans(14px, 400, 21px, $color-F5-white);
+  margin: 0;
   text-align: center;
+}
+
+.bottomPopup__text {
+  margin: 0;
+  color: white;
 }

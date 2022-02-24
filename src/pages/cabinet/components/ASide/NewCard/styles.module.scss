@@ -48,8 +48,12 @@
 }
 
 .modal__title {
-  margin: 0;
   @include font-style-ibmPlexSans(18px, 500, 22px, $color-E1-white);
+  margin: 42px 0 0 42px;
+
+  @media all and (max-width: 768px) {
+    margin: 21px 0 0 20px;
+  }
 }
 
 .modal__inner {
@@ -60,8 +64,15 @@
 }
 
 .modal__text {
-  margin: 0;
   max-width: 310px;
+  margin: 0;
   @include font-style-ibmPlexSans(16px, 500, 24px, $color-E1-white);
   text-align: center;
+}
+
+.modalClass button[type='button'] {
+  @media all and (max-width: 768px) {
+    top: 16px;
+    right: 12px;
+  }
 }
