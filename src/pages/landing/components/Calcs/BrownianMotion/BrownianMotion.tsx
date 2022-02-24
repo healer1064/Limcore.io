@@ -1,3 +1,4 @@
+import { useAppSelector } from '@app/redux/hooks'
 import React, { useState, useEffect, useRef } from 'react'
 import styles from './styles.module.scss'
 
@@ -12,6 +13,8 @@ interface IBrownianMotion {
 export const BrownianMotion = ({ interval, children, distance, step, name }: IBrownianMotion) => {
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 })
   const [showTooltip, setShowTooltip] = useState(false)
+
+  const forksPrice = useAppSelector((state) => state.wallet.forks)
 
   const { x, y } = coordinates
   const intervalId = useRef(null)
@@ -80,12 +83,124 @@ export const BrownianMotion = ({ interval, children, distance, step, name }: IBr
         <div className={styles.tooltip}>
           {name === 'Chia' && (
             <>
-              <span>01 XCH</span>
-              <span>$0.001</span>
+              <span>XCH</span>
+              <span>${forksPrice.chia}</span>
             </>
           )}
-          <span>01 XCH</span>
-          <span>$0.001</span>
+          {name === 'Flax' && (
+            <>
+              <span>XFX</span>
+              <span>${forksPrice.flax}</span>
+            </>
+          )}
+          {name === 'N-Chain' && (
+            <>
+              <span>NCH</span>
+              <span>${forksPrice.nchain}</span>
+            </>
+          )}
+          {name === 'Socks' && (
+            <>
+              <span>SOCK</span>
+              <span>${forksPrice.socks}</span>
+            </>
+          )}
+          {name === 'Kale' && (
+            <>
+              <span>XKA</span>
+              <span>${forksPrice.kale}</span>
+            </>
+          )}
+          {name === 'Taco' && (
+            <>
+              <span>XTX</span>
+              <span>${forksPrice.taco}</span>
+            </>
+          )}
+          {name === 'Stai' && (
+            <>
+              <span>STAI</span>
+              <span>${forksPrice.stai}</span>
+            </>
+          )}
+          {name === 'Apple' && (
+            <>
+              <span>APPLE</span>
+              <span>${forksPrice.apple}</span>
+            </>
+          )}
+          {name === 'Goji' && (
+            <>
+              <span>XGJ</span>
+              <span>${forksPrice.goji}</span>
+            </>
+          )}
+          {name === 'Silicoin' && (
+            <>
+              <span>SIT</span>
+              <span>${forksPrice.silicoin}</span>
+            </>
+          )}
+          {name === 'Chaingreen' && (
+            <>
+              <span>CGN</span>
+              <span>${forksPrice.chaingreen}</span>
+            </>
+          )}
+          {name === 'Maize' && (
+            <>
+              <span>XMZ</span>
+              <span>${forksPrice.maize}</span>
+            </>
+          )}
+          {name === 'Seno' && (
+            <>
+              <span>XSE</span>
+              <span>${forksPrice.seno}</span>
+            </>
+          )}
+          {name === 'Covid' && (
+            <>
+              <span>COV</span>
+              <span>${forksPrice.covid}</span>
+            </>
+          )}
+          {name === 'Cactus' && (
+            <>
+              <span>CAC</span>
+              <span>${forksPrice.cactus}</span>
+            </>
+          )}
+          {name === 'HDDCoin' && (
+            <>
+              <span>SIT</span>
+              <span>${forksPrice.hddcoin}</span>
+            </>
+          )}
+          {name === 'Flora' && (
+            <>
+              <span>XFL</span>
+              <span>${forksPrice.flora}</span>
+            </>
+          )}
+          {name === 'GreenDoge' && (
+            <>
+              <span>GDOG</span>
+              <span>${forksPrice.greendoge}</span>
+            </>
+          )}
+          {name === 'TAD' && (
+            <>
+              <span>TAD</span>
+              <span>${forksPrice.tad}</span>
+            </>
+          )}
+          {name === 'Avocado' && (
+            <>
+              <span>AVO</span>
+              <span>${forksPrice.avocado}</span>
+            </>
+          )}
         </div>
       )}
       {children}
