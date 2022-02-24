@@ -1,2 +1,101 @@
 @import '../../../../scss/typography.scss';
 @import '../../../../scss/_vars.scss';
+
+.title {
+  @include font-style-pressStart(22px, normal, 140%, $color-F5-white);
+  margin: 0 0 25px 0;
+  &_blue {
+    color: $color-DF-aquamarine;
+  }
+}
+
+.owners_container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 47px;
+
+  .text_wrapper {
+    margin-left: 30px;
+  }
+
+  .owners_heading {
+    @include font-style-pressStart(22px, normal, 140%, $color-F5-white);
+    margin: 0;
+    font-style: normal;
+  }
+
+  .owners_description {
+    margin: 0;
+    color: $color-E1-white;
+    font-family: $font-ibmPlexSans;
+    @include p1();
+  }
+}
+
+.table {
+  font-family: $font-ibmPlexSans;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  &__wallets_number {
+    @include p2();
+    margin: 0;
+    margin-right: 6px;
+    font-weight: $fontWeightSemiBold;
+    color: $color-E1-white;
+  }
+
+  .dot {
+    margin-right: 6px;
+    height: 5px;
+    width: 5px;
+    background-color: $color-58-grey;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .table__container {
+    padding-top: 30px;
+    border-top: 2px solid $color-22-dark;
+  }
+}
+.table__mobile_header {
+  display: flex;
+  padding-bottom: 7px;
+  align-items: center;
+  border-bottom: 2px solid $color-22-dark;
+}
+
+.table__mobile_wallets_number {
+  @include p3();
+  margin: 0;
+  margin-right: 6px;
+  font-weight: $fontWeightSemiBold;
+  color: $color-E1-white;
+  @media (max-width: 374px) {
+    @include p4();
+  }
+}
+
+.dot {
+  margin-right: 6px;
+  height: 5px;
+  width: 5px;
+  background-color: $color-58-grey;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.mobile_search_button {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding: 11px 16px;
+  border-radius: 20px;
+  border: none;
+  background-color: $color-45-green;
+}

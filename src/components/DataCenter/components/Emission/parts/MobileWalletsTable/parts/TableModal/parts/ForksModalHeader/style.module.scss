@@ -1,0 +1,66 @@
+@import '../../../../../../../../../../scss/typography.scss';
+@import '../../../../../../../../../../scss/_vars.scss';
+
+.inputWrapper {
+  width: 100%;
+  background-color: $color-FF-yellow;
+  padding: 10px 15px;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  width: 90%;
+  @include font-style-ibmPlexSans(13px, 500, 140%, $color-2B-black);
+}
+
+.cross_icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translate(0, -50%);
+  min-height: 22px;
+  min-width: 22px;
+  height: 22px;
+  width: 22px;
+  margin-left: auto;
+}
+
+.mobile_search_button {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding: 11px 16px;
+  border-radius: 20px;
+  border: none;
+  background-color: $color-45-green;
+}
+.calendarBtn {
+  @include font-style-ibmPlexSans(13px, normal, 121%, $color-E1-white);
+  width: max-content;
+  background-color: $color-45-green;
+  border-radius: 20px;
+  border: none;
+  padding: 11px 10px;
+  &.active {
+    color: $color-DF-aquamarine;
+    .arrow {
+      transform: rotate(180deg);
+    }
+    path {
+      stroke: $color-DF-aquamarine;
+    }
+  }
+  span {
+    display: flex;
+    align-items: center;
+    svg:not(:last-child) {
+      margin: 0 5px 0 0;
+    }
+  }
+}

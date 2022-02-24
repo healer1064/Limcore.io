@@ -31,10 +31,19 @@
         color: $color-E1-white;
       };
       .tooltip {
+        position: relative;
         border: none;
         outline: none;
         background-color: transparent;
         margin: 0 0 0 8px;
+      }
+      .popOverTitle {
+        @include font-style-ibmPlexSans(16px, 600, 22px, $color-E1-white);
+        margin: 0 0 10px 0;
+      }
+      .popOverText {
+        @include font-style-ibmPlexSans(16px, normal, 22px, $color-E1-white);
+        margin: 0;
       }
     }
     &__circle {

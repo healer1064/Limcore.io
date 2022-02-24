@@ -5,6 +5,7 @@ const StyledCell = withStyles(() => ({
   root: {
     fontFamily: ['IbmPlexSans', 'Arial'].join(','),
     border: 'none',
+    padding: '10px 7px',
   },
   head: {
     fontSize: 14,

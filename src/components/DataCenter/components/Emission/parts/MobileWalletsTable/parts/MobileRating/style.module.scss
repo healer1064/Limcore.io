@@ -1,0 +1,13 @@
+@import '../../../../../../../../scss/typography.scss';
+@import '../../../../../../../../scss/_vars.scss';
+
+.rating_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rating_icon {
+  height: 26px;
+  width: 26px;
+}

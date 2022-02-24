@@ -1,0 +1,27 @@
+@import '../../../../../../../../scss/typography.scss';
+@import '../../../../../../../../scss/_vars.scss';
+
+.chart {
+  position: relative;
+  border: 2px solid $color-64-aquamarine;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: $color-64-aquamarine;
+
+  &:before,
+  &:after {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &:before {
+    border-radius: 50%;
+    background: $color-34-green;
+    width: 10px;
+    height: 10px;
+    content: '';
+  }
+}
