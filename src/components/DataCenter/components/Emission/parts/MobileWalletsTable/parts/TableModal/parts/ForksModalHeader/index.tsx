@@ -34,7 +34,7 @@ export const ForksModalHeader: React.FC<IModalHeader> = ({ width, address }) => 
   return !width ? (
     <Spinner />
   ) : (
-    <Swiper spaceBetween={0} slidesPerView='auto' width={width}>
+    <Swiper spaceBetween={0} slidesPerView='auto' width={width} className={styles.swiper}>
       <SwiperSlide className={styles.search_slide}>
         <button type='button' className={styles.mobile_search_button}>
           <SearchIcon />

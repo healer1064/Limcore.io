@@ -34,7 +34,7 @@ export const TableModal: React.FC<ITableModal> = ({ address, days, rating, token
             Смотреть все покупки кошелька
           </div>
           <div className={styles.description}>
-            <a className={styles.link} href='*' target='_blank' rel='noreferrer'>
+            <a className={styles.link} href='https://bscscan.com' target='_blank' rel='noreferrer'>
               <ArrowUpRight className={styles.description__icon} />
               Перейти в кошелек на BscScan
             </a>

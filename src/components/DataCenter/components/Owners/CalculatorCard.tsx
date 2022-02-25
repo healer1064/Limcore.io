@@ -261,7 +261,7 @@ export const Owners: React.FC<IOwners> = ({ desktop }) => {
         <div className={styles.table__header}>
           <p className={styles.table__wallets_number}>Всего кошельков: {data.owners}</p>
           <div className={styles.dot} />
-          <ExternalLink link='*' text='BscScan' />
+          <ExternalLink link='https://bscscan.com' text='BscScan' />
           <Search />
         </div>
         <div className={styles.table__container}>

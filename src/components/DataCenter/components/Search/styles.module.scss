@@ -24,6 +24,37 @@
   }
 }
 
+.close_button {
+
+  position: absolute;
+  display: flex;
+  bottom: 50%;
+  right: 0;
+  transform: translate(-50%, 50%);
+  align-items: center;
+  border-radius: 20px;
+  border: none;
+  background-color: $color-45-green;
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+  path {
+    color: $color-A4-grey;
+  }
+  &:hover {
+    path {
+      fill: $color-DF-aquamarine;
+    }
+  }
+  &.active {
+    background-color: $color-FC-yellow;
+    path {
+      fill: $color-13-black;
+    }
+  }
+}
+
 .searchWrapper {
   position: relative;
   margin: 0 0 0 auto;
@@ -47,4 +78,15 @@
     width: 100%;
     // opacity: 1;
   }
+  &.inSearch {
+    width: 50%;
+  }
+}
+
+.inputButton {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 50px;
 }
