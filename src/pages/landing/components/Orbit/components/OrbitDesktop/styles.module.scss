@@ -1,66 +1,110 @@
-.container {
-  position: relative;
-
-  max-width: 1254px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.list {
-  z-index: 1;
-
+.main_container {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 70px;
-  height: 200px;
-  border-radius: 50%;
-
-  transform: rotate(-2.46deg);
-  background: linear-gradient(268.27deg, #192A2C 2.77%, #101717 75.26%);
-  list-style-type: none;
+  position: relative;
+  height: 400px;
+  overflow: hidden;
 }
 
-.item {
-  &:not(:last-child) {
-    margin-right: 70px;
+.system {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotateX(80deg) rotateY(9.46deg);
+  @media (max-width: 1150px) {
+    transform: rotateX(70deg) rotateY(9.46deg);
   }
 }
 
-.circle {
-  z-index: 0;
-
+.sun,
+.orbit,
+.planet {
   position: absolute;
-  top: 0;
-
-  width: 100%;
-  height: 200px;
-  border: 1px solid #C5EAF1;
-  border-radius: 50%;
-
-  box-shadow: 0px 0px 20px #65BBCB;
-  transform: matrix(-0.99, -0.12, -0.12, 0.99, 0, 0);
-}
-
-.circle__border {
-  position: relative;
-
-  width: 100%;
-  height: 100%;
-  border: 1px solid transparent;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
   border-radius: 50%;
 }
 
-.circle__item {
+.sun,
+.planet {
+  width: 2em;
+  height: 2em;
+  margin-top: -1em;
+  margin-left: -1em;
+}
+
+.sun {
+  font-size: 41em;
+  background: linear-gradient(275.2deg, #192a2c 2.77%, #101717 75.26%);
+  transform: rotateX(-160deg) rotateZ(-8.46deg) rotateY(12.46deg);
+  @media (max-width: 1366px) {
+    font-size: 33em;
+  }
+  @media (max-width: 1150px) {
+    font-size: 25em;
+    transform: rotateX(-140deg) rotateZ(-8.46deg) rotateY(12.46deg);
+  }
+}
+
+.orbit {
+  width: 84em;
+  height: 84em;
+  margin-top: -42em;
+  margin-left: -42em;
+  border: 0.5px solid #b3f4ff;
+  box-shadow: 0px 0px 15px #65bbcb, 0 0 15px #65bbcb inset;
+  animation: animOrbit 12s linear infinite;
+  @media (max-width: 1366px) {
+    width: 70em;
+    height: 70em;
+    margin-top: -35em;
+    margin-left: -35em;
+  }
+  @media (max-width: 1150px) {
+    width: 54em;
+    height: 54em;
+    margin-top: -27em;
+    margin-left: -27em;
+  }
+}
+
+.planet {
+  height: 16px;
+  width: 16px;
+  background-color: #fffad1;
+  box-shadow: 0 0 30px 7px #fcff00;
+  left: 100%;
+  animation: animPlanet 12s linear infinite;
+}
+
+@keyframes animOrbit {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(-360deg);
+  }
+}
+
+@keyframes animPlanet {
+  0% {
+    transform: rotateX(-90deg) rotateY(360deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
+  }
+}
+
+.logo_wrapper {
   position: absolute;
-  top: 0;
-  left: 0;
-
-  display: block;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-
-  background: #FFFAD1;
-  filter:  drop-shadow(0px 0px 5px #FCFF00);
+  display: flex;
+  align-items: center;
+  .icon {
+    &:not(:last-child) {
+      margin-right: 70px;
+    }
+  }
 }
