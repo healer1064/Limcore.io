@@ -8,6 +8,9 @@
   @media (min-width: 663px) {
     height: 300px;
   }
+  @media (min-width: 809px) {
+    height: 400px;
+  }
 }
 
 .system {
@@ -16,6 +19,9 @@
   height: 100%;
   transform-style: preserve-3d;
   transform: rotateX(65deg) rotateY(18.46deg);
+  @media (min-width: 360px) {
+    transform: rotateX(80deg) rotateY(18.46deg);
+  }
 }
 
 .sun,
@@ -37,11 +43,18 @@
 }
 
 .sun {
-  font-size: 10em;
+  font-size: 9em;
   background: linear-gradient(275.2deg, #192a2c 2.77%, #101717 75.26%);
-  transform: rotateX(-120deg) rotateZ(-12.46deg) rotateY(18.46deg);
+  transform: rotateX(-130deg) rotateZ(-12.46deg) rotateY(18.46deg);
+  @media (min-width: 360px) {
+    font-size: 8em;
+  }
   @media (min-width: 663px) {
     font-size: 12em;
+  }
+
+  @media (min-width: 809px) {
+    font-size: 19em;
   }
 }
 
@@ -53,21 +66,37 @@
   border: 0.5px solid #b3f4ff;
   box-shadow: 0px 0px 15px #65bbcb, 0 0 15px #65bbcb inset;
   animation: animOrbit 9s linear infinite;
+  @media (max-width: 360px) {
+    width: 20em;
+    height: 20em;
+    margin-top: -10em;
+    margin-left: -10em;
+  }
   @media (min-width: 663px) {
     width: 28em;
     height: 28em;
     margin-top: -14em;
     margin-left: -14em;
   }
+  @media (min-width: 809px) {
+    width: 42em;
+    height: 42em;
+    margin-top: -21em;
+    margin-left: -21em;
+  }
 }
 
 .planet {
-  height: 16px;
-  width: 16px;
+  top: 70%;
+  height: 9px;
+  width: 9px;
   background-color: #fffad1;
   box-shadow: 0 0 30px 7px #fcff00;
   left: 100%;
   animation: animPlanet 9s linear infinite;
+  @media (min-width: 809px) {
+    top: 65%;
+  }
 }
 
 @keyframes animOrbit {
@@ -95,12 +124,24 @@
   align-items: center;
   .icon:not(:last-child) {
     margin-right: 20px;
+    @media (min-width: 360px) {
+      margin-right: 10px;
+    }
+    @media (min-width: 809px) {
+      margin-right: 40px;
+    }
   }
   .logo_group {
     display: flex;
     align-items: center;
     &:not(:last-child) {
       margin-bottom: 10px;
+      @media (min-width: 360px) {
+        margin-bottom: 5px;
+      }
+      @media (min-width: 809px) {
+        margin-bottom: 25px;
+      }
     }
   }
 }
