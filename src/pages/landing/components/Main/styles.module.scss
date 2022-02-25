@@ -6,7 +6,7 @@
   justify-content: center;
   width: 100%;
   z-index: 100;
-  margin-bottom: 50px;
+  margin-bottom: 200px;
 }
 
 .wrapper {
@@ -19,5 +19,6 @@
 @media all and (max-width: 768px) {
   .main {
     padding-top: 20px;
+    margin-bottom: 100px;
   }
 }

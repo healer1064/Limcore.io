@@ -3,7 +3,7 @@
 
 .why {
   position: relative;
-  margin-bottom: 100px;
+  margin-bottom: 250px;
   color: white;
 }
 
@@ -48,7 +48,7 @@
 .description {
   position: relative;
   max-width: 393px;
-  margin: 0;
+  margin: 56px 0 0 0;
   margin-left: auto;
   font-family: $font-ibmPlexSans;
   font-size: 16px;
@@ -75,6 +75,10 @@
 }
 
 @media all and (max-width: 768px) {
+  .why {
+    margin-bottom: 100px;
+  }
+
   .container {
     padding: 0 20px;
   }

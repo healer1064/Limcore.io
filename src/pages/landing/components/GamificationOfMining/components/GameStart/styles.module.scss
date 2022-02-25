@@ -14,6 +14,16 @@
   }
 }
 
+.title {
+  margin: 0;
+  font-family: 'Press Start 2P', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16.0372px;
+  line-height: 135%;
+  color: #FCFE01;
+}
+
 .gameStart__twoMods {
   display: flex;
   justify-content: flex-start;
@@ -33,13 +43,13 @@
 
     &:first-of-type {
       width: min-content;
-      min-width: 200px;
-      margin-right: 25px;
+      min-width: 130px;
+      margin-right: 50px;
     }
 
     &:last-of-type {
       width: fit-content;
-      margin-left: 25px;
+      //margin-left: 25px;
 
       > p {
         min-width: 300px;
