@@ -46,7 +46,6 @@ export const Slider = () => {
           <p className={styles.news__card_date}>{arrNews[(index + 1) % arrNews.length].time}</p>
         </div>
       </div>
-
       <div className={styles.news__div}>
         <button className={styles.news__button} onClick={handleNextNews} />
         <button className={styles.news__button} onClick={handlePrevNews} />
