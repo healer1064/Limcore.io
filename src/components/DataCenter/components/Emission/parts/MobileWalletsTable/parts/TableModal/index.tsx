@@ -29,7 +29,7 @@ export const TableModal = ({ active, setActive, forkData, address }) => {
             Смотреть все форки кошелька
           </div>
           <div className={styles.description}>
-            <a className={styles.link} href='*' target='_blank' rel='noreferrer'>
+            <a className={styles.link} href='https://bscscan.com' target='_blank' rel='noreferrer'>
               <ArrowUpRight className={styles.description__icon} />
               Перейти в кошелек на BscScan
             </a>

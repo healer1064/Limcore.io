@@ -19,7 +19,7 @@ export const MobileOwners = ({ number, data }) => {
         <div className={styles.table__header}>
           <p className={styles.table__wallets_number}>Всего кошельков: {number}</p>
           <div className={styles.dot} />
-          <ExternalLink isMobile link='*' text='BscScan' />
+          <ExternalLink isMobile link='https://bscscan.com' text='BscScan' />
           {/* TODO make a search component */}
           <button type='button' className={styles.search_button}>
             <SearchIcon />

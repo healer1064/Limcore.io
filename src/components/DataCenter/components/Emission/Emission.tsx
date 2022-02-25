@@ -27,7 +27,7 @@ export const Emission: React.FC<IEmission> = ({ desktop }) => {
             <div className={styles.table__header}>
               <p className={styles.table__wallets_number}>Всего кошельков: {data.owners}</p>
               <div className={styles.dot} />
-              <ExternalLink link='*' text='BscScan' />
+              <ExternalLink link='https://bscscan.com' text='BscScan' />
               <Search />
             </div>
             <div className={styles.table__container}>
@@ -44,7 +44,7 @@ export const Emission: React.FC<IEmission> = ({ desktop }) => {
           <div className={styles.table__mobile_header}>
             <p className={styles.table__mobile_wallets_number}>Всего кошельков: {data.owners}</p>
             <div className={styles.dot} />
-            <ExternalLink isMobile link='*' text='BscScan' />
+            <ExternalLink isMobile link='https://bscscan.com' text='BscScan' />
             {/* TODO make a search component */}
             <button type='button' className={styles.mobile_search_button}>
               <SearchIcon />
