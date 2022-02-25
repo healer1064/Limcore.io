@@ -30,7 +30,7 @@
   padding-left: 20px;
   img {
     position: absolute;
-    top: 140px;
+    // top: 140px;
     left: -40px;
   }
 }
@@ -60,7 +60,8 @@
 
 @media all and (max-width: 768px) {
   .equipment {
-    height: 587px;
+    height: 700px;
+    margin-bottom: 100px;
   }
 
   .title {

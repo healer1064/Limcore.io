@@ -6,7 +6,7 @@
 
   > blockquote {
     max-width: 540px;
-    height: 250px;
+    height: 271px;
     padding: 40px 54px;
     margin: 0 0 0 40px;
     color: white;
@@ -21,4 +21,13 @@
 .launch {
   margin: 0 50px 0 0;
   color: rgba(252, 255, 0, 1) !important;
+}
+
+@media all and (max-width: 768px) {
+  .gameStart__blockquote {
+    & > blockquote {
+      margin: 0;
+      width: 100%;
+    }
+  }
 }
