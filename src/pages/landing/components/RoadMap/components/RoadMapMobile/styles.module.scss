@@ -56,7 +56,7 @@
 .item__circle_active {
   background: #fcff00;
   box-shadow: 0 0 14px rgba(252, 255, 0, 0.5);
-  animation: opacityAnim 1s infinite linear;
+  animation: opacityAnim 1.5s infinite linear;
 }
 
 .item__circle_disabled {
@@ -129,7 +129,7 @@
     background: #fcff00;
     border: none;
     box-shadow: 0 0 14px rgba(252, 255, 0, 0.5);
-    animation: opacityAnim 1s infinite linear;
+    animation: opacityAnim 1.5s infinite linear;
   }
 }
 

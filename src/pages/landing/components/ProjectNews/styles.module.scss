@@ -173,6 +173,7 @@
 }
 
 .news__card {
+  height: 100%;
   z-index: 1;
   grid-area: 1/1;
   max-width: 469px;
@@ -183,10 +184,10 @@
 }
 
 .animation {
+  height: 100%;
   z-index: 1;
   max-width: 469px;
   padding: 30px 40px;
-  margin-top: 18px;
   background: linear-gradient(154.3deg, #24fa93 16.25%, #62e5f7 59.03%, #24dffa 83.04%);
   border-radius: 40px;
   animation: animate 0.3s linear;
@@ -202,6 +203,9 @@
 }
 
 .news__link {
+  display: inline-block;
+  margin-bottom: 18px;
+
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 18px;
   font-style: normal;
@@ -230,6 +234,14 @@
   font-weight: normal;
   line-height: 145%;
   color: #2c2b2b;
+
+  overflow: hidden;
+  display: -webkit-box;
+  display: -moz-box;
+  -webkit-line-clamp: 7;
+  -moz-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
 }
 
 .news__button {
