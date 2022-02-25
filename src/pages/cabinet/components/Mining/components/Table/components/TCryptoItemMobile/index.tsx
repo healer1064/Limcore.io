@@ -9,11 +9,12 @@ import { OtherButton } from '../OtherButton'
 
 interface TCryptoItemMobileProps {
   onChange: () => unknown
+  onClickModalOpen: () => unknown
   checked: boolean
   coin: Coin
 }
 
-export const TCryptoItemMobile: React.FC<TCryptoItemMobileProps> = ({ onChange, checked, coin }) => {
+export const TCryptoItemMobile: React.FC<TCryptoItemMobileProps> = ({ onChange, onClickModalOpen, checked, coin }) => {
   return (
     <>
       <div className={styles.TCryptoItemMobile__head}>
@@ -27,7 +28,7 @@ export const TCryptoItemMobile: React.FC<TCryptoItemMobileProps> = ({ onChange, 
           </div>
         </div>
         <div>
-          <OtherButton />
+          <OtherButton onClick={onClickModalOpen} />
         </div>
       </div>
       <div className={styles.TCryptoItemMobile__flexStats} style={{ margin: '10px 0 0 0' }}>

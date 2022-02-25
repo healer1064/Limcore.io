@@ -9,11 +9,12 @@ import { OtherButton } from '../OtherButton'
 
 interface TCryptoItemProps {
   onChange: () => unknown
+  onClickOpenModal: () => unknown
   checked: boolean
   coin: Coin
 }
 
-export const TCryptoItem: React.FC<TCryptoItemProps> = ({ onChange, checked, coin }) => {
+export const TCryptoItem: React.FC<TCryptoItemProps> = ({ onChange, onClickOpenModal, checked, coin }) => {
   const [isHover, setHover] = useState<boolean>(false)
 
   const onMouseEnterCheckbox = () => {
@@ -50,7 +51,7 @@ export const TCryptoItem: React.FC<TCryptoItemProps> = ({ onChange, checked, coi
         +{coin.earning.percentage}/+${coin.earning.actually}
       </div>
       <div className={styles.other}>
-        <OtherButton />
+        <OtherButton onClick={onClickOpenModal} />
       </div>
     </>
   )
