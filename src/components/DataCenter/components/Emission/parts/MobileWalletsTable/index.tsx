@@ -60,7 +60,7 @@ export const MobileWalletsTable: React.FC<IMobileWalletsTable> = ({ data }) => {
   }
 
   return (
-    <>
+    <div className={styles.mobileTableContainer}>
       <TableContainer>
         <Table>
           <TableHead>
@@ -113,6 +113,6 @@ export const MobileWalletsTable: React.FC<IMobileWalletsTable> = ({ data }) => {
           </div>
         )}
       </div>
-    </>
+    </div>
   )
 }

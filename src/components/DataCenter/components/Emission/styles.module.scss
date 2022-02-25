@@ -68,6 +68,7 @@
   }
 }
 .table__mobile_header {
+  padding: 0 10px;
   display: flex;
   padding-bottom: 7px;
   align-items: center;
@@ -102,4 +103,12 @@
   border-radius: 20px;
   border: none;
   background-color: $color-45-green;
+}
+
+@media screen and (max-width: 971px) {
+  .title {
+    padding: 0 10px;
+    font-size: 16px;
+  }
+
 }
