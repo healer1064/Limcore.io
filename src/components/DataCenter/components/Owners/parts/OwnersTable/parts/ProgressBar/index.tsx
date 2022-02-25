@@ -6,9 +6,10 @@ export interface IProgressBar {
   current: number
   limit: number
   isMobile?: boolean
+  value: string
 }
 
-export const ProgressBar: React.FC<IProgressBar> = ({ current, limit, isMobile }) => {
+export const ProgressBar: React.FC<IProgressBar> = ({ current, limit, isMobile, value }) => {
   const fillerStyles = {
     height: '100%',
     width: `${(current / limit) * 100}%`,
@@ -22,7 +23,7 @@ export const ProgressBar: React.FC<IProgressBar> = ({ current, limit, isMobile }
   return (
     <>
       <p className={textStyle}>
-        Показано {current} из {limit} кошельков
+        Показано {current} из {limit} {value}
       </p>
       <div className={styles.container}>
         <div style={fillerStyles} />

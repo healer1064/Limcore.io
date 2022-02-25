@@ -12,7 +12,7 @@ export const DisksSwiper = ({ onClick, activeTab, data }) => {
   return (
     <div className={styles.swiper}>
       <Swiper
-        spaceBetween={10}
+        spaceBetween={0}
         slidesPerView={4}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
@@ -20,7 +20,7 @@ export const DisksSwiper = ({ onClick, activeTab, data }) => {
       >
         {data.map((item) => {
           return (
-            <SwiperSlide key={item.id}>
+            <SwiperSlide key={item.id} className={styles.disk__list}>
               <DiskSlide data={item} onClick={() => onClick(item.id)} active={item.id === activeTab} />
             </SwiperSlide>
           )

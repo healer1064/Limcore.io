@@ -1,8 +1,8 @@
 import { CategoryScale, Chart as ChartJS, LinearScale, LineElement, PointElement, Filler } from 'chart.js'
 import React from 'react'
 import { Line } from 'react-chartjs-2'
-import { ChartNavigation } from './ChartNavigation'
-
+import DateGroup from '@components/DataCenter/components/Disks/parts/DateGroup'
+import styles from './styles.module.scss'
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler)
 
 export const DiskChart = ({ disk }) => {
@@ -37,9 +37,9 @@ export const DiskChart = ({ disk }) => {
   }
 
   return (
-    <>
-      <ChartNavigation />
+    <div className={styles.diskchart__wrapper}>
+      <DateGroup />
       <Line data={data} options={options} />
-    </>
+    </div>
   )
 }
