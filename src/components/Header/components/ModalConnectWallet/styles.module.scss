@@ -18,7 +18,7 @@
   line-height: 150%;
   text-align: center;
   letter-spacing: 0.5px;
-  color: #FCFF00;
+  color: #fcff00;
   font-family: 'IBM Plex Sans', sans-serif;
 }
 .itemitem {
@@ -39,8 +39,8 @@
   padding: 18px 35px;
   width: 331px;
   height: 50px;
-  background: #FCFF00;
-  box-shadow: 0px 0px 42px rgba(252, 255, 0, 0.4);
+  background: #fcff00;
+  box-shadow: 0 0 42px rgba(252, 255, 0, 0.4);
   border-radius: 30px;
   font-size: 18px;
   line-height: 22px;
@@ -48,6 +48,8 @@
   font-family: 'IBM Plex Sans', sans-serif;
   font-style: normal;
   font-weight: 500;
+  border: none;
+  outline: none;
 }
 .itemitem img {
   margin-top: 10px;
@@ -62,11 +64,10 @@
   padding: 0;
 }
 .itemitem:hover {
-  background-color: #151F20;
+  background-color: #151f20;
   border-radius: 16px;
 }
 .center {
   width: 100%;
   margin: 40px 0;
-
 }
