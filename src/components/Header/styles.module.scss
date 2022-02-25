@@ -157,7 +157,7 @@
 .profileBtn {
   @include accountButton();
   margin: 0 0 0 44px;
-
+  transition: color 0.3s ease;
   //&_link {
   //  display: flex;
   //  align-items: center;
@@ -166,10 +166,8 @@
   //  transition: color .3s ease;
   //  outline: none;
   //}
-
   &:hover {
-    transition: color 0.3s ease;
-
+    color: #feffd4;
     & > .profileBtn_link {
       color: $white;
       transition: color 0.3s ease;
@@ -183,37 +181,36 @@
     cursor: pointer;
     &:hover &_active {
       opacity: 1;
-      bottom: -100%;
-      transform: translateY(-50%);
-      transition: opacity 0.5s, transform 0.5s;
-      z-index: 1;
+      bottom: -200%;
+      transform: translateY(-60%);
     }
   }
   &__numWallet {
-    max-width: 200px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    max-width: max-content;
     border: 2px solid $color-FC-yellow;
-    padding: 10px 15px;
+    padding: 12px 20px;
     border-radius: 20px;
     color: $color-FC-yellow;
+    font-family: 'IbmPlexSans', sans-serif;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    &:hover {
+      color: #feffd4;
+    }
   }
   &__link {
-    padding: 20px;
-    background-color: rgb(21, 31, 32);
-    margin-left: 44px;
+    padding: 40px;
+    background-color: #151f20;
     text-decoration: none;
     color: $color-FC-yellow;
     border-radius: 10px;
-    &_out {
-      position: absolute;
-      right: 0;
-      bottom: -999em;
-      opacity: 0;
-      transition: opacity 0.5s, transform 0.5s;
-      transform: translateY(50px);
-    }
+    font-family: 'IbmPlexSans', sans-serif;
+    position: absolute;
+    right: 0;
+    bottom: -999em;
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+    transform: translateY(0);
   }
 }
 

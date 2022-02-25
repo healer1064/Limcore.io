@@ -131,9 +131,9 @@ export const Header: React.FC = () => {
             </button>
           ) : pathnameProfile ? (
             <div className={Styles.profile__numWalletContainerLink}>
-              <p className={Styles.profile__numWallet}>{`${address.slice(0, 9)}...${address.slice(-7)}`}</p>
+              <p className={Styles.profile__numWallet}>{`${address.slice(0, 9)}...${address.slice(-10)}`}</p>
               <Link
-                className={`${Styles.profile__link} ${Styles.profile__link_out} ${Styles.profile__numWalletContainerLink_active}`}
+                className={`${Styles.profile__link} ${Styles.profile__numWalletContainerLink_active}`}
                 to='/'
                 onClick={handlerDisconnectWallet}
               >

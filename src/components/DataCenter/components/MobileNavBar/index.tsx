@@ -1,5 +1,5 @@
 import React from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react/swiper-react'
+import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js'
 import { MobileNavTab } from './parts/MobileNavTab'
 import styles from './style.module.scss'
 

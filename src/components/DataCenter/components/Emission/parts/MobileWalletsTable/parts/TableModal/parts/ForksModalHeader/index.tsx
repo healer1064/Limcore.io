@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react/swiper-react'
+import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js'
 import styles from './style.module.scss'
 import { ReactComponent as SearchIcon } from '@icons/searchGlass.svg'
 import clsx from 'clsx'
