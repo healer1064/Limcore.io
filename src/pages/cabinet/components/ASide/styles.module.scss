@@ -1,4 +1,18 @@
+@import '../../../../scss/vars';
+
 .ASide {
-  min-width: 300px;
-  font-family: "IbmPlexSans", "Arial", "Helvetica", sans-serif;
+  max-width: 300px;
+  font-family: $font-ibmPlexSans;
+}
+
+@media all and (max-width: 1250px) {
+  .ASide {
+    display: flex;
+    max-width: none;
+    margin: 0 auto 50px !important;
+
+    & > div:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
 }

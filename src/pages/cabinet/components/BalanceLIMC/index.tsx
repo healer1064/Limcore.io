@@ -74,12 +74,12 @@ export const BalanceLIMC: React.FC<BalanceLIMCProps> = ({ clientWidth }) => {
             <div className={styles.cabinet__balanceLIMCCourse}>1 LIMC = 300 USDT</div>
           </div>
         )}
-        <div style={{ margin: '0 0 10px 0' }}>
+        <div className={styles.btnContainer} style={{ margin: '0 0 10px 0' }}>
           <button className={styles.cabinet__balanceLIMCButton} type='button'>
             Купить LIMC
           </button>
         </div>
-        <div>
+        <div className={styles.btnContainer}>
           <button className={styles.cabinet__balanceLIMCButton} type='button'>
             Продать LIMC
           </button>

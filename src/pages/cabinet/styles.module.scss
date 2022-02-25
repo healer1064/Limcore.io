@@ -43,3 +43,13 @@
   width: 100%;
   height: 80%;
 }
+
+@media all and (max-width: 1350px) {
+  .cabinet {
+    padding: 0 20px;
+  }
+
+  .cabinet__balance {
+    padding: 20px 30px;
+  }
+}

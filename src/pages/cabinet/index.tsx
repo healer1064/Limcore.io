@@ -18,11 +18,12 @@ export const CabinetPage: React.FC = () => {
   const mobileCondition = width <= 768
 
   const graph = <img className={styles.cabinet__balanceGraph} src={graphTemp} />
+  console.log(width > 1100)
 
   return (
     <div className={styles.cabinet}>
       <div className={styles.cabinet__container}>
-        {width <= 1265 ? '' : <ASide clientWidth={width} />}
+        {width > 1100 && <ASide clientWidth={width} />}
         <div>
           <section className={styles.cabinet__balance}>
             <h2>Баланс</h2>
@@ -31,12 +32,12 @@ export const CabinetPage: React.FC = () => {
                 <BalanceLIMC clientWidth={width} />
                 <ConverterLIMC />
               </div>
-              {width <= 1410 ? '' : graph}
+              {width > 1100 && graph}
             </div>
           </section>
-          {!mobileCondition && width <= 1265 && <ASide clientWidth={width} />}
+          {!mobileCondition && width <= 1100 && <ASide clientWidth={width} />}
           {mobileCondition && <Rating />}
-          {width <= 1410 && <AccordionUI text='Показать график доходности'>{graph}</AccordionUI>}
+          {width <= 1100 && <AccordionUI text='Показать график доходности'>{graph}</AccordionUI>}
           {mobileCondition && <NewCard clientWidth={width} />}
           <Mining clientWidth={width} />
           {mobileCondition && <RefLink />}
