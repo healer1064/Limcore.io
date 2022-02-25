@@ -14,7 +14,6 @@ import { ButtonSecond } from '../../../../ui-kit/ButtonSecond'
 
 import Dialog from '@mui/material/Dialog'
 import IconButton from '@mui/material/IconButton'
-
 import img1 from '../../../../assets/images/g1.png'
 import img2 from '../../../../assets/images/g2.png'
 import img3 from '../../../../assets/images/g3.png'

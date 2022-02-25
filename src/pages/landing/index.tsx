@@ -23,7 +23,7 @@ import { FooterMobile } from '@components/Footer/FooterMobile'
 // import { Footer } from '@components/Footer'
 import { Calcs } from '../landing/components/Calcs'
 import { CalcsMobile } from '../landing/components/Calcs/CalcsMobile'
-// import { Orbit } from '../landing/components/Orbit/'
+import { Orbit } from '../landing/components/Orbit/'
 
 export const LandingPage: React.FC = () => {
   const { width } = useWindowSize()
@@ -41,7 +41,7 @@ export const LandingPage: React.FC = () => {
       <AppForMining clientWidth={width} />
       <ProjectNews />
       <RoadMap />
-      {/* <Orbit /> */}
+      <Orbit />
       {/* <Team /> */}
       {/* <UpEcosystem /> */}
       {/* <OnLine /> */}
