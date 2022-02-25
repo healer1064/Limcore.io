@@ -2,10 +2,10 @@
 FROM node:12-alpine as build
 WORKDIR /app
 COPY ./package.json /app/
-RUN yarn
+RUN npm install
 ENV PATH /app/node_modules/.bin:$PATH
 COPY . /app
-RUN yarn run build
+RUN npm run build
 
 # stage 2 - build the final image and copy the react build files
 FROM nginx:1.21.1-alpine
