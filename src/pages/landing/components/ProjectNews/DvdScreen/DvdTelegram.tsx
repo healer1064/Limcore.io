@@ -21,10 +21,12 @@ export class DvdTelegram extends Component<DVDLogoProps, DVDLogoState> {
     super(props)
 
     this.state = {
-      x: DvdTelegram.getRandomNumber(0, this.props.width - widthDVDLogo),
-      y: DvdTelegram.getRandomNumber(0, this.props.height - heightDVDLogo),
-      xSpeed: 1,
-      ySpeed: 1,
+      // x: DvdTelegram.getRandomNumber(0, this.props.width - widthDVDLogo),
+      // y: DvdTelegram.getRandomNumber(0, this.props.height - heightDVDLogo),
+      x: this.props.width - widthDVDLogo,
+      y: this.props.height - heightDVDLogo - 50,
+      xSpeed: 0.3,
+      ySpeed: 0.3,
     }
   }
 

@@ -21,10 +21,12 @@ export class DvdTwitter extends Component<DVDLogoProps, DVDLogoState> {
     super(props)
 
     this.state = {
-      x: DvdTwitter.getRandomNumber(0, this.props.width - widthDVDLogo),
-      y: DvdTwitter.getRandomNumber(0, this.props.height - heightDVDLogo) / 2,
-      xSpeed: 1,
-      ySpeed: 1,
+      // x: DvdTwitter.getRandomNumber(0, this.props.width - widthDVDLogo),
+      // y: DvdTwitter.getRandomNumber(0, this.props.height - heightDVDLogo),
+      x: this.props.width - widthDVDLogo - 75,
+      y: heightDVDLogo,
+      xSpeed: -0.3,
+      ySpeed: 0.3,
     }
   }
 

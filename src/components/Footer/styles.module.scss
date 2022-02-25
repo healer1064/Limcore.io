@@ -109,7 +109,7 @@
   }
 
   &_listTitle {
-    @include font-style-pressStart(16px, 400, 16px, $color-F5-white);
+    @include font-style-pressStart(16px, 400, 26px, $color-F5-white);
 
     box-sizing: border-box;
     padding: 0 0 20px 0;

@@ -38,10 +38,10 @@ export const Footer: React.FC = () => {
               <a href='https://youtube.com/channel/UCjPwzyVtL5WQtRoqiR0ZdGg' target='blank' rel='noopener noreferrer'>
                 <Youtube className={Styles.footer__socialIcon} />
               </a>
-              <a href='https://diskord.com' target='blank' rel='noopener noreferrer'>
+              <a href='https://discord.com' target='blank' rel='noopener noreferrer'>
                 <Discord className={Styles.footer__socialIcon} />
               </a>
-              <a href='https://twitter.com' target='blank' rel='noopener noreferrer'>
+              <a href='https://twitter.com/Limcoremining' target='blank' rel='noopener noreferrer'>
                 <Twitter className={Styles.footer__socialIcon} />
               </a>
             </ul>
@@ -85,8 +85,8 @@ export const Footer: React.FC = () => {
           </div>
           <div className={groupClassName}>
             <CoinMarketCap width={170} height={37} className={itemClassName} />
-            <BscScan width={120} height={30} className={itemClassName} />
             <CoinGecko width={120} height={33} className={itemClassName} />
+            <BscScan width={120} height={30} className={itemClassName} />
           </div>
           <div className={Styles.hitBTC__group}>
             <HitBTC width={105} height={43} className={Styles.icons__group__item} />

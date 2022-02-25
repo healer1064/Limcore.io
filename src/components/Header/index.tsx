@@ -6,7 +6,7 @@ import logoIcon from '../../assets/images/headerLogo.png'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
 import { setIsSincWithWallet, setWalletConnectLimc, setWalletConnectUsdt } from '../../pages/auth/redux/authSlice'
 
-import { useTranslation } from 'react-i18next'
+// import { useTranslation } from 'react-i18next'
 import { LanguagePopup } from '../LanguagePopup/index'
 import { Dropdown } from './components/Dropdown'
 
@@ -23,7 +23,7 @@ export const Header: React.FC = () => {
   const { pathname } = useLocation()
   const history = useHistory()
   const dispatch = useAppDispatch()
-  const [t] = useTranslation()
+  // const [t] = useTranslation()
   const isSync = useAppSelector((state) => state.auth.isSincWithWallet)
   const { openModalConnectWallet } = useAppSelector((state) => state.app)
   const { address, chainId } = useAppSelector((state) => state.walletConnect)

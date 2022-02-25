@@ -112,7 +112,7 @@
 .item__circle_active {
   background: #FCFF00;
   box-shadow: 0px 0px 14px rgba(252, 255, 0, 0.5);
-  animation: opacityAnim 1s infinite linear;
+  animation: opacityAnim 1.5s infinite linear;
 }
 
 .item__circle__disabled {
@@ -120,7 +120,7 @@
 }
 
 .item__title {
-  margin-top: auto;
+  margin: auto 0 12px;
   @include font-style-ibmPlexSans(18px, 600, 23px, $color-F5-white);
 }
 
@@ -203,7 +203,7 @@
 
     background: #FCFF00;
     box-shadow: 0px 0px 14px rgba(252, 255, 0, 0.5);
-    animation: opacityAnim 1s infinite linear;
+    animation: opacityAnim 1.5s infinite linear;
   }
 }
 

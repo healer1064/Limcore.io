@@ -62,7 +62,9 @@ export const RoadMapDesktop: React.FC = () => {
               <li className={classNames(styles.item__text, styles.item__text_disabled)}>
                 Приложение для майнинга Chia и форков на ПК
               </li>
-              <h6 className={classNames(styles.item__title, styles.item__title_middle)}>Q4 2023</h6>
+              <h6 className={classNames(styles.item__title, styles.item__title_middle)} style={{ marginTop: '20px' }}>
+                Q4 2023
+              </h6>
               <li className={classNames(styles.item__text, styles.item__text_disabled)}>
                 Cвоя игра для фарминга Chia и форков на земельном участке
               </li>
