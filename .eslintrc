@@ -81,13 +81,7 @@
     "no-sequences": "error",
     "no-useless-call": "warn",
     "no-with": "error",
-    "import/no-unresolved": [
-      2,
-      {
-        "commonjs": true,
-        "caseSensitive": false
-      }
-    ],
+    "import/no-unresolved": "off",
     "no-new-require": "error",
     "no-class-assign": "error",
     "no-const-assign": "error",

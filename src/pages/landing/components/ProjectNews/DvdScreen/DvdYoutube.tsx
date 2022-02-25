@@ -21,10 +21,10 @@ export class DvdYoutube extends Component<DVDLogoProps, DVDLogoState> {
     super(props)
 
     this.state = {
-      x: DvdYoutube.getRandomNumber(0, this.props.width - widthDVDLogo) / 2,
-      y: DvdYoutube.getRandomNumber(0, this.props.height - heightDVDLogo) / 2,
-      xSpeed: 1,
-      ySpeed: 1,
+      x: this.props.width - widthDVDLogo - 100,
+      y: this.props.height - heightDVDLogo,
+      xSpeed: -0.3,
+      ySpeed: -0.3,
     }
   }
 

@@ -33,3 +33,64 @@ export const DvdScreen = () => {
     </div>
   )
 }
+
+// import React, { useEffect, useRef, useState } from 'react'
+// import styles from './styles.module.scss'
+
+// export const DvdScreen = () => {
+//   const containerRef = useRef<HTMLUListElement>(null)
+
+// const [topleft, setTopleft] = useState(0)
+// const [topRight, setTopRight] = useState(0)
+
+// const [bottomLeft, setBottomLeft] = useState(0)
+// const [bottomRight, setBottomRight] = useState(0)
+
+//   const [height, setHeight] = useState(0)
+//   const [width, setWidth] = useState(0)
+
+//   useEffect(() => {
+//     if (containerRef.current) {
+//       setHeight(containerRef.current.clientHeight)
+//       setWidth(containerRef.current.clientWidth)
+//     }
+//   }, [containerRef.current])
+
+//   const moveDVDLogo = () => {
+//     setX((prev) => prev + xSpeed)
+//     setY((prev) => prev + ySpeed)
+
+//     if (x + widthDVDLogo >= width || x <= 0) {
+//       setXSpeed((prev) => -prev)
+//     }
+
+//     if (y + heightDVDLogo >= height || y <= 0) {
+//       setYSpeed((prev) => -prev)
+//     }
+//   }
+
+//   return (
+//     <ul className={styles.list} ref={containerRef}>
+//       <li>
+//         <a href='#' className={styles.item} style={{ transform: `translate(${height / 2}px, ${0}px)` }}>
+//           Telegram &#129125;
+//         </a>
+//       </li>
+//       <li>
+//         <a href='#' className={styles.item}>
+//           Instagram &#129125;
+//         </a>
+//       </li>
+//       <li>
+//         <a href='#' className={styles.item}>
+//           Twitter &#129125;
+//         </a>
+//       </li>
+//       <li>
+//         <a href='#' className={styles.item}>
+//           Discord &#129125;
+//         </a>
+//       </li>
+//     </ul>
+//   )
+// }

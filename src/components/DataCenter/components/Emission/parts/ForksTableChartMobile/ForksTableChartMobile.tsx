@@ -41,6 +41,10 @@ export const ForksTableChartMobile: React.FC = () => {
     setForksData(mockData)
   }, [mockChartData, forksData])
 
+  const modalCloseHandler = () => {
+    setView('chart')
+  }
+
   return (
     <>
       <div className={styles.container__btnsContainer}>
@@ -58,7 +62,7 @@ export const ForksTableChartMobile: React.FC = () => {
         <span className={styles.border} />
         <div className={styles.tableChartContainer}>
           <Chart forksData={forksChartData} />
-          <ForksModal forksData={forksData} active={view === 'forks'} setActive={setView} />
+          <ForksModal forksData={forksData} active={view === 'forks'} setActive={modalCloseHandler} />
           <div className={styles.table__btnsContainer}>
             <button
               className={clsx(styles.table__btn, view === 'chart' && styles.active)}

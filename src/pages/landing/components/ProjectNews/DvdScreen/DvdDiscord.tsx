@@ -23,8 +23,8 @@ export class DvdDiscord extends Component<DVDLogoProps, DVDLogoState> {
     this.state = {
       x: DvdDiscord.getRandomNumber(0, this.props.width - widthDVDLogo) / 2,
       y: DvdDiscord.getRandomNumber(0, this.props.height - heightDVDLogo),
-      xSpeed: 1,
-      ySpeed: 1,
+      xSpeed: 0.3,
+      ySpeed: -0.3,
     }
   }
 

@@ -34,7 +34,6 @@
 .mobile_search_button {
   display: flex;
   align-items: center;
-  margin-left: auto;
   padding: 11px 16px;
   border-radius: 20px;
   border: none;
@@ -63,4 +62,21 @@
       margin: 0 5px 0 0;
     }
   }
+}
+
+.search_slide {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 10px 0 0;
+  width: min-content;
+}
+
+.address_slide {
+  width: 70%;
+}
+
+.date_slide {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 0 0 10px;
 }

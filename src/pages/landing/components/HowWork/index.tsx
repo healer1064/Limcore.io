@@ -30,7 +30,7 @@ export const HowWork: React.FC = () => {
   // ===
 
   type TSecondAnimMargin = { marginBottom: string }
-  const [secondAnimMargin, setSecondAnimMargin] = useState<TSecondAnimMargin>({ marginBottom: '200px' })
+  const [secondAnimMargin, setSecondAnimMargin] = useState<TSecondAnimMargin>({ marginBottom: '275px' })
 
   const [firstAnimState, setFirstAnimState] = useState<TAnimStates>('stopped')
   const [secondAnimState, setSecondAnimState] = useState<TAnimStates>('stopped')
@@ -91,7 +91,7 @@ export const HowWork: React.FC = () => {
 
       width <= 768
         ? setSecondAnimMargin({ marginBottom: `${Math.floor(width) + 75}px` })
-        : setSecondAnimMargin({ marginBottom: `200px` })
+        : setSecondAnimMargin({ marginBottom: `275px` })
     }
   }, [width])
 

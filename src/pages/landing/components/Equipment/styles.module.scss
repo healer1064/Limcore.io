@@ -27,14 +27,21 @@
 }
 .desck {
   position: relative;
-  padding-left: 40px;
+  padding-left: 20px;
   img {
     position: absolute;
-    left: -20px;
+    // top: 140px;
+    left: -40px;
   }
 }
 .p {
-  @include font-style-ibmPlexSans(15px, 400, 24px, #e1e1d8);
+  margin: 78px 0 0 0;
+  font-family: 'IbmPlexSans', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 150%;
+  color: #E1E1D8;
   max-width: 434px;
 }
 
@@ -53,7 +60,8 @@
 
 @media all and (max-width: 768px) {
   .equipment {
-    height: 587px;
+    height: 700px;
+    margin-bottom: 100px;
   }
 
   .title {

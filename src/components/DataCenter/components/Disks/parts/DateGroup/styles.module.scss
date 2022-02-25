@@ -1,0 +1,44 @@
+@import '../../../../../../scss/typography.scss';
+@import '../../../../../../scss/_vars.scss';
+
+.container__btnsContainer {
+  display: flex;
+  width: 255px;
+  background-color: $color-45-green;
+  border-radius: 20px;
+  align-self: end;
+  margin: 40px 20px 20px;
+  .btnsContainer__btn {
+    @include font-style-ibmPlexSans(14px, normal, 121%, $color-E1-white);
+    position: relative;
+    background-color: transparent;
+    border: none;
+    padding: 7px 20px;
+    &.active {
+      color: $color-DF-aquamarine;
+      .arrow {
+        transform: rotate(180deg);
+      }
+      path {
+        stroke: $color-DF-aquamarine;
+      }
+    }
+    &:not(:last-child)::after{
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(0, -50%);
+      height: 80%;
+      border: 1px solid $color-34-green;
+    }
+    span {
+      display: flex;
+      align-items: center;
+      svg:not(:last-child) {
+        margin: 0 5px 0 0;
+      }
+    }
+  }
+}
+
