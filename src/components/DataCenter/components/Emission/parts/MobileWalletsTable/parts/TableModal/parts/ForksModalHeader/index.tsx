@@ -34,13 +34,13 @@ export const ForksModalHeader: React.FC<IModalHeader> = ({ width, address }) => 
   return !width ? (
     <Spinner />
   ) : (
-    <Swiper style={{ padding: '0px 5px' }} spaceBetween={10} slidesPerView={2.3} width={width}>
+    <Swiper spaceBetween={0} slidesPerView='auto' width={width}>
       <SwiperSlide className={styles.search_slide}>
         <button type='button' className={styles.mobile_search_button}>
           <SearchIcon />
         </button>
       </SwiperSlide>
-      <SwiperSlide className={styles.address}>
+      <SwiperSlide className={styles.address_slide}>
         <div className={styles.inputWrapper}>
           <input
             type='text'

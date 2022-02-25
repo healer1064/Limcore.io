@@ -7,7 +7,7 @@
   border-right: none;
   border-bottom: none;
   // box-shadow: -7px -7px 8px -10px $color-65-blue;
-  margin: 0 0 60px 0;
+  margin: 0 10px 60px 10px;
 
   .border {
     content: ' ';
@@ -41,6 +41,7 @@
   &__btnsContainer {
     display: flex;
     margin: 0 0 25px 0;
+    padding: 0 10px;
     .btnsContainer__btn {
       @include font-style-ibmPlexSans(14px, normal, 121%, $color-E1-white);
       width: max-content;
@@ -69,7 +70,7 @@
 }
 
 .tableChartContainer {
-  padding: 40px;
+  padding: 10px;
   height: 400px;
   .table {
   }
