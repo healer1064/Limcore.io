@@ -13,6 +13,14 @@
   margin-left: 4px;
 }
 
+.icon_wrapper {
+  cursor: pointer;
+}
+
+.icon_wrapper:hover {
+  color: $color-26-aquamarine;
+}
+
 .bottom_wrapper {
   display: flex;
   margin-top: 40px;
