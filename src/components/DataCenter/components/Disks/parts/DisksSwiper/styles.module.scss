@@ -2,56 +2,86 @@
 @import '../../../../../../scss/_vars.scss';
 
 .swiper {
-  // width: 100%;
-  // margin: 0 auto;
-  // display: flex;
-  :global(.swiper-button-prev), :global(.swiper-button-next) {
+  position: relative;
+  overflow: hidden;
+  list-style: none;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+
+  :global(.swiper-button-prev),
+  :global(.swiper-button-next) {
+    color: $primary-color;
     background-color: $color-45-green;
     border-radius: 66px;
-    color: $primary-color;
-    z-index: 100;
-    bottom: 0;
+    width: 36px;
+    height: 62px;
   }
-  :global(.swiper-button-prev) {
-    margin-right: 20px;
-  }
-  :global(.swiper-button-next) {
+
+  &__element {
 
   }
-  :global(.swiper-button-prev):after, :global(.swiper-button-next):after {
+
+  :global(.swiper-button-prev) {
+  position: absolute;
+    top: 27px;
+    left: 0;
+  }
+
+  :global(.swiper-button-next) {
+    position: absolute;
+    top: 27px;
+    right: 0;
+  }
+
+  :global(.swiper-button-prev)::after,
+  :global(.swiper-button-next)::after {
     font-size: 14px;
   }
+
   :global(.swiper-button-disabled) {
     color: $color-84-green;
     opacity: 1 !important;
   }
-  :global(.swiper-wrapper) {
 
+  :global(.swiper-wrapper) {
+    position: relative;
+  }
+
+  :global(.swiper-slide) {
+    display: flex;
+    height: 72px;
+    justify-content: space-around;
   }
 }
 
-.dist__list {
-display: flex;
-  flex-direction: column;
+.disk__list {
+
 }
 
 .disk__item {
   padding: 12px 32px;
-  border-radius: 24px;
   text-align: center;
-  opacity: 0.8;
+  cursor: pointer;
+  border-radius: 24px;
+
   &:hover {
     opacity: 1;
   }
-  cursor: pointer;
+
   .item {
     &__title {
       @include font-style-ibmPlexSans(16px, 500, 22px, $color-2B-black);
+
       margin: 0;
     }
+
     &__desc {
       @include font-style-ibmPlexSans(12px, 500, 16px, $color-63-grey);
+
       margin: 0;
     }
   }
 }
+

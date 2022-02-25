@@ -27,6 +27,7 @@
 
     &__text {
       @include font-style-ibmPlexSans(14px, 600, 22px, $color-E1-white);
+      margin: 14px 0 2px;
     }
 
     &__logo {
@@ -38,6 +39,7 @@
 
   &__actual__date{
     @include font-style-ibmPlexSans(14px, 400, 19px, $color-E1-white);
+    margin: 0;
   }
 
   &__navigations {
@@ -68,7 +70,7 @@
 
   &__loadMore__group{
     padding: 18px 0 30px;
-    width: 335px;
+    max-width: 335px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -100,4 +102,8 @@
       padding: 12px 66px;
     }
   }
+}
+
+.button_container{
+  margin-top: 24px;
 }
