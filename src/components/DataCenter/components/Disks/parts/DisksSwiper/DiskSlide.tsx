@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
 
-interface IDiskSlideProps {
+export interface IDiskSlideProps {
   data: {
     id: number
     name: string

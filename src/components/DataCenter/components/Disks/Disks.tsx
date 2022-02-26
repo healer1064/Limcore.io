@@ -4,11 +4,12 @@ import { DiskChart } from './parts/DiskChart/DiskChart'
 import { InfoTable } from '@components/DataCenter/components/Disks/parts/InfoTable'
 import { InfoTableMobile } from '@components/DataCenter/components/Disks/parts/InfoTable/InfoTableMobile'
 import styles from './styles.module.scss'
+import { DiskSwiperMobile } from '@components/DataCenter/components/Disks/parts/DiskSwiperMobile'
 
 const mock = [
   {
     id: 1,
-    name: 'Harvester1',
+    name: 'Harvester №1',
     current: 150,
     capacity: 900,
     data: [
@@ -23,7 +24,7 @@ const mock = [
   },
   {
     id: 2,
-    name: 'Harvester2',
+    name: 'Harvester №2',
     current: 256,
     capacity: 800,
     data: [
@@ -38,7 +39,7 @@ const mock = [
   },
   {
     id: 3,
-    name: 'Harvester3',
+    name: 'Harvester №3',
     current: 321,
     capacity: 900,
     data: [
@@ -53,7 +54,7 @@ const mock = [
   },
   {
     id: 4,
-    name: 'Harvester4',
+    name: 'Harvester №4',
     current: 534,
     capacity: 900,
     data: [
@@ -68,7 +69,7 @@ const mock = [
   },
   {
     id: 5,
-    name: 'Harvester5',
+    name: 'Harvester №5',
     current: 121,
     capacity: 900,
     data: [
@@ -83,7 +84,7 @@ const mock = [
   },
   {
     id: 6,
-    name: 'Harvester6',
+    name: 'Harvester №6',
     current: 50,
     capacity: 900,
     data: [
@@ -103,7 +104,7 @@ export interface IDisks {
 }
 
 export const Disks: React.FC<IDisks> = ({ desktop }) => {
-  const [activeTab, setActiveTab] = useState(NaN)
+  const [activeTab, setActiveTab] = useState(1)
 
   useEffect(() => {
     setActiveTab(mock[0].id)
@@ -126,7 +127,7 @@ export const Disks: React.FC<IDisks> = ({ desktop }) => {
       ) : (
         <>
           <div className={styles.disks__wrapper}>
-            <DisksSwiper data={mock} onClick={setActiveTab} activeTab={activeTab} />
+            <DiskSwiperMobile data={mock} setActiveTab={setActiveTab} activeTab={activeTab} />
             <DiskChart
               disk={mock.find((item) => {
                 return item.id === activeTab

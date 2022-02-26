@@ -1,0 +1,64 @@
+@import '../../../../../../scss/typography.scss';
+@import '../../../../../../scss/_vars.scss';
+
+.btn {
+  @include font-style-ibmPlexSans(16px, 500, 22px, $color-2B-black);
+  padding: 12px 32px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &.active {
+    .arrow {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.arrow {
+  margin-left: 10px;
+}
+
+.wrapper{
+padding-bottom: 24px;
+}
+
+.wrapper__btn{
+  padding-top: 20px;
+  display: grid;
+  grid-row-gap: 20px;
+  grid-column-gap: 10px;
+  grid-template-rows: repeat(3, minmax(min-content, max-content));
+  grid-template-columns: 1fr 1fr;
+}
+
+.btn__nonactive{
+  padding: 12px 32px;
+  flex-direction: column;
+}
+
+.item__title {
+  @include font-style-ibmPlexSans(16px, 500, 22px, $color-2B-black);
+
+  margin: 0;
+}
+
+.item__desc {
+  @include font-style-ibmPlexSans(12px, 500, 16px, $color-63-grey);
+
+  margin: 0;
+}
+
+@media (max-width: 390px) {
+  .btn__nonactive{
+    padding: 12px 14px;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    @include font-style-ibmPlexSans(14px, 500, 20px, $color-2B-black);
+  }
+}

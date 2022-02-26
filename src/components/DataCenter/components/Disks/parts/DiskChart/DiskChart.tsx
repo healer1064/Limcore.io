@@ -3,9 +3,12 @@ import React from 'react'
 import { Line } from 'react-chartjs-2'
 import DateGroup from '@components/DataCenter/components/Disks/parts/DateGroup'
 import styles from './styles.module.scss'
+import useWindowSize from '@helpers/useWindowSizeHook'
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Filler)
 
 export const DiskChart = ({ disk }) => {
+  const { width } = useWindowSize()
+  const desktop = width > 971
   const options = {
     scales: {
       y: {
@@ -38,7 +41,7 @@ export const DiskChart = ({ disk }) => {
 
   return (
     <div className={styles.diskchart__wrapper}>
-      <DateGroup />
+      {desktop ? <DateGroup /> : ''}
       <Line data={data} options={options} />
     </div>
   )

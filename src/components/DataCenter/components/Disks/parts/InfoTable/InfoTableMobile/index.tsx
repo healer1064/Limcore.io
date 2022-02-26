@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import { LoadLine } from '@components/DataCenter/components/Disks/parts/LoadLine'
 import { DataCenterYellowArrow } from '@icons/DataCenterYellowArrow'
 import { SizeArrow } from '@icons/SizeArrow'
 import { InfoTableMobileItem } from '@components/DataCenter/components/Disks/parts/InfoTable/InfoTableMobile/infoTableMobileItem'
 import { IItem } from '@components/DataCenter/components/Disks/parts/InfoTable/components/InfoTableItem'
+import { ExpandButton } from '@components/DataCenter/components/Owners/parts/OwnersTable/parts/ExpandButton'
+import { formatNumerals } from '@helpers/formatNumerals'
+import { ProgressBar } from '@components/DataCenter/components/Owners/parts/OwnersTable/parts/ProgressBar'
 
 const data = [
   {
@@ -153,6 +156,9 @@ const data = [
 ]
 
 export const InfoTableMobile: React.FC = () => {
+  const [rows, setRows] = useState(data.length > 10 ? 10 : data.length)
+  const [arr, setArr] = useState([...data.slice(0, rows)])
+
   return (
     <div className={styles.infoTableMobile}>
       <LoadLine className={styles.infoTableMobile__line} classNameBar={styles.infoTableMobile__line__bar} width='40%' />
@@ -184,13 +190,15 @@ export const InfoTableMobile: React.FC = () => {
           data.map((item: IItem, i: number) => <InfoTableMobileItem index={i} key={item.hardDisk + i} item={item} />)}
       </ul>
       <div className={styles.infoTableMobile__loadMore__group}>
-        <div className={styles.infoTableMobile__loadMore__group__info}>Показано 10 из 100 дисков</div>
-        <LoadLine
-          className={styles.infoTableMobile__loadMore__group__line}
-          classNameBar={styles.infoTableMobile__loadMore__group__line__bar}
-          width='40%'
-        />
-        <button className={styles.infoTableMobile__loadMore__group__btn}>Загрузить еще 10 дисков</button>
+        <ProgressBar current={rows} limit={data.length} value='дисков' />
+        {rows !== data.length && (
+          <div className={styles.button_container}>
+            <ExpandButton isMobile data={data} setRows={setRows} rows={rows} arr={arr} setArr={setArr}>
+              Загрузить еще {data.length - rows > 10 ? 10 : data.length - rows}
+              {formatNumerals(data.length - rows > 10 ? 10 : data.length - rows, [' диск', ' диска', ' дисков'])}
+            </ExpandButton>
+          </div>
+        )}
       </div>
     </div>
   )

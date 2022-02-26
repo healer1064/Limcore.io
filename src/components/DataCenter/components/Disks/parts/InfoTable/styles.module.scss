@@ -28,7 +28,7 @@
     align-items: center;
 
     &__text{
-      @include font-style-ibmPlexSans(12px, 600, 22px, $color-E1-white);
+      @include font-style-ibmPlexSans(16px, 600, 22px, $color-E1-white);
       position: relative;
       padding-right: 17px;
 
@@ -45,14 +45,14 @@
     }
 
     &__logo{
-      @include font-style-ibmPlexSans(12px, 600, 22px, $primary-color);
+      @include font-style-ibmPlexSans(16px, 600, 22px, $primary-color);
       display: flex;
       align-items: center;
     }
   }
 
   &__actual__date{
-    @include font-style-ibmPlexSans(12px, 400, 21px, $color-E1-white);
+    @include font-style-ibmPlexSans(16px, 400, 21px, $color-E1-white);
   }
 
   &__navigations {
