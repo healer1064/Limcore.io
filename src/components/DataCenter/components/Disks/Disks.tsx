@@ -5,6 +5,7 @@ import { InfoTable } from '@components/DataCenter/components/Disks/parts/InfoTab
 import { InfoTableMobile } from '@components/DataCenter/components/Disks/parts/InfoTable/InfoTableMobile'
 import styles from './styles.module.scss'
 import { DiskSwiperMobile } from '@components/DataCenter/components/Disks/parts/DiskSwiperMobile'
+import Chart from '@components/Chart'
 
 const mock = [
   {
@@ -121,6 +122,9 @@ export const Disks: React.FC<IDisks> = ({ desktop }) => {
                 return item.id === activeTab
               })}
             />
+            <div className={styles.chartSection}>
+              <Chart />
+            </div>
           </div>
           <InfoTable />
         </>
@@ -133,6 +137,9 @@ export const Disks: React.FC<IDisks> = ({ desktop }) => {
                 return item.id === activeTab
               })}
             />
+            <div className={styles.chartSection}>
+              <Chart />
+            </div>
           </div>
           <InfoTableMobile />
         </>

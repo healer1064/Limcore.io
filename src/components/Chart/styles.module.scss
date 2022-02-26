@@ -1,0 +1,118 @@
+@import '../../scss/_cabinet.scss';
+@import '../../scss/_vars.scss';
+@import '../../scss/typography.scss';
+
+.wrapper {
+  width: 548px;
+  height: 413px;
+  position: relative;
+  background: #192a2c;
+  padding: 24px;
+}
+.wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 588px;
+  height: 453px;
+  background-image: url(../../assets/images/background/rectangle1.png);
+  z-index: 5;
+}
+
+.apexWrapper {
+  display: none;
+  z-index: 6;
+  position: relative;
+}
+
+.visible {
+  display: block !important;
+}
+
+.datePickerSection {
+  position: absolute;
+  z-index: 999;
+  top: 80px;
+  left: -230px;
+}
+
+.balance {
+  font-family: IBM Plex Sans;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.balance span:nth-child(1) {
+  font-weight: 500;
+  color: #4f848a;
+}
+
+.balance span:nth-child(2) {
+  font-weight: 600;
+  color: #f5f5ef;
+}
+
+.tapGroup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 110px;
+}
+
+.tapGroup div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e1e1d8;
+  font-family: IBM Plex Sans;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  cursor: pointer;
+  position: relative;
+  z-index: 6;
+}
+
+.totalIncome {
+  width: 139px;
+  height: 33px;
+}
+.totalIncome::after {
+  content: '';
+  position: absolute;
+  width: 139px;
+  height: 33px;
+  background-image: url(../../assets/images/background/rectangle2.png);
+}
+
+.limc {
+  width: 81px;
+  height: 33px;
+}
+.limc::after {
+  content: '';
+  position: absolute;
+  width: 81px;
+  height: 33px;
+  background-image: url(../../assets/images/background/rectangle3.png);
+}
+
+.mining {
+  width: 114px;
+  height: 33px;
+}
+.mining::after {
+  content: '';
+  position: absolute;
+  width: 114px;
+  height: 33px;
+  background-image: url(../../assets/images/background/rectangle4.png);
+}
+
+.active {
+  color: yellow !important;
+  font-weight: 500 !important;
+}

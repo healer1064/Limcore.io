@@ -1,0 +1,71 @@
+@import '../../../../scss/_cabinet.scss';
+@import '../../../../scss/_vars.scss';
+@import '../../../../scss/typography.scss';
+
+.optionDiv {
+  z-index: 6;
+  font-family: IBM Plex Sans;
+  font-size: 14px;
+  line-height: 22px;
+  color: #e1e1d8;
+  display: flex;
+  justify-content: flex-start;
+  margin: 8px 0 24px;
+  position: relative;
+}
+
+.active {
+  color: #1fdfff;
+}
+
+.selectedDate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1fdfff;
+}
+
+.today {
+  width: 95px;
+  height: 36px;
+  background: #294548;
+  border-radius: 20px 0px 0px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.yesterday {
+  width: 80px;
+  height: 36px;
+  background: #294548;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.today::after,
+.yesterday::after {
+  content: '';
+  height: 22px;
+  border: 1px solid #1e3436;
+  background: #1e3436;
+  position: absolute;
+  right: 0;
+}
+
+.openCalendar {
+  border-radius: 0px 20px 20px 0px;
+  height: 36px;
+  padding: 0 22px;
+  background: #294548;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e1e1d8;
+  cursor: pointer;
+}

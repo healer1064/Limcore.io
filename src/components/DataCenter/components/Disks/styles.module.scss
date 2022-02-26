@@ -5,6 +5,15 @@
   padding: 60px;
 }
 
+.chartSection {
+  height: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #192a2c;
+}
+
 @media (max-width: 971px) {
   .disks__wrapper {
     padding: 0 20px 20px;
