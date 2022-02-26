@@ -1,0 +1,17 @@
+@import '../../../../scss/typography.scss';
+@import '../../../../scss/_vars.scss';
+
+.search_wrapper {
+  padding-top: 35px;
+  height: 87vh;
+  max-height: 87vh;
+}
+.mobile_search_button {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  padding: 11px 16px;
+  border-radius: 20px;
+  border: none;
+  background-color: $color-45-green;
+}

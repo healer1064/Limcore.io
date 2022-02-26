@@ -2,8 +2,8 @@ import { ExternalLink } from '@components/ExternalLink'
 import React from 'react'
 import { OwnersCounter } from '../OwnersCounter'
 import styles from './style.module.scss'
-import { ReactComponent as SearchIcon } from '@icons/searchGlass.svg'
 import { MobileTable } from './parts/MobileTable'
+import { MobileSearchModal } from '@components/DataCenter/components/MobileSearchModal'
 
 export const MobileOwners = ({ number, data }) => {
   return (
@@ -20,11 +20,7 @@ export const MobileOwners = ({ number, data }) => {
           <p className={styles.table__wallets_number}>Всего кошельков: {number}</p>
           <div className={styles.dot} />
           <ExternalLink isMobile link='https://bscscan.com' text='BscScan' />
-          {/* TODO make a search component */}
-          <button type='button' className={styles.search_button}>
-            <SearchIcon />
-          </button>
-          {/* TODO make a search component */}
+          <MobileSearchModal />
         </div>
         <div className={styles.table__container}>
           <MobileTable data={data} />
