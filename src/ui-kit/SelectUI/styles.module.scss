@@ -1,0 +1,62 @@
+.select {
+  position: relative;
+  background: transparent;
+
+  p {
+    margin: 0;
+    cursor: pointer;
+  }
+
+  > p {
+    display: flex;
+    align-items: center;
+    color: yellow;
+
+    span {
+      width: 21px;
+      height: 21px;
+      cursor: pointer;
+    }
+  }
+
+  > div {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 150px;
+    padding: 10px 0;
+    background: #192a2c;
+    border-radius: 20px;
+  }
+}
+
+.select__menuItem {
+  display: flex;
+  align-items: center;
+  padding: 2px 10px;
+  margin: 0;
+  color: white;
+  transition: all 0.5s ease;
+
+  &:hover {
+    color: yellow;
+  }
+}
+
+.select__styleListNonSelected {
+  width: 26px;
+  height: 26px;
+  margin: 0 8px 0 0;
+  background: transparent;
+  border: 3px solid #7b7c0a;
+  border-radius: 50%;
+}
+
+.select__styleListSelected {
+  width: 26px;
+  height: 26px;
+  margin: 0 8px 0 0;
+  background: yellow;
+  border: 6px solid #7b7c0a;
+  border-radius: 50%;
+}
