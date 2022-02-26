@@ -1,4 +1,3 @@
-import { checkToken, refreshToken } from './../../../pages/auth/redux/authSlice'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import {
@@ -37,13 +36,14 @@ const commands = {
   deleteMessage: 19,
 }
 
-let socket: WebSocket = null
+// let socket: WebSocket = null
+const socket: WebSocket = null
 
 export const useChat = () => {
   const dispatch = useDispatch()
 
-  const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
-  let token = tokenObj.access
+  // const tokenObj = { ...JSON.parse(localStorage.getItem('jwtToken')) }
+  // let token = tokenObj.access
 
   const currentMessages = useAppSelector((state) => state.chat.currentMessages)
   const currentSlug = useAppSelector((state) => state.chat.currentSlug)
@@ -51,12 +51,12 @@ export const useChat = () => {
   const uploadedFile = useAppSelector((state) => state.chat.uploadedFile)
   const currentDialogueMember = useAppSelector((state) => state.chat.currentDialogueMember)
 
-  const { REACT_APP_API_HOST, REACT_APP_CHAT_ENDPOINT } = process.env
+  // const { REACT_APP_API_HOST, REACT_APP_CHAT_ENDPOINT } = process.env
 
   useEffect(() => {
     const connect = () => {
       if (!socket || socket.readyState === 3) {
-        socket = new WebSocket(`wss://${REACT_APP_API_HOST}${REACT_APP_CHAT_ENDPOINT}?token=${token}`)
+        // socket = new WebSocket(`wss://${REACT_APP_API_HOST}${REACT_APP_CHAT_ENDPOINT}?token=${token}`)
 
         socket.onopen = () => {
           dispatch(setContent(''))
@@ -66,32 +66,32 @@ export const useChat = () => {
           console.log('error', err)
         }
 
-        socket.onclose = (ev) => {
-          dispatch(setContent('loading'))
-          console.log('...websocket is closing', ev)
-          // check if the disconnect is caused by an invalid token
-          if (ev.code === 1006) {
-            dispatch(checkToken({ token: tokenObj.access })).then(
-              // eslint-disable-next-line @typescript-eslint/no-unused-vars
-              (resolve) => {
-                connect()
-              },
-              // eslint-disable-next-line @typescript-eslint/no-unused-vars
-              (reject) => {
-                dispatch(refreshToken({ refresh: tokenObj.refresh })).then(
-                  (resolve) => {
-                    token = resolve.payload.data.access
-                    connect()
-                  },
-                  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                  (reject) => {
-                    window.location.reload()
-                  },
-                )
-              },
-            )
-          }
-        }
+        // socket.onclose = (ev) => {
+        //   dispatch(setContent('loading'))
+        //   console.log('...websocket is closing', ev)
+        //   // check if the disconnect is caused by an invalid token
+        //   if (ev.code === 1006) {
+        //     dispatch(checkToken({ token: tokenObj.access })).then(
+        //       // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        //       (resolve) => {
+        //         connect()
+        //       },
+        //       // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        //       (reject) => {
+        //         dispatch(refreshToken({ refresh: tokenObj.refresh })).then(
+        //           (resolve) => {
+        //             token = resolve.payload.data.access
+        //             connect()
+        //           },
+        //           // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        //           (reject) => {
+        //             window.location.reload()
+        //           },
+        //         )
+        //       },
+        //     )
+        //   }
+        // }
       }
     }
     connect()

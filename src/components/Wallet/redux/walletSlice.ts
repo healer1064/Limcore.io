@@ -16,7 +16,6 @@ export const walletSlice = createSlice({
   name: 'wallet',
   initialState: {
     countdown_days: 80,
-    limcLimit: 80000,
     forks: {
       chia: 0,
       chives: 0,

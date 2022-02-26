@@ -3,17 +3,21 @@ import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import arrowWhiteRight from '@icons/arrowWhiteRight.svg'
 import { StartMiningModal } from './components/StartMiningModal'
+import { useAppSelector } from '@app/redux/hooks'
+import { countDaysDifference } from '@lib/utils/countDaysDifference'
 
 export const StartMining: React.FC = () => {
-  const [passedTB] = useState<number>(120)
-  const [allTB] = useState<number>(2000)
-  const [percentageLoading] = useState<number>(Math.floor((passedTB / allTB) * 100))
+  const unlockedLimcBalance = useAppSelector((state) => state.auth.unlockedLimcBalance)
+  const lockedLimcBalance = useAppSelector((state) => state.auth.lockedLimcBalance)
+  const passedTB = Math.round(unlockedLimcBalance + lockedLimcBalance)
 
-  const [remainingDays] = useState<number>(4)
-  const [allDays] = useState<number>(60)
+  const allTB = 2000
+  const percentageLoading = Math.round((passedTB / allTB) * 100)
+
+  const allDays = 80
+  const remainingDays = countDaysDifference()
 
   const [modalOpened, setModalOpened] = useState(false)
-
   const openModal = () => setModalOpened(true)
   const closeModal = () => setModalOpened(false)
 

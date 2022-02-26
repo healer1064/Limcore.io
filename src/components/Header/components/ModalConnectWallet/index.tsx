@@ -9,11 +9,17 @@ import Dialog from '@mui/material/Dialog'
 import WalletConnect from '@walletconnect/client'
 import QRCodeModal from '@walletconnect/qrcode-modal'
 import { useAppDispatch } from '@app/redux/hooks'
+import { getUsdt, getLimc } from '@app/walletConnect/walletConnect'
 
-import { setIsSincWithWallet } from '../../../../pages/auth/redux/authSlice'
+import {
+  setIsAuth,
+  setUnlockedLimcBalance,
+  setLockedLimcBalance,
+  setUsdtBalance,
+  setUserWallet,
+} from '@app/redux/authSlice'
 import BootstrapDialogTitle from '@components/Header/components/ModalConnectWallet/BootstrapDialogTitle/BootstrapDialogTitle'
 import { useHistory } from 'react-router-dom'
-import { walletConnectSlice } from '@app/redux/reducers/walletConnectSlice'
 
 interface IModalConnectWalletProps {
   onClose: () => void
@@ -23,7 +29,6 @@ interface IModalConnectWalletProps {
 const ModalConnectWallet = ({ onClose, open }: IModalConnectWalletProps) => {
   const dispatch = useAppDispatch()
   const history = useHistory()
-  const { walletConnectAction } = walletConnectSlice.actions
 
   const BootstrapDialog = styled(Dialog)({
     '& .MuiPaper-root': {
@@ -47,9 +52,17 @@ const ModalConnectWallet = ({ onClose, open }: IModalConnectWalletProps) => {
       if (error) {
         throw error
       }
-      const { accounts, chainId } = payload.params[0]
-      dispatch(walletConnectAction({ address: accounts[0], chainId }))
-      dispatch(setIsSincWithWallet(true))
+      const { accounts } = payload.params[0]
+
+      dispatch(setUserWallet(accounts[0]))
+      dispatch(setIsAuth(true))
+
+      getUsdt(accounts[0]).then((res) => dispatch(setUsdtBalance(res)))
+      getLimc(accounts[0]).then((res) => {
+        dispatch(setUnlockedLimcBalance(res.unlockedBalance))
+        dispatch(setLockedLimcBalance(res.lockedBalance))
+      })
+
       QRCodeModal.close()
       onClose()
       history.push('/my')

@@ -2,16 +2,21 @@ import React, { useState } from 'react'
 
 import styles from './styles.module.scss'
 import infoIcon from '@icons/infoButton.svg'
-import TBRatingIcon from '@icons/TBRatingIcon.svg'
 import classNames from 'classnames'
 import { BottomModal } from '@components/Modal/BottomModal'
 import useWindowSize from '@helpers/useWindowSizeHook'
+import { useAppSelector } from '@app/redux/hooks'
+import { LimcRating } from '@components/Chat/components/LimcRating'
 
 export const Rating: React.FC = () => {
   const { width } = useWindowSize()
 
-  const [busyTB] = useState<number>(987)
-  const [precentage] = useState<number>(0.2)
+  const unlockedLimcBalance = useAppSelector((state) => state.auth.unlockedLimcBalance)
+  const lockedLimcBalance = useAppSelector((state) => state.auth.lockedLimcBalance)
+
+  const busyTB = unlockedLimcBalance + lockedLimcBalance
+  const percentage = 0.2
+
   const [popupOpened, setPopupOpened] = useState(false)
 
   let timeout = null
@@ -36,8 +41,7 @@ export const Rating: React.FC = () => {
           <img src={infoIcon} />
         </div>
         <div>
-          <img src={TBRatingIcon} />
-          {busyTB} TB
+          <LimcRating limcBalance={busyTB} />
         </div>
       </div>
       <div className={styles.ASide__ratingFlex}>
@@ -59,7 +63,7 @@ export const Rating: React.FC = () => {
             </>
           )}
         </div>
-        <div>{precentage}%</div>
+        <div>{percentage}%</div>
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-@import '../../../components/Purse/vars&mixins.scss';
+@import '../../../scss/vars';
 
 @mixin modal() {
   top: 0;
@@ -25,7 +25,7 @@
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 
-    background-color: $color-19-dark;
+    background-color: #192a2c;
     bottom: -200px;
     transition: all 0.5s ease;
     max-height: 100vh;
@@ -54,14 +54,14 @@
   padding: 0;
   width: 100%;
 
-  @include font-style-ibmPlexSans(18px, 600, 22px, $primary-color);
+  @include font-style-ibmPlexSans(18px, 600, 22px, #fcff00);
   text-align: center;
 }
 
 .subtitle {
   margin: 0 0 20px 0;
   padding: 0;
-  @include subtitle-14px($color-99-gray);
+  @include font-style-ibmPlexSans(14px, 400, 21px, #99a0ad);
 }
 
 .close {
@@ -80,10 +80,6 @@
   background-repeat: no-repeat;
   background-color: transparent;
   outline: none;
-
-  &:focus {
-    outline: $outline;
-  }
 }
 
 @media only screen and (min-width: 1250px) {

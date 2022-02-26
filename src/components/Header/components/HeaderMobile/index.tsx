@@ -3,10 +3,9 @@ import { Link as LinkDom } from 'react-router-dom'
 import Styles from './styles.module.scss'
 import logout from '@icons/logout.svg'
 import { useHistory } from 'react-router'
-import { setIsAuth } from '../../../../pages/auth/redux/authSlice'
+import { setIsAuth } from '@app/redux/authSlice'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { Logo } from '@components/Purse/PurseDesktop/components/Logo'
-import logoIcon from '@images/headerLogo.png'
+import logoIcon from '../../../../assets/images/headerLogo.png'
 import { BurgerMenu } from '../BurgerMenu'
 
 export const HeaderMobile = () => {
@@ -26,18 +25,12 @@ export const HeaderMobile = () => {
     window.location.reload()
   }
 
-  const iconCondition =
-    (isAuth && window.location.pathname.includes('my')) ||
-    (isAuth && window.location.pathname.includes('chat')) ||
-    (isAuth && window.location.pathname.includes('broadcasts')) ||
-    (isAuth && window.location.pathname.includes('profile'))
-
   const burgerStyles = `${burgerOpen ? Styles.burgerMenuOpened : Styles.burgerMenuClosed}`
 
   return (
     <header className={Styles.header}>
       <LinkDom to={isAuth ? '/my' : '/'} className={Styles.logoIcon}>
-        {iconCondition ? <Logo /> : <img className={Styles.logo} src={logoIcon} alt='Лого' />}
+        <img className={Styles.logo} src={logoIcon} alt='Лого' />
       </LinkDom>
 
       <nav className={Styles.wrap}>

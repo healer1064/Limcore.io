@@ -6,17 +6,14 @@ import detailOrderInfoSlice from '../../pages/orders/redux/detailOrderSlicer'
 import catalogSlice from '../../pages/catalog/redux/catalogSlicer'
 import userSlice from './userSlice'
 import cabinetSlice from '../../pages/cabinet/redux/cabinetSlice'
-import authSlice from '../../pages/auth/redux/authSlice'
-// import authNewSlice from '../../pages/auth/redux/authSlice'
+import authSlice from '@app/redux/authSlice'
 import walletSlice from '../../components/Wallet/redux/walletSlice'
 import chatSlice from '@components/Chat/redux/chatSlice'
 import appSlice from '@app/redux/reducers/appSlice'
-import walletConnectSlice from '@app/redux/reducers/walletConnectSlice'
 
 export const store = configureStore({
   reducer: {
     app: appSlice,
-    walletConnect: walletConnectSlice,
     profile: profileSlice,
     salesPlan: salesPlanSlice,
     orders: orderSlice,

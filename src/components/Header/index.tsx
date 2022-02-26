@@ -4,31 +4,27 @@ import { Link, useHistory, useLocation } from 'react-router-dom'
 
 import logoIcon from '../../assets/images/headerLogo.png'
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks'
-import { setIsSincWithWallet, setWalletConnectLimc, setWalletConnectUsdt } from '../../pages/auth/redux/authSlice'
 
-// import { useTranslation } from 'react-i18next'
 import { LanguagePopup } from '../LanguagePopup/index'
 import { Dropdown } from './components/Dropdown'
 
 import { infoLinks, partnersLinks } from '@components/Header/const'
 import ModalConnectWallet from '@components/Header/components/ModalConnectWallet'
 import { appSlice } from '@app/redux/reducers/appSlice'
-import { walletConnectSlice } from '@app/redux/reducers/walletConnectSlice'
 import WalletConnect from '@walletconnect/client'
 import QRCodeModal from '@walletconnect/qrcode-modal'
-import { getLimc, getUsdt } from '@components/Purse/PurseMobile/components/Balance/walletConnect'
-import { getSyncData } from '@components/Wallet/redux/walletSlice'
+import { setIsAuth, setUserWallet } from '@app/redux/authSlice'
 
 export const Header: React.FC = () => {
   const { pathname } = useLocation()
   const history = useHistory()
   const dispatch = useAppDispatch()
-  // const [t] = useTranslation()
-  const isSync = useAppSelector((state) => state.auth.isSincWithWallet)
+
+  const isAuth = useAppSelector((state) => state.auth.isAuth)
+  const userWallet = useAppSelector((state) => state.auth.userWallet)
+
   const { openModalConnectWallet } = useAppSelector((state) => state.app)
-  const { address, chainId } = useAppSelector((state) => state.walletConnect)
   const { handlerOpenAndCloseModalConnectWallet } = appSlice.actions
-  const { walletConnectAction } = walletConnectSlice.actions
 
   const handlerCloseModalConnectWallet = (): void => {
     dispatch(handlerOpenAndCloseModalConnectWallet(false))
@@ -44,32 +40,24 @@ export const Header: React.FC = () => {
     if (error) {
       throw error
     }
-    dispatch(walletConnectAction({ address: '', chainId: null }))
-    dispatch(setIsSincWithWallet(false))
+    dispatch(setUserWallet(''))
+    dispatch(setIsAuth(false))
     window.location.reload()
   })
 
   useEffect(() => {
     if (connector.connected) {
-      dispatch(setIsSincWithWallet(true))
+      dispatch(setIsAuth(true))
       const dataFromLS = JSON.parse(localStorage.getItem('walletconnect'))
-      dispatch(walletConnectAction({ address: dataFromLS.accounts[0], chainId: dataFromLS.chainId }))
+      dispatch(setUserWallet(dataFromLS.accounts[0]))
     }
   }, [])
-
-  useEffect(() => {
-    if (chainId) {
-      getUsdt(address).then((res) => dispatch(setWalletConnectUsdt(res)))
-      getLimc(address).then((res) => dispatch(setWalletConnectLimc(res)))
-      dispatch(getSyncData({ address }))
-    }
-  }, [chainId])
 
   const handlerDisconnectWallet = (): void => {
     if (connector.connected) {
       connector.killSession().then((res) => res)
-      dispatch(setIsSincWithWallet(false))
-      dispatch(walletConnectAction({ address: '', chainId: null }))
+      dispatch(setIsAuth(false))
+      dispatch(setUserWallet(''))
       history.push('/')
     }
   }
@@ -121,7 +109,7 @@ export const Header: React.FC = () => {
         </ul>
         <div className={Styles.container}>
           <LanguagePopup position={{ top: '37px' }} />
-          {!isSync ? (
+          {!isAuth ? (
             <button
               className={Styles.profileBtn}
               type='button'
@@ -131,7 +119,7 @@ export const Header: React.FC = () => {
             </button>
           ) : pathnameProfile ? (
             <div className={Styles.profile__numWalletContainerLink}>
-              <p className={Styles.profile__numWallet}>{`${address.slice(0, 9)}...${address.slice(-10)}`}</p>
+              <p className={Styles.profile__numWallet}>{`${userWallet.slice(0, 9)}...${userWallet.slice(-10)}`}</p>
               <Link
                 className={`${Styles.profile__link} ${Styles.profile__numWalletContainerLink_active}`}
                 to='/'

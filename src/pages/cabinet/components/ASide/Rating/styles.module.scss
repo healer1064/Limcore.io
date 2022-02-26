@@ -7,6 +7,7 @@
   color: rgba(79, 132, 138, 1);
   background: rgba(25, 42, 44, 1);
   border-radius: 20px;
+  font-family: $font-ibmPlexSans;
 
   @media all and (max-width: 768px) {
     padding: 25px 20px;
@@ -39,6 +40,10 @@
       width: 19px;
       height: 19px;
       margin: 0 10px 0 0;
+    }
+
+    > span {
+      font-size: 16px;
     }
   }
 }
