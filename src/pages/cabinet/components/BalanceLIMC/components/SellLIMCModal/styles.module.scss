@@ -1,0 +1,53 @@
+.modalClass button[type='button'] {
+  @media all and (max-width: 768px) {
+    top: 16px;
+    right: 12px;
+  }
+
+  &:hover path {
+    stroke: transparent;
+  }
+}
+
+.sellLIMCContainer {
+  padding: 31px 41px;
+  font-family: "IbmPlexSans", "Arial", "Helvetica", sans-serif;
+  color: white;
+
+  > h2 {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  @media all and (max-width: 768px) {
+    padding: 7px 21px;
+  }
+}
+
+.sellLIMCInputs {
+  padding: 0 40px;
+  margin: 42px 0 0 0;
+
+  > div:first-of-type {
+    margin: 0 0 32px 0;
+  }
+
+  > div:last-of-type {
+    margin: 0 0 50px 0;
+  }
+
+  @media all and (max-width: 768px) {
+    padding: 0;
+    margin: 36px 0 0 0;
+  }
+}
+
+.sellLIMCInputsButton {
+  width: 100%;
+  padding: 14px 0;
+  font-family: "IbmPlexSans", "Arial", "Helvetica", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: none;
+  filter: none;
+}

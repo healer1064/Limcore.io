@@ -5,6 +5,8 @@ import lockIcon from '@icons/lockIcon.svg'
 import styles from './styles.module.scss'
 import classNames from 'classnames'
 import { BottomModal } from '@components/Modal/BottomModal'
+import { BuyLIMCModal } from './components/BuyLIMCModal'
+import { SellLIMCModal } from './components/SellLIMCModal'
 
 interface BalanceLIMCProps {
   clientWidth: number
@@ -14,20 +16,36 @@ export const BalanceLIMC: React.FC<BalanceLIMCProps> = ({ clientWidth }) => {
   const [balance] = useState<number>(11236.26)
   const [balance2] = useState<number>(1235)
   const [lockBalance] = useState<number>(1263)
-  const [popupOpened, setPopupOpened] = useState(false)
+
+  const [popupOpened, setPopupOpened] = useState<boolean>(false)
+  const [modalOpened, setModalOpened] = useState<boolean>(false)
+  const [modalOpened2, setModalOpened2] = useState<boolean>(false)
 
   let timeout = null
   const openPopup = () => {
     clearInterval(timeout)
     setPopupOpened(true)
   }
-
   const closePopup = () => {
     timeout = setTimeout(() => setPopupOpened(false), 100)
   }
 
   const setActivePopup = () => {
     setPopupOpened((previous) => !previous)
+  }
+
+  const onClickCloseModal = () => {
+    setModalOpened(() => false)
+  }
+  const onClickOpenModal = () => {
+    setModalOpened(() => true)
+  }
+
+  const onClickCloseModal2 = () => {
+    setModalOpened2(() => false)
+  }
+  const onClickOpenModal2 = () => {
+    setModalOpened2(() => true)
   }
 
   return (
@@ -74,13 +92,15 @@ export const BalanceLIMC: React.FC<BalanceLIMCProps> = ({ clientWidth }) => {
             <div className={styles.cabinet__balanceLIMCCourse}>1 LIMC = 300 USDT</div>
           </div>
         )}
-        <div className={styles.btnContainer} style={{ margin: '0 0 10px 0' }}>
-          <button className={styles.cabinet__balanceLIMCButton} type='button'>
+        <div style={{ margin: '0 0 10px 0' }}>
+          <button className={styles.cabinet__balanceLIMCButton} type='button' onClick={onClickOpenModal}>
+            <BuyLIMCModal modalOpened={modalOpened} closeModal={onClickCloseModal} />
             Купить LIMC
           </button>
         </div>
-        <div className={styles.btnContainer}>
-          <button className={styles.cabinet__balanceLIMCButton} type='button'>
+        <div>
+          <button className={styles.cabinet__balanceLIMCButton} type='button' onClick={onClickOpenModal2}>
+            <SellLIMCModal modalOpened={modalOpened2} closeModal={onClickCloseModal2} />
             Продать LIMC
           </button>
         </div>

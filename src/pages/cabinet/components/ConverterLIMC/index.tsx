@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import styles from './styles.module.scss'
 import USDTIcon from '@icons/USDTIcon.svg'
-import { Option, SelectUI } from './SelectUI'
+import { Option, SelectUI } from '../../../../ui-kit/SelectUI'
 
 export const ConverterLIMC: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
