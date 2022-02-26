@@ -8,7 +8,6 @@ import { Header } from '@components/Header'
 import { HeaderMobile } from '@components/Header/components/HeaderMobile'
 import { Chat } from '@components/Chat'
 import { LandingPage } from '../../pages/landing'
-import { ProfileMobile } from '@components/Profile/ProfileMobile'
 import { getForksPrice } from '@components/Wallet/redux/walletSlice'
 import { DataCenterPage } from '../../pages/data-center'
 import { Borders } from '@components/Borders'
@@ -63,7 +62,6 @@ const App = () => {
                       <Redirect to='/my' />
                     </Route>
                     <Route path='/chat' exact component={Chat} />
-                    <Route path='/profile' exact component={ProfileMobile} />
                   </>
                 )}
                 <Route path='*'>

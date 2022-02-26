@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { ForksTableChart } from './parts/ForksTableChart/ForksTableChart'
 import { WalletsTable } from './parts/WalletsTable/WalletsTable'
 import styles from './styles.module.scss'
@@ -14,7 +14,6 @@ export interface IEmission {
 }
 
 export const Emission: React.FC<IEmission> = ({ desktop }) => {
-  const [active, setActive] = useState(false)
   return (
     <>
       {desktop ? (

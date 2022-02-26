@@ -18,7 +18,6 @@ export const CabinetPage: React.FC = () => {
   const mobileCondition = width <= 768
 
   const graph = <img className={styles.cabinet__balanceGraph} src={graphTemp} />
-  console.log(width > 1100)
 
   return (
     <div className={styles.cabinet}>

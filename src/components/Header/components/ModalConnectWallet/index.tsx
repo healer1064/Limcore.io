@@ -10,7 +10,8 @@ import WalletConnect from '@walletconnect/client'
 import QRCodeModal from '@walletconnect/qrcode-modal'
 import { useAppDispatch } from '@app/redux/hooks'
 import { getUsdt, getLimc } from '@app/walletConnect/walletConnect'
-
+import BootstrapDialogTitle from './BootstrapDialogTitle'
+import { useHistory } from 'react-router-dom'
 import {
   setIsAuth,
   setUnlockedLimcBalance,
@@ -18,15 +19,14 @@ import {
   setUsdtBalance,
   setUserWallet,
 } from '@app/redux/authSlice'
-import BootstrapDialogTitle from '@components/Header/components/ModalConnectWallet/BootstrapDialogTitle/BootstrapDialogTitle'
-import { useHistory } from 'react-router-dom'
 
 interface IModalConnectWalletProps {
   onClose: () => void
   open: boolean
+  closeBurgerMenu: () => void
 }
 
-const ModalConnectWallet = ({ onClose, open }: IModalConnectWalletProps) => {
+const ModalConnectWallet = ({ onClose, open, closeBurgerMenu }: IModalConnectWalletProps) => {
   const dispatch = useAppDispatch()
   const history = useHistory()
 
@@ -34,6 +34,16 @@ const ModalConnectWallet = ({ onClose, open }: IModalConnectWalletProps) => {
     '& .MuiPaper-root': {
       backgroundColor: '#192A2C',
       borderRadius: 20,
+      padding: 50,
+      '@media (max-width:768px)': {
+        width: '100vw',
+        height: '100vh',
+        maxWidth: 'none',
+        maxHeight: 'none',
+        margin: '0',
+        padding: 0,
+        borderRadius: '0',
+      },
     },
   })
 
@@ -65,6 +75,7 @@ const ModalConnectWallet = ({ onClose, open }: IModalConnectWalletProps) => {
 
       QRCodeModal.close()
       onClose()
+      closeBurgerMenu()
       history.push('/my')
     })
   }
@@ -72,27 +83,27 @@ const ModalConnectWallet = ({ onClose, open }: IModalConnectWalletProps) => {
   return (
     <BootstrapDialog onClose={onClose} aria-labelledby='customized-dialog-title' open={open}>
       <BootstrapDialogTitle id='customized-dialog-title' onClose={onClose}>
-        <p className={Styles.dialogText}>ПОДКЛЮЧИТЬ КОШЕЛЕК</p>
+        <p className={Styles.dialogText}>Подключить кошелек</p>
       </BootstrapDialogTitle>
       <div className={Styles.dialogItem}>
         <div className={Styles.dialogItemCont}>
           <div className={Styles.itemitem} onClick={sincWithWallet}>
             <img src={img2} />
-            <p>WalletConnect</p>
+            <p className={Styles.name}>WalletConnect</p>
           </div>
           <div className={Styles.itemitem} onClick={sincWithWallet}>
             <img src={img3} />
-            <p>WalletConnect</p>
+            <p className={Styles.name}>WalletConnect</p>
           </div>
         </div>
         <div className={Styles.diologItemCont}>
           <div className={Styles.itemitem}>
             <img src={img1} />
-            <p>Metamask</p>
+            <p className={Styles.name}>Metamask</p>
           </div>
           <div className={Styles.itemitem}>
             <img src={img4} className={Styles.itemitemimg} />
-            <p>Другие</p>
+            <p className={Styles.name}>Другие</p>
           </div>
         </div>
       </div>
